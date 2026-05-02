@@ -59,15 +59,17 @@ export function localizeRoutePage(
   routePage: RoutePage,
   t: Translations,
 ): RoutePage {
-  const routeText = t.routePages[routePage.slug] ?? en.routePages[routePage.slug];
+  const fallbackRouteText = en.routePages[routePage.slug];
+  const routeText = t.routePages[routePage.slug] ?? fallbackRouteText;
 
   return {
     ...routePage,
-    title: routeText.title,
-    intro: routeText.intro,
+    title: routeText.title ?? fallbackRouteText.title,
+    intro: routeText.intro ?? fallbackRouteText.intro,
     metadata: {
-      title: routeText.metadataTitle,
-      description: routeText.metadataDescription,
+      title: routeText.metadataTitle ?? fallbackRouteText.metadataTitle,
+      description:
+        routeText.metadataDescription ?? fallbackRouteText.metadataDescription,
     },
   };
 }
