@@ -1,0 +1,82 @@
+{
+  "app": {
+    "title": "Bangkok Pattaya Bus Guide",
+    "brandPrimary": "Bangkok Pattaya",
+    "brandSecondary": "Bus Guide"
+  },
+  "navigation": { "chooseLanguage": "选择语言" },
+  "routeSelector": { "from": "出发地：", "to": "目的地：" },
+  "nextBus": {
+    "title": "下一班巴士：",
+    "travelTime": "车程：",
+    "ticketPrice": "票价："
+  },
+  "schedule": {
+    "title": "今日发车",
+    "updated": "已更新",
+    "nextBus": "下一班",
+    "departure": "发车"
+  },
+  "station": {
+    "title": "车站信息",
+    "bestFor": "适合：",
+    "tip": "提示："
+  },
+  "travelTips": { "title": "旅行提示", "heading": "乘车前" },
+  "faq": { "title": "常见问题", "heading": "出发前" },
+  "support": { "title": "支持", "question": "这个指南有帮助吗？" },
+  "lastUpdated": { "label": "最后更新：" },
+  "disclaimer": { "text": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
+  "common": {
+    "showAllDepartures": "查看所有发车",
+    "openInGoogleMaps": "在 Google Maps 打开",
+    "buyMeCoffee": "请我喝咖啡",
+    "routeSummary": "路线摘要",
+    "distance": "距离"
+  },
+  "routePages": {
+    "bangkok-to-pattaya": {
+      "label": "Bangkok 到 Pattaya",
+      "title": "Bangkok 到 Pattaya 巴士",
+      "intro": "给游客的简单指南：从 Bangkok 市中心坐巴士到 Pattaya，查看发车时间和车站信息。",
+      "metadataTitle": "Bangkok 到 Pattaya 巴士 | 时间、车站和旅行提示",
+      "metadataDescription": "查看 Bangkok 到 Pattaya 的巴士时间，包括发车时间、车站、车程、票价和实用旅行提示。时间可能会变化，出行前请确认。"
+    },
+    "pattaya-to-bangkok": {
+      "label": "Pattaya 到 Bangkok",
+      "title": "Pattaya 到 Bangkok 巴士",
+      "intro": "计划从 Pattaya 返回 Bangkok，查看发车时间、车站和实用提示。",
+      "metadataTitle": "Pattaya 到 Bangkok 巴士 | 时间、车站和旅行提示",
+      "metadataDescription": "查看 Pattaya 到 Bangkok 的巴士时间，包括发车时间、车站、车程、票价和实用旅行提示。时间可能会变化，出行前请确认。"
+    },
+    "suvarnabhumi-airport-to-pattaya": {
+      "label": "Suvarnabhumi Airport 到 Pattaya",
+      "title": "Suvarnabhumi Airport 到 Pattaya 巴士",
+      "intro": "适合抵达后直接从 Suvarnabhumi Airport 坐巴士去 Pattaya 的旅客。",
+      "metadataTitle": "Suvarnabhumi Airport 到 Pattaya 巴士 | 时间、车站和旅行提示",
+      "metadataDescription": "查看 Suvarnabhumi Airport 到 Pattaya 的巴士时间，包括发车时间、车站、车程、票价和实用旅行提示。时间可能会变化，出行前请确认。"
+    }
+  },
+  "schedules": {
+    "bangkok-ekkamai-to-pattaya": { "travelTime": "约 2-3 小时", "price": "约 130-150 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
+    "pattaya-to-bangkok-ekkamai": { "travelTime": "约 2-3 小时", "price": "约 130-150 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
+    "suvarnabhumi-airport-to-pattaya": { "travelTime": "约 2-2.5 小时", "price": "约 140-180 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" }
+  },
+  "stationsText": {
+    "ekkamai": { "bestFor": "Bangkok 市中心", "tip": "请提前 20-30 分钟到达" },
+    "mo-chit": { "bestFor": "Bangkok 北部", "tip": "预留更多时间前往车站" },
+    "north-pattaya": { "bestFor": "Pattaya 市区", "tip": "乘坐 songthaew 或出租车去酒店" },
+    "suvarnabhumi-airport": { "bestFor": "机场抵达后直接去 Pattaya", "tip": "抵达后查看巴士柜台，并预留入境时间" }
+  },
+  "travelTipItems": [
+    { "title": "提前 20 分钟到达", "body": "在柜台买票，并留出排队、买小吃和找站台的时间。" },
+    { "title": "准备小额现金", "body": "买票和乘坐当地交通时，小面额泰铢更方便。" },
+    { "title": "考虑 Bangkok 交通", "body": "早晚时段可能更慢。如果要赶飞机或火车，请预留时间。" }
+  ],
+  "faqItems": [
+    { "question": "从 Bangkok 到 Pattaya 坐巴士要多久？", "answer": "通常约 2-3 小时，取决于交通和出发车站。" },
+    { "question": "在哪里买票？", "answer": "通常可以在巴士站柜台买票。有些路线也可能支持网上购买。出行前请确认。" },
+    { "question": "可以从 Suvarnabhumi Airport 坐巴士吗？", "answer": "可以，Suvarnabhumi Airport 和 Pattaya 之间有巴士服务。出发前请查看最新时间。" },
+    { "question": "巴士每天运行吗？", "answer": "大多数路线每天运行，但节假日或出行高峰日的时间可能会变化。" }
+  ]
+}

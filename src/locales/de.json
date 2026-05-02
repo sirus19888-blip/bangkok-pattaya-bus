@@ -1,0 +1,99 @@
+{
+  "app": {
+    "title": "Bangkok Pattaya Bus Guide",
+    "brandPrimary": "Bangkok Pattaya",
+    "brandSecondary": "Bus Guide"
+  },
+  "navigation": { "chooseLanguage": "Sprache wählen" },
+  "routeSelector": { "from": "Von:", "to": "Nach:" },
+  "nextBus": {
+    "title": "Nächster Bus:",
+    "travelTime": "Fahrzeit:",
+    "ticketPrice": "Ticketpreis:"
+  },
+  "schedule": {
+    "title": "Heutige Abfahrten",
+    "updated": "Aktualisiert",
+    "nextBus": "Nächster Bus",
+    "departure": "Abfahrt"
+  },
+  "station": {
+    "title": "Stationsinformationen",
+    "bestFor": "Am besten für:",
+    "tip": "Tipp:"
+  },
+  "travelTips": { "title": "Reisetipps", "heading": "Vor der Busfahrt" },
+  "faq": { "title": "Fragen", "heading": "Vor der Reise" },
+  "support": { "title": "Unterstützen", "question": "War dieser Guide hilfreich?" },
+  "lastUpdated": { "label": "Zuletzt aktualisiert:" },
+  "disclaimer": {
+    "text": "Buszeiten können sich ändern. Bitte bestätige sie vor der Reise am Bahnhof oder beim Betreiber."
+  },
+  "common": {
+    "showAllDepartures": "Alle Abfahrten anzeigen",
+    "openInGoogleMaps": "In Google Maps öffnen",
+    "buyMeCoffee": "Kaffee spendieren",
+    "routeSummary": "Routenübersicht",
+    "distance": "Entfernung"
+  },
+  "routePages": {
+    "bangkok-to-pattaya": {
+      "label": "Bangkok nach Pattaya",
+      "title": "Bus von Bangkok nach Pattaya",
+      "intro": "Ein einfacher Guide für Touristen, die mit dem Bus vom Zentrum von Bangkok nach Pattaya fahren, mit Abfahrtszeiten und Stationshinweisen.",
+      "metadataTitle": "Bus von Bangkok nach Pattaya | Fahrplan, Stationen und Tipps",
+      "metadataDescription": "Prüfe Buszeiten von Bangkok nach Pattaya mit Abfahrten, Stationen, Fahrzeit, Ticketpreis und praktischen Tipps. Fahrpläne können sich ändern, bitte vor der Reise bestätigen."
+    },
+    "pattaya-to-bangkok": {
+      "label": "Pattaya nach Bangkok",
+      "title": "Bus von Pattaya nach Bangkok",
+      "intro": "Plane die Rückfahrt von Pattaya nach Bangkok mit Abfahrtszeiten, Stationsdetails und praktischen Hinweisen.",
+      "metadataTitle": "Bus von Pattaya nach Bangkok | Fahrplan, Stationen und Tipps",
+      "metadataDescription": "Prüfe Buszeiten von Pattaya nach Bangkok mit Abfahrten, Stationen, Fahrzeit, Ticketpreis und praktischen Tipps. Fahrpläne können sich ändern, bitte vor der Reise bestätigen."
+    },
+    "suvarnabhumi-airport-to-pattaya": {
+      "label": "Suvarnabhumi Airport nach Pattaya",
+      "title": "Bus von Suvarnabhumi Airport nach Pattaya",
+      "intro": "Nützliche Informationen für Reisende, die nach der Ankunft direkt mit dem Bus von Suvarnabhumi Airport nach Pattaya fahren.",
+      "metadataTitle": "Bus von Suvarnabhumi Airport nach Pattaya | Fahrplan, Stationen und Tipps",
+      "metadataDescription": "Prüfe Buszeiten von Suvarnabhumi Airport nach Pattaya mit Abfahrten, Stationen, Fahrzeit, Ticketpreis und praktischen Tipps. Fahrpläne können sich ändern, bitte vor der Reise bestätigen."
+    }
+  },
+  "schedules": {
+    "bangkok-ekkamai-to-pattaya": {
+      "travelTime": "Etwa 2-3 Stunden",
+      "price": "Etwa 130-150 THB",
+      "disclaimer": "Buszeiten können sich ändern. Bitte bestätige sie vor der Reise am Bahnhof oder beim Betreiber."
+    },
+    "pattaya-to-bangkok-ekkamai": {
+      "travelTime": "Etwa 2-3 Stunden",
+      "price": "Etwa 130-150 THB",
+      "disclaimer": "Buszeiten können sich ändern. Bitte bestätige sie vor der Reise am Bahnhof oder beim Betreiber."
+    },
+    "suvarnabhumi-airport-to-pattaya": {
+      "travelTime": "Etwa 2-2,5 Stunden",
+      "price": "Etwa 140-180 THB",
+      "disclaimer": "Buszeiten können sich ändern. Bitte bestätige sie vor der Reise am Bahnhof oder beim Betreiber."
+    }
+  },
+  "stationsText": {
+    "ekkamai": { "bestFor": "zentrales Bangkok", "tip": "20-30 Minuten vor der Abfahrt ankommen" },
+    "mo-chit": { "bestFor": "nördliches Bangkok", "tip": "mehr Zeit für die Fahrt zum Terminal einplanen" },
+    "north-pattaya": { "bestFor": "Stadt Pattaya", "tip": "mit Songthaew oder Taxi zum Hotel fahren" },
+    "suvarnabhumi-airport": {
+      "bestFor": "Ankünfte am Flughafen mit direkter Weiterfahrt nach Pattaya",
+      "tip": "nach der Ankunft den Buss counter prüfen und Zeit für die Einreise einplanen"
+    }
+  },
+  "travelTipItems": [
+    { "title": "20 Minuten früher ankommen", "body": "Kaufe dein Ticket am Schalter und plane Zeit für Warteschlange, Snacks und den Bussteig ein." },
+    { "title": "Kleines Bargeld bereithalten", "body": "Tickets und lokale Fahrten sind mit kleinen Thai-Baht-Scheinen am einfachsten." },
+    { "title": "Verkehr in Bangkok einplanen", "body": "Morgens und abends kann die Fahrt länger dauern. Plane extra Zeit ein, wenn du einen Flug oder Zug erreichen musst." }
+  ],
+  "faqItems": [
+    { "question": "Wie lange dauert der Bus von Bangkok nach Pattaya?", "answer": "Die Fahrt dauert normalerweise etwa 2-3 Stunden, je nach Verkehr und Abfahrtsstation." },
+    { "question": "Wo kaufe ich Tickets?", "answer": "Tickets bekommst du meist am Schalter im Busbahnhof. Einige Strecken können auch online verfügbar sein. Vor der Reise prüfen." },
+    { "question": "Kann ich einen Bus vom Suvarnabhumi Airport nehmen?", "answer": "Ja, es gibt Busverbindungen zwischen Suvarnabhumi Airport und Pattaya. Prüfe den aktuellen Fahrplan vor der Abfahrt." },
+    { "question": "Fahren die Busse jeden Tag?", "answer": "Die meisten Strecken fahren täglich, aber Abfahrtszeiten können sich an Feiertagen oder stark frequentierten Reisetagen ändern." }
+  ]
+}
