@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     title: "BP Bus Guide",
     statusBarStyle: "default",
   },
+  verification: {
+    google: "4NkT_tR8wV_Sq9vjrhu7zg6ExLntl2HLhv0QV3Y5KD0",
+  },
 };
 
 export default function RootLayout({
