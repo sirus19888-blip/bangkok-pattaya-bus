@@ -58,11 +58,6 @@ export async function generateMetadata({
   return {
     title: localizedRoutePage.metadata.title,
     description: localizedRoutePage.metadata.description,
-    openGraph: {
-      title: localizedRoutePage.metadata.title,
-      description: localizedRoutePage.metadata.description,
-      type: "website",
-    },
   };
 }
 
