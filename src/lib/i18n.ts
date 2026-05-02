@@ -12,7 +12,15 @@ import zh from "@/locales/zh.json";
 
 export type Translations = typeof en;
 
-const dictionaries: Record<LocaleCode, Partial<Translations>> = {
+type DeepPartial<T> = {
+  [Key in keyof T]?: T[Key] extends Array<infer Item>
+    ? Item[]
+    : T[Key] extends object
+      ? DeepPartial<T[Key]>
+      : T[Key];
+};
+
+const dictionaries: Record<LocaleCode, DeepPartial<Translations>> = {
   en,
   pl,
   de,
@@ -21,6 +29,21 @@ const dictionaries: Record<LocaleCode, Partial<Translations>> = {
   zh,
   th,
 };
+
+function mergeTextRecord<T extends Record<string, object>>(
+  fallback: T,
+  overrides?: DeepPartial<T>,
+): T {
+  return Object.fromEntries(
+    Object.entries(fallback).map(([key, value]) => [
+      key,
+      {
+        ...value,
+        ...(overrides?.[key as keyof T] as object | undefined),
+      },
+    ]),
+  ) as T;
+}
 
 export function getTranslations(locale: LocaleCode): Translations {
   const dictionary = dictionaries[locale] ?? en;
@@ -38,9 +61,9 @@ export function getTranslations(locale: LocaleCode): Translations {
     lastUpdated: { ...en.lastUpdated, ...dictionary.lastUpdated },
     disclaimer: { ...en.disclaimer, ...dictionary.disclaimer },
     common: { ...en.common, ...dictionary.common },
-    routePages: { ...en.routePages, ...dictionary.routePages },
-    schedules: { ...en.schedules, ...dictionary.schedules },
-    stationsText: { ...en.stationsText, ...dictionary.stationsText },
+    routePages: mergeTextRecord(en.routePages, dictionary.routePages),
+    schedules: mergeTextRecord(en.schedules, dictionary.schedules),
+    stationsText: mergeTextRecord(en.stationsText, dictionary.stationsText),
     travelTipItems: dictionary.travelTipItems ?? en.travelTipItems,
     faqItems: dictionary.faqItems ?? en.faqItems,
   };

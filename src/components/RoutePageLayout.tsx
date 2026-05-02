@@ -99,6 +99,7 @@ export function RoutePageLayout({
             schedule={schedule}
             nextDeparture={nextDeparture}
             labels={t.schedule}
+            showSourceInfo
           />
           <StationCard
             stations={stations}

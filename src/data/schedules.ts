@@ -11,7 +11,33 @@ export type Schedule = {
   nextDeparture: string;
   lastUpdated: string;
   disclaimer: string;
+  sourceName: string;
+  sourceUrl: string;
+  lastVerified: string;
+  verificationMethod: "manual";
+  confidenceLevel: "sample";
+  operatorNote: string;
+  isSampleData: boolean;
 };
+
+const sampleScheduleSource = {
+  sourceName: "Operator website / ticket system",
+  sourceUrl: "#",
+  lastVerified: "Needs verification",
+  verificationMethod: "manual",
+  confidenceLevel: "sample",
+  operatorNote: "Bus times may change. Confirm before travel.",
+  isSampleData: true,
+} satisfies Pick<
+  Schedule,
+  | "sourceName"
+  | "sourceUrl"
+  | "lastVerified"
+  | "verificationMethod"
+  | "confidenceLevel"
+  | "operatorNote"
+  | "isSampleData"
+>;
 
 export const schedules: Schedule[] = [
   {
@@ -41,6 +67,7 @@ export const schedules: Schedule[] = [
     lastUpdated: "2026-05-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
+    ...sampleScheduleSource,
   },
   {
     id: "pattaya-to-bangkok-ekkamai",
@@ -68,6 +95,7 @@ export const schedules: Schedule[] = [
     lastUpdated: "2026-05-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
+    ...sampleScheduleSource,
   },
   {
     id: "suvarnabhumi-airport-to-pattaya",
@@ -95,6 +123,7 @@ export const schedules: Schedule[] = [
     lastUpdated: "2026-05-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
+    ...sampleScheduleSource,
   },
 ];
 

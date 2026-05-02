@@ -20,7 +20,13 @@
     "title": "Today's departures",
     "updated": "Updated",
     "nextBus": "Next bus",
-    "departure": "Departure"
+    "departure": "Departure",
+    "dataTitle": "Schedule data",
+    "source": "Source:",
+    "lastVerified": "Last verified:",
+    "verification": "Verification:",
+    "note": "Note:",
+    "sampleNotice": "Sample schedule data — verify before publishing."
   },
   "station": {
     "title": "Station information",
