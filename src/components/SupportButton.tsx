@@ -18,8 +18,10 @@ export function SupportButton({ labels }: SupportButtonProps) {
         </h2>
       </div>
       <a
-        href="https://www.buymeacoffee.com/"
+        href="https://www.buymeacoffee.com/Pawel_"
         className="mt-3 flex min-h-11 w-full items-center justify-center rounded-xl border border-[#13233a] bg-[#13233a] px-5 text-center text-sm font-black text-white shadow-sm transition hover:bg-[#1d3455] sm:mt-0 sm:min-h-12 sm:min-w-52 sm:w-auto sm:text-base"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {labels.buyMeCoffee}
       </a>

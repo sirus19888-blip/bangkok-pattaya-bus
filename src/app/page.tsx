@@ -61,7 +61,7 @@ const utilityCards = [
     label: "Privacy",
   },
   {
-    href: "https://www.buymeacoffee.com/",
+    href: "https://www.buymeacoffee.com/Pawel_",
     label: "Support",
   },
 ];
@@ -78,6 +78,10 @@ function UtilityGrid() {
             key={card.label}
             href={card.href}
             className="flex min-h-12 items-center justify-center rounded-2xl border border-[#eadcc7] bg-white px-3 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#fffaf2]"
+            target={card.href.startsWith("http") ? "_blank" : undefined}
+            rel={
+              card.href.startsWith("http") ? "noopener noreferrer" : undefined
+            }
           >
             {card.label}
           </Link>
