@@ -23,10 +23,14 @@
     "departure": "Departure",
     "dataTitle": "Schedule data",
     "source": "Source:",
+    "sourceType": "Source type:",
     "lastVerified": "Last verified:",
-    "verification": "Verification:",
-    "note": "Note:",
-    "sampleNotice": "Sample schedule data — verify before publishing."
+    "verification": "Verification status:",
+    "fareNote": "Fare note:",
+    "dataQuality": "Data quality:",
+    "note": "Important note:",
+    "needsOfficialConfirmationNotice": "These times need official confirmation before relying on them.",
+    "partiallyVerifiedNotice": "Based on published operator information. Confirm before travel."
   },
   "station": {
     "title": "Station information",

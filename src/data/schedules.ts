@@ -13,31 +13,13 @@ export type Schedule = {
   disclaimer: string;
   sourceName: string;
   sourceUrl: string;
+  sourceType: string;
   lastVerified: string;
-  verificationMethod: "manual";
-  confidenceLevel: "sample";
+  verificationStatus: string;
+  fareNote: string;
   operatorNote: string;
-  isSampleData: boolean;
+  dataQuality: string;
 };
-
-const sampleScheduleSource = {
-  sourceName: "Operator website / ticket system",
-  sourceUrl: "#",
-  lastVerified: "Needs verification",
-  verificationMethod: "manual",
-  confidenceLevel: "sample",
-  operatorNote: "Bus times may change. Confirm before travel.",
-  isSampleData: true,
-} satisfies Pick<
-  Schedule,
-  | "sourceName"
-  | "sourceUrl"
-  | "lastVerified"
-  | "verificationMethod"
-  | "confidenceLevel"
-  | "operatorNote"
-  | "isSampleData"
->;
 
 export const schedules: Schedule[] = [
   {
@@ -67,7 +49,15 @@ export const schedules: Schedule[] = [
     lastUpdated: "2026-05-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
-    ...sampleScheduleSource,
+    sourceName: "Pattaya Bus / Roong Reuang Coach",
+    sourceUrl: "https://pattayabus.com/",
+    sourceType: "official operator website",
+    lastVerified: "2026-05-03",
+    verificationStatus: "partially verified",
+    fareNote: "Published fare shown by operator: 158 THB per seat.",
+    operatorNote:
+      "Bus times may change. Confirm at the station or with the operator before travel.",
+    dataQuality: "official source, manual verification",
   },
   {
     id: "pattaya-to-bangkok-ekkamai",
@@ -95,7 +85,15 @@ export const schedules: Schedule[] = [
     lastUpdated: "2026-05-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
-    ...sampleScheduleSource,
+    sourceName: "BusOnlineTicket / operator ticket listings",
+    sourceUrl: "https://www.busonlineticket.co.th/bus/pattaya-bus/",
+    sourceType: "ticketing platform",
+    lastVerified: "2026-05-03",
+    verificationStatus: "needs official confirmation",
+    fareNote: "Fare may vary by operator and booking platform.",
+    operatorNote:
+      "Departure times must be confirmed with the operator before publishing as verified.",
+    dataQuality: "secondary source, needs confirmation",
   },
   {
     id: "suvarnabhumi-airport-to-pattaya",
@@ -123,7 +121,14 @@ export const schedules: Schedule[] = [
     lastUpdated: "2026-05-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
-    ...sampleScheduleSource,
+    sourceName: "Airport Pattaya Bus",
+    sourceUrl: "https://airportpattayabus.com/",
+    sourceType: "official operator website",
+    lastVerified: "2026-05-03",
+    verificationStatus: "partially verified",
+    fareNote: "Published fare shown by operator: 162 THB per seat.",
+    operatorNote: "Bus times may change. Confirm before travel.",
+    dataQuality: "official source, manual verification",
   },
 ];
 
