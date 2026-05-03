@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routePages, supportedLocaleCodes } from "@/data/routes";
 
-const siteUrl = "https://bangkok-pattaya-bus.vercel.app";
+const siteUrl = "https://www.bangkokpattayabus.com";
 
 function absoluteUrl(path: string) {
   return new URL(path, siteUrl).toString();

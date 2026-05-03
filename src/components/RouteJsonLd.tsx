@@ -9,7 +9,7 @@ type RouteJsonLdProps = {
   schedule: Schedule;
 };
 
-const siteUrl = "https://bangkok-pattaya-bus.vercel.app";
+const siteUrl = "https://www.bangkokpattayabus.com";
 const siteName = "Bangkok Pattaya Bus Guide";
 
 function routeUrl(locale: LocaleCode, slug: string) {

@@ -25,7 +25,7 @@ type RoutePageProps = {
   }>;
 };
 
-const siteUrl = "https://bangkok-pattaya-bus.vercel.app";
+const siteUrl = "https://www.bangkokpattayabus.com";
 
 function routeUrl(locale: string, slug: string) {
   return new URL(`/${locale}/${slug}`, siteUrl).toString();
