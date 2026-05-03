@@ -25,6 +25,12 @@ type RoutePageProps = {
   }>;
 };
 
+const siteUrl = "https://bangkok-pattaya-bus.vercel.app";
+
+function routeUrl(locale: string, slug: string) {
+  return new URL(`/${locale}/${slug}`, siteUrl).toString();
+}
+
 export function generateStaticParams() {
   return supportedLocaleCodes.flatMap((locale) =>
     routePages.map((page) => ({
@@ -54,10 +60,20 @@ export async function generateMetadata({
   }
   const t = getTranslations(locale);
   const localizedRoutePage = localizeRoutePage(routePage, t);
+  const languages = Object.fromEntries(
+    supportedLocaleCodes.map((localeCode) => [
+      localeCode,
+      routeUrl(localeCode, routePage.slug),
+    ]),
+  );
 
   return {
     title: localizedRoutePage.metadata.title,
     description: localizedRoutePage.metadata.description,
+    alternates: {
+      canonical: routeUrl(locale, routePage.slug),
+      languages,
+    },
   };
 }
 

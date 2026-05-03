@@ -73,22 +73,22 @@
       "label": "Bangkok do Pattaya",
       "title": "Autobus Bangkok do Pattaya",
       "intro": "Prosty przewodnik dla turystów jadących autobusem z centrum Bangkok do Pattaya, z godzinami odjazdów i informacjami o stacjach.",
-      "metadataTitle": "Autobus Bangkok Pattaya | Rozkład, dworce i porady",
-      "metadataDescription": "Sprawdź godziny autobusów z Bangkoku do Pattayi, dworce, czas przejazdu, cenę biletu i praktyczne porady. Rozkłady mogą się zmieniać, więc potwierdź je przed podróżą."
+      "metadataTitle": "Autobus Bangkok Pattaya – rozkład, cena i dworce",
+      "metadataDescription": "Sprawdź godziny autobusów z Bangkoku do Pattaya, cenę biletu, czas podróży, informacje o dworcach i praktyczne wskazówki."
     },
     "pattaya-to-bangkok": {
       "label": "Pattaya do Bangkok",
       "title": "Autobus Pattaya do Bangkok",
       "intro": "Zaplanuj powrót z Pattaya do Bangkok. Sprawdź odjazdy, stacje i praktyczne wskazówki.",
-      "metadataTitle": "Autobus Pattaya do Bangkok | Rozkład, stacje i wskazówki",
-      "metadataDescription": "Sprawdź autobusy z Pattaya do Bangkok: godziny odjazdów, stacje, czas podróży, cenę biletu i praktyczne wskazówki. Rozkłady mogą się zmienić, więc potwierdź przed podróżą."
+      "metadataTitle": "Autobus Pattaya Bangkok – rozkład do Ekkamai i Mo Chit",
+      "metadataDescription": "Sprawdź odjazdy autobusów z Pattaya do Bangkoku, połączenia do Ekkamai i Mo Chit, ceny biletów, czas podróży i wskazówki."
     },
     "suvarnabhumi-airport-to-pattaya": {
       "label": "Suvarnabhumi Airport do Pattaya",
       "title": "Autobus Suvarnabhumi Airport do Pattaya",
       "intro": "Informacje dla podróżnych jadących autobusem bezpośrednio z Suvarnabhumi Airport do Pattaya po przylocie.",
-      "metadataTitle": "Autobus Suvarnabhumi Airport do Pattaya | Rozkład, stacje i wskazówki",
-      "metadataDescription": "Sprawdź autobusy z Suvarnabhumi Airport do Pattaya: godziny odjazdów, stacje, czas podróży, cenę biletu i praktyczne wskazówki. Rozkłady mogą się zmienić, więc potwierdź przed podróżą."
+      "metadataTitle": "Autobus Suvarnabhumi Airport Pattaya – rozkład i cena",
+      "metadataDescription": "Sprawdź autobus z lotniska Suvarnabhumi do Pattaya, godziny odjazdów, cenę biletu, stanowisko autobusu i praktyczne wskazówki po przylocie."
     }
   },
   "schedules": {
