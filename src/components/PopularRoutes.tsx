@@ -25,14 +25,14 @@ const routeCards: Record<
     travelTime: "Around 2-3 hours",
   },
   "pattaya-to-bangkok": {
-    cta: "View route",
+    cta: "Check times",
     note: "To Ekkamai and Mo Chit",
     price: "From 148 / 158 THB",
     title: "Pattaya to Bangkok Bus",
     travelTime: "Around 2-3 hours",
   },
   "suvarnabhumi-airport-to-pattaya": {
-    cta: "View route",
+    cta: "Check times",
     note: "From airport counter",
     price: "162 THB",
     title: "Suvarnabhumi Airport to Pattaya Bus",
@@ -75,7 +75,7 @@ export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {
                   </p>
                   <p className="rounded-xl bg-[#eaf5fb] p-2.5 font-bold leading-5 text-[#13233a] sm:p-3">
                     <span className="block text-xs uppercase tracking-wide text-[#5f6874]">
-                      Price
+                      Ticket price
                     </span>
                     {card.price}
                   </p>

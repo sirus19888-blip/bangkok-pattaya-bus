@@ -12,9 +12,9 @@
     "to": "To:"
   },
   "nextBus": {
-    "title": "Next bus:",
-    "travelTime": "Travel time:",
-    "ticketPrice": "Ticket price:",
+    "title": "Next bus",
+    "travelTime": "Travel time",
+    "ticketPrice": "Ticket price",
     "nextServiceTomorrow": "Next service tomorrow",
     "timeZoneNote": "Times shown in Thailand local time.",
     "availableTo": "Available to:"
@@ -26,26 +26,26 @@
     "departure": "Departure",
     "timeZoneNote": "Times shown in Thailand local time.",
     "dataTitle": "Schedule data",
-    "source": "Source:",
-    "sourceType": "Source type:",
-    "lastVerified": "Last verified:",
-    "verification": "Verification status:",
-    "fareNote": "Fare note:",
-    "dataQuality": "Data quality:",
-    "boardingNote": "Boarding note:",
-    "note": "Important note:",
+    "source": "Source",
+    "sourceType": "Source type",
+    "lastVerified": "Last checked",
+    "verification": "Status",
+    "fareNote": "Ticket price note",
+    "dataQuality": "Data quality",
+    "boardingNote": "Boarding note",
+    "note": "Important note",
     "subRoute": "Sub-route",
     "showDetails": "Show details",
     "hideDetails": "Hide details",
-    "needsOfficialConfirmationNotice": "These times need official confirmation before relying on them.",
-    "partiallyVerifiedNotice": "Based on published operator information. Confirm before travel.",
+    "needsOfficialConfirmationNotice": "Please confirm these times before travel.",
+    "partiallyVerifiedNotice": "Based on operator information. Confirm before travel.",
     "needsOfficialConfirmationShort": "Needs confirmation",
     "partiallyVerifiedShort": "Based on operator information"
   },
   "station": {
     "title": "Station information",
-    "bestFor": "Best for:",
-    "tip": "Tip:"
+    "bestFor": "Best for",
+    "tip": "Tip"
   },
   "travelTips": {
     "title": "Travel tips",
@@ -60,7 +60,7 @@
     "question": "Was this guide helpful?"
   },
   "lastUpdated": {
-    "label": "Last updated:"
+    "label": "Last checked:"
   },
   "disclaimer": {
     "text": "Bus times may change. Please confirm at the station or with the operator before travel."
@@ -77,21 +77,21 @@
     "bangkok-to-pattaya": {
       "label": "Bangkok to Pattaya",
       "title": "Bangkok to Pattaya Bus",
-      "intro": "A simple guide for tourists taking the bus from central Bangkok to Pattaya, with departure times, station tips, and practical travel notes.",
+      "intro": "Check bus times from Bangkok Ekkamai to Pattaya, including price, travel time, station information, and practical travel tips.",
       "metadataTitle": "Bangkok to Pattaya Bus Times – Schedule, Price & Stations",
       "metadataDescription": "Check Bangkok to Pattaya bus times, ticket price, travel time, station information, and practical tips. Times are shown in Thailand local time."
     },
     "pattaya-to-bangkok": {
       "label": "Pattaya to Bangkok",
       "title": "Pattaya to Bangkok Bus",
-      "intro": "Plan the return trip from Pattaya to Bangkok with easy-to-read departure times, station details, and travel advice.",
+      "intro": "Check bus times from Pattaya to Bangkok, including departures to Ekkamai and Mo Chit, ticket prices, and station tips.",
       "metadataTitle": "Pattaya to Bangkok Bus Times – Ekkamai & Mo Chit Schedule",
       "metadataDescription": "Check Pattaya to Bangkok bus departures to Ekkamai and Mo Chit, ticket prices, travel time, station information, and practical tips."
     },
     "suvarnabhumi-airport-to-pattaya": {
       "label": "Suvarnabhumi Airport to Pattaya",
       "title": "Suvarnabhumi Airport to Pattaya Bus",
-      "intro": "Useful information for travelers going directly from Suvarnabhumi Airport to Pattaya by bus after arriving in Thailand.",
+      "intro": "Check bus times from Suvarnabhumi Airport to Pattaya, including price, travel time, airport counter information, and arrival tips.",
       "metadataTitle": "Suvarnabhumi Airport to Pattaya Bus – Times, Price & Counter",
       "metadataDescription": "Check Suvarnabhumi Airport to Pattaya bus times, ticket price, travel time, bus counter information, and arrival tips."
     }
@@ -115,155 +115,155 @@
   },
   "stationsText": {
     "ekkamai": {
-      "bestFor": "central Bangkok",
-      "tip": "arrive 20-30 minutes before departure"
+      "bestFor": "Central Bangkok",
+      "tip": "Arrive 20-30 minutes before departure."
     },
     "mo-chit": {
-      "bestFor": "northern Bangkok",
-      "tip": "allow extra time to reach the terminal"
+      "bestFor": "Northern Bangkok",
+      "tip": "Allow extra time to reach the terminal."
     },
     "north-pattaya": {
       "bestFor": "Pattaya city",
-      "tip": "take a songthaew or taxi to your hotel"
+      "tip": "Take a songthaew or taxi to your hotel."
     },
     "suvarnabhumi-airport": {
-      "bestFor": "airport arrivals going straight to Pattaya",
-      "tip": "check the bus counter after arrivals and allow time for immigration"
+      "bestFor": "Airport arrivals going straight to Pattaya",
+      "tip": "Check the bus counter after arrivals and allow time for immigration."
     }
   },
   "travelTipItems": [
     {
-      "title": "Arrive 20 minutes early",
-      "body": "Buy your ticket at the counter and keep a little buffer for queues, snacks, and finding the platform."
+      "title": "Arrive 20-30 minutes early",
+      "body": "Leave time to buy your ticket, find the platform, and board without rushing."
     },
     {
       "title": "Keep small cash ready",
-      "body": "Bus fares and local rides are easiest with Thai baht notes. Keep coins or small bills for songthaews in Pattaya."
+      "body": "Small Thai baht notes are useful for tickets, snacks, and local rides."
     },
     {
-      "title": "Plan around Bangkok traffic",
-      "body": "Morning and evening departures can take longer. Add extra time if you connect to a flight or train."
+      "title": "Allow extra time for traffic",
+      "body": "Trips can take longer during busy travel times, especially near Bangkok."
     }
   ],
   "routeTravelTipItems": {
     "bangkok-to-pattaya": [
       {
         "title": "Use Ekkamai for central Bangkok",
-        "body": "Ekkamai is usually the most convenient bus terminal if you are staying near Sukhumvit, Asok, Thong Lo, or the BTS line."
+        "body": "Ekkamai is usually convenient if you are staying near Sukhumvit or the BTS line."
       },
       {
-        "title": "Arrive before the departure time",
-        "body": "Plan to be at the terminal 20-30 minutes early so you have time to buy a ticket and find the correct platform."
+        "title": "Arrive 20-30 minutes early",
+        "body": "Leave enough time to buy your ticket and find the correct platform."
       },
       {
         "title": "Plan your Pattaya transfer",
-        "body": "Buses usually arrive at North Pattaya Bus Station. From there, take a songthaew or taxi to your hotel."
+        "body": "Buses usually arrive at North Pattaya Bus Station. Take a songthaew or taxi from there."
       }
     ],
     "pattaya-to-bangkok": [
       {
-        "title": "Choose your Bangkok terminal",
-        "body": "Check whether your bus goes to Mochit or Ekkamai. Ekkamai is useful for Sukhumvit, while Mochit can be better for northern Bangkok."
+        "title": "Check your destination",
+        "body": "Check whether your bus goes to Ekkamai or Mo Chit before you buy a ticket."
       },
       {
-        "title": "Leave extra time for Bangkok traffic",
-        "body": "The last part of the trip can slow down when entering Bangkok, especially in the morning or evening."
+        "title": "Allow extra time for traffic",
+        "body": "The trip can slow down when entering Bangkok, especially in the morning or evening."
       },
       {
         "title": "Confirm the counter and platform",
-        "body": "Pattaya departures can vary by destination, so confirm your terminal and departure time at the counter before boarding."
+        "body": "Confirm your Bangkok terminal and departure time at the counter before boarding."
       }
     ],
     "suvarnabhumi-airport-to-pattaya": [
       {
         "title": "Check the bus counter after arrivals",
-        "body": "After you arrive, check the bus counter before making other transport plans."
+        "body": "After you land, check the bus counter before making other transport plans."
       },
       {
         "title": "Allow time for immigration and baggage",
-        "body": "Immigration, baggage claim, and walking through the airport can take time. Do not plan a tight bus connection."
+        "body": "Immigration, baggage claim, and walking through the airport can take time."
       },
       {
         "title": "Go to Level 1 near Gate 8",
-        "body": "Current route data notes that tickets are bought at the counter service on Level 1 near Gate 8."
+        "body": "Current route information points to the counter on Level 1 near Gate 8."
       },
       {
         "title": "Check the late bus destination",
-        "body": "Current route data notes that the 22:00 bus may go to North Pattaya Bus Station rather than Jomtien bus terminal."
+        "body": "The 22:00 bus may go to North Pattaya Bus Station instead of Jomtien."
       }
     ]
   },
   "faqItems": [
     {
       "question": "How long is the bus from Bangkok to Pattaya?",
-      "answer": "The bus usually takes around 2-3 hours, depending on traffic and the departure station."
+      "answer": "The bus usually takes around 2-3 hours, depending on traffic."
     },
     {
       "question": "Where do I buy tickets?",
-      "answer": "You can usually buy tickets at the bus station counter. Some routes may also be available online. Confirm before travel."
+      "answer": "You can usually buy tickets at the bus station counter. Some routes may also be available online."
     },
     {
       "question": "Can I take a bus from Suvarnabhumi Airport?",
-      "answer": "Yes, there are bus services between Suvarnabhumi Airport and Pattaya. Check the current schedule before you go."
+      "answer": "Yes. There are bus services between Suvarnabhumi Airport and Pattaya. Check the current schedule before you go."
     },
     {
       "question": "Do buses run every day?",
-      "answer": "Most routes run daily, but departure times may change on holidays or busy travel days."
+      "answer": "Most routes run daily, but times may change on holidays or busy travel days."
     }
   ],
   "routeFaqItems": {
     "bangkok-to-pattaya": [
       {
-        "question": "How long is the bus from Bangkok Ekkamai to Pattaya?",
-        "answer": "The bus usually takes around 2-3 hours, depending on traffic when leaving Bangkok and arriving in Pattaya."
+        "question": "How long is the bus from Bangkok to Pattaya?",
+        "answer": "The bus usually takes around 2-3 hours, depending on traffic."
       },
       {
-        "question": "Where do I buy tickets at Ekkamai?",
-        "answer": "You can usually buy tickets at the bus terminal counter. Confirm the current fare and departure time before travel."
+        "question": "Where do I buy tickets?",
+        "answer": "You can usually buy tickets at the Ekkamai bus terminal counter."
       },
       {
         "question": "Where does the bus arrive in Pattaya?",
-        "answer": "This route usually arrives at North Pattaya Bus Station. From there, take a songthaew or taxi to your hotel."
+        "answer": "Buses usually arrive at North Pattaya Bus Station. From there, take a songthaew or taxi to your hotel."
       },
       {
-        "question": "Are Bangkok to Pattaya bus times fixed?",
-        "answer": "Published times can change because of operators, holidays, or traffic conditions. Confirm before travel."
+        "question": "Do Bangkok to Pattaya bus times change?",
+        "answer": "Yes. Bus times may change, so confirm before travel."
       }
     ],
     "pattaya-to-bangkok": [
       {
         "question": "How long is the bus from Pattaya to Bangkok?",
-        "answer": "The trip usually takes around 2-3 hours, but traffic entering Bangkok can make the journey longer."
+        "answer": "The trip usually takes around 2-3 hours, depending on traffic."
       },
       {
-        "question": "Can I travel from Pattaya to Mochit or Ekkamai?",
-        "answer": "Current route data includes Pattaya to Mochit and Pattaya to Ekkamai departures. Confirm the destination when buying your ticket."
+        "question": "Can I travel from Pattaya to Ekkamai or Mo Chit?",
+        "answer": "Yes. Current route information includes buses to Ekkamai and Mo Chit. Confirm the destination before buying your ticket."
       },
       {
-        "question": "Where should I buy Pattaya to Bangkok tickets?",
-        "answer": "Buy tickets at the Pattaya bus station counter or through a trusted booking channel if available. Confirm the terminal before paying."
+        "question": "Where do I buy tickets in Pattaya?",
+        "answer": "You can usually buy tickets at the Pattaya bus station counter."
       },
       {
         "question": "Which Bangkok terminal should I choose?",
-        "answer": "Ekkamai is convenient for Sukhumvit and BTS access. Mochit can be better for northern Bangkok and some onward routes."
+        "answer": "Ekkamai is convenient for Sukhumvit and BTS access. Mo Chit can be better for northern Bangkok."
       }
     ],
     "suvarnabhumi-airport-to-pattaya": [
       {
         "question": "How long is the bus from Suvarnabhumi Airport to Pattaya?",
-        "answer": "The bus usually takes around 2-2.5 hours, depending on traffic and where the bus stops in Pattaya."
+        "answer": "The bus usually takes around 2-2.5 hours, depending on traffic."
       },
       {
         "question": "Where is the bus counter at Suvarnabhumi Airport?",
-        "answer": "Current route data notes that tickets are bought at the counter service on Level 1 near Gate 8. Check airport signs after arrivals."
+        "answer": "Current route information points to the counter on Level 1 near Gate 8. Check airport signs after arrivals."
       },
       {
         "question": "Should I book a tight connection after landing?",
-        "answer": "No. Allow time for immigration, baggage claim, walking through the airport, and possible queues at the bus counter."
+        "answer": "No. Allow time for immigration, baggage claim, walking through the airport, and the bus counter."
       },
       {
         "question": "Does every airport bus go to Jomtien?",
-        "answer": "Current route data notes that the 22:00 bus may go to North Pattaya Bus Station rather than Jomtien bus terminal. Confirm before travel."
+        "answer": "Not always. The 22:00 bus may go to North Pattaya Bus Station instead of Jomtien. Confirm before travel."
       }
     ]
   }
