@@ -78,17 +78,17 @@
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
       "travelTime": "Około 2-3 godziny",
-      "price": "Około 130-150 THB",
+      "price": "158 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora."
     },
     "pattaya-to-bangkok-ekkamai": {
       "travelTime": "Około 2-3 godziny",
-      "price": "Około 130-150 THB",
+      "price": "148-158 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora."
     },
     "suvarnabhumi-airport-to-pattaya": {
       "travelTime": "Około 2-2,5 godziny",
-      "price": "Około 140-180 THB",
+      "price": "162 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora."
     }
   },

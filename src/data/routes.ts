@@ -90,7 +90,7 @@ export const routePages: RoutePage[] = [
       "Plan the return trip from Pattaya to Bangkok with easy-to-read departure times, station details, and travel advice.",
     from: "Pattaya",
     to: "Bangkok",
-    stationIds: ["north-pattaya", "ekkamai"],
+    stationIds: ["north-pattaya", "mo-chit", "ekkamai"],
     metadata: {
       title: "Pattaya to Bangkok Bus Times | Bangkok Pattaya Bus Guide",
       description:

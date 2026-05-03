@@ -58,9 +58,9 @@
     }
   },
   "schedules": {
-    "bangkok-ekkamai-to-pattaya": { "travelTime": "约 2-3 小时", "price": "约 130-150 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
-    "pattaya-to-bangkok-ekkamai": { "travelTime": "约 2-3 小时", "price": "约 130-150 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
-    "suvarnabhumi-airport-to-pattaya": { "travelTime": "约 2-2.5 小时", "price": "约 140-180 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" }
+    "bangkok-ekkamai-to-pattaya": { "travelTime": "约 2-3 小时", "price": "每座 158 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
+    "pattaya-to-bangkok-ekkamai": { "travelTime": "约 2-3 小时", "price": "每座 148-158 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
+    "suvarnabhumi-airport-to-pattaya": { "travelTime": "约 2-2.5 小时", "price": "每座 162 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" }
   },
   "stationsText": {
     "ekkamai": { "bestFor": "Bangkok 市中心", "tip": "请提前 20-30 分钟到达" },

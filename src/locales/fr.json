@@ -62,17 +62,17 @@
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
       "travelTime": "Environ 2-3 heures",
-      "price": "Environ 130-150 THB",
+      "price": "158 THB par siège",
       "disclaimer": "Les horaires peuvent changer. Veuillez confirmer à la station ou auprès de l'opérateur avant le voyage."
     },
     "pattaya-to-bangkok-ekkamai": {
       "travelTime": "Environ 2-3 heures",
-      "price": "Environ 130-150 THB",
+      "price": "148-158 THB par siège",
       "disclaimer": "Les horaires peuvent changer. Veuillez confirmer à la station ou auprès de l'opérateur avant le voyage."
     },
     "suvarnabhumi-airport-to-pattaya": {
       "travelTime": "Environ 2-2,5 heures",
-      "price": "Environ 140-180 THB",
+      "price": "162 THB par siège",
       "disclaimer": "Les horaires peuvent changer. Veuillez confirmer à la station ou auprès de l'opérateur avant le voyage."
     }
   },

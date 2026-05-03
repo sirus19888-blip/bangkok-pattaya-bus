@@ -1,5 +1,6 @@
+import type { ReactNode } from "react";
 import type { Route } from "@/data/routes";
-import type { Schedule } from "@/data/schedules";
+import type { Schedule, ScheduleSource } from "@/data/schedules";
 import type { Translations } from "@/lib/i18n";
 
 type ScheduleListProps = {
@@ -17,12 +18,7 @@ export function ScheduleList({
   labels,
   showSourceInfo = false,
 }: ScheduleListProps) {
-  const verificationNotice =
-    schedule.verificationStatus === "needs official confirmation"
-      ? labels.needsOfficialConfirmationNotice
-      : schedule.verificationStatus === "partially verified"
-        ? labels.partiallyVerifiedNotice
-        : null;
+  const hasSubRoutes = Boolean(schedule.subRoutes?.length);
 
   return (
     <section id="schedule" className="rounded-lg border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
@@ -37,91 +33,162 @@ export function ScheduleList({
           {labels.updated} {schedule.lastUpdated}
         </p>
       </div>
-      <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-2 xl:grid-cols-3">
-        {schedule.departures.map((departure) => {
-          const isNext = departure === nextDeparture;
-
-          return (
-            <article
-              key={departure}
-              className={`rounded-lg border p-3.5 shadow-sm sm:p-4 ${
-                isNext
-                  ? "border-[#13233a] bg-[#13233a] text-white"
-                  : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
-              }`}
+      {hasSubRoutes ? (
+        <div className="mt-4 grid gap-4 sm:mt-5">
+          {schedule.subRoutes?.map((subRoute) => (
+            <div
+              key={subRoute.id}
+              className="rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-3.5 sm:p-4"
             >
-              <p
-                className={`text-sm font-bold ${
-                  isNext ? "text-[#f3d77b]" : "text-[#5f6874]"
-                }`}
-              >
-                {isNext ? labels.nextBus : labels.departure}
+              <p className="text-xs font-bold uppercase tracking-wide text-[#5f6874]">
+                {labels.subRoute}
               </p>
-              <p className="mt-1.5 text-2xl font-black leading-none sm:mt-2 sm:text-3xl">{departure}</p>
-            </article>
-          );
-        })}
-      </div>
+              <h3 className="mt-1 text-lg font-black text-[#13233a]">
+                {subRoute.label}
+              </h3>
+              <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-2 xl:grid-cols-3">
+                {subRoute.departures.map((departure) => (
+                  <DepartureTile
+                    key={`${subRoute.id}-${departure}`}
+                    departure={departure}
+                    isNext={departure === nextDeparture}
+                    labels={labels}
+                  />
+                ))}
+              </div>
+              {showSourceInfo ? (
+                <ScheduleSourceInfo
+                  boardingNote={subRoute.boardingNote}
+                  labels={labels}
+                  source={subRoute}
+                />
+              ) : null}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-2 xl:grid-cols-3">
+          {schedule.departures.map((departure) => (
+            <DepartureTile
+              key={departure}
+              departure={departure}
+              isNext={departure === nextDeparture}
+              labels={labels}
+            />
+          ))}
+        </div>
+      )}
       <p className="mt-4 rounded-lg bg-[#fffaf2] p-3.5 text-sm font-semibold leading-6 text-[#4f5d6c] sm:mt-5 sm:p-4">
         {schedule.disclaimer}
       </p>
-      {showSourceInfo ? (
-        <div className="mt-3 rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-sm leading-6 text-[#4f5d6c] sm:p-4">
-          <p className="font-black text-[#13233a]">{labels.dataTitle}</p>
-          {verificationNotice ? (
-            <p className="mt-2 rounded-lg bg-[#f9e8a8] px-3 py-2 font-bold text-[#13233a]">
-              {verificationNotice}
-            </p>
-          ) : null}
-          <dl className="mt-3 grid gap-1.5">
-            <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-4">
-              <dt className="font-bold text-[#13233a]">{labels.source}</dt>
-              <dd className="font-semibold">
-                {schedule.sourceUrl && schedule.sourceUrl !== "#" ? (
-                  <a
-                    href={schedule.sourceUrl}
-                    className="underline underline-offset-4"
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    {schedule.sourceName}
-                  </a>
-                ) : (
-                  schedule.sourceName
-                )}
-              </dd>
-            </div>
-            <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-4">
-              <dt className="font-bold text-[#13233a]">{labels.sourceType}</dt>
-              <dd className="font-semibold">{schedule.sourceType}</dd>
-            </div>
-            <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-4">
-              <dt className="font-bold text-[#13233a]">
-                {labels.lastVerified}
-              </dt>
-              <dd className="font-semibold">{schedule.lastVerified}</dd>
-            </div>
-            <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-4">
-              <dt className="font-bold text-[#13233a]">
-                {labels.verification}
-              </dt>
-              <dd className="font-semibold">{schedule.verificationStatus}</dd>
-            </div>
-            <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-4">
-              <dt className="font-bold text-[#13233a]">{labels.fareNote}</dt>
-              <dd className="font-semibold">{schedule.fareNote}</dd>
-            </div>
-            <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-4">
-              <dt className="font-bold text-[#13233a]">{labels.dataQuality}</dt>
-              <dd className="font-semibold">{schedule.dataQuality}</dd>
-            </div>
-            <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-4">
-              <dt className="font-bold text-[#13233a]">{labels.note}</dt>
-              <dd className="font-semibold">{schedule.operatorNote}</dd>
-            </div>
-          </dl>
-        </div>
+      {showSourceInfo && !hasSubRoutes ? (
+        <ScheduleSourceInfo
+          boardingNote={schedule.boardingNote}
+          labels={labels}
+          source={schedule}
+        />
       ) : null}
     </section>
+  );
+}
+
+function DepartureTile({
+  departure,
+  isNext,
+  labels,
+}: {
+  departure: string;
+  isNext: boolean;
+  labels: Translations["schedule"];
+}) {
+  return (
+    <article
+      className={`rounded-lg border p-3.5 shadow-sm sm:p-4 ${
+        isNext
+          ? "border-[#13233a] bg-[#13233a] text-white"
+          : "border-[#eadcc7] bg-white text-[#13233a]"
+      }`}
+    >
+      <p
+        className={`text-sm font-bold ${
+          isNext ? "text-[#f3d77b]" : "text-[#5f6874]"
+        }`}
+      >
+        {isNext ? labels.nextBus : labels.departure}
+      </p>
+      <p className="mt-1.5 text-2xl font-black leading-none sm:mt-2 sm:text-3xl">
+        {departure}
+      </p>
+    </article>
+  );
+}
+
+function ScheduleSourceInfo({
+  boardingNote,
+  labels,
+  source,
+}: {
+  boardingNote?: string;
+  labels: Translations["schedule"];
+  source: ScheduleSource;
+}) {
+  const verificationNotice =
+    source.verificationStatus === "needs official confirmation"
+      ? labels.needsOfficialConfirmationNotice
+      : source.verificationStatus === "partially verified"
+        ? labels.partiallyVerifiedNotice
+        : null;
+
+  return (
+    <div className="mt-3 rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-sm leading-6 text-[#4f5d6c] sm:p-4">
+      <p className="font-black text-[#13233a]">{labels.dataTitle}</p>
+      {verificationNotice ? (
+        <p className="mt-2 rounded-lg bg-[#f9e8a8] px-3 py-2 font-bold text-[#13233a]">
+          {verificationNotice}
+        </p>
+      ) : null}
+      <dl className="mt-3 grid gap-1.5">
+        <InfoRow label={labels.source}>
+          {source.sourceUrl && source.sourceUrl !== "#" ? (
+            <a
+              href={source.sourceUrl}
+              className="underline underline-offset-4"
+              rel="noreferrer"
+              target="_blank"
+            >
+              {source.sourceName}
+            </a>
+          ) : (
+            source.sourceName
+          )}
+        </InfoRow>
+        <InfoRow label={labels.sourceType}>{source.sourceType}</InfoRow>
+        <InfoRow label={labels.lastVerified}>{source.lastVerified}</InfoRow>
+        <InfoRow label={labels.verification}>
+          {source.verificationStatus}
+        </InfoRow>
+        <InfoRow label={labels.fareNote}>{source.fareNote}</InfoRow>
+        {boardingNote ? (
+          <InfoRow label={labels.boardingNote}>{boardingNote}</InfoRow>
+        ) : null}
+        <InfoRow label={labels.dataQuality}>{source.dataQuality}</InfoRow>
+        <InfoRow label={labels.note}>{source.operatorNote}</InfoRow>
+      </dl>
+    </div>
+  );
+}
+
+function InfoRow({
+  children,
+  label,
+}: {
+  children: ReactNode;
+  label: string;
+}) {
+  return (
+    <div className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-4">
+      <dt className="font-bold text-[#13233a]">{label}</dt>
+      <dd className="font-semibold">{children}</dd>
+    </div>
   );
 }
