@@ -50,7 +50,8 @@
     "openInGoogleMaps": "Ouvrir dans Google Maps",
     "buyMeCoffee": "M'offrir un café",
     "routeSummary": "Résumé de l'itinéraire",
-    "distance": "Distance"
+    "distance": "Distance",
+    "relatedRoutes": "Itinéraires associés"
   },
   "routePages": {
     "bangkok-to-pattaya": {
