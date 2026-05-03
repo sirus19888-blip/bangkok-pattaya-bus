@@ -77,6 +77,24 @@ export function RoutePageLayout({
           }}
         />
 
+        <div className="md:hidden">
+          <RelatedRoutes
+            currentRoute={routePage.slug}
+            heading={t.common.relatedRoutes}
+            locale={locale}
+            routePages={routePages.map((page) => {
+              const routeText = t.routePages[page.slug];
+
+              return {
+                ...page,
+                title: routeText.title,
+                from: page.from,
+                to: page.to,
+              };
+            })}
+          />
+        </div>
+
         <section className="hidden gap-4 md:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
           <div className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-5 shadow-sm sm:p-7">
             <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
@@ -179,21 +197,23 @@ export function RoutePageLayout({
           <FAQ faqs={localizedFaqs} labels={t.faq} />
         </MobileDetailsSection>
 
-        <RelatedRoutes
-          currentRoute={routePage.slug}
-          heading={t.common.relatedRoutes}
-          locale={locale}
-          routePages={routePages.map((page) => {
-            const routeText = t.routePages[page.slug];
+        <div className="hidden md:block">
+          <RelatedRoutes
+            currentRoute={routePage.slug}
+            heading={t.common.relatedRoutes}
+            locale={locale}
+            routePages={routePages.map((page) => {
+              const routeText = t.routePages[page.slug];
 
-            return {
-              ...page,
-              title: routeText.title,
-              from: page.from,
-              to: page.to,
-            };
-          })}
-        />
+              return {
+                ...page,
+                title: routeText.title,
+                from: page.from,
+                to: page.to,
+              };
+            })}
+          />
+        </div>
 
         <SupportButton
           labels={{

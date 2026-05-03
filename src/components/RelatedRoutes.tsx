@@ -17,21 +17,21 @@ export function RelatedRoutes({
   const relatedRoutes = routePages.filter((page) => page.slug !== currentRoute);
 
   return (
-    <section className="rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
+    <section className="rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5">
       <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
         {heading}
       </p>
-      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+      <div className="mt-3 grid gap-2.5 sm:mt-4 sm:grid-cols-2 sm:gap-3">
         {relatedRoutes.map((routePage) => (
           <Link
             key={routePage.slug}
             href={`/${locale}/${routePage.slug}`}
-            className="rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-4 shadow-sm transition hover:bg-white"
+            className="rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3.5 shadow-sm transition hover:bg-white sm:p-4"
           >
-            <span className="block text-base font-black text-[#13233a]">
+            <span className="block text-sm font-black leading-tight text-[#13233a] sm:text-base">
               {routePage.title}
             </span>
-            <span className="mt-1 block text-sm font-semibold text-[#4f5d6c]">
+            <span className="mt-1 hidden text-sm font-semibold text-[#4f5d6c] md:block">
               {routePage.from} to {routePage.to}
             </span>
           </Link>

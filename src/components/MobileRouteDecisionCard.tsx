@@ -71,7 +71,7 @@ export function MobileRouteDecisionCard({
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
 
-      <div id="mobile-departures" className="mt-2.5 grid grid-cols-3 gap-1.5 min-[390px]:grid-cols-4">
+      <div id="mobile-departures" className="mt-2.5 grid grid-cols-3 gap-1.5">
         {departures.map((departure) => (
           <span
             key={departure}
@@ -83,7 +83,7 @@ export function MobileRouteDecisionCard({
           >
             {departure}
             {departure === calculatedNextDeparture.time ? (
-              <span className="text-[0.58rem] uppercase tracking-wide text-[#f3d77b]">
+              <span className="max-w-full truncate text-[0.56rem] uppercase leading-none tracking-wide text-[#f3d77b]">
                 {labels.nextBus}
               </span>
             ) : null}
@@ -102,10 +102,12 @@ export function MobileRouteDecisionCard({
 }
 
 function DecisionFact({ label, value }: { label: string; value: string }) {
+  const cleanLabel = label.replace(":", "");
+
   return (
     <div className="rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-2.5">
       <p className="text-[0.68rem] font-black uppercase tracking-wide text-[#5f6874]">
-        {label}
+        {cleanLabel}
       </p>
       <p className="mt-1 text-sm font-black leading-snug text-[#13233a]">
         {value}

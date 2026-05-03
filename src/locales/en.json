@@ -40,7 +40,7 @@
     "needsOfficialConfirmationNotice": "These times need official confirmation before relying on them.",
     "partiallyVerifiedNotice": "Based on published operator information. Confirm before travel.",
     "needsOfficialConfirmationShort": "Needs confirmation",
-    "partiallyVerifiedShort": "Based on operator info"
+    "partiallyVerifiedShort": "Based on operator information"
   },
   "station": {
     "title": "Station information",

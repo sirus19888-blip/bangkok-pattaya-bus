@@ -19,7 +19,7 @@
   },
   "schedule": {
     "needsOfficialConfirmationShort": "Wymaga potwierdzenia",
-    "partiallyVerifiedShort": "Na podstawie danych operatora",
+    "partiallyVerifiedShort": "Na podstawie informacji operatora",
     "title": "Dzisiejsze odjazdy",
     "updated": "Aktualizacja",
     "nextBus": "Najbliższy autobus",
