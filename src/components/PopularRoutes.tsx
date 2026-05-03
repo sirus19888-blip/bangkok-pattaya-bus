@@ -7,61 +7,86 @@ type PopularRoutesProps = {
   schedules: Schedule[];
 };
 
-const routeDescriptions: Record<RoutePage["slug"], string> = {
-  "bangkok-to-pattaya":
-    "Ekkamai departures to Pattaya with station notes and practical boarding tips.",
-  "pattaya-to-bangkok":
-    "Return buses from Pattaya to Bangkok, including Ekkamai and Mo Chit routes.",
-  "suvarnabhumi-airport-to-pattaya":
-    "Airport bus information with counter notes, travel time, and arrival tips.",
+const routeCards: Record<
+  RoutePage["slug"],
+  {
+    cta: string;
+    note: string;
+    price: string;
+    title: string;
+    travelTime: string;
+  }
+> = {
+  "bangkok-to-pattaya": {
+    cta: "Check times",
+    note: "Buses from Ekkamai",
+    price: "From 158 THB",
+    title: "Bangkok to Pattaya Bus",
+    travelTime: "Around 2-3 hours",
+  },
+  "pattaya-to-bangkok": {
+    cta: "View route",
+    note: "To Ekkamai and Mo Chit",
+    price: "From 148 / 158 THB",
+    title: "Pattaya to Bangkok Bus",
+    travelTime: "Around 2-3 hours",
+  },
+  "suvarnabhumi-airport-to-pattaya": {
+    cta: "View route",
+    note: "From airport counter",
+    price: "162 THB",
+    title: "Suvarnabhumi Airport to Pattaya Bus",
+    travelTime: "Around 2-2.5 hours",
+  },
 };
 
 export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {
   return (
-    <section className="rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
-      <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
-        Popular routes
+    <section>
+      <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
+        Choose a route
       </p>
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {routePages.map((routePage) => {
           const schedule = schedules.find(
             (item) => item.direction === routePage.slug,
           );
+          const card = routeCards[routePage.slug];
 
           return (
-            <article
+            <Link
               key={routePage.slug}
-              className="flex min-h-full flex-col rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-4 shadow-sm"
+              href={`/en/${routePage.slug}`}
+              className="flex min-h-full flex-col rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:rounded-3xl sm:p-5"
             >
-              <h2 className="text-lg font-black leading-tight text-[#13233a]">
-                {routePage.title}
+              <h2 className="text-lg font-black leading-tight text-[#13233a] sm:text-xl">
+                {card.title}
               </h2>
-              <p className="mt-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
-                {routeDescriptions[routePage.slug]}
+              <p className="mt-1.5 text-sm font-semibold leading-5 text-[#4f5d6c] sm:mt-2 sm:leading-6">
+                {card.note}
               </p>
               {schedule ? (
-                <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
-                  <p className="rounded-xl bg-white p-3 font-bold leading-5 text-[#13233a]">
+                <div className="mt-3 grid grid-cols-2 gap-2 text-sm sm:mt-4">
+                  <p className="rounded-xl bg-[#fffaf2] p-2.5 font-bold leading-5 text-[#13233a] sm:p-3">
                     <span className="block text-xs uppercase tracking-wide text-[#5f6874]">
                       Travel time
                     </span>
-                    {schedule.travelTime}
+                    {card.travelTime}
                   </p>
-                  <p className="rounded-xl bg-white p-3 font-bold leading-5 text-[#13233a]">
+                  <p className="rounded-xl bg-[#eaf5fb] p-2.5 font-bold leading-5 text-[#13233a] sm:p-3">
                     <span className="block text-xs uppercase tracking-wide text-[#5f6874]">
                       Price
                     </span>
-                    {schedule.price}
+                    {card.price}
                   </p>
                 </div>
               ) : null}
-              <Link
-                href={`/en/${routePage.slug}`}
-                className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl border border-[#7fb7d8] bg-white px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-[#f4fbff]"
+              <span
+                className="mt-3 flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#1d3455] sm:mt-4 sm:min-h-12"
               >
-                View route
-              </Link>
-            </article>
+                {card.cta}
+              </span>
+            </Link>
           );
         })}
       </div>

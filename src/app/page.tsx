@@ -1,22 +1,11 @@
 import type { Metadata } from "next";
-import { FAQ } from "@/components/FAQ";
+import Link from "next/link";
 import { Header } from "@/components/Header";
-import { NextBusCard } from "@/components/NextBusCard";
 import { PopularRoutes } from "@/components/PopularRoutes";
-import { RouteSearch } from "@/components/RouteSearch";
-import { ScheduleList } from "@/components/ScheduleList";
-import { StationCard } from "@/components/StationCard";
-import { SupportButton } from "@/components/SupportButton";
-import { TravelGuide } from "@/components/TravelGuide";
-import { faqs, guideTips } from "@/data/faqs";
-import { defaultRouteId, routePages, routes } from "@/data/routes";
-import { getScheduleByRoute, schedules } from "@/data/schedules";
-import { stations } from "@/data/stations";
+import { defaultRouteId, routePages } from "@/data/routes";
+import { schedules } from "@/data/schedules";
 import { getTranslations } from "@/lib/i18n";
 
-const selectedRoute = routes.find((route) => route.id === defaultRouteId) ?? routes[0];
-const selectedSchedule = getScheduleByRoute(selectedRoute.id) ?? schedules[0];
-const nextDeparture = selectedSchedule.nextDeparture;
 const t = getTranslations("en");
 
 export const metadata: Metadata = {
@@ -28,7 +17,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
-      <section className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 lg:px-8">
+      <section className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 lg:px-8">
         <Header
           labels={{
             ...t.app,
@@ -38,65 +27,62 @@ export default function Home() {
           routeSlug={defaultRouteId}
         />
 
-        <section id="top" className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
-          <div className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-5 shadow-sm sm:p-7">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
-              Bus times, stations and travel tips
-            </p>
-            <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-[#13233a] sm:text-5xl">
-              Bangkok Pattaya Bus Guide
-            </h1>
-            <p className="mt-3 max-w-2xl text-[0.95rem] font-semibold leading-7 text-[#4f5d6c] sm:mt-4 sm:text-lg">
-              Check bus routes between Bangkok and Pattaya, the Pattaya to
-              Bangkok return route, and the Suvarnabhumi Airport to Pattaya
-              bus. Times are shown in Thailand local time. Schedules may
-              change, so confirm at the station or with the operator before
-              travel.
-            </p>
-
-            <RouteSearch labels={t.routeSelector} />
-          </div>
-
-          <NextBusCard
-            schedule={selectedSchedule}
-            nextDeparture={nextDeparture}
-            labels={{
-              ...t.nextBus,
-              showAllDepartures: t.common.showAllDepartures,
-            }}
-          />
+        <section id="top" className="rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm sm:rounded-3xl sm:p-7">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
+            Thailand bus routes
+          </p>
+          <h1 className="mt-1 text-[1.85rem] font-black leading-[1.08] text-[#13233a] sm:text-5xl">
+            Bangkok Pattaya Bus Guide
+          </h1>
+          <p className="mt-2 text-base font-semibold leading-6 text-[#4f5d6c] sm:mt-3 sm:max-w-xl sm:text-lg sm:leading-7">
+            Simple bus times, prices, and route information.
+          </p>
         </section>
 
         <PopularRoutes routePages={routePages} schedules={schedules} />
 
-        <section className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-          <ScheduleList
-            route={selectedRoute}
-            schedule={selectedSchedule}
-            nextDeparture={nextDeparture}
-            labels={t.schedule}
-          />
-          <StationCard
-            stations={stations}
-            labels={{
-              ...t.station,
-              openInGoogleMaps: t.common.openInGoogleMaps,
-            }}
-          />
-        </section>
-
-        <section className="grid gap-5 lg:grid-cols-[1fr_0.9fr]">
-          <TravelGuide tips={guideTips} labels={t.travelTips} />
-          <FAQ faqs={faqs} labels={t.faq} />
-        </section>
-
-        <SupportButton
-          labels={{
-            ...t.support,
-            buyMeCoffee: t.common.buyMeCoffee,
-          }}
-        />
+        <UtilityGrid />
       </section>
     </main>
+  );
+}
+
+const utilityCards = [
+  {
+    href: "/about",
+    label: "About",
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+  },
+  {
+    href: "/privacy",
+    label: "Privacy",
+  },
+  {
+    href: "https://www.buymeacoffee.com/",
+    label: "Support",
+  },
+];
+
+function UtilityGrid() {
+  return (
+    <section>
+      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
+        More
+      </p>
+      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
+        {utilityCards.map((card) => (
+          <Link
+            key={card.label}
+            href={card.href}
+            className="flex min-h-12 items-center justify-center rounded-2xl border border-[#eadcc7] bg-white px-3 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#fffaf2]"
+          >
+            {card.label}
+          </Link>
+        ))}
+      </div>
+    </section>
   );
 }
