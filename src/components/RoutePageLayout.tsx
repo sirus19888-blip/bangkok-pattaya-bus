@@ -2,12 +2,14 @@ import { FAQ } from "@/components/FAQ";
 import { FAQJsonLd } from "@/components/FAQJsonLd";
 import { Header } from "@/components/Header";
 import { NextBusCard } from "@/components/NextBusCard";
+import { RelatedRoutes } from "@/components/RelatedRoutes";
 import { RouteSearch } from "@/components/RouteSearch";
 import { RouteSummary } from "@/components/RouteSummary";
 import { ScheduleList } from "@/components/ScheduleList";
 import { StationCard } from "@/components/StationCard";
 import { SupportButton } from "@/components/SupportButton";
 import { TravelGuide } from "@/components/TravelGuide";
+import { routePages } from "@/data/routes";
 import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
@@ -121,6 +123,22 @@ export function RoutePageLayout({
           <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
           <FAQ faqs={localizedFaqs} labels={t.faq} />
         </section>
+
+        <RelatedRoutes
+          currentRoute={routePage.slug}
+          heading={t.common.relatedRoutes}
+          locale={locale}
+          routePages={routePages.map((page) => {
+            const routeText = t.routePages[page.slug];
+
+            return {
+              ...page,
+              title: routeText.title,
+              from: page.from,
+              to: page.to,
+            };
+          })}
+        />
 
         <SupportButton
           labels={{
