@@ -38,7 +38,9 @@
     "showDetails": "Show details",
     "hideDetails": "Hide details",
     "needsOfficialConfirmationNotice": "These times need official confirmation before relying on them.",
-    "partiallyVerifiedNotice": "Based on published operator information. Confirm before travel."
+    "partiallyVerifiedNotice": "Based on published operator information. Confirm before travel.",
+    "needsOfficialConfirmationShort": "Needs confirmation",
+    "partiallyVerifiedShort": "Based on operator info"
   },
   "station": {
     "title": "Station information",

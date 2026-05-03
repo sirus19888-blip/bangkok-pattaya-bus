@@ -18,8 +18,8 @@ const routeDescriptions: Record<RoutePage["slug"], string> = {
 
 export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {
   return (
-    <section className="rounded-lg border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
-      <p className="text-sm font-bold uppercase tracking-wide text-[#2f6f93]">
+    <section className="rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
+      <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
         Popular routes
       </p>
       <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -31,23 +31,33 @@ export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {
           return (
             <article
               key={routePage.slug}
-              className="rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-3.5 shadow-sm sm:p-4"
+              className="flex min-h-full flex-col rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-4 shadow-sm"
             >
-              <h2 className="text-lg font-black text-[#13233a]">
+              <h2 className="text-lg font-black leading-tight text-[#13233a]">
                 {routePage.title}
               </h2>
               <p className="mt-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
                 {routeDescriptions[routePage.slug]}
               </p>
               {schedule ? (
-                <div className="mt-3 grid gap-1 text-sm font-bold text-[#13233a]">
-                  <p>Travel time: {schedule.travelTime}</p>
-                  <p>Ticket price: {schedule.price}</p>
+                <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
+                  <p className="rounded-xl bg-white p-3 font-bold leading-5 text-[#13233a]">
+                    <span className="block text-xs uppercase tracking-wide text-[#5f6874]">
+                      Travel time
+                    </span>
+                    {schedule.travelTime}
+                  </p>
+                  <p className="rounded-xl bg-white p-3 font-bold leading-5 text-[#13233a]">
+                    <span className="block text-xs uppercase tracking-wide text-[#5f6874]">
+                      Price
+                    </span>
+                    {schedule.price}
+                  </p>
                 </div>
               ) : null}
               <Link
                 href={`/en/${routePage.slug}`}
-                className="mt-4 flex h-12 items-center justify-center rounded-lg border border-[#7fb7d8] bg-white px-4 text-sm font-black text-[#13233a] transition hover:bg-[#f4fbff]"
+                className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl border border-[#7fb7d8] bg-white px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-[#f4fbff]"
               >
                 View route
               </Link>

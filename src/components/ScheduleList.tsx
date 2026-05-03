@@ -11,6 +11,7 @@ type ScheduleListProps = {
   schedule: Schedule;
   nextDeparture: string;
   labels: Translations["schedule"];
+  sourceOnly?: boolean;
   showSourceInfo?: boolean;
 };
 
@@ -19,41 +20,54 @@ export function ScheduleList({
   schedule,
   nextDeparture,
   labels,
+  sourceOnly = false,
   showSourceInfo = false,
 }: ScheduleListProps) {
   const hasSubRoutes = Boolean(schedule.subRoutes?.length);
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
 
+  if (sourceOnly) {
+    return (
+      <section className="rounded-2xl border border-[#eadcc7] bg-white p-0 shadow-none">
+        <ScheduleSourceInfo
+          boardingNote={schedule.boardingNote}
+          labels={labels}
+          source={schedule}
+        />
+      </section>
+    );
+  }
+
   return (
-    <section id="schedule" className="rounded-lg border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
-      <div className="flex items-end justify-between gap-3">
-        <div>
-          <p className="text-sm font-bold uppercase tracking-wide text-[#2f6f93]">
+    <section id="schedule" className="rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5">
+      <div className="flex flex-col gap-1.5 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
+        <div className="min-w-0">
+          <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
             {labels.title}
           </p>
-          <h2 className="mt-1 text-xl font-black text-[#13233a] sm:text-2xl">{route.label}</h2>
+          <h2 className="mt-1 text-xl font-black leading-tight text-[#13233a] sm:text-2xl">{route.label}</h2>
           <p className="mt-1 text-xs font-bold text-[#5f6874]">
             {labels.timeZoneNote}
           </p>
         </div>
-        <p className="text-right text-xs font-bold text-[#5f6874] sm:text-sm">
+        <p className="text-xs font-bold text-[#5f6874] sm:text-right sm:text-sm">
           {labels.updated} {schedule.lastUpdated}
         </p>
       </div>
       {hasSubRoutes ? (
-        <div className="mt-4 grid gap-4 sm:mt-5">
+        <div className="mt-3 grid gap-3 sm:mt-5 sm:gap-4">
           {schedule.subRoutes?.map((subRoute) => (
             <div
               key={subRoute.id}
-              className="rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-3.5 sm:p-4"
+              className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 sm:p-4"
             >
               <p className="text-xs font-bold uppercase tracking-wide text-[#5f6874]">
                 {labels.subRoute}
               </p>
-              <h3 className="mt-1 text-lg font-black text-[#13233a]">
+              <h3 className="mt-1 text-base font-black leading-tight text-[#13233a] sm:text-lg">
                 {subRoute.label}
               </h3>
-              <div className="mt-3 grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-2 xl:grid-cols-3">
+              <div className="mt-2.5 grid grid-cols-3 gap-2 min-[390px]:grid-cols-4 sm:mt-3 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3">
                 {subRoute.departures.map((departure) => (
                   <DepartureTile
                     key={`${subRoute.id}-${departure}`}
@@ -79,7 +93,7 @@ export function ScheduleList({
           ))}
         </div>
       ) : (
-        <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-5 sm:grid-cols-3 sm:gap-3 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-3 grid grid-cols-3 gap-2 min-[390px]:grid-cols-4 sm:mt-5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3">
           {schedule.departures.map((departure) => (
             <DepartureTile
               key={departure}
@@ -90,7 +104,7 @@ export function ScheduleList({
           ))}
         </div>
       )}
-      <p className="mt-4 rounded-lg bg-[#fffaf2] p-3.5 text-sm font-semibold leading-6 text-[#4f5d6c] sm:mt-5 sm:p-4">
+      <p className="mt-3 rounded-xl bg-[#fffaf2] p-3 text-sm font-semibold leading-6 text-[#4f5d6c] sm:mt-5 sm:p-4">
         {schedule.disclaimer}
       </p>
       {showSourceInfo && !hasSubRoutes ? (
@@ -115,20 +129,20 @@ function DepartureTile({
 }) {
   return (
     <article
-      className={`rounded-lg border p-3.5 shadow-sm sm:p-4 ${
+      className={`flex min-h-11 flex-col items-center justify-center rounded-xl border px-1.5 py-1.5 text-center shadow-sm sm:min-h-24 sm:items-start sm:p-4 sm:text-left ${
         isNext
-          ? "border-[#13233a] bg-[#13233a] text-white"
+          ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
           : "border-[#eadcc7] bg-white text-[#13233a]"
       }`}
     >
       <p
-        className={`text-sm font-bold ${
+        className={`text-[0.58rem] font-black uppercase tracking-wide sm:text-xs ${
           isNext ? "text-[#f3d77b]" : "text-[#5f6874]"
         }`}
       >
-        {isNext ? labels.nextBus : labels.departure}
+        {isNext ? labels.nextBus : null}
       </p>
-      <p className="mt-1.5 text-2xl font-black leading-none sm:mt-2 sm:text-3xl">
+      <p className="text-base font-black leading-none sm:mt-2 sm:text-3xl">
         {departure}
       </p>
     </article>
@@ -152,7 +166,7 @@ function ScheduleSourceInfo({
         : null;
 
   return (
-    <div className="mt-3 rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-sm leading-6 text-[#4f5d6c] sm:p-4">
+    <div className="mt-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-sm leading-6 text-[#4f5d6c] sm:p-4">
       <p className="font-black text-[#13233a]">{labels.dataTitle}</p>
       <dl className="mt-2 grid gap-1.5">
         <InfoRow label={labels.source}>
@@ -172,12 +186,12 @@ function ScheduleSourceInfo({
         <InfoRow label={labels.lastVerified}>{source.lastVerified}</InfoRow>
       </dl>
       {verificationNotice ? (
-        <p className="mt-2 rounded-lg bg-[#f9e8a8] px-3 py-2 font-bold text-[#13233a]">
+        <p className="mt-2 rounded-xl bg-[#f9e8a8] px-3 py-2 font-bold text-[#13233a]">
           {verificationNotice}
         </p>
       ) : null}
       <details className="group mt-2">
-        <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-lg border border-[#eadcc7] bg-white px-3 text-sm font-black text-[#13233a]">
+        <summary className="flex min-h-11 w-full cursor-pointer list-none items-center justify-center rounded-xl border border-[#eadcc7] bg-white px-3 text-sm font-black text-[#13233a] sm:inline-flex sm:w-auto">
           <span className="group-open:hidden">{labels.showDetails}</span>
           <span className="hidden group-open:inline">{labels.hideDetails}</span>
         </summary>

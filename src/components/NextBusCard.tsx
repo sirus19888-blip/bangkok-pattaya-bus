@@ -26,13 +26,20 @@ export function NextBusCard({
     : calculatedNextDeparture.subRoutes[0]?.label;
 
   return (
-    <aside className="rounded-lg border border-[#c8dbe9] bg-[#eaf5fb] p-4 shadow-sm sm:p-7">
-      <div className="rounded-lg bg-white p-4 shadow-sm sm:p-5">
-        <p className="text-sm font-bold text-[#5f6874]">{labels.title}</p>
-        <p className="mt-1 text-xs font-bold text-[#4f5d6c]">
-          {labels.timeZoneNote}
-        </p>
-        <p className="mt-1 text-5xl font-black leading-none text-[#13233a] sm:mt-2 sm:text-6xl">
+    <aside className="rounded-2xl border border-[#c8dbe9] bg-[#eaf5fb] p-4 shadow-sm sm:p-6 lg:sticky lg:top-5 lg:self-start">
+      <div className="rounded-2xl bg-white p-5 shadow-sm sm:p-6">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-sm font-black text-[#13233a]">{labels.title}</p>
+            <p className="mt-1 text-xs font-bold leading-5 text-[#4f5d6c]">
+              {labels.timeZoneNote}
+            </p>
+          </div>
+          <span className="rounded-full bg-[#f3d77b] px-3 py-1 text-xs font-black text-[#3f3413]">
+            {labels.title.replace(":", "")}
+          </span>
+        </div>
+        <p className="mt-4 text-5xl font-black leading-none text-[#13233a] sm:text-6xl">
           {calculatedNextDeparture.time}
         </p>
         {calculatedNextDeparture.isTomorrow ? (
@@ -41,19 +48,19 @@ export function NextBusCard({
           </p>
         ) : null}
         {nextSubRouteText ? (
-          <p className="mt-2 rounded-lg bg-[#fffaf2] px-3 py-2 text-base font-black text-[#13233a]">
+          <p className="mt-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] px-3 py-2 text-sm font-black leading-5 text-[#13233a] sm:text-base">
             {nextSubRouteText}
           </p>
         ) : null}
 
-        <div className="mt-4 grid gap-3 sm:mt-6">
+        <div className="mt-5 grid grid-cols-1 gap-3 sm:mt-6">
           <MiniFact label={labels.travelTime} value={schedule.travelTime} />
           <MiniFact label={labels.ticketPrice} value={schedule.price} />
         </div>
 
         <a
           href="#schedule"
-          className="mt-5 flex h-14 items-center justify-center rounded-lg bg-[#13233a] px-5 text-base font-black text-white shadow-sm transition hover:bg-[#1d3455] sm:mt-6"
+          className="mt-5 flex min-h-14 w-full items-center justify-center rounded-xl bg-[#13233a] px-5 text-center text-base font-black text-white shadow-sm transition hover:bg-[#1d3455] sm:mt-6"
         >
           {labels.showAllDepartures}
         </a>
@@ -64,11 +71,11 @@ export function NextBusCard({
 
 function MiniFact({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-[#c8dbe9] bg-white p-3.5 sm:p-4">
+    <div className="rounded-xl border border-[#c8dbe9] bg-[#f8fcff] p-4">
       <p className="text-xs font-bold uppercase tracking-wide text-[#5f6874]">
         {label}
       </p>
-      <p className="mt-1 text-base font-black text-[#13233a] sm:text-lg">{value}</p>
+      <p className="mt-1 text-base font-black leading-snug text-[#13233a] sm:text-lg">{value}</p>
     </div>
   );
 }

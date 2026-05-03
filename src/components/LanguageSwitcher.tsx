@@ -21,11 +21,11 @@ export function LanguageSwitcher({
   }
 
   return (
-    <label className="flex items-center gap-2 rounded-lg border border-[#d8c8b4] bg-white px-3 py-2 text-sm font-semibold text-[#13233a] shadow-sm">
+    <label className="flex h-10 shrink-0 items-center gap-2 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-sm font-semibold text-[#13233a]">
       <span className="sr-only">{label}</span>
       <select
         aria-label={label}
-        className="bg-transparent text-sm font-semibold outline-none"
+        className="h-full bg-transparent text-sm font-semibold outline-none"
         value={currentLocale}
         onChange={(event) =>
           handleLanguageChange(event.target.value as LocaleCode)

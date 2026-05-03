@@ -13,6 +13,8 @@
     "timeZoneNote": "Zeiten werden in thailändischer Ortszeit angezeigt."
   },
   "schedule": {
+    "needsOfficialConfirmationShort": "Bestätigung nötig",
+    "partiallyVerifiedShort": "Basierend auf Betreiberinfos",
     "title": "Heutige Abfahrten",
     "updated": "Aktualisiert",
     "nextBus": "Nächster Bus",

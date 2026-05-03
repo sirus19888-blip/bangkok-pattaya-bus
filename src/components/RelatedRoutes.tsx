@@ -17,8 +17,8 @@ export function RelatedRoutes({
   const relatedRoutes = routePages.filter((page) => page.slug !== currentRoute);
 
   return (
-    <section className="rounded-lg border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
-      <p className="text-sm font-bold uppercase tracking-wide text-[#2f6f93]">
+    <section className="rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
+      <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
         {heading}
       </p>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
@@ -26,7 +26,7 @@ export function RelatedRoutes({
           <Link
             key={routePage.slug}
             href={`/${locale}/${routePage.slug}`}
-            className="rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-3.5 shadow-sm transition hover:bg-white sm:p-4"
+            className="rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-4 shadow-sm transition hover:bg-white"
           >
             <span className="block text-base font-black text-[#13233a]">
               {routePage.title}

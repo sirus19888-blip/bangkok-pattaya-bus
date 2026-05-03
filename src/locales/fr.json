@@ -13,6 +13,8 @@
     "timeZoneNote": "Les horaires sont indiqués selon l'heure locale de Thaïlande."
   },
   "schedule": {
+    "needsOfficialConfirmationShort": "Confirmation nécessaire",
+    "partiallyVerifiedShort": "Selon les infos opérateur",
     "title": "Départs aujourd'hui",
     "updated": "Mis à jour",
     "nextBus": "Prochain bus",

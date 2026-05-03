@@ -1,5 +1,7 @@
+import type { ReactNode } from "react";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
+import { MobileRouteDecisionCard } from "@/components/MobileRouteDecisionCard";
 import { NextBusCard } from "@/components/NextBusCard";
 import { RelatedRoutes } from "@/components/RelatedRoutes";
 import { RouteJsonLd } from "@/components/RouteJsonLd";
@@ -40,6 +42,10 @@ export function RoutePageLayout({
 }: RoutePageLayoutProps) {
   const localizedGuideTips = getLocalizedGuideTips(t, routePage.slug);
   const localizedFaqs = getLocalizedFaqs(t, routePage.slug);
+  const sourceStatusLabel =
+    schedule.verificationStatus === "needs official confirmation"
+      ? t.schedule.needsOfficialConfirmationShort
+      : t.schedule.partiallyVerifiedShort;
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
@@ -49,7 +55,7 @@ export function RoutePageLayout({
         routePage={routePage}
         schedule={schedule}
       />
-      <section className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-8 pt-4 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 lg:px-8">
+      <section className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 lg:px-8">
         <Header
           labels={{
             ...t.app,
@@ -59,15 +65,27 @@ export function RoutePageLayout({
           routeSlug={routePage.slug}
         />
 
-        <section className="grid gap-4 sm:gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
-          <div className="rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-4 shadow-sm sm:p-7">
-            <p className="mb-3 text-sm font-bold uppercase tracking-wide text-[#2f6f93]">
+        <MobileRouteDecisionCard
+          routeTitle={routePage.title}
+          schedule={schedule}
+          nextDeparture={nextDeparture}
+          sourceStatusLabel={sourceStatusLabel}
+          labels={{
+            ...t.nextBus,
+            nextBus: t.schedule.nextBus,
+            showAllDepartures: t.common.showAllDepartures,
+          }}
+        />
+
+        <section className="hidden gap-4 md:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
+          <div className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-5 shadow-sm sm:p-7">
+            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
               {t.app.title}
             </p>
-            <h1 className="text-3xl font-black leading-tight text-[#13233a] sm:text-5xl">
+            <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-[#13233a] sm:text-5xl">
               {routePage.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-[#4f5d6c] sm:text-lg">
+            <p className="mt-3 max-w-2xl text-[0.95rem] font-semibold leading-7 text-[#4f5d6c] sm:mt-4 sm:text-lg">
               {routePage.intro}
             </p>
 
@@ -88,19 +106,21 @@ export function RoutePageLayout({
           />
         </section>
 
-        <RouteSummary
-          route={route}
-          schedule={schedule}
-          from={routePage.from}
-          to={routePage.to}
-          labels={{
-            ...t.common,
-            ...t.routeSelector,
-            travelTime: t.nextBus.travelTime,
-          }}
-        />
+        <div className="hidden md:block">
+          <RouteSummary
+            route={route}
+            schedule={schedule}
+            from={routePage.from}
+            to={routePage.to}
+            labels={{
+              ...t.common,
+              ...t.routeSelector,
+              travelTime: t.nextBus.travelTime,
+            }}
+          />
+        </div>
 
-        <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="hidden gap-5 md:grid lg:grid-cols-[0.9fr_1.1fr]">
           <ScheduleList
             route={route}
             schedule={schedule}
@@ -108,6 +128,18 @@ export function RoutePageLayout({
             labels={t.schedule}
             showSourceInfo
           />
+          <div className="hidden lg:block">
+            <StationCard
+              stations={stations}
+              labels={{
+                ...t.station,
+                openInGoogleMaps: t.common.openInGoogleMaps,
+              }}
+            />
+          </div>
+        </section>
+
+        <MobileDetailsSection title={t.station.title}>
           <StationCard
             stations={stations}
             labels={{
@@ -115,19 +147,37 @@ export function RoutePageLayout({
               openInGoogleMaps: t.common.openInGoogleMaps,
             }}
           />
-        </section>
+        </MobileDetailsSection>
 
-        <section className="rounded-lg border border-[#eadcc7] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c] shadow-sm sm:p-5">
+        <MobileDetailsSection title={t.schedule.dataTitle}>
+          <ScheduleList
+            route={route}
+            schedule={schedule}
+            nextDeparture={nextDeparture}
+            labels={t.schedule}
+            sourceOnly
+          />
+        </MobileDetailsSection>
+
+        <section className="hidden rounded-2xl border border-[#eadcc7] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c] shadow-sm md:block sm:p-5">
           <p className="font-black text-[#13233a]">
             {t.lastUpdated.label} {schedule.lastUpdated}
           </p>
           <p className="mt-2">{schedule.disclaimer}</p>
         </section>
 
-        <section className="grid gap-4 lg:grid-cols-[1fr_0.9fr]">
+        <section className="hidden gap-5 md:grid lg:grid-cols-[1fr_0.9fr]">
           <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
           <FAQ faqs={localizedFaqs} labels={t.faq} />
         </section>
+
+        <MobileDetailsSection title={t.travelTips.title}>
+          <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
+        </MobileDetailsSection>
+
+        <MobileDetailsSection title={t.faq.title}>
+          <FAQ faqs={localizedFaqs} labels={t.faq} />
+        </MobileDetailsSection>
 
         <RelatedRoutes
           currentRoute={routePage.slug}
@@ -153,5 +203,29 @@ export function RoutePageLayout({
         />
       </section>
     </main>
+  );
+}
+
+function MobileDetailsSection({
+  children,
+  title,
+}: {
+  children: ReactNode;
+  title: string;
+}) {
+  return (
+    <details className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm md:hidden">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a]">
+        <span>{title}</span>
+        <span
+          aria-hidden="true"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8c8b4] bg-[#fffaf2] text-lg leading-none"
+        >
+          <span className="group-open:hidden">+</span>
+          <span className="hidden group-open:inline">-</span>
+        </span>
+      </summary>
+      <div className="mt-4">{children}</div>
+    </details>
   );
 }
