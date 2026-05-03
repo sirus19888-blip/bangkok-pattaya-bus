@@ -107,6 +107,11 @@
     { "title": "Verkehr in Bangkok einplanen", "body": "Morgens und abends kann die Fahrt länger dauern. Plane extra Zeit ein, wenn du einen Flug oder Zug erreichen musst." }
   ],
   "routeTravelTipItems": {
+    "bangkok-to-pattaya": [
+      { "title": "Nutze Ekkamai für zentrales Bangkok", "body": "Ekkamai ist meist der praktischste Busbahnhof, wenn du in der Nähe von Sukhumvit, Asok, Thong Lo oder an der BTS-Linie wohnst." },
+      { "title": "Komme vor der Abfahrtszeit an", "body": "Plane, 20-30 Minuten früher am Terminal zu sein, damit du Zeit für Ticketkauf und den richtigen Bussteig hast." },
+      { "title": "Plane die Weiterfahrt in Pattaya", "body": "Busse kommen meist an der North Pattaya Bus Station an. Von dort kannst du ein Songthaew oder Taxi zum Hotel nehmen." }
+    ],
     "suvarnabhumi-airport-to-pattaya": [
       { "title": "Prüfe den Busschalter nach der Ankunft", "body": "Prüfe nach der Ankunft den Busschalter, bevor du deine Weiterfahrt planst." },
       { "title": "Plane Zeit für Einreise und Gepäck ein", "body": "Einreise, Gepäckausgabe und der Weg durch den Flughafen können etwas Zeit brauchen. Plane keinen zu knappen Anschluss." },
@@ -121,6 +126,12 @@
     { "question": "Fahren die Busse jeden Tag?", "answer": "Die meisten Strecken fahren täglich, aber Abfahrtszeiten können sich an Feiertagen oder stark frequentierten Reisetagen ändern." }
   ],
   "routeFaqItems": {
+    "bangkok-to-pattaya": [
+      { "question": "Wie lange dauert der Bus von Bangkok Ekkamai nach Pattaya?", "answer": "Die Fahrt dauert normalerweise etwa 2-3 Stunden, je nach Verkehr." },
+      { "question": "Wo kaufe ich Tickets in Ekkamai?", "answer": "Tickets kauft man meist am Schalter im Busbahnhof Ekkamai. Komm früher, besonders an Wochenenden und Feiertagen." },
+      { "question": "Wo kommt der Bus in Pattaya an?", "answer": "Busse kommen meist an der North Pattaya Bus Station an. Danach kannst du mit Songthaew oder Taxi zum Hotel fahren." },
+      { "question": "Sind die Buszeiten Bangkok Pattaya fest?", "answer": "Die Zeiten basieren auf veröffentlichten Betreiberinformationen, können sich aber ändern. Bestätige den Fahrplan vor der Reise." }
+    ],
     "suvarnabhumi-airport-to-pattaya": [
       { "question": "Wie lange dauert der Bus vom Suvarnabhumi Airport nach Pattaya?", "answer": "Normalerweise etwa 2-2,5 Stunden, je nach Verkehr und Ausstiegspunkt." },
       { "question": "Wo ist der Busschalter am Suvarnabhumi Airport?", "answer": "Nach den aktuellen Routendaten befindet sich der Schalter auf Ebene 1 in der Nähe von Gate 8. Prüfe nach der Ankunft die Beschilderung im Flughafen." },

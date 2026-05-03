@@ -141,6 +141,20 @@
     }
   ],
   "routeTravelTipItems": {
+    "bangkok-to-pattaya": [
+      {
+        "title": "Wybierz Ekkamai, jeśli jesteś w centrum Bangkoku",
+        "body": "Ekkamai jest zwykle najwygodniejszym dworcem autobusowym, jeśli mieszkasz w okolicy Sukhumvit, Asok, Thong Lo albo przy linii BTS."
+      },
+      {
+        "title": "Przyjdź przed godziną odjazdu",
+        "body": "Zaplanuj przyjazd na dworzec 20–30 minut wcześniej, żeby mieć czas na zakup biletu i znalezienie właściwego stanowiska."
+      },
+      {
+        "title": "Zaplanuj dojazd z dworca w Pattayi",
+        "body": "Autobusy zwykle przyjeżdżają na North Pattaya Bus Station. Stamtąd możesz wziąć songthaew albo taksówkę do hotelu."
+      }
+    ],
     "suvarnabhumi-airport-to-pattaya": [
       {
         "title": "Sprawdź stanowisko autobusowe po przylocie",
@@ -179,6 +193,24 @@
     }
   ],
   "routeFaqItems": {
+    "bangkok-to-pattaya": [
+      {
+        "question": "Ile trwa autobus z Bangkok Ekkamai do Pattaya?",
+        "answer": "Podróż zwykle trwa około 2–3 godzin, zależnie od ruchu drogowego."
+      },
+      {
+        "question": "Gdzie kupić bilety na Ekkamai?",
+        "answer": "Bilety zwykle kupuje się w kasie na dworcu autobusowym Ekkamai. Przyjdź wcześniej, szczególnie w weekendy i święta."
+      },
+      {
+        "question": "Gdzie autobus przyjeżdża w Pattayi?",
+        "answer": "Autobusy zwykle przyjeżdżają na North Pattaya Bus Station. Potem można dojechać do hotelu songthaewem albo taksówką."
+      },
+      {
+        "question": "Czy godziny autobusów Bangkok Pattaya są stałe?",
+        "answer": "Godziny są oparte na opublikowanych informacjach operatora, ale mogą się zmieniać. Potwierdź rozkład przed podróżą."
+      }
+    ],
     "suvarnabhumi-airport-to-pattaya": [
       {
         "question": "Ile trwa autobus z Suvarnabhumi Airport do Pattaya?",

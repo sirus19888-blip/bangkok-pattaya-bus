@@ -107,6 +107,11 @@
     { "title": "Prévoyez le trafic à Bangkok", "body": "Le matin et le soir, le trajet peut être plus long. Ajoutez du temps si vous avez un vol ou un train." }
   ],
   "routeTravelTipItems": {
+    "bangkok-to-pattaya": [
+      { "title": "Utilisez Ekkamai pour le centre de Bangkok", "body": "Ekkamai est généralement la gare routière la plus pratique si vous logez près de Sukhumvit, Asok, Thong Lo ou de la ligne BTS." },
+      { "title": "Arrivez avant l'heure de départ", "body": "Prévoyez d'arriver au terminal 20-30 minutes plus tôt pour acheter le billet et trouver le bon quai." },
+      { "title": "Préparez votre transfert à Pattaya", "body": "Les bus arrivent généralement à North Pattaya Bus Station. De là, prenez un songthaew ou un taxi jusqu'à votre hôtel." }
+    ],
     "suvarnabhumi-airport-to-pattaya": [
       { "title": "Vérifiez le comptoir de bus après l'arrivée", "body": "Après votre arrivée, vérifiez le comptoir de bus avant d'organiser un autre transport." },
       { "title": "Prévoyez du temps pour l'immigration et les bagages", "body": "L'immigration, la récupération des bagages et le trajet dans l'aéroport peuvent prendre du temps. Ne prévoyez pas une correspondance trop courte." },
@@ -121,6 +126,12 @@
     { "question": "Les bus circulent-ils tous les jours ?", "answer": "La plupart des lignes circulent tous les jours, mais les horaires peuvent changer pendant les jours fériés ou les périodes chargées." }
   ],
   "routeFaqItems": {
+    "bangkok-to-pattaya": [
+      { "question": "Combien de temps dure le bus de Bangkok Ekkamai à Pattaya ?", "answer": "Le trajet dure généralement environ 2-3 heures, selon le trafic." },
+      { "question": "Où acheter les billets à Ekkamai ?", "answer": "Les billets s'achètent généralement au guichet de la gare routière d'Ekkamai. Arrivez plus tôt, surtout le week-end et les jours fériés." },
+      { "question": "Où arrive le bus à Pattaya ?", "answer": "Les bus arrivent généralement à North Pattaya Bus Station. Ensuite, vous pouvez rejoindre votre hôtel en songthaew ou en taxi." },
+      { "question": "Les horaires Bangkok Pattaya sont-ils fixes ?", "answer": "Les horaires sont basés sur les informations publiées par l'opérateur, mais ils peuvent changer. Confirmez l'horaire avant le voyage." }
+    ],
     "suvarnabhumi-airport-to-pattaya": [
       { "question": "Combien de temps dure le bus de Suvarnabhumi Airport à Pattaya ?", "answer": "En général environ 2-2,5 heures, selon le trafic et le point de descente." },
       { "question": "Où se trouve le comptoir de bus à l'aéroport Suvarnabhumi ?", "answer": "Selon les données actuelles de l'itinéraire, le comptoir se trouve au niveau 1 près de la porte 8. Vérifiez les panneaux de l'aéroport après l'arrivée." },
