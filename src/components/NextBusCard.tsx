@@ -18,6 +18,12 @@ export function NextBusCard({
   labels,
 }: NextBusCardProps) {
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
+  const hasMultipleNextSubRoutes = calculatedNextDeparture.subRoutes.length > 1;
+  const nextSubRouteText = hasMultipleNextSubRoutes
+    ? `${labels.availableTo} ${calculatedNextDeparture.subRoutes
+        .map((subRoute) => subRoute.to.replace(/^Bangkok\s+/i, ""))
+        .join(" / ")}`
+    : calculatedNextDeparture.subRoutes[0]?.label;
 
   return (
     <aside className="rounded-lg border border-[#c8dbe9] bg-[#eaf5fb] p-4 shadow-sm sm:p-7">
@@ -32,6 +38,11 @@ export function NextBusCard({
         {calculatedNextDeparture.isTomorrow ? (
           <p className="mt-2 text-sm font-black text-[#4f5d6c]">
             {labels.nextServiceTomorrow}
+          </p>
+        ) : null}
+        {nextSubRouteText ? (
+          <p className="mt-2 rounded-lg bg-[#fffaf2] px-3 py-2 text-base font-black text-[#13233a]">
+            {nextSubRouteText}
           </p>
         ) : null}
 

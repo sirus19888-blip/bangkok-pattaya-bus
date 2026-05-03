@@ -3,6 +3,11 @@ import type { Schedule } from "@/data/schedules";
 export type NextDepartureResult = {
   time: string;
   isTomorrow: boolean;
+  subRoutes: {
+    id: string;
+    label: string;
+    to: string;
+  }[];
 };
 
 const thailandTimeFormatter = new Intl.DateTimeFormat("en-GB", {
@@ -25,6 +30,18 @@ function getRouteDepartures(schedule: Schedule) {
 
   return Array.from(new Set(departures)).sort(
     (first, second) => timeToMinutes(first) - timeToMinutes(second),
+  );
+}
+
+function getMatchingSubRoutes(schedule: Schedule, departure: string) {
+  return (
+    schedule.subRoutes
+      ?.filter((subRoute) => subRoute.departures.includes(departure))
+      .map((subRoute) => ({
+        id: subRoute.id,
+        label: subRoute.label,
+        to: subRoute.to,
+      })) ?? []
   );
 }
 
@@ -58,11 +75,17 @@ export function getNextDeparture(
     return {
       time: nextToday,
       isTomorrow: false,
+      subRoutes: getMatchingSubRoutes(schedule, nextToday),
     };
   }
 
+  const firstTomorrow = departures[0] ?? "";
+
   return {
-    time: departures[0] ?? "",
+    time: firstTomorrow,
     isTomorrow: true,
+    subRoutes: firstTomorrow
+      ? getMatchingSubRoutes(schedule, firstTomorrow)
+      : [],
   };
 }

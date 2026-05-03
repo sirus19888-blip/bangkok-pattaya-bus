@@ -11,6 +11,7 @@ export function useNextDeparture(
   const [nextDeparture, setNextDeparture] = useState<NextDepartureResult>({
     time: initialNextDeparture,
     isTomorrow: false,
+    subRoutes: [],
   });
 
   useEffect(() => {

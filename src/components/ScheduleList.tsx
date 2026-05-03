@@ -58,7 +58,12 @@ export function ScheduleList({
                   <DepartureTile
                     key={`${subRoute.id}-${departure}`}
                     departure={departure}
-                    isNext={departure === calculatedNextDeparture.time}
+                    isNext={
+                      departure === calculatedNextDeparture.time &&
+                      calculatedNextDeparture.subRoutes.some(
+                        (nextSubRoute) => nextSubRoute.id === subRoute.id,
+                      )
+                    }
                     labels={labels}
                   />
                 ))}
