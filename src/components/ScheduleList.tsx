@@ -171,9 +171,10 @@ function ScheduleSourceInfo({
           {verificationNotice}
         </p>
       ) : null}
-      <details className="mt-2">
+      <details className="group mt-2">
         <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-lg border border-[#eadcc7] bg-white px-3 text-sm font-black text-[#13233a]">
-          {labels.showDetails}
+          <span className="group-open:hidden">{labels.showDetails}</span>
+          <span className="hidden group-open:inline">{labels.hideDetails}</span>
         </summary>
         <dl className="mt-3 grid gap-1.5">
           <InfoRow label={labels.sourceType}>{source.sourceType}</InfoRow>

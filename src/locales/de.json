@@ -29,6 +29,7 @@
     "note": "Wichtiger Hinweis:",
     "subRoute": "Teilstrecke",
     "showDetails": "Details anzeigen",
+    "hideDetails": "Details ausblenden",
     "needsOfficialConfirmationNotice": "Diese Zeiten benötigen eine offizielle Bestätigung, bevor man sich darauf verlässt.",
     "partiallyVerifiedNotice": "Basierend auf veröffentlichten Betreiberinformationen. Vor der Reise bestätigen."
   },
@@ -105,10 +106,26 @@
     { "title": "Kleines Bargeld bereithalten", "body": "Tickets und lokale Fahrten sind mit kleinen Thai-Baht-Scheinen am einfachsten." },
     { "title": "Verkehr in Bangkok einplanen", "body": "Morgens und abends kann die Fahrt länger dauern. Plane extra Zeit ein, wenn du einen Flug oder Zug erreichen musst." }
   ],
+  "routeTravelTipItems": {
+    "suvarnabhumi-airport-to-pattaya": [
+      { "title": "Prüfe den Busschalter nach der Ankunft", "body": "Prüfe nach der Ankunft den Busschalter, bevor du deine Weiterfahrt planst." },
+      { "title": "Plane Zeit für Einreise und Gepäck ein", "body": "Einreise, Gepäckausgabe und der Weg durch den Flughafen können etwas Zeit brauchen. Plane keinen zu knappen Anschluss." },
+      { "title": "Gehe zu Ebene 1 in der Nähe von Gate 8", "body": "Nach den aktuellen Routendaten werden Tickets am Serviceschalter auf Ebene 1 in der Nähe von Gate 8 gekauft." },
+      { "title": "Prüfe das Ziel des späten Busses", "body": "Nach den aktuellen Routendaten kann der Bus um 22:00 zur North Pattaya Bus Station fahren, nicht zum Jomtien Bus Terminal." }
+    ]
+  },
   "faqItems": [
     { "question": "Wie lange dauert der Bus von Bangkok nach Pattaya?", "answer": "Die Fahrt dauert normalerweise etwa 2-3 Stunden, je nach Verkehr und Abfahrtsstation." },
     { "question": "Wo kaufe ich Tickets?", "answer": "Tickets bekommst du meist am Schalter im Busbahnhof. Einige Strecken können auch online verfügbar sein. Vor der Reise prüfen." },
     { "question": "Kann ich einen Bus vom Suvarnabhumi Airport nehmen?", "answer": "Ja, es gibt Busverbindungen zwischen Suvarnabhumi Airport und Pattaya. Prüfe den aktuellen Fahrplan vor der Abfahrt." },
     { "question": "Fahren die Busse jeden Tag?", "answer": "Die meisten Strecken fahren täglich, aber Abfahrtszeiten können sich an Feiertagen oder stark frequentierten Reisetagen ändern." }
-  ]
+  ],
+  "routeFaqItems": {
+    "suvarnabhumi-airport-to-pattaya": [
+      { "question": "Wie lange dauert der Bus vom Suvarnabhumi Airport nach Pattaya?", "answer": "Normalerweise etwa 2-2,5 Stunden, je nach Verkehr und Ausstiegspunkt." },
+      { "question": "Wo ist der Busschalter am Suvarnabhumi Airport?", "answer": "Nach den aktuellen Routendaten befindet sich der Schalter auf Ebene 1 in der Nähe von Gate 8. Prüfe nach der Ankunft die Beschilderung im Flughafen." },
+      { "question": "Sollte ich nach der Landung einen knappen Anschluss planen?", "answer": "Besser nicht. Plane Zeit für Einreise, Gepäckausgabe und den Weg zum Busschalter ein." },
+      { "question": "Fährt jeder Flughafenbus nach Jomtien?", "answer": "Nicht immer. Nach den aktuellen Daten kann der späte Bus um 22:00 zur North Pattaya Bus Station fahren. Bestätige das Ziel vor dem Ticketkauf." }
+    ]
+  }
 }

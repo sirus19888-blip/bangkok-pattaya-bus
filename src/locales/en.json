@@ -35,6 +35,7 @@
     "note": "Important note:",
     "subRoute": "Sub-route",
     "showDetails": "Show details",
+    "hideDetails": "Hide details",
     "needsOfficialConfirmationNotice": "These times need official confirmation before relying on them.",
     "partiallyVerifiedNotice": "Based on published operator information. Confirm before travel."
   },
