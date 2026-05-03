@@ -7,6 +7,15 @@ type PopularRoutesProps = {
   schedules: Schedule[];
 };
 
+const routeDescriptions: Record<RoutePage["slug"], string> = {
+  "bangkok-to-pattaya":
+    "Ekkamai departures to Pattaya with station notes and practical boarding tips.",
+  "pattaya-to-bangkok":
+    "Return buses from Pattaya to Bangkok, including Ekkamai and Mo Chit routes.",
+  "suvarnabhumi-airport-to-pattaya":
+    "Airport bus information with counter notes, travel time, and arrival tips.",
+};
+
 export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {
   return (
     <section className="rounded-lg border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
@@ -28,13 +37,13 @@ export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {
                 {routePage.title}
               </h2>
               <p className="mt-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
-                {routePage.from} to {routePage.to}. Check departures, stations,
-                and practical travel notes.
+                {routeDescriptions[routePage.slug]}
               </p>
               {schedule ? (
-                <p className="mt-3 text-sm font-bold text-[#13233a]">
-                  Travel time: {schedule.travelTime}
-                </p>
+                <div className="mt-3 grid gap-1 text-sm font-bold text-[#13233a]">
+                  <p>Travel time: {schedule.travelTime}</p>
+                  <p>Ticket price: {schedule.price}</p>
+                </div>
               ) : null}
               <Link
                 href={`/en/${routePage.slug}`}

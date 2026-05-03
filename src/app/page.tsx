@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
 import { NextBusCard } from "@/components/NextBusCard";
@@ -18,6 +19,12 @@ const selectedSchedule = getScheduleByRoute(selectedRoute.id) ?? schedules[0];
 const nextDeparture = selectedSchedule.nextDeparture;
 const t = getTranslations("en");
 
+export const metadata: Metadata = {
+  title: "Bangkok Pattaya Bus Guide – Bus Times, Prices & Stations",
+  description:
+    "Check Bangkok to Pattaya, Pattaya to Bangkok, and Suvarnabhumi Airport to Pattaya bus times, ticket prices, travel time, stations, and practical travel tips.",
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
@@ -34,8 +41,15 @@ export default function Home() {
         <section id="top" className="grid gap-4 sm:gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
           <div className="rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-4 shadow-sm sm:p-7">
             <h1 className="text-3xl font-black leading-tight text-[#13233a] sm:text-5xl">
-              {t.app.title}
+              Bangkok Pattaya Bus Guide
             </h1>
+            <p className="mt-4 max-w-2xl text-base font-semibold leading-7 text-[#4f5d6c] sm:text-lg">
+              Check bus routes between Bangkok and Pattaya, the Pattaya to
+              Bangkok return route, and the Suvarnabhumi Airport to Pattaya
+              bus. Times are shown in Thailand local time. Schedules may
+              change, so confirm at the station or with the operator before
+              travel.
+            </p>
 
             <RouteSearch labels={t.routeSelector} />
           </div>
