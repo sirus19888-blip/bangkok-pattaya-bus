@@ -1,8 +1,8 @@
 import { FAQ } from "@/components/FAQ";
-import { FAQJsonLd } from "@/components/FAQJsonLd";
 import { Header } from "@/components/Header";
 import { NextBusCard } from "@/components/NextBusCard";
 import { RelatedRoutes } from "@/components/RelatedRoutes";
+import { RouteJsonLd } from "@/components/RouteJsonLd";
 import { RouteSearch } from "@/components/RouteSearch";
 import { RouteSummary } from "@/components/RouteSummary";
 import { ScheduleList } from "@/components/ScheduleList";
@@ -43,7 +43,12 @@ export function RoutePageLayout({
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
-      <FAQJsonLd faqs={localizedFaqs} />
+      <RouteJsonLd
+        faqs={localizedFaqs}
+        locale={locale}
+        routePage={routePage}
+        schedule={schedule}
+      />
       <section className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-8 pt-4 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 lg:px-8">
         <Header
           labels={{
