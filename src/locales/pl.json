@@ -14,13 +14,15 @@
   "nextBus": {
     "title": "Najbliższy autobus:",
     "travelTime": "Czas podróży:",
-    "ticketPrice": "Cena biletu:"
+    "ticketPrice": "Cena biletu:",
+    "timeZoneNote": "Godziny podane według czasu lokalnego w Tajlandii."
   },
   "schedule": {
     "title": "Dzisiejsze odjazdy",
     "updated": "Aktualizacja",
     "nextBus": "Najbliższy autobus",
     "departure": "Odjazd",
+    "timeZoneNote": "Godziny podane według czasu lokalnego w Tajlandii.",
     "dataTitle": "Dane rozkładu",
     "source": "Źródło:",
     "sourceType": "Typ źródła:",

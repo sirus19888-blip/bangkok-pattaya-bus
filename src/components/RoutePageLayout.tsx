@@ -36,8 +36,8 @@ export function RoutePageLayout({
   t,
   locale,
 }: RoutePageLayoutProps) {
-  const localizedGuideTips = getLocalizedGuideTips(t);
-  const localizedFaqs = getLocalizedFaqs(t);
+  const localizedGuideTips = getLocalizedGuideTips(t, routePage.slug);
+  const localizedFaqs = getLocalizedFaqs(t, routePage.slug);
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">

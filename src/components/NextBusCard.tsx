@@ -1,4 +1,7 @@
+"use client";
+
 import type { Schedule } from "@/data/schedules";
+import { useNextDeparture } from "@/hooks/useNextDeparture";
 import type { Translations } from "@/lib/i18n";
 
 type NextBusCardProps = {
@@ -14,13 +17,23 @@ export function NextBusCard({
   nextDeparture,
   labels,
 }: NextBusCardProps) {
+  const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
+
   return (
     <aside className="rounded-lg border border-[#c8dbe9] bg-[#eaf5fb] p-4 shadow-sm sm:p-7">
       <div className="rounded-lg bg-white p-4 shadow-sm sm:p-5">
         <p className="text-sm font-bold text-[#5f6874]">{labels.title}</p>
-        <p className="mt-1 text-5xl font-black leading-none text-[#13233a] sm:mt-2 sm:text-6xl">
-          {nextDeparture}
+        <p className="mt-1 text-xs font-bold text-[#4f5d6c]">
+          {labels.timeZoneNote}
         </p>
+        <p className="mt-1 text-5xl font-black leading-none text-[#13233a] sm:mt-2 sm:text-6xl">
+          {calculatedNextDeparture.time}
+        </p>
+        {calculatedNextDeparture.isTomorrow ? (
+          <p className="mt-2 text-sm font-black text-[#4f5d6c]">
+            {labels.nextServiceTomorrow}
+          </p>
+        ) : null}
 
         <div className="mt-4 grid gap-3 sm:mt-6">
           <MiniFact label={labels.travelTime} value={schedule.travelTime} />

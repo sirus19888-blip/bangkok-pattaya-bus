@@ -9,13 +9,15 @@
   "nextBus": {
     "title": "Nächster Bus:",
     "travelTime": "Fahrzeit:",
-    "ticketPrice": "Ticketpreis:"
+    "ticketPrice": "Ticketpreis:",
+    "timeZoneNote": "Zeiten werden in thailändischer Ortszeit angezeigt."
   },
   "schedule": {
     "title": "Heutige Abfahrten",
     "updated": "Aktualisiert",
     "nextBus": "Nächster Bus",
     "departure": "Abfahrt",
+    "timeZoneNote": "Zeiten werden in thailändischer Ortszeit angezeigt.",
     "dataTitle": "Fahrplandaten",
     "source": "Quelle:",
     "sourceType": "Quellentyp:",

@@ -1,5 +1,5 @@
 import type { FAQItem, GuideTip } from "@/data/faqs";
-import type { LocaleCode, Route, RoutePage } from "@/data/routes";
+import type { LocaleCode, Route, RouteId, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
 import de from "@/locales/de.json";
@@ -45,6 +45,18 @@ function mergeTextRecord<T extends Record<string, object>>(
   ) as T;
 }
 
+function mergeArrayRecord<T extends Record<string, unknown[]>>(
+  fallback: T,
+  overrides?: DeepPartial<T>,
+): T {
+  return Object.fromEntries(
+    Object.entries(fallback).map(([key, value]) => [
+      key,
+      (overrides?.[key as keyof T] as unknown[] | undefined) ?? value,
+    ]),
+  ) as T;
+}
+
 export function getTranslations(locale: LocaleCode): Translations {
   const dictionary = dictionaries[locale] ?? en;
 
@@ -65,7 +77,12 @@ export function getTranslations(locale: LocaleCode): Translations {
     schedules: mergeTextRecord(en.schedules, dictionary.schedules),
     stationsText: mergeTextRecord(en.stationsText, dictionary.stationsText),
     travelTipItems: dictionary.travelTipItems ?? en.travelTipItems,
+    routeTravelTipItems: mergeArrayRecord(
+      en.routeTravelTipItems,
+      dictionary.routeTravelTipItems,
+    ),
     faqItems: dictionary.faqItems ?? en.faqItems,
+    routeFaqItems: mergeArrayRecord(en.routeFaqItems, dictionary.routeFaqItems),
   };
 }
 
@@ -125,10 +142,24 @@ export function localizeStations(
   });
 }
 
-export function getLocalizedGuideTips(t: Translations): GuideTip[] {
-  return t.travelTipItems;
+export function getLocalizedGuideTips(
+  t: Translations,
+  routeId?: RouteId,
+): GuideTip[] {
+  if (!routeId) {
+    return t.travelTipItems;
+  }
+
+  return t.routeTravelTipItems[routeId] ?? t.travelTipItems;
 }
 
-export function getLocalizedFaqs(t: Translations): FAQItem[] {
-  return t.faqItems;
+export function getLocalizedFaqs(
+  t: Translations,
+  routeId?: RouteId,
+): FAQItem[] {
+  if (!routeId) {
+    return t.faqItems;
+  }
+
+  return t.routeFaqItems[routeId] ?? t.faqItems;
 }

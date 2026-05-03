@@ -1,6 +1,9 @@
+"use client";
+
 import type { ReactNode } from "react";
 import type { Route } from "@/data/routes";
 import type { Schedule, ScheduleSource } from "@/data/schedules";
+import { useNextDeparture } from "@/hooks/useNextDeparture";
 import type { Translations } from "@/lib/i18n";
 
 type ScheduleListProps = {
@@ -19,6 +22,7 @@ export function ScheduleList({
   showSourceInfo = false,
 }: ScheduleListProps) {
   const hasSubRoutes = Boolean(schedule.subRoutes?.length);
+  const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
 
   return (
     <section id="schedule" className="rounded-lg border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5">
@@ -28,6 +32,9 @@ export function ScheduleList({
             {labels.title}
           </p>
           <h2 className="mt-1 text-xl font-black text-[#13233a] sm:text-2xl">{route.label}</h2>
+          <p className="mt-1 text-xs font-bold text-[#5f6874]">
+            {labels.timeZoneNote}
+          </p>
         </div>
         <p className="text-right text-xs font-bold text-[#5f6874] sm:text-sm">
           {labels.updated} {schedule.lastUpdated}
@@ -51,7 +58,7 @@ export function ScheduleList({
                   <DepartureTile
                     key={`${subRoute.id}-${departure}`}
                     departure={departure}
-                    isNext={departure === nextDeparture}
+                    isNext={departure === calculatedNextDeparture.time}
                     labels={labels}
                   />
                 ))}
@@ -72,7 +79,7 @@ export function ScheduleList({
             <DepartureTile
               key={departure}
               departure={departure}
-              isNext={departure === nextDeparture}
+              isNext={departure === calculatedNextDeparture.time}
               labels={labels}
             />
           ))}
