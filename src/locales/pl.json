@@ -155,6 +155,20 @@
         "body": "Autobusy zwykle przyjeżdżają na North Pattaya Bus Station. Stamtąd możesz wziąć songthaew albo taksówkę do hotelu."
       }
     ],
+    "pattaya-to-bangkok": [
+      {
+        "title": "Sprawdź, czy jedziesz do Ekkamai czy Mo Chit",
+        "body": "Bangkok ma kilka dworców autobusowych. Przed zakupem biletu upewnij się, czy autobus jedzie do Ekkamai czy Mo Chit."
+      },
+      {
+        "title": "Przyjdź wcześniej na dworzec w Pattayi",
+        "body": "Przyjdź 20–30 minut przed odjazdem, żeby kupić bilet i znaleźć właściwe stanowisko."
+      },
+      {
+        "title": "Zaplanuj dojazd w Bangkoku",
+        "body": "Po przyjeździe do Bangkoku zaplanuj dalszy transport. Ekkamai jest wygodne dla Sukhumvit i BTS, a Mo Chit dla północnej części miasta."
+      }
+    ],
     "suvarnabhumi-airport-to-pattaya": [
       {
         "title": "Sprawdź stanowisko autobusowe po przylocie",
@@ -209,6 +223,24 @@
       {
         "question": "Czy godziny autobusów Bangkok Pattaya są stałe?",
         "answer": "Godziny są oparte na opublikowanych informacjach operatora, ale mogą się zmieniać. Potwierdź rozkład przed podróżą."
+      }
+    ],
+    "pattaya-to-bangkok": [
+      {
+        "question": "Ile trwa autobus z Pattaya do Bangkok?",
+        "answer": "Podróż zwykle trwa około 2–3 godzin, zależnie od ruchu drogowego i dworca docelowego."
+      },
+      {
+        "question": "Czy autobus jedzie do Ekkamai czy Mo Chit?",
+        "answer": "Niektóre kursy jadą do Ekkamai, a inne do Mo Chit. Sprawdź dworzec docelowy przed zakupem biletu."
+      },
+      {
+        "question": "Gdzie kupić bilet w Pattayi?",
+        "answer": "Bilet zwykle kupuje się na dworcu autobusowym w Pattayi. Przyjdź wcześniej, szczególnie w weekendy i święta."
+      },
+      {
+        "question": "Czy godziny autobusów Pattaya Bangkok mogą się zmienić?",
+        "answer": "Tak. Godziny są oparte na opublikowanych informacjach, ale mogą się zmieniać. Potwierdź rozkład przed podróżą."
       }
     ],
     "suvarnabhumi-airport-to-pattaya": [
