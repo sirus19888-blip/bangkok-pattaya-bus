@@ -11,16 +11,24 @@ export default function ContactPage() {
   return (
     <TrustPage
       eyebrow="Contact"
-      title="Contact Bangkok Pattaya Bus Guide"
-      intro="Questions, corrections, and schedule updates are welcome."
+      title="Contact"
+      intro="You can report outdated bus times, wrong prices, or station information that needs updating."
       sections={[
         {
           title: "Email",
           body: "You can contact the site owner at hello@example.com.",
         },
         {
-          title: "Report outdated information",
-          body: "If you notice a bus time, station detail, ticket price, or travel note that looks outdated, please send the route name and the information that should be checked.",
+          title: "For travelers",
+          body: "If you notice outdated bus times, wrong prices, or station information that needs updating, please send a message.",
+        },
+        {
+          title: "For operators",
+          body: "If you represent a bus operator or ticketing platform and want to suggest corrections, please get in touch.",
+        },
+        {
+          title: "Urgent travel support",
+          body: "Please do not use this contact page for urgent travel support. Always confirm urgent travel details directly with the bus station or operator.",
         },
       ]}
     />

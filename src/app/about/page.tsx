@@ -11,20 +11,20 @@ export default function AboutPage() {
   return (
     <TrustPage
       eyebrow="About"
-      title="Independent Bangkok to Pattaya bus guide"
-      intro="Bangkok Pattaya Bus Guide helps tourists quickly check practical bus information between Bangkok and Pattaya."
+      title="About Bangkok Pattaya Bus Guide"
+      intro="Bangkok Pattaya Bus Guide is an independent travel guide that helps visitors quickly check bus times, prices, stations, and practical notes for travel between Bangkok, Pattaya, and Suvarnabhumi Airport."
       sections={[
         {
-          title: "Independent guide",
-          body: "This website is an independent travel guide. It is not an official bus operator website and it does not sell official bus tickets.",
+          title: "Independent travel guide",
+          body: "This website is independent. It is not an official bus operator website. The goal is to make bus travel information easier to understand for tourists.",
         },
         {
-          title: "What it helps with",
-          body: "The guide brings together useful information such as routes, departure times, station notes, travel time, ticket price guidance, and simple travel tips.",
+          title: "Schedule accuracy",
+          body: "Bus times may change. Travelers should confirm departure times with the station or operator before travel. The site uses published operator information and manual checks where possible.",
         },
         {
-          title: "Check before travel",
-          body: "Bus schedules may change because of traffic, holidays, weather, or operator changes. Please confirm times at the station or with the operator before you travel.",
+          title: "Help improve this guide",
+          body: "If you notice outdated bus times, prices, or station information, you can contact the site owner so the information can be checked.",
         },
       ]}
     />
