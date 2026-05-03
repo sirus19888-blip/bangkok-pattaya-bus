@@ -15,7 +15,20 @@
     "title": "Départs aujourd'hui",
     "updated": "Mis à jour",
     "nextBus": "Prochain bus",
-    "departure": "Départ"
+    "departure": "Départ",
+    "dataTitle": "Données de l'horaire",
+    "source": "Source :",
+    "sourceType": "Type de source :",
+    "lastVerified": "Dernière vérification :",
+    "verification": "Statut de vérification :",
+    "fareNote": "Information sur le tarif :",
+    "dataQuality": "Qualité des données :",
+    "boardingNote": "Information d'embarquement :",
+    "note": "Information importante :",
+    "subRoute": "Sous-trajet",
+    "showDetails": "Voir les détails",
+    "needsOfficialConfirmationNotice": "Ces horaires nécessitent une confirmation officielle avant de s'y fier.",
+    "partiallyVerifiedNotice": "Basé sur les informations publiées par l'opérateur. Confirmez avant le voyage."
   },
   "station": {
     "title": "Informations sur la station",

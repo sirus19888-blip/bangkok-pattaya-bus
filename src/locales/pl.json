@@ -20,7 +20,20 @@
     "title": "Dzisiejsze odjazdy",
     "updated": "Aktualizacja",
     "nextBus": "Najbliższy autobus",
-    "departure": "Odjazd"
+    "departure": "Odjazd",
+    "dataTitle": "Dane rozkładu",
+    "source": "Źródło:",
+    "sourceType": "Typ źródła:",
+    "lastVerified": "Ostatnio sprawdzono:",
+    "verification": "Status weryfikacji:",
+    "fareNote": "Informacja o cenie:",
+    "dataQuality": "Jakość danych:",
+    "boardingNote": "Informacja o wejściu na pokład:",
+    "note": "Ważna informacja:",
+    "subRoute": "Trasa częściowa",
+    "showDetails": "Pokaż szczegóły",
+    "needsOfficialConfirmationNotice": "Te godziny wymagają oficjalnego potwierdzenia przed użyciem.",
+    "partiallyVerifiedNotice": "Na podstawie opublikowanych informacji operatora. Potwierdź przed podróżą."
   },
   "station": {
     "title": "Informacje o stacji",

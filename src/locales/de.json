@@ -15,7 +15,20 @@
     "title": "Heutige Abfahrten",
     "updated": "Aktualisiert",
     "nextBus": "Nächster Bus",
-    "departure": "Abfahrt"
+    "departure": "Abfahrt",
+    "dataTitle": "Fahrplandaten",
+    "source": "Quelle:",
+    "sourceType": "Quellentyp:",
+    "lastVerified": "Zuletzt geprüft:",
+    "verification": "Prüfstatus:",
+    "fareNote": "Hinweis zum Fahrpreis:",
+    "dataQuality": "Datenqualität:",
+    "boardingNote": "Hinweis zum Einstieg:",
+    "note": "Wichtiger Hinweis:",
+    "subRoute": "Teilstrecke",
+    "showDetails": "Details anzeigen",
+    "needsOfficialConfirmationNotice": "Diese Zeiten benötigen eine offizielle Bestätigung, bevor man sich darauf verlässt.",
+    "partiallyVerifiedNotice": "Basierend auf veröffentlichten Betreiberinformationen. Vor der Reise bestätigen."
   },
   "station": {
     "title": "Stationsinformationen",

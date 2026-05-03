@@ -142,12 +142,7 @@ function ScheduleSourceInfo({
   return (
     <div className="mt-3 rounded-lg border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-sm leading-6 text-[#4f5d6c] sm:p-4">
       <p className="font-black text-[#13233a]">{labels.dataTitle}</p>
-      {verificationNotice ? (
-        <p className="mt-2 rounded-lg bg-[#f9e8a8] px-3 py-2 font-bold text-[#13233a]">
-          {verificationNotice}
-        </p>
-      ) : null}
-      <dl className="mt-3 grid gap-1.5">
+      <dl className="mt-2 grid gap-1.5">
         <InfoRow label={labels.source}>
           {source.sourceUrl && source.sourceUrl !== "#" ? (
             <a
@@ -162,18 +157,30 @@ function ScheduleSourceInfo({
             source.sourceName
           )}
         </InfoRow>
-        <InfoRow label={labels.sourceType}>{source.sourceType}</InfoRow>
         <InfoRow label={labels.lastVerified}>{source.lastVerified}</InfoRow>
-        <InfoRow label={labels.verification}>
-          {source.verificationStatus}
-        </InfoRow>
-        <InfoRow label={labels.fareNote}>{source.fareNote}</InfoRow>
-        {boardingNote ? (
-          <InfoRow label={labels.boardingNote}>{boardingNote}</InfoRow>
-        ) : null}
-        <InfoRow label={labels.dataQuality}>{source.dataQuality}</InfoRow>
-        <InfoRow label={labels.note}>{source.operatorNote}</InfoRow>
       </dl>
+      {verificationNotice ? (
+        <p className="mt-2 rounded-lg bg-[#f9e8a8] px-3 py-2 font-bold text-[#13233a]">
+          {verificationNotice}
+        </p>
+      ) : null}
+      <details className="mt-2">
+        <summary className="inline-flex min-h-11 cursor-pointer list-none items-center rounded-lg border border-[#eadcc7] bg-white px-3 text-sm font-black text-[#13233a]">
+          {labels.showDetails}
+        </summary>
+        <dl className="mt-3 grid gap-1.5">
+          <InfoRow label={labels.sourceType}>{source.sourceType}</InfoRow>
+          <InfoRow label={labels.verification}>
+            {source.verificationStatus}
+          </InfoRow>
+          <InfoRow label={labels.fareNote}>{source.fareNote}</InfoRow>
+          {boardingNote ? (
+            <InfoRow label={labels.boardingNote}>{boardingNote}</InfoRow>
+          ) : null}
+          <InfoRow label={labels.dataQuality}>{source.dataQuality}</InfoRow>
+          <InfoRow label={labels.note}>{source.operatorNote}</InfoRow>
+        </dl>
+      </details>
     </div>
   );
 }
