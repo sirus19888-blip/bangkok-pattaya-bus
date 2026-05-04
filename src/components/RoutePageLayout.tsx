@@ -8,6 +8,7 @@ import { RouteJsonLd } from "@/components/RouteJsonLd";
 import { RouteSearch } from "@/components/RouteSearch";
 import { RouteSummary } from "@/components/RouteSummary";
 import { ScheduleList } from "@/components/ScheduleList";
+import { StationPhotoGallery } from "@/components/StationPhotoGallery";
 import { StationCard } from "@/components/StationCard";
 import { SupportButton } from "@/components/SupportButton";
 import { TravelGuide } from "@/components/TravelGuide";
@@ -15,6 +16,7 @@ import { routePages } from "@/data/routes";
 import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
+import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
 import {
   getLocalizedFaqs,
   getLocalizedGuideTips,
@@ -42,6 +44,10 @@ export function RoutePageLayout({
 }: RoutePageLayoutProps) {
   const localizedGuideTips = getLocalizedGuideTips(t, routePage.slug);
   const localizedFaqs = getLocalizedFaqs(t, routePage.slug);
+  const stationPhotoGroups = getStationPhotoGroupsForRoute(
+    routePage.slug,
+    locale,
+  );
   const sourceStatusLabel =
     schedule.verificationStatus === "needs official confirmation"
       ? t.schedule.needsOfficialConfirmationShort
@@ -93,6 +99,10 @@ export function RoutePageLayout({
               };
             })}
           />
+        </div>
+
+        <div className="md:hidden">
+          <StationPhotoGallery groups={stationPhotoGroups} locale={locale} />
         </div>
 
         <section className="hidden gap-4 md:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
@@ -156,6 +166,10 @@ export function RoutePageLayout({
             />
           </div>
         </section>
+
+        <div className="hidden md:block">
+          <StationPhotoGallery groups={stationPhotoGroups} locale={locale} />
+        </div>
 
         <MobileDetailsSection title={t.station.title}>
           <StationCard
