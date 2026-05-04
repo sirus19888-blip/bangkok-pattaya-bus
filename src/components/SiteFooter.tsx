@@ -22,11 +22,24 @@ const footerText = {
       { href: "/privacy", label: "ความเป็นส่วนตัว" },
     ],
   },
+  ru: {
+    title: "Гид по автобусам Бангкок Паттайя",
+    ariaLabel: "Ссылки внизу страницы",
+    links: [
+      { href: "/about", label: "О проекте" },
+      { href: "/contact", label: "Контакты" },
+      { href: "/privacy", label: "Конфиденциальность" },
+    ],
+  },
 };
 
 export function SiteFooter() {
   const pathname = usePathname();
-  const text = pathname?.startsWith("/th/") ? footerText.th : footerText.en;
+  const text = pathname?.startsWith("/th/")
+    ? footerText.th
+    : pathname?.startsWith("/ru/")
+      ? footerText.ru
+      : footerText.en;
 
   return (
     <footer className="border-t border-[#eadcc7] bg-[#f7f0e3]">

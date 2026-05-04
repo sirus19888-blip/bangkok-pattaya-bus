@@ -15,6 +15,18 @@ export function LanguageSwitcher({
   routeSlug,
 }: LanguageSwitcherProps) {
   const router = useRouter();
+  const localeLabels =
+    currentLocale === "ru"
+      ? {
+          en: "АНГ",
+          th: "ТАЙ",
+          zh: "КИТ",
+          ru: "РУ",
+          de: "НЕМ",
+          fr: "ФР",
+          pl: "ПОЛ",
+        }
+      : null;
 
   function handleLanguageChange(nextLocale: LocaleCode) {
     router.push(`/${nextLocale}/${routeSlug}`);
@@ -33,7 +45,7 @@ export function LanguageSwitcher({
       >
         {supportedLocales.map((locale) => (
           <option key={locale.code} value={locale.code}>
-            {locale.code.toUpperCase()}
+            {localeLabels?.[locale.code] ?? locale.code.toUpperCase()}
           </option>
         ))}
       </select>

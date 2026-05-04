@@ -58,6 +58,8 @@ export function RoutePageLayout({
   const stationAccessSwipeHint =
     locale === "pl"
       ? "Przesuń, aby zobaczyć więcej"
+      : locale === "ru"
+        ? "Проведите, чтобы увидеть больше"
       : locale === "th"
         ? "เลื่อนเพื่อดูเพิ่มเติม"
         : "Swipe to see more";

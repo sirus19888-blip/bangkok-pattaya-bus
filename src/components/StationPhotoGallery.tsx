@@ -36,11 +36,18 @@ export function StationPhotoGallery({
   const galleryTitle = getStationPhotoGalleryTitle(locale);
   const attributionLabel = getStationPhotoAttributionLabel(locale);
   const openPhotoLabel =
-    locale === "th" ? "เปิดภาพขนาดใหญ่" : "Open larger photo";
-  const closeImageLabel = locale === "th" ? "ปิดภาพ" : "Close image";
+    locale === "ru"
+      ? "Открыть фото крупнее"
+      : locale === "th"
+        ? "เปิดภาพขนาดใหญ่"
+        : "Open larger photo";
+  const closeImageLabel =
+    locale === "ru" ? "Закрыть фото" : locale === "th" ? "ปิดภาพ" : "Close image";
   const swipeHint =
     locale === "pl"
       ? "Przesuń, aby zobaczyć więcej"
+      : locale === "ru"
+        ? "Проведите, чтобы увидеть больше"
       : locale === "th"
         ? "เลื่อนเพื่อดูเพิ่มเติม"
         : "Swipe to see more";
@@ -106,6 +113,8 @@ export function StationPhotoGallery({
                       <p className="mt-2 text-sm font-black leading-5 text-[#13233a] lg:mt-1.5 lg:text-xs lg:leading-4">
                         {locale === "pl"
                           ? photo.displayTitle.pl
+                          : locale === "ru"
+                            ? photo.displayTitle.ru ?? "Фото станции"
                           : locale === "th"
                             ? photo.displayTitle.th ?? "ภาพสถานี"
                             : photo.displayTitle.en}
@@ -177,6 +186,8 @@ function PhotoLightbox({
   const title = photo.displayTitle
     ? locale === "pl"
       ? photo.displayTitle.pl
+      : locale === "ru"
+        ? photo.displayTitle.ru ?? "Фото станции"
       : locale === "th"
         ? photo.displayTitle.th ?? "ภาพสถานี"
       : photo.displayTitle.en

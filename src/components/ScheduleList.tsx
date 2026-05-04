@@ -225,9 +225,16 @@ function formatVerificationStatus(
   labels: Translations["schedule"],
 ) {
   const isThai = labels.verification === "สถานะการตรวจสอบ";
+  const isRussian = labels.verification === "Статус проверки";
 
-  if (!isThai) {
+  if (!isThai && !isRussian) {
     return status;
+  }
+
+  if (isRussian) {
+    return status === "needs official confirmation"
+      ? "требует официального подтверждения"
+      : "частично проверено";
   }
 
   return status === "needs official confirmation"

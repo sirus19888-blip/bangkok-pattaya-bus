@@ -89,11 +89,20 @@ export function getTranslations(locale: LocaleCode): Translations {
 export function localizeRoute(route: Route, t: Translations): Route {
   const routeText = t.routePages[route.id] ?? en.routePages[route.id];
   const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
+  const isRussian = t.nextBus.title === "Следующий автобус";
 
   return {
     ...route,
-    distance: isThai ? route.distance.replace("km", "กม.") : route.distance,
-    duration: isThai ? route.duration.replace(/h/g, " ชม.") : route.duration,
+    distance: isThai
+      ? route.distance.replace("km", "กม.")
+      : isRussian
+        ? route.distance.replace("km", "км")
+        : route.distance,
+    duration: isThai
+      ? route.duration.replace(/h/g, " ชม.")
+      : isRussian
+        ? route.duration.replace(/h/g, " ч")
+        : route.duration,
     label: routeText.label,
   };
 }
@@ -135,6 +144,7 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     sourceType?: string;
   };
   const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
+  const isRussian = t.nextBus.title === "Следующий автобус";
   const thaiSubRouteText: Record<string, { label: string; from: string; to: string }> = {
     "pattaya-to-mochit": {
       label: "พัทยาไปหมอชิต 2",
@@ -145,6 +155,18 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
       label: "พัทยาไปเอกมัย",
       from: "สถานีขนส่งพัทยา",
       to: "สถานีขนส่งเอกมัย",
+    },
+  };
+  const russianSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "pattaya-to-mochit": {
+      label: "Паттайя — Мо Чит 2",
+      from: "автовокзал Паттайи",
+      to: "автовокзал Мо Чит 2",
+    },
+    "pattaya-to-ekkamai": {
+      label: "Паттайя — Эккамай",
+      from: "автовокзал Паттайи",
+      to: "автовокзал Эккамай",
     },
   };
 
@@ -161,17 +183,20 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     sourceType: sourceText.sourceType ?? schedule.sourceType,
     subRoutes: schedule.subRoutes?.map((subRoute) => {
       const thaiText = isThai ? thaiSubRouteText[subRoute.id] : undefined;
+      const russianText = isRussian
+        ? russianSubRouteText[subRoute.id]
+        : undefined;
 
       return {
         ...subRoute,
         dataQuality: sourceText.dataQuality ?? subRoute.dataQuality,
         fareNote: sourceText.fareNote ?? subRoute.fareNote,
-        label: thaiText?.label ?? subRoute.label,
+        label: thaiText?.label ?? russianText?.label ?? subRoute.label,
         operatorNote: sourceText.operatorNote ?? subRoute.operatorNote,
         sourceName: sourceText.sourceName ?? subRoute.sourceName,
         sourceType: sourceText.sourceType ?? subRoute.sourceType,
-        from: thaiText?.from ?? subRoute.from,
-        to: thaiText?.to ?? subRoute.to,
+        from: thaiText?.from ?? russianText?.from ?? subRoute.from,
+        to: thaiText?.to ?? russianText?.to ?? subRoute.to,
       };
     }),
   };
@@ -182,6 +207,7 @@ export function localizeStations(
   t: Translations,
 ): Station[] {
   const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
+  const isRussian = t.nextBus.title === "Следующий автобус";
   const thaiStationNames: Record<string, string> = {
     ekkamai: "สถานีขนส่งเอกมัย",
     "mo-chit": "สถานีขนส่งหมอชิต 2",
@@ -191,6 +217,15 @@ export function localizeStations(
     "don-mueang-airport": "ท่าอากาศยานดอนเมือง",
     "pattaya-sukhumvit": "สถานีรถบัสถนนสุขุมวิทพัทยา",
   };
+  const russianStationNames: Record<string, string> = {
+    ekkamai: "автовокзал Эккамай",
+    "mo-chit": "автовокзал Мо Чит 2",
+    "north-pattaya": "автовокзал Северной Паттайи",
+    "suvarnabhumi-airport": "автобусная стойка аэропорта Суварнабхуми",
+    "jomtien-bus-area": "автобусная зона Паттайя / Джомтьен",
+    "don-mueang-airport": "аэропорт Дон Муанг",
+    "pattaya-sukhumvit": "автостанция на дороге Сукхумвит в Паттайе",
+  };
 
   return stations.map((station) => {
     const stationId = station.id as keyof Translations["stationsText"];
@@ -198,7 +233,11 @@ export function localizeStations(
 
     return {
       ...station,
-      name: isThai ? thaiStationNames[station.id] ?? station.name : station.name,
+      name: isThai
+        ? thaiStationNames[station.id] ?? station.name
+        : isRussian
+          ? russianStationNames[station.id] ?? station.name
+          : station.name,
       bestFor: stationText.bestFor,
       tip: stationText.tip,
     };

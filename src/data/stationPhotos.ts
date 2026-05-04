@@ -10,6 +10,7 @@ export type StationPhotoStationId =
   | "pattaya-sukhumvit";
 
 type LocalizedText = Record<"en" | "pl", string> & {
+  ru?: string;
   th?: string;
 };
 
@@ -36,36 +37,43 @@ const stationTitles: Record<StationPhotoStationId, LocalizedText> = {
   ekkamai: {
     en: "Ekkamai Bus Terminal",
     pl: "Dworzec Ekkamai",
+    ru: "автовокзал Эккамай",
     th: "สถานีขนส่งเอกมัย",
   },
   "north-pattaya": {
     en: "North Pattaya Bus Station",
     pl: "North Pattaya Bus Station",
+    ru: "автовокзал Северной Паттайи",
     th: "สถานีขนส่งพัทยาเหนือ",
   },
   "mo-chit": {
     en: "Mo Chit 2 Bus Terminal",
     pl: "Dworzec Mo Chit 2",
+    ru: "автовокзал Мо Чит 2",
     th: "สถานีขนส่งหมอชิต 2",
   },
   "suvarnabhumi-airport": {
     en: "Suvarnabhumi Airport bus area",
     pl: "Strefa autobusowa na lotnisku Suvarnabhumi",
+    ru: "автобусная зона аэропорта Суварнабхуми",
     th: "จุดรถบัสท่าอากาศยานสุวรรณภูมิ",
   },
   "jomtien-bus-area": {
     en: "Pattaya / Jomtien airport bus area",
     pl: "Strefa autobusu lotniskowego Pattaya / Jomtien",
+    ru: "автобусная зона Паттайя / Джомтьен",
     th: "จุดรถบัสสนามบินพัทยา / จอมเทียน",
   },
   "don-mueang-airport": {
     en: "Don Mueang Airport",
     pl: "Lotnisko Don Mueang",
+    ru: "аэропорт Дон Муанг",
     th: "ท่าอากาศยานดอนเมือง",
   },
   "pattaya-sukhumvit": {
     en: "Pattaya Sukhumvit Road Bus Station",
     pl: "Pattaya Sukhumvit Road Bus Station",
+    ru: "автостанция на дороге Сукхумвит в Паттайе",
     th: "สถานีรถบัสถนนสุขุมวิทพัทยา",
   },
 };
@@ -74,16 +82,19 @@ const practicalCaptions = {
   entrance: {
     en: "Use this photo to recognize the terminal entrance.",
     pl: "To zdjęcie pomoże rozpoznać wejście do terminalu.",
+    ru: "Это фото поможет узнать вход в терминал.",
     th: "ใช้ภาพนี้ช่วยจำทางเข้าสถานี",
   },
   counters: {
     en: "Look for the ticket counters inside the terminal.",
     pl: "Szukaj kas biletowych wewnątrz terminalu.",
+    ru: "Ищите кассы внутри терминала.",
     th: "มองหาเคาน์เตอร์จำหน่ายตั๋วภายในสถานี",
   },
   boarding: {
     en: "Boarding areas may change. Check signs at the station.",
     pl: "Miejsca odjazdu mogą się zmieniać. Sprawdź oznaczenia na dworcu.",
+    ru: "Места посадки могут меняться. Проверьте указатели на станции.",
     th: "จุดขึ้นรถอาจเปลี่ยนได้ โปรดดูป้ายที่สถานี",
   },
 } satisfies Record<string, LocalizedText>;
@@ -143,11 +154,13 @@ export const stationPhotos: StationPhoto[] = [
     displayTitle: {
       en: "North Pattaya Bus Station",
       pl: "North Pattaya Bus Station",
+      ru: "автовокзал Северной Паттайи",
       th: "สถานีขนส่งพัทยาเหนือ",
     },
     caption: {
       en: "Main bus station area in North Pattaya.",
       pl: "Główny dworzec autobusowy w North Pattaya.",
+      ru: "Основная зона автовокзала Северной Паттайи.",
       th: "บริเวณสถานีขนส่งหลักในพัทยาเหนือ",
     },
     alt: {
@@ -295,6 +308,7 @@ export const stationPhotos: StationPhoto[] = [
     caption: {
       en: "Bus station area at Don Mueang Airport",
       pl: "Strefa autobusowa na lotnisku Don Mueang",
+      ru: "Автобусная зона в аэропорту Дон Муанг",
       th: "บริเวณสถานีรถบัสที่ท่าอากาศยานดอนเมือง",
     },
     alt: {
@@ -315,6 +329,7 @@ export const stationPhotos: StationPhoto[] = [
     caption: {
       en: "Terminal 2 front area",
       pl: "Wejście do Terminalu 2",
+      ru: "Входная зона терминала 2",
       th: "บริเวณด้านหน้าอาคารผู้โดยสาร 2",
     },
     alt: {
@@ -335,6 +350,7 @@ export const stationPhotos: StationPhoto[] = [
     caption: {
       en: "Terminal 1 building",
       pl: "Budynek Terminalu 1",
+      ru: "Здание терминала 1",
       th: "อาคารผู้โดยสาร 1",
     },
     alt: {
@@ -376,6 +392,10 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
     return text.pl;
   }
 
+  if (locale === "ru") {
+    return text.ru ?? "Фото станции";
+  }
+
   if (locale === "th") {
     return text.th ?? "ภาพสถานี";
   }
@@ -405,6 +425,9 @@ export function getStationPhotoGalleryTitle(locale: LocaleCode) {
   if (locale === "th") {
     return "ภาพสถานี";
   }
+  if (locale === "ru") {
+    return "Фото станций";
+  }
   return locale === "pl"
     ? "Jak wyglądają stacje"
     : "What the stations look like";
@@ -413,6 +436,9 @@ export function getStationPhotoGalleryTitle(locale: LocaleCode) {
 export function getStationPhotoAttributionLabel(locale: LocaleCode) {
   if (locale === "th") {
     return "ภาพถ่าย";
+  }
+  if (locale === "ru") {
+    return "Фото";
   }
   return locale === "pl" ? "Zdjęcie" : "Photo";
 }
