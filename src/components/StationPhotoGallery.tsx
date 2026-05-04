@@ -35,7 +35,7 @@ export function StationPhotoGallery({
     <section
       className={
         compact
-          ? "rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-2.5"
+          ? "rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-2.5"
           : "rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5"
       }
     >
@@ -80,7 +80,7 @@ export function StationPhotoGallery({
                         className="object-cover"
                       />
                     </div>
-                    <figcaption className="mt-2 text-sm font-black leading-5 text-[#13233a]">
+                    <figcaption className="mt-2 text-[0.82rem] font-black leading-5 text-[#13233a]">
                       {photoText.caption}
                     </figcaption>
                     <p className="mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280]">

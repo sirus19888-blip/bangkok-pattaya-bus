@@ -41,8 +41,8 @@ export function StationMiniMap({
     locale === "pl" ? station.walkingNote.pl : station.walkingNote.en;
 
   return (
-    <div className="mt-4 overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2]">
-      <div className="border-b border-[#eadcc7] px-3 py-2">
+    <div className="overflow-hidden rounded-2xl border border-[#d6e8f4] bg-[#f4fbff]">
+      <div className="border-b border-[#d6e8f4] px-3 py-2.5">
         <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
           {labels.title}
         </p>
@@ -56,14 +56,14 @@ export function StationMiniMap({
       <iframe
         src={getOpenStreetMapEmbedUrl(station)}
         title={`${labels.title}: ${station.mapLabel}`}
-        className="h-[190px] w-full border-0 sm:h-[220px]"
+        className="h-[180px] w-full border-0 sm:h-[220px]"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       />
-      <div className="p-3">
+      <div className="border-t border-[#d6e8f4] bg-white p-2.5">
         <a
           href={station.googleMapsUrl}
-          className="flex min-h-11 w-full items-center justify-center rounded-xl border border-[#7fb7d8] bg-white px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-[#f4fbff]"
+          className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#233a5b]"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -73,4 +73,3 @@ export function StationMiniMap({
     </div>
   );
 }
-
