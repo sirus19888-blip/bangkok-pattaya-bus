@@ -155,6 +155,7 @@ export function RoutePageLayout({
           <div className="hidden space-y-5 lg:block">
             <StationCard
               stations={stations}
+              locale={locale}
               labels={{
                 ...t.station,
                 openInGoogleMaps: t.common.openInGoogleMaps,
@@ -171,6 +172,7 @@ export function RoutePageLayout({
         <MobileDetailsSection title={t.station.title}>
           <StationCard
             stations={stations}
+            locale={locale}
             labels={{
               ...t.station,
               openInGoogleMaps: t.common.openInGoogleMaps,

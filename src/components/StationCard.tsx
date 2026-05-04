@@ -1,14 +1,17 @@
+import { StationMiniMap } from "@/components/StationMiniMap";
+import type { LocaleCode } from "@/data/routes";
 import type { Station } from "@/data/stations";
 import type { Translations } from "@/lib/i18n";
 
 type StationCardProps = {
   stations: Station[];
+  locale: LocaleCode;
   labels: Translations["station"] & {
     openInGoogleMaps: string;
   };
 };
 
-export function StationCard({ stations, labels }: StationCardProps) {
+export function StationCard({ stations, locale, labels }: StationCardProps) {
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 shadow-sm sm:p-5">
       <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
@@ -26,16 +29,11 @@ export function StationCard({ stations, labels }: StationCardProps) {
               <span className="font-black text-[#13233a]">{labels.tip}</span>{" "}
               {station.tip}
             </p>
-            <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                station.name,
-              )}`}
-              className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl border border-[#7fb7d8] bg-white px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-[#f4fbff] sm:mt-5"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {labels.openInGoogleMaps}
-            </a>
+            <StationMiniMap
+              station={station}
+              locale={locale}
+              openInGoogleMapsLabel={labels.openInGoogleMaps}
+            />
           </article>
         ))}
       </div>
