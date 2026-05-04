@@ -75,4 +75,19 @@ export const stations: Station[] = [
       pl: "Po przylocie sprawdź oznaczenia na lotnisku.",
     },
   },
+  {
+    id: "jomtien-bus-area",
+    name: "Pattaya / Jomtien Airport Bus Area",
+    bestFor: "airport buses from Pattaya",
+    tip: "confirm the boarding point with Airport Pattaya Bus before travel",
+    latitude: 12.9069,
+    longitude: 100.8714,
+    mapLabel: "Pattaya / Jomtien Airport Bus Area",
+    googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Pattaya%20Jomtien%20Airport%20Bus",
+    openStreetMapUrl: "https://www.openstreetmap.org/?mlat=12.9069&mlon=100.8714#map=17/12.9069/100.8714",
+    walkingNote: {
+      en: "Confirm the exact boarding point with the operator before travel.",
+      pl: "Przed podróżą potwierdź dokładne miejsce odjazdu u operatora.",
+    },
+  },
 ];

@@ -38,6 +38,13 @@ const routeCards: Record<
     title: "Suvarnabhumi Airport to Pattaya Bus",
     travelTime: "Around 2-2.5 hours",
   },
+  "pattaya-to-suvarnabhumi-airport": {
+    cta: "Check route",
+    note: "Schedule needs verification",
+    price: "Check operator information",
+    title: "Pattaya to Suvarnabhumi Airport Bus",
+    travelTime: "Around 2-2.5 hours",
+  },
 };
 
 export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {

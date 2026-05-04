@@ -101,6 +101,35 @@ export const stationAccessGuides: Record<RouteId, StationAccessGuide> = {
       pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
     },
   },
+  "pattaya-to-suvarnabhumi-airport": {
+    routeId: "pattaya-to-suvarnabhumi-airport",
+    title: {
+      en: "How to get to the Pattaya airport bus area",
+      pl: "Jak dotrzeć do strefy autobusu lotniskowego w Pattayi",
+    },
+    items: [
+      {
+        en: "From your hotel: Taxi or Grab is usually the easiest option if you have luggage. Price varies by distance, traffic, and demand.",
+        pl: "Z hotelu: Taxi lub Grab to zwykle najłatwiejsza opcja, jeśli masz bagaż. Cena zależy od dystansu, korków i popytu.",
+      },
+      {
+        en: "By songthaew: It may be cheap if the route is convenient, but first-time visitors should allow extra time.",
+        pl: "Songthaew: Może być tani, jeśli trasa jest wygodna, ale osoby pierwszy raz w Pattayi powinny zostawić dodatkowy czas.",
+      },
+      {
+        en: "Before your flight: Leave a generous buffer for traffic, check-in, security, and immigration at the airport.",
+        pl: "Przed lotem: Zostaw duży zapas czasu na ruch drogowy, odprawę, kontrolę bezpieczeństwa i paszportową na lotnisku.",
+      },
+      {
+        en: "Tip: Confirm the boarding point and departure time with Airport Pattaya Bus before travel.",
+        pl: "Wskazówka: Przed podróżą potwierdź miejsce odjazdu i godzinę z Airport Pattaya Bus.",
+      },
+    ],
+    note: {
+      en: "Transport prices can change. App-based ride prices vary by traffic, demand, and pickup point.",
+      pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
+    },
+  },
 };
 
 export function getStationAccessGuide(routeId: RouteId, locale: LocaleCode) {
@@ -117,4 +146,3 @@ export function getStationAccessGuide(routeId: RouteId, locale: LocaleCode) {
 export function getStationAccessSectionTitle(locale: LocaleCode) {
   return locale === "pl" ? "Jak dotrzeć na dworzec" : "How to get to the station";
 }
-

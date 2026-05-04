@@ -218,6 +218,27 @@ export const schedules: Schedule[] = [
       "The 22:00 bus goes to North Pattaya bus station, not Jomtien bus terminal. Bus times may change. Confirm before travel.",
     dataQuality: "official source, manual verification",
   },
+  {
+    id: "pattaya-to-suvarnabhumi-airport",
+    from: "Pattaya / Jomtien bus area",
+    to: "Suvarnabhumi Airport",
+    direction: "pattaya-to-suvarnabhumi-airport",
+    travelTime: "Around 2-2.5 hours, depending on traffic",
+    price: "Check operator information",
+    departures: [],
+    nextDeparture: "Schedule needs verification",
+    lastUpdated: "Needs verification",
+    disclaimer: "Bus times may change. Confirm with the operator before travel.",
+    sourceName: "Airport Pattaya Bus",
+    sourceUrl: "https://airportpattayabus.com/",
+    sourceType: "official operator website",
+    lastVerified: "Needs verification",
+    verificationStatus: "needs official confirmation",
+    fareNote: "Check operator information before travel.",
+    operatorNote:
+      "Bus times may change. Confirm with the operator before travel.",
+    dataQuality: "official source, needs manual schedule verification",
+  },
 ];
 
 export function getScheduleByRoute(routeId: RouteId) {

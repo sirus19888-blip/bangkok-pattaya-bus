@@ -30,6 +30,7 @@ export function MobileRouteDecisionCard({
         .join(" / ")}`
     : calculatedNextDeparture.subRoutes[0]?.label;
   const departures = schedule.departures;
+  const hasDepartures = departures.length > 0;
 
   return (
     <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm md:hidden">
@@ -72,23 +73,29 @@ export function MobileRouteDecisionCard({
       </div>
 
       <div id="mobile-departures" className="mt-2.5 grid grid-cols-3 gap-1.5">
-        {departures.map((departure) => (
-          <span
-            key={departure}
-            className={`flex min-h-9 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black ${
-              departure === calculatedNextDeparture.time
-                ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
-                : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
-            }`}
-          >
-            {departure}
-            {departure === calculatedNextDeparture.time ? (
-              <span className="max-w-full truncate text-[0.56rem] uppercase leading-none tracking-wide text-[#f3d77b]">
-                {labels.nextBus}
-              </span>
-            ) : null}
-          </span>
-        ))}
+        {hasDepartures ? (
+          departures.map((departure) => (
+            <span
+              key={departure}
+              className={`flex min-h-9 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black ${
+                departure === calculatedNextDeparture.time
+                  ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
+                  : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
+              }`}
+            >
+              {departure}
+              {departure === calculatedNextDeparture.time ? (
+                <span className="max-w-full truncate text-[0.56rem] uppercase leading-none tracking-wide text-[#f3d77b]">
+                  {labels.nextBus}
+                </span>
+              ) : null}
+            </span>
+          ))
+        ) : (
+          <p className="col-span-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-sm font-black leading-5 text-[#13233a]">
+            {calculatedNextDeparture.time}
+          </p>
+        )}
       </div>
 
       <a

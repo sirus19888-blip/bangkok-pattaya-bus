@@ -93,16 +93,24 @@ export function ScheduleList({
           ))}
         </div>
       ) : (
-        <div className="mt-3 grid grid-cols-3 gap-2 min-[390px]:grid-cols-4 sm:mt-5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3">
-          {schedule.departures.map((departure) => (
-            <DepartureTile
-              key={departure}
-              departure={departure}
-              isNext={departure === calculatedNextDeparture.time}
-              labels={labels}
-            />
-          ))}
-        </div>
+        <>
+          {schedule.departures.length > 0 ? (
+            <div className="mt-3 grid grid-cols-3 gap-2 min-[390px]:grid-cols-4 sm:mt-5 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3">
+              {schedule.departures.map((departure) => (
+                <DepartureTile
+                  key={departure}
+                  departure={departure}
+                  isNext={departure === calculatedNextDeparture.time}
+                  labels={labels}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="mt-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-sm font-black leading-6 text-[#13233a] sm:mt-5 sm:p-4">
+              {labels.needsOfficialConfirmationNotice}
+            </p>
+          )}
+        </>
       )}
       <p className="mt-3 rounded-xl bg-[#fffaf2] p-3 text-sm font-semibold leading-6 text-[#4f5d6c] sm:mt-5 sm:p-4">
         {schedule.disclaimer}

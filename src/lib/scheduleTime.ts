@@ -66,6 +66,15 @@ export function getNextDeparture(
   now = new Date(),
 ): NextDepartureResult {
   const departures = getRouteDepartures(schedule);
+
+  if (departures.length === 0) {
+    return {
+      time: schedule.nextDeparture,
+      isTomorrow: false,
+      subRoutes: [],
+    };
+  }
+
   const currentMinutes = getCurrentThailandTime(now).minutesSinceMidnight;
   const nextToday = departures.find(
     (departure) => timeToMinutes(departure) > currentMinutes,

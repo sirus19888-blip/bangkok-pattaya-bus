@@ -4,7 +4,8 @@ export type StationPhotoStationId =
   | "ekkamai"
   | "north-pattaya"
   | "mo-chit"
-  | "suvarnabhumi-airport";
+  | "suvarnabhumi-airport"
+  | "jomtien-bus-area";
 
 type LocalizedText = Record<"en" | "pl", string>;
 
@@ -42,6 +43,10 @@ const stationTitles: Record<StationPhotoStationId, LocalizedText> = {
   "suvarnabhumi-airport": {
     en: "Suvarnabhumi Airport bus area",
     pl: "Strefa autobusowa na lotnisku Suvarnabhumi",
+  },
+  "jomtien-bus-area": {
+    en: "Pattaya / Jomtien airport bus area",
+    pl: "Strefa autobusu lotniskowego Pattaya / Jomtien",
   },
 };
 
@@ -247,6 +252,10 @@ const routeStationPhotoOrder: Record<RouteId, StationPhotoStationId[]> = {
   "suvarnabhumi-airport-to-pattaya": [
     "suvarnabhumi-airport",
     "north-pattaya",
+  ],
+  "pattaya-to-suvarnabhumi-airport": [
+    "jomtien-bus-area",
+    "suvarnabhumi-airport",
   ],
 };
 

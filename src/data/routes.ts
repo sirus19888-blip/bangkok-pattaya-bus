@@ -3,7 +3,8 @@ export type LocaleCode = "en" | "th" | "zh" | "ru" | "de" | "fr" | "pl";
 export type RouteId =
   | "bangkok-to-pattaya"
   | "pattaya-to-bangkok"
-  | "suvarnabhumi-airport-to-pattaya";
+  | "suvarnabhumi-airport-to-pattaya"
+  | "pattaya-to-suvarnabhumi-airport";
 
 export type Route = {
   id: RouteId;
@@ -64,6 +65,13 @@ export const routes: Route[] = [
     distance: "120 km",
     duration: "2h to 2h 30m",
   },
+  {
+    id: "pattaya-to-suvarnabhumi-airport",
+    label: "Pattaya to Suvarnabhumi Airport",
+    shortLabel: "Pattaya -> BKK Airport",
+    distance: "120 km",
+    duration: "2h to 2h 30m",
+  },
 ];
 
 export const defaultRouteId: RouteId = "bangkok-to-pattaya";
@@ -110,6 +118,21 @@ export const routePages: RoutePage[] = [
         "Suvarnabhumi Airport to Pattaya Bus Times | Bangkok Pattaya Bus Guide",
       description:
         "Check Suvarnabhumi Airport to Pattaya bus times, travel time, ticket price, station details, and practical travel tips.",
+    },
+  },
+  {
+    slug: "pattaya-to-suvarnabhumi-airport",
+    title: "Pattaya to Suvarnabhumi Airport Bus",
+    intro:
+      "Check the Pattaya to Suvarnabhumi Airport bus route, including travel time, boarding information, and schedule verification status.",
+    from: "Pattaya / Jomtien bus area",
+    to: "Suvarnabhumi Airport",
+    stationIds: ["jomtien-bus-area", "suvarnabhumi-airport"],
+    metadata: {
+      title:
+        "Pattaya to Suvarnabhumi Airport Bus | Schedule Verification & Travel Tips",
+      description:
+        "Check Pattaya to Suvarnabhumi Airport bus information, travel time, boarding area, and practical airport travel tips. Schedule times need confirmation before travel.",
     },
   },
 ];
