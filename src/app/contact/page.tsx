@@ -16,7 +16,7 @@ export default function ContactPage() {
       sections={[
         {
           title: "Email",
-          body: "You can contact the site owner at hello@example.com.",
+          body: "You can contact the site owner at bangkokpattayabus@gmail.com.",
         },
         {
           title: "For travelers",

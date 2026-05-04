@@ -28,7 +28,7 @@ export default function PrivacyPage() {
         },
         {
           title: "Contact",
-          body: "Users can contact the site owner at hello@example.com with privacy questions or requests.",
+          body: "Users can contact the site owner at bangkokpattayabus@gmail.com with privacy questions or requests.",
         },
       ]}
     />
