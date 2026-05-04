@@ -1,82 +1,472 @@
 {
   "app": {
-    "title": "Bangkok Pattaya Bus Guide",
-    "brandPrimary": "Bangkok Pattaya",
-    "brandSecondary": "Bus Guide"
+    "title": "曼谷芭提雅巴士指南",
+    "brandPrimary": "曼谷芭提雅",
+    "brandSecondary": "巴士指南"
   },
-  "navigation": { "chooseLanguage": "选择语言" },
-  "routeSelector": { "from": "出发地：", "to": "目的地：" },
+  "navigation": {
+    "chooseLanguage": "选择语言"
+  },
+  "routeSelector": {
+    "from": "出发地：",
+    "to": "目的地："
+  },
   "nextBus": {
-    "title": "下一班巴士：",
-    "travelTime": "车程：",
-    "ticketPrice": "票价："
+    "title": "下一班巴士",
+    "travelTime": "行程时间",
+    "ticketPrice": "票价",
+    "nextServiceTomorrow": "下一班明天发车",
+    "timeZoneNote": "所有时间均为泰国当地时间。",
+    "availableTo": "可前往："
   },
   "schedule": {
     "title": "今日发车",
     "updated": "已更新",
-    "nextBus": "下一班",
-    "departure": "发车"
+    "nextBus": "下一班巴士",
+    "departure": "发车",
+    "timeZoneNote": "所有时间均为泰国当地时间。",
+    "dataTitle": "时刻表数据",
+    "source": "来源",
+    "sourceType": "来源类型",
+    "lastVerified": "最后检查",
+    "verification": "验证状态",
+    "fareNote": "票价说明",
+    "dataQuality": "数据质量",
+    "boardingNote": "上车说明",
+    "note": "重要提示",
+    "subRoute": "分段路线",
+    "showDetails": "显示详情",
+    "hideDetails": "隐藏详情",
+    "needsOfficialConfirmationNotice": "这些时间在出行前需要再次确认。",
+    "partiallyVerifiedNotice": "基于运营商信息。出行前请再次确认。",
+    "needsOfficialConfirmationShort": "需要确认",
+    "partiallyVerifiedShort": "基于运营商信息"
   },
   "station": {
     "title": "车站信息",
-    "bestFor": "适合：",
-    "tip": "提示："
+    "bestFor": "适合",
+    "tip": "提示"
   },
-  "travelTips": { "title": "旅行提示", "heading": "乘车前" },
-  "faq": { "title": "常见问题", "heading": "出发前" },
-  "support": { "title": "支持", "question": "这个指南有帮助吗？" },
-  "lastUpdated": { "label": "最后更新：" },
-  "disclaimer": { "text": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
+  "travelTips": {
+    "title": "出行提示",
+    "heading": "乘车前"
+  },
+  "faq": {
+    "title": "常见问题",
+    "heading": "出发前"
+  },
+  "support": {
+    "title": "支持",
+    "question": "这个指南有帮助吗？"
+  },
+  "lastUpdated": {
+    "label": "最后检查："
+  },
+  "disclaimer": {
+    "text": "巴士时间可能会变动。出行前请在车站或向运营商确认。"
+  },
   "common": {
-    "showAllDepartures": "查看所有发车",
-    "openInGoogleMaps": "在 Google Maps 打开",
-    "buyMeCoffee": "请我喝咖啡",
-    "routeSummary": "路线摘要",
-    "distance": "距离"
+    "showAllDepartures": "查看所有发车时间",
+    "openInGoogleMaps": "在 Google Maps 中打开",
+    "buyMeCoffee": "请我喝杯咖啡",
+    "routeSummary": "路线概览",
+    "distance": "距离",
+    "relatedRoutes": "相关路线"
   },
   "routePages": {
     "bangkok-to-pattaya": {
-      "label": "Bangkok 到 Pattaya",
-      "title": "Bangkok 到 Pattaya 巴士",
-      "intro": "给游客的简单指南：从 Bangkok 市中心坐巴士到 Pattaya，查看发车时间和车站信息。",
-      "metadataTitle": "Bangkok 到 Pattaya 巴士 | 时间、车站和旅行提示",
-      "metadataDescription": "查看 Bangkok 到 Pattaya 的巴士时间，包括发车时间、车站、车程、票价和实用旅行提示。时间可能会变化，出行前请确认。"
+      "label": "曼谷到芭提雅",
+      "title": "曼谷到芭提雅巴士",
+      "intro": "查看从曼谷亿甲迈汽车站到芭提雅的巴士时间、票价、行程时间、车站信息和实用出行提示。",
+      "from": "曼谷",
+      "to": "芭提雅",
+      "metadataTitle": "曼谷到芭提雅巴士 - 时刻表、票价和车站",
+      "metadataDescription": "查看从曼谷亿甲迈汽车站到芭提雅的巴士时间、票价、行程时间、车站信息和实用出行提示。"
     },
     "pattaya-to-bangkok": {
-      "label": "Pattaya 到 Bangkok",
-      "title": "Pattaya 到 Bangkok 巴士",
-      "intro": "计划从 Pattaya 返回 Bangkok，查看发车时间、车站和实用提示。",
-      "metadataTitle": "Pattaya 到 Bangkok 巴士 | 时间、车站和旅行提示",
-      "metadataDescription": "查看 Pattaya 到 Bangkok 的巴士时间，包括发车时间、车站、车程、票价和实用旅行提示。时间可能会变化，出行前请确认。"
+      "label": "芭提雅到曼谷",
+      "title": "芭提雅到曼谷巴士",
+      "intro": "查看从芭提雅到曼谷的巴士时间，包括前往亿甲迈和莫奇特2的班次、票价和车站信息。",
+      "from": "芭提雅",
+      "to": "曼谷",
+      "metadataTitle": "芭提雅到曼谷巴士 - 亿甲迈和莫奇特2时刻表",
+      "metadataDescription": "查看从芭提雅到曼谷的巴士发车时间、前往亿甲迈和莫奇特2的班次、票价、行程时间和提示。"
     },
     "suvarnabhumi-airport-to-pattaya": {
-      "label": "Suvarnabhumi Airport 到 Pattaya",
-      "title": "Suvarnabhumi Airport 到 Pattaya 巴士",
-      "intro": "适合抵达后直接从 Suvarnabhumi Airport 坐巴士去 Pattaya 的旅客。",
-      "metadataTitle": "Suvarnabhumi Airport 到 Pattaya 巴士 | 时间、车站和旅行提示",
-      "metadataDescription": "查看 Suvarnabhumi Airport 到 Pattaya 的巴士时间，包括发车时间、车站、车程、票价和实用旅行提示。时间可能会变化，出行前请确认。"
+      "label": "素万那普机场到芭提雅",
+      "title": "素万那普机场到芭提雅巴士",
+      "intro": "查看从素万那普机场到芭提雅的巴士时间、票价、行程时间、巴士柜台信息和抵达后的实用提示。",
+      "from": "素万那普机场",
+      "to": "芭提雅",
+      "metadataTitle": "素万那普机场到芭提雅巴士 - 时间、票价和柜台",
+      "metadataDescription": "查看从素万那普机场到芭提雅的巴士时间、票价、巴士柜台和抵达后的实用提示。"
+    },
+    "pattaya-to-suvarnabhumi-airport": {
+      "label": "芭提雅到素万那普机场",
+      "title": "芭提雅到素万那普机场巴士",
+      "intro": "查看从芭提雅到素万那普机场的巴士时间、票价、行程时间、上车地点和航班前出行提示。",
+      "from": "芭提雅 / 中天",
+      "to": "素万那普机场",
+      "metadataTitle": "芭提雅到素万那普机场巴士 - 时间、票价和上车点",
+      "metadataDescription": "查看从芭提雅和中天到素万那普机场的巴士时间、票价、上车地点和航班前提示。"
+    },
+    "don-mueang-airport-to-pattaya": {
+      "label": "廊曼机场到芭提雅",
+      "title": "廊曼机场到芭提雅巴士",
+      "intro": "查看从廊曼机场到芭提雅的巴士信息，包括发车时间、行程时间、车站信息和数据来源。",
+      "from": "廊曼机场",
+      "to": "芭提雅",
+      "metadataTitle": "廊曼机场到芭提雅巴士 - 时刻表和出行信息",
+      "metadataDescription": "查看从廊曼机场到芭提雅的巴士信息、发车时间、行程时间、车站信息和数据来源状态。"
+    },
+    "pattaya-to-don-mueang-airport": {
+      "label": "芭提雅到廊曼机场",
+      "title": "芭提雅到廊曼机场巴士",
+      "intro": "查看从芭提雅到廊曼机场的巴士信息，包括行程时间、数据来源和航班前出行提示。",
+      "from": "芭提雅",
+      "to": "廊曼机场",
+      "metadataTitle": "芭提雅到廊曼机场巴士 - 时刻表和出行信息",
+      "metadataDescription": "查看从芭提雅到廊曼机场的巴士信息、行程时间、发车提示、数据来源状态和航班前提示。"
     }
   },
   "schedules": {
-    "bangkok-ekkamai-to-pattaya": { "travelTime": "约 2-3 小时", "price": "每座 158 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
-    "pattaya-to-bangkok-ekkamai": { "travelTime": "约 2-3 小时", "price": "每座 148-158 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" },
-    "suvarnabhumi-airport-to-pattaya": { "travelTime": "约 2-2.5 小时", "price": "每座 162 THB", "disclaimer": "巴士时间可能会变化。出行前请在车站或向运营商确认。" }
+    "bangkok-ekkamai-to-pattaya": {
+      "travelTime": "约 2–3 小时",
+      "price": "每座 158 泰铢",
+      "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "fareNote": "运营商公布票价：每座 158 泰铢。",
+      "operatorNote": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "sourceName": "Pattaya Bus / Roong Reuang Coach",
+      "sourceType": "官方运营商网站",
+      "dataQuality": "官方来源，人工检查"
+    },
+    "pattaya-to-bangkok-ekkamai": {
+      "travelTime": "约 2–3 小时",
+      "price": "每座 148–158 泰铢",
+      "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "fareNote": "运营商公布票价：每座 148–158 泰铢。",
+      "operatorNote": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "sourceName": "Pattaya Bus / Roong Reuang Coach",
+      "sourceType": "官方运营商网站",
+      "dataQuality": "官方来源，人工检查"
+    },
+    "suvarnabhumi-airport-to-pattaya": {
+      "travelTime": "约 2–2.5 小时",
+      "price": "每座 162 泰铢",
+      "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "fareNote": "运营商公布票价：每座 162 泰铢。",
+      "boardingNote": "当前路线数据说明，车票可在 1 层 8 号门附近的柜台购买。",
+      "operatorNote": "22:00 的巴士可能前往芭提雅北部汽车站，而不是中天巴士站。时间可能会变动。",
+      "sourceName": "Airport Pattaya Bus",
+      "sourceType": "官方运营商网站",
+      "dataQuality": "官方来源，人工检查"
+    },
+    "pattaya-to-suvarnabhumi-airport": {
+      "travelTime": "约 2–2.5 小时，视交通而定",
+      "price": "每座 162 泰铢",
+      "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "fareNote": "运营商公布票价：每座 162 泰铢。",
+      "boardingNote": "运营商信息显示，车票可在中天汽车站服务柜台购买。",
+      "operatorNote": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "sourceName": "Airport Pattaya Bus",
+      "sourceType": "官方运营商网站",
+      "dataQuality": "官方来源，人工检查"
+    },
+    "don-mueang-airport-to-pattaya": {
+      "travelTime": "约 3–3.5 小时",
+      "price": "每人 155 泰铢",
+      "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "fareNote": "当前路线数据中的票价：每人 155 泰铢。",
+      "boardingNote": "机场页面显示，柜台位于 1 号航站楼 1 号门和 2 号航站楼 11 号门，并在服务楼接客。",
+      "operatorNote": "基于机场官方交通信息。出行前请再次确认。",
+      "sourceName": "Transport Co., Ltd. / 廊曼机场",
+      "sourceType": "官方机场 / 运营商交通页面",
+      "dataQuality": "官方来源，人工检查"
+    },
+    "pattaya-to-don-mueang-airport": {
+      "travelTime": "约 3–3.5 小时",
+      "price": "约 170 泰铢",
+      "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
+      "fareNote": "次要来源显示参考票价约 170 泰铢。",
+      "boardingNote": "次要来源提到芭提雅 Sukhumvit Road 汽车站。出行前请确认准确上车点。",
+      "operatorNote": "时刻表基于次要订票和旅行来源。请向运营商或车站确认。",
+      "sourceName": "Transport Co. 通过次要来源",
+      "sourceType": "次要订票和旅行来源",
+      "dataQuality": "次要来源，需要确认"
+    }
   },
   "stationsText": {
-    "ekkamai": { "bestFor": "Bangkok 市中心", "tip": "请提前 20-30 分钟到达" },
-    "mo-chit": { "bestFor": "Bangkok 北部", "tip": "预留更多时间前往车站" },
-    "north-pattaya": { "bestFor": "Pattaya 市区", "tip": "乘坐 songthaew 或出租车去酒店" },
-    "suvarnabhumi-airport": { "bestFor": "机场抵达后直接去 Pattaya", "tip": "抵达后查看巴士柜台，并预留入境时间" }
+    "ekkamai": {
+      "bestFor": "曼谷市中心",
+      "tip": "请提前 20–30 分钟到达"
+    },
+    "mo-chit": {
+      "bestFor": "曼谷北部",
+      "tip": "请预留更多时间前往车站"
+    },
+    "north-pattaya": {
+      "bestFor": "芭提雅市区",
+      "tip": "可乘双条车或出租车去酒店"
+    },
+    "suvarnabhumi-airport": {
+      "bestFor": "抵达机场后直接前往芭提雅",
+      "tip": "抵达后查看巴士柜台，并预留入境和取行李时间"
+    },
+    "jomtien-bus-area": {
+      "bestFor": "从芭提雅前往机场的巴士",
+      "tip": "出行前向 Airport Pattaya Bus 确认上车地点"
+    },
+    "don-mueang-airport": {
+      "bestFor": "廊曼机场抵达和出发",
+      "tip": "请为值机、行李、交通和机场内步行预留时间"
+    },
+    "pattaya-sukhumvit": {
+      "bestFor": "芭提雅前往廊曼机场",
+      "tip": "出行前确认芭提雅的准确上车点"
+    }
   },
   "travelTipItems": [
-    { "title": "提前 20 分钟到达", "body": "在柜台买票，并留出排队、买小吃和找站台的时间。" },
-    { "title": "准备小额现金", "body": "买票和乘坐当地交通时，小面额泰铢更方便。" },
-    { "title": "考虑 Bangkok 交通", "body": "早晚时段可能更慢。如果要赶飞机或火车，请预留时间。" }
+    {
+      "title": "提前 20–30 分钟到达",
+      "body": "给买票、找站台和上车留出时间。"
+    },
+    {
+      "title": "准备小额现金",
+      "body": "买票、买水和乘坐当地交通时，小面额泰铢更方便。"
+    },
+    {
+      "title": "给交通留出时间",
+      "body": "高峰时段车程可能更久，尤其靠近曼谷时。"
+    }
   ],
+  "routeTravelTipItems": {
+    "bangkok-to-pattaya": [
+      {
+        "title": "市中心出发可选择亿甲迈",
+        "body": "如果你住在素坤逸、阿索克、通罗或 BTS 沿线附近，亿甲迈通常比较方便。"
+      },
+      {
+        "title": "发车前到达车站",
+        "body": "提前到达，留出买票和找到正确站台的时间。"
+      },
+      {
+        "title": "安排好芭提雅到酒店的交通",
+        "body": "巴士通常到达芭提雅北部汽车站。之后可乘双条车或出租车去酒店。"
+      }
+    ],
+    "pattaya-to-bangkok": [
+      {
+        "title": "确认曼谷目的地",
+        "body": "买票前确认巴士是去亿甲迈还是莫奇特2。"
+      },
+      {
+        "title": "给交通留出时间",
+        "body": "早晚进入曼谷时，车程可能更久。"
+      },
+      {
+        "title": "确认柜台和站台",
+        "body": "上车前在柜台确认目的地车站和发车时间。"
+      }
+    ],
+    "suvarnabhumi-airport-to-pattaya": [
+      {
+        "title": "抵达后先找巴士柜台",
+        "body": "下飞机后，先确认巴士柜台位置，再安排其他交通。"
+      },
+      {
+        "title": "预留入境和取行李时间",
+        "body": "入境、取行李和穿过机场都可能需要时间。"
+      },
+      {
+        "title": "前往 1 层 8 号门附近",
+        "body": "当前路线数据说明，巴士柜台在 1 层 8 号门附近。"
+      },
+      {
+        "title": "确认晚班车目的地",
+        "body": "22:00 的巴士可能去芭提雅北部汽车站，而不是中天。"
+      }
+    ],
+    "pattaya-to-suvarnabhumi-airport": [
+      {
+        "title": "航班前预留充足时间",
+        "body": "请为交通、值机、安检和出境手续留出缓冲时间。"
+      },
+      {
+        "title": "确认中天上车点",
+        "body": "运营商显示车票可在中天汽车站服务柜台购买。出发前请确认具体上车点。"
+      },
+      {
+        "title": "查看行李规定",
+        "body": "如果携带大件行李或额外行李，请查看当前行李规定。"
+      },
+      {
+        "title": "不要依赖最后一班车",
+        "body": "赶飞机时不要只计划乘坐最后一班可能的巴士。请准备备用方案。"
+      }
+    ],
+    "don-mueang-airport-to-pattaya": [
+      {
+        "title": "确认机场上车点",
+        "body": "机场页面列出前往芭提雅的巴士。抵达后请确认柜台和上车位置。"
+      },
+      {
+        "title": "预留机场内步行时间",
+        "body": "请为取行李、在机场内找路和找到正确柜台预留时间。"
+      },
+      {
+        "title": "查看行李规定",
+        "body": "如果携带大件行李或额外行李，请查看当前行李规定。"
+      },
+      {
+        "title": "注意曼谷交通",
+        "body": "曼谷周边交通可能影响车程，特别是高峰时段。"
+      }
+    ],
+    "pattaya-to-don-mueang-airport": [
+      {
+        "title": "航班前预留充足时间",
+        "body": "请为交通、值机、行李和安检预留足够缓冲时间。"
+      },
+      {
+        "title": "确认芭提雅上车点",
+        "body": "次要来源提到芭提雅 Sukhumvit Road 汽车站。请确认准确上车地点。"
+      },
+      {
+        "title": "查看行李规定",
+        "body": "如果携带大件行李或额外行李，请查看当前行李规定。"
+      },
+      {
+        "title": "不要依赖最后一班车",
+        "body": "赶飞机时不要只计划乘坐最后一班可能的巴士。请准备备用方案。"
+      }
+    ]
+  },
   "faqItems": [
-    { "question": "从 Bangkok 到 Pattaya 坐巴士要多久？", "answer": "通常约 2-3 小时，取决于交通和出发车站。" },
-    { "question": "在哪里买票？", "answer": "通常可以在巴士站柜台买票。有些路线也可能支持网上购买。出行前请确认。" },
-    { "question": "可以从 Suvarnabhumi Airport 坐巴士吗？", "answer": "可以，Suvarnabhumi Airport 和 Pattaya 之间有巴士服务。出发前请查看最新时间。" },
-    { "question": "巴士每天运行吗？", "answer": "大多数路线每天运行，但节假日或出行高峰日的时间可能会变化。" }
-  ]
+    {
+      "question": "从曼谷到芭提雅坐巴士要多久？",
+      "answer": "通常约 2–3 小时，具体取决于交通和出发车站。"
+    },
+    {
+      "question": "在哪里购买车票？",
+      "answer": "通常可以在汽车站柜台买票。有些路线也可能支持网上购票。出行前请确认。"
+    },
+    {
+      "question": "可以从素万那普机场坐巴士吗？",
+      "answer": "可以。素万那普机场和芭提雅之间有巴士服务。出发前请查看当前时刻表。"
+    },
+    {
+      "question": "巴士每天运行吗？",
+      "answer": "大多数路线每天运行，但节假日或出行高峰日的时间可能会变动。"
+    }
+  ],
+  "routeFaqItems": {
+    "bangkok-to-pattaya": [
+      {
+        "question": "从亿甲迈到芭提雅坐巴士要多久？",
+        "answer": "通常约 2–3 小时，具体取决于交通情况。"
+      },
+      {
+        "question": "在亿甲迈哪里买票？",
+        "answer": "通常在亿甲迈汽车站柜台买票。周末和节假日请早点到。"
+      },
+      {
+        "question": "巴士在芭提雅哪里到达？",
+        "answer": "巴士通常到达芭提雅北部汽车站。之后可乘双条车或出租车去酒店。"
+      },
+      {
+        "question": "曼谷到芭提雅的巴士时间会变吗？",
+        "answer": "会。时间基于运营商信息，但可能会变动。出行前请确认时刻表。"
+      }
+    ],
+    "pattaya-to-bangkok": [
+      {
+        "question": "从芭提雅到曼谷坐巴士要多久？",
+        "answer": "通常约 2–3 小时，具体取决于交通和到达车站。"
+      },
+      {
+        "question": "巴士去亿甲迈还是莫奇特2？",
+        "answer": "有些班次去亿甲迈，有些去莫奇特2。买票前请确认目的地车站。"
+      },
+      {
+        "question": "在芭提雅哪里买票？",
+        "answer": "通常在芭提雅汽车站柜台买票。周末和节假日请早点到。"
+      },
+      {
+        "question": "芭提雅到曼谷的巴士时间会变吗？",
+        "answer": "会。时间基于公布信息，但可能会变动。出行前请确认时刻表。"
+      }
+    ],
+    "suvarnabhumi-airport-to-pattaya": [
+      {
+        "question": "从素万那普机场到芭提雅坐巴士要多久？",
+        "answer": "通常约 2–2.5 小时，具体取决于交通和下车地点。"
+      },
+      {
+        "question": "素万那普机场巴士柜台在哪里？",
+        "answer": "当前路线数据说明，柜台在 1 层 8 号门附近。抵达后请跟随机场指示牌。"
+      },
+      {
+        "question": "抵达后可以安排很短的转乘时间吗？",
+        "answer": "不建议。请为入境、取行李和前往巴士柜台预留时间。"
+      },
+      {
+        "question": "每班机场巴士都去中天吗？",
+        "answer": "不一定。22:00 的晚班车可能前往芭提雅北部汽车站。买票前请确认目的地。"
+      }
+    ],
+    "pattaya-to-suvarnabhumi-airport": [
+      {
+        "question": "从芭提雅到素万那普机场坐巴士要多久？",
+        "answer": "通常约 2–2.5 小时，具体取决于交通和上车地点。"
+      },
+      {
+        "question": "在芭提雅哪里上机场巴士？",
+        "answer": "运营商信息显示，车票可在中天汽车站服务柜台购买。出发前请确认具体上车点。"
+      },
+      {
+        "question": "航班前需要预留更多时间吗？",
+        "answer": "需要。请为交通、值机、安检和出境手续预留足够时间。"
+      },
+      {
+        "question": "巴士时间已经确认了吗？",
+        "answer": "时间基于运营商信息，但可能会变动。请在车站或向运营商确认。"
+      }
+    ],
+    "don-mueang-airport-to-pattaya": [
+      {
+        "question": "从廊曼机场到芭提雅坐巴士要多久？",
+        "answer": "通常约 3–3.5 小时，具体取决于交通。"
+      },
+      {
+        "question": "在廊曼机场哪里上车？",
+        "answer": "机场页面显示柜台位于 1 号航站楼 1 号门和 2 号航站楼 11 号门，并在服务楼接客。请到现场确认。"
+      },
+      {
+        "question": "抵达后需要预留更多时间吗？",
+        "answer": "需要。请为取行李、机场内步行和找到正确柜台或上车点预留时间。"
+      },
+      {
+        "question": "巴士时间已经确认了吗？",
+        "answer": "时间基于机场官方交通信息，但可能会变动。出行前请再次确认。"
+      }
+    ],
+    "pattaya-to-don-mueang-airport": [
+      {
+        "question": "从芭提雅到廊曼机场坐巴士要多久？",
+        "answer": "次要来源显示约 3 小时 25 分钟。交通拥堵可能让车程更久。"
+      },
+      {
+        "question": "在芭提雅哪里上车？",
+        "answer": "次要来源提到芭提雅 Sukhumvit Road 汽车站。出行前请确认准确上车点。"
+      },
+      {
+        "question": "航班前需要预留更多时间吗？",
+        "answer": "需要。请为交通、值机、行李和安检预留足够时间。"
+      },
+      {
+        "question": "巴士时间已经确认了吗？",
+        "answer": "这些时间基于次要订票和旅行来源。请向运营商或车站确认。"
+      }
+    ]
+  }
 }
