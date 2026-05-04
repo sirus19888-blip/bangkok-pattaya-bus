@@ -65,7 +65,7 @@ export function StationPhotoGallery({
               className={
                 showGroupTitles
                   ? "mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
-                  : "grid gap-2 sm:grid-cols-2"
+                  : "grid gap-2 sm:grid-cols-2 lg:grid-cols-3"
               }
             >
               {group.photos.map((photo) => {
@@ -74,11 +74,11 @@ export function StationPhotoGallery({
                 return (
                   <figure
                     key={`${group.stationId}-${photo.src}`}
-                    className="overflow-hidden rounded-xl border border-[#eadcc7] bg-white p-2"
+                    className="overflow-hidden rounded-xl border border-[#eadcc7] bg-white p-2 lg:p-1.5"
                   >
                     <button
                       type="button"
-                      className="relative block aspect-[4/3] w-full overflow-hidden rounded-xl text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2"
+                      className="relative block aspect-[4/3] w-full overflow-hidden rounded-xl text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 lg:rounded-lg"
                       onClick={() => setActivePhoto(photo)}
                       aria-label={`Open larger photo: ${photoText.alt}`}
                     >
@@ -91,7 +91,7 @@ export function StationPhotoGallery({
                       />
                     </button>
                     {photo.displayTitle ? (
-                      <p className="mt-2 text-sm font-black leading-5 text-[#13233a]">
+                      <p className="mt-2 text-sm font-black leading-5 text-[#13233a] lg:mt-1.5 lg:text-xs lg:leading-4">
                         {locale === "pl"
                           ? photo.displayTitle.pl
                           : photo.displayTitle.en}
@@ -100,13 +100,13 @@ export function StationPhotoGallery({
                     <figcaption
                       className={
                         photo.displayTitle
-                          ? "mt-1 text-[0.82rem] font-semibold leading-5 text-[#4f5d6c]"
-                          : "mt-2 text-[0.82rem] font-black leading-5 text-[#13233a]"
+                          ? "mt-1 text-[0.82rem] font-semibold leading-5 text-[#4f5d6c] lg:text-[0.68rem] lg:leading-4"
+                          : "mt-2 text-[0.82rem] font-black leading-5 text-[#13233a] lg:mt-1 lg:text-[0.68rem] lg:leading-4"
                       }
                     >
                       {photoText.caption}
                     </figcaption>
-                    <p className="mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280]">
+                    <p className="mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280] lg:text-[0.62rem] lg:leading-3">
                       {attributionLabel}:{" "}
                       <a
                         href={photo.sourceUrl}

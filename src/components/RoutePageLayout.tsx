@@ -68,7 +68,7 @@ export function RoutePageLayout({
         routePage={routePage}
         schedule={schedule}
       />
-      <section className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 lg:px-8">
+      <section className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 md:gap-4 md:pb-8 md:pt-4 lg:px-8">
         <Header
           labels={{
             ...t.app,
@@ -108,15 +108,15 @@ export function RoutePageLayout({
           />
         </div>
 
-        <section className="hidden gap-4 md:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
-          <div className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-5 shadow-sm sm:p-7">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
+        <section className="hidden gap-4 md:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+          <div className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-5 shadow-sm sm:p-7 md:p-5">
+            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm md:mb-2">
               {t.app.title}
             </p>
-            <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-[#13233a] sm:text-5xl">
+            <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-[#13233a] sm:text-5xl md:text-4xl lg:text-[2.6rem]">
               {routePage.title}
             </h1>
-            <p className="mt-3 max-w-2xl text-[0.95rem] font-semibold leading-7 text-[#4f5d6c] sm:mt-4 sm:text-lg">
+            <p className="mt-3 max-w-2xl text-[0.95rem] font-semibold leading-7 text-[#4f5d6c] sm:mt-4 sm:text-lg md:mt-3 md:text-base md:leading-6">
               {routePage.intro}
             </p>
 
@@ -151,7 +151,7 @@ export function RoutePageLayout({
           />
         </div>
 
-        <section className="hidden gap-5 md:grid lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="hidden gap-4 md:grid lg:grid-cols-[1.1fr_0.9fr]">
           <ScheduleList
             route={route}
             schedule={schedule}
@@ -159,7 +159,7 @@ export function RoutePageLayout({
             labels={t.schedule}
             showSourceInfo
           />
-          <div className="hidden space-y-5 lg:block">
+          <div className="hidden space-y-4 lg:block">
             <StationCard
               stations={stations}
               locale={locale}
@@ -208,14 +208,14 @@ export function RoutePageLayout({
           />
         </MobileDetailsSection>
 
-        <section className="hidden rounded-2xl border border-[#eadcc7] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c] shadow-sm md:block sm:p-5">
+        <section className="hidden rounded-2xl border border-[#eadcc7] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c] shadow-sm md:block md:p-4">
           <p className="font-black text-[#13233a]">
             {t.lastUpdated.label} {schedule.lastUpdated}
           </p>
           <p className="mt-2">{schedule.disclaimer}</p>
         </section>
 
-        <section className="hidden gap-5 md:grid lg:grid-cols-[1fr_0.9fr]">
+        <section className="hidden gap-4 md:grid lg:grid-cols-[1fr_0.9fr]">
           <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
           <FAQ faqs={localizedFaqs} labels={t.faq} />
         </section>
