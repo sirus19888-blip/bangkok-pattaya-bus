@@ -10,11 +10,13 @@ import {
 type StationPhotoGalleryProps = {
   groups: StationPhotoGroup[];
   locale: LocaleCode;
+  showTitle?: boolean;
 };
 
 export function StationPhotoGallery({
   groups,
   locale,
+  showTitle = true,
 }: StationPhotoGalleryProps) {
   const visibleGroups = groups.filter((group) => group.photos.length > 0);
 
@@ -27,11 +29,13 @@ export function StationPhotoGallery({
 
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5">
-      <h2 className="text-lg font-black leading-tight text-[#13233a] sm:text-2xl">
-        {galleryTitle}
-      </h2>
+      {showTitle ? (
+        <h2 className="text-lg font-black leading-tight text-[#13233a] sm:text-2xl">
+          {galleryTitle}
+        </h2>
+      ) : null}
 
-      <div className="mt-3 space-y-4 sm:mt-4">
+      <div className={showTitle ? "mt-3 space-y-4 sm:mt-4" : "space-y-4"}>
         {visibleGroups.map((group) => (
           <section key={group.stationId} aria-labelledby={`${group.stationId}-photos`}>
             <h3
@@ -91,4 +95,3 @@ export function StationPhotoGallery({
     </section>
   );
 }
-

@@ -101,10 +101,6 @@ export function RoutePageLayout({
           />
         </div>
 
-        <div className="md:hidden">
-          <StationPhotoGallery groups={stationPhotoGroups} locale={locale} />
-        </div>
-
         <section className="hidden gap-4 md:grid lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
           <div className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-5 shadow-sm sm:p-7">
             <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
@@ -156,7 +152,7 @@ export function RoutePageLayout({
             labels={t.schedule}
             showSourceInfo
           />
-          <div className="hidden lg:block">
+          <div className="hidden space-y-5 lg:block">
             <StationCard
               stations={stations}
               labels={{
@@ -164,12 +160,13 @@ export function RoutePageLayout({
                 openInGoogleMaps: t.common.openInGoogleMaps,
               }}
             />
+            <StationPhotoGallery
+              groups={stationPhotoGroups}
+              locale={locale}
+              showTitle={false}
+            />
           </div>
         </section>
-
-        <div className="hidden md:block">
-          <StationPhotoGallery groups={stationPhotoGroups} locale={locale} />
-        </div>
 
         <MobileDetailsSection title={t.station.title}>
           <StationCard
@@ -179,6 +176,13 @@ export function RoutePageLayout({
               openInGoogleMaps: t.common.openInGoogleMaps,
             }}
           />
+          <div className="mt-4">
+            <StationPhotoGallery
+              groups={stationPhotoGroups}
+              locale={locale}
+              showTitle={false}
+            />
+          </div>
         </MobileDetailsSection>
 
         <MobileDetailsSection title={t.schedule.dataTitle}>
