@@ -117,12 +117,12 @@ export const stationAccessGuides: Record<RouteId, StationAccessGuide> = {
         pl: "Songthaew: Może być tani, jeśli trasa jest wygodna, ale osoby pierwszy raz w Pattayi powinny zostawić dodatkowy czas.",
       },
       {
-        en: "Before your flight: Leave a generous buffer for traffic, check-in, security, and immigration at the airport.",
-        pl: "Przed lotem: Zostaw duży zapas czasu na ruch drogowy, odprawę, kontrolę bezpieczeństwa i paszportową na lotnisku.",
+        en: "Jomtien bus station: The operator shows tickets as available at the counter service there. Confirm the exact boarding point before you go.",
+        pl: "Dworzec Jomtien: Według informacji operatora bilety można kupić przy stanowisku obsługi. Przed wyjazdem potwierdź dokładne miejsce odjazdu.",
       },
       {
-        en: "Tip: Confirm the boarding point and departure time with Airport Pattaya Bus before travel.",
-        pl: "Wskazówka: Przed podróżą potwierdź miejsce odjazdu i godzinę z Airport Pattaya Bus.",
+        en: "Tip: Leave a generous buffer for traffic, check-in, security, and immigration at the airport.",
+        pl: "Wskazówka: Zostaw duży zapas czasu na ruch drogowy, odprawę, kontrolę bezpieczeństwa i paszportową na lotnisku.",
       },
     ],
     note: {

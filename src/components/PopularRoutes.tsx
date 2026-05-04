@@ -39,9 +39,9 @@ const routeCards: Record<
     travelTime: "Around 2-2.5 hours",
   },
   "pattaya-to-suvarnabhumi-airport": {
-    cta: "Check route",
-    note: "Schedule needs verification",
-    price: "Check operator information",
+    cta: "Check times",
+    note: "From Jomtien bus station",
+    price: "162 THB",
     title: "Pattaya to Suvarnabhumi Airport Bus",
     travelTime: "Around 2-2.5 hours",
   },

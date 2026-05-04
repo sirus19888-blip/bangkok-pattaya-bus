@@ -123,6 +123,9 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     travelTime: scheduleText.travelTime,
     price: scheduleText.price,
     disclaimer: scheduleText.disclaimer,
+    boardingNote:
+      (scheduleText as { boardingNote?: string }).boardingNote ??
+      schedule.boardingNote,
   };
 }
 

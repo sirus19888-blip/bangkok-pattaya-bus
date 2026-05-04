@@ -124,15 +124,15 @@ export const routePages: RoutePage[] = [
     slug: "pattaya-to-suvarnabhumi-airport",
     title: "Pattaya to Suvarnabhumi Airport Bus",
     intro:
-      "Check the Pattaya to Suvarnabhumi Airport bus route, including travel time, boarding information, and schedule verification status.",
+      "Check bus times from Pattaya/Jomtien to Suvarnabhumi Airport, including ticket price, travel time, boarding information, and tips before your flight.",
     from: "Pattaya / Jomtien bus area",
     to: "Suvarnabhumi Airport",
     stationIds: ["jomtien-bus-area", "suvarnabhumi-airport"],
     metadata: {
       title:
-        "Pattaya to Suvarnabhumi Airport Bus | Schedule Verification & Travel Tips",
+        "Pattaya to Suvarnabhumi Airport Bus | Times, Price & Boarding Info",
       description:
-        "Check Pattaya to Suvarnabhumi Airport bus information, travel time, boarding area, and practical airport travel tips. Schedule times need confirmation before travel.",
+        "Check Pattaya to Suvarnabhumi Airport bus times, ticket price, travel time, boarding area, and practical airport travel tips.",
     },
   },
 ];

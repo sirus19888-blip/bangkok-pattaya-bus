@@ -96,9 +96,9 @@
     "pattaya-to-suvarnabhumi-airport": {
       "label": "Pattaya na lotnisko Suvarnabhumi",
       "title": "Autobus Pattaya na lotnisko Suvarnabhumi",
-      "intro": "Sprawdź trasę autobusu z Pattaya na lotnisko Suvarnabhumi, czas podróży, miejsce odjazdu i status weryfikacji rozkładu.",
-      "metadataTitle": "Autobus Pattaya na lotnisko Suvarnabhumi – rozkład do weryfikacji",
-      "metadataDescription": "Sprawdź autobus z Pattaya na lotnisko Suvarnabhumi, czas podróży, miejsce odjazdu i praktyczne wskazówki przed lotem. Godziny wymagają potwierdzenia."
+      "intro": "Sprawdź godziny autobusów z Pattaya/Jomtien na lotnisko Suvarnabhumi, cenę biletu, czas podróży, miejsce odjazdu i wskazówki przed lotem.",
+      "metadataTitle": "Autobus Pattaya na lotnisko Suvarnabhumi – rozkład i cena",
+      "metadataDescription": "Sprawdź autobus z Pattaya/Jomtien na lotnisko Suvarnabhumi, godziny odjazdów, cenę biletu, czas podróży i miejsce odjazdu."
     }
   },
   "schedules": {
@@ -119,8 +119,9 @@
     },
     "pattaya-to-suvarnabhumi-airport": {
       "travelTime": "Około 2-2,5 godziny, zależnie od ruchu",
-      "price": "Sprawdź informacje operatora",
-      "disclaimer": "Godziny autobusów mogą się zmienić. Potwierdź je u operatora przed podróżą."
+      "price": "162 THB za miejsce",
+      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
+      "boardingNote": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien."
     }
   },
   "stationsText": {
@@ -208,16 +209,20 @@
     ],
     "pattaya-to-suvarnabhumi-airport": [
       {
-        "title": "Potwierdź rozkład autobusu na lotnisko",
-        "body": "Ta trasa wymaga ręcznej weryfikacji rozkładu. Przed podróżą potwierdź godzinę odjazdu z Airport Pattaya Bus."
-      },
-      {
         "title": "Zostaw zapas czasu przed lotem",
         "body": "Zaplanuj wygodny zapas czasu na korki, odprawę, kontrolę bezpieczeństwa i kontrolę paszportową na lotnisku Suvarnabhumi."
       },
       {
-        "title": "Sprawdź miejsce odjazdu",
-        "body": "Przed wyjazdem potwierdź, gdzie wsiąść w okolicy Pattaya lub Jomtien."
+        "title": "Potwierdź miejsce odjazdu w Jomtien",
+        "body": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien. Potwierdź to przed wyjazdem."
+      },
+      {
+        "title": "Sprawdź zasady bagażu",
+        "body": "Sprawdź aktualne zasady operatora, jeśli podróżujesz z dużymi walizkami albo dodatkowym bagażem."
+      },
+      {
+        "title": "Nie wybieraj ostatniego możliwego autobusu",
+        "body": "Nie opieraj planu lotu na ostatnim możliwym autobusie. Zostaw opcję awaryjną na wypadek korków lub opóźnień."
       }
     ]
   },
@@ -301,7 +306,7 @@
       },
       {
         "question": "Gdzie w Pattayi wsiąść do autobusu na lotnisko?",
-        "answer": "Aktualne informacje trasy wskazują okolice Pattaya lub Jomtien. Przed podróżą potwierdź dokładne miejsce odjazdu z Airport Pattaya Bus."
+        "answer": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien. Przed podróżą potwierdź dokładne miejsce odjazdu."
       },
       {
         "question": "Czy trzeba zostawić zapas czasu przed lotem?",
@@ -309,7 +314,7 @@
       },
       {
         "question": "Czy godziny autobusów są potwierdzone?",
-        "answer": "Jeszcze nie. Ta trasa wymaga ręcznej weryfikacji rozkładu, dlatego potwierdź aktualną godzinę odjazdu u operatora przed podróżą."
+        "answer": "Godziny są oparte na informacjach operatora, ale mogą się zmieniać. Potwierdź rozkład na stacji lub u operatora przed podróżą."
       }
     ]
   }
