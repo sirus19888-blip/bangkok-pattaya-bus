@@ -262,6 +262,60 @@ export const stationPhotos: StationPhoto[] = [
     licenseName: "CC BY-SA 4.0",
     licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
   },
+  {
+    stationId: "don-mueang-airport",
+    src: "/images/stations/don-mueang/don-mueang-bus-station.jpg",
+    title: "Bus station at Don Mueang Airport 2019.jpg",
+    caption: {
+      en: "Bus station area at Don Mueang Airport",
+      pl: "Strefa autobusowa na lotnisku Don Mueang",
+    },
+    alt: {
+      en: "Bus station area at Don Mueang Airport with buses and passenger shelter.",
+      pl: "Strefa autobusowa na lotnisku Don Mueang z autobusami i zadaszeniem dla pasażerów.",
+    },
+    author: "Athikhun.suw",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Bus_station_at_Don_Mueang_Airport_2019.jpg",
+    licenseName: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
+  {
+    stationId: "don-mueang-airport",
+    src: "/images/stations/don-mueang/don-mueang-terminal-2.jpg",
+    title: "Don Mueang Airport Terminal 2 front.jpg",
+    caption: {
+      en: "Terminal 2 front area",
+      pl: "Wejście do Terminalu 2",
+    },
+    alt: {
+      en: "Front area of Don Mueang Airport Terminal 2.",
+      pl: "Przednia część Terminalu 2 na lotnisku Don Mueang.",
+    },
+    author: "Bebiezaza",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Don_Mueang_Airport_Terminal_2_front.jpg",
+    licenseName: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
+  {
+    stationId: "don-mueang-airport",
+    src: "/images/stations/don-mueang/don-mueang-terminal-1.jpg",
+    title: "Don Mueang International Airport Terminal 1.JPG",
+    caption: {
+      en: "Terminal 1 building",
+      pl: "Budynek Terminalu 1",
+    },
+    alt: {
+      en: "Don Mueang International Airport Terminal 1 building.",
+      pl: "Budynek Terminalu 1 na lotnisku Don Mueang.",
+    },
+    author: "Redakie",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Don_Mueang_International_Airport_Terminal_1.JPG",
+    licenseName: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+  },
 ];
 
 const routeStationPhotoOrder: Record<RouteId, StationPhotoStationId[]> = {
