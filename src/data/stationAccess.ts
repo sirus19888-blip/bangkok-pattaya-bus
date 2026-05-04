@@ -130,6 +130,64 @@ export const stationAccessGuides: Record<RouteId, StationAccessGuide> = {
       pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
     },
   },
+  "don-mueang-airport-to-pattaya": {
+    routeId: "don-mueang-airport-to-pattaya",
+    title: {
+      en: "How to find the Don Mueang bus area",
+      pl: "Jak znaleźć autobus na lotnisku Don Mueang",
+    },
+    items: [
+      {
+        en: "After arrival: Allow time for baggage, airport navigation, and walking to the bus counter or pick-up point.",
+        pl: "Po przylocie: Zostaw czas na bagaż, przejście przez lotnisko i dojście do stanowiska autobusu.",
+      },
+      {
+        en: "Bus counter: The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11. Confirm the Pattaya bus when you arrive.",
+        pl: "Stanowisko autobusu: Strona lotniska pokazuje stanowiska w Terminalu 1 przy bramce 1 i Terminalu 2 przy bramce 11. Potwierdź autobus do Pattaya na miejscu.",
+      },
+      {
+        en: "Pick-up point: The airport page lists Service Hall Building as the pick-up point. Follow airport signs and ask at the counter.",
+        pl: "Miejsce odjazdu: Strona lotniska wskazuje Service Hall Building. Kieruj się oznaczeniami i zapytaj przy stanowisku.",
+      },
+      {
+        en: "Tip: Bangkok traffic can be unpredictable, so keep your arrival plans flexible.",
+        pl: "Wskazówka: Ruch w Bangkoku bywa nieprzewidywalny, więc zostaw elastyczny plan po przyjeździe.",
+      },
+    ],
+    note: {
+      en: "Transport prices can change. App-based ride prices vary by traffic, demand, and pickup point.",
+      pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
+    },
+  },
+  "pattaya-to-don-mueang-airport": {
+    routeId: "pattaya-to-don-mueang-airport",
+    title: {
+      en: "How to get to the Pattaya Don Mueang bus stop",
+      pl: "Jak dotrzeć do autobusu Pattaya - Don Mueang",
+    },
+    items: [
+      {
+        en: "From your hotel: Taxi or Grab is usually easiest with luggage. Price varies by distance, traffic, and demand.",
+        pl: "Z hotelu: Taxi lub Grab to zwykle najłatwiejsza opcja z bagażem. Cena zależy od dystansu, korków i popytu.",
+      },
+      {
+        en: "By songthaew: It can be cheap if the route works for you, but first-time visitors should allow extra time.",
+        pl: "Songthaew: Może być tani, jeśli trasa jest wygodna, ale osoby pierwszy raz w Pattayi powinny zostawić dodatkowy czas.",
+      },
+      {
+        en: "Boarding point: Secondary sources point to Pattaya Sukhumvit Road Bus Station. Confirm the exact stop before travel.",
+        pl: "Miejsce odjazdu: Źródła dodatkowe wskazują Pattaya Sukhumvit Road Bus Station. Potwierdź dokładne miejsce przed podróżą.",
+      },
+      {
+        en: "Tip: Do not rely on the last possible bus before a flight. Leave a backup option in case of traffic or delays.",
+        pl: "Wskazówka: Nie opieraj planu na ostatnim możliwym autobusie przed lotem. Zostaw opcję awaryjną na wypadek korków lub opóźnień.",
+      },
+    ],
+    note: {
+      en: "Transport prices can change. App-based ride prices vary by traffic, demand, and pickup point.",
+      pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
+    },
+  },
 };
 
 export function getStationAccessGuide(routeId: RouteId, locale: LocaleCode) {

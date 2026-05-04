@@ -260,6 +260,57 @@ export const schedules: Schedule[] = [
       "Bus times may change. Confirm at the station or with the operator before travel.",
     dataQuality: "official source, manual verification",
   },
+  {
+    id: "don-mueang-airport-to-pattaya",
+    from: "Don Mueang Airport",
+    to: "Pattaya",
+    direction: "don-mueang-airport-to-pattaya",
+    travelTime: "Around 3-3.5 hours",
+    price: "155 THB per person",
+    departures: ["06:30", "10:30", "14:30", "17:30"],
+    nextDeparture: "10:30",
+    lastUpdated: "2026-05-04",
+    disclaimer:
+      "Bus times may change. Please confirm at the station or with the operator before travel.",
+    sourceName: "Transport Co., Ltd. / Don Mueang Airport",
+    sourceUrl:
+      "https://donmueang.airportthai.co.th/service/transportation/detail/1290",
+    sourceType: "official airport / operator transportation page",
+    lastVerified: "2026-05-04",
+    verificationStatus: "partially verified",
+    fareNote:
+      "Published fare shown by the airport transportation page: 155 THB per person.",
+    boardingNote:
+      "The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building.",
+    operatorNote:
+      "Based on official airport transportation information. Confirm before travel.",
+    dataQuality: "official airport source, manual verification",
+  },
+  {
+    id: "pattaya-to-don-mueang-airport",
+    from: "Pattaya Sukhumvit Road Bus Station",
+    to: "Don Mueang Airport",
+    direction: "pattaya-to-don-mueang-airport",
+    travelTime: "Around 3-3.5 hours",
+    price: "Around 170 THB",
+    departures: ["07:00", "10:00", "14:30", "17:00"],
+    nextDeparture: "10:00",
+    lastUpdated: "2026-05-04",
+    disclaimer:
+      "Bus times may change. Please confirm at the station or with the operator before travel.",
+    sourceName: "Transport Co. via secondary sources",
+    sourceUrl:
+      "https://thailandlife.info/travel-from-pattaya-to-don-mueang-airport/",
+    sourceType: "secondary booking / travel sources",
+    lastVerified: "2026-05-04",
+    verificationStatus: "partially verified",
+    fareNote: "Secondary source fare shown: around 170 THB per person.",
+    boardingNote:
+      "Secondary sources point to Pattaya Sukhumvit Road Bus Station. Confirm the exact Pattaya boarding point before travel.",
+    operatorNote:
+      "Schedule based on secondary booking/travel sources. Confirm with the operator or station before travel.",
+    dataQuality: "secondary sources, needs official operator confirmation",
+  },
 ];
 
 export function getScheduleByRoute(routeId: RouteId) {

@@ -45,6 +45,20 @@ const routeCards: Record<
     title: "Pattaya to Suvarnabhumi Airport Bus",
     travelTime: "Around 2-2.5 hours",
   },
+  "don-mueang-airport-to-pattaya": {
+    cta: "Check times",
+    note: "From Don Mueang Airport",
+    price: "155 THB",
+    title: "Don Mueang Airport to Pattaya Bus",
+    travelTime: "Around 3-3.5 hours",
+  },
+  "pattaya-to-don-mueang-airport": {
+    cta: "Check times",
+    note: "Confirm the Pattaya boarding point",
+    price: "Around 170 THB",
+    title: "Pattaya to Don Mueang Airport Bus",
+    travelTime: "Around 3-3.5 hours",
+  },
 };
 
 export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {

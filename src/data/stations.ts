@@ -90,4 +90,38 @@ export const stations: Station[] = [
       pl: "Przed podróżą potwierdź dokładne miejsce odjazdu u operatora.",
     },
   },
+  {
+    id: "don-mueang-airport",
+    name: "Don Mueang Airport",
+    bestFor: "airport departures and arrivals",
+    tip: "allow extra time for check-in, baggage, traffic, and airport navigation",
+    latitude: 13.9125,
+    longitude: 100.6067,
+    mapLabel: "Don Mueang Airport",
+    googleMapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=Don%20Mueang%20Airport",
+    openStreetMapUrl:
+      "https://www.openstreetmap.org/?mlat=13.9125&mlon=100.6067#map=17/13.9125/100.6067",
+    walkingNote: {
+      en: "Use this map to recognize the airport area. Confirm the bus counter or pick-up point when you arrive.",
+      pl: "Ta mapa pomoże rozpoznać okolice lotniska. Po przyjeździe potwierdź stanowisko autobusu lub miejsce odbioru.",
+    },
+  },
+  {
+    id: "pattaya-sukhumvit",
+    name: "Pattaya Sukhumvit Road Bus Station",
+    bestFor: "Pattaya to Don Mueang Airport",
+    tip: "confirm the exact Pattaya boarding point before travel",
+    latitude: 12.9527,
+    longitude: 100.903,
+    mapLabel: "Pattaya Sukhumvit Road Bus Station",
+    googleMapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=Pattaya%20Sukhumvit%20Road%20Bus%20Station",
+    openStreetMapUrl:
+      "https://www.openstreetmap.org/?mlat=12.9527&mlon=100.9030#map=17/12.9527/100.9030",
+    walkingNote: {
+      en: "Confirm the exact Pattaya boarding point before travel.",
+      pl: "Przed podróżą potwierdź dokładne miejsce odjazdu w Pattayi.",
+    },
+  },
 ];

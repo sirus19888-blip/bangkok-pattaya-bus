@@ -4,7 +4,9 @@ export type RouteId =
   | "bangkok-to-pattaya"
   | "pattaya-to-bangkok"
   | "suvarnabhumi-airport-to-pattaya"
-  | "pattaya-to-suvarnabhumi-airport";
+  | "pattaya-to-suvarnabhumi-airport"
+  | "don-mueang-airport-to-pattaya"
+  | "pattaya-to-don-mueang-airport";
 
 export type Route = {
   id: RouteId;
@@ -72,6 +74,20 @@ export const routes: Route[] = [
     distance: "120 km",
     duration: "2h to 2h 30m",
   },
+  {
+    id: "don-mueang-airport-to-pattaya",
+    label: "Don Mueang Airport to Pattaya",
+    shortLabel: "DMK -> Pattaya",
+    distance: "155 km",
+    duration: "3h to 3h 30m",
+  },
+  {
+    id: "pattaya-to-don-mueang-airport",
+    label: "Pattaya to Don Mueang Airport",
+    shortLabel: "Pattaya -> DMK",
+    distance: "155 km",
+    duration: "3h to 3h 30m",
+  },
 ];
 
 export const defaultRouteId: RouteId = "bangkok-to-pattaya";
@@ -133,6 +149,34 @@ export const routePages: RoutePage[] = [
         "Pattaya to Suvarnabhumi Airport Bus | Times, Price & Boarding Info",
       description:
         "Check Pattaya to Suvarnabhumi Airport bus times, ticket price, travel time, boarding area, and practical airport travel tips.",
+    },
+  },
+  {
+    slug: "don-mueang-airport-to-pattaya",
+    title: "Don Mueang Airport to Pattaya Bus",
+    intro:
+      "Check bus information from Don Mueang Airport to Pattaya, including departure times, travel time, station notes, and source information.",
+    from: "Don Mueang Airport",
+    to: "Pattaya",
+    stationIds: ["don-mueang-airport", "north-pattaya"],
+    metadata: {
+      title: "Don Mueang Airport to Pattaya Bus | Schedule & Travel Info",
+      description:
+        "Check Don Mueang Airport to Pattaya bus information, departure times, travel time, station notes, and source status.",
+    },
+  },
+  {
+    slug: "pattaya-to-don-mueang-airport",
+    title: "Pattaya to Don Mueang Airport Bus",
+    intro:
+      "Check bus information from Pattaya to Don Mueang Airport, including travel time, source notes, and tips before your flight.",
+    from: "Pattaya",
+    to: "Don Mueang Airport",
+    stationIds: ["pattaya-sukhumvit", "don-mueang-airport"],
+    metadata: {
+      title: "Pattaya to Don Mueang Airport Bus | Schedule & Travel Info",
+      description:
+        "Check Pattaya to Don Mueang Airport bus information, travel time, departure notes, source status, and airport travel tips.",
     },
   },
 ];

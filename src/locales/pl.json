@@ -99,6 +99,20 @@
       "intro": "Sprawdź godziny autobusów z Pattaya/Jomtien na lotnisko Suvarnabhumi, cenę biletu, czas podróży, miejsce odjazdu i wskazówki przed lotem.",
       "metadataTitle": "Autobus Pattaya na lotnisko Suvarnabhumi – rozkład i cena",
       "metadataDescription": "Sprawdź autobus z Pattaya/Jomtien na lotnisko Suvarnabhumi, godziny odjazdów, cenę biletu, czas podróży i miejsce odjazdu."
+    },
+    "don-mueang-airport-to-pattaya": {
+      "label": "Don Mueang Airport do Pattaya",
+      "title": "Autobus z lotniska Don Mueang do Pattaya",
+      "intro": "Sprawdź informacje o autobusie z lotniska Don Mueang do Pattaya, w tym godziny odjazdów, czas podróży, informacje o stacji i źródło danych.",
+      "metadataTitle": "Autobus Don Mueang Airport do Pattaya - rozkład i informacje",
+      "metadataDescription": "Sprawdź autobus z lotniska Don Mueang do Pattaya, godziny odjazdów, czas podróży, informacje o stacji i status źródła."
+    },
+    "pattaya-to-don-mueang-airport": {
+      "label": "Pattaya na lotnisko Don Mueang",
+      "title": "Autobus Pattaya na lotnisko Don Mueang",
+      "intro": "Sprawdź informacje o autobusie z Pattaya na lotnisko Don Mueang, w tym czas podróży, źródło danych i wskazówki przed lotem.",
+      "metadataTitle": "Autobus Pattaya na lotnisko Don Mueang - rozkład i informacje",
+      "metadataDescription": "Sprawdź autobus z Pattaya na lotnisko Don Mueang, czas podróży, godziny, status źródła i wskazówki przed lotem."
     }
   },
   "schedules": {
@@ -122,6 +136,18 @@
       "price": "162 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
       "boardingNote": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien."
+    },
+    "don-mueang-airport-to-pattaya": {
+      "travelTime": "Około 3-3,5 godziny",
+      "price": "155 THB za osobę",
+      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
+      "boardingNote": "Strona lotniska pokazuje stanowiska w Terminalu 1 przy bramce 1 i Terminalu 2 przy bramce 11, z odbiorem przy Service Hall Building."
+    },
+    "pattaya-to-don-mueang-airport": {
+      "travelTime": "Około 3-3,5 godziny",
+      "price": "Około 170 THB",
+      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
+      "boardingNote": "Źródła dodatkowe wskazują Pattaya Sukhumvit Road Bus Station. Przed podróżą potwierdź dokładne miejsce odjazdu w Pattayi."
     }
   },
   "stationsText": {
@@ -144,6 +170,14 @@
     "jomtien-bus-area": {
       "bestFor": "autobusy lotniskowe z Pattaya",
       "tip": "przed podróżą potwierdź miejsce odjazdu z Airport Pattaya Bus"
+    },
+    "don-mueang-airport": {
+      "bestFor": "odloty i przyloty na lotnisku",
+      "tip": "zostaw czas na odprawę, bagaż, ruch drogowy i poruszanie się po lotnisku"
+    },
+    "pattaya-sukhumvit": {
+      "bestFor": "Pattaya na lotnisko Don Mueang",
+      "tip": "przed podróżą potwierdź dokładne miejsce odjazdu w Pattayi"
     }
   },
   "travelTipItems": [
@@ -222,6 +256,42 @@
       },
       {
         "title": "Nie wybieraj ostatniego możliwego autobusu",
+        "body": "Nie opieraj planu lotu na ostatnim możliwym autobusie. Zostaw opcję awaryjną na wypadek korków lub opóźnień."
+      }
+    ],
+    "don-mueang-airport-to-pattaya": [
+      {
+        "title": "Potwierdź miejsce odbioru na lotnisku",
+        "body": "Strona lotniska pokazuje autobus do Pattaya. Po przylocie potwierdź stanowisko i miejsce odbioru."
+      },
+      {
+        "title": "Zostaw czas na lotnisku",
+        "body": "Zaplanuj czas na bagaż, przejście przez lotnisko i znalezienie właściwego stanowiska."
+      },
+      {
+        "title": "Sprawdź zasady bagażu",
+        "body": "Sprawdź aktualne zasady bagażu, jeśli masz duże walizki albo dodatkowe torby."
+      },
+      {
+        "title": "Uwzględnij ruch w Bangkoku",
+        "body": "Ruch w okolicy Bangkoku może zmienić czas przejazdu, szczególnie w godzinach szczytu."
+      }
+    ],
+    "pattaya-to-don-mueang-airport": [
+      {
+        "title": "Zostaw zapas czasu przed lotem",
+        "body": "Zaplanuj duży zapas na korki, odprawę, bagaż i kontrolę bezpieczeństwa."
+      },
+      {
+        "title": "Potwierdź miejsce odjazdu w Pattayi",
+        "body": "Źródła dodatkowe wskazują Pattaya Sukhumvit Road Bus Station. Przed podróżą potwierdź dokładny przystanek."
+      },
+      {
+        "title": "Sprawdź zasady bagażu",
+        "body": "Sprawdź aktualne zasady bagażu, jeśli masz duże walizki albo dodatkowe torby."
+      },
+      {
+        "title": "Nie wybieraj ostatniego autobusu",
         "body": "Nie opieraj planu lotu na ostatnim możliwym autobusie. Zostaw opcję awaryjną na wypadek korków lub opóźnień."
       }
     ]
@@ -315,6 +385,42 @@
       {
         "question": "Czy godziny autobusów są potwierdzone?",
         "answer": "Godziny są oparte na informacjach operatora, ale mogą się zmieniać. Potwierdź rozkład na stacji lub u operatora przed podróżą."
+      }
+    ],
+    "don-mueang-airport-to-pattaya": [
+      {
+        "question": "Ile trwa autobus z lotniska Don Mueang do Pattaya?",
+        "answer": "Podróż zwykle trwa około 3-3,5 godziny, zależnie od ruchu drogowego."
+      },
+      {
+        "question": "Gdzie wsiąść do autobusu na lotnisku Don Mueang?",
+        "answer": "Strona lotniska pokazuje stanowiska w Terminalu 1 przy bramce 1 i Terminalu 2 przy bramce 11 oraz odbiór przy Service Hall Building. Potwierdź na miejscu."
+      },
+      {
+        "question": "Czy trzeba zostawić czas po przylocie?",
+        "answer": "Tak. Zostaw czas na bagaż, przejście przez lotnisko i znalezienie właściwego stanowiska."
+      },
+      {
+        "question": "Czy godziny autobusów są potwierdzone?",
+        "answer": "Godziny są oparte na oficjalnych informacjach transportowych lotniska, ale mogą się zmienić. Potwierdź przed podróżą."
+      }
+    ],
+    "pattaya-to-don-mueang-airport": [
+      {
+        "question": "Ile trwa autobus z Pattaya na lotnisko Don Mueang?",
+        "answer": "Źródła dodatkowe podają około 3 godzin 25 minut, ale ruch drogowy może wydłużyć przejazd."
+      },
+      {
+        "question": "Gdzie w Pattayi wsiąść do autobusu na lotnisko?",
+        "answer": "Źródła dodatkowe wskazują Pattaya Sukhumvit Road Bus Station. Przed podróżą potwierdź dokładne miejsce odjazdu."
+      },
+      {
+        "question": "Czy trzeba zostawić zapas czasu przed lotem?",
+        "answer": "Tak. Zostaw duży zapas czasu na korki, odprawę, bagaż i kontrolę bezpieczeństwa."
+      },
+      {
+        "question": "Czy godziny autobusów są potwierdzone?",
+        "answer": "Te godziny są oparte na dodatkowych źródłach rezerwacyjnych i turystycznych. Potwierdź je u operatora lub na stacji przed podróżą."
       }
     ]
   }

@@ -5,7 +5,9 @@ export type StationPhotoStationId =
   | "north-pattaya"
   | "mo-chit"
   | "suvarnabhumi-airport"
-  | "jomtien-bus-area";
+  | "jomtien-bus-area"
+  | "don-mueang-airport"
+  | "pattaya-sukhumvit";
 
 type LocalizedText = Record<"en" | "pl", string>;
 
@@ -48,6 +50,14 @@ const stationTitles: Record<StationPhotoStationId, LocalizedText> = {
   "jomtien-bus-area": {
     en: "Pattaya / Jomtien airport bus area",
     pl: "Strefa autobusu lotniskowego Pattaya / Jomtien",
+  },
+  "don-mueang-airport": {
+    en: "Don Mueang Airport",
+    pl: "Lotnisko Don Mueang",
+  },
+  "pattaya-sukhumvit": {
+    en: "Pattaya Sukhumvit Road Bus Station",
+    pl: "Pattaya Sukhumvit Road Bus Station",
   },
 };
 
@@ -264,6 +274,14 @@ const routeStationPhotoOrder: Record<RouteId, StationPhotoStationId[]> = {
   "pattaya-to-suvarnabhumi-airport": [
     "jomtien-bus-area",
     "suvarnabhumi-airport",
+  ],
+  "don-mueang-airport-to-pattaya": [
+    "don-mueang-airport",
+    "north-pattaya",
+  ],
+  "pattaya-to-don-mueang-airport": [
+    "pattaya-sukhumvit",
+    "don-mueang-airport",
   ],
 };
 

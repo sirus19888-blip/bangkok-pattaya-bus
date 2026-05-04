@@ -101,6 +101,20 @@
       "intro": "Check bus times from Pattaya/Jomtien to Suvarnabhumi Airport, including ticket price, travel time, boarding information, and tips before your flight.",
       "metadataTitle": "Pattaya to Suvarnabhumi Airport Bus | Times, Price & Boarding Info",
       "metadataDescription": "Check Pattaya to Suvarnabhumi Airport bus times, ticket price, travel time, boarding area, and practical airport travel tips."
+    },
+    "don-mueang-airport-to-pattaya": {
+      "label": "Don Mueang Airport to Pattaya",
+      "title": "Don Mueang Airport to Pattaya Bus",
+      "intro": "Check bus information from Don Mueang Airport to Pattaya, including departure times, travel time, station notes, and source information.",
+      "metadataTitle": "Don Mueang Airport to Pattaya Bus - Schedule & Travel Info",
+      "metadataDescription": "Check Don Mueang Airport to Pattaya bus information, departure times, travel time, station notes, and source status."
+    },
+    "pattaya-to-don-mueang-airport": {
+      "label": "Pattaya to Don Mueang Airport",
+      "title": "Pattaya to Don Mueang Airport Bus",
+      "intro": "Check bus information from Pattaya to Don Mueang Airport, including travel time, source notes, and tips before your flight.",
+      "metadataTitle": "Pattaya to Don Mueang Airport Bus - Schedule & Travel Info",
+      "metadataDescription": "Check Pattaya to Don Mueang Airport bus information, travel time, departure notes, source status, and airport travel tips."
     }
   },
   "schedules": {
@@ -124,6 +138,18 @@
       "price": "162 THB per seat",
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
       "boardingNote": "Tickets are shown by the operator as available at the counter service at Jomtien bus station."
+    },
+    "don-mueang-airport-to-pattaya": {
+      "travelTime": "Around 3-3.5 hours",
+      "price": "155 THB per person",
+      "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
+      "boardingNote": "The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building."
+    },
+    "pattaya-to-don-mueang-airport": {
+      "travelTime": "Around 3-3.5 hours",
+      "price": "Around 170 THB",
+      "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
+      "boardingNote": "Secondary sources point to Pattaya Sukhumvit Road Bus Station. Confirm the exact Pattaya boarding point before travel."
     }
   },
   "stationsText": {
@@ -146,6 +172,14 @@
     "jomtien-bus-area": {
       "bestFor": "Airport buses from Pattaya",
       "tip": "Confirm the boarding point with Airport Pattaya Bus before travel."
+    },
+    "don-mueang-airport": {
+      "bestFor": "Airport departures and arrivals",
+      "tip": "Allow extra time for check-in, baggage, traffic, and airport navigation."
+    },
+    "pattaya-sukhumvit": {
+      "bestFor": "Pattaya to Don Mueang Airport",
+      "tip": "Confirm the exact Pattaya boarding point before travel."
     }
   },
   "travelTipItems": [
@@ -226,11 +260,47 @@
         "title": "Avoid the last possible bus",
         "body": "Do not rely on the last possible bus before a flight. Leave a backup option in case of traffic or delays."
       }
+    ],
+    "don-mueang-airport-to-pattaya": [
+      {
+        "title": "Confirm the airport pick-up point",
+        "body": "The airport page lists a bus service to Pattaya. Confirm the counter and pick-up point when you arrive."
+      },
+      {
+        "title": "Allow extra time at the airport",
+        "body": "Leave time for baggage, airport navigation, and finding the correct bus counter."
+      },
+      {
+        "title": "Check luggage rules",
+        "body": "Check current baggage rules if you travel with large suitcases or extra bags."
+      },
+      {
+        "title": "Expect Bangkok traffic",
+        "body": "Traffic around Bangkok can change the journey time, especially during busy periods."
+      }
+    ],
+    "pattaya-to-don-mueang-airport": [
+      {
+        "title": "Leave extra time before your flight",
+        "body": "Allow a generous buffer for traffic, check-in, baggage, and airport security."
+      },
+      {
+        "title": "Confirm the Pattaya boarding point",
+        "body": "Secondary sources point to Pattaya Sukhumvit Road Bus Station. Confirm the exact stop before travel."
+      },
+      {
+        "title": "Check luggage rules",
+        "body": "Check current baggage rules if you travel with large suitcases or extra bags."
+      },
+      {
+        "title": "Avoid the last possible bus",
+        "body": "Do not rely on the last possible bus before a flight. Leave a backup option in case of traffic or delays."
+      }
     ]
   },
   "faqItems": [
     {
-      "question": "How long is the bus from Bangkok to Pattaya?",
+      "question": "How long is the bus ride from Bangkok to Pattaya?",
       "answer": "The bus usually takes around 2-3 hours, depending on traffic."
     },
     {
@@ -249,7 +319,7 @@
   "routeFaqItems": {
     "bangkok-to-pattaya": [
       {
-        "question": "How long is the bus from Bangkok to Pattaya?",
+        "question": "How long is the bus ride from Bangkok to Pattaya?",
         "answer": "The bus usually takes around 2-3 hours, depending on traffic."
       },
       {
@@ -267,7 +337,7 @@
     ],
     "pattaya-to-bangkok": [
       {
-        "question": "How long is the bus from Pattaya to Bangkok?",
+        "question": "How long is the bus ride from Pattaya to Bangkok?",
         "answer": "The trip usually takes around 2-3 hours, depending on traffic."
       },
       {
@@ -285,7 +355,7 @@
     ],
     "suvarnabhumi-airport-to-pattaya": [
       {
-        "question": "How long is the bus from Suvarnabhumi Airport to Pattaya?",
+        "question": "How long is the bus ride from Suvarnabhumi Airport to Pattaya?",
         "answer": "The bus usually takes around 2-2.5 hours, depending on traffic."
       },
       {
@@ -303,7 +373,7 @@
     ],
     "pattaya-to-suvarnabhumi-airport": [
       {
-        "question": "How long is the bus from Pattaya to Suvarnabhumi Airport?",
+        "question": "How long is the bus ride from Pattaya to Suvarnabhumi Airport?",
         "answer": "The trip is usually around 2-2.5 hours, depending on traffic and the boarding point."
       },
       {
@@ -317,6 +387,42 @@
       {
         "question": "Are bus times confirmed?",
         "answer": "The times are based on operator information, but bus times may change. Confirm with the station or operator before travel."
+      }
+    ],
+    "don-mueang-airport-to-pattaya": [
+      {
+        "question": "How long is the bus ride from Don Mueang Airport to Pattaya?",
+        "answer": "The trip is usually around 3-3.5 hours, depending on traffic."
+      },
+      {
+        "question": "Where do I board the bus at Don Mueang Airport?",
+        "answer": "The airport page lists service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building. Confirm when you arrive."
+      },
+      {
+        "question": "Should I leave extra time after landing?",
+        "answer": "Yes. Allow time for baggage, walking through the airport, and finding the correct counter or pick-up point."
+      },
+      {
+        "question": "Are the bus times confirmed?",
+        "answer": "The times are based on official airport transportation information, but bus times may change. Confirm before travel."
+      }
+    ],
+    "pattaya-to-don-mueang-airport": [
+      {
+        "question": "How long is the bus ride from Pattaya to Don Mueang Airport?",
+        "answer": "The scheduled trip is around 3 hours 25 minutes in secondary sources, but traffic can make it longer."
+      },
+      {
+        "question": "Where do I board the bus in Pattaya?",
+        "answer": "Secondary sources point to Pattaya Sukhumvit Road Bus Station. Confirm the exact boarding point before travel."
+      },
+      {
+        "question": "Should I leave extra time before my flight?",
+        "answer": "Yes. Leave a generous buffer for traffic, check-in, baggage, and airport security."
+      },
+      {
+        "question": "Are the bus times confirmed?",
+        "answer": "These times are based on secondary booking and travel sources. Confirm with the operator or station before travel."
       }
     ]
   }
