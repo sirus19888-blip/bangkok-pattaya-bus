@@ -8,12 +8,17 @@ import { RouteJsonLd } from "@/components/RouteJsonLd";
 import { RouteSearch } from "@/components/RouteSearch";
 import { RouteSummary } from "@/components/RouteSummary";
 import { ScheduleList } from "@/components/ScheduleList";
+import { StationAccessGuide } from "@/components/StationAccessGuide";
 import { StationCard } from "@/components/StationCard";
 import { SupportButton } from "@/components/SupportButton";
 import { TravelGuide } from "@/components/TravelGuide";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
+import {
+  getStationAccessGuide,
+  getStationAccessSectionTitle,
+} from "@/data/stationAccess";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
 import {
@@ -47,6 +52,8 @@ export function RoutePageLayout({
     routePage.slug,
     locale,
   );
+  const stationAccessGuide = getStationAccessGuide(routePage.slug, locale);
+  const stationAccessSectionTitle = getStationAccessSectionTitle(locale);
   const sourceStatusLabel =
     schedule.verificationStatus === "needs official confirmation"
       ? t.schedule.needsOfficialConfirmationShort
@@ -161,6 +168,12 @@ export function RoutePageLayout({
                 openInGoogleMaps: t.common.openInGoogleMaps,
               }}
             />
+            <StationAccessGuide
+              sectionTitle={stationAccessSectionTitle}
+              title={stationAccessGuide.title}
+              items={stationAccessGuide.items}
+              note={stationAccessGuide.note}
+            />
           </div>
         </section>
 
@@ -174,6 +187,14 @@ export function RoutePageLayout({
               openInGoogleMaps: t.common.openInGoogleMaps,
             }}
           />
+          <div className="mt-4">
+            <StationAccessGuide
+              sectionTitle={stationAccessSectionTitle}
+              title={stationAccessGuide.title}
+              items={stationAccessGuide.items}
+              note={stationAccessGuide.note}
+            />
+          </div>
         </MobileDetailsSection>
 
         <MobileDetailsSection title={t.schedule.dataTitle}>

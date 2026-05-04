@@ -1,0 +1,120 @@
+import type { LocaleCode, RouteId } from "@/data/routes";
+
+type LocalizedText = Record<"en" | "pl", string>;
+
+export type StationAccessGuide = {
+  routeId: RouteId;
+  title: LocalizedText;
+  items: LocalizedText[];
+  note: LocalizedText;
+};
+
+export const stationAccessGuides: Record<RouteId, StationAccessGuide> = {
+  "bangkok-to-pattaya": {
+    routeId: "bangkok-to-pattaya",
+    title: {
+      en: "How to get to Ekkamai Bus Terminal",
+      pl: "Jak dotrzeć na dworzec Ekkamai",
+    },
+    items: [
+      {
+        en: "By BTS: Take the BTS Sukhumvit Line to Ekkamai Station. The bus terminal is usually about a 5-minute walk from the station.",
+        pl: "BTS: Jedź linią BTS Sukhumvit do stacji Ekkamai. Dworzec autobusowy jest zwykle około 5 minut pieszo od stacji.",
+      },
+      {
+        en: "By taxi or Grab: Good if you have luggage. Price depends on traffic and pickup location. Check the app fare before you book.",
+        pl: "Taxi lub Grab: Dobre rozwiązanie, jeśli masz bagaż. Cena zależy od korków i miejsca odbioru. Sprawdź cenę w aplikacji przed zamówieniem.",
+      },
+      {
+        en: "Avoid tuk-tuks for this trip unless you agree on the price first. Around tourist areas, tuk-tuks can be more expensive than expected.",
+        pl: "Unikaj tuk-tuka na tej trasie, chyba że wcześniej ustalisz cenę. W miejscach turystycznych tuk-tuki mogą być droższe, niż się wydaje.",
+      },
+      {
+        en: "Tip: Arrive 20-30 minutes before departure to buy your ticket and find the correct platform.",
+        pl: "Wskazówka: Przyjdź 20-30 minut przed odjazdem, żeby kupić bilet i znaleźć właściwe stanowisko.",
+      },
+    ],
+    note: {
+      en: "Transport prices can change. App-based ride prices vary by traffic, demand, and pickup point.",
+      pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
+    },
+  },
+  "pattaya-to-bangkok": {
+    routeId: "pattaya-to-bangkok",
+    title: {
+      en: "How to get to North Pattaya Bus Station",
+      pl: "Jak dotrzeć na North Pattaya Bus Station",
+    },
+    items: [
+      {
+        en: "By songthaew: A shared songthaew can be a cheap option if it goes in the right direction, but routes may not be obvious for first-time visitors.",
+        pl: "Songthaew: Wspólny songthaew może być tanią opcją, jeśli jedzie w dobrą stronę, ale trasy mogą być niejasne dla osób pierwszy raz w Pattayi.",
+      },
+      {
+        en: "By taxi or Grab: The easiest option from hotels or beach areas. Price varies by distance, traffic, and demand. Check the app fare before booking.",
+        pl: "Taxi lub Grab: Najłatwiejsza opcja z hotelu albo okolic plaży. Cena zależy od dystansu, korków i popytu. Sprawdź cenę w aplikacji przed zamówieniem.",
+      },
+      {
+        en: "From central Pattaya: Leave extra time, especially in the afternoon or during weekends.",
+        pl: "Z centrum Pattayi: Zostaw dodatkowy czas, szczególnie po południu i w weekendy.",
+      },
+      {
+        en: "Tip: Check whether your bus goes to Ekkamai or Mo Chit before buying the ticket.",
+        pl: "Wskazówka: Przed zakupem biletu sprawdź, czy autobus jedzie do Ekkamai czy Mo Chit.",
+      },
+    ],
+    note: {
+      en: "Transport prices can change. App-based ride prices vary by traffic, demand, and pickup point.",
+      pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
+    },
+  },
+  "suvarnabhumi-airport-to-pattaya": {
+    routeId: "suvarnabhumi-airport-to-pattaya",
+    title: {
+      en: "How to find the airport bus counter",
+      pl: "Jak znaleźć stanowisko autobusu na lotnisku",
+    },
+    items: [
+      {
+        en: "After arrival: Allow time for immigration, baggage claim, and walking through the airport.",
+        pl: "Po przylocie: Zostaw czas na kontrolę paszportową, odbiór bagażu i przejście przez lotnisko.",
+      },
+      {
+        en: "Bus counter: Current route data says the bus counter is on Level 1 near Gate 8. Follow airport signs and confirm at the counter.",
+        pl: "Stanowisko autobusu: Z aktualnych danych trasy wynika, że stanowisko jest na poziomie 1 w pobliżu bramki 8. Kieruj się oznaczeniami na lotnisku i potwierdź przy stanowisku.",
+      },
+      {
+        en: "Airport Rail Link: Not needed for this bus route, but useful if you are going into Bangkok. Airport Rail Link fares are usually 15-45 THB depending on distance.",
+        pl: "Airport Rail Link: Nie jest potrzebny na tej trasie autobusowej, ale przydaje się, jeśli jedziesz do Bangkoku. Przejazd Airport Rail Link zwykle kosztuje 15-45 THB zależnie od odległości.",
+      },
+      {
+        en: "Taxi or Grab: Useful if you miss the bus or travel late. Price varies by traffic, tolls, and demand. Check the app or taxi queue price before you go.",
+        pl: "Taxi lub Grab: Przydatne, jeśli spóźnisz się na autobus albo jedziesz późno. Cena zależy od korków, opłat drogowych i popytu. Sprawdź cenę w aplikacji albo na postoju taxi.",
+      },
+      {
+        en: "Tip: The late 22:00 bus may go to North Pattaya Bus Station rather than Jomtien. Confirm before buying the ticket.",
+        pl: "Wskazówka: Późny autobus o 22:00 może jechać do North Pattaya Bus Station, a nie do Jomtien. Potwierdź przed zakupem biletu.",
+      },
+    ],
+    note: {
+      en: "Transport prices can change. App-based ride prices vary by traffic, demand, and pickup point.",
+      pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
+    },
+  },
+};
+
+export function getStationAccessGuide(routeId: RouteId, locale: LocaleCode) {
+  const guide = stationAccessGuides[routeId];
+  const textLocale = locale === "pl" ? "pl" : "en";
+
+  return {
+    title: guide.title[textLocale],
+    items: guide.items.map((item) => item[textLocale]),
+    note: guide.note[textLocale],
+  };
+}
+
+export function getStationAccessSectionTitle(locale: LocaleCode) {
+  return locale === "pl" ? "Jak dotrzeć na dworzec" : "How to get to the station";
+}
+
