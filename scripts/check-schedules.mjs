@@ -85,6 +85,130 @@ function extractTimes(text) {
   return uniqueSorted(times);
 }
 
+function extractFares(text) {
+  const fares = [];
+  const patterns = [
+    /\b(?:from\s+)?(?:fare|price|ticket price|published fare)\s*(?:is|:|shown|shown by operator)?\s*(?:around\s*)?(?:฿\s*)?(\d{2,4})\s*(?:baht|thb)?\b/gi,
+    /\b(?:from\s+)?(\d{2,4})\s*(?:baht|thb)\b/gi,
+    /฿\s*(\d{2,4})\b/gi,
+  ];
+
+  for (const pattern of patterns) {
+    for (const match of text.matchAll(pattern)) {
+      fares.push({
+        raw: match[0].trim(),
+        normalized: `${Number.parseInt(match[1], 10)} THB`,
+        amount: Number.parseInt(match[1], 10),
+        isFrom: /\bfrom\b/i.test(match[0]),
+      });
+    }
+  }
+
+  return uniqueByNormalizedFare(fares);
+}
+
+function uniqueByNormalizedFare(fares) {
+  const seen = new Set();
+  const unique = [];
+
+  for (const fare of fares) {
+    const key = `${fare.normalized}:${fare.isFrom ? "from" : "exact"}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      unique.push(fare);
+    }
+  }
+
+  return unique.sort((a, b) => a.amount - b.amount);
+}
+
+function uniqueByNormalizedTravelTime(travelTimes) {
+  const seen = new Set();
+  const unique = [];
+
+  for (const travelTime of travelTimes) {
+    if (!seen.has(travelTime.normalized)) {
+      seen.add(travelTime.normalized);
+      unique.push(travelTime);
+    }
+  }
+
+  return unique.sort((a, b) => a.minMinutes - b.minMinutes);
+}
+
+function extractTravelTimes(text) {
+  const travelTimes = [];
+  const patterns = [
+    /\b(?:around\s*)?(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)\s*hours?\b/gi,
+    /\b(?:around\s*)?(\d+(?:\.\d+)?)\s*h(?:ours?)?\s*(\d{1,2})\s*m(?:in(?:ute)?s?)?\b/gi,
+    /\b(?:around\s*)?(\d+(?:\.\d+)?)\s*hours?\s*(\d{1,2})\s*minutes?\b/gi,
+    /\b(?:around\s*)?(\d+(?:\.\d+)?)\s*hours?\b(?!\s*\d{1,2}\s*minutes?)/gi,
+  ];
+
+  for (const pattern of patterns) {
+    for (const match of text.matchAll(pattern)) {
+      const parsed = normalizeTravelTimeMatch(match);
+      if (parsed) {
+        travelTimes.push(parsed);
+      }
+    }
+  }
+
+  return uniqueByNormalizedTravelTime(travelTimes);
+}
+
+function normalizeTravelTimeMatch(match) {
+  const raw = match[0].trim();
+  const first = Number.parseFloat(match[1]);
+  const second = match[2] ? Number.parseFloat(match[2]) : undefined;
+
+  if (!Number.isFinite(first)) {
+    return null;
+  }
+
+  if (/[-–]/.test(raw) && second !== undefined) {
+    return {
+      raw,
+      normalized: `${formatHours(first)}-${formatHours(second)} hours`,
+      minMinutes: Math.round(first * 60),
+      maxMinutes: Math.round(second * 60),
+    };
+  }
+
+  if (/\d+\s*h/i.test(raw) || /minutes?/i.test(raw)) {
+    const totalMinutes = Math.round(first * 60 + (second ?? 0));
+    return {
+      raw,
+      normalized: minutesToTravelTime(totalMinutes),
+      minMinutes: totalMinutes,
+      maxMinutes: totalMinutes,
+    };
+  }
+
+  const minutes = Math.round(first * 60);
+  return {
+    raw,
+    normalized: `${formatHours(first)} hours`,
+    minMinutes: minutes,
+    maxMinutes: minutes,
+  };
+}
+
+function formatHours(hours) {
+  return Number.isInteger(hours) ? String(hours) : String(hours);
+}
+
+function minutesToTravelTime(minutes) {
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+
+  if (remainingMinutes === 0) {
+    return `${hours} hours`;
+  }
+
+  return `${hours}h ${remainingMinutes}m`;
+}
+
 function stripNoisyMarkup(html) {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, " ")
@@ -124,20 +248,29 @@ function extractRelevantContext(text, keywords) {
 function extractAppSchedules(source) {
   const schedules = {};
   const scheduleBlocks = source.matchAll(
-    /\{[\s\S]*?direction:\s*"([^"]+)"[\s\S]*?departures:\s*\[([\s\S]*?)\][\s\S]*?\},/g,
+    /\n  \{([\s\S]*?direction:\s*"([^"]+)"[\s\S]*?)\n  \},/g,
   );
 
   for (const block of scheduleBlocks) {
-    const routeId = block[1];
-    const departureBlock = block[2];
+    const objectText = block[1];
+    const routeId = block[2];
+    const departureBlock =
+      objectText.match(/departures:\s*\[([\s\S]*?)\]/)?.[1] ?? "";
     const departures = [...departureBlock.matchAll(/"(\d{1,2}:\d{2})"/g)].map(
       (match) => {
         const [hour, minute] = match[1].split(":");
         return normalizeTime(hour, minute);
       },
     );
+    const travelTime = objectText.match(/travelTime:\s*"([^"]+)"/)?.[1] ?? "";
+    const price = objectText.match(/price:\s*"([^"]+)"/)?.[1] ?? "";
+    const fareNote = objectText.match(/fareNote:\s*"([^"]+)"/)?.[1] ?? "";
 
-    schedules[routeId] = uniqueSorted(departures);
+    schedules[routeId] = {
+      times: uniqueSorted(departures),
+      fareText: [price, fareNote].filter(Boolean).join(" "),
+      travelTime,
+    };
   }
 
   return schedules;
@@ -277,6 +410,128 @@ function compareRoute({
   };
 }
 
+function compareFare({ currentAppFare, normalizedFares, routeProfile }) {
+  const currentFares = extractFares(currentAppFare);
+
+  if (currentFares.length === 0) {
+    return {
+      fareResult: "needs manual review",
+      fareConfidence: "low",
+      fareNote: "No current app fare value could be normalized.",
+    };
+  }
+
+  if (normalizedFares.length === 0) {
+    return {
+      fareResult: "needs manual review",
+      fareConfidence: "low",
+      fareNote: "No fare-like source values were found.",
+    };
+  }
+
+  const sourceAmounts = new Set(normalizedFares.map((fare) => fare.amount));
+  const exactMatch = currentFares.some((fare) => sourceAmounts.has(fare.amount));
+
+  if (exactMatch) {
+    return {
+      fareResult: "match",
+      fareConfidence: routeProfile.sourceReliability === "mixed" ? "medium" : "high",
+      fareNote: "Source fare value matches the current app fare.",
+    };
+  }
+
+  const closeMatch = currentFares.some((currentFare) =>
+    normalizedFares.some(
+      (sourceFare) => Math.abs(sourceFare.amount - currentFare.amount) <= 2,
+    ),
+  );
+
+  if (closeMatch) {
+    return {
+      fareResult: "needs manual review",
+      fareConfidence: "medium",
+      fareNote:
+        "Source fare is close to the current app fare. Platform fees or 'from' prices may differ.",
+    };
+  }
+
+  return {
+    fareResult: "needs manual review",
+    fareConfidence: "low",
+    fareNote:
+      "Source fare values differ from the current app fare. Verify manually before changing app data.",
+  };
+}
+
+function parseTravelTimeText(text) {
+  return extractTravelTimes(text);
+}
+
+function travelRangesOverlap(left, right) {
+  return left.minMinutes <= right.maxMinutes && right.minMinutes <= left.maxMinutes;
+}
+
+function compareTravelTime({
+  currentAppTravelTime,
+  normalizedTravelTimes,
+  routeProfile,
+}) {
+  const currentTravelTimes = parseTravelTimeText(currentAppTravelTime);
+
+  if (currentTravelTimes.length === 0) {
+    return {
+      travelTimeResult: "needs manual review",
+      travelTimeConfidence: "low",
+      travelTimeNote: "No current app travel time could be normalized.",
+    };
+  }
+
+  if (normalizedTravelTimes.length === 0) {
+    return {
+      travelTimeResult: "needs manual review",
+      travelTimeConfidence: "low",
+      travelTimeNote: "No travel-time-like source values were found.",
+    };
+  }
+
+  const exactMatch = currentTravelTimes.some((currentTime) =>
+    normalizedTravelTimes.some(
+      (sourceTime) => sourceTime.normalized === currentTime.normalized,
+    ),
+  );
+
+  if (exactMatch) {
+    return {
+      travelTimeResult: "match",
+      travelTimeConfidence:
+        routeProfile.sourceReliability === "mixed" ? "medium" : "high",
+      travelTimeNote: "Source travel time matches the current app value.",
+    };
+  }
+
+  const overlappingRange = currentTravelTimes.some((currentTime) =>
+    normalizedTravelTimes.some((sourceTime) =>
+      travelRangesOverlap(currentTime, sourceTime),
+    ),
+  );
+
+  if (overlappingRange) {
+    return {
+      travelTimeResult: "needs manual review",
+      travelTimeConfidence: "medium",
+      travelTimeNote:
+        "Source travel time overlaps with the current app value. Traffic wording may differ.",
+    };
+  }
+
+  return {
+    travelTimeResult: "needs manual review",
+    travelTimeConfidence: "low",
+    travelTimeNote:
+      "Source travel time differs from the current app value. Verify manually before changing app data.",
+  };
+}
+
 async function fetchSource(source) {
   const response = await fetch(source.url, {
     headers: {
@@ -296,6 +551,13 @@ function printTimes(label, times) {
   console.log(`  ${label}: ${times.length ? times.join(", ") : "none"}`);
 }
 
+function printValues(label, values, formatter) {
+  const formattedValues = values.map(formatter);
+  console.log(
+    `  ${label}: ${formattedValues.length ? formattedValues.join(", ") : "none"}`,
+  );
+}
+
 function printSourceReport(result) {
   console.log(`\nSource: ${result.sourceName}`);
   console.log(`URL: ${result.sourceUrl}`);
@@ -308,6 +570,12 @@ function printSourceReport(result) {
   }
 
   printTimes("Raw extracted times", result.rawExtractedTimes);
+  printValues("Raw extracted fares", result.rawExtractedFares, (fare) => fare.raw);
+  printValues(
+    "Raw extracted travel times",
+    result.rawExtractedTravelTimes,
+    (travelTime) => travelTime.raw,
+  );
 
   for (const route of result.routes) {
     console.log(`\n  Route: ${route.routeId}`);
@@ -315,9 +583,15 @@ function printSourceReport(result) {
     printTimes("Filtered times", route.filteredTimes);
     printTimes("Ignored likely noise", route.ignoredTimes);
     printTimes("Comparison times", route.comparisonTimes);
-    console.log(`  Result: ${route.result}`);
-    console.log(`  Confidence: ${route.confidence}`);
-    console.log(`  Note: ${route.note}`);
+    console.log(`  Time result: ${route.timeResult}`);
+    console.log(`  Time confidence: ${route.timeConfidence}`);
+    console.log(`  Time note: ${route.timeNote}`);
+    console.log(`  Fare result: ${route.fareResult}`);
+    console.log(`  Fare confidence: ${route.fareConfidence}`);
+    console.log(`  Fare note: ${route.fareNote}`);
+    console.log(`  Travel time result: ${route.travelTimeResult}`);
+    console.log(`  Travel time confidence: ${route.travelTimeConfidence}`);
+    console.log(`  Travel time note: ${route.travelTimeNote}`);
 
     if (route.missingFromSource.length) {
       printTimes("Missing from source", route.missingFromSource);
@@ -349,6 +623,8 @@ async function main() {
       sourceUrl: source.url,
       checkedAt: CHECKED_AT,
       rawExtractedTimes: [],
+      rawExtractedFares: [],
+      rawExtractedTravelTimes: [],
       routes: [],
     };
 
@@ -356,16 +632,29 @@ async function main() {
       const html = await fetchSource(source);
       const text = htmlToText(html);
       const rawExtractedTimes = extractTimes(text);
+      const rawExtractedFares = extractFares(text);
+      const rawExtractedTravelTimes = extractTravelTimes(text);
       sourceReport.rawExtractedTimes = rawExtractedTimes;
+      sourceReport.rawExtractedFares = rawExtractedFares;
+      sourceReport.rawExtractedTravelTimes = rawExtractedTravelTimes;
 
       sourceReport.routes = source.routeIds.map((routeId) => {
         const routeProfile = routeProfiles[routeId];
-        const currentAppTimes = appSchedules[routeId] ?? [];
+        const currentAppSchedule = appSchedules[routeId] ?? {
+          times: [],
+          fareText: "",
+          travelTime: "",
+        };
+        const currentAppTimes = currentAppSchedule.times;
+        const currentAppFare = currentAppSchedule.fareText;
+        const currentAppTravelTime = currentAppSchedule.travelTime;
         const contextText = extractRelevantContext(
           text,
           routeProfile.contextKeywords,
         );
         const contextRawTimes = extractTimes(contextText);
+        const contextFares = extractFares(contextText);
+        const contextTravelTimes = extractTravelTimes(contextText);
         const { filteredTimes, ignoredTimes } = filterTimesForRoute(
           rawExtractedTimes,
           routeProfile,
@@ -376,6 +665,31 @@ async function main() {
           routeProfile,
           currentAppTimes,
         );
+        const timeComparison = compareRoute({
+          contextTimes,
+          currentAppTimes,
+          filteredTimes,
+          ignoredTimes,
+          rawExtractedTimes,
+          routeId,
+          routeProfile,
+        });
+        const routeFares =
+          contextFares.length > 0 ? contextFares : rawExtractedFares;
+        const routeTravelTimes =
+          contextTravelTimes.length > 0
+            ? contextTravelTimes
+            : rawExtractedTravelTimes;
+        const fareComparison = compareFare({
+          currentAppFare,
+          normalizedFares: routeFares,
+          routeProfile,
+        });
+        const travelTimeComparison = compareTravelTime({
+          currentAppTravelTime,
+          normalizedTravelTimes: routeTravelTimes,
+          routeProfile,
+        });
 
         return {
           routeId,
@@ -385,15 +699,22 @@ async function main() {
           filteredTimes,
           ignoredTimes,
           currentAppTimes,
-          ...compareRoute({
-            contextTimes,
-            currentAppTimes,
-            filteredTimes,
-            ignoredTimes,
-            rawExtractedTimes,
-            routeId,
-            routeProfile,
-          }),
+          timeResult: timeComparison.result,
+          timeConfidence: timeComparison.confidence,
+          timeNote: timeComparison.note,
+          comparisonTimes: timeComparison.comparisonTimes,
+          missingFromSource: timeComparison.missingFromSource,
+          extraInSource: timeComparison.extraInSource,
+          rawExtractedFares,
+          normalizedFares: routeFares.map((fare) => fare.normalized),
+          currentAppFare,
+          ...fareComparison,
+          rawExtractedTravelTimes,
+          normalizedTravelTimes: routeTravelTimes.map(
+            (travelTime) => travelTime.normalized,
+          ),
+          currentAppTravelTime,
+          ...travelTimeComparison,
         };
       });
     } catch (error) {

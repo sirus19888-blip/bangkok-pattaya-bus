@@ -1,8 +1,8 @@
 # Schedule Monitor
 
-This project includes a semi-automatic schedule monitoring tool for known bus schedule sources.
+This project includes a semi-automatic monitoring tool for known bus schedule sources.
 
-The tool does not update the app. It only checks source pages, extracts schedule-like time values, filters obvious noise, and reports possible differences for manual review.
+The tool does not update the app. It checks source pages, extracts schedule-like time values, fare-like values, and travel-time-like phrases, then reports possible differences for manual review.
 
 ## Why This Is Read-Only
 
@@ -10,7 +10,7 @@ Bus operator pages can change layout, include unrelated times, or show notes tha
 
 A read-only checker is safer than full automation because it helps detect possible changes without publishing unverified schedule data.
 
-Any schedule change must be manually verified before updating production route data.
+Any schedule, fare, or travel-time change must be manually verified before updating production route data.
 
 Do not change schedules based only on this script.
 
@@ -35,8 +35,9 @@ The command prints a terminal report with:
 - filtered route-plausible times
 - ignored likely-noise times
 - current app times
-- result: match, mismatch, or needs manual review
-- confidence: high, medium, or low
+- fare check result
+- travel time check result
+- result and confidence values: high, medium, or low
 - source URL
 - checked timestamp
 
@@ -54,12 +55,16 @@ If the checker reports a mismatch or manual review:
 
 1. Open the source page manually.
 2. Confirm whether the extracted times are real route departure times.
-3. Check whether the source is official or secondary.
-4. Update app schedule data only after manual verification.
-5. Update the `lastVerified` field.
-6. Run `npm run build`.
+3. Confirm whether fare values are base operator fares, booking-platform fares, or "from" prices.
+4. Confirm whether travel times are route durations or unrelated wording.
+5. Check whether the source is official or secondary.
+6. Update app schedule data only after manual verification.
+7. Update the `lastVerified` field.
+8. Run `npm run build`.
 
 Never claim a schedule is official unless the source supports that claim.
+
+Never change schedules, fares, or travel-time values based only on this script.
 
 ## False Positives
 
@@ -78,3 +83,24 @@ Source contains mixed or noisy schedule-like times. Review manually before chang
 ```
 
 That wording means the monitor found something worth checking, not that the live app data is wrong.
+
+## Fare And Travel Time Checks
+
+The monitor also extracts fare-like values such as:
+
+- `162 baht`
+- `162 THB`
+- `฿162`
+- `from 163 THB`
+
+It normalizes those to simple THB values for comparison. Fares can vary by operator, ticketing platform, booking fee, promotion, currency display, or "from" wording, so close values are usually reported as manual review rather than a hard mismatch.
+
+The monitor also extracts travel-time-like phrases such as:
+
+- `2 hours`
+- `2-3 hours`
+- `2.5 hours`
+- `3h 25m`
+- `3 hours 25 minutes`
+
+Travel time depends on traffic, airport processing, boarding point, and source wording. Treat travel-time differences as review prompts, not automatic changes.
