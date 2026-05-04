@@ -12,6 +12,7 @@ import { StationAccessGuide } from "@/components/StationAccessGuide";
 import { StationCard } from "@/components/StationCard";
 import { SupportButton } from "@/components/SupportButton";
 import { TravelGuide } from "@/components/TravelGuide";
+import { TravelerFeedback } from "@/components/TravelerFeedback";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
@@ -244,6 +245,8 @@ export function RoutePageLayout({
             })}
           />
         </div>
+
+        <TravelerFeedback locale={locale} routeTitle={routePage.title} />
 
         <SupportButton
           labels={{
