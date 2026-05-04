@@ -13,6 +13,7 @@ export type StationPhoto = {
   stationId: StationPhotoStationId;
   src: string;
   title: string;
+  displayTitle?: LocalizedText;
   caption: LocalizedText;
   alt: LocalizedText;
   author: string;
@@ -112,9 +113,16 @@ export const stationPhotos: StationPhoto[] = [
   },
   {
     stationId: "north-pattaya",
-    src: "/images/stations/pattaya-north/pattaya-north-station.jpg",
+    src: "/images/stations/pattaya-north/pattaya-station.jpg",
     title: "Pattaya, BusStation North str. - panoramio.jpg",
-    caption: practicalCaptions.entrance,
+    displayTitle: {
+      en: "North Pattaya Bus Station",
+      pl: "North Pattaya Bus Station",
+    },
+    caption: {
+      en: "Main bus station area in North Pattaya.",
+      pl: "Główny dworzec autobusowy w North Pattaya.",
+    },
     alt: {
       en: "North Pattaya Bus Station entrance and terminal driveway.",
       pl: "Wejście i podjazd przy North Pattaya Bus Station.",
