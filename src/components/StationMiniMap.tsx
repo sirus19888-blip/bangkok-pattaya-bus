@@ -16,6 +16,10 @@ const mapLabels = {
     title: "Mapa stacji",
     fallbackNote: "Ta mapa pomoże rozpoznać okolice stacji.",
   },
+  th: {
+    title: "แผนที่สถานี",
+    fallbackNote: "แผนที่นี้ช่วยให้จำบริเวณรอบสถานีได้ง่ายขึ้น",
+  },
 } as const;
 
 function getOpenStreetMapEmbedUrl(station: Station) {
@@ -36,9 +40,16 @@ export function StationMiniMap({
   locale,
   openInGoogleMapsLabel,
 }: StationMiniMapProps) {
-  const labels = locale === "pl" ? mapLabels.pl : mapLabels.en;
+  const labels =
+    locale === "pl" ? mapLabels.pl : locale === "th" ? mapLabels.th : mapLabels.en;
   const walkingNote =
-    locale === "pl" ? station.walkingNote.pl : station.walkingNote.en;
+    locale === "pl"
+      ? station.walkingNote.pl
+      : locale === "th"
+        ? getThaiWalkingNote(station.id)
+        : station.walkingNote.en;
+  const mapLabel =
+    locale === "th" ? getThaiStationMapLabel(station.id, station.mapLabel) : station.mapLabel;
 
   return (
     <div className="overflow-hidden rounded-2xl border border-[#d6e8f4] bg-[#f4fbff]">
@@ -47,7 +58,7 @@ export function StationMiniMap({
           {labels.title}
         </p>
         <p className="mt-1 text-sm font-black leading-5 text-[#13233a] lg:text-xs lg:leading-4">
-          {station.mapLabel}
+          {mapLabel}
         </p>
         <p className="mt-1 text-xs font-semibold leading-5 text-[#4f5d6c] lg:leading-4">
           {walkingNote || labels.fallbackNote}
@@ -55,7 +66,7 @@ export function StationMiniMap({
       </div>
       <iframe
         src={getOpenStreetMapEmbedUrl(station)}
-        title={`${labels.title}: ${station.mapLabel}`}
+        title={`${labels.title}: ${mapLabel}`}
         className="h-[180px] w-full border-0 sm:h-[220px] lg:h-[210px] xl:h-[220px]"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
@@ -72,4 +83,33 @@ export function StationMiniMap({
       </div>
     </div>
   );
+}
+
+function getThaiWalkingNote(stationId: string) {
+  const notes: Record<string, string> = {
+    ekkamai: "ใช้แผนที่นี้เพื่อจำบริเวณรอบสถานีขนส่งเอกมัย",
+    "mo-chit": "เมื่อถึงสถานี โปรดตรวจสอบป้ายบอกทางในพื้นที่",
+    "north-pattaya": "ใช้แผนที่นี้เพื่อจำบริเวณรอบสถานีขนส่งพัทยาเหนือ",
+    "suvarnabhumi-airport": "เมื่อถึงสนามบิน โปรดตรวจสอบป้ายบอกทางในพื้นที่",
+    "jomtien-bus-area": "โปรดยืนยันจุดขึ้นรถที่แน่นอนกับผู้ให้บริการก่อนเดินทาง",
+    "don-mueang-airport":
+      "ใช้แผนที่นี้เพื่อจำบริเวณสนามบิน และยืนยันจุดขึ้นรถเมื่อมาถึง",
+    "pattaya-sukhumvit": "โปรดยืนยันจุดขึ้นรถที่แน่นอนในพัทยาก่อนเดินทาง",
+  };
+
+  return notes[stationId] ?? mapLabels.th.fallbackNote;
+}
+
+function getThaiStationMapLabel(stationId: string, fallback: string) {
+  const labels: Record<string, string> = {
+    ekkamai: "สถานีขนส่งเอกมัย",
+    "mo-chit": "สถานีขนส่งหมอชิต 2",
+    "north-pattaya": "สถานีขนส่งพัทยาเหนือ",
+    "suvarnabhumi-airport": "จุดรถบัสท่าอากาศยานสุวรรณภูมิ",
+    "jomtien-bus-area": "จุดรถบัสสนามบินพัทยา / จอมเทียน",
+    "don-mueang-airport": "ท่าอากาศยานดอนเมือง",
+    "pattaya-sukhumvit": "สถานีรถบัสถนนสุขุมวิทพัทยา",
+  };
+
+  return labels[stationId] ?? fallback;
 }

@@ -11,6 +11,14 @@ export function RouteSearch({
   to = "Pattaya",
   labels,
 }: RouteSearchProps) {
+  const isThai = labels.from === "จาก:";
+  const fromOptions = isThai
+    ? [from, "พัทยา", "กรุงเทพฯ", "ท่าอากาศยานสุวรรณภูมิ", "ท่าอากาศยานดอนเมือง"]
+    : [from, "Pattaya", "Bangkok", "Suvarnabhumi Airport", "Don Mueang Airport"];
+  const toOptions = isThai
+    ? [to, "กรุงเทพฯ", "พัทยา", "ท่าอากาศยานสุวรรณภูมิ", "ท่าอากาศยานดอนเมือง"]
+    : [to, "Bangkok", "Pattaya", "Suvarnabhumi Airport", "Don Mueang Airport"];
+
   return (
     <div className="mt-5 rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:mt-6 sm:p-4">
       <div className="grid gap-3 sm:grid-cols-2">
@@ -19,10 +27,9 @@ export function RouteSearch({
             {labels.from}
           </span>
           <select className="h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]">
-            <option>{from}</option>
-            <option>Pattaya</option>
-            <option>Bangkok</option>
-            <option>Suvarnabhumi Airport</option>
+            {[...new Set(fromOptions)].map((option) => (
+              <option key={option}>{option}</option>
+            ))}
           </select>
         </label>
         <label className="block">
@@ -30,9 +37,9 @@ export function RouteSearch({
             {labels.to}
           </span>
           <select className="h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]">
-            <option>{to}</option>
-            <option>Bangkok</option>
-            <option>Pattaya</option>
+            {[...new Set(toOptions)].map((option) => (
+              <option key={option}>{option}</option>
+            ))}
           </select>
         </label>
       </div>

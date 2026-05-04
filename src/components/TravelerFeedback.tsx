@@ -14,9 +14,10 @@ const copy = {
     text: "Help us keep bus times clear and useful for other travelers.",
     helped: "Yes, it helped",
     report: "Report outdated times",
-    thanks: "Thank you — your feedback helps improve this guide.",
+    thanks: "Thank you - your feedback helps improve this guide.",
     subject: "Outdated bus time report",
     bodyIntro: "Hi, I found outdated information on this route page:",
+    routeLabel: "Route",
     prompt: "What needs to be corrected?",
   },
   pl: {
@@ -24,19 +25,42 @@ const copy = {
     text: "Pomóż nam utrzymać godziny autobusów jasne i przydatne dla innych podróżnych.",
     helped: "Tak, pomógł",
     report: "Zgłoś nieaktualne godziny",
-    thanks: "Dziękujemy — Twoja opinia pomaga ulepszać ten przewodnik.",
+    thanks: "Dziękujemy - Twoja opinia pomaga ulepszać ten przewodnik.",
     subject: "Zgłoszenie nieaktualnych godzin autobusów",
     bodyIntro: "Cześć, znalazłem nieaktualne informacje na tej stronie trasy:",
+    routeLabel: "Trasa",
     prompt: "Co trzeba poprawić?",
+  },
+  th: {
+    title: "คู่มือนี้มีประโยชน์ไหม",
+    text: "ช่วยให้เรารักษาข้อมูลเวลาเดินรถให้ชัดเจนและเป็นประโยชน์กับนักเดินทางคนอื่น",
+    helped: "มีประโยชน์",
+    report: "แจ้งเวลารถที่ไม่อัปเดต",
+    thanks: "ขอบคุณ ความเห็นของคุณช่วยให้คู่มือนี้ดีขึ้น",
+    subject: "แจ้งเวลารถที่ไม่อัปเดต",
+    bodyIntro: "สวัสดี ฉันพบข้อมูลที่ไม่อัปเดตในหน้าเส้นทางนี้:",
+    routeLabel: "เส้นทาง",
+    prompt: "ควรแก้ไขข้อมูลส่วนใด",
   },
 } as const;
 
+function getCopy(locale: LocaleCode) {
+  if (locale === "pl") {
+    return copy.pl;
+  }
+
+  if (locale === "th") {
+    return copy.th;
+  }
+
+  return copy.en;
+}
+
 export function TravelerFeedback({ locale, routeTitle }: TravelerFeedbackProps) {
   const [helped, setHelped] = useState(false);
-  const text = locale === "pl" ? copy.pl : copy.en;
-  const pageUrl =
-    typeof window === "undefined" ? "" : window.location.href;
-  const body = `${text.bodyIntro}\n${pageUrl}\n\nRoute: ${routeTitle}\n\n${text.prompt}`;
+  const text = getCopy(locale);
+  const pageUrl = typeof window === "undefined" ? "" : window.location.href;
+  const body = `${text.bodyIntro}\n${pageUrl}\n\n${text.routeLabel}: ${routeTitle}\n\n${text.prompt}`;
   const mailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
     text.subject,
   )}&body=${encodeURIComponent(body)}`;

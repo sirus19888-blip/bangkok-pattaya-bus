@@ -206,7 +206,7 @@ function ScheduleSourceInfo({
         <dl className="mt-3 grid gap-1.5">
           <InfoRow label={labels.sourceType}>{source.sourceType}</InfoRow>
           <InfoRow label={labels.verification}>
-            {source.verificationStatus}
+            {formatVerificationStatus(source.verificationStatus, labels)}
           </InfoRow>
           <InfoRow label={labels.fareNote}>{source.fareNote}</InfoRow>
           {boardingNote ? (
@@ -218,6 +218,21 @@ function ScheduleSourceInfo({
       </details>
     </div>
   );
+}
+
+function formatVerificationStatus(
+  status: ScheduleSource["verificationStatus"],
+  labels: Translations["schedule"],
+) {
+  const isThai = labels.verification === "สถานะการตรวจสอบ";
+
+  if (!isThai) {
+    return status;
+  }
+
+  return status === "needs official confirmation"
+    ? "ต้องยืนยันกับแหล่งข้อมูลทางการ"
+    : "ตรวจสอบบางส่วนแล้ว";
 }
 
 function InfoRow({

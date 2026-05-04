@@ -9,7 +9,9 @@ export type StationPhotoStationId =
   | "don-mueang-airport"
   | "pattaya-sukhumvit";
 
-type LocalizedText = Record<"en" | "pl", string>;
+type LocalizedText = Record<"en" | "pl", string> & {
+  th?: string;
+};
 
 export type StationPhoto = {
   stationId: StationPhotoStationId;
@@ -34,30 +36,37 @@ const stationTitles: Record<StationPhotoStationId, LocalizedText> = {
   ekkamai: {
     en: "Ekkamai Bus Terminal",
     pl: "Dworzec Ekkamai",
+    th: "สถานีขนส่งเอกมัย",
   },
   "north-pattaya": {
     en: "North Pattaya Bus Station",
     pl: "North Pattaya Bus Station",
+    th: "สถานีขนส่งพัทยาเหนือ",
   },
   "mo-chit": {
     en: "Mo Chit 2 Bus Terminal",
     pl: "Dworzec Mo Chit 2",
+    th: "สถานีขนส่งหมอชิต 2",
   },
   "suvarnabhumi-airport": {
     en: "Suvarnabhumi Airport bus area",
     pl: "Strefa autobusowa na lotnisku Suvarnabhumi",
+    th: "จุดรถบัสท่าอากาศยานสุวรรณภูมิ",
   },
   "jomtien-bus-area": {
     en: "Pattaya / Jomtien airport bus area",
     pl: "Strefa autobusu lotniskowego Pattaya / Jomtien",
+    th: "จุดรถบัสสนามบินพัทยา / จอมเทียน",
   },
   "don-mueang-airport": {
     en: "Don Mueang Airport",
     pl: "Lotnisko Don Mueang",
+    th: "ท่าอากาศยานดอนเมือง",
   },
   "pattaya-sukhumvit": {
     en: "Pattaya Sukhumvit Road Bus Station",
     pl: "Pattaya Sukhumvit Road Bus Station",
+    th: "สถานีรถบัสถนนสุขุมวิทพัทยา",
   },
 };
 
@@ -65,14 +74,17 @@ const practicalCaptions = {
   entrance: {
     en: "Use this photo to recognize the terminal entrance.",
     pl: "To zdjęcie pomoże rozpoznać wejście do terminalu.",
+    th: "ใช้ภาพนี้ช่วยจำทางเข้าสถานี",
   },
   counters: {
     en: "Look for the ticket counters inside the terminal.",
     pl: "Szukaj kas biletowych wewnątrz terminalu.",
+    th: "มองหาเคาน์เตอร์จำหน่ายตั๋วภายในสถานี",
   },
   boarding: {
     en: "Boarding areas may change. Check signs at the station.",
     pl: "Miejsca odjazdu mogą się zmieniać. Sprawdź oznaczenia na dworcu.",
+    th: "จุดขึ้นรถอาจเปลี่ยนได้ โปรดดูป้ายที่สถานี",
   },
 } satisfies Record<string, LocalizedText>;
 
@@ -85,6 +97,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Exterior entrance of Ekkamai Bus Terminal in Bangkok.",
       pl: "Zewnętrzne wejście do dworca autobusowego Ekkamai w Bangkoku.",
+      th: "ทางเข้าด้านนอกของสถานีขนส่งเอกมัยในกรุงเทพฯ",
     },
     author: "Supanut Arunoprayote",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Ekkamai_Bus_Station_20240824.jpg",
@@ -99,6 +112,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Inside area of Ekkamai Bus Terminal with counters and signs near the boarding lanes.",
       pl: "Wnętrze dworca Ekkamai z kasami, oznaczeniami i przejściem do autobusów.",
+      th: "พื้นที่ภายในสถานีขนส่งเอกมัย มีเคาน์เตอร์และป้ายใกล้จุดขึ้นรถ",
     },
     author: "Chainwit.",
     sourceUrl:
@@ -114,6 +128,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Bus boarding area at Ekkamai Bus Terminal with platform signs and minibuses.",
       pl: "Strefa odjazdu autobusów na dworcu Ekkamai z oznaczeniami peronów.",
+      th: "จุดขึ้นรถที่สถานีขนส่งเอกมัย มีป้ายชานชาลาและรถโดยสาร",
     },
     author: "Chainwit.",
     sourceUrl:
@@ -128,14 +143,17 @@ export const stationPhotos: StationPhoto[] = [
     displayTitle: {
       en: "North Pattaya Bus Station",
       pl: "North Pattaya Bus Station",
+      th: "สถานีขนส่งพัทยาเหนือ",
     },
     caption: {
       en: "Main bus station area in North Pattaya.",
       pl: "Główny dworzec autobusowy w North Pattaya.",
+      th: "บริเวณสถานีขนส่งหลักในพัทยาเหนือ",
     },
     alt: {
       en: "North Pattaya Bus Station entrance and terminal driveway.",
       pl: "Wejście i podjazd przy North Pattaya Bus Station.",
+      th: "ทางเข้าและทางรถเข้าของสถานีขนส่งพัทยาเหนือ",
     },
     author: "Serj Kras",
     sourceUrl:
@@ -151,6 +169,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Buses and boarding area at Pattaya Bus Station.",
       pl: "Autobusy i strefa odjazdu na dworcu autobusowym w Pattayi.",
+      th: "รถบัสและจุดขึ้นรถที่สถานีขนส่งพัทยา",
     },
     author: "Ilya Plekhanov",
     sourceUrl:
@@ -166,6 +185,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Roong Reuang Coach bus at Pattaya Bus Station.",
       pl: "Autobus Roong Reuang Coach na dworcu autobusowym w Pattayi.",
+      th: "รถ Roong Reuang Coach ที่สถานีขนส่งพัทยา",
     },
     author: "calflier001",
     sourceUrl:
@@ -181,6 +201,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Front entrance area of Mo Chit 2 Bus Terminal in Bangkok.",
       pl: "Przednia część dworca autobusowego Mo Chit 2 w Bangkoku.",
+      th: "บริเวณด้านหน้าของสถานีขนส่งหมอชิต 2 ในกรุงเทพฯ",
     },
     author: "Mapleonade",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Mo_Chit_2_Bus_Terminal_1.jpg",
@@ -195,6 +216,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Ticket booth area inside Mo Chit 2 Bus Terminal.",
       pl: "Strefa kas biletowych wewnątrz dworca Mo Chit 2.",
+      th: "บริเวณเคาน์เตอร์จำหน่ายตั๋วภายในสถานีขนส่งหมอชิต 2",
     },
     author: "Mapleonade",
     sourceUrl:
@@ -210,6 +232,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Departure platform area at Mo Chit 2 Bus Terminal.",
       pl: "Strefa peronów odjazdowych na dworcu Mo Chit 2.",
+      th: "บริเวณชานชาลาออกเดินทางที่สถานีขนส่งหมอชิต 2",
     },
     author: "Mapleonade",
     sourceUrl:
@@ -225,6 +248,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Buses inside the public transportation center at Suvarnabhumi Airport.",
       pl: "Autobusy w centrum transportu publicznego na lotnisku Suvarnabhumi.",
+      th: "รถบัสภายในศูนย์ขนส่งสาธารณะที่ท่าอากาศยานสุวรรณภูมิ",
     },
     author: "Patiparn.Nice2002bkk",
     sourceUrl:
@@ -240,6 +264,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Bus area inside Suvarnabhumi Airport public transportation center.",
       pl: "Strefa autobusowa w centrum transportu publicznego lotniska Suvarnabhumi.",
+      th: "พื้นที่รถบัสภายในศูนย์ขนส่งสาธารณะของท่าอากาศยานสุวรรณภูมิ",
     },
     author: "Patiparn.Nice2002bkk",
     sourceUrl:
@@ -255,6 +280,7 @@ export const stationPhotos: StationPhoto[] = [
     alt: {
       en: "Buses and bay signs at Suvarnabhumi Airport bus terminal.",
       pl: "Autobusy i oznaczenia stanowisk na terminalu autobusowym lotniska Suvarnabhumi.",
+      th: "รถบัสและป้ายจุดจอดที่สถานีรถบัสท่าอากาศยานสุวรรณภูมิ",
     },
     author: "Patiparn.Nice2002bkk",
     sourceUrl:
@@ -269,10 +295,12 @@ export const stationPhotos: StationPhoto[] = [
     caption: {
       en: "Bus station area at Don Mueang Airport",
       pl: "Strefa autobusowa na lotnisku Don Mueang",
+      th: "บริเวณสถานีรถบัสที่ท่าอากาศยานดอนเมือง",
     },
     alt: {
       en: "Bus station area at Don Mueang Airport with buses and passenger shelter.",
       pl: "Strefa autobusowa na lotnisku Don Mueang z autobusami i zadaszeniem dla pasażerów.",
+      th: "บริเวณสถานีรถบัสที่ท่าอากาศยานดอนเมือง มีรถบัสและที่พักผู้โดยสาร",
     },
     author: "Athikhun.suw",
     sourceUrl:
@@ -287,10 +315,12 @@ export const stationPhotos: StationPhoto[] = [
     caption: {
       en: "Terminal 2 front area",
       pl: "Wejście do Terminalu 2",
+      th: "บริเวณด้านหน้าอาคารผู้โดยสาร 2",
     },
     alt: {
       en: "Front area of Don Mueang Airport Terminal 2.",
       pl: "Przednia część Terminalu 2 na lotnisku Don Mueang.",
+      th: "บริเวณด้านหน้าอาคารผู้โดยสาร 2 ของท่าอากาศยานดอนเมือง",
     },
     author: "Bebiezaza",
     sourceUrl:
@@ -305,10 +335,12 @@ export const stationPhotos: StationPhoto[] = [
     caption: {
       en: "Terminal 1 building",
       pl: "Budynek Terminalu 1",
+      th: "อาคารผู้โดยสาร 1",
     },
     alt: {
       en: "Don Mueang International Airport Terminal 1 building.",
       pl: "Budynek Terminalu 1 na lotnisku Don Mueang.",
+      th: "อาคารผู้โดยสาร 1 ของท่าอากาศยานดอนเมือง",
     },
     author: "Redakie",
     sourceUrl:
@@ -340,7 +372,15 @@ const routeStationPhotoOrder: Record<RouteId, StationPhotoStationId[]> = {
 };
 
 function textForLocale(text: LocalizedText, locale: LocaleCode) {
-  return locale === "pl" ? text.pl : text.en;
+  if (locale === "pl") {
+    return text.pl;
+  }
+
+  if (locale === "th") {
+    return text.th ?? "ภาพสถานี";
+  }
+
+  return text.en;
 }
 
 export function getStationPhotoGroupsForRoute(
@@ -362,11 +402,17 @@ export function getStationPhotoText(photo: StationPhoto, locale: LocaleCode) {
 }
 
 export function getStationPhotoGalleryTitle(locale: LocaleCode) {
+  if (locale === "th") {
+    return "ภาพสถานี";
+  }
   return locale === "pl"
     ? "Jak wyglądają stacje"
     : "What the stations look like";
 }
 
 export function getStationPhotoAttributionLabel(locale: LocaleCode) {
+  if (locale === "th") {
+    return "ภาพถ่าย";
+  }
   return locale === "pl" ? "Zdjęcie" : "Photo";
 }

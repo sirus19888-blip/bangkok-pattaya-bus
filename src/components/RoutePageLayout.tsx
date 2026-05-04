@@ -56,7 +56,11 @@ export function RoutePageLayout({
   const stationAccessGuide = getStationAccessGuide(routePage.slug, locale);
   const stationAccessSectionTitle = getStationAccessSectionTitle(locale);
   const stationAccessSwipeHint =
-    locale === "pl" ? "Przesuń, aby zobaczyć więcej" : "Swipe to see more";
+    locale === "pl"
+      ? "Przesuń, aby zobaczyć więcej"
+      : locale === "th"
+        ? "เลื่อนเพื่อดูเพิ่มเติม"
+        : "Swipe to see more";
   const sourceStatusLabel =
     schedule.verificationStatus === "needs official confirmation"
       ? t.schedule.needsOfficialConfirmationShort
@@ -99,12 +103,13 @@ export function RoutePageLayout({
             locale={locale}
             routePages={routePages.map((page) => {
               const routeText = t.routePages[page.slug];
+              const endpoints = routeText as { from?: string; to?: string };
 
               return {
                 ...page,
                 title: routeText.title,
-                from: page.from,
-                to: page.to,
+                from: endpoints.from ?? page.from,
+                to: endpoints.to ?? page.to,
               };
             })}
           />
@@ -239,12 +244,13 @@ export function RoutePageLayout({
             locale={locale}
             routePages={routePages.map((page) => {
               const routeText = t.routePages[page.slug];
+              const endpoints = routeText as { from?: string; to?: string };
 
               return {
                 ...page,
                 title: routeText.title,
-                from: page.from,
-                to: page.to,
+                from: endpoints.from ?? page.from,
+                to: endpoints.to ?? page.to,
               };
             })}
           />

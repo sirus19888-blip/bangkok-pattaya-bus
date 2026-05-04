@@ -32,7 +32,7 @@ export function RelatedRoutes({
               {routePage.title}
             </span>
             <span className="mt-1 hidden text-sm font-semibold text-[#4f5d6c] md:block md:text-xs">
-              {routePage.from} to {routePage.to}
+              {routePage.from} {locale === "th" ? "ไป" : "to"} {routePage.to}
             </span>
           </Link>
         ))}

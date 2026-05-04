@@ -88,9 +88,12 @@ export function getTranslations(locale: LocaleCode): Translations {
 
 export function localizeRoute(route: Route, t: Translations): Route {
   const routeText = t.routePages[route.id] ?? en.routePages[route.id];
+  const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
 
   return {
     ...route,
+    distance: isThai ? route.distance.replace("km", "กม.") : route.distance,
+    duration: isThai ? route.duration.replace(/h/g, " ชม.") : route.duration,
     label: routeText.label,
   };
 }
@@ -101,11 +104,17 @@ export function localizeRoutePage(
 ): RoutePage {
   const fallbackRouteText = en.routePages[routePage.slug];
   const routeText = t.routePages[routePage.slug] ?? fallbackRouteText;
+  const localizedEndpoints = routeText as {
+    from?: string;
+    to?: string;
+  };
 
   return {
     ...routePage,
     title: routeText.title ?? fallbackRouteText.title,
     intro: routeText.intro ?? fallbackRouteText.intro,
+    from: localizedEndpoints.from ?? routePage.from,
+    to: localizedEndpoints.to ?? routePage.to,
     metadata: {
       title: routeText.metadataTitle ?? fallbackRouteText.metadataTitle,
       description:
@@ -117,15 +126,54 @@ export function localizeRoutePage(
 export function localizeSchedule(schedule: Schedule, t: Translations): Schedule {
   const scheduleId = schedule.id as keyof Translations["schedules"];
   const scheduleText = t.schedules[scheduleId] ?? en.schedules[scheduleId];
+  const sourceText = scheduleText as {
+    boardingNote?: string;
+    dataQuality?: string;
+    fareNote?: string;
+    operatorNote?: string;
+    sourceName?: string;
+    sourceType?: string;
+  };
+  const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
+  const thaiSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "pattaya-to-mochit": {
+      label: "พัทยาไปหมอชิต 2",
+      from: "สถานีขนส่งพัทยา",
+      to: "สถานีขนส่งหมอชิต 2",
+    },
+    "pattaya-to-ekkamai": {
+      label: "พัทยาไปเอกมัย",
+      from: "สถานีขนส่งพัทยา",
+      to: "สถานีขนส่งเอกมัย",
+    },
+  };
 
   return {
     ...schedule,
     travelTime: scheduleText.travelTime,
     price: scheduleText.price,
     disclaimer: scheduleText.disclaimer,
-    boardingNote:
-      (scheduleText as { boardingNote?: string }).boardingNote ??
-      schedule.boardingNote,
+    boardingNote: sourceText.boardingNote ?? schedule.boardingNote,
+    dataQuality: sourceText.dataQuality ?? schedule.dataQuality,
+    fareNote: sourceText.fareNote ?? schedule.fareNote,
+    operatorNote: sourceText.operatorNote ?? schedule.operatorNote,
+    sourceName: sourceText.sourceName ?? schedule.sourceName,
+    sourceType: sourceText.sourceType ?? schedule.sourceType,
+    subRoutes: schedule.subRoutes?.map((subRoute) => {
+      const thaiText = isThai ? thaiSubRouteText[subRoute.id] : undefined;
+
+      return {
+        ...subRoute,
+        dataQuality: sourceText.dataQuality ?? subRoute.dataQuality,
+        fareNote: sourceText.fareNote ?? subRoute.fareNote,
+        label: thaiText?.label ?? subRoute.label,
+        operatorNote: sourceText.operatorNote ?? subRoute.operatorNote,
+        sourceName: sourceText.sourceName ?? subRoute.sourceName,
+        sourceType: sourceText.sourceType ?? subRoute.sourceType,
+        from: thaiText?.from ?? subRoute.from,
+        to: thaiText?.to ?? subRoute.to,
+      };
+    }),
   };
 }
 
@@ -133,12 +181,24 @@ export function localizeStations(
   stations: Station[],
   t: Translations,
 ): Station[] {
+  const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
+  const thaiStationNames: Record<string, string> = {
+    ekkamai: "สถานีขนส่งเอกมัย",
+    "mo-chit": "สถานีขนส่งหมอชิต 2",
+    "north-pattaya": "สถานีขนส่งพัทยาเหนือ",
+    "suvarnabhumi-airport": "เคาน์เตอร์รถบัสท่าอากาศยานสุวรรณภูมิ",
+    "jomtien-bus-area": "จุดรถบัสสนามบินพัทยา / จอมเทียน",
+    "don-mueang-airport": "ท่าอากาศยานดอนเมือง",
+    "pattaya-sukhumvit": "สถานีรถบัสถนนสุขุมวิทพัทยา",
+  };
+
   return stations.map((station) => {
     const stationId = station.id as keyof Translations["stationsText"];
     const stationText = t.stationsText[stationId] ?? en.stationsText[stationId];
 
     return {
       ...station,
+      name: isThai ? thaiStationNames[station.id] ?? station.name : station.name,
       bestFor: stationText.bestFor,
       tip: stationText.tip,
     };

@@ -35,7 +35,15 @@ export function StationPhotoGallery({
 
   const galleryTitle = getStationPhotoGalleryTitle(locale);
   const attributionLabel = getStationPhotoAttributionLabel(locale);
-  const swipeHint = locale === "pl" ? "Przesuń, aby zobaczyć więcej" : "Swipe to see more";
+  const openPhotoLabel =
+    locale === "th" ? "เปิดภาพขนาดใหญ่" : "Open larger photo";
+  const closeImageLabel = locale === "th" ? "ปิดภาพ" : "Close image";
+  const swipeHint =
+    locale === "pl"
+      ? "Przesuń, aby zobaczyć więcej"
+      : locale === "th"
+        ? "เลื่อนเพื่อดูเพิ่มเติม"
+        : "Swipe to see more";
 
   return (
     <section
@@ -84,7 +92,7 @@ export function StationPhotoGallery({
                       type="button"
                       className="relative block aspect-[4/3] w-full overflow-hidden rounded-xl text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 lg:rounded-lg"
                       onClick={() => setActivePhoto(photo)}
-                      aria-label={`Open larger photo: ${photoText.alt}`}
+                      aria-label={`${openPhotoLabel}: ${photoText.alt}`}
                     >
                       <Image
                         src={photo.src}
@@ -98,7 +106,9 @@ export function StationPhotoGallery({
                       <p className="mt-2 text-sm font-black leading-5 text-[#13233a] lg:mt-1.5 lg:text-xs lg:leading-4">
                         {locale === "pl"
                           ? photo.displayTitle.pl
-                          : photo.displayTitle.en}
+                          : locale === "th"
+                            ? photo.displayTitle.th ?? "ภาพสถานี"
+                            : photo.displayTitle.en}
                       </p>
                     ) : null}
                     <figcaption
@@ -140,6 +150,7 @@ export function StationPhotoGallery({
       {activePhoto ? (
         <PhotoLightbox
           attributionLabel={attributionLabel}
+          closeImageLabel={closeImageLabel}
           locale={locale}
           photo={activePhoto}
           onClose={() => setActivePhoto(null)}
@@ -151,11 +162,13 @@ export function StationPhotoGallery({
 
 function PhotoLightbox({
   attributionLabel,
+  closeImageLabel,
   locale,
   onClose,
   photo,
 }: {
   attributionLabel: string;
+  closeImageLabel: string;
   locale: LocaleCode;
   onClose: () => void;
   photo: StationPhoto;
@@ -164,6 +177,8 @@ function PhotoLightbox({
   const title = photo.displayTitle
     ? locale === "pl"
       ? photo.displayTitle.pl
+      : locale === "th"
+        ? photo.displayTitle.th ?? "ภาพสถานี"
       : photo.displayTitle.en
     : photo.title;
 
@@ -199,7 +214,7 @@ function PhotoLightbox({
         <button
           type="button"
           onClick={onClose}
-          aria-label="Close image"
+          aria-label={closeImageLabel}
           className="absolute right-2 top-2 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-[#13233a] text-2xl font-black leading-none text-white shadow-sm transition hover:bg-[#233a5b]"
         >
           ×
