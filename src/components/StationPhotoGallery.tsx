@@ -11,12 +11,16 @@ type StationPhotoGalleryProps = {
   groups: StationPhotoGroup[];
   locale: LocaleCode;
   showTitle?: boolean;
+  showGroupTitles?: boolean;
+  compact?: boolean;
 };
 
 export function StationPhotoGallery({
   groups,
   locale,
   showTitle = true,
+  showGroupTitles = true,
+  compact = false,
 }: StationPhotoGalleryProps) {
   const visibleGroups = groups.filter((group) => group.photos.length > 0);
 
@@ -28,7 +32,13 @@ export function StationPhotoGallery({
   const attributionLabel = getStationPhotoAttributionLabel(locale);
 
   return (
-    <section className="rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5">
+    <section
+      className={
+        compact
+          ? "rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-2.5"
+          : "rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5"
+      }
+    >
       {showTitle ? (
         <h2 className="text-lg font-black leading-tight text-[#13233a] sm:text-2xl">
           {galleryTitle}
@@ -38,20 +48,28 @@ export function StationPhotoGallery({
       <div className={showTitle ? "mt-3 space-y-4 sm:mt-4" : "space-y-4"}>
         {visibleGroups.map((group) => (
           <section key={group.stationId} aria-labelledby={`${group.stationId}-photos`}>
-            <h3
-              id={`${group.stationId}-photos`}
-              className="text-sm font-black text-[#13233a] sm:text-base"
+            {showGroupTitles ? (
+              <h3
+                id={`${group.stationId}-photos`}
+                className="text-sm font-black text-[#13233a] sm:text-base"
+              >
+                {group.title}
+              </h3>
+            ) : null}
+            <div
+              className={
+                showGroupTitles
+                  ? "mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
+                  : "grid gap-2 sm:grid-cols-2"
+              }
             >
-              {group.title}
-            </h3>
-            <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {group.photos.map((photo) => {
                 const photoText = getStationPhotoText(photo, locale);
 
                 return (
                   <figure
                     key={`${group.stationId}-${photo.src}`}
-                    className="overflow-hidden rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-2.5"
+                    className="overflow-hidden rounded-xl border border-[#eadcc7] bg-white p-2"
                   >
                     <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
                       <Image

@@ -8,7 +8,6 @@ import { RouteJsonLd } from "@/components/RouteJsonLd";
 import { RouteSearch } from "@/components/RouteSearch";
 import { RouteSummary } from "@/components/RouteSummary";
 import { ScheduleList } from "@/components/ScheduleList";
-import { StationPhotoGallery } from "@/components/StationPhotoGallery";
 import { StationCard } from "@/components/StationCard";
 import { SupportButton } from "@/components/SupportButton";
 import { TravelGuide } from "@/components/TravelGuide";
@@ -156,15 +155,11 @@ export function RoutePageLayout({
             <StationCard
               stations={stations}
               locale={locale}
+              photoGroups={stationPhotoGroups}
               labels={{
                 ...t.station,
                 openInGoogleMaps: t.common.openInGoogleMaps,
               }}
-            />
-            <StationPhotoGallery
-              groups={stationPhotoGroups}
-              locale={locale}
-              showTitle={false}
             />
           </div>
         </section>
@@ -173,18 +168,12 @@ export function RoutePageLayout({
           <StationCard
             stations={stations}
             locale={locale}
+            photoGroups={stationPhotoGroups}
             labels={{
               ...t.station,
               openInGoogleMaps: t.common.openInGoogleMaps,
             }}
           />
-          <div className="mt-4">
-            <StationPhotoGallery
-              groups={stationPhotoGroups}
-              locale={locale}
-              showTitle={false}
-            />
-          </div>
         </MobileDetailsSection>
 
         <MobileDetailsSection title={t.schedule.dataTitle}>

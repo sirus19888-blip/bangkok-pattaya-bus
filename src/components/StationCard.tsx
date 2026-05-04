@@ -1,17 +1,25 @@
 import { StationMiniMap } from "@/components/StationMiniMap";
+import { StationPhotoGallery } from "@/components/StationPhotoGallery";
 import type { LocaleCode } from "@/data/routes";
 import type { Station } from "@/data/stations";
+import type { StationPhotoGroup } from "@/data/stationPhotos";
 import type { Translations } from "@/lib/i18n";
 
 type StationCardProps = {
   stations: Station[];
   locale: LocaleCode;
+  photoGroups?: StationPhotoGroup[];
   labels: Translations["station"] & {
     openInGoogleMaps: string;
   };
 };
 
-export function StationCard({ stations, locale, labels }: StationCardProps) {
+export function StationCard({
+  stations,
+  locale,
+  photoGroups = [],
+  labels,
+}: StationCardProps) {
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 shadow-sm sm:p-5">
       <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
@@ -29,6 +37,15 @@ export function StationCard({ stations, locale, labels }: StationCardProps) {
               <span className="font-black text-[#13233a]">{labels.tip}</span>{" "}
               {station.tip}
             </p>
+            <div className="mt-4">
+              <StationPhotoGallery
+                groups={photoGroups.filter((group) => group.stationId === station.id)}
+                locale={locale}
+                showTitle={false}
+                showGroupTitles={false}
+                compact
+              />
+            </div>
             <StationMiniMap
               station={station}
               locale={locale}
