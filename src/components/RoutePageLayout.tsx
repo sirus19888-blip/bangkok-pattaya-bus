@@ -55,6 +55,8 @@ export function RoutePageLayout({
   );
   const stationAccessGuide = getStationAccessGuide(routePage.slug, locale);
   const stationAccessSectionTitle = getStationAccessSectionTitle(locale);
+  const stationAccessSwipeHint =
+    locale === "pl" ? "Przesuń, aby zobaczyć więcej" : "Swipe to see more";
   const sourceStatusLabel =
     schedule.verificationStatus === "needs official confirmation"
       ? t.schedule.needsOfficialConfirmationShort
@@ -174,6 +176,7 @@ export function RoutePageLayout({
               title={stationAccessGuide.title}
               items={stationAccessGuide.items}
               note={stationAccessGuide.note}
+              swipeHint={stationAccessSwipeHint}
             />
           </div>
         </section>
@@ -194,6 +197,7 @@ export function RoutePageLayout({
               title={stationAccessGuide.title}
               items={stationAccessGuide.items}
               note={stationAccessGuide.note}
+              swipeHint={stationAccessSwipeHint}
             />
           </div>
         </MobileDetailsSection>

@@ -35,6 +35,7 @@ export function StationPhotoGallery({
 
   const galleryTitle = getStationPhotoGalleryTitle(locale);
   const attributionLabel = getStationPhotoAttributionLabel(locale);
+  const swipeHint = locale === "pl" ? "Przesuń, aby zobaczyć więcej" : "Swipe to see more";
 
   return (
     <section
@@ -49,8 +50,11 @@ export function StationPhotoGallery({
           {galleryTitle}
         </h2>
       ) : null}
+      <p className={showTitle ? "mt-2 text-xs font-bold text-[#6b7280] md:hidden" : "text-xs font-bold text-[#6b7280] md:hidden"}>
+        {swipeHint}
+      </p>
 
-      <div className={showTitle ? "mt-3 space-y-4 sm:mt-4" : "space-y-4"}>
+      <div className={showTitle ? "mt-3 space-y-4 sm:mt-4" : "mt-2 space-y-4 md:mt-0"}>
         {visibleGroups.map((group) => (
           <section key={group.stationId} aria-labelledby={`${group.stationId}-photos`}>
             {showGroupTitles ? (
@@ -64,8 +68,8 @@ export function StationPhotoGallery({
             <div
               className={
                 showGroupTitles
-                  ? "mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
-                  : "grid gap-2 sm:grid-cols-2 lg:grid-cols-3"
+                  ? "mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3"
+                  : "flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:gap-2 md:overflow-visible md:pb-0 md:grid-cols-2 lg:grid-cols-3"
               }
             >
               {group.photos.map((photo) => {
@@ -74,7 +78,7 @@ export function StationPhotoGallery({
                 return (
                   <figure
                     key={`${group.stationId}-${photo.src}`}
-                    className="overflow-hidden rounded-xl border border-[#eadcc7] bg-white p-2 lg:p-1.5"
+                    className="w-[240px] flex-none snap-start overflow-hidden rounded-xl border border-[#eadcc7] bg-white p-2 md:w-auto md:flex-auto lg:p-1.5"
                   >
                     <button
                       type="button"
