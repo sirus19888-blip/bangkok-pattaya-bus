@@ -10,6 +10,7 @@ export type StationPhotoStationId =
   | "pattaya-sukhumvit";
 
 type LocalizedText = Record<"en" | "pl", string> & {
+  de?: string;
   ru?: string;
   th?: string;
 };
@@ -36,42 +37,49 @@ export type StationPhotoGroup = {
 const stationTitles: Record<StationPhotoStationId, LocalizedText> = {
   ekkamai: {
     en: "Ekkamai Bus Terminal",
+    de: "Busbahnhof Ekkamai",
     pl: "Dworzec Ekkamai",
     ru: "автовокзал Эккамай",
     th: "สถานีขนส่งเอกมัย",
   },
   "north-pattaya": {
     en: "North Pattaya Bus Station",
+    de: "Busbahnhof Nord-Pattaya",
     pl: "North Pattaya Bus Station",
     ru: "автовокзал Северной Паттайи",
     th: "สถานีขนส่งพัทยาเหนือ",
   },
   "mo-chit": {
     en: "Mo Chit 2 Bus Terminal",
+    de: "Busbahnhof Mo Chit 2",
     pl: "Dworzec Mo Chit 2",
     ru: "автовокзал Мо Чит 2",
     th: "สถานีขนส่งหมอชิต 2",
   },
   "suvarnabhumi-airport": {
     en: "Suvarnabhumi Airport bus area",
+    de: "Busbereich am Flughafen Suvarnabhumi",
     pl: "Strefa autobusowa na lotnisku Suvarnabhumi",
     ru: "автобусная зона аэропорта Суварнабхуми",
     th: "จุดรถบัสท่าอากาศยานสุวรรณภูมิ",
   },
   "jomtien-bus-area": {
     en: "Pattaya / Jomtien airport bus area",
+    de: "Busbereich Pattaya / Jomtien",
     pl: "Strefa autobusu lotniskowego Pattaya / Jomtien",
     ru: "автобусная зона Паттайя / Джомтьен",
     th: "จุดรถบัสสนามบินพัทยา / จอมเทียน",
   },
   "don-mueang-airport": {
     en: "Don Mueang Airport",
+    de: "Flughafen Don Mueang",
     pl: "Lotnisko Don Mueang",
     ru: "аэропорт Дон Муанг",
     th: "ท่าอากาศยานดอนเมือง",
   },
   "pattaya-sukhumvit": {
     en: "Pattaya Sukhumvit Road Bus Station",
+    de: "Busbahnhof an der Sukhumvit Road in Pattaya",
     pl: "Pattaya Sukhumvit Road Bus Station",
     ru: "автостанция на дороге Сукхумвит в Паттайе",
     th: "สถานีรถบัสถนนสุขุมวิทพัทยา",
@@ -81,18 +89,21 @@ const stationTitles: Record<StationPhotoStationId, LocalizedText> = {
 const practicalCaptions = {
   entrance: {
     en: "Use this photo to recognize the terminal entrance.",
+    de: "Dieses Foto hilft dir, den Eingang zum Terminal zu erkennen.",
     pl: "To zdjęcie pomoże rozpoznać wejście do terminalu.",
     ru: "Это фото поможет узнать вход в терминал.",
     th: "ใช้ภาพนี้ช่วยจำทางเข้าสถานี",
   },
   counters: {
     en: "Look for the ticket counters inside the terminal.",
+    de: "Suche die Ticketschalter im Terminal.",
     pl: "Szukaj kas biletowych wewnątrz terminalu.",
     ru: "Ищите кассы внутри терминала.",
     th: "มองหาเคาน์เตอร์จำหน่ายตั๋วภายในสถานี",
   },
   boarding: {
     en: "Boarding areas may change. Check signs at the station.",
+    de: "Einstiegsbereiche können sich ändern. Prüfe die Schilder an der Station.",
     pl: "Miejsca odjazdu mogą się zmieniać. Sprawdź oznaczenia na dworcu.",
     ru: "Места посадки могут меняться. Проверьте указатели на станции.",
     th: "จุดขึ้นรถอาจเปลี่ยนได้ โปรดดูป้ายที่สถานี",
@@ -153,12 +164,14 @@ export const stationPhotos: StationPhoto[] = [
     title: "Pattaya, BusStation North str. - panoramio.jpg",
     displayTitle: {
       en: "North Pattaya Bus Station",
+      de: "Busbahnhof Nord-Pattaya",
       pl: "North Pattaya Bus Station",
       ru: "автовокзал Северной Паттайи",
       th: "สถานีขนส่งพัทยาเหนือ",
     },
     caption: {
       en: "Main bus station area in North Pattaya.",
+      de: "Hauptbereich des Busbahnhofs Nord-Pattaya.",
       pl: "Główny dworzec autobusowy w North Pattaya.",
       ru: "Основная зона автовокзала Северной Паттайи.",
       th: "บริเวณสถานีขนส่งหลักในพัทยาเหนือ",
@@ -307,6 +320,7 @@ export const stationPhotos: StationPhoto[] = [
     title: "Bus station at Don Mueang Airport 2019.jpg",
     caption: {
       en: "Bus station area at Don Mueang Airport",
+      de: "Busbereich am Flughafen Don Mueang",
       pl: "Strefa autobusowa na lotnisku Don Mueang",
       ru: "Автобусная зона в аэропорту Дон Муанг",
       th: "บริเวณสถานีรถบัสที่ท่าอากาศยานดอนเมือง",
@@ -328,6 +342,7 @@ export const stationPhotos: StationPhoto[] = [
     title: "Don Mueang Airport Terminal 2 front.jpg",
     caption: {
       en: "Terminal 2 front area",
+      de: "Vorderer Bereich von Terminal 2",
       pl: "Wejście do Terminalu 2",
       ru: "Входная зона терминала 2",
       th: "บริเวณด้านหน้าอาคารผู้โดยสาร 2",
@@ -349,6 +364,7 @@ export const stationPhotos: StationPhoto[] = [
     title: "Don Mueang International Airport Terminal 1.JPG",
     caption: {
       en: "Terminal 1 building",
+      de: "Gebäude von Terminal 1",
       pl: "Budynek Terminalu 1",
       ru: "Здание терминала 1",
       th: "อาคารผู้โดยสาร 1",
@@ -396,6 +412,10 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
     return text.ru ?? "Фото станции";
   }
 
+  if (locale === "de") {
+    return text.de ?? "Stationsfoto";
+  }
+
   if (locale === "th") {
     return text.th ?? "ภาพสถานี";
   }
@@ -428,6 +448,9 @@ export function getStationPhotoGalleryTitle(locale: LocaleCode) {
   if (locale === "ru") {
     return "Фото станций";
   }
+  if (locale === "de") {
+    return "Stationsfotos";
+  }
   return locale === "pl"
     ? "Jak wyglądają stacje"
     : "What the stations look like";
@@ -439,6 +462,9 @@ export function getStationPhotoAttributionLabel(locale: LocaleCode) {
   }
   if (locale === "ru") {
     return "Фото";
+  }
+  if (locale === "de") {
+    return "Foto";
   }
   return locale === "pl" ? "Zdjęcie" : "Photo";
 }

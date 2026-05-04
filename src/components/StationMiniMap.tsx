@@ -20,6 +20,10 @@ const mapLabels = {
     title: "Карта станции",
     fallbackNote: "Эта карта поможет узнать район вокруг станции.",
   },
+  de: {
+    title: "Stationskarte",
+    fallbackNote: "Diese Karte hilft dir, die Umgebung der Station zu erkennen.",
+  },
   th: {
     title: "แผนที่สถานี",
     fallbackNote: "แผนที่นี้ช่วยให้จำบริเวณรอบสถานีได้ง่ายขึ้น",
@@ -49,6 +53,8 @@ export function StationMiniMap({
       ? mapLabels.pl
       : locale === "ru"
         ? mapLabels.ru
+        : locale === "de"
+          ? mapLabels.de
         : locale === "th"
           ? mapLabels.th
           : mapLabels.en;
@@ -57,12 +63,16 @@ export function StationMiniMap({
       ? station.walkingNote.pl
       : locale === "ru"
         ? getRussianWalkingNote(station.id)
+        : locale === "de"
+          ? getGermanWalkingNote(station.id)
         : locale === "th"
           ? getThaiWalkingNote(station.id)
           : station.walkingNote.en;
   const mapLabel =
     locale === "ru"
       ? getRussianStationMapLabel(station.id, station.mapLabel)
+      : locale === "de"
+        ? getGermanStationMapLabel(station.id, station.mapLabel)
       : locale === "th"
         ? getThaiStationMapLabel(station.id, station.mapLabel)
         : station.mapLabel;
@@ -115,6 +125,20 @@ function getRussianWalkingNote(stationId: string) {
   return notes[stationId] ?? mapLabels.ru.fallbackNote;
 }
 
+function getGermanWalkingNote(stationId: string) {
+  const notes: Record<string, string> = {
+    ekkamai: "Nutze diese Karte, um die Umgebung des Busbahnhofs Ekkamai zu erkennen.",
+    "mo-chit": "Prüfe nach der Ankunft die Schilder vor Ort.",
+    "north-pattaya": "Nutze diese Karte, um die Umgebung des Busbahnhofs Nord-Pattaya zu erkennen.",
+    "suvarnabhumi-airport": "Prüfe nach der Ankunft die Schilder im Flughafen.",
+    "jomtien-bus-area": "Bestätige den genauen Einstieg beim Betreiber vor der Reise.",
+    "don-mueang-airport": "Nutze diese Karte zur Orientierung am Flughafen und bestätige den Einstieg vor Ort.",
+    "pattaya-sukhumvit": "Bestätige den genauen Einstieg in Pattaya vor der Reise.",
+  };
+
+  return notes[stationId] ?? mapLabels.de.fallbackNote;
+}
+
 function getThaiWalkingNote(stationId: string) {
   const notes: Record<string, string> = {
     ekkamai: "ใช้แผนที่นี้เพื่อจำบริเวณรอบสถานีขนส่งเอกมัย",
@@ -139,6 +163,20 @@ function getRussianStationMapLabel(stationId: string, fallback: string) {
     "jomtien-bus-area": "автобусная зона Паттайя / Джомтьен",
     "don-mueang-airport": "аэропорт Дон Муанг",
     "pattaya-sukhumvit": "автостанция на дороге Сукхумвит в Паттайе",
+  };
+
+  return labels[stationId] ?? fallback;
+}
+
+function getGermanStationMapLabel(stationId: string, fallback: string) {
+  const labels: Record<string, string> = {
+    ekkamai: "Busbahnhof Ekkamai",
+    "mo-chit": "Busbahnhof Mo Chit 2",
+    "north-pattaya": "Busbahnhof Nord-Pattaya",
+    "suvarnabhumi-airport": "Busbereich am Flughafen Suvarnabhumi",
+    "jomtien-bus-area": "Busbereich Pattaya / Jomtien",
+    "don-mueang-airport": "Flughafen Don Mueang",
+    "pattaya-sukhumvit": "Busbahnhof an der Sukhumvit Road in Pattaya",
   };
 
   return labels[stationId] ?? fallback;

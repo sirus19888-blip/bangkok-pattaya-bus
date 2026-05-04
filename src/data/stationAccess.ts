@@ -12,6 +12,79 @@ export type StationAccessGuide = {
   note: LocalizedText;
 };
 
+type PlainStationAccessGuide = {
+  title: string;
+  items: string[];
+  note: string;
+};
+
+const germanTransportPriceNote =
+  "Transportpreise können sich ändern. Preise in Fahr-Apps hängen von Verkehr, Nachfrage und Abholort ab.";
+
+const germanStationAccessGuides: Record<RouteId, PlainStationAccessGuide> = {
+  "bangkok-to-pattaya": {
+    title: "So kommst du zum Busbahnhof Ekkamai",
+    items: [
+      "Mit BTS: Nimm die Sukhumvit-Linie bis zur Station Ekkamai. Der Busbahnhof ist meist etwa 5 Minuten zu Fuß entfernt.",
+      "Mit Taxi oder Grab: Gut, wenn du Gepäck hast. Der Preis hängt von Verkehr und Abholort ab. Prüfe den Fahrpreis in der App vor der Buchung.",
+      "Tuk-Tuks besser meiden, wenn der Preis nicht vorher klar ist. In Touristengebieten können sie teurer sein als erwartet.",
+      "Tipp: Komm 20–30 Minuten vor Abfahrt an, um dein Ticket zu kaufen und den richtigen Bussteig zu finden."
+    ],
+    note: germanTransportPriceNote
+  },
+  "pattaya-to-bangkok": {
+    title: "So kommst du zum Busbahnhof Nord-Pattaya",
+    items: [
+      "Mit Songthaew: Ein gemeinsames Songthaew kann günstig sein, wenn es in die richtige Richtung fährt. Für Erstbesucher sind die Routen nicht immer klar.",
+      "Mit Taxi oder Grab: Meist die einfachste Option ab Hotel oder Strandbereich. Der Preis hängt von Entfernung, Verkehr und Nachfrage ab.",
+      "Aus dem Zentrum von Pattaya: Plane extra Zeit ein, besonders nachmittags und am Wochenende.",
+      "Tipp: Prüfe vor dem Ticketkauf, ob dein Bus nach Ekkamai oder Mo Chit 2 fährt."
+    ],
+    note: germanTransportPriceNote
+  },
+  "suvarnabhumi-airport-to-pattaya": {
+    title: "So findest du den Busschalter am Flughafen",
+    items: [
+      "Nach der Ankunft: Plane Zeit für Einreise, Gepäckausgabe und Wege im Flughafen ein.",
+      "Busschalter: Aktuelle Routendaten nennen Ebene 1 nahe Gate 8. Folge den Schildern und bestätige es am Schalter.",
+      "Airport Rail Link: Für diesen Bus nicht nötig, aber hilfreich, wenn du nach Bangkok fährst. Die Fahrt kostet meist 15–45 Baht je nach Entfernung.",
+      "Taxi oder Grab: Nützlich, wenn du den Bus verpasst oder spät reist. Der Preis hängt von Verkehr, Maut und Nachfrage ab.",
+      "Tipp: Der späte Bus um 22:00 kann zum Busbahnhof Nord-Pattaya fahren, nicht nach Jomtien. Bestätige das Ziel vor dem Ticketkauf."
+    ],
+    note: germanTransportPriceNote
+  },
+  "pattaya-to-suvarnabhumi-airport": {
+    title: "So kommst du zum Flughafenbus in Pattaya",
+    items: [
+      "Vom Hotel: Taxi oder Grab ist mit Gepäck meist am einfachsten. Der Preis hängt von Entfernung, Verkehr und Nachfrage ab.",
+      "Mit Songthaew: Kann günstig sein, wenn die Route passt. Wenn du Pattaya nicht kennst, plane extra Zeit ein.",
+      "Busbahnhof Jomtien: Der Betreiber nennt Tickets am Serviceschalter. Bestätige den genauen Einstieg vor der Fahrt.",
+      "Tipp: Plane genug Puffer für Verkehr, Check-in, Sicherheitskontrolle und Einreiseformalitäten am Flughafen ein."
+    ],
+    note: germanTransportPriceNote
+  },
+  "don-mueang-airport-to-pattaya": {
+    title: "So findest du den Busbereich am Flughafen Don Mueang",
+    items: [
+      "Nach der Ankunft: Plane Zeit für Gepäck, Orientierung im Flughafen und den Weg zum Schalter oder Einstiegsort ein.",
+      "Busschalter: Die Flughafenseite nennt Terminal 1 Gate 1 und Terminal 2 Gate 11. Bestätige den Bus nach Pattaya vor Ort.",
+      "Einstiegsort: Die Flughafenseite nennt das Servicegebäude als Abholpunkt. Folge den Schildern und frage am Schalter.",
+      "Tipp: Der Verkehr in Bangkok ist schwer vorhersehbar. Halte deine Ankunftspläne flexibel."
+    ],
+    note: germanTransportPriceNote
+  },
+  "pattaya-to-don-mueang-airport": {
+    title: "So kommst du zum Bus Pattaya — Don Mueang",
+    items: [
+      "Vom Hotel: Taxi oder Grab ist mit Gepäck meist am einfachsten. Der Preis hängt von Entfernung, Verkehr und Nachfrage ab.",
+      "Mit Songthaew: Kann günstig sein, wenn die Route passt. Wenn du Pattaya nicht kennst, plane extra Zeit ein.",
+      "Einstiegsort: Zusätzliche Quellen nennen den Busbahnhof an der Sukhumvit Road in Pattaya. Bestätige die genaue Haltestelle vor der Reise.",
+      "Tipp: Verlasse dich vor einem Flug nicht auf den letzten möglichen Bus. Halte eine Alternative bereit."
+    ],
+    note: germanTransportPriceNote
+  }
+};
+
 const transportPriceNote: LocalizedText = {
   en: "Transport prices can change. App-based ride prices vary by traffic, demand, and pickup point.",
   pl: "Ceny transportu mogą się zmieniać. Ceny przejazdów w aplikacjach zależą od korków, popytu i miejsca odbioru.",
@@ -245,6 +318,10 @@ export const stationAccessGuides: Record<RouteId, StationAccessGuide> = {
 };
 
 export function getStationAccessGuide(routeId: RouteId, locale: LocaleCode) {
+  if (locale === "de") {
+    return germanStationAccessGuides[routeId];
+  }
+
   const guide = stationAccessGuides[routeId];
 
   return {
@@ -261,6 +338,10 @@ export function getStationAccessSectionTitle(locale: LocaleCode) {
 
   if (locale === "ru") {
     return "Как добраться до станции";
+  }
+
+  if (locale === "de") {
+    return "So kommst du zur Station";
   }
 
   if (locale === "th") {

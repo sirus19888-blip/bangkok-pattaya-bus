@@ -38,16 +38,26 @@ export function StationPhotoGallery({
   const openPhotoLabel =
     locale === "ru"
       ? "Открыть фото крупнее"
+      : locale === "de"
+        ? "Foto größer öffnen"
       : locale === "th"
         ? "เปิดภาพขนาดใหญ่"
         : "Open larger photo";
   const closeImageLabel =
-    locale === "ru" ? "Закрыть фото" : locale === "th" ? "ปิดภาพ" : "Close image";
+    locale === "ru"
+      ? "Закрыть фото"
+      : locale === "de"
+        ? "Foto schließen"
+        : locale === "th"
+          ? "ปิดภาพ"
+          : "Close image";
   const swipeHint =
     locale === "pl"
       ? "Przesuń, aby zobaczyć więcej"
       : locale === "ru"
         ? "Проведите, чтобы увидеть больше"
+      : locale === "de"
+        ? "Wische, um mehr zu sehen"
       : locale === "th"
         ? "เลื่อนเพื่อดูเพิ่มเติม"
         : "Swipe to see more";
@@ -115,6 +125,8 @@ export function StationPhotoGallery({
                           ? photo.displayTitle.pl
                           : locale === "ru"
                             ? photo.displayTitle.ru ?? "Фото станции"
+                          : locale === "de"
+                            ? photo.displayTitle.de ?? "Stationsfoto"
                           : locale === "th"
                             ? photo.displayTitle.th ?? "ภาพสถานี"
                             : photo.displayTitle.en}
@@ -188,6 +200,8 @@ function PhotoLightbox({
       ? photo.displayTitle.pl
       : locale === "ru"
         ? photo.displayTitle.ru ?? "Фото станции"
+      : locale === "de"
+        ? photo.displayTitle.de ?? "Stationsfoto"
       : locale === "th"
         ? photo.displayTitle.th ?? "ภาพสถานี"
       : photo.displayTitle.en

@@ -31,6 +31,15 @@ const footerText = {
       { href: "/privacy", label: "Конфиденциальность" },
     ],
   },
+  de: {
+    title: "Bangkok Pattaya Bus Guide",
+    ariaLabel: "Links im Seitenfuß",
+    links: [
+      { href: "/about", label: "Über uns" },
+      { href: "/contact", label: "Kontakt" },
+      { href: "/privacy", label: "Datenschutz" },
+    ],
+  },
 };
 
 export function SiteFooter() {
@@ -39,6 +48,8 @@ export function SiteFooter() {
     ? footerText.th
     : pathname?.startsWith("/ru/")
       ? footerText.ru
+      : pathname?.startsWith("/de/")
+        ? footerText.de
       : footerText.en;
 
   return (

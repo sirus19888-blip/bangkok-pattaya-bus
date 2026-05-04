@@ -60,6 +60,8 @@ export function RoutePageLayout({
       ? "Przesuń, aby zobaczyć więcej"
       : locale === "ru"
         ? "Проведите, чтобы увидеть больше"
+      : locale === "de"
+        ? "Wische, um mehr zu sehen"
       : locale === "th"
         ? "เลื่อนเพื่อดูเพิ่มเติม"
         : "Swipe to see more";

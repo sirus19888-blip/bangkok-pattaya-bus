@@ -33,7 +33,13 @@ export function RelatedRoutes({
             </span>
             <span className="mt-1 hidden text-sm font-semibold text-[#4f5d6c] md:block md:text-xs">
         {routePage.from}{" "}
-        {locale === "th" ? "ไป" : locale === "ru" ? "—" : "to"}{" "}
+        {locale === "th"
+          ? "ไป"
+          : locale === "ru"
+            ? "—"
+            : locale === "de"
+              ? "nach"
+              : "to"}{" "}
         {routePage.to}
       </span>
           </Link>

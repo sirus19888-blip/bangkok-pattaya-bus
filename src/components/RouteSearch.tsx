@@ -13,15 +13,20 @@ export function RouteSearch({
 }: RouteSearchProps) {
   const isThai = labels.from === "จาก:";
   const isRussian = labels.from === "Откуда:";
+  const isGerman = labels.from === "Von:";
   const fromOptions = isThai
     ? [from, "พัทยา", "กรุงเทพฯ", "ท่าอากาศยานสุวรรณภูมิ", "ท่าอากาศยานดอนเมือง"]
     : isRussian
       ? [from, "Паттайя", "Бангкок", "аэропорт Суварнабхуми", "аэропорт Дон Муанг"]
+      : isGerman
+        ? [from, "Pattaya", "Bangkok", "Flughafen Suvarnabhumi", "Flughafen Don Mueang"]
     : [from, "Pattaya", "Bangkok", "Suvarnabhumi Airport", "Don Mueang Airport"];
   const toOptions = isThai
     ? [to, "กรุงเทพฯ", "พัทยา", "ท่าอากาศยานสุวรรณภูมิ", "ท่าอากาศยานดอนเมือง"]
     : isRussian
       ? [to, "Бангкок", "Паттайя", "аэропорт Суварнабхуми", "аэропорт Дон Муанг"]
+      : isGerman
+        ? [to, "Bangkok", "Pattaya", "Flughafen Suvarnabhumi", "Flughafen Don Mueang"]
     : [to, "Bangkok", "Pattaya", "Suvarnabhumi Airport", "Don Mueang Airport"];
 
   return (

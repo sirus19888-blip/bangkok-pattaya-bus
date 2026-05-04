@@ -42,6 +42,17 @@ const copy = {
     routeLabel: "Маршрут",
     prompt: "Что нужно исправить?",
   },
+  de: {
+    title: "War dieser Guide hilfreich?",
+    text: "Hilf uns, Buszeiten klar und nützlich für andere Reisende zu halten.",
+    helped: "Ja, hilfreich",
+    report: "Veraltete Zeiten melden",
+    thanks: "Danke - dein Feedback hilft, diesen Guide zu verbessern.",
+    subject: "Meldung zu veralteten Buszeiten",
+    bodyIntro: "Hallo, ich habe veraltete Informationen auf dieser Routenseite gefunden:",
+    routeLabel: "Route",
+    prompt: "Was muss korrigiert werden?",
+  },
   th: {
     title: "คู่มือนี้มีประโยชน์ไหม",
     text: "ช่วยให้เรารักษาข้อมูลเวลาเดินรถให้ชัดเจนและเป็นประโยชน์กับนักเดินทางคนอื่น",
@@ -62,6 +73,10 @@ function getCopy(locale: LocaleCode) {
 
   if (locale === "ru") {
     return copy.ru;
+  }
+
+  if (locale === "de") {
+    return copy.de;
   }
 
   if (locale === "th") {
