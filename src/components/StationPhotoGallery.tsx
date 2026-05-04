@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { LocaleCode } from "@/data/routes";
 import {
   getStationPhotoAttributionLabel,
@@ -157,33 +157,50 @@ function PhotoLightbox({
   photo: StationPhoto;
 }) {
   const photoText = getStationPhotoText(photo, locale);
-  const closeLabel = locale === "pl" ? "Zamknij" : "Close";
+  const title = photo.displayTitle
+    ? locale === "pl"
+      ? photo.displayTitle.pl
+      : photo.displayTitle.en
+    : photo.title;
+
+  useEffect(() => {
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [onClose]);
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#13233a]/80 p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#13233a]/80 p-3 sm:p-5"
       role="dialog"
       aria-modal="true"
       aria-label={photoText.alt}
+      onClick={onClose}
     >
-      <div className="w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-xl">
-        <div className="flex items-center justify-between gap-3 border-b border-[#eadcc7] p-3">
-          <p className="text-sm font-black text-[#13233a]">
-            {photo.displayTitle
-              ? locale === "pl"
-                ? photo.displayTitle.pl
-                : photo.displayTitle.en
-              : photo.title}
+      <div
+        className="relative flex max-h-[92vh] w-full max-w-[90vw] flex-col overflow-hidden rounded-2xl bg-white shadow-xl sm:max-h-[90vh]"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="flex shrink-0 items-center justify-between gap-3 border-b border-[#eadcc7] p-3 pr-14">
+          <p className="line-clamp-2 text-sm font-black leading-5 text-[#13233a]">
+            {title}
           </p>
-          <button
-            type="button"
-            onClick={onClose}
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-xl bg-[#13233a] px-3 text-sm font-black text-white"
-          >
-            {closeLabel}
-          </button>
         </div>
-        <div className="relative aspect-[4/3] w-full bg-[#fffaf2]">
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Close image"
+          className="absolute right-2 top-2 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-[#13233a] text-2xl font-black leading-none text-white shadow-sm transition hover:bg-[#233a5b]"
+        >
+          ×
+        </button>
+        <div className="relative h-[62vh] max-h-[70vh] w-full bg-[#fffaf2] sm:h-[70vh] sm:max-h-[80vh]">
           <Image
             src={photo.src}
             alt={photoText.alt}
@@ -193,7 +210,7 @@ function PhotoLightbox({
             priority
           />
         </div>
-        <div className="p-3">
+        <div className="shrink-0 p-3">
           <p className="text-sm font-black leading-5 text-[#13233a]">
             {photoText.caption}
           </p>
