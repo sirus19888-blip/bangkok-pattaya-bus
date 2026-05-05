@@ -73,10 +73,10 @@ export const schedules: Schedule[] = [
     sourceType: "official operator website",
     lastVerified: "2026-05-03",
     verificationStatus: "partially verified",
-    fareNote: "Published fare shown by operator: 158 THB per seat.",
+    fareNote: "Fare published by the operator: 158 THB per seat.",
     operatorNote:
       "Bus times may change. Confirm at the station or with the operator before travel.",
-    dataQuality: "official source, manual verification",
+    dataQuality: "Official source, manually verified",
   },
   {
     id: "pattaya-to-bangkok-ekkamai",
@@ -113,10 +113,10 @@ export const schedules: Schedule[] = [
     lastVerified: "2026-05-03",
     verificationStatus: "partially verified",
     fareNote:
-      "Published fares shown by operator: 158 THB to Mochit and 148 THB to Ekkamai per seat.",
+      "Fares published by the operator: 158 THB to Mochit and 148 THB to Ekkamai per seat.",
     operatorNote:
       "Bus times may change. Confirm at the station or with the operator before travel.",
-    dataQuality: "official source, manual verification",
+    dataQuality: "Official source, manually verified",
     subRoutes: [
       {
         id: "pattaya-to-mochit",
@@ -128,10 +128,10 @@ export const schedules: Schedule[] = [
         sourceType: "official operator website",
         lastVerified: "2026-05-03",
         verificationStatus: "partially verified",
-        fareNote: "Published fare shown by operator: 158 THB per seat.",
+        fareNote: "Fare published by the operator: 158 THB per seat.",
         operatorNote:
           "Bus times may change. Confirm at the station or with the operator before travel.",
-        dataQuality: "official source, manual verification",
+        dataQuality: "Official source, manually verified",
         departures: [
           "05:00",
           "07:30",
@@ -157,10 +157,10 @@ export const schedules: Schedule[] = [
         sourceType: "official operator website",
         lastVerified: "2026-05-03",
         verificationStatus: "partially verified",
-        fareNote: "Published fare shown by operator: 148 THB per seat.",
+        fareNote: "Fare published by the operator: 148 THB per seat.",
         operatorNote:
           "Bus times may change. Confirm at the station or with the operator before travel.",
-        dataQuality: "official source, manual verification",
+        dataQuality: "Official source, manually verified",
         departures: [
           "04:30",
           "08:00",
@@ -212,11 +212,11 @@ export const schedules: Schedule[] = [
     sourceType: "official operator website",
     lastVerified: "2026-05-03",
     verificationStatus: "partially verified",
-    fareNote: "Published fare shown by operator: 162 THB per seat.",
+    fareNote: "Fare published by the operator: 162 THB per seat.",
     boardingNote: "Buy ticket at counter service on Level 1, Gate 8.",
     operatorNote:
       "The 22:00 bus goes to North Pattaya bus station, not Jomtien bus terminal. Bus times may change. Confirm before travel.",
-    dataQuality: "official source, manual verification",
+    dataQuality: "Official source, manually verified",
   },
   {
     id: "pattaya-to-suvarnabhumi-airport",
@@ -253,12 +253,12 @@ export const schedules: Schedule[] = [
     sourceType: "official operator website",
     lastVerified: "2026-05-03",
     verificationStatus: "partially verified",
-    fareNote: "Published fare shown by operator: 162 THB per seat.",
+    fareNote: "Fare published by the operator: 162 THB per seat.",
     boardingNote:
       "Tickets are shown by the operator as available at the counter service at Jomtien bus station.",
     operatorNote:
       "Bus times may change. Confirm at the station or with the operator before travel.",
-    dataQuality: "official source, manual verification",
+    dataQuality: "Official source, manually verified",
   },
   {
     id: "don-mueang-airport-to-pattaya",
@@ -279,12 +279,12 @@ export const schedules: Schedule[] = [
     lastVerified: "2026-05-04",
     verificationStatus: "partially verified",
     fareNote:
-      "Published fare shown by the airport transportation page: 155 THB per person.",
+      "Fare published by the airport transportation page: 155 THB per person.",
     boardingNote:
       "The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building.",
     operatorNote:
       "Based on official airport transportation information. Confirm before travel.",
-    dataQuality: "official airport source, manual verification",
+    dataQuality: "Official airport source, manually verified",
   },
   {
     id: "pattaya-to-don-mueang-airport",

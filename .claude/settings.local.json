@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "WebFetch(domain:localhost)",
+      "Bash(curl -s http://localhost:3000/en/bangkok-to-pattaya)",
+      "Bash(Select-String -Pattern \"trainbusferry|12go|12Go|script\" -SimpleMatch)",
+      "Bash(Select-Object -First 20)",
+      "PowerShell($html = Invoke-WebRequest -Uri \"http://localhost:3000/en/bangkok-to-pattaya\" -UseBasicParsing; $html.StatusCode; $html.Content | Select-String -Pattern \"trainbusferry|12go|12Go\" -SimpleMatch)",
+      "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:3000/\" -UseBasicParsing -MaximumRedirection 0 -ErrorAction SilentlyContinue; $r.StatusCode)",
+      "Bash(node -e \"const p = require\\('./node_modules/next/package.json'\\); console.log\\(p.version\\)\")",
+      "Bash(xargs grep *)",
+      "Bash(npx tsc *)",
+      "Bash(git checkout *)"
+    ]
+  }
+}

@@ -11,7 +11,7 @@ type TravelerFeedbackProps = {
 const copy = {
   en: {
     title: "Was this guide helpful?",
-    text: "Help us keep bus times clear and useful for other travelers.",
+    text: "Help us keep bus times accurate and useful for other travelers.",
     helped: "Yes, it helped",
     report: "Report outdated times",
     thanks: "Thank you - your feedback helps improve this guide.",

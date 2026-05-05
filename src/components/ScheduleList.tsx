@@ -229,7 +229,7 @@ function formatVerificationStatus(
   const isGerman = labels.verification === "Prüfstatus";
 
   if (!isThai && !isRussian && !isGerman) {
-    return status;
+    return status.charAt(0).toUpperCase() + status.slice(1);
   }
 
   if (isGerman) {
