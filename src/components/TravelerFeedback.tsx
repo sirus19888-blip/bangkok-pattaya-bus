@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { LocaleCode } from "@/data/routes";
 
 type TravelerFeedbackProps = {
+  buyMeCoffeeLabel: string;
   locale: LocaleCode;
   routeTitle: string;
 };
@@ -86,14 +87,30 @@ function getCopy(locale: LocaleCode) {
   return copy.en;
 }
 
-export function TravelerFeedback({ locale, routeTitle }: TravelerFeedbackProps) {
+export function TravelerFeedback({
+  buyMeCoffeeLabel,
+  locale,
+  routeTitle,
+}: TravelerFeedbackProps) {
   const [helped, setHelped] = useState(false);
   const text = getCopy(locale);
   const pageUrl = typeof window === "undefined" ? "" : window.location.href;
+  const feedbackStorageKey =
+    typeof window === "undefined"
+      ? ""
+      : `traveler-feedback-helped:${window.location.pathname}`;
   const body = `${text.bodyIntro}\n${pageUrl}\n\n${text.routeLabel}: ${routeTitle}\n\n${text.prompt}`;
   const mailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
     text.subject,
   )}&body=${encodeURIComponent(body)}`;
+
+  function handleHelpedClick() {
+    setHelped(true);
+
+    if (feedbackStorageKey) {
+      window.localStorage.setItem(feedbackStorageKey, "yes");
+    }
+  }
 
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5 md:p-4">
@@ -106,12 +123,18 @@ export function TravelerFeedback({ locale, routeTitle }: TravelerFeedbackProps) 
             {text.text}
           </p>
         </div>
-        <div className="grid gap-2 sm:min-w-64 sm:grid-cols-2 md:min-w-[23rem]">
+        <div className="grid gap-2 sm:min-w-64 sm:grid-cols-3 md:min-w-[32rem]">
           <button
             type="button"
-            onClick={() => setHelped(true)}
-            className="flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#233a5b] md:min-h-10 md:text-xs"
+            onClick={handleHelpedClick}
+            aria-pressed={helped}
+            className={`flex min-h-11 items-center justify-center rounded-xl px-4 text-center text-sm font-black transition md:min-h-10 md:text-xs ${
+              helped
+                ? "bg-[#2f6f93] text-white"
+                : "bg-[#13233a] text-white hover:bg-[#233a5b]"
+            }`}
           >
+            {helped ? "✓ " : null}
             {text.helped}
           </button>
           <a
@@ -120,13 +143,23 @@ export function TravelerFeedback({ locale, routeTitle }: TravelerFeedbackProps) 
           >
             {text.report}
           </a>
+          <a
+            href="https://www.buymeacoffee.com/Pawel_"
+            className="flex min-h-11 items-center justify-center rounded-xl border border-[#13233a] bg-white px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-[#fffaf2] md:min-h-10 md:text-xs"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {buyMeCoffeeLabel}
+          </a>
         </div>
       </div>
-      {helped ? (
-        <p className="mt-3 rounded-xl bg-[#fffaf2] px-3 py-2 text-sm font-bold leading-5 text-[#13233a]">
+      <div aria-live="polite" role="status">
+        {helped ? (
+          <p className="mt-3 rounded-xl border border-[#c8dbe9] bg-[#f4fbff] px-3 py-2 text-sm font-bold leading-5 text-[#13233a]">
           {text.thanks}
-        </p>
-      ) : null}
+          </p>
+        ) : null}
+      </div>
     </section>
   );
 }

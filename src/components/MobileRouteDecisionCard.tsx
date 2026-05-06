@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
 import type { Translations } from "@/lib/i18n";
+import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 
 type MobileRouteDecisionCardProps = {
   routeTitle: string;
@@ -23,14 +25,39 @@ export function MobileRouteDecisionCard({
   labels,
 }: MobileRouteDecisionCardProps) {
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
+  const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
+    number | null
+  >(() =>
+    getMinutesUntilDeparture(
+      calculatedNextDeparture.time,
+      calculatedNextDeparture.isTomorrow,
+    ),
+  );
   const hasMultipleNextSubRoutes = calculatedNextDeparture.subRoutes.length > 1;
   const nextSubRouteText = hasMultipleNextSubRoutes
     ? `${labels.availableTo} ${calculatedNextDeparture.subRoutes
         .map((subRoute) => subRoute.to.replace(/^Bangkok\s+/i, ""))
         .join(" / ")}`
     : calculatedNextDeparture.subRoutes[0]?.label;
+  const countdownText = formatCountdown(minutesUntilDeparture, labels);
   const departures = schedule.departures;
   const hasDepartures = departures.length > 0;
+
+  useEffect(() => {
+    function updateCountdown() {
+      setMinutesUntilDeparture(
+        getMinutesUntilDeparture(
+          calculatedNextDeparture.time,
+          calculatedNextDeparture.isTomorrow,
+        ),
+      );
+    }
+
+    updateCountdown();
+    const intervalId = window.setInterval(updateCountdown, 30_000);
+
+    return () => window.clearInterval(intervalId);
+  }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
 
   return (
     <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm md:hidden">
@@ -55,6 +82,16 @@ export function MobileRouteDecisionCard({
         <p className="mt-1 text-4xl font-black leading-none text-[#13233a]">
           {calculatedNextDeparture.time}
         </p>
+        {countdownText ? (
+          <div className="mt-2 rounded-xl border border-[#13233a]/10 bg-[#13233a] px-3 py-2 text-white shadow-sm">
+            <span className="block text-[0.62rem] font-black uppercase tracking-wide text-[#f3d77b]">
+              {labels.remainingTime}
+            </span>
+            <span className="mt-0.5 block text-lg font-black leading-tight">
+              {countdownText}
+            </span>
+          </div>
+        ) : null}
         {calculatedNextDeparture.isTomorrow ? (
           <p className="mt-2 text-sm font-black text-[#4f5d6c]">
             {labels.nextServiceTomorrow}
@@ -106,6 +143,32 @@ export function MobileRouteDecisionCard({
       </a>
     </section>
   );
+}
+
+function formatCountdown(
+  minutesUntilDeparture: number | null,
+  labels: MobileRouteDecisionCardProps["labels"],
+) {
+  if (minutesUntilDeparture === null) {
+    return null;
+  }
+
+  if (minutesUntilDeparture <= 0) {
+    return labels.leavingNow;
+  }
+
+  if (minutesUntilDeparture < 60) {
+    return `${minutesUntilDeparture} ${labels.minutesShort}`;
+  }
+
+  const hours = Math.floor(minutesUntilDeparture / 60);
+  const minutes = minutesUntilDeparture % 60;
+
+  if (minutes === 0) {
+    return `${hours} ${labels.hoursShort}`;
+  }
+
+  return `${hours} ${labels.hoursShort} ${minutes} ${labels.minutesShort}`;
 }
 
 function DecisionFact({ label, value }: { label: string; value: string }) {

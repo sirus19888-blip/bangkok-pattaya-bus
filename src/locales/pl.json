@@ -15,7 +15,11 @@
     "title": "Najbliższy autobus:",
     "travelTime": "Czas podróży:",
     "ticketPrice": "Cena biletu:",
-    "timeZoneNote": "Godziny podane według czasu lokalnego w Tajlandii."
+    "timeZoneNote": "Godziny podane według czasu lokalnego w Tajlandii.",
+    "remainingTime": "Pozostało do odjazdu",
+    "leavingNow": "Odjeżdża teraz",
+    "hoursShort": "godz.",
+    "minutesShort": "min"
   },
   "schedule": {
     "needsOfficialConfirmationShort": "Wymaga potwierdzenia",

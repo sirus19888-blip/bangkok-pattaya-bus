@@ -17,7 +17,7 @@ const thailandTimeFormatter = new Intl.DateTimeFormat("en-GB", {
   timeZone: "Asia/Bangkok",
 });
 
-function timeToMinutes(time: string) {
+export function timeToMinutes(time: string) {
   const [hours, minutes] = time.split(":").map(Number);
 
   return hours * 60 + minutes;
@@ -97,4 +97,20 @@ export function getNextDeparture(
       ? getMatchingSubRoutes(schedule, firstTomorrow)
       : [],
   };
+}
+
+export function getMinutesUntilDeparture(
+  departure: string,
+  isTomorrow: boolean,
+  now = new Date(),
+) {
+  if (!departure) {
+    return null;
+  }
+
+  const departureMinutes = timeToMinutes(departure);
+  const currentMinutes = getCurrentThailandTime(now).minutesSinceMidnight;
+  const dayOffset = isTomorrow ? 24 * 60 : 0;
+
+  return dayOffset + departureMinutes - currentMinutes;
 }

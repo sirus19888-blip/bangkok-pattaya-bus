@@ -103,7 +103,7 @@ export function StationPhotoGallery({
                 return (
                   <figure
                     key={`${group.stationId}-${photo.src}`}
-                    className="w-[240px] flex-none snap-start overflow-hidden rounded-xl border border-[#eadcc7] bg-white p-2 md:w-auto md:flex-auto lg:p-1.5"
+                    className="w-[240px] flex-none snap-start rounded-xl border border-[#eadcc7] bg-white p-2 md:w-auto md:flex-auto lg:p-1.5"
                   >
                     <button
                       type="button"
@@ -142,7 +142,11 @@ export function StationPhotoGallery({
                       {photoText.caption}
                     </figcaption>
                     <p className="mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280] lg:text-[0.62rem] lg:leading-3">
-                      {attributionLabel}:{" "}
+                      <AttributionPrefix
+                        label={attributionLabel}
+                        tooltip={`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`}
+                      />{" "}
+                      <span className="hidden">
                       <a
                         href={photo.sourceUrl}
                         className="underline decoration-[#d6b45f] underline-offset-2"
@@ -160,6 +164,7 @@ export function StationPhotoGallery({
                       >
                         {photo.licenseName}
                       </a>
+                      </span>
                     </p>
                   </figure>
                 );
@@ -244,22 +249,32 @@ function PhotoLightbox({
         >
           ×
         </button>
-        <div className="relative h-[62vh] max-h-[70vh] w-full bg-[#fffaf2] sm:h-[70vh] sm:max-h-[80vh]">
+        <button
+          type="button"
+          className="relative h-[62vh] max-h-[70vh] w-full cursor-zoom-out touch-manipulation bg-[#fffaf2] sm:h-[70vh] sm:max-h-[80vh]"
+          onClick={onClose}
+          onPointerUp={onClose}
+          aria-label={closeImageLabel}
+        >
           <Image
             src={photo.src}
             alt={photoText.alt}
             fill
             sizes="100vw"
-            className="object-contain"
+            className="pointer-events-none object-contain"
             priority
           />
-        </div>
+        </button>
         <div className="shrink-0 p-3">
           <p className="text-sm font-black leading-5 text-[#13233a]">
             {photoText.caption}
           </p>
           <p className="mt-1 text-xs font-semibold leading-5 text-[#6b7280]">
-            {attributionLabel}:{" "}
+            <AttributionPrefix
+              label={attributionLabel}
+              tooltip={`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`}
+            />{" "}
+            <span className="hidden">
             <a
               href={photo.sourceUrl}
               className="underline decoration-[#d6b45f] underline-offset-2"
@@ -277,9 +292,51 @@ function PhotoLightbox({
             >
               {photo.licenseName}
             </a>
+            </span>
           </p>
         </div>
       </div>
     </div>
+  );
+}
+
+function AttributionPrefix({
+  label,
+  tooltip,
+}: {
+  label: string;
+  tooltip: string;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <span className="relative inline-flex align-middle">
+      <button
+        type="button"
+        aria-label={label}
+        aria-expanded={isOpen}
+        className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#d8c8b4] bg-[#fffaf2] text-[#13233a] outline-none transition hover:border-[#2f6f93] focus:border-[#2f6f93] focus:ring-2 focus:ring-[#c8dbe9]"
+        onClick={() => setIsOpen((current) => !current)}
+      >
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          className="h-3.5 w-3.5"
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+        >
+          <path d="M14.5 5 13 3H8L6.5 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-5.5Z" />
+          <circle cx="12" cy="12" r="3.5" />
+        </svg>
+      </button>
+      {isOpen ? (
+        <span className="absolute bottom-full left-0 z-50 mb-2 block w-[16rem] max-w-[min(16rem,80vw)] rounded-lg bg-[#13233a] px-3 py-2 text-left text-[0.68rem] font-black leading-4 text-white shadow-xl">
+          {tooltip}
+        </span>
+      ) : null}
+    </span>
   );
 }

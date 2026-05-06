@@ -10,7 +10,6 @@ import { RouteSummary } from "@/components/RouteSummary";
 import { ScheduleList } from "@/components/ScheduleList";
 import { StationAccessGuide } from "@/components/StationAccessGuide";
 import { StationCard } from "@/components/StationCard";
-import { SupportButton } from "@/components/SupportButton";
 import { TravelGuide } from "@/components/TravelGuide";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
 import { routePages } from "@/data/routes";
@@ -133,8 +132,20 @@ export function RoutePageLayout({
 
             <RouteSearch
               from={routePage.from}
-              to={routePage.to}
               labels={t.routeSelector}
+              locale={locale}
+              currentRoute={routePage.slug}
+              routePages={routePages.map((page) => {
+                const routeText = t.routePages[page.slug];
+                const endpoints = routeText as { from?: string; to?: string };
+
+                return {
+                  slug: page.slug,
+                  from: endpoints.from ?? page.from,
+                  to: endpoints.to ?? page.to,
+                };
+              })}
+              to={routePage.to}
             />
           </div>
 
@@ -163,13 +174,19 @@ export function RoutePageLayout({
         </div>
 
         <section className="hidden gap-4 md:grid lg:grid-cols-[1.1fr_0.9fr]">
-          <ScheduleList
-            route={route}
-            schedule={schedule}
-            nextDeparture={nextDeparture}
-            labels={t.schedule}
-            showSourceInfo
-          />
+          <div className="space-y-4">
+            <ScheduleList
+              route={route}
+              schedule={schedule}
+              nextDeparture={nextDeparture}
+              labels={t.schedule}
+              showSourceInfo
+            />
+            <div className="grid gap-4 lg:grid-cols-2">
+              <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
+              <FAQ faqs={localizedFaqs} labels={t.faq} />
+            </div>
+          </div>
           <div className="hidden space-y-4 lg:block">
             <StationCard
               stations={stations}
@@ -228,11 +245,6 @@ export function RoutePageLayout({
           <p className="mt-2">{schedule.disclaimer}</p>
         </section>
 
-        <section className="hidden gap-4 md:grid lg:grid-cols-[1fr_0.9fr]">
-          <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
-          <FAQ faqs={localizedFaqs} labels={t.faq} />
-        </section>
-
         <MobileDetailsSection title={t.travelTips.title}>
           <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
         </MobileDetailsSection>
@@ -241,32 +253,10 @@ export function RoutePageLayout({
           <FAQ faqs={localizedFaqs} labels={t.faq} />
         </MobileDetailsSection>
 
-        <div className="hidden md:block">
-          <RelatedRoutes
-            currentRoute={routePage.slug}
-            heading={t.common.relatedRoutes}
-            locale={locale}
-            routePages={routePages.map((page) => {
-              const routeText = t.routePages[page.slug];
-              const endpoints = routeText as { from?: string; to?: string };
-
-              return {
-                ...page,
-                title: routeText.title,
-                from: endpoints.from ?? page.from,
-                to: endpoints.to ?? page.to,
-              };
-            })}
-          />
-        </div>
-
-        <TravelerFeedback locale={locale} routeTitle={routePage.title} />
-
-        <SupportButton
-          labels={{
-            ...t.support,
-            buyMeCoffee: t.common.buyMeCoffee,
-          }}
+        <TravelerFeedback
+          buyMeCoffeeLabel={t.common.buyMeCoffee}
+          locale={locale}
+          routeTitle={routePage.title}
         />
       </section>
     </main>

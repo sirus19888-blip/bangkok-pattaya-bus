@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
+import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 import type { Translations } from "@/lib/i18n";
 
 type NextBusCardProps = {
@@ -18,12 +20,32 @@ export function NextBusCard({
   labels,
 }: NextBusCardProps) {
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
+  const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
+    number | null
+  >(null);
   const hasMultipleNextSubRoutes = calculatedNextDeparture.subRoutes.length > 1;
   const nextSubRouteText = hasMultipleNextSubRoutes
     ? `${labels.availableTo} ${calculatedNextDeparture.subRoutes
         .map((subRoute) => subRoute.to.replace(/^Bangkok\s+/i, ""))
         .join(" / ")}`
     : calculatedNextDeparture.subRoutes[0]?.label;
+  const countdownText = formatCountdown(minutesUntilDeparture, labels);
+
+  useEffect(() => {
+    function updateCountdown() {
+      setMinutesUntilDeparture(
+        getMinutesUntilDeparture(
+          calculatedNextDeparture.time,
+          calculatedNextDeparture.isTomorrow,
+        ),
+      );
+    }
+
+    updateCountdown();
+    const intervalId = window.setInterval(updateCountdown, 30_000);
+
+    return () => window.clearInterval(intervalId);
+  }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
 
   return (
     <aside className="rounded-2xl border border-[#c8dbe9] bg-[#eaf5fb] p-4 shadow-sm sm:p-6 md:p-4 lg:sticky lg:top-5 lg:self-start">
@@ -42,6 +64,16 @@ export function NextBusCard({
         <p className="mt-4 text-5xl font-black leading-none text-[#13233a] sm:text-6xl md:mt-3 md:text-5xl lg:text-[3.25rem]">
           {calculatedNextDeparture.time}
         </p>
+        {countdownText ? (
+          <div className="mt-3 rounded-xl border border-[#c8dbe9] bg-[#f8fcff] px-3 py-2">
+            <p className="text-xs font-bold uppercase tracking-wide text-[#5f6874]">
+              {labels.remainingTime}
+            </p>
+            <p className="mt-0.5 text-lg font-black leading-tight text-[#13233a]">
+              {countdownText}
+            </p>
+          </div>
+        ) : null}
         {calculatedNextDeparture.isTomorrow ? (
           <p className="mt-2 text-sm font-black text-[#4f5d6c]">
             {labels.nextServiceTomorrow}
@@ -67,6 +99,32 @@ export function NextBusCard({
       </div>
     </aside>
   );
+}
+
+function formatCountdown(
+  minutesUntilDeparture: number | null,
+  labels: NextBusCardProps["labels"],
+) {
+  if (minutesUntilDeparture === null) {
+    return null;
+  }
+
+  if (minutesUntilDeparture <= 0) {
+    return labels.leavingNow;
+  }
+
+  if (minutesUntilDeparture < 60) {
+    return `${minutesUntilDeparture} ${labels.minutesShort}`;
+  }
+
+  const hours = Math.floor(minutesUntilDeparture / 60);
+  const minutes = minutesUntilDeparture % 60;
+
+  if (minutes === 0) {
+    return `${hours} ${labels.hoursShort}`;
+  }
+
+  return `${hours} ${labels.hoursShort} ${minutes} ${labels.minutesShort}`;
 }
 
 function MiniFact({ label, value }: { label: string; value: string }) {

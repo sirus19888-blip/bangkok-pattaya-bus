@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { supportedLocales, type LocaleCode, type RouteId } from "@/data/routes";
 
 type LanguageSwitcherProps = {
@@ -14,7 +13,6 @@ export function LanguageSwitcher({
   currentLocale,
   routeSlug,
 }: LanguageSwitcherProps) {
-  const router = useRouter();
   const localeLabels =
     currentLocale === "ru"
       ? {
@@ -29,7 +27,9 @@ export function LanguageSwitcher({
       : null;
 
   function handleLanguageChange(nextLocale: LocaleCode) {
-    router.push(`/${nextLocale}/${routeSlug}`);
+    const nextPath = `/${nextLocale}/${routeSlug}`;
+
+    window.location.assign(nextPath);
   }
 
   return (

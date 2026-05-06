@@ -1,4 +1,5 @@
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { HeaderTravelInfo } from "./HeaderTravelInfo";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Translations } from "@/lib/i18n";
 
@@ -27,11 +28,14 @@ export function Header({ labels, currentLocale, routeSlug }: HeaderProps) {
         </span>
       </a>
 
-      <LanguageSwitcher
-        label={labels.chooseLanguage}
-        currentLocale={currentLocale}
-        routeSlug={routeSlug}
-      />
+      <div className="flex min-w-0 items-center justify-end gap-2">
+        <HeaderTravelInfo routeSlug={routeSlug} />
+        <LanguageSwitcher
+          label={labels.chooseLanguage}
+          currentLocale={currentLocale}
+          routeSlug={routeSlug}
+        />
+      </div>
     </header>
   );
 }

@@ -17,7 +17,11 @@
     "ticketPrice": "Ticket price",
     "nextServiceTomorrow": "Next service tomorrow",
     "timeZoneNote": "Times shown in Thailand local time.",
-    "availableTo": "Available to:"
+    "availableTo": "Available to:",
+    "remainingTime": "Time until departure",
+    "leavingNow": "Leaving now",
+    "hoursShort": "h",
+    "minutesShort": "min"
   },
   "schedule": {
     "title": "Today's departures",
