@@ -99,7 +99,8 @@ export function RoutePageLayout({
           labels={{
             ...t.nextBus,
             nextBus: t.schedule.nextBus,
-            showAllDepartures: t.common.showAllDepartures,
+            showAllDepartures:
+              locale === "pl" ? "Pokaż wszystkie trasy" : t.common.showAllDepartures,
           }}
         />
 

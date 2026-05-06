@@ -38,7 +38,6 @@ export function TwelveGoAffiliateButton({
       className={className}
       href={build12GoRouteUrl(routeId)}
       rel="noopener noreferrer sponsored"
-      target="_blank"
     >
       {label ?? getTwelveGoButtonLabel(locale)}
     </a>
