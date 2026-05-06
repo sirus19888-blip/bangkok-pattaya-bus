@@ -18,6 +18,25 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## 12Go affiliate links
+
+The route selector can send travelers to matching 12Go route pages.
+
+Set this environment variable locally and in Vercel:
+
+```bash
+NEXT_PUBLIC_12GO_AFFILIATE_ID=15791301
+```
+
+Generated 12Go links include both tracking parameters:
+
+```text
+?z=15791301&referer=15791301
+```
+
+This keeps the deep links compatible with the 12Go travel URL format and the
+agent/referrer format shown in the affiliate panel.
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

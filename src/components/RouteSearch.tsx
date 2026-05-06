@@ -1,8 +1,8 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 import type { LocaleCode, RouteId } from "@/data/routes";
+import { build12GoRouteUrl } from "@/lib/twelveGo";
 import type { Translations } from "@/lib/i18n";
 
 type SearchRoute = {
@@ -24,11 +24,9 @@ export function RouteSearch({
   currentRoute,
   from,
   labels,
-  locale,
   routePages,
   to,
 }: RouteSearchProps) {
-  const router = useRouter();
   const [selectedFrom, setSelectedFrom] = useState(from);
   const [selectedTo, setSelectedTo] = useState(to);
   const fromOptions = useMemo(
@@ -56,7 +54,7 @@ export function RouteSearch({
       return;
     }
 
-    router.push(`/${locale}/${matchingRoute.slug}`);
+    window.location.assign(build12GoRouteUrl(matchingRoute.slug));
   }
 
   function handleFromChange(nextFrom: string) {

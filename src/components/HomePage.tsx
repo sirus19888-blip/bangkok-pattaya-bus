@@ -893,7 +893,7 @@ function MobileHome({
   };
 
   return (
-    <section className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col bg-[#fbf8f3] pb-24 md:hidden">
+    <section className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col bg-[#fbf8f3] pb-20 md:hidden">
       <div className="bg-[#0e1e2e] px-4 pb-5 pt-4 text-white shadow-sm">
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3">
@@ -1128,13 +1128,13 @@ function MobileBottomNav({
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 mx-auto max-w-[430px] border-t border-[#eadcc7] bg-white/95 px-3 pb-[calc(env(safe-area-inset-bottom)+0.5rem)] pt-2 shadow-[0_-8px_24px_rgba(19,35,58,0.08)] backdrop-blur md:hidden">
-      <div className="grid grid-cols-4 gap-1">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 mx-auto max-w-[430px] border-t border-[#eadcc7] bg-white/95 px-2.5 pb-[calc(env(safe-area-inset-bottom)+0.3rem)] pt-1.5 shadow-[0_-8px_24px_rgba(19,35,58,0.08)] backdrop-blur md:hidden">
+      <div className="grid grid-cols-4 gap-0.5">
         {items.map((item) => (
           <Link
             key={item.label}
             href={item.href}
-            className={`flex min-h-12 flex-col items-center justify-center rounded-2xl text-[0.68rem] font-black ${
+            className={`flex min-h-10 flex-col items-center justify-center rounded-xl text-[0.62rem] font-black ${
               item.active
                 ? "bg-[#eaf5fb] text-[#0e7b6b]"
                 : "text-[#6b7280]"
@@ -1142,7 +1142,7 @@ function MobileBottomNav({
           >
             <span
               aria-hidden="true"
-              className="mb-0.5 flex h-7 w-7 items-center justify-center rounded-xl bg-white"
+              className="mb-0.5 flex h-5 w-5 items-center justify-center rounded-lg bg-white"
             >
               <MobileNavIcon name={item.icon} />
             </span>
@@ -1190,7 +1190,7 @@ function MobileNavIcon({
     return (
       <svg
         viewBox="0 0 24 24"
-        className="h-5 w-5"
+        className="h-4 w-4"
         fill="none"
         stroke="#0e7b6b"
         strokeLinecap="round"
@@ -1208,7 +1208,7 @@ function MobileNavIcon({
     return (
       <svg
         viewBox="0 0 24 24"
-        className="h-5 w-5"
+        className="h-4 w-4"
         fill="none"
         stroke="#c8913a"
         strokeLinecap="round"
@@ -1228,7 +1228,7 @@ function MobileNavIcon({
     return (
       <svg
         viewBox="0 0 24 24"
-        className="h-5 w-5"
+        className="h-4 w-4"
         fill="none"
         stroke="#315d9d"
         strokeLinecap="round"
@@ -1246,7 +1246,7 @@ function MobileNavIcon({
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className="h-4 w-4"
       fill="none"
       stroke="#8d5fd3"
       strokeLinecap="round"
