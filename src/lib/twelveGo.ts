@@ -2,6 +2,15 @@ import type { RouteId } from "@/data/routes";
 
 const fallbackAffiliateId = "15791301";
 
+const routesWithTickets: RouteId[] = [
+  "bangkok-to-pattaya",
+  "pattaya-to-bangkok",
+  "suvarnabhumi-airport-to-pattaya",
+  "pattaya-to-suvarnabhumi-airport",
+  "don-mueang-airport-to-pattaya",
+  "pattaya-to-don-mueang-airport",
+];
+
 const routeSlugs: Record<RouteId, { from: string; to: string }> = {
   "bangkok-to-pattaya": {
     from: "bangkok",
@@ -28,6 +37,10 @@ const routeSlugs: Record<RouteId, { from: string; to: string }> = {
     to: "don-mueang-airport",
   },
 };
+
+export function hasTwelveGoTickets(routeId: RouteId) {
+  return routesWithTickets.includes(routeId);
+}
 
 export function build12GoRouteUrl(routeId?: RouteId) {
   const affiliateId =

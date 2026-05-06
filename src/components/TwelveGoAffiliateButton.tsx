@@ -1,5 +1,5 @@
 import type { LocaleCode, RouteId } from "@/data/routes";
-import { build12GoRouteUrl } from "@/lib/twelveGo";
+import { build12GoRouteUrl, hasTwelveGoTickets } from "@/lib/twelveGo";
 
 type TwelveGoAffiliateButtonProps = {
   className?: string;
@@ -28,6 +28,10 @@ export function TwelveGoAffiliateButton({
   locale,
   routeId,
 }: TwelveGoAffiliateButtonProps) {
+  if (!hasTwelveGoTickets(routeId)) {
+    return null;
+  }
+
   return (
     <a
       aria-label={label ?? getTwelveGoButtonLabel(locale)}
