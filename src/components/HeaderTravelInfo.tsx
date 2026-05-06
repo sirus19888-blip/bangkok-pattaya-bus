@@ -129,9 +129,11 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
     }
 
     loadWeather();
+    const intervalId = window.setInterval(loadWeather, 10 * 60 * 1000);
 
     return () => {
       ignore = true;
+      window.clearInterval(intervalId);
     };
   }, [location.latitude, location.longitude]);
 
@@ -183,9 +185,11 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
     }
 
     loadRates();
+    const intervalId = window.setInterval(loadRates, 60 * 60 * 1000);
 
     return () => {
       ignore = true;
+      window.clearInterval(intervalId);
     };
   }, []);
 

@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import type { LocaleCode } from "@/data/routes";
 import type { Station } from "@/data/stations";
 
@@ -76,6 +79,28 @@ export function StationMiniMap({
       : locale === "th"
         ? getThaiStationMapLabel(station.id, station.mapLabel)
         : station.mapLabel;
+  const [isMapOpen, setIsMapOpen] = useState(false);
+  const openMapLabel =
+    locale === "pl"
+      ? "Powiększ mapę stacji"
+      : locale === "ru"
+        ? "ĐŁĐ˛ĐµĐ»Đ¸Ń‡Đ¸Ń‚ŃŚ ĐşĐ°Ń€Ń‚Ń ŃŃ‚Đ°Đ˝Ń†Đ¸Đ¸"
+      : locale === "de"
+        ? "Stationskarte vergrößern"
+      : locale === "th"
+        ? "ŕ¸‚ŕ¸˘ŕ¸˛ŕ¸˘ŕąŕ¸śŕ¸™ŕ¸—ŕ¸µŕąŕ¸Şŕ¸–ŕ¸˛ŕ¸™ŕ¸µ"
+      : "Enlarge station map";
+  const closeMapLabel =
+    locale === "pl"
+      ? "Zamknij mapę"
+      : locale === "ru"
+        ? "Đ—Đ°ĐşŃ€Ń‹Ń‚ŃŚ ĐşĐ°Ń€Ń‚Ń"
+      : locale === "de"
+        ? "Karte schließen"
+      : locale === "th"
+        ? "ŕ¸›ŕ¸´ŕ¸”ŕąŕ¸śŕ¸™ŕ¸—ŕ¸µŕą"
+      : "Close map";
+  const mapUrl = getOpenStreetMapEmbedUrl(station);
 
   return (
     <div className="overflow-hidden rounded-2xl border border-[#d6e8f4] bg-[#f4fbff]">
@@ -90,13 +115,23 @@ export function StationMiniMap({
           {walkingNote || labels.fallbackNote}
         </p>
       </div>
-      <iframe
-        src={getOpenStreetMapEmbedUrl(station)}
-        title={`${labels.title}: ${mapLabel}`}
-        className="h-[180px] w-full border-0 sm:h-[220px] lg:h-[210px] xl:h-[220px]"
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      />
+      <button
+        type="button"
+        className="relative block h-[180px] w-full overflow-hidden bg-white text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 sm:h-[220px] lg:h-[210px] xl:h-[220px]"
+        onClick={() => setIsMapOpen(true)}
+        aria-label={`${openMapLabel}: ${mapLabel}`}
+      >
+        <iframe
+          src={mapUrl}
+          title={`${labels.title}: ${mapLabel}`}
+          className="pointer-events-none h-full w-full border-0"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+        <span className="absolute bottom-2 right-2 rounded-full bg-[#13233a] px-3 py-1 text-xs font-black text-white shadow-sm">
+          {openMapLabel}
+        </span>
+      </button>
       <div className="border-t border-[#d6e8f4] bg-white p-2.5 lg:p-2">
         <a
           href={station.googleMapsUrl}
@@ -106,6 +141,88 @@ export function StationMiniMap({
         >
           {openInGoogleMapsLabel}
         </a>
+      </div>
+      {isMapOpen ? (
+        <StationMapLightbox
+          closeMapLabel={closeMapLabel}
+          mapLabel={mapLabel}
+          mapTitle={labels.title}
+          mapUrl={mapUrl}
+          walkingNote={walkingNote || labels.fallbackNote}
+          onClose={() => setIsMapOpen(false)}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+function StationMapLightbox({
+  closeMapLabel,
+  mapLabel,
+  mapTitle,
+  mapUrl,
+  onClose,
+  walkingNote,
+}: {
+  closeMapLabel: string;
+  mapLabel: string;
+  mapTitle: string;
+  mapUrl: string;
+  onClose: () => void;
+  walkingNote: string;
+}) {
+  useEffect(() => {
+    function handleEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    }
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [onClose]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#13233a]/80 p-3 sm:p-5"
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${mapTitle}: ${mapLabel}`}
+      onClick={onClose}
+    >
+      <div
+        className="relative flex max-h-[92vh] w-full max-w-[94vw] flex-col overflow-hidden rounded-2xl bg-white shadow-xl md:max-w-4xl"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <div className="flex shrink-0 items-start justify-between gap-3 border-b border-[#d6e8f4] p-3 pr-14">
+          <div>
+            <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
+              {mapTitle}
+            </p>
+            <p className="mt-1 text-sm font-black leading-5 text-[#13233a] md:text-base">
+              {mapLabel}
+            </p>
+            <p className="mt-1 text-xs font-semibold leading-5 text-[#4f5d6c]">
+              {walkingNote}
+            </p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label={closeMapLabel}
+          className="absolute right-2 top-2 z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-[#13233a] text-2xl font-black leading-none text-white shadow-sm transition hover:bg-[#233a5b]"
+        >
+          ×
+        </button>
+        <iframe
+          src={mapUrl}
+          title={`${mapTitle}: ${mapLabel}`}
+          className="h-[70vh] max-h-[75vh] w-full border-0 md:h-[72vh] md:max-h-[80vh]"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
       </div>
     </div>
   );

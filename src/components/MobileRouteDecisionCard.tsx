@@ -40,6 +40,10 @@ export function MobileRouteDecisionCard({
         .join(" / ")}`
     : calculatedNextDeparture.subRoutes[0]?.label;
   const countdownText = formatCountdown(minutesUntilDeparture, labels);
+  const isUrgentCountdown =
+    minutesUntilDeparture !== null &&
+    minutesUntilDeparture > 0 &&
+    minutesUntilDeparture <= 15;
   const departures = schedule.departures;
   const hasDepartures = departures.length > 0;
 
@@ -87,7 +91,11 @@ export function MobileRouteDecisionCard({
             <span className="block text-[0.62rem] font-black uppercase tracking-wide text-[#f3d77b]">
               {labels.remainingTime}
             </span>
-            <span className="mt-0.5 block text-lg font-black leading-tight">
+            <span
+              className={`mt-0.5 block text-lg font-black leading-tight ${
+                isUrgentCountdown ? "text-[#c81e1e]" : ""
+              }`}
+            >
               {countdownText}
             </span>
           </div>

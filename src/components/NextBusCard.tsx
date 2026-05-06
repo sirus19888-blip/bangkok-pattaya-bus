@@ -30,6 +30,10 @@ export function NextBusCard({
         .join(" / ")}`
     : calculatedNextDeparture.subRoutes[0]?.label;
   const countdownText = formatCountdown(minutesUntilDeparture, labels);
+  const isUrgentCountdown =
+    minutesUntilDeparture !== null &&
+    minutesUntilDeparture > 0 &&
+    minutesUntilDeparture <= 15;
 
   useEffect(() => {
     function updateCountdown() {
@@ -69,7 +73,11 @@ export function NextBusCard({
             <p className="text-xs font-bold uppercase tracking-wide text-[#5f6874]">
               {labels.remainingTime}
             </p>
-            <p className="mt-0.5 text-lg font-black leading-tight text-[#13233a]">
+            <p
+              className={`mt-0.5 text-lg font-black leading-tight ${
+                isUrgentCountdown ? "text-[#c81e1e]" : "text-[#13233a]"
+              }`}
+            >
               {countdownText}
             </p>
           </div>
