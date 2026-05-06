@@ -7,6 +7,7 @@ import { useNextDeparture } from "@/hooks/useNextDeparture";
 import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 import type { Translations } from "@/lib/i18n";
 import {
+  getTwelveGoDisclosure,
   getTwelveGoButtonLabel,
   TwelveGoAffiliateButton,
 } from "@/components/TwelveGoAffiliateButton";
@@ -119,6 +120,9 @@ export function NextBusCard({
           locale={locale}
           routeId={routeId}
         />
+        <p className="mt-2 text-xs font-semibold leading-5 text-[#5f6874]">
+          {getTwelveGoDisclosure(locale)}
+        </p>
       </div>
     </aside>
   );

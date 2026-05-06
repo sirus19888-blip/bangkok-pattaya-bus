@@ -9,17 +9,31 @@ type TwelveGoAffiliateButtonProps = {
 };
 
 const labels: Record<LocaleCode, string> = {
-  de: "Auf 12Go buchen",
-  en: "Book on 12Go",
-  fr: "Réserver sur 12Go",
-  pl: "Sprawdź bilety na 12Go",
-  ru: "Билеты на 12Go",
-  th: "จองบน 12Go",
-  zh: "在 12Go 订票",
+  de: "Tickets und Alternativen auf 12Go",
+  en: "Tickets and alternatives on 12Go",
+  fr: "Billets et alternatives sur 12Go",
+  pl: "Bilety i alternatywy na 12Go",
+  ru: "Билеты и альтернативы на 12Go",
+  th: "ตั๋วและทางเลือกอื่นบน 12Go",
+  zh: "12Go 车票和其他选择",
+};
+
+const disclosures: Record<LocaleCode, string> = {
+  de: "12Go-Optionen können von den hier gezeigten informativen Zeiten abweichen.",
+  en: "12Go options may differ from the informational times shown here.",
+  fr: "Les options sur 12Go peuvent différer des horaires informatifs affichés ici.",
+  pl: "Opcje na 12Go mogą różnić się od informacyjnych godzin pokazanych tutaj.",
+  ru: "Варианты на 12Go могут отличаться от информационного расписания на этой странице.",
+  th: "ตัวเลือกบน 12Go อาจแตกต่างจากเวลาข้อมูลที่แสดงบนหน้านี้",
+  zh: "12Go 上的选择可能与本页显示的参考时刻不同。",
 };
 
 export function getTwelveGoButtonLabel(locale: LocaleCode) {
   return labels[locale] ?? labels.en;
+}
+
+export function getTwelveGoDisclosure(locale: LocaleCode) {
+  return disclosures[locale] ?? disclosures.en;
 }
 
 export function TwelveGoAffiliateButton({

@@ -1,7 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
+import {
+  getTwelveGoDisclosure,
+  TwelveGoAffiliateButton,
+} from "@/components/TwelveGoAffiliateButton";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
@@ -163,6 +166,9 @@ export function MobileRouteDecisionCard({
         locale={locale}
         routeId={routeId}
       />
+      <p className="mt-1.5 text-xs font-semibold leading-5 text-[#5f6874]">
+        {getTwelveGoDisclosure(locale)}
+      </p>
     </section>
   );
 }
