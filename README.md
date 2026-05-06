@@ -20,7 +20,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ## 12Go affiliate links
 
-The route selector can send travelers to matching 12Go route pages.
+The route selector can send travelers to the 12Go affiliate page.
 
 Set this environment variable locally and in Vercel:
 
@@ -28,19 +28,18 @@ Set this environment variable locally and in Vercel:
 NEXT_PUBLIC_12GO_AFFILIATE_ID=15791301
 ```
 
-Generated 12Go links include both tracking parameters:
+Generated 12Go links include the affiliate tracking parameter:
 
 ```text
-?z=15791301&referer=15791301
+?referer=15791301
 ```
 
-This keeps the deep links compatible with the 12Go travel URL format and the
-agent/referrer format shown in the affiliate panel.
+This uses the agent/referrer format shown in the affiliate panel.
 
 Example generated link:
 
 ```text
-https://12go.co/en/travel/bangkok/pattaya?z=15791301&referer=15791301
+https://agent.12go.asia/?referer=15791301
 ```
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
