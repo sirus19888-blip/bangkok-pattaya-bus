@@ -12,6 +12,7 @@ import { StationAccessGuide } from "@/components/StationAccessGuide";
 import { StationCard } from "@/components/StationCard";
 import { TravelGuide } from "@/components/TravelGuide";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
+import { getTwelveGoButtonLabel } from "@/components/TwelveGoAffiliateButton";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
@@ -88,6 +89,9 @@ export function RoutePageLayout({
         />
 
         <MobileRouteDecisionCard
+          affiliateLabel={getTwelveGoButtonLabel(locale)}
+          locale={locale}
+          routeId={routePage.slug}
           routeTitle={routePage.title}
           schedule={schedule}
           nextDeparture={nextDeparture}
@@ -150,6 +154,8 @@ export function RoutePageLayout({
           </div>
 
           <NextBusCard
+            locale={locale}
+            routeId={routePage.slug}
             schedule={schedule}
             nextDeparture={nextDeparture}
             labels={{

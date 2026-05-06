@@ -1,12 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
+import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
 import type { Translations } from "@/lib/i18n";
 import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 
 type MobileRouteDecisionCardProps = {
+  affiliateLabel: string;
+  locale: LocaleCode;
+  routeId: RouteId;
   routeTitle: string;
   schedule: Schedule;
   nextDeparture: string;
@@ -18,6 +23,9 @@ type MobileRouteDecisionCardProps = {
 };
 
 export function MobileRouteDecisionCard({
+  affiliateLabel,
+  locale,
+  routeId,
   routeTitle,
   schedule,
   nextDeparture,
@@ -149,6 +157,12 @@ export function MobileRouteDecisionCard({
       >
         {labels.showAllDepartures}
       </a>
+      <TwelveGoAffiliateButton
+        className="mt-2 flex min-h-11 w-full items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-5 text-center text-sm font-black text-[#13233a] shadow-sm"
+        label={affiliateLabel}
+        locale={locale}
+        routeId={routeId}
+      />
     </section>
   );
 }

@@ -4,6 +4,10 @@ import { Header } from "@/components/Header";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MobileRouteCountdown } from "@/components/MobileRouteCountdown";
 import { RouteSearch } from "@/components/RouteSearch";
+import {
+  getTwelveGoButtonLabel,
+  TwelveGoAffiliateButton,
+} from "@/components/TwelveGoAffiliateButton";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import { schedules } from "@/data/schedules";
@@ -831,10 +835,7 @@ function DesktopRouteCard({
   const meta = copy.routeMeta[routePage.slug];
 
   return (
-    <Link
-      href={`/${locale}/${routePage.slug}`}
-      className="flex min-h-full flex-col rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-    >
+    <article className="flex min-h-full flex-col rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
         <span className="rounded-full bg-[#eaf5fb] px-3 py-1 text-[0.68rem] font-black uppercase tracking-wide text-[#0e7b6b]">
           {meta.badge}
@@ -844,7 +845,7 @@ function DesktopRouteCard({
         </span>
       </div>
       <h2 className="mt-3 text-xl font-black leading-tight text-[#13233a]">
-        {routePage.title}
+        <Link href={`/${locale}/${routePage.slug}`}>{routePage.title}</Link>
       </h2>
       <p className="mt-2 text-sm font-semibold leading-5 text-[#5f6874]">
         {meta.note}
@@ -862,10 +863,19 @@ function DesktopRouteCard({
         />
       </div>
       <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
-      <span className="mt-4 flex min-h-11 w-full items-center justify-center rounded-2xl bg-[#13233a] text-sm font-black text-white">
+      <Link
+        href={`/${locale}/${routePage.slug}`}
+        className="mt-4 flex min-h-11 w-full items-center justify-center rounded-2xl bg-[#13233a] text-sm font-black text-white"
+      >
         {copy.checkTimes}
-      </span>
-    </Link>
+      </Link>
+      <TwelveGoAffiliateButton
+        className="mt-2 flex min-h-11 w-full items-center justify-center rounded-2xl border border-[#e8b05a] bg-[#fff8ec] text-sm font-black text-[#13233a] transition hover:bg-[#f8e7c6]"
+        label={getTwelveGoButtonLabel(locale)}
+        locale={locale}
+        routeId={routePage.slug}
+      />
+    </article>
   );
 }
 
@@ -1010,17 +1020,16 @@ function MobileFeaturedRoute({
   schedule?: Schedule;
 }) {
   return (
-    <Link
-      href={`/${locale}/${routePage.slug}`}
-      className="rounded-[1.5rem] border border-[#c8dbe9] bg-white p-4 shadow-sm"
-    >
+    <article className="rounded-[1.5rem] border border-[#c8dbe9] bg-white p-4 shadow-sm">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
             {copy.startHere}
           </p>
           <h2 className="mt-1 text-xl font-black leading-tight text-[#13233a]">
-            {routePage.title}
+            <Link href={`/${locale}/${routePage.slug}`}>
+              {routePage.title}
+            </Link>
           </h2>
         </div>
         <span className="rounded-full bg-[#f3d77b] px-3 py-1 text-xs font-black text-[#3f3413]">
@@ -1040,10 +1049,19 @@ function MobileFeaturedRoute({
         />
       </div>
       <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
-      <span className="mt-3 flex min-h-11 w-full items-center justify-center rounded-2xl bg-[#13233a] text-sm font-black text-white">
+      <Link
+        href={`/${locale}/${routePage.slug}`}
+        className="mt-3 flex min-h-11 w-full items-center justify-center rounded-2xl bg-[#13233a] text-sm font-black text-white"
+      >
         {copy.checkTimes}
-      </span>
-    </Link>
+      </Link>
+      <TwelveGoAffiliateButton
+        className="mt-2 flex min-h-11 w-full items-center justify-center rounded-2xl border border-[#e8b05a] bg-[#fff8ec] text-sm font-black text-[#13233a]"
+        label={getTwelveGoButtonLabel(locale)}
+        locale={locale}
+        routeId={routePage.slug}
+      />
+    </article>
   );
 }
 
@@ -1065,15 +1083,12 @@ function MobileRouteCard({
   const meta = copy.routeMeta[routePage.slug];
 
   return (
-    <Link
-      href={`/${locale}/${routePage.slug}`}
-      className="flex w-[238px] flex-none snap-start flex-col rounded-[1.35rem] border border-[#eadcc7] bg-white p-3 shadow-sm"
-    >
+    <article className="flex w-[238px] flex-none snap-start flex-col rounded-[1.35rem] border border-[#eadcc7] bg-white p-3 shadow-sm">
       <span className="w-fit rounded-full bg-[#eaf5fb] px-2.5 py-1 text-[0.65rem] font-black uppercase tracking-wide text-[#0e7b6b]">
         {meta.badge}
       </span>
       <h3 className="mt-2 min-h-[2.6rem] text-base font-black leading-tight text-[#13233a]">
-        {routePage.title}
+        <Link href={`/${locale}/${routePage.slug}`}>{routePage.title}</Link>
       </h3>
       <p className="mt-1 text-xs font-bold leading-4 text-[#6b7280]">
         {meta.note}
@@ -1093,10 +1108,19 @@ function MobileRouteCard({
         />
       </div>
       <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
-      <span className="mt-3 flex min-h-10 items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white">
+      <Link
+        href={`/${locale}/${routePage.slug}`}
+        className="mt-3 flex min-h-10 items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white"
+      >
         {copy.viewRoute}
-      </span>
-    </Link>
+      </Link>
+      <TwelveGoAffiliateButton
+        className="mt-2 flex min-h-10 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a]"
+        label={getTwelveGoButtonLabel(locale)}
+        locale={locale}
+        routeId={routePage.slug}
+      />
+    </article>
   );
 }
 

@@ -37,6 +37,12 @@ Generated 12Go links include both tracking parameters:
 This keeps the deep links compatible with the 12Go travel URL format and the
 agent/referrer format shown in the affiliate panel.
 
+Example generated link:
+
+```text
+https://12go.co/en/travel/bangkok/pattaya?z=15791301&referer=15791301
+```
+
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
 ## Learn More

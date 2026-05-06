@@ -2,11 +2,18 @@
 
 import { useEffect, useState } from "react";
 import type { Schedule } from "@/data/schedules";
+import type { LocaleCode, RouteId } from "@/data/routes";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
 import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 import type { Translations } from "@/lib/i18n";
+import {
+  getTwelveGoButtonLabel,
+  TwelveGoAffiliateButton,
+} from "@/components/TwelveGoAffiliateButton";
 
 type NextBusCardProps = {
+  locale: LocaleCode;
+  routeId: RouteId;
   schedule: Schedule;
   nextDeparture: string;
   labels: Translations["nextBus"] & {
@@ -15,6 +22,8 @@ type NextBusCardProps = {
 };
 
 export function NextBusCard({
+  locale,
+  routeId,
   schedule,
   nextDeparture,
   labels,
@@ -104,6 +113,12 @@ export function NextBusCard({
         >
           {labels.showAllDepartures}
         </a>
+        <TwelveGoAffiliateButton
+          className="mt-3 flex min-h-12 w-full items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-5 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6]"
+          label={getTwelveGoButtonLabel(locale)}
+          locale={locale}
+          routeId={routeId}
+        />
       </div>
     </aside>
   );

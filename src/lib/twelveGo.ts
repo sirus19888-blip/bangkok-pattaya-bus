@@ -33,9 +33,7 @@ export function build12GoRouteUrl(routeId: RouteId) {
   const slugs = twelveGoSlugs[routeId];
   const affiliateId =
     process.env.NEXT_PUBLIC_12GO_AFFILIATE_ID ?? fallbackAffiliateId;
-  const url = new URL(
-    `https://12go.asia/en/travel/${slugs.from}/${slugs.to}`,
-  );
+  const url = new URL(`https://12go.co/en/travel/${slugs.from}/${slugs.to}`);
 
   if (affiliateId) {
     url.searchParams.set("z", affiliateId);
