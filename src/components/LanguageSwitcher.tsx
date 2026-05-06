@@ -5,7 +5,7 @@ import { supportedLocales, type LocaleCode, type RouteId } from "@/data/routes";
 type LanguageSwitcherProps = {
   label: string;
   currentLocale: LocaleCode;
-  routeSlug: RouteId;
+  routeSlug?: RouteId;
 };
 
 export function LanguageSwitcher({
@@ -27,7 +27,7 @@ export function LanguageSwitcher({
       : null;
 
   function handleLanguageChange(nextLocale: LocaleCode) {
-    const nextPath = `/${nextLocale}/${routeSlug}`;
+    const nextPath = routeSlug ? `/${nextLocale}/${routeSlug}` : `/${nextLocale}`;
 
     window.location.assign(nextPath);
   }

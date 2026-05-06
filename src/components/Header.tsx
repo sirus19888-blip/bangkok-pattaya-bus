@@ -8,7 +8,7 @@ type HeaderProps = {
     chooseLanguage: string;
   };
   currentLocale: LocaleCode;
-  routeSlug: RouteId;
+  routeSlug?: RouteId;
 };
 
 export function Header({ labels, currentLocale, routeSlug }: HeaderProps) {
@@ -29,7 +29,10 @@ export function Header({ labels, currentLocale, routeSlug }: HeaderProps) {
       </a>
 
       <div className="flex min-w-0 items-center justify-end gap-2">
-        <HeaderTravelInfo routeSlug={routeSlug} />
+        <HeaderTravelInfo
+          locale={currentLocale}
+          routeSlug={routeSlug ?? "bangkok-to-pattaya"}
+        />
         <LanguageSwitcher
           label={labels.chooseLanguage}
           currentLocale={currentLocale}

@@ -6,10 +6,30 @@ import { useNextDeparture } from "@/hooks/useNextDeparture";
 import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 
 type MobileRouteCountdownProps = {
+  labels?: {
+    check: string;
+    hoursShort: string;
+    leavesIn: string;
+    minutesShort: string;
+    nextBus: string;
+    now: string;
+  };
   schedule?: Schedule;
 };
 
-export function MobileRouteCountdown({ schedule }: MobileRouteCountdownProps) {
+const defaultLabels = {
+  check: "Check",
+  hoursShort: "h",
+  leavesIn: "Leaves in",
+  minutesShort: "min",
+  nextBus: "Next bus",
+  now: "Now",
+};
+
+export function MobileRouteCountdown({
+  labels = defaultLabels,
+  schedule,
+}: MobileRouteCountdownProps) {
   const fallbackSchedule = useMemo(
     () =>
       schedule ?? {
@@ -52,7 +72,7 @@ export function MobileRouteCountdown({ schedule }: MobileRouteCountdownProps) {
     return null;
   }
 
-  const countdown = formatCountdown(minutesUntilDeparture);
+  const countdown = formatCountdown(minutesUntilDeparture, labels);
   const isUrgent =
     minutesUntilDeparture !== null &&
     minutesUntilDeparture > 0 &&
@@ -63,7 +83,7 @@ export function MobileRouteCountdown({ schedule }: MobileRouteCountdownProps) {
       <div className="grid grid-cols-2 gap-2">
         <span>
           <span className="block text-[0.58rem] font-black uppercase tracking-wide text-[#5f6874]">
-            Next bus
+            {labels.nextBus}
           </span>
           <span className="mt-0.5 block text-base font-black leading-tight text-[#13233a]">
             {nextDeparture.time}
@@ -71,7 +91,7 @@ export function MobileRouteCountdown({ schedule }: MobileRouteCountdownProps) {
         </span>
         <span>
           <span className="block text-[0.58rem] font-black uppercase tracking-wide text-[#5f6874]">
-            Leaves in
+            {labels.leavesIn}
           </span>
           <span
             className={`mt-0.5 block text-base font-black leading-tight ${
@@ -86,21 +106,26 @@ export function MobileRouteCountdown({ schedule }: MobileRouteCountdownProps) {
   );
 }
 
-function formatCountdown(minutesUntilDeparture: number | null) {
+function formatCountdown(
+  minutesUntilDeparture: number | null,
+  labels: NonNullable<MobileRouteCountdownProps["labels"]>,
+) {
   if (minutesUntilDeparture === null) {
-    return "Check";
+    return labels.check;
   }
 
   if (minutesUntilDeparture <= 0) {
-    return "Now";
+    return labels.now;
   }
 
   if (minutesUntilDeparture < 60) {
-    return `${minutesUntilDeparture} min`;
+    return `${minutesUntilDeparture} ${labels.minutesShort}`;
   }
 
   const hours = Math.floor(minutesUntilDeparture / 60);
   const minutes = minutesUntilDeparture % 60;
 
-  return minutes === 0 ? `${hours}h` : `${hours}h ${minutes}m`;
+  return minutes === 0
+    ? `${hours}${labels.hoursShort}`
+    : `${hours}${labels.hoursShort} ${minutes}${labels.minutesShort}`;
 }

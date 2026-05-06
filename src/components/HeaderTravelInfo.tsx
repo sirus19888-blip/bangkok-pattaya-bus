@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import type { RouteId } from "@/data/routes";
+import type { LocaleCode, RouteId } from "@/data/routes";
 
 type WeatherLocation = {
   label: string;
@@ -22,6 +22,7 @@ type RatesState = {
 };
 
 type HeaderTravelInfoProps = {
+  locale?: LocaleCode;
   routeSlug: RouteId;
 };
 
@@ -79,8 +80,143 @@ const routeWeatherLocations: Record<RouteId, WeatherLocation> = {
   },
 };
 
-export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
+const localizedLocationLabels: Partial<
+  Record<LocaleCode, Partial<Record<RouteId, string>>>
+> = {
+  de: {
+    "bangkok-to-pattaya": "Bangkok",
+    "pattaya-to-bangkok": "Pattaya",
+    "suvarnabhumi-airport-to-pattaya": "Suvarnabhumi",
+    "pattaya-to-suvarnabhumi-airport": "Pattaya",
+    "don-mueang-airport-to-pattaya": "Don Mueang",
+    "pattaya-to-don-mueang-airport": "Pattaya",
+  },
+  th: {
+    "bangkok-to-pattaya": "กรุงเทพฯ",
+    "pattaya-to-bangkok": "พัทยา",
+    "suvarnabhumi-airport-to-pattaya": "สุวรรณภูมิ",
+    "pattaya-to-suvarnabhumi-airport": "พัทยา",
+    "don-mueang-airport-to-pattaya": "ดอนเมือง",
+    "pattaya-to-don-mueang-airport": "พัทยา",
+  },
+  zh: {
+    "bangkok-to-pattaya": "曼谷",
+    "pattaya-to-bangkok": "芭提雅",
+    "suvarnabhumi-airport-to-pattaya": "素万那普",
+    "pattaya-to-suvarnabhumi-airport": "芭提雅",
+    "don-mueang-airport-to-pattaya": "廊曼",
+    "pattaya-to-don-mueang-airport": "芭提雅",
+  },
+  fr: {
+    "bangkok-to-pattaya": "Bangkok",
+    "pattaya-to-bangkok": "Pattaya",
+    "suvarnabhumi-airport-to-pattaya": "Suvarnabhumi",
+    "pattaya-to-suvarnabhumi-airport": "Pattaya",
+    "don-mueang-airport-to-pattaya": "Don Mueang",
+    "pattaya-to-don-mueang-airport": "Pattaya",
+  },
+  ru: {
+    "bangkok-to-pattaya": "Бангкок",
+    "pattaya-to-bangkok": "Паттайя",
+    "suvarnabhumi-airport-to-pattaya": "Суварнабхуми",
+    "pattaya-to-suvarnabhumi-airport": "Паттайя",
+    "don-mueang-airport-to-pattaya": "Дон Муанг",
+    "pattaya-to-don-mueang-airport": "Паттайя",
+  },
+};
+
+function getHeaderTravelLabels(locale?: LocaleCode) {
+  if (locale === "ru") {
+    return {
+      currencyAria: "Курсы валют",
+      currencyButton: "Курс",
+      estimated: "Оценка",
+      live: "Актуально",
+      ratesTitle: "Курс к THB",
+      thailandTime: "Местное время Таиланда",
+      weatherSuffix: "погода",
+    };
+  }
+
+  if (locale === "pl") {
+    return {
+      currencyAria: "Kursy walut",
+      currencyButton: "Waluty",
+      estimated: "Szac.",
+      live: "Live",
+      ratesTitle: "Kursy do THB",
+      thailandTime: "Czas lokalny w Tajlandii",
+      weatherSuffix: "pogoda",
+    };
+  }
+
+  if (locale === "de") {
+    return {
+      currencyAria: "Wechselkurse",
+      currencyButton: "Kurse",
+      estimated: "Geschätzt",
+      live: "Live",
+      ratesTitle: "Kurse zu THB",
+      thailandTime: "Thailändische Ortszeit",
+      weatherSuffix: "Wetter",
+    };
+  }
+
+  if (locale === "th") {
+    return {
+      currencyAria: "อัตราแลกเปลี่ยน",
+      currencyButton: "ค่าเงิน",
+      estimated: "ประมาณ",
+      live: "สด",
+      ratesTitle: "อัตราเป็น THB",
+      thailandTime: "เวลาท้องถิ่นของประเทศไทย",
+      weatherSuffix: "สภาพอากาศ",
+    };
+  }
+
+  if (locale === "zh") {
+    return {
+      currencyAria: "汇率",
+      currencyButton: "汇率",
+      estimated: "估算",
+      live: "实时",
+      ratesTitle: "兑换 THB 汇率",
+      thailandTime: "泰国当地时间",
+      weatherSuffix: "天气",
+    };
+  }
+
+  if (locale === "fr") {
+    return {
+      currencyAria: "Taux de change",
+      currencyButton: "Taux",
+      estimated: "Estimé",
+      live: "Direct",
+      ratesTitle: "Taux vers THB",
+      thailandTime: "Heure locale de Thaïlande",
+      weatherSuffix: "météo",
+    };
+  }
+
+  return {
+    currencyAria: "Currency rates",
+    currencyButton: "FX",
+    estimated: "Est.",
+    live: "Live",
+    ratesTitle: "Rates to THB",
+    thailandTime: "Thailand local time",
+    weatherSuffix: "weather",
+  };
+}
+
+export function HeaderTravelInfo({
+  locale = "en",
+  routeSlug,
+}: HeaderTravelInfoProps) {
   const location = routeWeatherLocations[routeSlug];
+  const labels = getHeaderTravelLabels(locale);
+  const locationLabel =
+    localizedLocationLabels[locale]?.[routeSlug] ?? location.label;
   const [weather, setWeather] = useState<WeatherState>(fallbackWeather);
   const [rates, setRates] = useState<RatesState>({
     rates: fallbackRates,
@@ -210,7 +346,7 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
     <div className="ml-auto flex min-w-0 items-center justify-end gap-2">
       <div
         className="hidden h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm md:flex"
-        title="Thailand local time"
+        title={labels.thailandTime}
       >
         <span className="text-[#b9832e]" aria-hidden="true">
           TH
@@ -220,12 +356,12 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
 
       <div
         className="hidden h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm min-[390px]:flex"
-        title={`${location.label} weather (${weather.source})`}
+        title={`${locationLabel} ${labels.weatherSuffix}`}
       >
         <span aria-hidden="true">{weatherIcon(weather.code)}</span>
         <span>{weather.temperature}°</span>
         <span className="max-w-[5.6rem] truncate text-[0.68rem] font-semibold text-[#637083]">
-          {location.label}
+          {locationLabel}
         </span>
       </div>
 
@@ -234,10 +370,10 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
           type="button"
           className="flex h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm"
           aria-expanded={ratesOpen}
-          aria-label="Currency rates"
+          aria-label={labels.currencyAria}
           onClick={() => setRatesOpen((current) => !current)}
         >
-          <span className="text-[#b9832e]">FX</span>
+          <span className="text-[#b9832e]">{labels.currencyButton}</span>
           <span>{mainRate}฿</span>
           <span className="text-[0.65rem] text-[#637083]" aria-hidden="true">
             ▾
@@ -248,10 +384,10 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
           <div className="absolute right-0 top-12 z-50 w-56 rounded-xl border border-[#d8c8b4] bg-white p-3 text-xs shadow-xl">
             <div className="mb-2 flex items-center justify-between gap-2">
               <p className="font-black uppercase tracking-wide text-[#13233a]">
-                Rates to THB
+                {labels.ratesTitle}
               </p>
               <span className="rounded-full bg-[#f7f0e3] px-2 py-0.5 text-[0.65rem] font-bold uppercase text-[#6f7782]">
-                {rates.source === "live" ? "Live" : "Est."}
+                {rates.source === "live" ? labels.live : labels.estimated}
               </span>
             </div>
             <div className="grid grid-cols-2 gap-2">
