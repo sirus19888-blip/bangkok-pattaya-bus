@@ -86,6 +86,7 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
     rates: fallbackRates,
     source: "fallback",
   });
+  const [thaiTime, setThaiTime] = useState(() => formatThailandTime());
   const [ratesOpen, setRatesOpen] = useState(false);
 
   useEffect(() => {
@@ -188,10 +189,31 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
     };
   }, []);
 
+  useEffect(() => {
+    function updateTime() {
+      setThaiTime(formatThailandTime());
+    }
+
+    updateTime();
+    const intervalId = window.setInterval(updateTime, 30_000);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
   const mainRate = useMemo(() => formatRate(rates.rates.USD), [rates.rates]);
 
   return (
     <div className="ml-auto flex min-w-0 items-center justify-end gap-2">
+      <div
+        className="hidden h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm md:flex"
+        title="Thailand local time"
+      >
+        <span className="text-[#b9832e]" aria-hidden="true">
+          TH
+        </span>
+        <span>{thaiTime}</span>
+      </div>
+
       <div
         className="hidden h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm min-[390px]:flex"
         title={`${location.label} weather (${weather.source})`}
@@ -248,6 +270,15 @@ export function HeaderTravelInfo({ routeSlug }: HeaderTravelInfoProps) {
 
 function formatRate(value: number) {
   return value.toFixed(value >= 10 ? 1 : 2);
+}
+
+function formatThailandTime() {
+  return new Intl.DateTimeFormat("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+    timeZone: "Asia/Bangkok",
+  }).format(new Date());
 }
 
 function weatherIcon(code: number) {
