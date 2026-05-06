@@ -313,7 +313,6 @@ function compareRoute({
   filteredTimes,
   ignoredTimes,
   rawExtractedTimes,
-  routeId,
   routeProfile,
 }) {
   const comparisonTimes =

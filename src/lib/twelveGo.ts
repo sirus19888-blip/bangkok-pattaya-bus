@@ -15,7 +15,7 @@ export function hasTwelveGoTickets(routeId: RouteId) {
   return routesWithTickets.includes(routeId);
 }
 
-export function build12GoRouteUrl(_routeId?: RouteId) {
+export function build12GoRouteUrl() {
   const affiliateId =
     process.env.NEXT_PUBLIC_12GO_AFFILIATE_ID ?? fallbackAffiliateId;
   const url = new URL("https://12go.asia/en");

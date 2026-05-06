@@ -50,7 +50,7 @@ export function TwelveGoAffiliateButton({
     <a
       aria-label={label ?? getTwelveGoButtonLabel(locale)}
       className={className}
-      href={build12GoRouteUrl(routeId)}
+      href={build12GoRouteUrl()}
       rel="noopener noreferrer sponsored"
     >
       {label ?? getTwelveGoButtonLabel(locale)}
