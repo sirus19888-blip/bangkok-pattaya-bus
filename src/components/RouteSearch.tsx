@@ -50,9 +50,7 @@ export function RouteSearch({
   );
 
   function openRoute(nextFrom: string, nextTo: string) {
-    const matchingRoute = routePages.find(
-      (route) => route.from === nextFrom && route.to === nextTo,
-    );
+    const matchingRoute = findMatchingRoute(routePages, nextFrom, nextTo);
 
     if (!matchingRoute || matchingRoute.slug === currentRoute) {
       return;
@@ -80,6 +78,15 @@ export function RouteSearch({
   function handleToChange(nextTo: string) {
     setSelectedTo(nextTo);
     openRoute(selectedFrom, nextTo);
+  }
+
+  function handleSwap() {
+    const nextFrom = selectedTo;
+    const nextTo = selectedFrom;
+
+    setSelectedFrom(nextFrom);
+    setSelectedTo(nextTo);
+    openRoute(nextFrom, nextTo);
   }
 
   return (
@@ -118,12 +125,14 @@ export function RouteSearch({
           </select>
         </label>
         {compact ? (
-          <span
-            aria-hidden="true"
+          <button
+            type="button"
+            aria-label={`${labels.from} / ${labels.to}`}
+            onClick={handleSwap}
             className="mb-0.5 flex h-10 w-10 items-center justify-center rounded-full border border-[#eadcc7] bg-white text-lg font-black text-[#0e7b6b] shadow-sm"
           >
             ⇄
-          </span>
+          </button>
         ) : null}
         <label className="block">
           <span
@@ -154,4 +163,27 @@ export function RouteSearch({
       </div>
     </div>
   );
+}
+
+function findMatchingRoute(
+  routePages: SearchRoute[],
+  from: string,
+  to: string,
+) {
+  return (
+    routePages.find((route) => route.from === from && route.to === to) ??
+    routePages.find(
+      (route) =>
+        normalizeEndpoint(route.from) === normalizeEndpoint(from) &&
+        normalizeEndpoint(route.to) === normalizeEndpoint(to),
+    )
+  );
+}
+
+function normalizeEndpoint(value: string) {
+  return value
+    .split("/")[0]
+    .toLowerCase()
+    .replace(/\s+/g, " ")
+    .trim();
 }
