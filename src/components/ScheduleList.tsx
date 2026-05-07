@@ -178,7 +178,9 @@ function ScheduleSourceInfo({
       <p className="font-black text-[#13233a]">{labels.dataTitle}</p>
       <dl className="mt-2 grid gap-1.5">
         <InfoRow label={labels.source}>
-          {source.sourceUrl && source.sourceUrl !== "#" ? (
+          {source.sourceName === "Pattaya Bus / Roong Reuang Coach" ? (
+            source.sourceName
+          ) : source.sourceUrl && source.sourceUrl !== "#" ? (
             <a
               href={source.sourceUrl}
               className="underline underline-offset-4"
