@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { LocaleCode, RouteId } from "@/data/routes";
 
@@ -23,6 +24,7 @@ type RatesState = {
 };
 
 type HeaderTravelInfoProps = {
+  variant?: "default" | "desktopHome";
   locale?: LocaleCode;
   routeSlug: RouteId;
 };
@@ -211,6 +213,7 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
 }
 
 export function HeaderTravelInfo({
+  variant = "default",
   locale = "en",
   routeSlug,
 }: HeaderTravelInfoProps) {
@@ -342,6 +345,55 @@ export function HeaderTravelInfo({
   }, []);
 
   const mainRate = useMemo(() => formatRate(rates.rates.USD), [rates.rates]);
+
+  if (variant === "desktopHome") {
+    return (
+      <div className="hidden items-center gap-3 md:flex">
+        <div
+          className="flex h-14 min-w-[10.5rem] items-center gap-3 rounded-2xl border border-[#d8c8b4] bg-[#fffaf2] px-3 py-2 text-[#13233a] shadow-sm"
+          title={`${locationLabel} ${labels.weatherSuffix}`}
+        >
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="h-11 w-11 rounded-xl object-cover"
+            height={44}
+            src="/images/icons/icon-header-weather.png"
+            width={44}
+          />
+          <span className="leading-tight">
+            <span className="block text-xl font-black">
+              {weather.temperature}&deg;
+            </span>
+            <span className="block max-w-[6rem] truncate text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#0e7b6b]">
+              {locationLabel}
+            </span>
+          </span>
+          <span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[0.58rem] font-black uppercase tracking-wide text-[#b9832e]">
+            {weather.source === "live" ? labels.live : labels.estimated}
+          </span>
+        </div>
+
+        <Link
+          aria-label="Buy me a coffee"
+          className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+          href="https://www.buymeacoffee.com/Pawel_"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Buy me a coffee"
+        >
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover"
+            height={56}
+            src="/images/icons/icon-support-coffee.png"
+            width={56}
+          />
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="ml-auto flex min-w-0 items-center justify-end gap-2">

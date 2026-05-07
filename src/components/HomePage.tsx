@@ -30,13 +30,14 @@ export function HomePage({ locale }: { locale: LocaleCode }) {
         routePagesForLocale={localizedRoutePages}
         t={t}
       />
-      <section className="mx-auto hidden w-full max-w-6xl flex-col gap-5 px-4 pb-10 pt-4 md:flex lg:px-8">
+      <section className="mx-auto hidden w-full max-w-[92rem] flex-col gap-5 px-4 pb-10 pt-4 md:flex lg:px-6 xl:px-8">
         <Header
           labels={{
             ...t.app,
             chooseLanguage: t.navigation.chooseLanguage,
           }}
           currentLocale={locale}
+          showDesktopHomeIcons
         />
 
         <DesktopHome
@@ -665,12 +666,6 @@ function getMobileHomeCopy(locale: LocaleCode) {
   };
 }
 
-const desktopQuickLinks: RouteId[] = [
-  "bangkok-to-pattaya",
-  "pattaya-to-bangkok",
-  "suvarnabhumi-airport-to-pattaya",
-];
-
 function DesktopHome({
   locale,
   routePagesForLocale,
@@ -690,134 +685,125 @@ function DesktopHome({
     nextBus: copy.nextBus,
     now: copy.now,
   };
-
   return (
     <>
       <section
         id="top"
-        className="grid gap-5 rounded-[1.8rem] border border-[#eadcc7] bg-[#0e1e2e] p-5 text-white shadow-sm lg:grid-cols-[1.15fr_0.85fr] lg:p-7"
+        className="overflow-hidden rounded-[2rem] border border-[#102238] bg-[#fffaf2] p-4 shadow-[0_24px_70px_rgba(19,35,58,0.14)] ring-1 ring-[#102238]/5 lg:p-5"
       >
-        <div className="flex min-h-[25rem] flex-col justify-between rounded-[1.35rem] bg-[#162840] p-6">
-          <div>
-            <p className="text-xs font-black uppercase tracking-[0.22em] text-[#e8b05a]">
-              {copy.travelRoutes}
-            </p>
-            <h1 className="mt-3 max-w-2xl text-5xl font-black leading-[1.03] tracking-tight">
-              {copy.title}
-            </h1>
-            <p className="mt-4 max-w-2xl text-base font-semibold leading-7 text-[#dce6f0]">
-              {copy.desktopIntro}
-            </p>
-          </div>
+        <div className="grid items-stretch gap-5 min-[1180px]:grid-cols-[minmax(20rem,0.74fr)_minmax(0,1.26fr)]">
+          <div className="flex h-full flex-col gap-4">
+            <div className="relative min-h-[22rem] flex-1 overflow-hidden rounded-[1.7rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/15 min-[1180px]:min-h-[27rem]">
+              <Image
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover"
+                fill
+                priority
+                sizes="420px"
+                src="/images/hero/desktop-bus-coast.png"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/10 via-[#0e1e2e]/35 to-[#0e1e2e]/92" />
+              <div className="relative flex h-full min-h-[22rem] flex-col justify-between p-5 sm:p-6 min-[1180px]:min-h-[27rem]">
+                <div>
+                  <span className="inline-flex rounded-full bg-white/12 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#e8b05a] ring-1 ring-white/15">
+                    {copy.travelRoutes}
+                  </span>
+                  <h1 className="mt-4 max-w-sm text-[clamp(2.45rem,4.4vw,3.35rem)] font-black leading-[0.94] tracking-tight">
+                    Travel{" "}
+                    <span className="italic text-[#e8b05a]">smart,</span>
+                    <br />
+                    travel <span className="italic text-[#e8b05a]">easy</span>
+                  </h1>
+                  <p className="mt-4 max-w-sm text-sm font-semibold leading-6 text-[#edf3f8]">
+                    {copy.desktopIntro}
+                  </p>
+                </div>
 
-          <div className="mt-8 grid max-w-2xl grid-cols-3 gap-3">
-            <HeroFact label={copy.timeFactLabel} value={copy.timeFactValue} />
-            <HeroFact label={copy.dataFactLabel} value={copy.dataFactValue} />
-            <HeroFact
-              label={copy.safetyFactLabel}
-              value={copy.safetyFactValue}
-            />
-          </div>
-        </div>
+                <div>
+                <div className="mt-2 grid gap-2 sm:grid-cols-3">
+                    <HeroFact
+                      label={copy.timeFactLabel}
+                      value={copy.timeFactValue}
+                    />
+                    <HeroFact
+                      label={copy.dataFactLabel}
+                      value={copy.dataFactValue}
+                    />
+                    <HeroFact
+                      label={copy.safetyFactLabel}
+                      value={copy.safetyFactValue}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div className="rounded-[1.35rem] border border-white/10 bg-white p-5 text-[#13233a] shadow-sm">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#0e7b6b]">
-            {copy.findRoute}
-          </p>
-          <h2 className="mt-2 text-2xl font-black leading-tight">
-            {copy.chooseRoute}
-          </h2>
-          <p className="mt-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
-            {copy.routePickerHelp}
-          </p>
-
-          <RouteSearch
-            currentRoute="bangkok-to-pattaya"
-            desktopGo
-            from={firstRoute?.from ?? "Bangkok"}
-            labels={t.routeSelector}
-            locale={locale}
-            routePages={routePagesForLocale.map((page) => ({
-              slug: page.slug,
-              from: page.from,
-              to: page.to,
-            }))}
-            to={firstRoute?.to ?? "Pattaya"}
-          />
-
-          <div className="mt-4 grid gap-2">
-            {desktopQuickLinks.map((routeId) => {
-              const routePage = routePagesForLocale.find(
-                (page) => page.slug === routeId,
-              );
-
-              if (!routePage) {
-                return null;
-              }
-
-              return (
-                <Link
-                  key={routeId}
-                  href={`/${locale}/${routePage.slug}`}
-                  className="flex min-h-12 items-center justify-between gap-3 rounded-2xl border border-[#eadcc7] bg-[#fffaf2] px-4 text-sm font-black text-[#13233a] transition hover:bg-[#eaf5fb]"
-                >
-                  {routePage.title}
-                  <span className="text-[#0e7b6b]">{copy.open}</span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="grid gap-4 lg:grid-cols-3">
-        {routePagesForLocale.map((routePage) => (
-          <DesktopRouteCard
-            copy={copy}
-            countdownLabels={countdownLabels}
-            key={routePage.slug}
-            locale={locale}
-            routePage={routePage}
-            schedule={schedules.find(
-              (schedule) => schedule.direction === routePage.slug,
-            )}
-          />
-        ))}
-      </section>
-
-      <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="rounded-[1.6rem] border border-[#eadcc7] bg-[#fff8ec] p-5 shadow-sm">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#b9832e]">
-            {copy.beforeTravel}
-          </p>
-          <h2 className="mt-2 text-2xl font-black text-[#13233a]">
-            {copy.adviceTitle}
-          </h2>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            {copy.tips.map((tip) => (
-              <p
-                key={tip}
-                className="rounded-2xl bg-white/80 px-4 py-3 text-sm font-bold leading-6 text-[#4f5d6c]"
-              >
-                {tip}
+            <section
+              id="desktop-travel-tips"
+              className="scroll-mt-24 rounded-[1.6rem] border border-[#eadcc7] bg-[#fff8ec] p-5 shadow-sm"
+            >
+              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#b9832e]">
+                {copy.beforeTravel}
               </p>
-            ))}
+              <h2 className="mt-2 text-2xl font-black text-[#13233a]">
+                {copy.adviceTitle}
+              </h2>
+              <div className="mt-4 grid gap-3">
+                {copy.tips.map((tip) => (
+                  <p
+                    key={tip}
+                    className="rounded-2xl bg-white/80 px-4 py-3 text-sm font-bold leading-6 text-[#4f5d6c]"
+                  >
+                    {tip}
+                  </p>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          <div className="rounded-[1.7rem] border border-[#102238]/12 bg-white p-4 text-[#13233a] shadow-sm lg:p-5">
+            <RouteSearch
+              currentRoute="bangkok-to-pattaya"
+              desktopGo
+              from={firstRoute?.from ?? "Bangkok"}
+              labels={t.routeSelector}
+              locale={locale}
+              routePages={routePagesForLocale.map((page) => ({
+                slug: page.slug,
+                from: page.from,
+                to: page.to,
+              }))}
+              to={firstRoute?.to ?? "Pattaya"}
+            />
+
+            <div className="mt-5">
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-[#0e7b6b]">
+                {copy.popularRoutes}
+              </p>
+              <h2 className="mt-1 text-xl font-black leading-tight text-[#13233a]">
+                {copy.chooseBus}
+              </h2>
+            </div>
+
+            <div className="mt-5 grid gap-4 min-[1360px]:grid-cols-2">
+              {routePagesForLocale.map((routePage) => (
+                <DesktopRouteCard
+                  copy={copy}
+                  countdownLabels={countdownLabels}
+                  key={routePage.slug}
+                  locale={locale}
+                  routePage={routePage}
+                  schedule={schedules.find(
+                    (schedule) => schedule.direction === routePage.slug,
+                  )}
+                />
+              ))}
+            </div>
           </div>
         </div>
-
-        <div className="rounded-[1.6rem] border border-[#c8dbe9] bg-white p-5 shadow-sm">
-          <p className="text-xs font-black uppercase tracking-[0.2em] text-[#0e7b6b]">
-            {copy.aboutEyebrow}
-          </p>
-          <h2 className="mt-2 text-2xl font-black text-[#13233a]">
-            {copy.aboutTitle}
-          </h2>
-          <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
-            {copy.aboutText}
-          </p>
-          <UtilityGrid locale={locale} />
-        </div>
       </section>
+
     </>
   );
 }
@@ -849,49 +835,72 @@ function DesktopRouteCard({
   schedule?: Schedule;
 }) {
   const meta = copy.routeMeta[routePage.slug];
+  const routeImage = mobileRouteImages[routePage.slug];
 
   return (
-    <article className="flex min-h-full flex-col rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-      <div className="flex items-start justify-between gap-3">
-        <span className="rounded-full bg-[#eaf5fb] px-3 py-1 text-[0.68rem] font-black uppercase tracking-wide text-[#0e7b6b]">
-          {meta.badge}
-        </span>
-        <span className="inline-flex items-center gap-1 rounded-full bg-[#fff8ec] px-3 py-1 text-[0.68rem] font-black uppercase tracking-wide text-[#b9832e]">
-          <IconAsset name="bus" size="sm" />
-          {copy.bus}
-        </span>
-      </div>
-      <h2 className="mt-3 text-xl font-black leading-tight text-[#13233a]">
-        <Link href={`/${locale}/${routePage.slug}`}>{routePage.title}</Link>
-      </h2>
-      <p className="mt-2 text-sm font-semibold leading-5 text-[#5f6874]">
-        {meta.note}
-      </p>
-      <div className="mt-4 grid grid-cols-2 gap-2">
-        <MobileMiniFact
-          fallbackLabel={copy.check}
-          label={copy.travelTime}
-          value={schedule?.travelTime}
-        />
-        <MobileMiniFact
-          fallbackLabel={copy.check}
-          label={copy.ticketPrice}
-          value={schedule?.price}
-        />
-      </div>
-      <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
+    <article className="flex min-h-full flex-col overflow-hidden rounded-[1.25rem] border border-[#eadcc7] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <Link
         href={`/${locale}/${routePage.slug}`}
-        className="mt-4 flex min-h-11 w-full items-center justify-center rounded-2xl bg-[#13233a] text-sm font-black text-white"
+        className="relative block min-h-36 overflow-hidden bg-[#13233a] p-3 text-white"
       >
-        {copy.checkTimes}
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover transition duration-300 hover:scale-105"
+          fill
+          sizes="(min-width: 1280px) 260px, 320px"
+          src={routeImage}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/25 via-[#0e1e2e]/35 to-[#0e1e2e]/88" />
+        <div className="relative flex h-full min-h-30 flex-col justify-between gap-8">
+          <div className="flex items-start justify-between gap-2">
+            <span className="rounded-full bg-white/90 px-2.5 py-1 text-[0.58rem] font-black uppercase tracking-wide text-[#0e7b6b]">
+              {meta.badge}
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#fff8ec]/95 px-2.5 py-1 text-[0.58rem] font-black uppercase tracking-wide text-[#b9832e]">
+              <IconAsset name="bus" size="sm" />
+              {copy.bus}
+            </span>
+          </div>
+          <h2 className="text-base font-black leading-tight text-white drop-shadow">
+            {routePage.title}
+          </h2>
+        </div>
       </Link>
-      <TwelveGoAffiliateButton
-        className="mt-2 flex min-h-11 w-full items-center justify-center rounded-2xl border border-[#e8b05a] bg-[#fff8ec] text-sm font-black text-[#13233a] transition hover:bg-[#f8e7c6]"
-        label={getTwelveGoButtonLabel(locale)}
-        locale={locale}
-        routeId={routePage.slug}
-      />
+      <div className="flex flex-1 flex-col p-3">
+        <p className="text-xs font-semibold leading-5 text-[#5f6874]">
+          {meta.note}
+        </p>
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <MobileMiniFact
+            compact
+            fallbackLabel={copy.check}
+            label={copy.travelTime}
+            value={schedule?.travelTime}
+          />
+          <MobileMiniFact
+            compact
+            fallbackLabel={copy.check}
+            label={copy.ticketPrice}
+            value={schedule?.price}
+          />
+        </div>
+        <div className="text-[0.8rem] [&_.mt-3]:mt-2 [&_.rounded-2xl]:rounded-xl [&_.text-base]:text-sm">
+          <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
+        </div>
+        <Link
+          href={`/${locale}/${routePage.slug}`}
+          className="mt-3 flex min-h-9 w-full items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white"
+        >
+          {copy.checkTimes}
+        </Link>
+        <TwelveGoAffiliateButton
+          className="mt-2 flex min-h-9 w-full items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a] transition hover:bg-[#f8e7c6]"
+          label={getTwelveGoButtonLabel(locale)}
+          locale={locale}
+          routeId={routePage.slug}
+        />
+      </div>
     </article>
   );
 }
@@ -1244,199 +1253,3 @@ function IconAsset({
     />
   );
 }
-
-function getUtilityCards(locale: LocaleCode) {
-  if (locale === "pl") {
-    return {
-      heading: "Więcej",
-      cards: [
-        {
-          href: "/about",
-          label: "O stronie",
-        },
-        {
-          href: "/contact",
-          label: "Kontakt",
-        },
-        {
-          href: "/privacy",
-          label: "Prywatność",
-        },
-        {
-          href: "https://www.buymeacoffee.com/Pawel_",
-          label: "Wsparcie",
-        },
-      ],
-    };
-  }
-
-  if (locale === "ru") {
-    return {
-      heading: "Ещё",
-      cards: [
-        {
-          href: "/about",
-          label: "О сайте",
-        },
-        {
-          href: "/contact",
-          label: "Контакты",
-        },
-        {
-          href: "/privacy",
-          label: "Конфиденциальность",
-        },
-        {
-          href: "https://www.buymeacoffee.com/Pawel_",
-          label: "Поддержать",
-        },
-      ],
-    };
-  }
-
-  if (locale === "de") {
-    return {
-      heading: "Mehr",
-      cards: [
-        {
-          href: "/about",
-          label: "Über uns",
-        },
-        {
-          href: "/contact",
-          label: "Kontakt",
-        },
-        {
-          href: "/privacy",
-          label: "Datenschutz",
-        },
-        {
-          href: "https://www.buymeacoffee.com/Pawel_",
-          label: "Unterstützen",
-        },
-      ],
-    };
-  }
-
-  if (locale === "th") {
-    return {
-      heading: "เพิ่มเติม",
-      cards: [
-        {
-          href: "/about",
-          label: "เกี่ยวกับ",
-        },
-        {
-          href: "/contact",
-          label: "ติดต่อ",
-        },
-        {
-          href: "/privacy",
-          label: "ความเป็นส่วนตัว",
-        },
-        {
-          href: "https://www.buymeacoffee.com/Pawel_",
-          label: "สนับสนุน",
-        },
-      ],
-    };
-  }
-
-  if (locale === "zh") {
-    return {
-      heading: "更多",
-      cards: [
-        {
-          href: "/about",
-          label: "关于",
-        },
-        {
-          href: "/contact",
-          label: "联系",
-        },
-        {
-          href: "/privacy",
-          label: "隐私",
-        },
-        {
-          href: "https://www.buymeacoffee.com/Pawel_",
-          label: "支持",
-        },
-      ],
-    };
-  }
-
-  if (locale === "fr") {
-    return {
-      heading: "Plus",
-      cards: [
-        {
-          href: "/about",
-          label: "À propos",
-        },
-        {
-          href: "/contact",
-          label: "Contact",
-        },
-        {
-          href: "/privacy",
-          label: "Confidentialité",
-        },
-        {
-          href: "https://www.buymeacoffee.com/Pawel_",
-          label: "Soutenir",
-        },
-      ],
-    };
-  }
-
-  return {
-    heading: "More",
-    cards: [
-      {
-        href: "/about",
-        label: "About",
-      },
-      {
-        href: "/contact",
-        label: "Contact",
-      },
-      {
-        href: "/privacy",
-        label: "Privacy",
-      },
-      {
-        href: "https://www.buymeacoffee.com/Pawel_",
-        label: "Support",
-      },
-    ],
-  };
-}
-
-function UtilityGrid({ locale }: { locale: LocaleCode }) {
-  const utility = getUtilityCards(locale);
-
-  return (
-    <section>
-      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
-        {utility.heading}
-      </p>
-      <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-3">
-        {utility.cards.map((card) => (
-          <Link
-            key={card.label}
-            href={card.href}
-            className="flex min-h-12 items-center justify-center rounded-2xl border border-[#eadcc7] bg-white px-3 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#fffaf2]"
-            target={card.href.startsWith("http") ? "_blank" : undefined}
-            rel={
-              card.href.startsWith("http") ? "noopener noreferrer" : undefined
-            }
-          >
-            {card.label}
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
-}
-
