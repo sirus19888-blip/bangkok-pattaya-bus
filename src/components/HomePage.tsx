@@ -693,7 +693,7 @@ function DesktopHome({
       >
         <div className="grid items-stretch gap-5 min-[1180px]:grid-cols-[minmax(20rem,0.74fr)_minmax(0,1.26fr)]">
           <div className="flex h-full flex-col gap-4">
-            <div className="relative min-h-[22rem] flex-1 overflow-hidden rounded-[1.7rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/15 min-[1180px]:min-h-[27rem]">
+            <div className="relative min-h-[24rem] flex-1 overflow-hidden rounded-[1.7rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/15 min-[1180px]:min-h-[34rem]">
               <Image
                 alt=""
                 aria-hidden="true"
@@ -704,7 +704,7 @@ function DesktopHome({
                 src="/images/hero/desktop-bus-coast.png"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/10 via-[#0e1e2e]/35 to-[#0e1e2e]/92" />
-              <div className="relative flex h-full min-h-[22rem] flex-col justify-between p-5 sm:p-6 min-[1180px]:min-h-[27rem]">
+              <div className="relative flex h-full min-h-[24rem] flex-col justify-between p-5 sm:p-6 min-[1180px]:min-h-[34rem]">
                 <div>
                   <span className="inline-flex rounded-full bg-white/12 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#e8b05a] ring-1 ring-white/15">
                     {copy.travelRoutes}
@@ -764,6 +764,7 @@ function DesktopHome({
 
           <div className="rounded-[1.7rem] border border-[#102238]/12 bg-white p-4 text-[#13233a] shadow-sm lg:p-5">
             <RouteSearch
+              allowCurrentRouteNavigation
               currentRoute="bangkok-to-pattaya"
               desktopGo
               from={firstRoute?.from ?? "Bangkok"}
@@ -838,10 +839,10 @@ function DesktopRouteCard({
   const routeImage = mobileRouteImages[routePage.slug];
 
   return (
-    <article className="flex min-h-full flex-col overflow-hidden rounded-[1.25rem] border border-[#eadcc7] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+    <article className="flex min-h-[31rem] flex-col overflow-hidden rounded-[1.25rem] border border-[#eadcc7] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <Link
         href={`/${locale}/${routePage.slug}`}
-        className="relative block min-h-36 overflow-hidden bg-[#13233a] p-3 text-white"
+        className="relative block min-h-48 overflow-hidden bg-[#13233a] p-4 text-white"
       >
         <Image
           alt=""
@@ -852,7 +853,7 @@ function DesktopRouteCard({
           src={routeImage}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/25 via-[#0e1e2e]/35 to-[#0e1e2e]/88" />
-        <div className="relative flex h-full min-h-30 flex-col justify-between gap-8">
+        <div className="relative flex h-full min-h-40 flex-col justify-between gap-10">
           <div className="flex items-start justify-between gap-2">
             <span className="rounded-full bg-white/90 px-2.5 py-1 text-[0.58rem] font-black uppercase tracking-wide text-[#0e7b6b]">
               {meta.badge}
@@ -867,11 +868,11 @@ function DesktopRouteCard({
           </h2>
         </div>
       </Link>
-      <div className="flex flex-1 flex-col p-3">
+      <div className="flex flex-1 flex-col p-4">
         <p className="text-xs font-semibold leading-5 text-[#5f6874]">
           {meta.note}
         </p>
-        <div className="mt-3 grid grid-cols-2 gap-2">
+        <div className="mt-4 grid grid-cols-2 gap-3">
           <MobileMiniFact
             compact
             fallbackLabel={copy.check}
@@ -885,17 +886,18 @@ function DesktopRouteCard({
             value={schedule?.price}
           />
         </div>
-        <div className="text-[0.8rem] [&_.mt-3]:mt-2 [&_.rounded-2xl]:rounded-xl [&_.text-base]:text-sm">
+        <div className="mt-3 text-[0.8rem] [&_.rounded-2xl]:rounded-xl [&_.text-base]:text-sm">
           <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
         </div>
+        <div className="flex-1" />
         <Link
           href={`/${locale}/${routePage.slug}`}
-          className="mt-3 flex min-h-9 w-full items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white"
+          className="mt-4 flex min-h-10 w-full items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white"
         >
           {copy.checkTimes}
         </Link>
         <TwelveGoAffiliateButton
-          className="mt-2 flex min-h-9 w-full items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a] transition hover:bg-[#f8e7c6]"
+          className="mt-3 flex min-h-10 w-full items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a] transition hover:bg-[#f8e7c6]"
           label={getTwelveGoButtonLabel(locale)}
           locale={locale}
           routeId={routePage.slug}
@@ -991,6 +993,7 @@ function MobileHome({
               {featuredRoute ? (
                 <div className="mt-4 rounded-[1.45rem] bg-white/95 p-2.5 text-[#13233a] shadow-xl shadow-black/20">
                   <RouteSearch
+                    allowCurrentRouteNavigation
                     compact
                     currentRoute={featuredRoute.slug}
                     from={featuredRoute.from}

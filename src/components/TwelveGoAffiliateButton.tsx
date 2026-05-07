@@ -53,6 +53,7 @@ export function TwelveGoAffiliateButton({
       className={className}
       href={build12GoRouteUrl()}
       rel="noopener noreferrer sponsored"
+      target="_blank"
     >
       <Image
         alt=""

@@ -12,6 +12,7 @@ type SearchRoute = {
 };
 
 type RouteSearchProps = {
+  allowCurrentRouteNavigation?: boolean;
   compact?: boolean;
   currentRoute: RouteId;
   desktopGo?: boolean;
@@ -33,6 +34,7 @@ const goLabels: Record<LocaleCode, string> = {
 };
 
 export function RouteSearch({
+  allowCurrentRouteNavigation = false,
   compact = false,
   currentRoute,
   desktopGo = false,
@@ -65,7 +67,10 @@ export function RouteSearch({
   function openRoute(nextFrom: string, nextTo: string) {
     const matchingRoute = findMatchingRoute(routePages, nextFrom, nextTo);
 
-    if (!matchingRoute || matchingRoute.slug === currentRoute) {
+    if (
+      !matchingRoute ||
+      (!allowCurrentRouteNavigation && matchingRoute.slug === currentRoute)
+    ) {
       return;
     }
 
