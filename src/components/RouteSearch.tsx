@@ -21,6 +21,16 @@ type RouteSearchProps = {
   to: string;
 };
 
+const goLabels: Record<LocaleCode, string> = {
+  de: "Los",
+  en: "Go",
+  fr: "Aller",
+  pl: "Jedź",
+  ru: "Ехать",
+  th: "ไป",
+  zh: "前往",
+};
+
 export function RouteSearch({
   compact = false,
   currentRoute,
@@ -48,6 +58,7 @@ export function RouteSearch({
       ),
     [routePages, selectedFrom],
   );
+  const goLabel = goLabels[locale] ?? goLabels.en;
 
   function openRoute(nextFrom: string, nextTo: string) {
     const matchingRoute = findMatchingRoute(routePages, nextFrom, nextTo);
@@ -71,22 +82,27 @@ export function RouteSearch({
 
     if (safeNextTo) {
       setSelectedTo(safeNextTo);
+
+      if (compact) {
+        return;
+      }
+
       openRoute(nextFrom, safeNextTo);
     }
   }
 
   function handleToChange(nextTo: string) {
     setSelectedTo(nextTo);
+
+    if (compact) {
+      return;
+    }
+
     openRoute(selectedFrom, nextTo);
   }
 
-  function handleSwap() {
-    const nextFrom = selectedTo;
-    const nextTo = selectedFrom;
-
-    setSelectedFrom(nextFrom);
-    setSelectedTo(nextTo);
-    openRoute(nextFrom, nextTo);
+  function handleGo() {
+    openRoute(selectedFrom, selectedTo);
   }
 
   return (
@@ -97,7 +113,13 @@ export function RouteSearch({
           : "mt-5 rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:mt-6 sm:p-4"
       }
     >
-      <div className={compact ? "grid grid-cols-[1fr_auto_1fr] items-end gap-2" : "grid gap-3 sm:grid-cols-2"}>
+      <div
+        className={
+          compact
+            ? "grid grid-cols-[1fr_auto_1fr] items-end gap-2"
+            : "grid gap-3 sm:grid-cols-2"
+        }
+      >
         <label className="block">
           <span
             className={
@@ -124,16 +146,18 @@ export function RouteSearch({
             ))}
           </select>
         </label>
+
         {compact ? (
           <button
             type="button"
-            aria-label={`${labels.from} / ${labels.to}`}
-            onClick={handleSwap}
-            className="mb-0.5 flex h-10 w-10 items-center justify-center rounded-full border border-[#eadcc7] bg-white text-lg font-black text-[#0e7b6b] shadow-sm"
+            aria-label={`${goLabel}: ${selectedFrom} ${labels.to} ${selectedTo}`}
+            onClick={handleGo}
+            className="mb-0.5 flex h-10 min-w-12 items-center justify-center rounded-full border border-[#e8b05a] bg-[#13233a] px-2.5 text-[0.7rem] font-black leading-none text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
           >
-            ⇄
+            {goLabel}
           </button>
         ) : null}
+
         <label className="block">
           <span
             className={

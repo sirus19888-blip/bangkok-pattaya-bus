@@ -3,6 +3,7 @@ import type { ComponentProps } from "react";
 import Image from "next/image";
 import { Header } from "@/components/Header";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { MobileDestinationWeather } from "@/components/MobileDestinationWeather";
 import { MobileRouteCountdown } from "@/components/MobileRouteCountdown";
 import { RouteSearch } from "@/components/RouteSearch";
 import {
@@ -945,12 +946,12 @@ function MobileHome({
             />
           </div>
 
-          <div className="grid grid-cols-4 border-y border-white/8 bg-[#162840] px-3 py-2.5 text-center">
-            <MobileInfoChip icon="weather" label="Weather" value="31°" />
-            <MobileInfoChip icon="clock" label="Local" value="TH" />
-            <MobileInfoChip icon="currency" label="USD" value="36.2฿" />
-            <MobileInfoChip icon="ticket" label="12Go" value="Alt" />
-          </div>
+          {featuredRoute ? (
+            <MobileDestinationWeather
+              locale={locale}
+              routeSlug={featuredRoute.slug}
+            />
+          ) : null}
 
           <div className="relative px-4 pb-4 pt-3">
             <div className="absolute inset-x-4 bottom-0 top-4 overflow-hidden rounded-[2rem]">
@@ -1183,28 +1184,6 @@ function MobileBottomNav({
         ))}
       </div>
     </nav>
-  );
-}
-
-function MobileInfoChip({
-  icon,
-  label,
-  value,
-}: {
-  icon: string;
-  label: string;
-  value: string;
-}) {
-  return (
-    <div className="flex min-w-0 flex-col items-center gap-1">
-      <IconAsset name={icon} size="sm" />
-      <span className="text-[0.52rem] font-black uppercase tracking-[0.12em] text-white/45">
-        {label}
-      </span>
-      <span className="text-[0.72rem] font-black leading-none text-[#e8b05a]">
-        {value}
-      </span>
-    </div>
   );
 }
 
