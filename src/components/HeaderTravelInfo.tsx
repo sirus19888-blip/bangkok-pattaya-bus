@@ -464,15 +464,17 @@ export function HeaderTravelInfo({
       </div>
 
       <div
-        className="hidden h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm min-[390px]:flex"
+        className={`h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm ${
+          variant === "routeDesktop" ? "flex" : "flex"
+        }`}
         title={`${locationLabel} ${labels.weatherSuffix}`}
       >
         <Image
           alt=""
           aria-hidden="true"
-          className="h-4 w-4 object-contain"
+          className="h-5 w-5 rounded-md object-cover"
           height={16}
-          src="/images/icons/icon-weather.png"
+          src="/images/icons/icon-header-weather.png"
           width={16}
         />
         <span>{weather.temperature}°</span>
@@ -481,7 +483,11 @@ export function HeaderTravelInfo({
         </span>
       </div>
 
-      <div className="relative">
+      <div
+        className={
+          variant === "routeDesktop" ? "hidden" : "relative hidden md:block"
+        }
+      >
         <button
           type="button"
           className="flex h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm"
