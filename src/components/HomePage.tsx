@@ -919,7 +919,7 @@ function MobileHome({
       <div className="flex-1 overflow-y-auto pb-24">
         <div className="overflow-hidden rounded-b-[2rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/20">
           <div className="flex items-center justify-between px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.9rem)]">
-            <div className="flex min-w-0 items-center gap-3">
+            <Link href={`/${locale}`} className="flex min-w-0 items-center gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0e7b6b] p-1.5 shadow-sm ring-1 ring-white/10">
                 <Image
                   alt=""
@@ -938,7 +938,7 @@ function MobileHome({
                   {copy.brandSecondary}
                 </p>
               </div>
-            </div>
+            </Link>
             <LanguageSwitcher
               label={t.navigation.chooseLanguage}
               currentLocale={locale}

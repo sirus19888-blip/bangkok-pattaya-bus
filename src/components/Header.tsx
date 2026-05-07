@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { HeaderTravelInfo } from "./HeaderTravelInfo";
 import type { LocaleCode, RouteId } from "@/data/routes";
@@ -14,7 +15,7 @@ type HeaderProps = {
 export function Header({ labels, currentLocale, routeSlug }: HeaderProps) {
   return (
     <header className="flex items-center justify-between gap-3 rounded-xl border border-[#eadcc7] bg-white/90 px-3 py-2.5 shadow-sm sm:px-4 sm:py-3">
-      <a href="#top" className="flex min-w-0 items-center gap-3">
+      <Link href={`/${currentLocale}`} className="flex min-w-0 items-center gap-3">
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#13233a] text-sm font-black text-white shadow-sm sm:h-10 sm:w-10 sm:text-base">
           {currentLocale === "th" ? "รถ" : currentLocale === "ru" ? "АБ" : "BP"}
         </span>
@@ -26,7 +27,7 @@ export function Header({ labels, currentLocale, routeSlug }: HeaderProps) {
             {labels.brandSecondary}
           </span>
         </span>
-      </a>
+      </Link>
 
       <div className="flex min-w-0 items-center justify-end gap-2">
         <HeaderTravelInfo
