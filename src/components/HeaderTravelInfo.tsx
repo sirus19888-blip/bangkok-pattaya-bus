@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import type { LocaleCode, RouteId } from "@/data/routes";
 
@@ -348,9 +349,14 @@ export function HeaderTravelInfo({
         className="hidden h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm md:flex"
         title={labels.thailandTime}
       >
-        <span className="text-[#b9832e]" aria-hidden="true">
-          TH
-        </span>
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="h-4 w-4 object-contain"
+          height={16}
+          src="/images/icons/icon-clock.png"
+          width={16}
+        />
         <span>{thaiTime}</span>
       </div>
 
@@ -358,7 +364,14 @@ export function HeaderTravelInfo({
         className="hidden h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm min-[390px]:flex"
         title={`${locationLabel} ${labels.weatherSuffix}`}
       >
-        <span aria-hidden="true">{weatherIcon(weather.code)}</span>
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="h-4 w-4 object-contain"
+          height={16}
+          src="/images/icons/icon-weather.png"
+          width={16}
+        />
         <span>{weather.temperature}°</span>
         <span className="max-w-[5.6rem] truncate text-[0.68rem] font-semibold text-[#637083]">
           {locationLabel}
@@ -373,6 +386,14 @@ export function HeaderTravelInfo({
           aria-label={labels.currencyAria}
           onClick={() => setRatesOpen((current) => !current)}
         >
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="h-4 w-4 object-contain"
+            height={16}
+            src="/images/icons/icon-currency.png"
+            width={16}
+          />
           <span className="text-[#b9832e]">{labels.currencyButton}</span>
           <span>{mainRate}฿</span>
           <span className="text-[0.65rem] text-[#637083]" aria-hidden="true">
@@ -421,22 +442,3 @@ function formatThailandTime() {
   }).format(new Date());
 }
 
-function weatherIcon(code: number) {
-  if (code === 0) {
-    return "☀";
-  }
-
-  if (code >= 51 && code <= 67) {
-    return "☂";
-  }
-
-  if (code >= 80) {
-    return "☔";
-  }
-
-  if (code >= 1 && code <= 3) {
-    return "◐";
-  }
-
-  return "☀";
-}

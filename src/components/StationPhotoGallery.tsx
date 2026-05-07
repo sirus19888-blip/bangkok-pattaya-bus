@@ -318,19 +318,14 @@ function AttributionPrefix({
         className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#d8c8b4] bg-[#fffaf2] text-[#13233a] outline-none transition hover:border-[#2f6f93] focus:border-[#2f6f93] focus:ring-2 focus:ring-[#c8dbe9]"
         onClick={() => setIsOpen((current) => !current)}
       >
-        <svg
+        <Image
+          alt=""
           aria-hidden="true"
-          viewBox="0 0 24 24"
-          className="h-3.5 w-3.5"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-        >
-          <path d="M14.5 5 13 3H8L6.5 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-5.5Z" />
-          <circle cx="12" cy="12" r="3.5" />
-        </svg>
+          className="h-4 w-4 object-contain"
+          height={16}
+          src="/images/icons/icon-camera.png"
+          width={16}
+        />
       </button>
       {isOpen ? (
         <span className="absolute bottom-full left-0 z-50 mb-2 block w-[16rem] max-w-[min(16rem,80vw)] rounded-lg bg-[#13233a] px-3 py-2 text-left text-[0.68rem] font-black leading-4 text-white shadow-xl">

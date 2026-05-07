@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import type { ComponentProps } from "react";
+import Image from "next/image";
 import { Header } from "@/components/Header";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MobileRouteCountdown } from "@/components/MobileRouteCountdown";
@@ -163,6 +164,19 @@ const germanMobileRouteMeta: Record<RouteId, { badge: string; note: string }> =
       note: "Einstiegsort bestätigen",
     },
   };
+
+const mobileRouteImages: Record<RouteId, string> = {
+  "bangkok-to-pattaya": "/images/hero/mobile-home-bus-guide.png",
+  "pattaya-to-bangkok": "/images/stations/pattaya-north/pattaya-station.jpg",
+  "suvarnabhumi-airport-to-pattaya":
+    "/images/stations/suvarnabhumi/suvarnabhumi-bus-terminal.jpg",
+  "pattaya-to-suvarnabhumi-airport":
+    "/images/stations/pattaya-north/pattaya-bus-area.jpg",
+  "don-mueang-airport-to-pattaya":
+    "/images/stations/don-mueang/don-mueang-terminal-2.jpg",
+  "pattaya-to-don-mueang-airport":
+    "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
+};
 
 const thaiMobileRouteMeta: Record<RouteId, { badge: string; note: string }> = {
   "bangkok-to-pattaya": {
@@ -840,7 +854,8 @@ function DesktopRouteCard({
         <span className="rounded-full bg-[#eaf5fb] px-3 py-1 text-[0.68rem] font-black uppercase tracking-wide text-[#0e7b6b]">
           {meta.badge}
         </span>
-        <span className="rounded-full bg-[#fff8ec] px-3 py-1 text-[0.68rem] font-black uppercase tracking-wide text-[#b9832e]">
+        <span className="inline-flex items-center gap-1 rounded-full bg-[#fff8ec] px-3 py-1 text-[0.68rem] font-black uppercase tracking-wide text-[#b9832e]">
+          <IconAsset name="bus" size="sm" />
           {copy.bus}
         </span>
       </div>
@@ -890,9 +905,6 @@ function MobileHome({
 }) {
   const copy = getMobileHomeCopy(locale);
   const featuredRoute = routePagesForLocale[0];
-  const featuredSchedule = schedules.find(
-    (schedule) => schedule.direction === featuredRoute?.slug,
-  );
   const countdownLabels = {
     check: copy.check,
     hoursShort: copy.hoursShort,
@@ -903,54 +915,87 @@ function MobileHome({
   };
 
   return (
-    <section className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col bg-[#fbf8f3] pb-20 md:hidden">
-      <div className="bg-[#0e1e2e] px-4 pb-5 pt-4 text-white shadow-sm">
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#0e7b6b] text-sm font-black text-white shadow-sm">
-              BP
-            </span>
-            <div className="min-w-0">
-              <p className="truncate text-base font-black leading-tight">
-                {copy.brandPrimary}
+    <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15 md:hidden">
+      <div className="flex-1 overflow-y-auto pb-24">
+        <div className="overflow-hidden rounded-b-[2rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/20">
+          <div className="flex items-center justify-between px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.9rem)]">
+            <div className="flex min-w-0 items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0e7b6b] p-1.5 shadow-sm ring-1 ring-white/10">
+                <Image
+                  alt=""
+                  aria-hidden="true"
+                  className="h-full w-full object-contain"
+                  height={44}
+                  src="/images/icons/icon-brand.png"
+                  width={44}
+                />
+              </span>
+              <div className="min-w-0">
+                <p className="truncate text-base font-black leading-tight">
+                  {copy.brandPrimary}
+                </p>
+                <p className="text-[0.66rem] font-bold uppercase tracking-[0.18em] text-[#e8b05a]">
+                  {copy.brandSecondary}
+                </p>
+              </div>
+            </div>
+            <LanguageSwitcher
+              label={t.navigation.chooseLanguage}
+              currentLocale={locale}
+            />
+          </div>
+
+          <div className="grid grid-cols-4 border-y border-white/8 bg-[#162840] px-3 py-2.5 text-center">
+            <MobileInfoChip icon="weather" label="Weather" value="31°" />
+            <MobileInfoChip icon="clock" label="Local" value="TH" />
+            <MobileInfoChip icon="currency" label="USD" value="36.2฿" />
+            <MobileInfoChip icon="ticket" label="12Go" value="Alt" />
+          </div>
+
+          <div className="relative px-4 pb-4 pt-3">
+            <div className="absolute inset-x-4 bottom-0 top-4 overflow-hidden rounded-[2rem]">
+              <Image
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-cover opacity-55"
+                fill
+                priority
+                sizes="390px"
+                src="/images/hero/mobile-home-bus-guide.png"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/45 via-[#0e1e2e]/70 to-[#0e1e2e]" />
+            </div>
+            <div className="relative pb-2 pt-4">
+              <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#e8b05a] ring-1 ring-white/15">
+                Bangkok & Pattaya
+              </span>
+              <h1 className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight">
+                Travel <span className="italic text-[#e8b05a]">smart,</span>
+                <br />
+                travel <span className="italic text-[#e8b05a]">easy</span>
+              </h1>
+              <p className="mt-2 max-w-[17.5rem] text-[0.84rem] font-semibold leading-5 text-[#e8edf5]">
+                {copy.subtitle}
               </p>
-              <p className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[#e8b05a]">
-                {copy.brandSecondary}
-              </p>
+              {featuredRoute ? (
+                <div className="mt-4 rounded-[1.45rem] bg-white/95 p-2.5 text-[#13233a] shadow-xl shadow-black/20">
+                  <RouteSearch
+                    compact
+                    currentRoute={featuredRoute.slug}
+                    from={featuredRoute.from}
+                    labels={t.routeSelector}
+                    locale={locale}
+                    routePages={routePagesForLocale}
+                    to={featuredRoute.to}
+                  />
+                </div>
+              ) : null}
             </div>
           </div>
-          <LanguageSwitcher
-            label={t.navigation.chooseLanguage}
-            currentLocale={locale}
-          />
         </div>
-
-        <div className="mt-5 rounded-[1.7rem] bg-[#162840] p-4 shadow-lg shadow-black/10">
-          <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#e8b05a]">
-            {copy.travelRoutes}
-          </p>
-          <h1 className="mt-2 text-[2rem] font-black leading-[1.02]">
-            {copy.title}
-          </h1>
-          <p className="mt-2 max-w-[18rem] text-sm font-semibold leading-5 text-[#dce6f0]">
-            {copy.subtitle}
-          </p>
-        </div>
-      </div>
-
-      <div className="-mt-3 flex flex-1 flex-col gap-5 rounded-t-[2rem] bg-[#fbf8f3] px-4 pt-5">
-        {featuredRoute ? (
-          <MobileFeaturedRoute
-            copy={copy}
-            countdownLabels={countdownLabels}
-            locale={locale}
-            routePage={featuredRoute}
-            schedule={featuredSchedule}
-          />
-        ) : null}
 
         <section>
-          <div className="mb-3 flex items-end justify-between gap-3">
+          <div className="mb-3 flex items-end justify-between gap-3 px-4 pt-5">
             <div>
               <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
                 {copy.popularRoutes}
@@ -963,7 +1008,7 @@ function MobileHome({
               {copy.swipe}
             </span>
           </div>
-          <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2">
+          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3">
             {routePagesForLocale.map((routePage) => (
               <MobileRouteCard
                 copy={copy}
@@ -979,14 +1024,21 @@ function MobileHome({
           </div>
         </section>
 
-        <section className="rounded-[1.5rem] border border-[#eadcc7] bg-[#fff8ec] p-4 shadow-sm">
-          <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#b9832e]">
-            {copy.beforeTravel}
-          </p>
-          <h2 className="mt-1 text-xl font-black text-[#13233a]">
-            {copy.adviceTitle}
-          </h2>
-          <div className="mt-3 space-y-2.5">
+        <section className="mx-4 rounded-[1.5rem] border border-[#e8c986] bg-[#fff8ec] p-4 shadow-sm">
+          <div className="flex items-center gap-3">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#efd18a]">
+              <IconAsset name="tips" size="lg" />
+            </span>
+            <div>
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#b9832e]">
+                {copy.beforeTravel}
+              </p>
+              <h2 className="text-xl font-black text-[#13233a]">
+                {copy.adviceTitle}
+              </h2>
+            </div>
+          </div>
+          <div className="mt-3 space-y-2">
             {copy.tips.map((tip) => (
               <p
                 key={tip}
@@ -1001,67 +1053,6 @@ function MobileHome({
 
       <MobileBottomNav copy={copy} locale={locale} />
     </section>
-  );
-}
-
-function MobileFeaturedRoute({
-  copy,
-  countdownLabels,
-  locale,
-  routePage,
-  schedule,
-}: {
-  copy: ReturnType<typeof getMobileHomeCopy>;
-  countdownLabels: NonNullable<
-    ComponentProps<typeof MobileRouteCountdown>["labels"]
-  >;
-  locale: LocaleCode;
-  routePage: RoutePage;
-  schedule?: Schedule;
-}) {
-  return (
-    <article className="rounded-[1.5rem] border border-[#c8dbe9] bg-white p-4 shadow-sm">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
-            {copy.startHere}
-          </p>
-          <h2 className="mt-1 text-xl font-black leading-tight text-[#13233a]">
-            <Link href={`/${locale}/${routePage.slug}`}>
-              {routePage.title}
-            </Link>
-          </h2>
-        </div>
-        <span className="rounded-full bg-[#f3d77b] px-3 py-1 text-xs font-black text-[#3f3413]">
-          {copy.bus}
-        </span>
-      </div>
-      <div className="mt-3 grid grid-cols-2 gap-2">
-        <MobileMiniFact
-          fallbackLabel={copy.check}
-          label={copy.travelTime}
-          value={schedule?.travelTime}
-        />
-        <MobileMiniFact
-          fallbackLabel={copy.check}
-          label={copy.ticketPrice}
-          value={schedule?.price}
-        />
-      </div>
-      <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
-      <Link
-        href={`/${locale}/${routePage.slug}`}
-        className="mt-3 flex min-h-11 w-full items-center justify-center rounded-2xl bg-[#13233a] text-sm font-black text-white"
-      >
-        {copy.checkTimes}
-      </Link>
-      <TwelveGoAffiliateButton
-        className="mt-2 flex min-h-11 w-full items-center justify-center rounded-2xl border border-[#e8b05a] bg-[#fff8ec] text-sm font-black text-[#13233a]"
-        label={getTwelveGoButtonLabel(locale)}
-        locale={locale}
-        routeId={routePage.slug}
-      />
-    </article>
   );
 }
 
@@ -1081,19 +1072,35 @@ function MobileRouteCard({
   schedule?: Schedule;
 }) {
   const meta = copy.routeMeta[routePage.slug];
+  const routeImage = mobileRouteImages[routePage.slug];
 
   return (
-    <article className="flex w-[238px] flex-none snap-start flex-col rounded-[1.35rem] border border-[#eadcc7] bg-white p-3 shadow-sm">
-      <span className="w-fit rounded-full bg-[#eaf5fb] px-2.5 py-1 text-[0.65rem] font-black uppercase tracking-wide text-[#0e7b6b]">
-        {meta.badge}
-      </span>
-      <h3 className="mt-2 min-h-[2.6rem] text-base font-black leading-tight text-[#13233a]">
-        <Link href={`/${locale}/${routePage.slug}`}>{routePage.title}</Link>
-      </h3>
-      <p className="mt-1 text-xs font-bold leading-4 text-[#6b7280]">
-        {meta.note}
-      </p>
-      <div className="mt-3 grid grid-cols-2 gap-2">
+    <article className="flex w-[172px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm">
+      <Link
+        href={`/${locale}/${routePage.slug}`}
+        className="relative block h-28 overflow-hidden bg-[#13233a]"
+      >
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover"
+          fill
+          sizes="172px"
+          src={routeImage}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-[#0e1e2e]/30 to-[#0e1e2e]/85" />
+        <span className="absolute left-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[0.58rem] font-black uppercase tracking-wide text-[#0e7b6b]">
+          {meta.badge}
+        </span>
+        <h3 className="absolute inset-x-2 bottom-2 text-sm font-black leading-tight text-white">
+          {routePage.title}
+        </h3>
+      </Link>
+      <div className="flex flex-1 flex-col p-3">
+        <p className="text-[0.72rem] font-bold leading-4 text-[#6b7280]">
+          {meta.note}
+        </p>
+        <div className="mt-3 grid grid-cols-2 gap-2">
         <MobileMiniFact
           compact
           fallbackLabel={copy.check}
@@ -1116,10 +1123,11 @@ function MobileRouteCard({
       </Link>
       <TwelveGoAffiliateButton
         className="mt-2 flex min-h-10 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a]"
-        label={getTwelveGoButtonLabel(locale)}
+        label="12Go"
         locale={locale}
         routeId={routePage.slug}
       />
+      </div>
     </article>
   );
 }
@@ -1152,7 +1160,7 @@ function MobileBottomNav({
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 mx-auto max-w-[430px] border-t border-[#eadcc7] bg-white/95 px-2.5 pb-[calc(env(safe-area-inset-bottom)+0.3rem)] pt-1.5 shadow-[0_-8px_24px_rgba(19,35,58,0.08)] backdrop-blur md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-40 mx-auto max-w-[390px] border-t border-[#eadcc7] bg-white/95 px-2.5 pb-[calc(env(safe-area-inset-bottom)+0.3rem)] pt-1.5 shadow-[0_-8px_24px_rgba(19,35,58,0.08)] backdrop-blur md:hidden">
       <div className="grid grid-cols-4 gap-0.5">
         {items.map((item) => (
           <Link
@@ -1175,6 +1183,28 @@ function MobileBottomNav({
         ))}
       </div>
     </nav>
+  );
+}
+
+function MobileInfoChip({
+  icon,
+  label,
+  value,
+}: {
+  icon: string;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex min-w-0 flex-col items-center gap-1">
+      <IconAsset name={icon} size="sm" />
+      <span className="text-[0.52rem] font-black uppercase tracking-[0.12em] text-white/45">
+        {label}
+      </span>
+      <span className="text-[0.72rem] font-black leading-none text-[#e8b05a]">
+        {value}
+      </span>
+    </div>
   );
 }
 
@@ -1210,77 +1240,28 @@ function MobileNavIcon({
 }: {
   name: "home" | "routes" | "airport" | "contact";
 }) {
-  if (name === "home") {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        className="h-4 w-4"
-        fill="none"
-        stroke="#0e7b6b"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-      >
-        <path d="m4 10 8-6 8 6" stroke="#12a08c" />
-        <path d="M6.5 9.5V20h11V9.5" />
-        <path d="M10 20v-5h4v5" />
-      </svg>
-    );
-  }
+  return <IconAsset name={name} size="md" />;
+}
 
-  if (name === "routes") {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        className="h-4 w-4"
-        fill="none"
-        stroke="#c8913a"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-      >
-        <path d="M7 18a3 3 0 1 1-3-3" stroke="#0e7b6b" />
-        <path d="M17 6a3 3 0 1 0 3 3" stroke="#e8b05a" />
-        <path d="M7 15h7a3 3 0 0 0 0-6H7" />
-        <path d="M6 6h2" />
-        <path d="M16 18h2" />
-      </svg>
-    );
-  }
-
-  if (name === "airport") {
-    return (
-      <svg
-        viewBox="0 0 24 24"
-        className="h-4 w-4"
-        fill="none"
-        stroke="#315d9d"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-      >
-        <path d="M3 11h18" />
-        <path d="m4 11 7-7h3l-3 7 5 8h-3l-5-8" stroke="#0e7b6b" />
-        <path d="m16 11 3-3" stroke="#e8b05a" />
-        <path d="M6 19h12" stroke="#c8913a" />
-      </svg>
-    );
-  }
+function IconAsset({
+  name,
+  size = "md",
+}: {
+  name: string;
+  size?: "sm" | "md" | "lg";
+}) {
+  const sizeClass =
+    size === "lg" ? "h-8 w-8" : size === "sm" ? "h-4 w-4" : "h-5 w-5";
 
   return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="#8d5fd3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-    >
-      <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z" />
-      <path d="M8 9h8" stroke="#0e7b6b" />
-      <path d="M8 13h5" stroke="#e8b05a" />
-    </svg>
+    <Image
+      alt=""
+      aria-hidden="true"
+      className={`${sizeClass} object-contain`}
+      height={32}
+      src={`/images/icons/icon-${name}.png`}
+      width={32}
+    />
   );
 }
 

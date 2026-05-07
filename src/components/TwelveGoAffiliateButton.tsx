@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import { build12GoRouteUrl, hasTwelveGoTickets } from "@/lib/twelveGo";
 
@@ -53,6 +54,14 @@ export function TwelveGoAffiliateButton({
       href={build12GoRouteUrl()}
       rel="noopener noreferrer sponsored"
     >
+      <Image
+        alt=""
+        aria-hidden="true"
+        className="mr-2 h-5 w-5 object-contain"
+        height={20}
+        src="/images/icons/icon-ticket.png"
+        width={20}
+      />
       {label ?? getTwelveGoButtonLabel(locale)}
     </a>
   );

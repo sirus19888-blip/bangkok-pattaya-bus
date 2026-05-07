@@ -12,6 +12,7 @@ type SearchRoute = {
 };
 
 type RouteSearchProps = {
+  compact?: boolean;
   currentRoute: RouteId;
   from: string;
   labels: Translations["routeSelector"];
@@ -21,6 +22,7 @@ type RouteSearchProps = {
 };
 
 export function RouteSearch({
+  compact = false,
   currentRoute,
   from,
   labels,
@@ -81,16 +83,32 @@ export function RouteSearch({
   }
 
   return (
-    <div className="mt-5 rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:mt-6 sm:p-4">
-      <div className="grid gap-3 sm:grid-cols-2">
+    <div
+      className={
+        compact
+          ? "rounded-[1.2rem] bg-white"
+          : "mt-5 rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:mt-6 sm:p-4"
+      }
+    >
+      <div className={compact ? "grid grid-cols-[1fr_auto_1fr] items-end gap-2" : "grid gap-3 sm:grid-cols-2"}>
         <label className="block">
-          <span className="mb-2 block text-sm font-bold text-[#344153]">
+          <span
+            className={
+              compact
+                ? "mb-1 block text-[0.58rem] font-black uppercase tracking-[0.14em] text-[#6b7280]"
+                : "mb-2 block text-sm font-bold text-[#344153]"
+            }
+          >
             {labels.from}
           </span>
           <select
             value={selectedFrom}
             onChange={(event) => handleFromChange(event.target.value)}
-            className="h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]"
+            className={
+              compact
+                ? "h-11 min-h-11 w-full rounded-xl border border-[#eadcc7] bg-[#fffaf2] px-2 text-sm font-black text-[#13233a] outline-none focus:border-[#0e7b6b]"
+                : "h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]"
+            }
           >
             {fromOptions.map((option) => (
               <option key={option} value={option}>
@@ -99,14 +117,32 @@ export function RouteSearch({
             ))}
           </select>
         </label>
+        {compact ? (
+          <span
+            aria-hidden="true"
+            className="mb-0.5 flex h-10 w-10 items-center justify-center rounded-full border border-[#eadcc7] bg-white text-lg font-black text-[#0e7b6b] shadow-sm"
+          >
+            ⇄
+          </span>
+        ) : null}
         <label className="block">
-          <span className="mb-2 block text-sm font-bold text-[#344153]">
+          <span
+            className={
+              compact
+                ? "mb-1 block text-[0.58rem] font-black uppercase tracking-[0.14em] text-[#6b7280]"
+                : "mb-2 block text-sm font-bold text-[#344153]"
+            }
+          >
             {labels.to}
           </span>
           <select
             value={selectedTo}
             onChange={(event) => handleToChange(event.target.value)}
-            className="h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]"
+            className={
+              compact
+                ? "h-11 min-h-11 w-full rounded-xl border border-[#eadcc7] bg-[#fffaf2] px-2 text-sm font-black text-[#13233a] outline-none focus:border-[#0e7b6b]"
+                : "h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]"
+            }
           >
             {toOptions.map((option) => (
               <option key={option} value={option}>
