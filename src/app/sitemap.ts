@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { routePages, supportedLocaleCodes } from "@/data/routes";
+import { routeSeoPages } from "@/data/seoRoutes";
 
 const siteUrl = "https://www.bangkokpattayabus.com";
 
@@ -29,6 +30,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.3,
     },
+    {
+      url: absoluteUrl("/routes"),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
   ];
 
   const routeUrls: MetadataRoute.Sitemap = supportedLocaleCodes.flatMap(
@@ -40,5 +46,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       })),
   );
 
-  return [...staticPages, ...routeUrls];
+  const seoRouteUrls: MetadataRoute.Sitemap = routeSeoPages.map((routePage) => ({
+    url: absoluteUrl(`/routes/${routePage.slug}`),
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }));
+
+  return [...staticPages, ...routeUrls, ...seoRouteUrls];
 }

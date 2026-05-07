@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bangkokpattayabus.com"),
   title: "Bangkok Pattaya Bus Guide",
   description:
     "Mobile bus schedules, station tips, and travel guidance between Bangkok and Pattaya.",
