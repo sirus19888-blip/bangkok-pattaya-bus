@@ -59,7 +59,7 @@ export function TwelveGoAffiliateButton({
         aria-hidden="true"
         className="mr-2 h-5 w-5 object-contain"
         height={20}
-        src="/images/icons/icon-ticket.png"
+        src="/images/partners/12go-icon.png"
         width={20}
       />
       {label ?? getTwelveGoButtonLabel(locale)}
