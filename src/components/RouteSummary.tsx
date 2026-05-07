@@ -24,7 +24,7 @@ export function RouteSummary({
       <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
         {labels.routeSummary}
       </p>
-      <div className="mt-4 grid gap-3 sm:grid-cols-2 md:mt-3 md:gap-2.5 lg:grid-cols-4">
+      <div className="mt-4 grid gap-3 sm:grid-cols-2 md:mt-3 md:gap-2.5 min-[1360px]:grid-cols-4">
         <SummaryItem label={labels.from} value={from} />
         <SummaryItem label={labels.to} value={to} />
         <SummaryItem label={labels.travelTime} value={schedule.travelTime} />
@@ -40,7 +40,7 @@ function SummaryItem({ label, value }: { label: string; value: string }) {
       <p className="text-xs font-bold uppercase tracking-wide text-[#5f6874]">
         {label}
       </p>
-      <p className="mt-1 text-base font-black leading-snug text-[#13233a] md:text-sm lg:text-base">{value}</p>
+      <p className="mt-1 text-base font-black leading-snug text-[#13233a] md:text-sm min-[1360px]:text-base">{value}</p>
     </div>
   );
 }

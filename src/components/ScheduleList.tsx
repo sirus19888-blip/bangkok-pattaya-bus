@@ -13,6 +13,7 @@ type ScheduleListProps = {
   labels: Translations["schedule"];
   sourceOnly?: boolean;
   showSourceInfo?: boolean;
+  sourceInfoMode?: "inline" | "popover";
 };
 
 export function ScheduleList({
@@ -22,6 +23,7 @@ export function ScheduleList({
   labels,
   sourceOnly = false,
   showSourceInfo = false,
+  sourceInfoMode = "inline",
 }: ScheduleListProps) {
   const hasSubRoutes = Boolean(schedule.subRoutes?.length);
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
@@ -86,6 +88,7 @@ export function ScheduleList({
                 <ScheduleSourceInfo
                   boardingNote={subRoute.boardingNote}
                   labels={labels}
+                  mode={sourceInfoMode}
                   source={subRoute}
                 />
               ) : null}
@@ -119,6 +122,7 @@ export function ScheduleList({
         <ScheduleSourceInfo
           boardingNote={schedule.boardingNote}
           labels={labels}
+          mode={sourceInfoMode}
           source={schedule}
         />
       ) : null}
@@ -160,10 +164,12 @@ function DepartureTile({
 function ScheduleSourceInfo({
   boardingNote,
   labels,
+  mode = "inline",
   source,
 }: {
   boardingNote?: string;
   labels: Translations["schedule"];
+  mode?: "inline" | "popover";
   source: ScheduleSource;
 }) {
   const verificationNotice =
@@ -173,8 +179,8 @@ function ScheduleSourceInfo({
         ? labels.partiallyVerifiedNotice
         : null;
 
-  return (
-    <div className="mt-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-sm leading-6 text-[#4f5d6c] sm:p-4 md:p-3 md:text-xs md:leading-5">
+  const content = (
+    <>
       <p className="font-black text-[#13233a]">{labels.dataTitle}</p>
       <dl className="mt-2 grid gap-1.5">
         <InfoRow label={labels.source}>
@@ -218,6 +224,29 @@ function ScheduleSourceInfo({
           <InfoRow label={labels.note}>{source.operatorNote}</InfoRow>
         </dl>
       </details>
+    </>
+  );
+
+  if (mode === "popover") {
+    return (
+      <div className="group relative mt-3 flex justify-end">
+        <button
+          type="button"
+          aria-label={labels.dataTitle}
+          className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#eadcc7] bg-[#fffaf2] text-sm font-black text-[#13233a] shadow-sm transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+        >
+          i
+        </button>
+        <div className="absolute right-0 top-12 z-20 hidden w-80 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-left text-sm leading-6 text-[#4f5d6c] shadow-xl sm:p-4 md:p-3 md:text-xs md:leading-5 group-hover:block group-focus-within:block">
+          {content}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-sm leading-6 text-[#4f5d6c] sm:p-4 md:p-3 md:text-xs md:leading-5">
+      {content}
     </div>
   );
 }

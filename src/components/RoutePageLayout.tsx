@@ -78,7 +78,7 @@ export function RoutePageLayout({
         routePage={routePage}
         schedule={schedule}
       />
-      <section className="mx-auto flex w-full max-w-6xl flex-col gap-5 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 md:gap-4 md:pb-8 md:pt-4 lg:px-8">
+      <section className="mx-auto flex w-full max-w-[92rem] flex-col gap-5 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 md:gap-4 md:pb-8 md:pt-4 lg:px-6 xl:px-8">
         <Header
           labels={{
             ...t.app,
@@ -86,6 +86,7 @@ export function RoutePageLayout({
           }}
           currentLocale={locale}
           routeSlug={routePage.slug}
+          showDesktopRouteIcons
         />
 
         <MobileRouteDecisionCard
@@ -123,12 +124,12 @@ export function RoutePageLayout({
           />
         </div>
 
-        <section className="hidden gap-4 md:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+        <section className="hidden gap-4 md:grid min-[1180px]:grid-cols-[minmax(0,1.18fr)_minmax(19rem,0.82fr)] min-[1180px]:items-stretch">
           <div className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-5 shadow-sm sm:p-7 md:p-5">
             <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm md:mb-2">
               {t.app.title}
             </p>
-            <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-[#13233a] sm:text-5xl md:text-4xl lg:text-[2.6rem]">
+            <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-[#13233a] sm:text-5xl md:text-[clamp(2.1rem,3.1vw,2.7rem)]">
               {routePage.title}
             </h1>
             <p className="mt-3 max-w-2xl text-[0.95rem] font-semibold leading-7 text-[#4f5d6c] sm:mt-4 sm:text-lg md:mt-3 md:text-base md:leading-6">
@@ -152,6 +153,16 @@ export function RoutePageLayout({
               })}
               to={routePage.to}
             />
+            <div className="mt-4">
+              <ScheduleList
+                route={route}
+                schedule={schedule}
+                nextDeparture={nextDeparture}
+                labels={t.schedule}
+                showSourceInfo
+                sourceInfoMode="popover"
+              />
+            </div>
           </div>
 
           <NextBusCard
@@ -180,21 +191,21 @@ export function RoutePageLayout({
           />
         </div>
 
-        <section className="hidden gap-4 md:grid lg:grid-cols-[1.1fr_0.9fr]">
+        <section className="hidden gap-4 md:grid min-[1180px]:grid-cols-[minmax(0,1.18fr)_minmax(19rem,0.82fr)]">
           <div className="space-y-4">
-            <ScheduleList
-              route={route}
-              schedule={schedule}
-              nextDeparture={nextDeparture}
-              labels={t.schedule}
-              showSourceInfo
-            />
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="grid gap-4 min-[1360px]:grid-cols-2">
               <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
               <FAQ faqs={localizedFaqs} labels={t.faq} />
             </div>
+            <StationAccessGuide
+              sectionTitle={stationAccessSectionTitle}
+              title={stationAccessGuide.title}
+              items={stationAccessGuide.items}
+              note={stationAccessGuide.note}
+              swipeHint={stationAccessSwipeHint}
+            />
           </div>
-          <div className="hidden space-y-4 lg:block">
+          <div className="hidden space-y-4 min-[1180px]:block">
             <StationCard
               stations={stations}
               locale={locale}
@@ -203,13 +214,6 @@ export function RoutePageLayout({
                 ...t.station,
                 openInGoogleMaps: t.common.openInGoogleMaps,
               }}
-            />
-            <StationAccessGuide
-              sectionTitle={stationAccessSectionTitle}
-              title={stationAccessGuide.title}
-              items={stationAccessGuide.items}
-              note={stationAccessGuide.note}
-              swipeHint={stationAccessSwipeHint}
             />
           </div>
         </section>
