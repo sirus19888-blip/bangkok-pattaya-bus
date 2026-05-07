@@ -14,6 +14,7 @@ type SearchRoute = {
 type RouteSearchProps = {
   compact?: boolean;
   currentRoute: RouteId;
+  desktopGo?: boolean;
   from: string;
   labels: Translations["routeSelector"];
   locale: LocaleCode;
@@ -34,6 +35,7 @@ const goLabels: Record<LocaleCode, string> = {
 export function RouteSearch({
   compact = false,
   currentRoute,
+  desktopGo = false,
   from,
   labels,
   locale,
@@ -83,7 +85,7 @@ export function RouteSearch({
     if (safeNextTo) {
       setSelectedTo(safeNextTo);
 
-      if (compact) {
+      if (compact || desktopGo) {
         return;
       }
 
@@ -94,7 +96,7 @@ export function RouteSearch({
   function handleToChange(nextTo: string) {
     setSelectedTo(nextTo);
 
-    if (compact) {
+    if (compact || desktopGo) {
       return;
     }
 
@@ -117,6 +119,8 @@ export function RouteSearch({
         className={
           compact
             ? "grid grid-cols-[1fr_auto_1fr] items-end gap-2"
+            : desktopGo
+              ? "grid gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-end"
             : "grid gap-3 sm:grid-cols-2"
         }
       >
@@ -147,12 +151,16 @@ export function RouteSearch({
           </select>
         </label>
 
-        {compact ? (
+        {compact || desktopGo ? (
           <button
             type="button"
             aria-label={`${goLabel}: ${selectedFrom} ${labels.to} ${selectedTo}`}
             onClick={handleGo}
-            className="mb-0.5 flex h-10 min-w-12 items-center justify-center rounded-full border border-[#e8b05a] bg-[#13233a] px-2.5 text-[0.7rem] font-black leading-none text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+            className={
+              compact
+                ? "mb-0.5 flex h-10 min-w-12 items-center justify-center rounded-full border border-[#e8b05a] bg-[#13233a] px-2.5 text-[0.7rem] font-black leading-none text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+                : "flex h-13 min-h-13 min-w-16 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#13233a] px-5 text-sm font-black uppercase tracking-[0.08em] text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+            }
           >
             {goLabel}
           </button>

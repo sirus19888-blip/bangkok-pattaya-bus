@@ -733,6 +733,7 @@ function DesktopHome({
 
           <RouteSearch
             currentRoute="bangkok-to-pattaya"
+            desktopGo
             from={firstRoute?.from ?? "Bangkok"}
             labels={t.routeSelector}
             locale={locale}
