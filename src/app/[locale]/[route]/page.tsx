@@ -72,7 +72,10 @@ export async function generateMetadata({
     description: localizedRoutePage.metadata.description,
     alternates: {
       canonical: routeUrl(locale, routePage.slug),
-      languages,
+      languages: {
+        "x-default": routeUrl("en", routePage.slug),
+        ...languages,
+      },
     },
   };
 }

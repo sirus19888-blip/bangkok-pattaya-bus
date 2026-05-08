@@ -56,7 +56,10 @@ export async function generateMetadata({
         : t.disclaimer.text,
     alternates: {
       canonical: homeUrl(locale),
-      languages,
+      languages: {
+        "x-default": new URL("/", siteUrl).toString(),
+        ...languages,
+      },
     },
   };
 }

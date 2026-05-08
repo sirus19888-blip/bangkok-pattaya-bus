@@ -9,6 +9,19 @@ const nextConfig: NextConfig = {
     "192.168.8.174",
     "192.168.8.174:3000",
   ],
+  async headers() {
+    return [
+      {
+        source: "/manifest.webmanifest",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

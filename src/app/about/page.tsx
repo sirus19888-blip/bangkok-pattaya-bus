@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
 import { TrustPage } from "@/components/TrustPage";
 
+const siteUrl = "https://www.bangkokpattayabus.com";
+
 export const metadata: Metadata = {
   title: "About | Bangkok Pattaya Bus Guide",
   description:
     "Learn about Bangkok Pattaya Bus Guide, an independent travel guide for checking bus information between Bangkok and Pattaya.",
+  alternates: {
+    canonical: new URL("/about", siteUrl).toString(),
+  },
 };
 
 export default function AboutPage() {
