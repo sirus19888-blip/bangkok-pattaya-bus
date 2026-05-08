@@ -226,6 +226,7 @@ export function HeaderTravelInfo({
     rates: fallbackRates,
     source: "fallback",
   });
+  const [weatherOpen, setWeatherOpen] = useState(false);
   const [thaiTime, setThaiTime] = useState(() => formatThailandTime());
   const [ratesOpen, setRatesOpen] = useState(false);
 
@@ -463,31 +464,103 @@ export function HeaderTravelInfo({
         <span>{thaiTime}</span>
       </div>
 
-      <div
-        className={`h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm ${
-          variant === "routeDesktop" ? "flex" : "flex"
-        }`}
-        title={`${locationLabel} ${labels.weatherSuffix}`}
+      {variant === "routeDesktop" ? (
+        <div className="group relative">
+          <button
+            type="button"
+            aria-expanded={weatherOpen}
+            aria-label={`${locationLabel} ${labels.weatherSuffix}: ${weather.temperature} degrees`}
+            className="relative isolate flex h-10 min-w-[4.4rem] items-center justify-end overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#0b4d68] px-2 text-xs font-black text-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+            onClick={() => setWeatherOpen((current) => !current)}
+            title={`${locationLabel} ${labels.weatherSuffix}`}
+          >
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 -z-10 h-full w-full object-cover object-left"
+              fill
+              sizes="70px"
+              src="/images/weather/mobile-destination-weather.png"
+            />
+            <span className="absolute inset-0 -z-10 bg-gradient-to-br from-[#052032]/10 via-[#052032]/25 to-[#052032]/75" />
+            <span className="text-[1rem] leading-none tracking-[-0.06em]">
+              {weather.temperature}&deg;
+            </span>
+          </button>
+          <div
+            className={`absolute right-0 top-[calc(100%+0.45rem)] isolate z-50 w-[14.5rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-[1.15rem] border border-white/15 bg-[#0d2638] p-2.5 text-white shadow-2xl shadow-black/30 ring-1 ring-white/10 transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+              weatherOpen
+                ? "pointer-events-auto translate-y-0 opacity-100"
+                : "pointer-events-none translate-y-1 opacity-0"
+            }`}
+          >
+            <div className="absolute inset-0 -z-10">
+              <Image
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-cover object-left opacity-80"
+                fill
+                sizes="280px"
+                src="/images/weather/mobile-destination-weather.png"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#052032]/15 via-[#052032]/45 to-[#052032]/85" />
+            </div>
+            <div className="ml-auto flex max-w-[8.8rem] flex-col items-end text-right">
+              <span className="rounded-full bg-white/14 px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#ffe9ae] ring-1 ring-white/15">
+                {weather.source === "live" ? labels.live : labels.estimated}
+              </span>
+              <span className="mt-1 text-[1.65rem] font-black leading-none tracking-[-0.07em]">
+                {weather.temperature}&deg;
+              </span>
+              <span className="mt-0.5 max-w-full truncate text-[0.68rem] font-black leading-none text-white">
+                {locationLabel}
+              </span>
+              <span className="mt-1 text-[0.62rem] font-bold leading-none text-white/80">
+                {labels.weatherSuffix}
+              </span>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div
+          className="hidden h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm min-[390px]:flex"
+          title={`${locationLabel} ${labels.weatherSuffix}`}
+        >
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="h-4 w-4 object-contain"
+            height={16}
+            src="/images/icons/icon-weather.png"
+            width={16}
+          />
+          <span>{weather.temperature}&deg;</span>
+          <span className="max-w-[5.6rem] truncate text-[0.68rem] font-semibold text-[#637083]">
+            {locationLabel}
+          </span>
+        </div>
+      )}
+
+      <Link
+        aria-label="Postaw mi kawê"
+        className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:hidden"
+        href="https://www.buymeacoffee.com/Pawel_"
+        rel="noopener noreferrer"
+        target="_blank"
+        title="Postaw mi kawê"
       >
         <Image
           alt=""
           aria-hidden="true"
-          className="h-5 w-5 rounded-md object-cover"
-          height={16}
-          src="/images/icons/icon-header-weather.png"
-          width={16}
+          className="h-full w-full object-cover"
+          height={40}
+          src="/images/icons/icon-support-coffee.png"
+          width={40}
         />
-        <span>{weather.temperature}Â°</span>
-        <span className="max-w-[5.6rem] truncate text-[0.68rem] font-semibold text-[#637083]">
-          {locationLabel}
-        </span>
-      </div>
+      </Link>
 
-      <div
-        className={
-          variant === "routeDesktop" ? "hidden" : "relative hidden md:block"
-        }
-      >
+      {variant !== "routeDesktop" ? (
+      <div className="relative">
         <button
           type="button"
           className="flex h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm"
@@ -534,6 +607,7 @@ export function HeaderTravelInfo({
           </div>
         ) : null}
       </div>
+      ) : null}
       </div>
     </>
   );

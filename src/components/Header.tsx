@@ -26,7 +26,9 @@ export function Header({
 
   return (
     <header
-      className={`relative flex flex-wrap items-center justify-between gap-3 overflow-hidden rounded-xl border px-3 py-2.5 shadow-sm sm:px-4 sm:py-3 ${
+      className={`relative flex flex-wrap items-center justify-between gap-3 rounded-xl border px-3 py-2.5 shadow-sm sm:px-4 sm:py-3 ${
+        showDesktopRouteIcons ? "overflow-visible md:overflow-hidden" : "overflow-hidden"
+      } ${
         hasDesktopFeatureBackground
           ? "border-[#13233a]/25 bg-[#13233a] bg-cover bg-center"
           : "border-[#eadcc7] bg-white/90"

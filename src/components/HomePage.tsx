@@ -1165,36 +1165,70 @@ function MobileBottomNav({
       icon: "routes",
       label: copy.routes,
     },
+    { href: "#mobile-airports", icon: "airport", label: copy.airport },
+    { href: "/contact", icon: "contact", label: copy.contact },
+  ];
+  const airportOptions = [
     {
       href: `/${locale}/suvarnabhumi-airport-to-pattaya`,
-      icon: "airport",
-      label: copy.airport,
+      label: "Suvarnabhumi",
     },
-    { href: "/contact", icon: "contact", label: copy.contact },
+    {
+      href: `/${locale}/don-mueang-airport-to-pattaya`,
+      label: "Don Mueang",
+    },
   ];
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-40 mx-auto max-w-[390px] border-t border-[#eadcc7] bg-white/95 px-2.5 pb-[calc(env(safe-area-inset-bottom)+0.3rem)] pt-1.5 shadow-[0_-8px_24px_rgba(19,35,58,0.08)] backdrop-blur md:hidden">
       <div className="grid grid-cols-4 gap-0.5">
-        {items.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={`flex min-h-10 flex-col items-center justify-center rounded-xl text-[0.62rem] font-black ${
-              item.active
-                ? "bg-[#eaf5fb] text-[#0e7b6b]"
-                : "text-[#6b7280]"
-            }`}
-          >
-            <span
-              aria-hidden="true"
-              className="mb-0.5 flex h-5 w-5 items-center justify-center rounded-lg bg-white"
+        {items.map((item) =>
+          item.icon === "airport" ? (
+            <details key={item.label} className="group relative">
+              <summary
+                className="flex min-h-10 cursor-pointer list-none flex-col items-center justify-center rounded-xl text-[0.62rem] font-black text-[#6b7280] transition group-open:bg-[#eaf5fb] group-open:text-[#0e7b6b] [&::-webkit-details-marker]:hidden"
+                id="mobile-airports"
+              >
+                <span
+                  aria-hidden="true"
+                  className="mb-0.5 flex h-5 w-5 items-center justify-center rounded-lg bg-white"
+                >
+                  <MobileNavIcon name={item.icon} />
+                </span>
+                {item.label}
+              </summary>
+              <div className="absolute bottom-[calc(100%+0.55rem)] left-1/2 z-50 w-44 -translate-x-1/2 rounded-2xl border border-[#eadcc7] bg-white p-2 shadow-2xl shadow-[#13233a]/20">
+                {airportOptions.map((option) => (
+                  <Link
+                    key={option.href}
+                    href={option.href}
+                    className="flex min-h-11 items-center justify-center rounded-xl bg-[#fffaf2] px-3 text-center text-xs font-black text-[#13233a] transition hover:bg-[#eaf5fb]"
+                  >
+                    {option.label}
+                  </Link>
+                ))}
+              </div>
+            </details>
+          ) : (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`flex min-h-10 flex-col items-center justify-center rounded-xl text-[0.62rem] font-black ${
+                item.active
+                  ? "bg-[#eaf5fb] text-[#0e7b6b]"
+                  : "text-[#6b7280]"
+              }`}
             >
-              <MobileNavIcon name={item.icon} />
-            </span>
-            {item.label}
-          </Link>
-        ))}
+              <span
+                aria-hidden="true"
+                className="mb-0.5 flex h-5 w-5 items-center justify-center rounded-lg bg-white"
+              >
+                <MobileNavIcon name={item.icon} />
+              </span>
+              {item.label}
+            </Link>
+          ),
+        )}
       </div>
     </nav>
   );

@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { LocaleCode, RouteId } from "@/data/routes";
 
@@ -201,7 +202,9 @@ export function MobileDestinationWeather({
 
   return (
     <aside className="relative z-20 px-4 pb-1">
-      <div className="flex min-h-14 items-start gap-2">
+      <div className="flex min-h-14 items-start justify-end gap-2">
+        <div className="min-w-0 flex-1" aria-hidden="true" />
+
         <div className="group relative w-[4.7rem] shrink-0">
           <button
             type="button"
@@ -229,7 +232,7 @@ export function MobileDestinationWeather({
           </button>
 
           <div
-            className={`absolute left-0 top-[calc(100%+0.45rem)] isolate w-[17.5rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-[1.35rem] border border-white/15 bg-[#0d2638] p-3 text-white shadow-2xl shadow-black/30 ring-1 ring-white/10 transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+            className={`absolute right-0 top-[calc(100%+0.45rem)] isolate w-[14.5rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-[1.15rem] border border-white/15 bg-[#0d2638] p-2.5 text-white shadow-2xl shadow-black/30 ring-1 ring-white/10 transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
               isOpen
                 ? "pointer-events-auto translate-y-0 opacity-100"
                 : "pointer-events-none translate-y-1 opacity-0"
@@ -246,24 +249,40 @@ export function MobileDestinationWeather({
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#052032]/15 via-[#052032]/45 to-[#052032]/85" />
             </div>
-            <div className="ml-auto flex max-w-[10.2rem] flex-col items-end text-right">
-              <span className="rounded-full bg-white/14 px-2 py-0.5 text-[0.56rem] font-black uppercase tracking-[0.16em] text-[#ffe9ae] ring-1 ring-white/15">
+            <div className="ml-auto flex max-w-[8.8rem] flex-col items-end text-right">
+              <span className="rounded-full bg-white/14 px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#ffe9ae] ring-1 ring-white/15">
                 {sourceLabel}
               </span>
-              <span className="mt-1 text-[2rem] font-black leading-none tracking-[-0.07em]">
+              <span className="mt-1 text-[1.65rem] font-black leading-none tracking-[-0.07em]">
                 {weather.temperature}&deg;
               </span>
-              <span className="mt-0.5 max-w-full truncate text-[0.76rem] font-black leading-none text-white">
+              <span className="mt-0.5 max-w-full truncate text-[0.68rem] font-black leading-none text-white">
                 {copy.prefix} {destination.label}
               </span>
-              <span className="mt-1 text-[0.68rem] font-bold leading-none text-white/80">
+              <span className="mt-1 text-[0.62rem] font-bold leading-none text-white/80">
                 {condition}
               </span>
             </div>
           </div>
         </div>
 
-        <div className="min-w-0 flex-1" aria-hidden="true" />
+        <Link
+          aria-label="Postaw mi kawę"
+          className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-[#fffaf2] shadow-lg shadow-black/15 ring-1 ring-white/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-[#e8b05a]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+          href="https://www.buymeacoffee.com/Pawel_"
+          rel="noopener noreferrer"
+          target="_blank"
+          title="Postaw mi kawę"
+        >
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover"
+            height={56}
+            src="/images/icons/icon-support-coffee.png"
+            width={56}
+          />
+        </Link>
       </div>
     </aside>
   );
