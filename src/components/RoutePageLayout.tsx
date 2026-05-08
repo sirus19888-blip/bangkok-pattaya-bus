@@ -211,6 +211,7 @@ export function RoutePageLayout({
             <StationCard
               stations={stations}
               locale={locale}
+              routeId={routePage.slug}
               photoGroups={stationPhotoGroups}
               labels={{
                 ...t.station,
@@ -224,6 +225,7 @@ export function RoutePageLayout({
           <StationCard
             stations={stations}
             locale={locale}
+            routeId={routePage.slug}
             photoGroups={stationPhotoGroups}
             labels={{
               ...t.station,

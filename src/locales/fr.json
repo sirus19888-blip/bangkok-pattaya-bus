@@ -134,6 +134,10 @@
     "don-mueang-airport": {
       "bestFor": "arrivées à l'aéroport et bus direct vers Pattaya",
       "tip": "Après la sortie de l'avion, suivez Arrivals, récupérez vos bagages, rejoignez la zone publique des arrivées au niveau 1 et confirmez le bus Transport Co. / TCL vers Pattaya au T1 Gate 1 ou T2 Gate 11."
+    },
+    "pattaya-sukhumvit": {
+      "bestFor": "Pattaya vers l'aéroport Don Mueang",
+      "tip": "Depuis votre hôtel, ouvrez d'abord Pattaya Sukhumvit Road Bus Station dans Google Maps et vérifiez votre distance jusqu'à Sukhumvit Road. Si votre hôtel est à Beach Road, Central Pattaya, South Pattaya, Naklua, Pratumnak ou Jomtien, l'option la plus simple avec des bagages est Grab/Bolt : souvent environ 80-150 THB depuis Central Pattaya ou Beach Road, et environ 120-220 THB depuis Jomtien, Pratumnak ou Naklua selon le trafic et la demande. Le songthaew/baht bus est le moins cher, environ 15-20 THB par trajet, mais il faut parfois marcher jusqu'à la route principale, changer de ligne et suivre Google Maps. Pour un taxi privé ou un songthaew affrété depuis l'hôtel, convenez du prix avant de monter ; comptez environ 100-200 THB depuis les zones centrales et 150-300 THB depuis Jomtien, Pratumnak ou Naklua. Partez plus tôt avant un vol, car les points de prise en charge et le trafic sur Sukhumvit Road peuvent ralentir le trajet."
     }
   },
   "travelTipItems": [
