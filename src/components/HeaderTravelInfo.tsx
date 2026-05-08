@@ -95,20 +95,20 @@ const localizedLocationLabels: Partial<
     "pattaya-to-don-mueang-airport": "Pattaya",
   },
   th: {
-    "bangkok-to-pattaya": "ŕ¸ŕ¸Łŕ¸¸ŕ¸‡ŕą€ŕ¸—ŕ¸žŕ¸Ż",
-    "pattaya-to-bangkok": "ŕ¸žŕ¸±ŕ¸—ŕ¸˘ŕ¸˛",
-    "suvarnabhumi-airport-to-pattaya": "ŕ¸Şŕ¸¸ŕ¸§ŕ¸Łŕ¸Łŕ¸“ŕ¸ ŕ¸ąŕ¸ˇŕ¸´",
-    "pattaya-to-suvarnabhumi-airport": "ŕ¸žŕ¸±ŕ¸—ŕ¸˘ŕ¸˛",
-    "don-mueang-airport-to-pattaya": "ŕ¸”ŕ¸­ŕ¸™ŕą€ŕ¸ˇŕ¸·ŕ¸­ŕ¸‡",
-    "pattaya-to-don-mueang-airport": "ŕ¸žŕ¸±ŕ¸—ŕ¸˘ŕ¸˛",
+    "bangkok-to-pattaya": "กรุงเทพฯ",
+    "pattaya-to-bangkok": "พัทยา",
+    "suvarnabhumi-airport-to-pattaya": "สุวรรณภูมิ",
+    "pattaya-to-suvarnabhumi-airport": "พัทยา",
+    "don-mueang-airport-to-pattaya": "ดอนเมือง",
+    "pattaya-to-don-mueang-airport": "พัทยา",
   },
   zh: {
-    "bangkok-to-pattaya": "ć›Ľč°·",
-    "pattaya-to-bangkok": "čŠ­ćŹé›…",
-    "suvarnabhumi-airport-to-pattaya": "ç´ ä¸‡é‚Łć™®",
-    "pattaya-to-suvarnabhumi-airport": "čŠ­ćŹé›…",
-    "don-mueang-airport-to-pattaya": "ĺ»Šć›Ľ",
-    "pattaya-to-don-mueang-airport": "čŠ­ćŹé›…",
+    "bangkok-to-pattaya": "曼谷",
+    "pattaya-to-bangkok": "芭提雅",
+    "suvarnabhumi-airport-to-pattaya": "素万那普",
+    "pattaya-to-suvarnabhumi-airport": "芭提雅",
+    "don-mueang-airport-to-pattaya": "廊曼",
+    "pattaya-to-don-mueang-airport": "芭提雅",
   },
   fr: {
     "bangkok-to-pattaya": "Bangkok",
@@ -119,30 +119,32 @@ const localizedLocationLabels: Partial<
     "pattaya-to-don-mueang-airport": "Pattaya",
   },
   ru: {
-    "bangkok-to-pattaya": "Đ‘Đ°Đ˝ĐłĐşĐľĐş",
-    "pattaya-to-bangkok": "ĐźĐ°Ń‚Ń‚Đ°ĐąŃŹ",
-    "suvarnabhumi-airport-to-pattaya": "ĐˇŃĐ˛Đ°Ń€Đ˝Đ°Đ±Ń…ŃĐĽĐ¸",
-    "pattaya-to-suvarnabhumi-airport": "ĐźĐ°Ń‚Ń‚Đ°ĐąŃŹ",
-    "don-mueang-airport-to-pattaya": "Đ”ĐľĐ˝ ĐśŃĐ°Đ˝Đł",
-    "pattaya-to-don-mueang-airport": "ĐźĐ°Ń‚Ń‚Đ°ĐąŃŹ",
+    "bangkok-to-pattaya": "Бангкок",
+    "pattaya-to-bangkok": "Паттайя",
+    "suvarnabhumi-airport-to-pattaya": "Суварнабхуми",
+    "pattaya-to-suvarnabhumi-airport": "Паттайя",
+    "don-mueang-airport-to-pattaya": "Дон Муанг",
+    "pattaya-to-don-mueang-airport": "Паттайя",
   },
 };
 
 function getHeaderTravelLabels(locale?: LocaleCode) {
   if (locale === "ru") {
     return {
-      currencyAria: "ĐšŃŃ€ŃŃ‹ Đ˛Đ°Đ»ŃŽŃ‚",
-      currencyButton: "ĐšŃŃ€Ń",
-      estimated: "ĐžŃ†ĐµĐ˝ĐşĐ°",
-      live: "ĐĐşŃ‚ŃĐ°Đ»ŃŚĐ˝Đľ",
-      ratesTitle: "ĐšŃŃ€Ń Đş THB",
-      thailandTime: "ĐśĐµŃŃ‚Đ˝ĐľĐµ Đ˛Ń€ĐµĐĽŃŹ Đ˘Đ°Đ¸Đ»Đ°Đ˝Đ´Đ°",
-      weatherSuffix: "ĐżĐľĐłĐľĐ´Đ°",
+      buyMeCoffee: "Купить кофе",
+      currencyAria: "Курсы валют",
+      currencyButton: "Курс",
+      estimated: "Оценка",
+      live: "Актуально",
+      ratesTitle: "Курс к THB",
+      thailandTime: "Местное время Таиланда",
+      weatherSuffix: "погода",
     };
   }
 
   if (locale === "pl") {
     return {
+      buyMeCoffee: "Postaw kawę",
       currencyAria: "Kursy walut",
       currencyButton: "Waluty",
       estimated: "Szac.",
@@ -155,53 +157,58 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
 
   if (locale === "de") {
     return {
+      buyMeCoffee: "Kaffee spendieren",
       currencyAria: "Wechselkurse",
       currencyButton: "Kurse",
-      estimated: "GeschĂ¤tzt",
+      estimated: "Geschätzt",
       live: "Live",
       ratesTitle: "Kurse zu THB",
-      thailandTime: "ThailĂ¤ndische Ortszeit",
+      thailandTime: "Thailändische Ortszeit",
       weatherSuffix: "Wetter",
     };
   }
 
   if (locale === "th") {
     return {
-      currencyAria: "ŕ¸­ŕ¸±ŕ¸•ŕ¸Łŕ¸˛ŕąŕ¸Ąŕ¸ŕą€ŕ¸›ŕ¸Ąŕ¸µŕąŕ¸˘ŕ¸™",
-      currencyButton: "ŕ¸„ŕąŕ¸˛ŕą€ŕ¸‡ŕ¸´ŕ¸™",
-      estimated: "ŕ¸›ŕ¸Łŕ¸°ŕ¸ˇŕ¸˛ŕ¸“",
-      live: "ŕ¸Şŕ¸”",
-      ratesTitle: "ŕ¸­ŕ¸±ŕ¸•ŕ¸Łŕ¸˛ŕą€ŕ¸›ŕą‡ŕ¸™ THB",
-      thailandTime: "ŕą€ŕ¸§ŕ¸Ąŕ¸˛ŕ¸—ŕą‰ŕ¸­ŕ¸‡ŕ¸–ŕ¸´ŕąŕ¸™ŕ¸‚ŕ¸­ŕ¸‡ŕ¸›ŕ¸Łŕ¸°ŕą€ŕ¸—ŕ¸¨ŕą„ŕ¸—ŕ¸˘",
-      weatherSuffix: "ŕ¸Şŕ¸ ŕ¸˛ŕ¸žŕ¸­ŕ¸˛ŕ¸ŕ¸˛ŕ¸¨",
+      buyMeCoffee: "เลี้ยงกาแฟ",
+      currencyAria: "อัตราแลกเปลี่ยน",
+      currencyButton: "ค่าเงิน",
+      estimated: "ประมาณ",
+      live: "สด",
+      ratesTitle: "อัตราเป็น THB",
+      thailandTime: "เวลาท้องถิ่นของประเทศไทย",
+      weatherSuffix: "สภาพอากาศ",
     };
   }
 
   if (locale === "zh") {
     return {
-      currencyAria: "ć±‡çŽ‡",
-      currencyButton: "ć±‡çŽ‡",
-      estimated: "äĽ°ç®—",
-      live: "ĺ®žć—¶",
-      ratesTitle: "ĺ…‘ćŤ˘ THB ć±‡çŽ‡",
-      thailandTime: "ćł°ĺ›˝ĺ˝“ĺś°ć—¶é—´",
-      weatherSuffix: "ĺ¤©ć°”",
+      buyMeCoffee: "请我喝咖啡",
+      currencyAria: "汇率",
+      currencyButton: "汇率",
+      estimated: "估算",
+      live: "实时",
+      ratesTitle: "兑换 THB 汇率",
+      thailandTime: "泰国当地时间",
+      weatherSuffix: "天气",
     };
   }
 
   if (locale === "fr") {
     return {
+      buyMeCoffee: "M'offrir un café",
       currencyAria: "Taux de change",
       currencyButton: "Taux",
-      estimated: "EstimĂ©",
+      estimated: "Estimé",
       live: "Direct",
       ratesTitle: "Taux vers THB",
-      thailandTime: "Heure locale de ThaĂŻlande",
-      weatherSuffix: "mĂ©tĂ©o",
+      thailandTime: "Heure locale de Thaïlande",
+      weatherSuffix: "météo",
     };
   }
 
   return {
+    buyMeCoffee: "Buy me coffee",
     currencyAria: "Currency rates",
     currencyButton: "FX",
     estimated: "Est.",
@@ -376,12 +383,12 @@ export function HeaderTravelInfo({
         </div>
 
         <Link
-          aria-label="Buy me a coffee"
+          aria-label={labels.buyMeCoffee}
           className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
           href="https://www.buymeacoffee.com/Pawel_"
           rel="noopener noreferrer"
           target="_blank"
-          title="Buy me a coffee"
+          title={labels.buyMeCoffee}
         >
           <Image
             alt=""
@@ -426,12 +433,12 @@ export function HeaderTravelInfo({
           </div>
 
           <Link
-            aria-label="Buy me a coffee"
+            aria-label={labels.buyMeCoffee}
             className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
             href="https://www.buymeacoffee.com/Pawel_"
             rel="noopener noreferrer"
             target="_blank"
-            title="Buy me a coffee"
+            title={labels.buyMeCoffee}
           >
             <Image
               alt=""
@@ -469,7 +476,7 @@ export function HeaderTravelInfo({
           <button
             type="button"
             aria-expanded={weatherOpen}
-            aria-label={`${locationLabel} ${labels.weatherSuffix}: ${weather.temperature} degrees`}
+            aria-label={`${locationLabel} ${labels.weatherSuffix}: ${weather.temperature}°`}
             className="relative isolate flex h-10 min-w-[4.4rem] items-center justify-end overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#0b4d68] px-2 text-xs font-black text-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
             onClick={() => setWeatherOpen((current) => !current)}
             title={`${locationLabel} ${labels.weatherSuffix}`}
@@ -542,12 +549,12 @@ export function HeaderTravelInfo({
       )}
 
       <Link
-        aria-label="Postaw mi kawę"
+        aria-label={labels.buyMeCoffee}
         className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:hidden"
         href="https://www.buymeacoffee.com/Pawel_"
         rel="noopener noreferrer"
         target="_blank"
-        title="Postaw mi kawę"
+        title={labels.buyMeCoffee}
       >
         <Image
           alt=""
@@ -577,7 +584,7 @@ export function HeaderTravelInfo({
             width={16}
           />
           <span className="text-[#b9832e]">{labels.currencyButton}</span>
-          <span>{mainRate}ŕ¸ż</span>
+          <span>{mainRate}฿</span>
           <span className="text-[0.65rem] text-[#637083]" aria-hidden="true">
             â–ľ
           </span>
@@ -600,7 +607,7 @@ export function HeaderTravelInfo({
                   className="rounded-lg bg-[#fffaf2] px-2 py-1.5 font-semibold text-[#13233a]"
                 >
                   <span className="text-[#6f7782]">{code}</span>{" "}
-                  <span>{formatRate(value)}ŕ¸ż</span>
+                  <span>{formatRate(value)}฿</span>
                 </div>
               ))}
             </div>

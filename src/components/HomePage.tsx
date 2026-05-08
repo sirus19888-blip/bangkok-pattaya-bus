@@ -287,10 +287,15 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "Godziny autobusów, ceny, stacje i praktyczne wskazówki dla Bangkoku, Pattayi oraz lotnisk Suvarnabhumi i Don Mueang.",
       findRoute: "Znajdź trasę",
+      heroEasy: "łatwo",
+      heroLineOne: "Podróżuj",
+      heroLineTwo: "podróżuj",
+      heroSmart: "sprytnie,",
       hoursShort: "godz.",
       home: "Home",
       leavesIn: "Pozostało do odjazdu",
       minutesShort: "min",
+      mobileHeroKicker: "Bangkok i Pattaya",
       nextBus: "Najbliższy autobus",
       now: "Teraz",
       open: "Otwórz",
@@ -346,10 +351,15 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "Время автобусов, цены, станции и практические советы для Бангкока, Паттайи, аэропорта Суварнабхуми и аэропорта Дон Муанг.",
       findRoute: "Найти маршрут",
+      heroEasy: "легко",
+      heroLineOne: "Путешествуйте",
+      heroLineTwo: "путешествуйте",
+      heroSmart: "умно,",
       home: "Главная",
       hoursShort: "ч",
       leavesIn: "До отправления",
       minutesShort: "мин",
+      mobileHeroKicker: "Бангкок и Паттайя",
       nextBus: "Следующий автобус",
       now: "Сейчас",
       open: "Открыть",
@@ -405,10 +415,15 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "Buszeiten, Preise, Stationen und praktische Reisetipps für Bangkok, Pattaya, den Flughafen Suvarnabhumi und den Flughafen Don Mueang.",
       findRoute: "Route finden",
+      heroEasy: "einfach",
+      heroLineOne: "Reise",
+      heroLineTwo: "reise",
+      heroSmart: "smart,",
       home: "Home",
       hoursShort: "Std.",
       leavesIn: "Bis zur Abfahrt",
       minutesShort: "Min.",
+      mobileHeroKicker: "Bangkok & Pattaya",
       nextBus: "Nächster Bus",
       now: "Jetzt",
       open: "Öffnen",
@@ -464,10 +479,15 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "เวลาเดินรถ ราคา สถานี และคำแนะนำที่เป็นประโยชน์สำหรับกรุงเทพฯ พัทยา ท่าอากาศยานสุวรรณภูมิ และท่าอากาศยานดอนเมือง",
       findRoute: "ค้นหาเส้นทาง",
+      heroEasy: "ง่าย",
+      heroLineOne: "เดินทาง",
+      heroLineTwo: "เดินทาง",
+      heroSmart: "ฉลาด,",
       home: "หน้าแรก",
       hoursShort: "ชม.",
       leavesIn: "ออกในอีก",
       minutesShort: "นาที",
+      mobileHeroKicker: "กรุงเทพฯ และพัทยา",
       nextBus: "รถบัสเที่ยวถัดไป",
       now: "ตอนนี้",
       open: "เปิด",
@@ -522,10 +542,15 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "查看曼谷、芭提雅、素万那普机场和廊曼机场的巴士时间、票价、车站和实用出行提示。",
       findRoute: "查找路线",
+      heroEasy: "旅行",
+      heroLineOne: "聪明",
+      heroLineTwo: "轻松",
+      heroSmart: "出行，",
       home: "首页",
       hoursShort: "小时",
       leavesIn: "距离发车",
       minutesShort: "分钟",
+      mobileHeroKicker: "曼谷与芭提雅",
       nextBus: "下一班巴士",
       now: "现在",
       open: "打开",
@@ -580,10 +605,15 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "Horaires de bus, prix, gares et conseils pratiques pour Bangkok, Pattaya, l’aéroport Suvarnabhumi et l’aéroport Don Mueang.",
       findRoute: "Trouver une route",
+      heroEasy: "facile",
+      heroLineOne: "Voyagez",
+      heroLineTwo: "voyagez",
+      heroSmart: "malin,",
       home: "Accueil",
       hoursShort: "h",
       leavesIn: "Départ dans",
       minutesShort: "min",
+      mobileHeroKicker: "Bangkok et Pattaya",
       nextBus: "Prochain bus",
       now: "Maintenant",
       open: "Ouvrir",
@@ -638,10 +668,15 @@ function getMobileHomeCopy(locale: LocaleCode) {
     desktopIntro:
       "Bus times, prices, stations, and practical travel tips for Bangkok, Pattaya, Suvarnabhumi Airport, and Don Mueang Airport.",
     findRoute: "Find your route",
+    heroEasy: "easy",
+    heroLineOne: "Travel",
+    heroLineTwo: "travel",
+    heroSmart: "smart,",
     hoursShort: "h",
     home: "Home",
     leavesIn: "Leaves in",
     minutesShort: "min",
+    mobileHeroKicker: "Bangkok & Pattaya",
     nextBus: "Next bus",
     now: "Now",
     open: "Open",
@@ -717,10 +752,15 @@ function DesktopHome({
                     {copy.travelRoutes}
                   </span>
                   <h1 className="mt-4 max-w-sm text-[clamp(2.45rem,4.4vw,3.35rem)] font-black leading-[0.94] tracking-tight">
-                    Travel{" "}
-                    <span className="italic text-[#e8b05a]">smart,</span>
+                    {copy.heroLineOne}{" "}
+                    <span className="italic text-[#e8b05a]">
+                      {copy.heroSmart}
+                    </span>
                     <br />
-                    travel <span className="italic text-[#e8b05a]">easy</span>
+                    {copy.heroLineTwo}{" "}
+                    <span className="italic text-[#e8b05a]">
+                      {copy.heroEasy}
+                    </span>
                   </h1>
                   <p className="mt-4 max-w-sm text-sm font-semibold leading-6 text-[#edf3f8]">
                     {copy.desktopIntro}
@@ -987,12 +1027,18 @@ function MobileHome({
             </div>
             <div className="relative pb-2 pt-4">
               <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#e8b05a] ring-1 ring-white/15">
-                Bangkok & Pattaya
+                {copy.mobileHeroKicker}
               </span>
               <h1 className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight">
-                Travel <span className="italic text-[#e8b05a]">smart,</span>
+                {copy.heroLineOne}{" "}
+                <span className="italic text-[#e8b05a]">
+                  {copy.heroSmart}
+                </span>
                 <br />
-                travel <span className="italic text-[#e8b05a]">easy</span>
+                {copy.heroLineTwo}{" "}
+                <span className="italic text-[#e8b05a]">
+                  {copy.heroEasy}
+                </span>
               </h1>
               <p className="mt-2 max-w-[17.5rem] text-[0.84rem] font-semibold leading-5 text-[#e8edf5]">
                 {copy.subtitle}
