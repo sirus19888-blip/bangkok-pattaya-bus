@@ -195,15 +195,15 @@ export function MobileRouteDecisionCard({
         <details className="group relative shrink-0">
           <summary
             aria-label={scheduleLabels.dataTitle}
-            className="flex h-11 w-11 cursor-pointer list-none items-center justify-center overflow-hidden rounded-2xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
+            className="flex h-9 w-9 cursor-pointer list-none items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
           >
             <Image
               alt=""
               aria-hidden="true"
               className="h-full w-full object-cover"
-              height={44}
+              height={36}
               src="/images/icons/icon-schedule-data.png"
-              width={44}
+              width={36}
             />
           </summary>
           <div className="absolute right-0 top-[calc(100%+0.45rem)] z-30 w-[17.5rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-left text-xs leading-5 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/20">

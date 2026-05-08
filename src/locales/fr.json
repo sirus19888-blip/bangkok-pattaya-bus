@@ -333,7 +333,7 @@
     ],
     "pattaya-to-bangkok": [
       {
-        "question": "Combien de temps dure le bus de Pattaya à Bangkok ?",
+        "question": "Combien de temps dure le trajet en bus de Pattaya à Bangkok ?",
         "answer": "Le trajet dure généralement environ 2-3 heures, selon le trafic et la gare d'arrivée."
       },
       {

@@ -68,9 +68,22 @@ export function StationCard({
                     </ul>
                   </div>
                 </div>
-                <div className="mt-3 overflow-hidden rounded-xl border border-[#eadcc7] bg-white px-3 py-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
-                  <span className="font-black text-[#13233a]">{labels.tip}</span>
-                  <ul className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 [scrollbar-width:thin] md:hidden">
+                <div className="relative mt-3 overflow-hidden rounded-xl border border-[#eadcc7] bg-white px-3 py-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-black text-[#13233a]">{labels.tip}</span>
+                    <span
+                      aria-hidden="true"
+                      className="inline-flex items-center gap-1 rounded-full bg-[#fffaf2] px-2 py-0.5 text-[0.65rem] font-black uppercase tracking-wide text-[#b9832e] md:hidden"
+                    >
+                      <span>Swipe</span>
+                      <span className="text-sm leading-none">→</span>
+                    </span>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute bottom-2 right-0 top-10 z-10 w-10 bg-gradient-to-l from-white via-white/85 to-transparent md:hidden"
+                  />
+                  <ul className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 pr-8 [scrollbar-width:thin] md:hidden">
                     {mobileTipPoints.map((point) => (
                       <li
                         key={point}

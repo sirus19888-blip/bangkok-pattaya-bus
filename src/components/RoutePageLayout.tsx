@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
@@ -31,6 +32,19 @@ type RoutePageLayoutProps = {
   locale: LocaleCode;
 };
 
+const desktopRouteHeroImages: Record<RoutePage["slug"], string> = {
+  "bangkok-to-pattaya": "/images/hero/desktop-bus-coast.png",
+  "pattaya-to-bangkok": "/images/stations/pattaya-north/pattaya-station.jpg",
+  "suvarnabhumi-airport-to-pattaya":
+    "/images/stations/suvarnabhumi/suvarnabhumi-bus-terminal.jpg",
+  "pattaya-to-suvarnabhumi-airport":
+    "/images/stations/pattaya-north/pattaya-bus-area.jpg",
+  "don-mueang-airport-to-pattaya":
+    "/images/stations/don-mueang/don-mueang-terminal-2.jpg",
+  "pattaya-to-don-mueang-airport":
+    "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
+};
+
 export function RoutePageLayout({
   routePage,
   route,
@@ -45,6 +59,7 @@ export function RoutePageLayout({
     routePage.slug,
     locale,
   );
+  const desktopHeroImage = desktopRouteHeroImages[routePage.slug];
   const sourceStatusLabel =
     schedule.verificationStatus === "needs official confirmation"
       ? t.schedule.needsOfficialConfirmationShort
@@ -126,44 +141,59 @@ export function RoutePageLayout({
         </div>
 
         <section className="hidden gap-4 md:grid min-[1180px]:grid-cols-[minmax(0,1.18fr)_minmax(19rem,0.82fr)] min-[1180px]:items-stretch">
-          <div className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-5 shadow-sm sm:p-7 md:p-5">
-            <p className="mb-3 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm md:mb-2">
-              {t.app.title}
-            </p>
-            <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-[#13233a] sm:text-5xl md:text-[clamp(2.1rem,3.1vw,2.7rem)]">
-              {routePage.title}
-            </h1>
-            <p className="mt-3 max-w-2xl text-[0.95rem] font-semibold leading-7 text-[#4f5d6c] sm:mt-4 sm:text-lg md:mt-3 md:text-base md:leading-6">
-              {routePage.intro}
-            </p>
-
-            <RouteSearch
-              desktopGo
-              from={routePage.from}
-              labels={t.routeSelector}
-              locale={locale}
-              currentRoute={routePage.slug}
-              routePages={routePages.map((page) => {
-                const routeText = t.routePages[page.slug];
-                const endpoints = routeText as { from?: string; to?: string };
-
-                return {
-                  slug: page.slug,
-                  from: endpoints.from ?? page.from,
-                  to: endpoints.to ?? page.to,
-                };
-              })}
-              to={routePage.to}
+          <div className="relative overflow-hidden rounded-2xl border border-[#102238]/20 bg-[#13233a] p-5 text-white shadow-sm sm:p-7 md:p-5">
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover"
+              fill
+              priority
+              sizes="(min-width: 1180px) 760px, 100vw"
+              src={desktopHeroImage}
             />
-            <div className="mt-4">
-              <ScheduleList
-                route={route}
-                schedule={schedule}
-                nextDeparture={nextDeparture}
-                labels={t.schedule}
-                showSourceInfo
-                sourceInfoMode="popover"
+            <div className="absolute inset-0 bg-gradient-to-br from-[#071526]/92 via-[#102238]/72 to-[#102238]/35" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#13233a]/88 via-transparent to-transparent" />
+            <div className="relative">
+              <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#f3d77b] sm:text-sm md:mb-2">
+                {t.app.title}
+              </p>
+              <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-white drop-shadow sm:text-5xl md:text-[clamp(2.1rem,3.1vw,2.7rem)]">
+                {routePage.title}
+              </h1>
+              <p className="mt-3 max-w-2xl text-[0.95rem] font-semibold leading-7 text-[#edf3f8] drop-shadow sm:mt-4 sm:text-lg md:mt-3 md:text-base md:leading-6">
+                {routePage.intro}
+              </p>
+            </div>
+
+            <div className="relative">
+              <RouteSearch
+                desktopGo
+                from={routePage.from}
+                labels={t.routeSelector}
+                locale={locale}
+                currentRoute={routePage.slug}
+                routePages={routePages.map((page) => {
+                  const routeText = t.routePages[page.slug];
+                  const endpoints = routeText as { from?: string; to?: string };
+
+                  return {
+                    slug: page.slug,
+                    from: endpoints.from ?? page.from,
+                    to: endpoints.to ?? page.to,
+                  };
+                })}
+                to={routePage.to}
               />
+              <div className="mt-4">
+                <ScheduleList
+                  route={route}
+                  schedule={schedule}
+                  nextDeparture={nextDeparture}
+                  labels={t.schedule}
+                  showSourceInfo
+                  sourceInfoMode="popover"
+                />
+              </div>
             </div>
           </div>
 
