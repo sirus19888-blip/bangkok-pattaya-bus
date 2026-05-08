@@ -124,7 +124,10 @@ export function RoutePageLayout({
           <FAQ faqs={localizedFaqs} labels={t.faq} />
         </MobileDetailsSection>
 
-        <div className="md:hidden">
+        <div
+          id="mobile-related-routes"
+          className="scroll-mt-6 md:hidden"
+        >
           <RelatedRoutes
             currentRoute={routePage.slug}
             heading={t.common.relatedRoutes}
@@ -263,7 +266,6 @@ export function RoutePageLayout({
         </section>
 
         <TravelerFeedback
-          buyMeCoffeeLabel={t.common.buyMeCoffee}
           locale={locale}
           routeTitle={routePage.title}
         />

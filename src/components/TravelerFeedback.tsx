@@ -4,7 +4,6 @@ import { useState } from "react";
 import type { LocaleCode } from "@/data/routes";
 
 type TravelerFeedbackProps = {
-  buyMeCoffeeLabel: string;
   locale: LocaleCode;
   routeTitle: string;
 };
@@ -108,7 +107,6 @@ function getCopy(locale: LocaleCode) {
 }
 
 export function TravelerFeedback({
-  buyMeCoffeeLabel,
   locale,
   routeTitle,
 }: TravelerFeedbackProps) {
@@ -186,7 +184,7 @@ export function TravelerFeedback({
             {text.text}
           </p>
         </div>
-        <div className="grid gap-2 sm:min-w-64 sm:grid-cols-3 md:min-w-[32rem]">
+        <div className="grid gap-2 sm:min-w-64 sm:grid-cols-2 md:min-w-[22rem]">
           <button
             type="button"
             onClick={handleHelpedClick}
@@ -205,14 +203,6 @@ export function TravelerFeedback({
             className="flex min-h-11 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-white md:min-h-10 md:text-xs"
           >
             {text.report}
-          </a>
-          <a
-            href="https://www.buymeacoffee.com/Pawel_"
-            className="flex min-h-11 items-center justify-center rounded-xl border border-[#13233a] bg-white px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-[#fffaf2] md:min-h-10 md:text-xs"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {buyMeCoffeeLabel}
           </a>
         </div>
       </div>

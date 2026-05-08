@@ -77,6 +77,24 @@ export function MobileRouteDecisionCard({
     return () => window.clearInterval(intervalId);
   }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
 
+  function handleShowRelatedRoutesClick(
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) {
+    const relatedRoutes = document.getElementById("mobile-related-routes");
+
+    if (!relatedRoutes) {
+      return;
+    }
+
+    event.preventDefault();
+    relatedRoutes.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+
+    window.history.replaceState(null, "", "#mobile-related-routes");
+  }
+
   return (
     <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm md:hidden">
       <div className="flex items-start justify-between gap-3">
@@ -158,7 +176,8 @@ export function MobileRouteDecisionCard({
       </div>
 
       <a
-        href="#mobile-departures"
+        href="#mobile-related-routes"
+        onClick={handleShowRelatedRoutesClick}
         className="mt-2.5 flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-5 text-center text-sm font-black text-white shadow-sm"
       >
         {labels.showAllDepartures}

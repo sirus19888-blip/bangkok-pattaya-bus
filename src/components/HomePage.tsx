@@ -276,6 +276,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       brandPrimary: "Bangkok Pattaya",
       brandSecondary: "Przewodnik autobusowy",
       bus: "Autobus",
+      buyMeCoffee: "Postaw kawę",
       check: "Sprawdź",
       checkTimes: "Sprawdź godziny",
       chooseBus: "Wybierz autobus",
@@ -334,6 +335,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       brandPrimary: "Бангкок Паттайя",
       brandSecondary: "Гид по автобусам",
       bus: "Автобус",
+      buyMeCoffee: "Купить кофе",
       check: "Проверить",
       checkTimes: "Показать время",
       chooseBus: "Выберите автобус",
@@ -392,6 +394,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       brandPrimary: "Bangkok Pattaya",
       brandSecondary: "Bus Guide",
       bus: "Bus",
+      buyMeCoffee: "Kaffee spendieren",
       check: "Prüfen",
       checkTimes: "Zeiten prüfen",
       chooseBus: "Bus auswählen",
@@ -450,6 +453,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       brandPrimary: "กรุงเทพฯ พัทยา",
       brandSecondary: "คู่มือรถบัส",
       bus: "รถบัส",
+      buyMeCoffee: "เลี้ยงกาแฟ",
       check: "ตรวจสอบ",
       checkTimes: "ดูเวลาเดินรถ",
       chooseBus: "เลือกรถบัส",
@@ -507,6 +511,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       brandPrimary: "曼谷芭提雅",
       brandSecondary: "巴士指南",
       bus: "巴士",
+      buyMeCoffee: "请我喝咖啡",
       check: "查看",
       checkTimes: "查看时间",
       chooseBus: "选择巴士",
@@ -564,6 +569,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       brandPrimary: "Bangkok Pattaya",
       brandSecondary: "Guide bus",
       bus: "Bus",
+      buyMeCoffee: "M'offrir un café",
       check: "Vérifier",
       checkTimes: "Voir les horaires",
       chooseBus: "Choisissez votre bus",
@@ -621,6 +627,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
     brandPrimary: "Bangkok Pattaya",
     brandSecondary: "Bus Guide",
     bus: "Bus",
+    buyMeCoffee: "Buy me coffee",
     check: "Check",
     checkTimes: "Check times",
     chooseBus: "Choose your bus",
@@ -1156,17 +1163,18 @@ function MobileBottomNav({
   const items: {
     active?: boolean;
     href: string;
-    icon: "home" | "routes" | "airport" | "contact";
+    icon: "home" | "routes" | "airport" | "contact" | "support-coffee";
     label: string;
+    target?: string;
   }[] = [
-    { href: `/${locale}`, icon: "home", label: copy.home, active: true },
-    {
-      href: `/${locale}/bangkok-to-pattaya`,
-      icon: "routes",
-      label: copy.routes,
-    },
     { href: "#mobile-airports", icon: "airport", label: copy.airport },
     { href: "/contact", icon: "contact", label: copy.contact },
+    {
+      href: "https://www.buymeacoffee.com/Pawel_",
+      icon: "support-coffee",
+      label: copy.buyMeCoffee,
+      target: "_blank",
+    },
   ];
   const airportOptions = [
     {
@@ -1181,7 +1189,7 @@ function MobileBottomNav({
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-40 mx-auto max-w-[390px] border-t border-[#eadcc7] bg-white/95 px-2.5 pb-[calc(env(safe-area-inset-bottom)+0.3rem)] pt-1.5 shadow-[0_-8px_24px_rgba(19,35,58,0.08)] backdrop-blur md:hidden">
-      <div className="grid grid-cols-4 gap-0.5">
+      <div className="grid grid-cols-3 gap-0.5">
         {items.map((item) =>
           item.icon === "airport" ? (
             <details key={item.label} className="group relative">
@@ -1213,6 +1221,8 @@ function MobileBottomNav({
             <Link
               key={item.label}
               href={item.href}
+              target={item.target}
+              rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
               className={`flex min-h-10 flex-col items-center justify-center rounded-xl text-[0.62rem] font-black ${
                 item.active
                   ? "bg-[#eaf5fb] text-[#0e7b6b]"
@@ -1264,8 +1274,12 @@ function MobileMiniFact({
 function MobileNavIcon({
   name,
 }: {
-  name: "home" | "routes" | "airport" | "contact";
+  name: "home" | "routes" | "airport" | "contact" | "support-coffee";
 }) {
+  if (name === "support-coffee") {
+    return <IconAsset name={name} size="navCoffee" />;
+  }
+
   return <IconAsset name={name} size="md" />;
 }
 
@@ -1274,10 +1288,16 @@ function IconAsset({
   size = "md",
 }: {
   name: string;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "navCoffee";
 }) {
   const sizeClass =
-    size === "lg" ? "h-8 w-8" : size === "sm" ? "h-4 w-4" : "h-5 w-5";
+    size === "lg"
+      ? "h-8 w-8"
+      : size === "sm"
+        ? "h-4 w-4"
+        : size === "navCoffee"
+          ? "h-5 w-5 scale-125"
+          : "h-5 w-5";
 
   return (
     <Image
