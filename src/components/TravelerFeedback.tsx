@@ -16,8 +16,12 @@ const copy = {
     helped: "Yes, it helped",
     report: "Report outdated times",
     thanks: "Thank you - your feedback helps improve this guide.",
+    sending: "Sending...",
+    emailError: "Email could not be sent automatically. Your email app will open instead.",
     subject: "Outdated bus time report",
+    helpedSubject: "Guide marked as helpful",
     bodyIntro: "Hi, I found outdated information on this route page:",
+    helpedBodyIntro: "A traveler marked this route guide as helpful:",
     routeLabel: "Route",
     prompt: "What needs to be corrected?",
   },
@@ -27,8 +31,12 @@ const copy = {
     helped: "Tak, pomógł",
     report: "Zgłoś nieaktualne godziny",
     thanks: "Dziękujemy - Twoja opinia pomaga ulepszać ten przewodnik.",
+    sending: "Wysyłanie...",
+    emailError: "Nie udało się wysłać automatycznie. Otworzę gotową wiadomość e-mail.",
     subject: "Zgłoszenie nieaktualnych godzin autobusów",
+    helpedSubject: "Przewodnik oznaczony jako pomocny",
     bodyIntro: "Cześć, znalazłem nieaktualne informacje na tej stronie trasy:",
+    helpedBodyIntro: "Podróżny oznaczył tę stronę trasy jako pomocną:",
     routeLabel: "Trasa",
     prompt: "Co trzeba poprawić?",
   },
@@ -38,8 +46,12 @@ const copy = {
     helped: "Да, помог",
     report: "Сообщить о неактуальном расписании",
     thanks: "Спасибо - ваш отзыв помогает улучшать этот гид.",
+    sending: "Отправка...",
+    emailError: "Не удалось отправить автоматически. Открою готовое письмо.",
     subject: "Сообщение о неактуальном расписании",
+    helpedSubject: "Гид отмечен как полезный",
     bodyIntro: "Здравствуйте, я нашёл неактуальную информацию на странице маршрута:",
+    helpedBodyIntro: "Путешественник отметил эту страницу маршрута как полезную:",
     routeLabel: "Маршрут",
     prompt: "Что нужно исправить?",
   },
@@ -49,8 +61,12 @@ const copy = {
     helped: "Ja, hilfreich",
     report: "Veraltete Zeiten melden",
     thanks: "Danke - dein Feedback hilft, diesen Guide zu verbessern.",
+    sending: "Wird gesendet...",
+    emailError: "Automatisch senden ging nicht. Ich öffne stattdessen eine vorbereitete E-Mail.",
     subject: "Meldung zu veralteten Buszeiten",
+    helpedSubject: "Guide als hilfreich markiert",
     bodyIntro: "Hallo, ich habe veraltete Informationen auf dieser Routenseite gefunden:",
+    helpedBodyIntro: "Ein Reisender hat diese Routenseite als hilfreich markiert:",
     routeLabel: "Route",
     prompt: "Was muss korrigiert werden?",
   },
@@ -60,8 +76,12 @@ const copy = {
     helped: "มีประโยชน์",
     report: "แจ้งเวลารถที่ไม่อัปเดต",
     thanks: "ขอบคุณ ความเห็นของคุณช่วยให้คู่มือนี้ดีขึ้น",
+    sending: "กำลังส่ง...",
+    emailError: "ส่งอัตโนมัติไม่ได้ จะเปิดอีเมลที่เตรียมไว้แทน",
     subject: "แจ้งเวลารถที่ไม่อัปเดต",
+    helpedSubject: "คู่มือนี้ถูกระบุว่ามีประโยชน์",
     bodyIntro: "สวัสดี ฉันพบข้อมูลที่ไม่อัปเดตในหน้าเส้นทางนี้:",
+    helpedBodyIntro: "นักเดินทางระบุว่าหน้าเส้นทางนี้มีประโยชน์:",
     routeLabel: "เส้นทาง",
     prompt: "ควรแก้ไขข้อมูลส่วนใด",
   },
@@ -93,6 +113,8 @@ export function TravelerFeedback({
   routeTitle,
 }: TravelerFeedbackProps) {
   const [helped, setHelped] = useState(false);
+  const [isSendingHelped, setIsSendingHelped] = useState(false);
+  const [emailError, setEmailError] = useState(false);
   const text = getCopy(locale);
   const pageUrl = typeof window === "undefined" ? "" : window.location.href;
   const feedbackStorageKey =
@@ -103,12 +125,53 @@ export function TravelerFeedback({
   const mailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
     text.subject,
   )}&body=${encodeURIComponent(body)}`;
+  const helpedBody = `${text.helpedBodyIntro}\n${pageUrl}\n\n${text.routeLabel}: ${routeTitle}\n\nLocale: ${locale}`;
+  const helpedMailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
+    text.helpedSubject,
+  )}&body=${encodeURIComponent(helpedBody)}`;
 
-  function handleHelpedClick() {
+  async function handleHelpedClick() {
+    if (isSendingHelped) {
+      return;
+    }
+
     setHelped(true);
+    setEmailError(false);
+    setIsSendingHelped(true);
 
     if (feedbackStorageKey) {
       window.localStorage.setItem(feedbackStorageKey, "yes");
+    }
+
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/bangkokpattayabus@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            _captcha: "false",
+            _subject: text.helpedSubject,
+            message: helpedBody,
+            page: pageUrl,
+            route: routeTitle,
+            locale,
+            feedback: text.helped,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Feedback email request failed");
+      }
+    } catch {
+      setEmailError(true);
+      window.location.href = helpedMailtoUrl;
+    } finally {
+      setIsSendingHelped(false);
     }
   }
 
@@ -128,14 +191,14 @@ export function TravelerFeedback({
             type="button"
             onClick={handleHelpedClick}
             aria-pressed={helped}
+            disabled={isSendingHelped}
             className={`flex min-h-11 items-center justify-center rounded-xl px-4 text-center text-sm font-black transition md:min-h-10 md:text-xs ${
               helped
                 ? "bg-[#2f6f93] text-white"
                 : "bg-[#13233a] text-white hover:bg-[#233a5b]"
             }`}
           >
-            {helped ? "✓ " : null}
-            {text.helped}
+            {isSendingHelped ? text.sending : `${helped ? "✓ " : ""}${text.helped}`}
           </button>
           <a
             href={mailtoUrl}
@@ -156,7 +219,7 @@ export function TravelerFeedback({
       <div aria-live="polite" role="status">
         {helped ? (
           <p className="mt-3 rounded-xl border border-[#c8dbe9] bg-[#f4fbff] px-3 py-2 text-sm font-bold leading-5 text-[#13233a]">
-          {text.thanks}
+            {emailError ? text.emailError : text.thanks}
           </p>
         ) : null}
       </div>
