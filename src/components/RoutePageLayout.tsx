@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
@@ -229,27 +230,31 @@ export function RoutePageLayout({
               openInGoogleMaps: t.common.openInGoogleMaps,
             }}
           />
-          <div className="mt-4">
-            <StationAccessGuide
-              sectionTitle={stationAccessSectionTitle}
-              title={stationAccessGuide.title}
-              items={stationAccessGuide.items}
-              note={stationAccessGuide.note}
-              swipeHint={stationAccessSwipeHint}
-            />
-          </div>
         </MobileDetailsSection>
 
-        <section className="hidden rounded-2xl border border-[#eadcc7] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c] shadow-sm md:block md:p-4">
-          <p className="font-black text-[#13233a]">
-            {t.lastUpdated.label} {schedule.lastUpdated}
-          </p>
-          <p className="mt-2">{schedule.disclaimer}</p>
+        <section className="hidden justify-end md:flex">
+          <details className="group relative">
+            <summary
+              aria-label={`${t.lastUpdated.label} ${schedule.lastUpdated}`}
+              className="flex h-14 w-14 cursor-pointer list-none items-center justify-center overflow-hidden rounded-2xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition hover:-translate-y-0.5 hover:shadow-md group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
+            >
+              <Image
+                alt=""
+                aria-hidden="true"
+                className="h-full w-full object-cover"
+                height={56}
+                src="/images/icons/icon-last-updated-info.png"
+                width={56}
+              />
+            </summary>
+            <div className="absolute right-0 top-[calc(100%+0.6rem)] z-30 w-[24rem] max-w-[calc(100vw-4rem)] rounded-2xl border border-[#eadcc7] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/15">
+              <p className="font-black text-[#13233a]">
+                {t.lastUpdated.label} {schedule.lastUpdated}
+              </p>
+              <p className="mt-2">{schedule.disclaimer}</p>
+            </div>
+          </details>
         </section>
-
-        <MobileDetailsSection title={t.travelTips.title}>
-          <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
-        </MobileDetailsSection>
 
         <MobileDetailsSection title={t.faq.title}>
           <FAQ faqs={localizedFaqs} labels={t.faq} />

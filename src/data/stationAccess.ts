@@ -1,8 +1,10 @@
 import type { LocaleCode, RouteId } from "@/data/routes";
 
 type LocalizedText = Record<"en" | "pl", string> & {
+  fr?: string;
   ru?: string;
   th?: string;
+  zh?: string;
 };
 
 export type StationAccessGuide = {
@@ -66,10 +68,10 @@ const germanStationAccessGuides: Record<RouteId, PlainStationAccessGuide> = {
   "don-mueang-airport-to-pattaya": {
     title: "So findest du den Busbereich am Flughafen Don Mueang",
     items: [
-      "Nach der Ankunft: Plane Zeit für Gepäck, Orientierung im Flughafen und den Weg zum Schalter oder Einstiegsort ein.",
-      "Busschalter: Die Flughafenseite nennt Terminal 1 Gate 1 und Terminal 2 Gate 11. Bestätige den Bus nach Pattaya vor Ort.",
-      "Einstiegsort: Die Flughafenseite nennt das Servicegebäude als Abholpunkt. Folge den Schildern und frage am Schalter.",
-      "Tipp: Der Verkehr in Bangkok ist schwer vorhersehbar. Halte deine Ankunftspläne flexibel."
+      "Nach der Landung: Folge den Schildern Arrivals, erledige Passkontrolle falls nötig, hole dein Gepäck und gehe in den öffentlichen Ankunftsbereich auf Ebene 1.",
+      "Wenn du in Terminal 1 ankommst, gehe zum Serviceschalter am International Passenger Terminal, Building 1, Floor 1, Gate 1. Bei Terminal 2 nennt die Flughafenseite Building 2, Floor 1, Gate 11.",
+      "Frage dort nach dem Transport Co. / TCL Express Bus nach Pattaya. Der offizielle Abholpunkt ist das Service Hall Building; lass dir am Schalter den Weg bestätigen, bevor du das Terminal verlässt.",
+      "Wenn du unsicher bist, zeige dem Personal: Pattaya, Transport Co. bus, Service Hall Building. Plane nach Gepäckausgabe mindestens 20-30 Minuten Orientierungspuffer ein."
     ],
     note: germanTransportPriceNote
   },
@@ -246,35 +248,45 @@ export const stationAccessGuides: Record<RouteId, StationAccessGuide> = {
   "don-mueang-airport-to-pattaya": {
     routeId: "don-mueang-airport-to-pattaya",
     title: {
-      en: "How to find the Don Mueang bus area",
-      pl: "Jak znaleźć autobus na lotnisku Don Mueang",
-      ru: "Как найти автобусную зону в аэропорту Дон Муанг",
-      th: "วิธีหาจุดรถบัสที่ท่าอากาศยานดอนเมือง",
+      en: "From the plane to the Don Mueang Pattaya bus",
+      pl: "Od wyjścia z samolotu do autobusu na Pattaya",
+      fr: "De la sortie de l'avion au bus Don Mueang - Pattaya",
+      ru: "От самолёта до автобуса Дон Муанг — Паттайя",
+      th: "จากเครื่องบินไปยังรถบัสดอนเมือง-พัทยา",
+      zh: "从下飞机到廊曼机场前往芭提雅的巴士",
     },
     items: [
       {
-        en: "After arrival: Allow time for baggage, airport navigation, and walking to the bus counter or pick-up point.",
-        pl: "Po przylocie: Zostaw czas na bagaż, przejście przez lotnisko i dojście do stanowiska autobusu.",
-        ru: "После прилёта: заложите время на багаж, путь по аэропорту и дорогу до стойки или места посадки.",
-        th: "หลังเดินทางถึง: เผื่อเวลารับกระเป๋า เดินในสนามบิน และไปยังเคาน์เตอร์หรือจุดขึ้นรถ",
+        en: "After landing: Follow Arrivals signs, pass immigration if needed, collect your baggage, and exit into the public arrivals area on Floor 1.",
+        pl: "Po lądowaniu: Kieruj się za znakami Arrivals, przejdź kontrolę paszportową jeśli dotyczy, odbierz bagaż i wyjdź do publicznej strefy przylotów na poziomie 1.",
+        fr: "Après l'atterrissage : suivez les panneaux Arrivals, passez l'immigration si nécessaire, récupérez vos bagages puis sortez dans la zone publique des arrivées au niveau 1.",
+        ru: "После посадки следуйте указателям Arrivals, при необходимости пройдите паспортный контроль, получите багаж и выйдите в общую зону прилёта на 1-м этаже.",
+        th: "หลังลงเครื่อง ให้ตามป้าย Arrivals ผ่าน ตม. หากจำเป็น รับกระเป๋า แล้วออกไปยังพื้นที่ผู้โดยสารขาเข้าฝั่งสาธารณะชั้น 1",
+        zh: "落地后跟随 Arrivals（到达）标识；如需入境，先通过边检，再领取行李，前往 1 层公共到达区。",
       },
       {
-        en: "Bus counter: The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11. Confirm the Pattaya bus when you arrive.",
-        pl: "Stanowisko autobusu: Strona lotniska pokazuje stanowiska w Terminalu 1 przy bramce 1 i Terminalu 2 przy bramce 11. Potwierdź autobus do Pattaya na miejscu.",
-        ru: "Стойка автобуса: страница аэропорта указывает терминал 1, выход 1, и терминал 2, выход 11. Подтвердите автобус до Паттайи на месте.",
-        th: "เคาน์เตอร์รถบัส: หน้าเว็บสนามบินระบุเคาน์เตอร์ที่อาคาร 1 ประตู 1 และอาคาร 2 ประตู 11 โปรดยืนยันรถไปพัทยาเมื่อถึงสนามบิน",
+        en: "If you arrive at Terminal 1, go to the service counter at International Passenger Terminal, Building 1, Floor 1, Gate 1. For Terminal 2, the airport page lists Building 2, Floor 1, Gate 11.",
+        pl: "Jeśli przylatujesz do Terminala 1, idź do stanowiska obsługi w International Passenger Terminal, Building 1, Floor 1, Gate 1. Dla Terminala 2 strona lotniska wskazuje Building 2, Floor 1, Gate 11.",
+        fr: "Si vous arrivez au Terminal 1, allez au comptoir du terminal international, Building 1, Floor 1, Gate 1. Pour le Terminal 2, la page de l'aéroport indique Building 2, Floor 1, Gate 11.",
+        ru: "Если вы прилетели в Терминал 1, идите к стойке International Passenger Terminal, Building 1, Floor 1, Gate 1. Для Терминала 2 сайт аэропорта указывает Building 2, Floor 1, Gate 11.",
+        th: "ถ้ามาถึงอาคาร 1 ให้ไปที่เคาน์เตอร์อาคารผู้โดยสารระหว่างประเทศ Building 1, Floor 1, Gate 1 ส่วนอาคาร 2 หน้าเว็บสนามบินระบุ Building 2, Floor 1, Gate 11",
+        zh: "如果抵达 1 号航站楼，请前往 International Passenger Terminal, Building 1, Floor 1, Gate 1 的服务柜台；2 号航站楼页面标注为 Building 2, Floor 1, Gate 11。",
       },
       {
-        en: "Pick-up point: The airport page lists Service Hall Building as the pick-up point. Follow airport signs and ask at the counter.",
-        pl: "Miejsce odjazdu: Strona lotniska wskazuje Service Hall Building. Kieruj się oznaczeniami i zapytaj przy stanowisku.",
-        ru: "Место посадки: страница аэропорта указывает сервисное здание как место посадки. Следуйте указателям и спросите у стойки.",
-        th: "จุดขึ้นรถ: หน้าเว็บสนามบินระบุอาคารบริการเป็นจุดรับ โปรดตามป้ายและถามที่เคาน์เตอร์",
+        en: "Ask specifically for the Transport Co. / TCL express bus to Pattaya. The official airport page lists the pick-up point as Service Hall Building, so confirm the walking direction at the counter before leaving the terminal.",
+        pl: "Zapytaj konkretnie o autobus Transport Co. / TCL express bus do Pattaya. Oficjalna strona lotniska wskazuje miejsce odbioru jako Service Hall Building, więc potwierdź kierunek dojścia przy stanowisku zanim wyjdziesz z terminala.",
+        fr: "Demandez précisément le bus express Transport Co. / TCL pour Pattaya. La page officielle de l'aéroport indique le point de prise en charge Service Hall Building ; faites confirmer le chemin au comptoir avant de quitter le terminal.",
+        ru: "Спросите именно автобус Transport Co. / TCL express bus до Паттайи. Официальная страница аэропорта указывает место посадки Service Hall Building, поэтому уточните направление у стойки до выхода из терминала.",
+        th: "ให้ถามหา Transport Co. / TCL express bus ไปพัทยาโดยตรง หน้าเว็บทางการระบุจุดรับเป็น Service Hall Building ควรถามทางที่เคาน์เตอร์ก่อนออกจากอาคาร",
+        zh: "请明确询问前往芭提雅的 Transport Co. / TCL express bus。机场官方页面标注上车点为 Service Hall Building，离开航站楼前请在柜台确认步行方向。",
       },
       {
-        en: "Tip: Bangkok traffic can be unpredictable, so keep your arrival plans flexible.",
-        pl: "Wskazówka: Ruch w Bangkoku bywa nieprzewidywalny, więc zostaw elastyczny plan po przyjeździe.",
-        ru: "Совет: трафик в Бангкоке бывает непредсказуемым, поэтому оставьте гибкий план после прибытия.",
-        th: "คำแนะนำ: การจราจรในกรุงเทพฯ คาดเดายาก ควรวางแผนหลังเดินทางถึงให้ยืดหยุ่น",
+        en: "If you feel unsure, show airport staff: Pattaya, Transport Co. bus, Service Hall Building. Keep at least 20-30 minutes after baggage claim for orientation and ticket confirmation.",
+        pl: "Jeśli nie masz pewności, pokaż obsłudze: Pattaya, Transport Co. bus, Service Hall Building. Po odbiorze bagażu zostaw minimum 20-30 minut na orientację i potwierdzenie biletu.",
+        fr: "Si vous hésitez, montrez au personnel : Pattaya, Transport Co. bus, Service Hall Building. Gardez au moins 20-30 minutes après les bagages pour vous orienter et confirmer le billet.",
+        ru: "Если сомневаетесь, покажите сотруднику: Pattaya, Transport Co. bus, Service Hall Building. После получения багажа оставьте минимум 20-30 минут на ориентирование и подтверждение билета.",
+        th: "ถ้าไม่แน่ใจ ให้แสดงข้อความนี้กับเจ้าหน้าที่: Pattaya, Transport Co. bus, Service Hall Building หลังรับกระเป๋าควรเผื่อเวลาอย่างน้อย 20-30 นาทีเพื่อหาทางและยืนยันตั๋ว",
+        zh: "如果不确定，可向工作人员出示：Pattaya, Transport Co. bus, Service Hall Building。取行李后至少预留 20-30 分钟用于找路和确认车票。",
       },
     ],
     note: transportPriceNote,
@@ -344,8 +356,16 @@ export function getStationAccessSectionTitle(locale: LocaleCode) {
     return "So kommst du zur Station";
   }
 
+  if (locale === "fr") {
+    return "Comment rejoindre la station";
+  }
+
   if (locale === "th") {
     return "วิธีเดินทางไปสถานี";
+  }
+
+  if (locale === "zh") {
+    return "如何前往车站";
   }
 
   return "How to get to the station";
@@ -360,8 +380,16 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
     return text.ru;
   }
 
+  if (locale === "fr" && text.fr) {
+    return text.fr;
+  }
+
   if (locale === "th" && text.th) {
     return text.th;
+  }
+
+  if (locale === "zh" && text.zh) {
+    return text.zh;
   }
 
   return text.en;

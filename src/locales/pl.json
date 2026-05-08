@@ -145,7 +145,7 @@
       "travelTime": "Około 3-3,5 godziny",
       "price": "155 THB za osobę",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
-      "boardingNote": "Strona lotniska pokazuje stanowiska w Terminalu 1 przy bramce 1 i Terminalu 2 przy bramce 11, z odbiorem przy Service Hall Building."
+      "boardingNote": "Oficjalna strona lotniska wskazuje stanowisko w Terminalu 1, Building 1, Floor 1, Gate 1 oraz w Terminalu 2, Building 2, Floor 1, Gate 11. Miejsce odbioru to Service Hall Building."
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Około 3-3,5 godziny",
@@ -165,7 +165,7 @@
     },
     "north-pattaya": {
       "bestFor": "miasto Pattaya",
-      "tip": "weź songthaew lub taksówkę do hotelu"
+      "tip": "Po wyjściu z autobusu na North Pattaya Bus Terminal najpierw otwórz adres hotelu w Google Maps i sprawdź, czy jedziesz do Central Pattaya, Beach Road, Naklua, Pratumnak czy Jomtien. Najtańsza lokalna opcja to dojść do głównej drogi i złapać songthaew/baht bus: około 15 THB za krótki przejazd po mieście i około 20 THB za dłuższy przejazd przez strefy, np. do Jomtien. Jeśli masz bagaż, pada deszcz albo przyjeżdżasz późno, wybierz Grab/Bolt i sprawdź cenę w aplikacji przed zamówieniem: zwykle około 80-150 THB do centrum Pattayi i 120-220 THB do Jomtien. Przy prywatnej taksówce ze stacji ustal cenę przed wejściem; rozsądny zakres to często około 100-150 THB do centrum i 150-250 THB do Jomtien."
     },
     "suvarnabhumi-airport": {
       "bestFor": "przyloty na lotnisko i przejazd prosto do Pattaya",
@@ -176,8 +176,8 @@
       "tip": "przed podróżą potwierdź miejsce odjazdu z Airport Pattaya Bus"
     },
     "don-mueang-airport": {
-      "bestFor": "odloty i przyloty na lotnisku",
-      "tip": "zostaw czas na odprawę, bagaż, ruch drogowy i poruszanie się po lotnisku"
+      "bestFor": "przyloty i bezpośredni autobus do Pattaya",
+      "tip": "po wyjściu z samolotu kieruj się do Arrivals, odbierz bagaż, zejdź/wyjdź do publicznej strefy przylotów na poziomie 1 i potwierdź autobus Transport Co. / TCL do Pattaya przy stanowisku T1 Gate 1 albo T2 Gate 11"
     },
     "pattaya-sukhumvit": {
       "bestFor": "Pattaya na lotnisko Don Mueang",
@@ -265,20 +265,20 @@
     ],
     "don-mueang-airport-to-pattaya": [
       {
-        "title": "Potwierdź miejsce odbioru na lotnisku",
-        "body": "Strona lotniska pokazuje autobus do Pattaya. Po przylocie potwierdź stanowisko i miejsce odbioru."
+        "title": "Po wyjściu z samolotu idź za Arrivals",
+        "body": "Po lądowaniu kieruj się za znakami Arrivals. Jeśli przylatujesz z zagranicy, przejdź kontrolę paszportową, potem odbierz bagaż i wyjdź do publicznej strefy przylotów na poziomie 1."
       },
       {
-        "title": "Zostaw czas na lotnisku",
-        "body": "Zaplanuj czas na bagaż, przejście przez lotnisko i znalezienie właściwego stanowiska."
+        "title": "Znajdź stanowisko autobusu",
+        "body": "Oficjalna strona Don Mueang wskazuje stanowisko w Terminalu 1: Building 1, Floor 1, Gate 1 oraz w Terminalu 2: Building 2, Floor 1, Gate 11. Zapytaj o Transport Co. / TCL express bus do Pattaya."
       },
       {
-        "title": "Sprawdź zasady bagażu",
-        "body": "Sprawdź aktualne zasady bagażu, jeśli masz duże walizki albo dodatkowe torby."
+        "title": "Potwierdź Service Hall Building",
+        "body": "Oficjalny punkt odbioru to Service Hall Building. Zanim wyjdziesz z terminala, poproś obsługę przy stanowisku, żeby wskazała dokładny kierunek dojścia."
       },
       {
-        "title": "Uwzględnij ruch w Bangkoku",
-        "body": "Ruch w okolicy Bangkoku może zmienić czas przejazdu, szczególnie w godzinach szczytu."
+        "title": "Pokaż nazwę, jeśli się zgubisz",
+        "body": "Jeśli nie jesteś pewien, pokaż obsłudze tekst: Pattaya, Transport Co. bus, Service Hall Building. Po odbiorze bagażu zostaw 20-30 minut na orientację i potwierdzenie biletu."
       }
     ],
     "pattaya-to-don-mueang-airport": [
@@ -398,7 +398,7 @@
       },
       {
         "question": "Gdzie wsiąść do autobusu na lotnisku Don Mueang?",
-        "answer": "Strona lotniska pokazuje stanowiska w Terminalu 1 przy bramce 1 i Terminalu 2 przy bramce 11 oraz odbiór przy Service Hall Building. Potwierdź na miejscu."
+        "answer": "Oficjalna strona Don Mueang podaje stanowisko w Terminalu 1, Building 1, Floor 1, Gate 1 oraz w Terminalu 2, Building 2, Floor 1, Gate 11. Punkt odbioru to Service Hall Building. Po wyjściu z samolotu idź za Arrivals, odbierz bagaż i potwierdź autobus Transport Co. / TCL do Pattaya przy stanowisku."
       },
       {
         "question": "Czy trzeba zostawić czas po przylocie?",

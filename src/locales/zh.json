@@ -177,7 +177,7 @@
       "price": "每人 155 泰铢",
       "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
       "fareNote": "当前路线数据中的票价：每人 155 泰铢。",
-      "boardingNote": "机场页面显示，柜台位于 1 号航站楼 1 号门和 2 号航站楼 11 号门，并在服务楼接客。",
+      "boardingNote": "机场官方页面列出服务柜台：Terminal 1, Building 1, Floor 1, Gate 1，以及 Terminal 2, Building 2, Floor 1, Gate 11。上车点为 Service Hall Building。",
       "operatorNote": "基于机场官方交通信息。出行前请再次确认。",
       "sourceName": "Transport Co., Ltd. / 廊曼机场",
       "sourceType": "官方机场 / 运营商交通页面",
@@ -206,7 +206,7 @@
     },
     "north-pattaya": {
       "bestFor": "芭提雅市区",
-      "tip": "可乘双条车或出租车去酒店"
+      "tip": "到达 North Pattaya Bus Terminal 下车后，先在 Google Maps 打开酒店地址，确认酒店位于 Central Pattaya、Beach Road、Naklua、Pratumnak 还是 Jomtien。最便宜的本地方式是走到主路乘坐 songthaew/baht bus：市区短途约 15 THB，跨区或较远路线例如 Jomtien 通常约 20 THB。如果有行李、下雨或较晚抵达，建议使用 Grab/Bolt，并在下单前查看实时价格：通常到 Central Pattaya 约 80-150 THB，到 Jomtien 约 120-220 THB。如果在车站乘坐私人出租车，上车前先谈好价格；较合理范围通常是到 Central Pattaya 约 100-150 THB，到 Jomtien 约 150-250 THB。"
     },
     "suvarnabhumi-airport": {
       "bestFor": "抵达机场后直接前往芭提雅",
@@ -217,8 +217,8 @@
       "tip": "出行前向 Airport Pattaya Bus 确认上车地点"
     },
     "don-mueang-airport": {
-      "bestFor": "廊曼机场抵达和出发",
-      "tip": "请为值机、行李、交通和机场内步行预留时间"
+      "bestFor": "机场抵达后乘坐直达芭提雅巴士",
+      "tip": "下飞机后跟随 Arrivals 标识，领取行李，前往 1 层公共到达区，并在 T1 Gate 1 或 T2 Gate 11 确认前往芭提雅的 Transport Co. / TCL 巴士。"
     },
     "pattaya-sukhumvit": {
       "bestFor": "芭提雅前往廊曼机场",
@@ -306,20 +306,20 @@
     ],
     "don-mueang-airport-to-pattaya": [
       {
-        "title": "确认机场上车点",
-        "body": "机场页面列出前往芭提雅的巴士。抵达后请确认柜台和上车位置。"
+        "title": "下飞机后跟随 Arrivals",
+        "body": "落地后跟随 Arrivals（到达）标识。如为国际抵达，先通过边检，再领取行李并前往 1 层公共到达区。"
       },
       {
-        "title": "预留机场内步行时间",
-        "body": "请为取行李、在机场内找路和找到正确柜台预留时间。"
+        "title": "找到巴士服务柜台",
+        "body": "廊曼机场官方页面列出 Terminal 1: Building 1, Floor 1, Gate 1，以及 Terminal 2: Building 2, Floor 1, Gate 11。请询问前往芭提雅的 Transport Co. / TCL express bus。"
       },
       {
-        "title": "查看行李规定",
-        "body": "如果携带大件行李或额外行李，请查看当前行李规定。"
+        "title": "确认 Service Hall Building",
+        "body": "官方上车点为 Service Hall Building。离开航站楼前，请让柜台工作人员指明准确步行方向。"
       },
       {
-        "title": "注意曼谷交通",
-        "body": "曼谷周边交通可能影响车程，特别是高峰时段。"
+        "title": "如果找不到，出示这句话",
+        "body": "如果不确定，可向工作人员出示：Pattaya, Transport Co. bus, Service Hall Building。取行李后预留 20-30 分钟用于找路和确认车票。"
       }
     ],
     "pattaya-to-don-mueang-airport": [
@@ -439,7 +439,7 @@
       },
       {
         "question": "在廊曼机场哪里上车？",
-        "answer": "机场页面显示柜台位于 1 号航站楼 1 号门和 2 号航站楼 11 号门，并在服务楼接客。请到现场确认。"
+        "answer": "廊曼机场官方页面列出服务柜台：Terminal 1, Building 1, Floor 1, Gate 1，以及 Terminal 2, Building 2, Floor 1, Gate 11。上车点为 Service Hall Building。下飞机后跟随 Arrivals 标识，领取行李，并在柜台确认前往芭提雅的 Transport Co. / TCL 巴士。"
       },
       {
         "question": "抵达后需要预留更多时间吗？",

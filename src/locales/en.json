@@ -147,7 +147,7 @@
       "travelTime": "Around 3-3.5 hours",
       "price": "155 THB per person",
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
-      "boardingNote": "The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building."
+      "boardingNote": "The official airport page lists service counters at Terminal 1, Building 1, Floor 1, Gate 1 and Terminal 2, Building 2, Floor 1, Gate 11. The pick-up point is Service Hall Building."
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Around 3-3.5 hours",
@@ -167,7 +167,7 @@
     },
     "north-pattaya": {
       "bestFor": "Pattaya city",
-      "tip": "Take a songthaew or taxi to your hotel."
+      "tip": "After getting off at North Pattaya Bus Terminal, first open your hotel address in Google Maps and check whether it is in Central Pattaya, Beach Road, Naklua, Pratumnak, or Jomtien. For the cheapest local option, walk to the main road and take a songthaew/baht bus: about 15 THB for short city rides and about 20 THB for longer zone-crossing rides such as Jomtien. With luggage, rain, or a late arrival, use Grab/Bolt and check the live price before booking: commonly about 80-150 THB to Central Pattaya and 120-220 THB to Jomtien. If you choose a private taxi at the station, agree the fare before getting in; a fair tourist range is often around 100-150 THB to Central Pattaya and 150-250 THB to Jomtien."
     },
     "suvarnabhumi-airport": {
       "bestFor": "Airport arrivals going straight to Pattaya",
@@ -178,8 +178,8 @@
       "tip": "Confirm the boarding point with Airport Pattaya Bus before travel."
     },
     "don-mueang-airport": {
-      "bestFor": "Airport departures and arrivals",
-      "tip": "Allow extra time for check-in, baggage, traffic, and airport navigation."
+      "bestFor": "Airport arrivals and the direct Pattaya bus",
+      "tip": "After leaving the aircraft, follow Arrivals, collect baggage, enter the public arrivals area on Floor 1, and confirm the Transport Co. / TCL Pattaya bus at T1 Gate 1 or T2 Gate 11."
     },
     "pattaya-sukhumvit": {
       "bestFor": "Pattaya to Don Mueang Airport",
@@ -267,20 +267,20 @@
     ],
     "don-mueang-airport-to-pattaya": [
       {
-        "title": "Confirm the airport pick-up point",
-        "body": "The airport page lists a bus service to Pattaya. Confirm the counter and pick-up point when you arrive."
+        "title": "After leaving the aircraft, follow Arrivals",
+        "body": "After landing, follow Arrivals signs. If arriving internationally, clear immigration first, then collect baggage and exit into the public arrivals area on Floor 1."
       },
       {
-        "title": "Allow extra time at the airport",
-        "body": "Leave time for baggage, airport navigation, and finding the correct bus counter."
+        "title": "Find the bus service counter",
+        "body": "The official Don Mueang page lists Terminal 1: Building 1, Floor 1, Gate 1 and Terminal 2: Building 2, Floor 1, Gate 11. Ask for the Transport Co. / TCL express bus to Pattaya."
       },
       {
-        "title": "Check luggage rules",
-        "body": "Check current baggage rules if you travel with large suitcases or extra bags."
+        "title": "Confirm Service Hall Building",
+        "body": "The official pick-up point is Service Hall Building. Before leaving the terminal, ask the counter staff to point you in the exact walking direction."
       },
       {
-        "title": "Expect Bangkok traffic",
-        "body": "Traffic around Bangkok can change the journey time, especially during busy periods."
+        "title": "Show this if you feel lost",
+        "body": "If you are unsure, show staff: Pattaya, Transport Co. bus, Service Hall Building. Keep 20-30 minutes after baggage claim for orientation and ticket confirmation."
       }
     ],
     "pattaya-to-don-mueang-airport": [
@@ -400,7 +400,7 @@
       },
       {
         "question": "Where do I board the bus at Don Mueang Airport?",
-        "answer": "The airport page lists service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building. Confirm when you arrive."
+        "answer": "The official Don Mueang page lists service counters at Terminal 1, Building 1, Floor 1, Gate 1 and Terminal 2, Building 2, Floor 1, Gate 11. The pick-up point is Service Hall Building. After leaving the aircraft, follow Arrivals, collect baggage, and confirm the Transport Co. / TCL Pattaya bus at the counter."
       },
       {
         "question": "Should I leave extra time after landing?",
