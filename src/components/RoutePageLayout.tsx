@@ -103,6 +103,7 @@ export function RoutePageLayout({
             showAllDepartures:
               locale === "pl" ? "Pokaż wszystkie trasy" : t.common.showAllDepartures,
           }}
+          scheduleLabels={t.schedule}
         />
 
         <div className="md:hidden">
@@ -237,16 +238,6 @@ export function RoutePageLayout({
               swipeHint={stationAccessSwipeHint}
             />
           </div>
-        </MobileDetailsSection>
-
-        <MobileDetailsSection title={t.schedule.dataTitle}>
-          <ScheduleList
-            route={route}
-            schedule={schedule}
-            nextDeparture={nextDeparture}
-            labels={t.schedule}
-            sourceOnly
-          />
         </MobileDetailsSection>
 
         <section className="hidden rounded-2xl border border-[#eadcc7] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c] shadow-sm md:block md:p-4">

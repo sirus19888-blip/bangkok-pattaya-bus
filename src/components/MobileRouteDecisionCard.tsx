@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
   getTwelveGoDisclosure,
@@ -23,6 +24,7 @@ type MobileRouteDecisionCardProps = {
     showAllDepartures: string;
     nextBus: string;
   };
+  scheduleLabels: Translations["schedule"];
 };
 
 export function MobileRouteDecisionCard({
@@ -31,6 +33,7 @@ export function MobileRouteDecisionCard({
   routeId,
   routeTitle,
   schedule,
+  scheduleLabels,
   nextDeparture,
   sourceStatusLabel,
   labels,
@@ -166,10 +169,72 @@ export function MobileRouteDecisionCard({
         locale={locale}
         routeId={routeId}
       />
-      <p className="mt-1.5 text-xs font-semibold leading-5 text-[#5f6874]">
-        {getTwelveGoDisclosure(locale)}
-      </p>
+      <div className="relative mt-1.5 flex items-start justify-between gap-2">
+        <p className="min-w-0 flex-1 text-xs font-semibold leading-5 text-[#5f6874]">
+          {getTwelveGoDisclosure(locale)}
+        </p>
+        <details className="group relative shrink-0">
+          <summary
+            aria-label={scheduleLabels.dataTitle}
+            className="flex h-11 w-11 cursor-pointer list-none items-center justify-center overflow-hidden rounded-2xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
+          >
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="h-full w-full object-cover"
+              height={44}
+              src="/images/icons/icon-schedule-data.png"
+              width={44}
+            />
+          </summary>
+          <div className="absolute right-0 top-[calc(100%+0.45rem)] z-30 w-[17.5rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-left text-xs leading-5 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/20">
+            <p className="text-sm font-black text-[#13233a]">
+              {scheduleLabels.dataTitle}
+            </p>
+            <dl className="mt-2 grid gap-1.5">
+              <MobileScheduleInfoRow label={scheduleLabels.source}>
+                {schedule.sourceName}
+              </MobileScheduleInfoRow>
+              <MobileScheduleInfoRow label={scheduleLabels.lastVerified}>
+                {schedule.lastVerified}
+              </MobileScheduleInfoRow>
+              <MobileScheduleInfoRow label={scheduleLabels.sourceType}>
+                {schedule.sourceType}
+              </MobileScheduleInfoRow>
+              <MobileScheduleInfoRow label={scheduleLabels.fareNote}>
+                {schedule.fareNote}
+              </MobileScheduleInfoRow>
+              {schedule.boardingNote ? (
+                <MobileScheduleInfoRow label={scheduleLabels.boardingNote}>
+                  {schedule.boardingNote}
+                </MobileScheduleInfoRow>
+              ) : null}
+              <MobileScheduleInfoRow label={scheduleLabels.dataQuality}>
+                {schedule.dataQuality}
+              </MobileScheduleInfoRow>
+            </dl>
+            <p className="mt-2 rounded-xl bg-white px-3 py-2 font-bold text-[#13233a]">
+              {schedule.operatorNote}
+            </p>
+          </div>
+        </details>
+      </div>
     </section>
+  );
+}
+
+function MobileScheduleInfoRow({
+  children,
+  label,
+}: {
+  children: string;
+  label: string;
+}) {
+  return (
+    <div className="grid gap-0.5">
+      <dt className="font-black text-[#13233a]">{label}</dt>
+      <dd className="font-semibold">{children}</dd>
+    </div>
   );
 }
 
