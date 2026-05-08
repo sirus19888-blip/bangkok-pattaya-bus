@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -95,20 +95,20 @@ const localizedLocationLabels: Partial<
     "pattaya-to-don-mueang-airport": "Pattaya",
   },
   th: {
-    "bangkok-to-pattaya": "กรุงเทพฯ",
-    "pattaya-to-bangkok": "พัทยา",
-    "suvarnabhumi-airport-to-pattaya": "สุวรรณภูมิ",
-    "pattaya-to-suvarnabhumi-airport": "พัทยา",
-    "don-mueang-airport-to-pattaya": "ดอนเมือง",
-    "pattaya-to-don-mueang-airport": "พัทยา",
+    "bangkok-to-pattaya": "ŕ¸ŕ¸Łŕ¸¸ŕ¸‡ŕą€ŕ¸—ŕ¸žŕ¸Ż",
+    "pattaya-to-bangkok": "ŕ¸žŕ¸±ŕ¸—ŕ¸˘ŕ¸˛",
+    "suvarnabhumi-airport-to-pattaya": "ŕ¸Şŕ¸¸ŕ¸§ŕ¸Łŕ¸Łŕ¸“ŕ¸ ŕ¸ąŕ¸ˇŕ¸´",
+    "pattaya-to-suvarnabhumi-airport": "ŕ¸žŕ¸±ŕ¸—ŕ¸˘ŕ¸˛",
+    "don-mueang-airport-to-pattaya": "ŕ¸”ŕ¸­ŕ¸™ŕą€ŕ¸ˇŕ¸·ŕ¸­ŕ¸‡",
+    "pattaya-to-don-mueang-airport": "ŕ¸žŕ¸±ŕ¸—ŕ¸˘ŕ¸˛",
   },
   zh: {
-    "bangkok-to-pattaya": "曼谷",
-    "pattaya-to-bangkok": "芭提雅",
-    "suvarnabhumi-airport-to-pattaya": "素万那普",
-    "pattaya-to-suvarnabhumi-airport": "芭提雅",
-    "don-mueang-airport-to-pattaya": "廊曼",
-    "pattaya-to-don-mueang-airport": "芭提雅",
+    "bangkok-to-pattaya": "ć›Ľč°·",
+    "pattaya-to-bangkok": "čŠ­ćŹé›…",
+    "suvarnabhumi-airport-to-pattaya": "ç´ ä¸‡é‚Łć™®",
+    "pattaya-to-suvarnabhumi-airport": "čŠ­ćŹé›…",
+    "don-mueang-airport-to-pattaya": "ĺ»Šć›Ľ",
+    "pattaya-to-don-mueang-airport": "čŠ­ćŹé›…",
   },
   fr: {
     "bangkok-to-pattaya": "Bangkok",
@@ -119,25 +119,25 @@ const localizedLocationLabels: Partial<
     "pattaya-to-don-mueang-airport": "Pattaya",
   },
   ru: {
-    "bangkok-to-pattaya": "Бангкок",
-    "pattaya-to-bangkok": "Паттайя",
-    "suvarnabhumi-airport-to-pattaya": "Суварнабхуми",
-    "pattaya-to-suvarnabhumi-airport": "Паттайя",
-    "don-mueang-airport-to-pattaya": "Дон Муанг",
-    "pattaya-to-don-mueang-airport": "Паттайя",
+    "bangkok-to-pattaya": "Đ‘Đ°Đ˝ĐłĐşĐľĐş",
+    "pattaya-to-bangkok": "ĐźĐ°Ń‚Ń‚Đ°ĐąŃŹ",
+    "suvarnabhumi-airport-to-pattaya": "ĐˇŃĐ˛Đ°Ń€Đ˝Đ°Đ±Ń…ŃĐĽĐ¸",
+    "pattaya-to-suvarnabhumi-airport": "ĐźĐ°Ń‚Ń‚Đ°ĐąŃŹ",
+    "don-mueang-airport-to-pattaya": "Đ”ĐľĐ˝ ĐśŃĐ°Đ˝Đł",
+    "pattaya-to-don-mueang-airport": "ĐźĐ°Ń‚Ń‚Đ°ĐąŃŹ",
   },
 };
 
 function getHeaderTravelLabels(locale?: LocaleCode) {
   if (locale === "ru") {
     return {
-      currencyAria: "Курсы валют",
-      currencyButton: "Курс",
-      estimated: "Оценка",
-      live: "Актуально",
-      ratesTitle: "Курс к THB",
-      thailandTime: "Местное время Таиланда",
-      weatherSuffix: "погода",
+      currencyAria: "ĐšŃŃ€ŃŃ‹ Đ˛Đ°Đ»ŃŽŃ‚",
+      currencyButton: "ĐšŃŃ€Ń",
+      estimated: "ĐžŃ†ĐµĐ˝ĐşĐ°",
+      live: "ĐĐşŃ‚ŃĐ°Đ»ŃŚĐ˝Đľ",
+      ratesTitle: "ĐšŃŃ€Ń Đş THB",
+      thailandTime: "ĐśĐµŃŃ‚Đ˝ĐľĐµ Đ˛Ń€ĐµĐĽŃŹ Đ˘Đ°Đ¸Đ»Đ°Đ˝Đ´Đ°",
+      weatherSuffix: "ĐżĐľĐłĐľĐ´Đ°",
     };
   }
 
@@ -157,35 +157,35 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
     return {
       currencyAria: "Wechselkurse",
       currencyButton: "Kurse",
-      estimated: "Geschätzt",
+      estimated: "GeschĂ¤tzt",
       live: "Live",
       ratesTitle: "Kurse zu THB",
-      thailandTime: "Thailändische Ortszeit",
+      thailandTime: "ThailĂ¤ndische Ortszeit",
       weatherSuffix: "Wetter",
     };
   }
 
   if (locale === "th") {
     return {
-      currencyAria: "อัตราแลกเปลี่ยน",
-      currencyButton: "ค่าเงิน",
-      estimated: "ประมาณ",
-      live: "สด",
-      ratesTitle: "อัตราเป็น THB",
-      thailandTime: "เวลาท้องถิ่นของประเทศไทย",
-      weatherSuffix: "สภาพอากาศ",
+      currencyAria: "ŕ¸­ŕ¸±ŕ¸•ŕ¸Łŕ¸˛ŕąŕ¸Ąŕ¸ŕą€ŕ¸›ŕ¸Ąŕ¸µŕąŕ¸˘ŕ¸™",
+      currencyButton: "ŕ¸„ŕąŕ¸˛ŕą€ŕ¸‡ŕ¸´ŕ¸™",
+      estimated: "ŕ¸›ŕ¸Łŕ¸°ŕ¸ˇŕ¸˛ŕ¸“",
+      live: "ŕ¸Şŕ¸”",
+      ratesTitle: "ŕ¸­ŕ¸±ŕ¸•ŕ¸Łŕ¸˛ŕą€ŕ¸›ŕą‡ŕ¸™ THB",
+      thailandTime: "ŕą€ŕ¸§ŕ¸Ąŕ¸˛ŕ¸—ŕą‰ŕ¸­ŕ¸‡ŕ¸–ŕ¸´ŕąŕ¸™ŕ¸‚ŕ¸­ŕ¸‡ŕ¸›ŕ¸Łŕ¸°ŕą€ŕ¸—ŕ¸¨ŕą„ŕ¸—ŕ¸˘",
+      weatherSuffix: "ŕ¸Şŕ¸ ŕ¸˛ŕ¸žŕ¸­ŕ¸˛ŕ¸ŕ¸˛ŕ¸¨",
     };
   }
 
   if (locale === "zh") {
     return {
-      currencyAria: "汇率",
-      currencyButton: "汇率",
-      estimated: "估算",
-      live: "实时",
-      ratesTitle: "兑换 THB 汇率",
-      thailandTime: "泰国当地时间",
-      weatherSuffix: "天气",
+      currencyAria: "ć±‡çŽ‡",
+      currencyButton: "ć±‡çŽ‡",
+      estimated: "äĽ°ç®—",
+      live: "ĺ®žć—¶",
+      ratesTitle: "ĺ…‘ćŤ˘ THB ć±‡çŽ‡",
+      thailandTime: "ćł°ĺ›˝ĺ˝“ĺś°ć—¶é—´",
+      weatherSuffix: "ĺ¤©ć°”",
     };
   }
 
@@ -193,11 +193,11 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
     return {
       currencyAria: "Taux de change",
       currencyButton: "Taux",
-      estimated: "Estimé",
+      estimated: "EstimĂ©",
       live: "Direct",
       ratesTitle: "Taux vers THB",
-      thailandTime: "Heure locale de Thaïlande",
-      weatherSuffix: "météo",
+      thailandTime: "Heure locale de ThaĂŻlande",
+      weatherSuffix: "mĂ©tĂ©o",
     };
   }
 
@@ -542,12 +542,12 @@ export function HeaderTravelInfo({
       )}
 
       <Link
-        aria-label="Postaw mi kaw�"
+        aria-label="Postaw mi kawę"
         className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:hidden"
         href="https://www.buymeacoffee.com/Pawel_"
         rel="noopener noreferrer"
         target="_blank"
-        title="Postaw mi kaw�"
+        title="Postaw mi kawę"
       >
         <Image
           alt=""
@@ -577,9 +577,9 @@ export function HeaderTravelInfo({
             width={16}
           />
           <span className="text-[#b9832e]">{labels.currencyButton}</span>
-          <span>{mainRate}฿</span>
+          <span>{mainRate}ŕ¸ż</span>
           <span className="text-[0.65rem] text-[#637083]" aria-hidden="true">
-            ▾
+            â–ľ
           </span>
         </button>
 
@@ -600,7 +600,7 @@ export function HeaderTravelInfo({
                   className="rounded-lg bg-[#fffaf2] px-2 py-1.5 font-semibold text-[#13233a]"
                 >
                   <span className="text-[#6f7782]">{code}</span>{" "}
-                  <span>{formatRate(value)}฿</span>
+                  <span>{formatRate(value)}ŕ¸ż</span>
                 </div>
               ))}
             </div>
@@ -625,4 +625,5 @@ function formatThailandTime() {
     timeZone: "Asia/Bangkok",
   }).format(new Date());
 }
+
 
