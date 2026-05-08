@@ -107,6 +107,23 @@ export function RoutePageLayout({
           scheduleLabels={t.schedule}
         />
 
+        <MobileDetailsSection title={t.station.title}>
+          <StationCard
+            stations={stations}
+            locale={locale}
+            routeId={routePage.slug}
+            photoGroups={stationPhotoGroups}
+            labels={{
+              ...t.station,
+              openInGoogleMaps: t.common.openInGoogleMaps,
+            }}
+          />
+        </MobileDetailsSection>
+
+        <MobileDetailsSection title={t.faq.title}>
+          <FAQ faqs={localizedFaqs} labels={t.faq} />
+        </MobileDetailsSection>
+
         <div className="md:hidden">
           <RelatedRoutes
             currentRoute={routePage.slug}
@@ -221,19 +238,6 @@ export function RoutePageLayout({
           </div>
         </section>
 
-        <MobileDetailsSection title={t.station.title}>
-          <StationCard
-            stations={stations}
-            locale={locale}
-            routeId={routePage.slug}
-            photoGroups={stationPhotoGroups}
-            labels={{
-              ...t.station,
-              openInGoogleMaps: t.common.openInGoogleMaps,
-            }}
-          />
-        </MobileDetailsSection>
-
         <section className="hidden justify-end md:flex">
           <details className="group relative">
             <summary
@@ -257,10 +261,6 @@ export function RoutePageLayout({
             </div>
           </details>
         </section>
-
-        <MobileDetailsSection title={t.faq.title}>
-          <FAQ faqs={localizedFaqs} labels={t.faq} />
-        </MobileDetailsSection>
 
         <TravelerFeedback
           buyMeCoffeeLabel={t.common.buyMeCoffee}
