@@ -174,7 +174,11 @@ function getMobileTipPoints(
     return donMueangDepartureTips[locale];
   }
 
-  if (stationId !== "north-pattaya" && stationId !== "pattaya-sukhumvit") {
+  if (
+    stationId !== "north-pattaya" &&
+    stationId !== "pattaya-sukhumvit" &&
+    stationId !== "ekkamai"
+  ) {
     return [tip];
   }
 
