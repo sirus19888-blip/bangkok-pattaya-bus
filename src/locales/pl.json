@@ -19,7 +19,9 @@
     "remainingTime": "Pozostało do odjazdu",
     "leavingNow": "Odjeżdża teraz",
     "hoursShort": "godz.",
-    "minutesShort": "min"
+    "minutesShort": "min",
+    "nextServiceTomorrow": "Nast?pny kurs jutro",
+    "availableTo": "Dost?pne do:"
   },
   "schedule": {
     "needsOfficialConfirmationShort": "Wymaga potwierdzenia",

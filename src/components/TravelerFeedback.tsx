@@ -84,6 +84,36 @@ const copy = {
     routeLabel: "เส้นทาง",
     prompt: "ควรแก้ไขข้อมูลส่วนใด",
   },
+  zh: {
+    title: "这份指南有帮助吗？",
+    text: "帮助我们保持巴士时间清楚、准确，并对其他旅客有用。",
+    helped: "有帮助",
+    report: "报告过期时间",
+    thanks: "谢谢，你的反馈会帮助我们改进这份指南。",
+    sending: "正在发送...",
+    emailError: "无法自动发送。我会改为打开已准备好的电子邮件。",
+    subject: "巴士时间过期报告",
+    helpedSubject: "指南被标记为有帮助",
+    bodyIntro: "你好，我在这个路线页面发现了过期信息：",
+    helpedBodyIntro: "一位旅客将这个路线指南标记为有帮助：",
+    routeLabel: "路线",
+    prompt: "需要更正什么？",
+  },
+  fr: {
+    title: "Ce guide vous a-t-il aidé ?",
+    text: "Aidez-nous à garder les horaires de bus clairs et utiles pour les autres voyageurs.",
+    helped: "Oui, il m'a aidé",
+    report: "Signaler des horaires obsolètes",
+    thanks: "Merci - votre avis aide à améliorer ce guide.",
+    sending: "Envoi...",
+    emailError: "L'envoi automatique a échoué. J'ouvrirai un e-mail préparé à la place.",
+    subject: "Signalement d'horaires de bus obsolètes",
+    helpedSubject: "Guide marqué comme utile",
+    bodyIntro: "Bonjour, j'ai trouvé des informations obsolètes sur cette page d'itinéraire :",
+    helpedBodyIntro: "Un voyageur a marqué cette page d'itinéraire comme utile :",
+    routeLabel: "Itinéraire",
+    prompt: "Que faut-il corriger ?",
+  },
 } as const;
 
 function getCopy(locale: LocaleCode) {
@@ -101,6 +131,14 @@ function getCopy(locale: LocaleCode) {
 
   if (locale === "th") {
     return copy.th;
+  }
+
+  if (locale === "zh") {
+    return copy.zh;
+  }
+
+  if (locale === "fr") {
+    return copy.fr;
   }
 
   return copy.en;

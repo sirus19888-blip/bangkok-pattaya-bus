@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { ReactNode } from "react";
 import type { Route } from "@/data/routes";
 import type { Schedule, ScheduleSource } from "@/data/schedules";
@@ -87,7 +88,9 @@ export function ScheduleList({
               {showSourceInfo ? (
                 <ScheduleSourceInfo
                   boardingNote={subRoute.boardingNote}
+                  disclaimer={schedule.disclaimer}
                   labels={labels}
+                  lastUpdated={schedule.lastUpdated}
                   mode={sourceInfoMode}
                   source={subRoute}
                 />
@@ -121,7 +124,9 @@ export function ScheduleList({
       {showSourceInfo && !hasSubRoutes ? (
         <ScheduleSourceInfo
           boardingNote={schedule.boardingNote}
+          disclaimer={schedule.disclaimer}
           labels={labels}
+          lastUpdated={schedule.lastUpdated}
           mode={sourceInfoMode}
           source={schedule}
         />
@@ -163,12 +168,16 @@ function DepartureTile({
 
 function ScheduleSourceInfo({
   boardingNote,
+  disclaimer,
   labels,
+  lastUpdated,
   mode = "inline",
   source,
 }: {
   boardingNote?: string;
+  disclaimer?: string;
   labels: Translations["schedule"];
+  lastUpdated?: string;
   mode?: "inline" | "popover";
   source: ScheduleSource;
 }) {
@@ -181,6 +190,16 @@ function ScheduleSourceInfo({
 
   const content = (
     <>
+      {lastUpdated || disclaimer ? (
+        <div className="mb-3 rounded-xl border border-[#eadcc7] bg-white px-3 py-2">
+          {lastUpdated ? (
+            <p className="font-black text-[#13233a]">
+              {labels.updated} {lastUpdated}
+            </p>
+          ) : null}
+          {disclaimer ? <p className="mt-1 font-semibold">{disclaimer}</p> : null}
+        </div>
+      ) : null}
       <p className="font-black text-[#13233a]">{labels.dataTitle}</p>
       <dl className="mt-2 grid gap-1.5">
         <InfoRow label={labels.source}>
@@ -233,9 +252,16 @@ function ScheduleSourceInfo({
         <button
           type="button"
           aria-label={labels.dataTitle}
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#eadcc7] bg-[#fffaf2] text-sm font-black text-[#13233a] shadow-sm transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+          className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
         >
-          i
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover"
+            height={36}
+            src="/images/icons/icon-last-updated-info.png"
+            width={36}
+          />
         </button>
         <div className="absolute right-0 top-12 z-20 hidden w-80 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3.5 text-left text-sm leading-6 text-[#4f5d6c] shadow-xl sm:p-4 md:p-3 md:text-xs md:leading-5 group-hover:block group-focus-within:block">
           {content}

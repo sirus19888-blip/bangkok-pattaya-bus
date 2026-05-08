@@ -31,6 +31,14 @@ const mapLabels = {
     title: "แผนที่สถานี",
     fallbackNote: "แผนที่นี้ช่วยให้จำบริเวณรอบสถานีได้ง่ายขึ้น",
   },
+  zh: {
+    title: "车站地图",
+    fallbackNote: "这张地图可帮助你识别车站周边区域。",
+  },
+  fr: {
+    title: "Carte de la station",
+    fallbackNote: "Cette carte vous aide à reconnaître les environs de la station.",
+  },
 } as const;
 
 function getOpenStreetMapEmbedUrl(station: Station) {
@@ -60,6 +68,10 @@ export function StationMiniMap({
           ? mapLabels.de
         : locale === "th"
           ? mapLabels.th
+        : locale === "zh"
+          ? mapLabels.zh
+        : locale === "fr"
+          ? mapLabels.fr
           : mapLabels.en;
   const walkingNote =
     locale === "pl"
@@ -70,6 +82,10 @@ export function StationMiniMap({
           ? getGermanWalkingNote(station.id)
         : locale === "th"
           ? getThaiWalkingNote(station.id)
+        : locale === "zh"
+          ? getChineseWalkingNote(station.id)
+        : locale === "fr"
+          ? getFrenchWalkingNote(station.id)
           : station.walkingNote.en;
   const mapLabel =
     locale === "ru"
@@ -78,28 +94,14 @@ export function StationMiniMap({
         ? getGermanStationMapLabel(station.id, station.mapLabel)
       : locale === "th"
         ? getThaiStationMapLabel(station.id, station.mapLabel)
+      : locale === "zh"
+        ? getChineseStationMapLabel(station.id, station.mapLabel)
+      : locale === "fr"
+        ? getFrenchStationMapLabel(station.id, station.mapLabel)
         : station.mapLabel;
   const [isMapOpen, setIsMapOpen] = useState(false);
-  const openMapLabel =
-    locale === "pl"
-      ? "Powiększ mapę stacji"
-      : locale === "ru"
-        ? "ĐŁĐ˛ĐµĐ»Đ¸Ń‡Đ¸Ń‚ŃŚ ĐşĐ°Ń€Ń‚Ń ŃŃ‚Đ°Đ˝Ń†Đ¸Đ¸"
-      : locale === "de"
-        ? "Stationskarte vergrößern"
-      : locale === "th"
-        ? "ŕ¸‚ŕ¸˘ŕ¸˛ŕ¸˘ŕąŕ¸śŕ¸™ŕ¸—ŕ¸µŕąŕ¸Şŕ¸–ŕ¸˛ŕ¸™ŕ¸µ"
-      : "Enlarge station map";
-  const closeMapLabel =
-    locale === "pl"
-      ? "Zamknij mapę"
-      : locale === "ru"
-        ? "Đ—Đ°ĐşŃ€Ń‹Ń‚ŃŚ ĐşĐ°Ń€Ń‚Ń"
-      : locale === "de"
-        ? "Karte schließen"
-      : locale === "th"
-        ? "ŕ¸›ŕ¸´ŕ¸”ŕąŕ¸śŕ¸™ŕ¸—ŕ¸µŕą"
-      : "Close map";
+  const openMapLabel = getOpenMapLabel(locale);
+  const closeMapLabel = getCloseMapLabel(locale);
   const mapUrl = getOpenStreetMapEmbedUrl(station);
 
   return (
@@ -228,6 +230,34 @@ function StationMapLightbox({
   );
 }
 
+function getOpenMapLabel(locale: LocaleCode) {
+  const labels: Record<LocaleCode, string> = {
+    de: "Stationskarte vergrößern",
+    en: "Enlarge station map",
+    fr: "Agrandir la carte de la station",
+    pl: "Powiększ mapę stacji",
+    ru: "Увеличить карту станции",
+    th: "ขยายแผนที่สถานี",
+    zh: "放大车站地图",
+  };
+
+  return labels[locale] ?? labels.en;
+}
+
+function getCloseMapLabel(locale: LocaleCode) {
+  const labels: Record<LocaleCode, string> = {
+    de: "Karte schließen",
+    en: "Close map",
+    fr: "Fermer la carte",
+    pl: "Zamknij mapę",
+    ru: "Закрыть карту",
+    th: "ปิดแผนที่",
+    zh: "关闭地图",
+  };
+
+  return labels[locale] ?? labels.en;
+}
+
 function getRussianWalkingNote(stationId: string) {
   const notes: Record<string, string> = {
     ekkamai: "Используйте карту, чтобы узнать район вокруг автовокзала Эккамай.",
@@ -271,6 +301,34 @@ function getThaiWalkingNote(stationId: string) {
   return notes[stationId] ?? mapLabels.th.fallbackNote;
 }
 
+function getChineseWalkingNote(stationId: string) {
+  const notes: Record<string, string> = {
+    ekkamai: "使用这张地图识别 Ekkamai 巴士总站周边区域。",
+    "mo-chit": "到达后请查看现场指示牌。",
+    "north-pattaya": "使用这张地图识别 North Pattaya Bus Terminal 周边区域。",
+    "suvarnabhumi-airport": "到达机场后请查看现场指示牌。",
+    "jomtien-bus-area": "出行前请向运营商确认准确上车点。",
+    "don-mueang-airport": "使用这张地图识别机场周边区域，并在到达后确认上车点。",
+    "pattaya-sukhumvit": "出行前请确认芭提雅的准确上车点。",
+  };
+
+  return notes[stationId] ?? mapLabels.zh.fallbackNote;
+}
+
+function getFrenchWalkingNote(stationId: string) {
+  const notes: Record<string, string> = {
+    ekkamai: "Utilisez cette carte pour reconnaître les environs de la gare routière Ekkamai.",
+    "mo-chit": "À l'arrivée, vérifiez les panneaux sur place.",
+    "north-pattaya": "Utilisez cette carte pour reconnaître les environs du terminal de bus North Pattaya.",
+    "suvarnabhumi-airport": "À l'arrivée à l'aéroport, vérifiez les panneaux sur place.",
+    "jomtien-bus-area": "Confirmez le point d'embarquement exact auprès de l'opérateur avant le départ.",
+    "don-mueang-airport": "Utilisez cette carte pour vous repérer à l'aéroport et confirmez le point d'embarquement sur place.",
+    "pattaya-sukhumvit": "Confirmez le point d'embarquement exact à Pattaya avant le départ.",
+  };
+
+  return notes[stationId] ?? mapLabels.fr.fallbackNote;
+}
+
 function getRussianStationMapLabel(stationId: string, fallback: string) {
   const labels: Record<string, string> = {
     ekkamai: "автовокзал Эккамай",
@@ -308,6 +366,34 @@ function getThaiStationMapLabel(stationId: string, fallback: string) {
     "jomtien-bus-area": "จุดรถบัสสนามบินพัทยา / จอมเทียน",
     "don-mueang-airport": "ท่าอากาศยานดอนเมือง",
     "pattaya-sukhumvit": "สถานีรถบัสถนนสุขุมวิทพัทยา",
+  };
+
+  return labels[stationId] ?? fallback;
+}
+
+function getChineseStationMapLabel(stationId: string, fallback: string) {
+  const labels: Record<string, string> = {
+    ekkamai: "Ekkamai 巴士总站",
+    "mo-chit": "Mo Chit 2 巴士总站",
+    "north-pattaya": "North Pattaya Bus Terminal",
+    "suvarnabhumi-airport": "素万那普机场巴士区域",
+    "jomtien-bus-area": "芭提雅 / 中天机场巴士区域",
+    "don-mueang-airport": "廊曼机场",
+    "pattaya-sukhumvit": "芭提雅 Sukhumvit Road 巴士站",
+  };
+
+  return labels[stationId] ?? fallback;
+}
+
+function getFrenchStationMapLabel(stationId: string, fallback: string) {
+  const labels: Record<string, string> = {
+    ekkamai: "Gare routière Ekkamai",
+    "mo-chit": "Gare routière Mo Chit 2",
+    "north-pattaya": "Terminal de bus North Pattaya",
+    "suvarnabhumi-airport": "Zone de bus de l'aéroport Suvarnabhumi",
+    "jomtien-bus-area": "Zone de bus Pattaya / Jomtien",
+    "don-mueang-airport": "Aéroport Don Mueang",
+    "pattaya-sukhumvit": "Gare routière de Pattaya Sukhumvit Road",
   };
 
   return labels[stationId] ?? fallback;

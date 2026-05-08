@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
@@ -9,23 +8,16 @@ import { RouteJsonLd } from "@/components/RouteJsonLd";
 import { RouteSearch } from "@/components/RouteSearch";
 import { RouteSummary } from "@/components/RouteSummary";
 import { ScheduleList } from "@/components/ScheduleList";
-import { StationAccessGuide } from "@/components/StationAccessGuide";
 import { StationCard } from "@/components/StationCard";
-import { TravelGuide } from "@/components/TravelGuide";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
 import { getTwelveGoButtonLabel } from "@/components/TwelveGoAffiliateButton";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
-import {
-  getStationAccessGuide,
-  getStationAccessSectionTitle,
-} from "@/data/stationAccess";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
 import {
   getLocalizedFaqs,
-  getLocalizedGuideTips,
   type Translations,
 } from "@/lib/i18n";
 
@@ -48,24 +40,11 @@ export function RoutePageLayout({
   t,
   locale,
 }: RoutePageLayoutProps) {
-  const localizedGuideTips = getLocalizedGuideTips(t, routePage.slug);
   const localizedFaqs = getLocalizedFaqs(t, routePage.slug);
   const stationPhotoGroups = getStationPhotoGroupsForRoute(
     routePage.slug,
     locale,
   );
-  const stationAccessGuide = getStationAccessGuide(routePage.slug, locale);
-  const stationAccessSectionTitle = getStationAccessSectionTitle(locale);
-  const stationAccessSwipeHint =
-    locale === "pl"
-      ? "Przesuń, aby zobaczyć więcej"
-      : locale === "ru"
-        ? "Проведите, чтобы увидеть больше"
-      : locale === "de"
-        ? "Wische, um mehr zu sehen"
-      : locale === "th"
-        ? "เลื่อนเพื่อดูเพิ่มเติม"
-        : "Swipe to see more";
   const sourceStatusLabel =
     schedule.verificationStatus === "needs official confirmation"
       ? t.schedule.needsOfficialConfirmationShort
@@ -159,6 +138,7 @@ export function RoutePageLayout({
             </p>
 
             <RouteSearch
+              desktopGo
               from={routePage.from}
               labels={t.routeSelector}
               locale={locale}
@@ -213,56 +193,18 @@ export function RoutePageLayout({
           />
         </div>
 
-        <section className="hidden gap-4 md:grid min-[1180px]:grid-cols-[minmax(0,1.18fr)_minmax(19rem,0.82fr)]">
-          <div className="space-y-4">
-            <div className="grid gap-4 min-[1360px]:grid-cols-2">
-              <TravelGuide tips={localizedGuideTips} labels={t.travelTips} />
-              <FAQ faqs={localizedFaqs} labels={t.faq} />
-            </div>
-            <StationAccessGuide
-              sectionTitle={stationAccessSectionTitle}
-              title={stationAccessGuide.title}
-              items={stationAccessGuide.items}
-              note={stationAccessGuide.note}
-              swipeHint={stationAccessSwipeHint}
-            />
-          </div>
-          <div className="hidden space-y-4 min-[1180px]:block">
-            <StationCard
-              stations={stations}
-              locale={locale}
-              routeId={routePage.slug}
-              photoGroups={stationPhotoGroups}
-              labels={{
-                ...t.station,
-                openInGoogleMaps: t.common.openInGoogleMaps,
-              }}
-            />
-          </div>
-        </section>
-
-        <section className="hidden justify-end md:flex">
-          <details className="group relative">
-            <summary
-              aria-label={`${t.lastUpdated.label} ${schedule.lastUpdated}`}
-              className="flex h-14 w-14 cursor-pointer list-none items-center justify-center overflow-hidden rounded-2xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition hover:-translate-y-0.5 hover:shadow-md group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
-            >
-              <Image
-                alt=""
-                aria-hidden="true"
-                className="h-full w-full object-cover"
-                height={56}
-                src="/images/icons/icon-last-updated-info.png"
-                width={56}
-              />
-            </summary>
-            <div className="absolute right-0 top-[calc(100%+0.6rem)] z-30 w-[24rem] max-w-[calc(100vw-4rem)] rounded-2xl border border-[#eadcc7] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/15">
-              <p className="font-black text-[#13233a]">
-                {t.lastUpdated.label} {schedule.lastUpdated}
-              </p>
-              <p className="mt-2">{schedule.disclaimer}</p>
-            </div>
-          </details>
+        <section className="hidden space-y-4 md:block">
+          <StationCard
+            stations={stations}
+            locale={locale}
+            routeId={routePage.slug}
+            photoGroups={stationPhotoGroups}
+            labels={{
+              ...t.station,
+              openInGoogleMaps: t.common.openInGoogleMaps,
+            }}
+          />
+          <FAQ faqs={localizedFaqs} labels={t.faq} />
         </section>
 
         <TravelerFeedback

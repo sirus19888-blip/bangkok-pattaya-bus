@@ -11,8 +11,10 @@ export type StationPhotoStationId =
 
 type LocalizedText = Record<"en" | "pl", string> & {
   de?: string;
+  fr?: string;
   ru?: string;
   th?: string;
+  zh?: string;
 };
 
 export type StationPhoto = {
@@ -490,6 +492,14 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
     return text.th ?? "ภาพสถานี";
   }
 
+  if (locale === "zh") {
+    return text.zh ?? text.en;
+  }
+
+  if (locale === "fr") {
+    return text.fr ?? text.en;
+  }
+
   return text.en;
 }
 
@@ -521,6 +531,12 @@ export function getStationPhotoGalleryTitle(locale: LocaleCode) {
   if (locale === "de") {
     return "Stationsfotos";
   }
+  if (locale === "zh") {
+    return "车站照片";
+  }
+  if (locale === "fr") {
+    return "Photos des stations";
+  }
   return locale === "pl"
     ? "Jak wyglądają stacje"
     : "What the stations look like";
@@ -535,6 +551,12 @@ export function getStationPhotoAttributionLabel(locale: LocaleCode) {
   }
   if (locale === "de") {
     return "Foto";
+  }
+  if (locale === "zh") {
+    return "照片";
+  }
+  if (locale === "fr") {
+    return "Photo";
   }
   return locale === "pl" ? "Zdjęcie" : "Photo";
 }

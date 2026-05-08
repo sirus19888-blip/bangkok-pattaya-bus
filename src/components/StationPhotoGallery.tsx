@@ -42,6 +42,10 @@ export function StationPhotoGallery({
         ? "Foto größer öffnen"
       : locale === "th"
         ? "เปิดภาพขนาดใหญ่"
+      : locale === "zh"
+        ? "打开大图"
+      : locale === "fr"
+        ? "Ouvrir la photo en grand"
         : "Open larger photo";
   const closeImageLabel =
     locale === "ru"
@@ -50,6 +54,10 @@ export function StationPhotoGallery({
         ? "Foto schließen"
         : locale === "th"
           ? "ปิดภาพ"
+        : locale === "zh"
+          ? "关闭图片"
+        : locale === "fr"
+          ? "Fermer l'image"
           : "Close image";
   const swipeHint =
     locale === "pl"
@@ -60,6 +68,10 @@ export function StationPhotoGallery({
         ? "Wische, um mehr zu sehen"
       : locale === "th"
         ? "เลื่อนเพื่อดูเพิ่มเติม"
+      : locale === "zh"
+        ? "滑动查看更多"
+      : locale === "fr"
+        ? "Faites glisser pour voir plus"
         : "Swipe to see more";
 
   return (
@@ -129,6 +141,10 @@ export function StationPhotoGallery({
                             ? photo.displayTitle.de ?? "Stationsfoto"
                           : locale === "th"
                             ? photo.displayTitle.th ?? "ภาพสถานี"
+                          : locale === "zh"
+                            ? photo.displayTitle.zh ?? "车站照片"
+                          : locale === "fr"
+                            ? photo.displayTitle.fr ?? "Photo de la station"
                             : photo.displayTitle.en}
                       </p>
                     ) : null}
@@ -209,6 +225,10 @@ function PhotoLightbox({
         ? photo.displayTitle.de ?? "Stationsfoto"
       : locale === "th"
         ? photo.displayTitle.th ?? "ภาพสถานี"
+      : locale === "zh"
+        ? photo.displayTitle.zh ?? "车站照片"
+      : locale === "fr"
+        ? photo.displayTitle.fr ?? "Photo de la station"
       : photo.displayTitle.en
     : photo.title;
 

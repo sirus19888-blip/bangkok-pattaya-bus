@@ -17,7 +17,11 @@
     "ticketPrice": "Цена билета",
     "nextServiceTomorrow": "Следующий рейс завтра",
     "timeZoneNote": "Время указано по местному времени Таиланда.",
-    "availableTo": "Доступно до:"
+    "availableTo": "Доступно до:",
+    "remainingTime": "?? ???????????",
+    "leavingNow": "???????????? ??????",
+    "hoursShort": "?",
+    "minutesShort": "???"
   },
   "schedule": {
     "title": "Отправления сегодня",

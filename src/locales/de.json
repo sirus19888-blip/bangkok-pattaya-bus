@@ -17,7 +17,11 @@
     "ticketPrice": "Ticketpreis",
     "nextServiceTomorrow": "Nächster Bus morgen",
     "timeZoneNote": "Alle Zeiten werden in thailändischer Ortszeit angezeigt.",
-    "availableTo": "Verfügbar nach:"
+    "availableTo": "Verfügbar nach:",
+    "remainingTime": "Zeit bis zur Abfahrt",
+    "leavingNow": "F?hrt jetzt ab",
+    "hoursShort": "Std.",
+    "minutesShort": "Min."
   },
   "schedule": {
     "title": "Heutige Abfahrten",

@@ -15,7 +15,13 @@
     "title": "Prochain bus :",
     "travelTime": "Durée du trajet :",
     "ticketPrice": "Prix du billet :",
-    "timeZoneNote": "Les horaires sont indiqués selon l'heure locale de Thaïlande."
+    "timeZoneNote": "Les horaires sont indiqués selon l'heure locale de Thaïlande.",
+    "nextServiceTomorrow": "Prochain service demain",
+    "availableTo": "Disponible vers :",
+    "remainingTime": "Temps avant le d?part",
+    "leavingNow": "D?part maintenant",
+    "hoursShort": "h",
+    "minutesShort": "min"
   },
   "schedule": {
     "needsOfficialConfirmationShort": "Confirmation nécessaire",
@@ -92,6 +98,27 @@
       "intro": "Informations utiles pour aller directement de Suvarnabhumi Airport à Pattaya en bus après l'arrivée.",
       "metadataTitle": "Bus de Suvarnabhumi Airport à Pattaya | Horaires, stations et conseils",
       "metadataDescription": "Consultez les bus de Suvarnabhumi Airport à Pattaya avec les départs, les stations, la durée du trajet, le prix du billet et des conseils pratiques. Les horaires peuvent changer, confirmez avant le voyage."
+    },
+    "pattaya-to-suvarnabhumi-airport": {
+      "label": "Pattaya vers l?a?roport Suvarnabhumi",
+      "title": "Bus de Pattaya vers l?a?roport Suvarnabhumi",
+      "intro": "Consultez les horaires de bus de Pattaya/Jomtien vers l?a?roport Suvarnabhumi, le prix du billet, la dur?e du trajet, le lieu d?embarquement et les conseils avant le vol.",
+      "metadataTitle": "Bus de Pattaya vers l?a?roport Suvarnabhumi | Horaires, prix et embarquement",
+      "metadataDescription": "Consultez les bus de Pattaya/Jomtien vers l?a?roport Suvarnabhumi avec les d?parts, le prix du billet, la dur?e du trajet et le lieu d?embarquement."
+    },
+    "don-mueang-airport-to-pattaya": {
+      "label": "A?roport Don Mueang vers Pattaya",
+      "title": "Bus de l?a?roport Don Mueang ? Pattaya",
+      "intro": "Consultez les informations sur le bus de l?a?roport Don Mueang ? Pattaya, avec les d?parts, la dur?e du trajet, les notes de station et les sources.",
+      "metadataTitle": "Bus de l?a?roport Don Mueang ? Pattaya | Horaires et informations",
+      "metadataDescription": "Consultez le bus de l?a?roport Don Mueang ? Pattaya, les horaires, la dur?e du trajet, les notes de station et le statut des sources."
+    },
+    "pattaya-to-don-mueang-airport": {
+      "label": "Pattaya vers l?a?roport Don Mueang",
+      "title": "Bus de Pattaya vers l?a?roport Don Mueang",
+      "intro": "Consultez les informations sur le bus de Pattaya vers l?a?roport Don Mueang, avec la dur?e du trajet, les sources et les conseils avant le vol.",
+      "metadataTitle": "Bus de Pattaya vers l?a?roport Don Mueang | Horaires et informations",
+      "metadataDescription": "Consultez le bus de Pattaya vers l?a?roport Don Mueang, la dur?e du trajet, les horaires, le statut des sources et les conseils avant le vol."
     }
   },
   "schedules": {
@@ -111,7 +138,22 @@
       "disclaimer": "Les horaires peuvent changer. Veuillez confirmer à la station ou auprès de l'opérateur avant le voyage."
     },
     "don-mueang-airport-to-pattaya": {
-      "boardingNote": "La page officielle de l'aéroport indique des comptoirs au Terminal 1, Building 1, Floor 1, Gate 1 et au Terminal 2, Building 2, Floor 1, Gate 11. Le point de prise en charge est Service Hall Building."
+      "boardingNote": "La page officielle de l?a?roport indique des comptoirs au Terminal 1, b?timent 1, ?tage 1, porte 1 et au Terminal 2, b?timent 2, ?tage 1, porte 11. Le point de prise en charge est le Service Hall Building.",
+      "travelTime": "Environ 3 ? 3,5 heures",
+      "price": "155 THB par personne",
+      "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les ? la station ou aupr?s de l?op?rateur avant le voyage."
+    },
+    "pattaya-to-suvarnabhumi-airport": {
+      "travelTime": "Environ 2 ? 2,5 heures, selon la circulation",
+      "price": "162 THB par si?ge",
+      "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les ? la station ou aupr?s de l?op?rateur avant le voyage.",
+      "boardingNote": "Selon l?op?rateur, les billets sont disponibles au comptoir de service de la gare routi?re de Jomtien."
+    },
+    "pattaya-to-don-mueang-airport": {
+      "travelTime": "Environ 3 ? 3,5 heures",
+      "price": "Environ 170 THB",
+      "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les ? la station ou aupr?s de l?op?rateur avant le voyage.",
+      "boardingNote": "Des sources secondaires indiquent Pattaya Sukhumvit Road Bus Station. Confirmez le point d?embarquement exact ? Pattaya avant le d?part."
     }
   },
   "stationsText": {
@@ -222,6 +264,34 @@
         "title": "Montrez ce texte si vous êtes perdu",
         "body": "Si vous hésitez, montrez au personnel : Pattaya, Transport Co. bus, Service Hall Building. Gardez 20-30 minutes après les bagages pour vous orienter et confirmer le billet."
       }
+    ],
+    "pattaya-to-suvarnabhumi-airport": [
+      {
+        "title": "Partez avec une bonne marge avant votre vol",
+        "body": "Pr?voyez du temps pour la circulation, l?enregistrement, la s?curit? et l?immigration ? l?a?roport Suvarnabhumi."
+      },
+      {
+        "title": "Confirmez le point d?embarquement ? Jomtien",
+        "body": "L?op?rateur indique que les billets sont disponibles au comptoir de la gare routi?re de Jomtien. Confirmez avant de partir."
+      },
+      {
+        "title": "V?rifiez vos bagages",
+        "body": "Gardez les objets de valeur avec vous et v?rifiez les r?gles de bagages aupr?s de l?op?rateur si vous avez de grands sacs."
+      }
+    ],
+    "pattaya-to-don-mueang-airport": [
+      {
+        "title": "Confirmez le point de d?part ? Pattaya",
+        "body": "Les sources secondaires indiquent Pattaya Sukhumvit Road Bus Station. Confirmez le point exact avant de quitter votre h?tel."
+      },
+      {
+        "title": "Gardez une grande marge avant le vol",
+        "body": "Le trajet vers Don Mueang peut ralentir avec la circulation. Pr?voyez du temps pour l?enregistrement, la s?curit? et l?immigration si n?cessaire."
+      },
+      {
+        "title": "Pr?parez l?arriv?e ? l?a?roport",
+        "body": "? Don Mueang, v?rifiez si votre vol part du Terminal 1 ou du Terminal 2, puis suivez les panneaux vers les d?parts."
+      }
     ]
   },
   "faqItems": [
@@ -301,6 +371,42 @@
       {
         "question": "Où prendre le bus à Don Mueang Airport?",
         "answer": "La page officielle de Don Mueang indique des comptoirs au Terminal 1, Building 1, Floor 1, Gate 1 et au Terminal 2, Building 2, Floor 1, Gate 11. Le point de prise en charge est Service Hall Building. Après la sortie de l'avion, suivez Arrivals, récupérez vos bagages et confirmez le bus Transport Co. / TCL vers Pattaya au comptoir."
+      }
+    ],
+    "pattaya-to-suvarnabhumi-airport": [
+      {
+        "question": "O? prendre le bus de Pattaya vers Suvarnabhumi ?",
+        "answer": "Les informations de l?op?rateur indiquent le comptoir de la gare routi?re de Jomtien. Confirmez le point d?embarquement avant le d?part."
+      },
+      {
+        "question": "Combien de temps dure le trajet ?",
+        "answer": "Le trajet dure g?n?ralement environ 2 ? 2,5 heures, mais la circulation peut rallonger le temps de parcours."
+      },
+      {
+        "question": "Combien co?te le billet ?",
+        "answer": "Le prix indiqu? est d?environ 162 THB par si?ge. Confirmez le tarif aupr?s de l?op?rateur avant le voyage."
+      },
+      {
+        "question": "Combien de temps avant le vol faut-il partir ?",
+        "answer": "Pr?voyez une marge confortable pour la circulation, l?enregistrement, la s?curit? et l?immigration, surtout pour un vol international."
+      }
+    ],
+    "pattaya-to-don-mueang-airport": [
+      {
+        "question": "O? prendre le bus de Pattaya vers Don Mueang ?",
+        "answer": "Les sources secondaires indiquent Pattaya Sukhumvit Road Bus Station. Confirmez le point exact ? Pattaya avant le d?part."
+      },
+      {
+        "question": "Combien de temps dure le trajet ?",
+        "answer": "Le trajet dure g?n?ralement environ 3 ? 3,5 heures, selon la circulation."
+      },
+      {
+        "question": "Combien co?te le billet ?",
+        "answer": "Le prix indiqu? est d?environ 170 THB. Confirmez le tarif et le point de d?part avant le voyage."
+      },
+      {
+        "question": "Comment rejoindre mon vol ? Don Mueang ?",
+        "answer": "? l?arriv?e, v?rifiez votre terminal : Terminal 1 pour les vols internationaux et Terminal 2 pour les vols domestiques, puis suivez les panneaux vers les d?parts."
       }
     ]
   }

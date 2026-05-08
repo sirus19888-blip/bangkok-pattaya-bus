@@ -17,7 +17,11 @@
     "ticketPrice": "票价",
     "nextServiceTomorrow": "下一班明天发车",
     "timeZoneNote": "所有时间均为泰国当地时间。",
-    "availableTo": "可前往："
+    "availableTo": "可前往：",
+    "remainingTime": "????",
+    "leavingNow": "????",
+    "hoursShort": "??",
+    "minutesShort": "??"
   },
   "schedule": {
     "title": "今日发车",

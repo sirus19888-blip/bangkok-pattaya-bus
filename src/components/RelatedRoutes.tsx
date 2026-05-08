@@ -22,6 +22,26 @@ const relatedRouteImages: Record<RouteId, string> = {
     "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
 };
 
+const busRouteLabels: Record<LocaleCode, string> = {
+  de: "Busroute",
+  en: "Bus route",
+  fr: "Route de bus",
+  pl: "Trasa autobusowa",
+  ru: "Автобусный маршрут",
+  th: "เส้นทางรถบัส",
+  zh: "巴士路线",
+};
+
+const routeConnectorLabels: Record<LocaleCode, string> = {
+  de: "nach",
+  en: "to",
+  fr: "vers",
+  pl: "do",
+  ru: "—",
+  th: "ไป",
+  zh: "到",
+};
+
 export function RelatedRoutes({
   currentRoute,
   heading,
@@ -55,17 +75,11 @@ export function RelatedRoutes({
               {routePage.title}
             </span>
             <span className="relative mt-2 inline-flex rounded-full bg-white/90 px-2.5 py-1 text-[0.62rem] font-black uppercase tracking-wide text-[#0e7b6b] md:hidden">
-              Bus route
+              {busRouteLabels[locale] ?? busRouteLabels.en}
             </span>
             <span className="relative mt-1 hidden text-sm font-semibold text-[#4f5d6c] md:block md:text-xs">
         {routePage.from}{" "}
-        {locale === "th"
-          ? "ไป"
-          : locale === "ru"
-            ? "—"
-            : locale === "de"
-              ? "nach"
-              : "to"}{" "}
+        {routeConnectorLabels[locale] ?? routeConnectorLabels.en}{" "}
         {routePage.to}
       </span>
           </Link>

@@ -151,6 +151,45 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
   const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
   const isRussian = t.nextBus.title === "Следующий автобус";
   const isGerman = t.nextBus.title === "Nächster Bus";
+  const isPolish = t.nextBus.title === "Najbliższy autobus:";
+  const isFrench = t.nextBus.title === "Prochain bus :";
+  const isChinese = t.nextBus.title === "下一班巴士";
+  const polishSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "pattaya-to-mochit": {
+      label: "Pattaya do Mo Chit 2",
+      from: "dworzec autobusowy w Pattayi",
+      to: "dworzec autobusowy Mo Chit 2",
+    },
+    "pattaya-to-ekkamai": {
+      label: "Pattaya do Ekkamai",
+      from: "dworzec autobusowy w Pattayi",
+      to: "dworzec autobusowy Ekkamai",
+    },
+  };
+  const frenchSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "pattaya-to-mochit": {
+      label: "Pattaya vers Mo Chit 2",
+      from: "gare routière de Pattaya",
+      to: "gare routière Mo Chit 2",
+    },
+    "pattaya-to-ekkamai": {
+      label: "Pattaya vers Ekkamai",
+      from: "gare routière de Pattaya",
+      to: "gare routière Ekkamai",
+    },
+  };
+  const chineseSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "pattaya-to-mochit": {
+      label: "芭提雅到 Mo Chit 2",
+      from: "芭提雅巴士站",
+      to: "Mo Chit 2 巴士总站",
+    },
+    "pattaya-to-ekkamai": {
+      label: "芭提雅到 Ekkamai",
+      from: "芭提雅巴士站",
+      to: "Ekkamai 巴士总站",
+    },
+  };
   const thaiSubRouteText: Record<string, { label: string; from: string; to: string }> = {
     "pattaya-to-mochit": {
       label: "พัทยาไปหมอชิต 2",
@@ -205,6 +244,9 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
         ? russianSubRouteText[subRoute.id]
         : undefined;
       const germanText = isGerman ? germanSubRouteText[subRoute.id] : undefined;
+      const polishText = isPolish ? polishSubRouteText[subRoute.id] : undefined;
+      const frenchText = isFrench ? frenchSubRouteText[subRoute.id] : undefined;
+      const chineseText = isChinese ? chineseSubRouteText[subRoute.id] : undefined;
 
       return {
         ...subRoute,
@@ -214,12 +256,29 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
           thaiText?.label ??
           russianText?.label ??
           germanText?.label ??
+          polishText?.label ??
+          frenchText?.label ??
+          chineseText?.label ??
           subRoute.label,
         operatorNote: sourceText.operatorNote ?? subRoute.operatorNote,
         sourceName: sourceText.sourceName ?? subRoute.sourceName,
         sourceType: sourceText.sourceType ?? subRoute.sourceType,
-        from: thaiText?.from ?? russianText?.from ?? germanText?.from ?? subRoute.from,
-        to: thaiText?.to ?? russianText?.to ?? germanText?.to ?? subRoute.to,
+        from:
+          thaiText?.from ??
+          russianText?.from ??
+          germanText?.from ??
+          polishText?.from ??
+          frenchText?.from ??
+          chineseText?.from ??
+          subRoute.from,
+        to:
+          thaiText?.to ??
+          russianText?.to ??
+          germanText?.to ??
+          polishText?.to ??
+          frenchText?.to ??
+          chineseText?.to ??
+          subRoute.to,
       };
     }),
   };
@@ -232,6 +291,8 @@ export function localizeStations(
   const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
   const isRussian = t.nextBus.title === "Следующий автобус";
   const isGerman = t.nextBus.title === "Nächster Bus";
+  const isFrench = t.nextBus.title === "Prochain bus :";
+  const isChinese = t.nextBus.title === "下一班巴士";
   const thaiStationNames: Record<string, string> = {
     ekkamai: "สถานีขนส่งเอกมัย",
     "mo-chit": "สถานีขนส่งหมอชิต 2",
@@ -259,6 +320,24 @@ export function localizeStations(
     "don-mueang-airport": "Flughafen Don Mueang",
     "pattaya-sukhumvit": "Busbahnhof an der Sukhumvit Road in Pattaya",
   };
+  const frenchStationNames: Record<string, string> = {
+    ekkamai: "Gare routière Ekkamai",
+    "mo-chit": "Gare routière Mo Chit 2",
+    "north-pattaya": "Terminal de bus North Pattaya",
+    "suvarnabhumi-airport": "Comptoir de bus de l'aéroport Suvarnabhumi",
+    "jomtien-bus-area": "Zone de bus Pattaya / Jomtien",
+    "don-mueang-airport": "Aéroport Don Mueang",
+    "pattaya-sukhumvit": "Gare routière de Pattaya Sukhumvit Road",
+  };
+  const chineseStationNames: Record<string, string> = {
+    ekkamai: "Ekkamai 巴士总站",
+    "mo-chit": "Mo Chit 2 巴士总站",
+    "north-pattaya": "North Pattaya Bus Terminal",
+    "suvarnabhumi-airport": "素万那普机场巴士柜台",
+    "jomtien-bus-area": "芭提雅 / 中天机场巴士区域",
+    "don-mueang-airport": "廊曼机场",
+    "pattaya-sukhumvit": "芭提雅 Sukhumvit Road 巴士站",
+  };
 
   return stations.map((station) => {
     const stationId = station.id as keyof Translations["stationsText"];
@@ -270,8 +349,12 @@ export function localizeStations(
         ? thaiStationNames[station.id] ?? station.name
         : isRussian
           ? russianStationNames[station.id] ?? station.name
-          : isGerman
-            ? germanStationNames[station.id] ?? station.name
+        : isGerman
+          ? germanStationNames[station.id] ?? station.name
+        : isFrench
+          ? frenchStationNames[station.id] ?? station.name
+        : isChinese
+          ? chineseStationNames[station.id] ?? station.name
           : station.name,
       bestFor: stationText.bestFor,
       tip: stationText.tip,
