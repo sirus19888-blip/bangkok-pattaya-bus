@@ -21,9 +21,9 @@ const labels: Record<LocaleCode, string> = {
 
 const disclosures: Record<LocaleCode, string> = {
   de: "12Go-Optionen können von den hier gezeigten informativen Zeiten abweichen.",
-  en: "12Go options may differ from the informational times shown here.",
+  en: "Some booking links may be affiliate links. This does not affect the timetable information. 12Go options may differ from the informational times shown here.",
   fr: "Les options sur 12Go peuvent différer des horaires informatifs affichés ici.",
-  pl: "Opcje na 12Go mogą różnić się od informacyjnych godzin pokazanych tutaj.",
+  pl: "Niektóre linki do rezerwacji mogą być linkami afiliacyjnymi. Nie wpływa to na informacje o rozkładzie. Opcje na 12Go mogą różnić się od informacyjnych godzin pokazanych tutaj.",
   ru: "Варианты на 12Go могут отличаться от информационного расписания на этой странице.",
   th: "ตัวเลือกบน 12Go อาจแตกต่างจากเวลาข้อมูลที่แสดงบนหน้านี้",
   zh: "12Go 上的选择可能与本页显示的参考时刻不同。",

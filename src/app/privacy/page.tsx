@@ -32,6 +32,10 @@ export default function PrivacyPage() {
           body: "The site may use ads in the future. Analytics, advertising, maps, or other third-party services may use cookies or similar technologies according to their own policies.",
         },
         {
+          title: "Affiliate links",
+          body: "Some booking links, including links to third-party ticketing or travel services, may be affiliate links. This does not affect the timetable information shown on this guide.",
+        },
+        {
           title: "Contact",
           body: "Users can contact the site owner at bangkokpattayabus@gmail.com with privacy questions or requests.",
         },

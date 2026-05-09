@@ -24,12 +24,20 @@ export default function ContactPage() {
           body: "You can contact the site owner at bangkokpattayabus@gmail.com.",
         },
         {
+          title: "Content responsibility",
+          body: "The site owner reviews correction requests and is responsible for publishing updates on this guide. This website is independent and is not an official bus operator website.",
+        },
+        {
           title: "For travelers",
           body: "If you notice outdated bus times, wrong prices, or station information that needs updating, please send a message.",
         },
         {
           title: "For operators",
-          body: "If you represent a bus operator or ticketing platform and want to suggest corrections, please get in touch.",
+          body: "If you represent a bus operator, ticketing platform, bus station, or airport transport desk, please send updated timetable information, fare, effective date, route name, boarding point, source link if available, and a contact person for verification.",
+        },
+        {
+          title: "What to include",
+          body: "Please include the route name, direction, departure times, ticket price, boarding point, destination, date the information becomes effective, and whether the update is official or temporary. This helps us review changes without guessing.",
         },
         {
           title: "Urgent travel support",
