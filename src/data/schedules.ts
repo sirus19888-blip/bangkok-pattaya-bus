@@ -46,7 +46,7 @@ export const schedules: Schedule[] = [
     to: "Pattaya Bus Station",
     direction: "bangkok-to-pattaya",
     travelTime: "Around 2-3 hours",
-    price: "158 THB per seat",
+    price: "148 THB per seat",
     departures: [
       "06:00",
       "09:00",
@@ -73,7 +73,7 @@ export const schedules: Schedule[] = [
     sourceType: "official operator website",
     lastVerified: "2026-05-08",
     verificationStatus: "partially verified",
-    fareNote: "Fare published by the operator: 158 THB per seat.",
+    fareNote: "Fare published by the operator: 148 THB per seat.",
     operatorNote:
       "Bus times may change. Confirm at the station or with the operator before travel.",
     dataQuality: "Official source, manually verified",

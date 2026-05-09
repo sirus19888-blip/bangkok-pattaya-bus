@@ -20,7 +20,7 @@ const routeCards: Record<
   "bangkok-to-pattaya": {
     cta: "Check times",
     note: "Buses from Ekkamai",
-    price: "From 158 THB",
+    price: "From 148 THB",
     title: "Bangkok to Pattaya Bus",
     travelTime: "Around 2-3 hours",
   },

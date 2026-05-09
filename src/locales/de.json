@@ -19,7 +19,7 @@
     "timeZoneNote": "Alle Zeiten werden in thailändischer Ortszeit angezeigt.",
     "availableTo": "Verfügbar nach:",
     "remainingTime": "Zeit bis zur Abfahrt",
-    "leavingNow": "F?hrt jetzt ab",
+    "leavingNow": "Fährt jetzt ab",
     "hoursShort": "Std.",
     "minutesShort": "Min."
   },
@@ -136,9 +136,9 @@
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
       "travelTime": "etwa 2–3 Stunden",
-      "price": "158 Baht pro Sitz",
+      "price": "148 Baht pro Sitz",
       "disclaimer": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
-      "fareNote": "Vom Betreiber veröffentlichter Preis: 158 Baht pro Sitz.",
+      "fareNote": "Vom Betreiber veröffentlichter Preis: 148 Baht pro Sitz.",
       "operatorNote": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
       "sourceName": "Pattaya Bus / Roong Reuang Coach",
       "sourceType": "offizielle Betreiberwebsite",

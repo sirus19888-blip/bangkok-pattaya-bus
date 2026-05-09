@@ -281,29 +281,37 @@ function formatVerificationStatus(
   status: ScheduleSource["verificationStatus"],
   labels: Translations["schedule"],
 ) {
-  const isThai = labels.verification === "สถานะการตรวจสอบ";
-  const isRussian = labels.verification === "Статус проверки";
-  const isGerman = labels.verification === "Prüfstatus";
+  const translations: Record<string, Record<ScheduleSource["verificationStatus"], string>> = {
+    "Typ źródła:": {
+      "needs official confirmation": "Wymaga oficjalnego potwierdzenia",
+      "partially verified": "Częściowo sprawdzone",
+    },
+    "Type de source :": {
+      "needs official confirmation": "Confirmation officielle nécessaire",
+      "partially verified": "Partiellement vérifié",
+    },
+    Quellentyp: {
+      "needs official confirmation": "Offizielle Bestätigung nötig",
+      "partially verified": "Teilweise geprüft",
+    },
+    "Тип источника": {
+      "needs official confirmation": "Требуется официальное подтверждение",
+      "partially verified": "Частично проверено",
+    },
+    "ประเภทแหล่งข้อมูล": {
+      "needs official confirmation": "ต้องยืนยันกับแหล่งข้อมูลทางการ",
+      "partially verified": "ตรวจสอบบางส่วนแล้ว",
+    },
+    来源类型: {
+      "needs official confirmation": "需要官方确认",
+      "partially verified": "部分已验证",
+    },
+  };
 
-  if (!isThai && !isRussian && !isGerman) {
-    return status.charAt(0).toUpperCase() + status.slice(1);
-  }
-
-  if (isGerman) {
-    return status === "needs official confirmation"
-      ? "offizielle Bestätigung nötig"
-      : "teilweise geprüft";
-  }
-
-  if (isRussian) {
-    return status === "needs official confirmation"
-      ? "требует официального подтверждения"
-      : "частично проверено";
-  }
-
-  return status === "needs official confirmation"
-    ? "ต้องยืนยันกับแหล่งข้อมูลทางการ"
-    : "ตรวจสอบบางส่วนแล้ว";
+  return (
+    translations[labels.sourceType]?.[status] ??
+    status.charAt(0).toUpperCase() + status.slice(1)
+  );
 }
 
 function InfoRow({

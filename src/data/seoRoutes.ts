@@ -58,7 +58,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     legalBoarding:
       "For the main bus route, use Ekkamai Bus Terminal and buy tickets at the official counter. Avoid unofficial drivers around terminals.",
     estimatedPrices: [
-      "Bus: around 158 THB per seat, based on operator information.",
+      "Bus: around 148 THB per seat from Ekkamai, based on operator information.",
       "Private taxi or transfer: commonly advertised around 1,200-2,000 THB depending on pickup point, vehicle and provider.",
       "Grab, Bolt and inDrive: app prices vary by traffic, demand, tolls and driver availability. Check the app before booking.",
     ],
@@ -71,7 +71,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     options: [
       {
         title: "Bus from Ekkamai",
-        price: "158 THB per seat",
+        price: "148 THB per seat",
         duration: "Around 2-3 hours",
         bestFor: "Budget travelers",
         note: "Cheap and simple if you are staying near Sukhumvit or BTS.",

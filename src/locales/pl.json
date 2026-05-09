@@ -20,8 +20,8 @@
     "leavingNow": "Odjeżdża teraz",
     "hoursShort": "godz.",
     "minutesShort": "min",
-    "nextServiceTomorrow": "Nast?pny kurs jutro",
-    "availableTo": "Dost?pne do:"
+    "nextServiceTomorrow": "Następny kurs jutro",
+    "availableTo": "Dostępne do:"
   },
   "schedule": {
     "needsOfficialConfirmationShort": "Wymaga potwierdzenia",
@@ -124,36 +124,60 @@
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
       "travelTime": "Około 2-3 godziny",
-      "price": "158 THB za miejsce",
-      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora."
+      "price": "148 THB za miejsce",
+      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
+      "fareNote": "Cena opublikowana przez operatora: 148 THB za miejsce.",
+      "operatorNote": "Godziny autobusów mogą się zmienić. Potwierdź na stacji lub u operatora przed podróżą.",
+      "sourceType": "oficjalna strona operatora",
+      "dataQuality": "Oficjalne źródło, sprawdzone ręcznie"
     },
     "pattaya-to-bangkok-ekkamai": {
       "travelTime": "Około 2-3 godziny",
       "price": "148-158 THB za miejsce",
-      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora."
+      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
+      "fareNote": "Ceny opublikowane przez operatora: 158 THB do Mo Chit i 148 THB do Ekkamai za miejsce.",
+      "operatorNote": "Godziny autobusów mogą się zmienić. Potwierdź na stacji lub u operatora przed podróżą.",
+      "sourceType": "oficjalna strona operatora",
+      "dataQuality": "Oficjalne źródło, sprawdzone ręcznie"
     },
     "suvarnabhumi-airport-to-pattaya": {
       "travelTime": "Około 2-2,5 godziny",
       "price": "162 THB za miejsce",
-      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora."
+      "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
+      "fareNote": "Cena opublikowana przez operatora: 162 THB za miejsce.",
+      "operatorNote": "Autobus o 22:00 jedzie do North Pattaya Bus Station, a nie do terminalu Jomtien. Godziny mogą się zmienić, potwierdź przed podróżą.",
+      "sourceType": "oficjalna strona operatora",
+      "dataQuality": "Oficjalne źródło, sprawdzone ręcznie"
     },
     "pattaya-to-suvarnabhumi-airport": {
       "travelTime": "Około 2-2,5 godziny, zależnie od ruchu",
       "price": "162 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
-      "boardingNote": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien."
+      "boardingNote": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien.",
+      "fareNote": "Cena opublikowana przez operatora: 162 THB za miejsce.",
+      "operatorNote": "Godziny autobusów mogą się zmienić. Potwierdź na stacji lub u operatora przed podróżą.",
+      "sourceType": "oficjalna strona operatora",
+      "dataQuality": "Oficjalne źródło, sprawdzone ręcznie"
     },
     "don-mueang-airport-to-pattaya": {
       "travelTime": "Około 3-3,5 godziny",
       "price": "155 THB za osobę",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
-      "boardingNote": "Oficjalna strona lotniska wskazuje stanowisko w Terminalu 1, Building 1, Floor 1, Gate 1 oraz w Terminalu 2, Building 2, Floor 1, Gate 11. Miejsce odbioru to Service Hall Building."
+      "boardingNote": "Oficjalna strona lotniska wskazuje stanowisko w Terminalu 1, Building 1, Floor 1, Gate 1 oraz w Terminalu 2, Building 2, Floor 1, Gate 11. Miejsce odbioru to Service Hall Building.",
+      "fareNote": "Cena podana na stronie transportowej lotniska: 155 THB za osobę.",
+      "operatorNote": "Na podstawie oficjalnych informacji transportowych lotniska. Potwierdź przed podróżą.",
+      "sourceType": "oficjalna strona lotniska / operatora",
+      "dataQuality": "Oficjalne źródło lotniskowe, sprawdzone ręcznie"
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Około 3-3,5 godziny",
       "price": "Około 170 THB",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
-      "boardingNote": "Źródła dodatkowe wskazują Pattaya Sukhumvit Road Bus Station. Przed podróżą potwierdź dokładne miejsce odjazdu w Pattayi."
+      "boardingNote": "Źródła dodatkowe wskazują Pattaya Sukhumvit Road Bus Station. Przed podróżą potwierdź dokładne miejsce odjazdu w Pattayi.",
+      "fareNote": "Źródła dodatkowe pokazują cenę około 170 THB za osobę.",
+      "operatorNote": "Rozkład opiera się na dodatkowych źródłach rezerwacyjnych i podróżniczych. Potwierdź u operatora lub na stacji.",
+      "sourceType": "dodatkowe źródła rezerwacyjne / podróżnicze",
+      "dataQuality": "Źródła dodatkowe, wymagają potwierdzenia u operatora"
     }
   },
   "stationsText": {
