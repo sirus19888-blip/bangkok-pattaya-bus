@@ -16,6 +16,10 @@ const ctaSource = readFileSync(
   join(root, "src/components/AffiliateCTA.tsx"),
   "utf8",
 );
+const stationCardSource = readFileSync(
+  join(root, "src/components/StationCard.tsx"),
+  "utf8",
+);
 const routesSource = readFileSync(join(root, "src/data/routes.ts"), "utf8");
 
 const expectedEnglishRoutes = [
@@ -26,6 +30,21 @@ const expectedEnglishRoutes = [
   "/en/don-mueang-airport-to-pattaya",
   "/en/pattaya-to-don-mueang-airport",
 ];
+
+const stationTipSamplesByRoute = new Map([
+  [
+    "/en/bangkok-to-pattaya",
+    "The easiest way is BTS Skytrain",
+  ],
+  [
+    "/en/pattaya-to-bangkok",
+    "From your hotel, open North Pattaya Bus Terminal in Google Maps first",
+  ],
+  [
+    "/en/suvarnabhumi-airport-to-pattaya",
+    "After landing, follow Arrivals",
+  ],
+]);
 
 function count(source, pattern) {
   return source.match(pattern)?.length ?? 0;
@@ -71,6 +90,16 @@ for (const path of expectedEnglishRoutes) {
       visibleHtml.includes("Next bus"),
       `${path} must keep the next bus UI.`,
     );
+
+    const stationTipSample = stationTipSamplesByRoute.get(path);
+
+    if (stationTipSample) {
+      assert.equal(
+        count(visibleHtml, new RegExp(escapeRegExp(stationTipSample), "g")),
+        1,
+        `${path} must render the first station tip once, not as both mobile and desktop copies.`,
+      );
+    }
   }
 }
 
@@ -141,5 +170,18 @@ assert.match(
   /rel="sponsored nofollow"/,
   '12Go CTA must keep rel="sponsored nofollow".',
 );
+assert.ok(
+  !stationCardSource.includes('<span className="hidden md:inline"> {stationTip}</span>'),
+  "Station tips must not render a second hidden desktop paragraph.",
+);
+assert.equal(
+  count(stationCardSource, /stationTipPoints\.map/g),
+  1,
+  "Station tips should be rendered from one responsive list.",
+);
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 console.log("Route page structure checks passed.");

@@ -30,7 +30,7 @@ export function StationCard({
       <div className="mt-3 grid gap-3 sm:mt-5 sm:grid-cols-2">
         {stations.map((station, index) => {
           const stationTip = getStationTip(station.id, station.tip, locale, routeId);
-          const mobileTipPoints = getMobileTipPoints(
+          const stationTipPoints = getMobileTipPoints(
             station.id,
             stationTip,
             locale,
@@ -83,18 +83,17 @@ export function StationCard({
                     aria-hidden="true"
                     className="pointer-events-none absolute bottom-2 right-0 top-10 z-10 w-10 bg-gradient-to-l from-white via-white/85 to-transparent md:hidden"
                   />
-                  <ul className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 pr-8 [scrollbar-width:thin] md:hidden">
-                    {mobileTipPoints.map((point) => (
+                  <ul className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 pr-8 [scrollbar-width:thin] md:mx-0 md:block md:space-y-2 md:overflow-visible md:px-0 md:pb-0 md:pr-0">
+                    {stationTipPoints.map((point) => (
                       <li
                         key={point}
-                        className="flex w-[17rem] flex-none snap-start gap-2 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 leading-5 shadow-sm"
+                        className="flex w-[17rem] flex-none snap-start gap-2 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 leading-5 shadow-sm md:w-auto md:border-0 md:bg-transparent md:p-0 md:shadow-none"
                       >
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e8b05a]" />
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
-                  <span className="hidden md:inline"> {stationTip}</span>
                 </div>
               </div>
               <div className="space-y-3 p-3 sm:p-4">
