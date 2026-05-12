@@ -1,14 +1,10 @@
-import Image from "next/image";
 import type { ReactNode } from "react";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
 import { MobileRouteDecisionCard } from "@/components/MobileRouteDecisionCard";
-import { NextBusCard } from "@/components/NextBusCard";
 import { RelatedRoutes } from "@/components/RelatedRoutes";
 import { RouteJsonLd } from "@/components/RouteJsonLd";
-import { RouteSearch } from "@/components/RouteSearch";
 import { RouteSummary } from "@/components/RouteSummary";
-import { ScheduleList } from "@/components/ScheduleList";
 import { StationCard } from "@/components/StationCard";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
 import { getTwelveGoButtonLabel } from "@/components/TwelveGoAffiliateButton";
@@ -32,19 +28,6 @@ type RoutePageLayoutProps = {
   locale: LocaleCode;
 };
 
-const desktopRouteHeroImages: Record<RoutePage["slug"], string> = {
-  "bangkok-to-pattaya": "/images/hero/desktop-bus-coast.png",
-  "pattaya-to-bangkok": "/images/stations/pattaya-north/pattaya-station.jpg",
-  "suvarnabhumi-airport-to-pattaya":
-    "/images/stations/suvarnabhumi/suvarnabhumi-bus-terminal.jpg",
-  "pattaya-to-suvarnabhumi-airport":
-    "/images/stations/pattaya-north/pattaya-bus-area.jpg",
-  "don-mueang-airport-to-pattaya":
-    "/images/stations/don-mueang/don-mueang-terminal-2.jpg",
-  "pattaya-to-don-mueang-airport":
-    "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
-};
-
 export function RoutePageLayout({
   routePage,
   route,
@@ -59,7 +42,6 @@ export function RoutePageLayout({
     routePage.slug,
     locale,
   );
-  const desktopHeroImage = desktopRouteHeroImages[routePage.slug];
   const sourceStatusLabel =
     schedule.verificationStatus === "needs official confirmation"
       ? t.schedule.needsOfficialConfirmationShort
@@ -101,6 +83,18 @@ export function RoutePageLayout({
           scheduleLabels={t.schedule}
         />
 
+        <RouteSummary
+          route={route}
+          schedule={schedule}
+          from={routePage.from}
+          to={routePage.to}
+          labels={{
+            ...t.common,
+            ...t.routeSelector,
+            travelTime: t.nextBus.travelTime,
+          }}
+        />
+
         <MobileDetailsSection title={t.station.title}>
           <StationCard
             stations={stations}
@@ -120,7 +114,7 @@ export function RoutePageLayout({
 
         <div
           id="mobile-related-routes"
-          className="scroll-mt-6 md:hidden"
+          className="scroll-mt-6"
         >
           <RelatedRoutes
             currentRoute={routePage.slug}
@@ -140,103 +134,6 @@ export function RoutePageLayout({
           />
         </div>
 
-        <section className="hidden gap-4 md:grid min-[1180px]:grid-cols-[minmax(0,1.18fr)_minmax(19rem,0.82fr)] min-[1180px]:items-stretch">
-          <div className="relative overflow-hidden rounded-2xl border border-[#102238]/20 bg-[#13233a] p-5 text-white shadow-sm sm:p-7 md:p-5">
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover"
-              fill
-              priority
-              sizes="(min-width: 1180px) 760px, 100vw"
-              src={desktopHeroImage}
-            />
-            <div className="absolute inset-0 bg-gradient-to-br from-[#071526]/92 via-[#102238]/72 to-[#102238]/35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#13233a]/88 via-transparent to-transparent" />
-            <div className="relative">
-              <p className="mb-3 text-xs font-black uppercase tracking-[0.2em] text-[#f3d77b] sm:text-sm md:mb-2">
-                {t.app.title}
-              </p>
-              <h1 className="max-w-3xl text-[2.15rem] font-black leading-[1.08] text-white drop-shadow sm:text-5xl md:text-[clamp(2.1rem,3.1vw,2.7rem)]">
-                {routePage.title}
-              </h1>
-              <p className="mt-3 max-w-2xl text-[0.95rem] font-semibold leading-7 text-[#edf3f8] drop-shadow sm:mt-4 sm:text-lg md:mt-3 md:text-base md:leading-6">
-                {routePage.intro}
-              </p>
-            </div>
-
-            <div className="relative">
-              <RouteSearch
-                desktopGo
-                from={routePage.from}
-                labels={t.routeSelector}
-                locale={locale}
-                currentRoute={routePage.slug}
-                routePages={routePages.map((page) => {
-                  const routeText = t.routePages[page.slug];
-                  const endpoints = routeText as { from?: string; to?: string };
-
-                  return {
-                    slug: page.slug,
-                    from: endpoints.from ?? page.from,
-                    to: endpoints.to ?? page.to,
-                  };
-                })}
-                to={routePage.to}
-              />
-              <div className="mt-4">
-                <ScheduleList
-                  route={route}
-                  schedule={schedule}
-                  nextDeparture={nextDeparture}
-                  labels={t.schedule}
-                  showSourceInfo
-                  sourceInfoMode="popover"
-                />
-              </div>
-            </div>
-          </div>
-
-          <NextBusCard
-            locale={locale}
-            routeId={routePage.slug}
-            schedule={schedule}
-            nextDeparture={nextDeparture}
-            labels={{
-              ...t.nextBus,
-              showAllDepartures: t.common.showAllDepartures,
-            }}
-          />
-        </section>
-
-        <div className="hidden md:block">
-          <RouteSummary
-            route={route}
-            schedule={schedule}
-            from={routePage.from}
-            to={routePage.to}
-            labels={{
-              ...t.common,
-              ...t.routeSelector,
-              travelTime: t.nextBus.travelTime,
-            }}
-          />
-        </div>
-
-        <section className="hidden space-y-4 md:block">
-          <StationCard
-            stations={stations}
-            locale={locale}
-            routeId={routePage.slug}
-            photoGroups={stationPhotoGroups}
-            labels={{
-              ...t.station,
-              openInGoogleMaps: t.common.openInGoogleMaps,
-            }}
-          />
-          <FAQ faqs={localizedFaqs} labels={t.faq} />
-        </section>
-
         <TravelerFeedback
           locale={locale}
           routeTitle={routePage.title}
@@ -254,7 +151,7 @@ function MobileDetailsSection({
   title: string;
 }) {
   return (
-    <details className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm md:hidden">
+    <details className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm">
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a]">
         <span>{title}</span>
         <span

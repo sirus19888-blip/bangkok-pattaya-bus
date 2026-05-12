@@ -93,7 +93,7 @@ export function MobileRouteDecisionCard({
   }
 
   return (
-    <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm md:hidden">
+    <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
@@ -146,7 +146,10 @@ export function MobileRouteDecisionCard({
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
 
-      <div id="mobile-departures" className="mt-2.5 grid grid-cols-3 gap-1.5">
+      <p className="mt-2.5 text-xs font-black uppercase tracking-wide text-[#2f6f93]">
+        {scheduleLabels.title}
+      </p>
+      <div id="mobile-departures" className="mt-1.5 grid grid-cols-3 gap-1.5">
         {hasDepartures ? (
           departures.map((departure) => (
             <span

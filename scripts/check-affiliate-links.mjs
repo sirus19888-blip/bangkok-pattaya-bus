@@ -94,8 +94,12 @@ assert.match(
 );
 assert.match(
   ctaSource,
-  /md:hidden/,
-  "Sticky affiliate CTA must be mobile-only.",
+  /md:static/,
+  "Sticky affiliate CTA must become a normal inline CTA on desktop.",
+);
+assert.ok(
+  !ctaSource.includes("fixed bottom"),
+  "Sticky affiliate CTA must not be fixed over the schedule.",
 );
 assert.match(
   twelveGoSource,

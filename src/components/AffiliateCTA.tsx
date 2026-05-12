@@ -30,7 +30,7 @@ const variantClasses: Record<AffiliateCTAVariant, string> = {
   top: "mt-3",
   afterSchedule: "mt-4",
   stickyMobile:
-    "sticky bottom-3 z-30 mt-3 pb-[env(safe-area-inset-bottom)] md:hidden",
+    "sticky bottom-3 z-30 mt-3 pb-[env(safe-area-inset-bottom)] md:static md:bottom-auto md:pb-0",
   afterFaq: "mt-4",
 };
 
