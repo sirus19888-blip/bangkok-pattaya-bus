@@ -8,11 +8,9 @@ export function useNextDeparture(
   schedule: Schedule,
   initialNextDeparture: string,
 ): NextDepartureResult {
-  const [nextDeparture, setNextDeparture] = useState<NextDepartureResult>({
-    time: initialNextDeparture,
-    isTomorrow: false,
-    subRoutes: [],
-  });
+  const [nextDeparture, setNextDeparture] = useState<NextDepartureResult>(() =>
+    getNextDeparture(schedule),
+  );
 
   useEffect(() => {
     function updateNextDeparture() {
@@ -25,5 +23,11 @@ export function useNextDeparture(
     return () => window.clearInterval(intervalId);
   }, [schedule]);
 
-  return nextDeparture;
+  return nextDeparture.time
+    ? nextDeparture
+    : {
+        time: initialNextDeparture,
+        isTomorrow: false,
+        subRoutes: [],
+      };
 }

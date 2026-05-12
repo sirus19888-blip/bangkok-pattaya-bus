@@ -10,12 +10,16 @@ export type NextDepartureResult = {
   }[];
 };
 
-const thailandTimeFormatter = new Intl.DateTimeFormat("en-GB", {
-  hour: "2-digit",
-  minute: "2-digit",
-  hourCycle: "h23",
-  timeZone: "Asia/Bangkok",
-});
+const DEFAULT_TIMEZONE = "Asia/Bangkok";
+
+function createTimeFormatter(timezone: string) {
+  return new Intl.DateTimeFormat("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+    timeZone: timezone,
+  });
+}
 
 export function timeToMinutes(time: string) {
   const [hours, minutes] = time.split(":").map(Number);
@@ -45,8 +49,11 @@ function getMatchingSubRoutes(schedule: Schedule, departure: string) {
   );
 }
 
-export function getCurrentThailandTime(now = new Date()) {
-  const timeParts = thailandTimeFormatter.formatToParts(now);
+export function getCurrentThailandTime(
+  now = new Date(),
+  timezone = DEFAULT_TIMEZONE,
+) {
+  const timeParts = createTimeFormatter(timezone).formatToParts(now);
   const hour = Number(
     timeParts.find((part) => part.type === "hour")?.value ?? "0",
   );
@@ -64,6 +71,7 @@ export function getCurrentThailandTime(now = new Date()) {
 export function getNextDeparture(
   schedule: Schedule,
   now = new Date(),
+  timezone = DEFAULT_TIMEZONE,
 ): NextDepartureResult {
   const departures = getRouteDepartures(schedule);
 
@@ -75,7 +83,10 @@ export function getNextDeparture(
     };
   }
 
-  const currentMinutes = getCurrentThailandTime(now).minutesSinceMidnight;
+  const currentMinutes = getCurrentThailandTime(
+    now,
+    timezone,
+  ).minutesSinceMidnight;
   const nextToday = departures.find(
     (departure) => timeToMinutes(departure) > currentMinutes,
   );
@@ -103,13 +114,17 @@ export function getMinutesUntilDeparture(
   departure: string,
   isTomorrow: boolean,
   now = new Date(),
+  timezone = DEFAULT_TIMEZONE,
 ) {
   if (!departure) {
     return null;
   }
 
   const departureMinutes = timeToMinutes(departure);
-  const currentMinutes = getCurrentThailandTime(now).minutesSinceMidnight;
+  const currentMinutes = getCurrentThailandTime(
+    now,
+    timezone,
+  ).minutesSinceMidnight;
   const dayOffset = isTomorrow ? 24 * 60 : 0;
 
   return dayOffset + departureMinutes - currentMinutes;

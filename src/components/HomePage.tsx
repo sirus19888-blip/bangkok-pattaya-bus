@@ -1,15 +1,11 @@
 ﻿import Link from "next/link";
 import type { ComponentProps } from "react";
 import Image from "next/image";
-import { Header } from "@/components/Header";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MobileDestinationWeather } from "@/components/MobileDestinationWeather";
 import { MobileRouteCountdown } from "@/components/MobileRouteCountdown";
 import { RouteSearch } from "@/components/RouteSearch";
-import {
-  getTwelveGoButtonLabel,
-  TwelveGoAffiliateButton,
-} from "@/components/TwelveGoAffiliateButton";
+import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import { schedules } from "@/data/schedules";
@@ -30,22 +26,6 @@ export function HomePage({ locale }: { locale: LocaleCode }) {
         routePagesForLocale={localizedRoutePages}
         t={t}
       />
-      <section className="mx-auto hidden w-full max-w-[92rem] flex-col gap-5 px-4 pb-10 pt-4 md:flex lg:px-6 xl:px-8">
-        <Header
-          labels={{
-            ...t.app,
-            chooseLanguage: t.navigation.chooseLanguage,
-          }}
-          currentLocale={locale}
-          showDesktopHomeIcons
-        />
-
-        <DesktopHome
-          locale={locale}
-          routePagesForLocale={localizedRoutePages}
-          t={t}
-        />
-      </section>
     </main>
   );
 }
@@ -291,6 +271,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       heroLineOne: "Podróżuj",
       heroLineTwo: "podróżuj",
       heroSmart: "sprytnie,",
+      homepageH1: "Rozkład, ceny i dworce autobusów Bangkok Pattaya",
       hoursShort: "godz.",
       home: "Home",
       leavesIn: "Pozostało do odjazdu",
@@ -355,6 +336,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       heroLineOne: "Путешествуйте",
       heroLineTwo: "путешествуйте",
       heroSmart: "умно,",
+      homepageH1: "Автобусы Бангкок Паттайя: расписание, цены и станции",
       home: "Главная",
       hoursShort: "ч",
       leavesIn: "До отправления",
@@ -419,6 +401,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       heroLineOne: "Reise",
       heroLineTwo: "reise",
       heroSmart: "smart,",
+      homepageH1: "Bangkok Pattaya Buszeiten, Preise und Stationen",
       home: "Home",
       hoursShort: "Std.",
       leavesIn: "Bis zur Abfahrt",
@@ -483,6 +466,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       heroLineOne: "เดินทาง",
       heroLineTwo: "เดินทาง",
       heroSmart: "ฉลาด,",
+      homepageH1: "เวลารถบัส กรุงเทพฯ พัทยา ราคา และสถานี",
       home: "หน้าแรก",
       hoursShort: "ชม.",
       leavesIn: "ออกในอีก",
@@ -546,6 +530,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       heroLineOne: "聪明",
       heroLineTwo: "轻松",
       heroSmart: "出行，",
+      homepageH1: "曼谷芭提雅巴士时间、票价和车站",
       home: "首页",
       hoursShort: "小时",
       leavesIn: "距离发车",
@@ -609,6 +594,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       heroLineOne: "Voyagez",
       heroLineTwo: "voyagez",
       heroSmart: "malin,",
+      homepageH1: "Bus Bangkok Pattaya : horaires, prix et gares",
       home: "Accueil",
       hoursShort: "h",
       leavesIn: "Départ dans",
@@ -668,10 +654,11 @@ function getMobileHomeCopy(locale: LocaleCode) {
     desktopIntro:
       "Bus times, prices, stations, and practical travel tips for Bangkok, Pattaya, Suvarnabhumi Airport, and Don Mueang Airport.",
     findRoute: "Find your route",
-    heroEasy: "easy",
-    heroLineOne: "Travel",
-    heroLineTwo: "travel",
-    heroSmart: "smart,",
+      heroEasy: "easy",
+      heroLineOne: "Travel",
+      heroLineTwo: "travel",
+      heroSmart: "smart,",
+      homepageH1: "Bangkok Pattaya Bus Times, Prices & Stations",
     hoursShort: "h",
     home: "Home",
     leavesIn: "Leaves in",
@@ -708,252 +695,6 @@ function getMobileHomeCopy(locale: LocaleCode) {
   };
 }
 
-function DesktopHome({
-  locale,
-  routePagesForLocale,
-  t,
-}: {
-  locale: LocaleCode;
-  routePagesForLocale: RoutePage[];
-  t: Translations;
-}) {
-  const firstRoute = routePagesForLocale[0];
-  const copy = getMobileHomeCopy(locale);
-  const countdownLabels = {
-    check: copy.check,
-    hoursShort: copy.hoursShort,
-    leavesIn: copy.leavesIn,
-    minutesShort: copy.minutesShort,
-    nextBus: copy.nextBus,
-    now: copy.now,
-  };
-  return (
-    <>
-      <section
-        id="top"
-        className="overflow-hidden rounded-[2rem] border border-[#102238] bg-[#fffaf2] p-4 shadow-[0_24px_70px_rgba(19,35,58,0.14)] ring-1 ring-[#102238]/5 lg:p-5"
-      >
-        <div className="grid items-stretch gap-5 min-[1180px]:grid-cols-[minmax(20rem,0.74fr)_minmax(0,1.26fr)]">
-          <div className="flex h-full flex-col gap-4">
-            <div className="relative min-h-[24rem] flex-1 overflow-hidden rounded-[1.7rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/15 min-[1180px]:min-h-[34rem]">
-              <Image
-                alt=""
-                aria-hidden="true"
-                className="absolute inset-0 h-full w-full object-cover"
-                fill
-                priority
-                sizes="420px"
-                src="/images/hero/desktop-bus-coast.png"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/10 via-[#0e1e2e]/35 to-[#0e1e2e]/92" />
-              <div className="relative flex h-full min-h-[24rem] flex-col justify-between p-5 sm:p-6 min-[1180px]:min-h-[34rem]">
-                <div>
-                  <span className="inline-flex rounded-full bg-white/12 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.2em] text-[#e8b05a] ring-1 ring-white/15">
-                    {copy.travelRoutes}
-                  </span>
-                  <h1 className="mt-4 max-w-sm text-[clamp(2.45rem,4.4vw,3.35rem)] font-black leading-[0.94] tracking-tight">
-                    {copy.heroLineOne}{" "}
-                    <span className="italic text-[#e8b05a]">
-                      {copy.heroSmart}
-                    </span>
-                    <br />
-                    {copy.heroLineTwo}{" "}
-                    <span className="italic text-[#e8b05a]">
-                      {copy.heroEasy}
-                    </span>
-                  </h1>
-                  <p className="mt-4 max-w-sm text-sm font-semibold leading-6 text-[#edf3f8]">
-                    {copy.desktopIntro}
-                  </p>
-                </div>
-
-                <div>
-                <div className="mt-2 grid gap-2 sm:grid-cols-3">
-                    <HeroFact
-                      label={copy.timeFactLabel}
-                      value={copy.timeFactValue}
-                    />
-                    <HeroFact
-                      label={copy.dataFactLabel}
-                      value={copy.dataFactValue}
-                    />
-                    <HeroFact
-                      label={copy.safetyFactLabel}
-                      value={copy.safetyFactValue}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <section
-              id="desktop-travel-tips"
-              className="scroll-mt-24 rounded-[1.6rem] border border-[#eadcc7] bg-[#fff8ec] p-5 shadow-sm"
-            >
-              <p className="text-xs font-black uppercase tracking-[0.2em] text-[#b9832e]">
-                {copy.beforeTravel}
-              </p>
-              <h2 className="mt-2 text-2xl font-black text-[#13233a]">
-                {copy.adviceTitle}
-              </h2>
-              <div className="mt-4 grid gap-3">
-                {copy.tips.map((tip) => (
-                  <p
-                    key={tip}
-                    className="rounded-2xl bg-white/80 px-4 py-3 text-sm font-bold leading-6 text-[#4f5d6c]"
-                  >
-                    {tip}
-                  </p>
-                ))}
-              </div>
-            </section>
-          </div>
-
-          <div className="rounded-[1.7rem] border border-[#102238]/12 bg-white p-4 text-[#13233a] shadow-sm lg:p-5">
-            <RouteSearch
-              allowCurrentRouteNavigation
-              currentRoute="bangkok-to-pattaya"
-              desktopGo
-              from={firstRoute?.from ?? "Bangkok"}
-              labels={t.routeSelector}
-              locale={locale}
-              routePages={routePagesForLocale.map((page) => ({
-                slug: page.slug,
-                from: page.from,
-                to: page.to,
-              }))}
-              to={firstRoute?.to ?? "Pattaya"}
-            />
-
-            <div className="mt-5">
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.24em] text-[#0e7b6b]">
-                {copy.popularRoutes}
-              </p>
-              <h2 className="mt-1 text-xl font-black leading-tight text-[#13233a]">
-                {copy.chooseBus}
-              </h2>
-            </div>
-
-            <div className="mt-5 grid gap-4 min-[1360px]:grid-cols-2">
-              {routePagesForLocale.map((routePage) => (
-                <DesktopRouteCard
-                  copy={copy}
-                  countdownLabels={countdownLabels}
-                  key={routePage.slug}
-                  locale={locale}
-                  routePage={routePage}
-                  schedule={schedules.find(
-                    (schedule) => schedule.direction === routePage.slug,
-                  )}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </>
-  );
-}
-
-function HeroFact({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/8 p-3">
-      <p className="text-[0.65rem] font-black uppercase tracking-wide text-[#e8b05a]">
-        {label}
-      </p>
-      <p className="mt-1 text-sm font-black leading-5 text-white">{value}</p>
-    </div>
-  );
-}
-
-function DesktopRouteCard({
-  copy,
-  countdownLabels,
-  locale,
-  routePage,
-  schedule,
-}: {
-  copy: ReturnType<typeof getMobileHomeCopy>;
-  countdownLabels: NonNullable<
-    ComponentProps<typeof MobileRouteCountdown>["labels"]
-  >;
-  locale: LocaleCode;
-  routePage: RoutePage;
-  schedule?: Schedule;
-}) {
-  const meta = copy.routeMeta[routePage.slug];
-  const routeImage = mobileRouteImages[routePage.slug];
-
-  return (
-    <article className="flex min-h-[31rem] flex-col overflow-hidden rounded-[1.25rem] border border-[#eadcc7] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-      <Link
-        href={`/${locale}/${routePage.slug}`}
-        className="relative block min-h-48 overflow-hidden bg-[#13233a] p-4 text-white"
-      >
-        <Image
-          alt=""
-          aria-hidden="true"
-          className="h-full w-full object-cover transition duration-300 hover:scale-105"
-          fill
-          sizes="(min-width: 1280px) 260px, 320px"
-          src={routeImage}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/25 via-[#0e1e2e]/35 to-[#0e1e2e]/88" />
-        <div className="relative flex h-full min-h-40 flex-col justify-between gap-10">
-          <div className="flex items-start justify-between gap-2">
-            <span className="rounded-full bg-white/90 px-2.5 py-1 text-[0.58rem] font-black uppercase tracking-wide text-[#0e7b6b]">
-              {meta.badge}
-            </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-[#fff8ec]/95 px-2.5 py-1 text-[0.58rem] font-black uppercase tracking-wide text-[#b9832e]">
-              <IconAsset name="bus" size="sm" />
-              {copy.bus}
-            </span>
-          </div>
-          <h2 className="text-base font-black leading-tight text-white drop-shadow">
-            {routePage.title}
-          </h2>
-        </div>
-      </Link>
-      <div className="flex flex-1 flex-col p-4">
-        <p className="text-xs font-semibold leading-5 text-[#5f6874]">
-          {meta.note}
-        </p>
-        <div className="mt-4 grid grid-cols-2 gap-3">
-          <MobileMiniFact
-            compact
-            fallbackLabel={copy.check}
-            label={copy.travelTime}
-            value={schedule?.travelTime}
-          />
-          <MobileMiniFact
-            compact
-            fallbackLabel={copy.check}
-            label={copy.ticketPrice}
-            value={schedule?.price}
-          />
-        </div>
-        <div className="mt-3 text-[0.8rem] [&_.rounded-2xl]:rounded-xl [&_.text-base]:text-sm">
-          <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
-        </div>
-        <div className="flex-1" />
-        <Link
-          href={`/${locale}/${routePage.slug}`}
-          className="mt-4 flex min-h-10 w-full items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white"
-        >
-          {copy.checkTimes}
-        </Link>
-        <TwelveGoAffiliateButton
-          className="mt-3 flex min-h-10 w-full items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a] transition hover:bg-[#f8e7c6]"
-          label={getTwelveGoButtonLabel(locale)}
-          locale={locale}
-          routeId={routePage.slug}
-        />
-      </div>
-    </article>
-  );
-}
-
 function MobileHome({
   locale,
   routePagesForLocale,
@@ -975,7 +716,7 @@ function MobileHome({
   };
 
   return (
-    <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15 md:hidden">
+    <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15">
       <div className="flex-1 overflow-y-auto pb-24">
         <div className="overflow-hidden rounded-b-[2rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/20">
           <div className="flex items-center justify-between px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.9rem)]">
@@ -1029,7 +770,7 @@ function MobileHome({
               <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#e8b05a] ring-1 ring-white/15">
                 {copy.mobileHeroKicker}
               </span>
-              <h1 className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight">
+              <p className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight">
                 {copy.heroLineOne}{" "}
                 <span className="italic text-[#e8b05a]">
                   {copy.heroSmart}
@@ -1039,6 +780,9 @@ function MobileHome({
                 <span className="italic text-[#e8b05a]">
                   {copy.heroEasy}
                 </span>
+              </p>
+              <h1 className="mt-3 max-w-[18rem] text-[1.72rem] font-black leading-[1.02] tracking-tight text-white">
+                {copy.homepageH1}
               </h1>
               <p className="mt-2 max-w-[17.5rem] text-[0.84rem] font-semibold leading-5 text-[#e8edf5]">
                 {copy.subtitle}
