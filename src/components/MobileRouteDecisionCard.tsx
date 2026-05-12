@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import {
-  getTwelveGoDisclosure,
-  TwelveGoAffiliateButton,
-} from "@/components/TwelveGoAffiliateButton";
+import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
@@ -183,15 +180,12 @@ export function MobileRouteDecisionCard({
         {labels.showAllDepartures}
       </a>
       <TwelveGoAffiliateButton
-        className="mt-2 flex min-h-11 w-full items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-5 text-center text-sm font-black text-[#13233a] shadow-sm"
         label={affiliateLabel}
         locale={locale}
         routeId={routeId}
+        variant="stickyMobile"
       />
-      <div className="relative mt-1.5 flex items-start justify-between gap-2">
-        <p className="min-w-0 flex-1 text-xs font-semibold leading-5 text-[#5f6874]">
-          {getTwelveGoDisclosure(locale)}
-        </p>
+      <div className="relative mt-1.5 flex items-start justify-end gap-2">
         <details className="group relative shrink-0">
           <summary
             aria-label={scheduleLabels.dataTitle}

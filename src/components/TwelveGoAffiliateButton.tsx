@@ -1,12 +1,20 @@
-import Image from "next/image";
+import {
+  AffiliateCTA,
+  type AffiliateCTAVariant,
+} from "@/components/AffiliateCTA";
 import type { LocaleCode, RouteId } from "@/data/routes";
-import { build12GoRouteUrl, hasTwelveGoTickets } from "@/lib/twelveGo";
+import {
+  build12GoRouteUrl,
+  getAffiliateRoute,
+  hasTwelveGoTickets,
+} from "@/lib/twelveGo";
 
 type TwelveGoAffiliateButtonProps = {
   className?: string;
   label?: string;
   locale: LocaleCode;
   routeId: RouteId;
+  variant?: AffiliateCTAVariant;
 };
 
 const labels: Record<LocaleCode, string> = {
@@ -38,32 +46,31 @@ export function getTwelveGoDisclosure(locale: LocaleCode) {
 }
 
 export function TwelveGoAffiliateButton({
-  className = "",
+  className,
   label,
   locale,
   routeId,
+  variant = "top",
 }: TwelveGoAffiliateButtonProps) {
-  if (!hasTwelveGoTickets(routeId)) {
+  const affiliateUrl = build12GoRouteUrl(routeId, locale);
+  const affiliateRoute = getAffiliateRoute(routeId, locale);
+
+  if (!hasTwelveGoTickets(routeId) || !affiliateUrl) {
     return null;
   }
 
   return (
-    <a
-      aria-label={label ?? getTwelveGoButtonLabel(locale)}
+    <AffiliateCTA
       className={className}
-      href={build12GoRouteUrl()}
-      rel="noopener noreferrer sponsored"
-      target="_blank"
-    >
-      <Image
-        alt=""
-        aria-hidden="true"
-        className="mr-2 h-5 w-5 object-contain"
-        height={20}
-        src="/images/partners/12go-icon.png"
-        width={20}
-      />
-      {label ?? getTwelveGoButtonLabel(locale)}
-    </a>
+      href={affiliateUrl}
+      label={label ?? getTwelveGoButtonLabel(locale)}
+      lang={locale}
+      provider="12go"
+      routeId={routeId}
+      from={affiliateRoute?.from ?? ""}
+      subId={affiliateRoute?.subId}
+      to={affiliateRoute?.to ?? ""}
+      variant={variant}
+    />
   );
 }
