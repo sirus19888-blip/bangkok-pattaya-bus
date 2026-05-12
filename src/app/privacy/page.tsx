@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { TrustPage } from "@/components/TrustPage";
-
-const siteUrl = "https://www.bangkokpattayabus.com";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy | Bangkok Pattaya Bus Guide",
   description:
     "Simple privacy policy for Bangkok Pattaya Bus Guide, including analytics, ads, cookies, and contact information.",
   alternates: {
-    canonical: new URL("/privacy", siteUrl).toString(),
+    canonical: absoluteUrl("/privacy"),
   },
 };
 

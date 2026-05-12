@@ -2,13 +2,9 @@ import type { MetadataRoute } from "next";
 import { routePages, supportedLocaleCodes } from "@/data/routes";
 import { getScheduleByRoute } from "@/data/schedules";
 import { routeSeoPages } from "@/data/seoRoutes";
+import { absoluteUrl } from "@/lib/site";
 
-const siteUrl = "https://www.bangkokpattayabus.com";
 const staticLastModified = new Date("2026-05-08T00:00:00.000Z");
-
-function absoluteUrl(path: string) {
-  return new URL(path, siteUrl).toString();
-}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [

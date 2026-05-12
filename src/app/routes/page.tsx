@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { routeSeoPages } from "@/data/seoRoutes";
-
-const siteUrl = "https://www.bangkokpattayabus.com";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Thailand Transport Routes | Bangkok Pattaya Bus Guide",
   description:
     "Compare Bangkok, Pattaya, Suvarnabhumi Airport and Don Mueang Airport transport routes with bus, taxi, Grab, Bolt, inDrive and private transfer tips.",
   alternates: {
-    canonical: new URL("/routes", siteUrl).toString(),
+    canonical: absoluteUrl("/routes"),
   },
 };
 

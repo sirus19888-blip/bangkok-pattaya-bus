@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteFooter } from "@/components/SiteFooter";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bangkokpattayabus.com"),
+  metadataBase: new URL(SITE_URL),
   title: "Bangkok Pattaya Bus Guide",
   description:
     "Mobile bus schedules, station tips, and travel guidance between Bangkok and Pattaya.",

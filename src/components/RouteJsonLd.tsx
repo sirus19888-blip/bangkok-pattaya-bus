@@ -1,6 +1,7 @@
 import type { FAQItem } from "@/data/faqs";
 import type { LocaleCode, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 
 type RouteJsonLdProps = {
   faqs: FAQItem[];
@@ -9,11 +10,8 @@ type RouteJsonLdProps = {
   schedule: Schedule;
 };
 
-const siteUrl = "https://www.bangkokpattayabus.com";
-const siteName = "Bangkok Pattaya Bus Guide";
-
 function routeUrl(locale: LocaleCode, slug: string) {
-  return new URL(`/${locale}/${slug}`, siteUrl).toString();
+  return absoluteUrl(`/${locale}/${slug}`);
 }
 
 export function RouteJsonLd({
@@ -23,7 +21,7 @@ export function RouteJsonLd({
   schedule,
 }: RouteJsonLdProps) {
   const canonicalUrl = routeUrl(locale, routePage.slug);
-  const websiteId = `${siteUrl}/#website`;
+  const websiteId = `${SITE_URL}/#website`;
   const breadcrumbId = `${canonicalUrl}#breadcrumb`;
   const webpageId = `${canonicalUrl}#webpage`;
   const tripId = `${canonicalUrl}#trip`;
@@ -33,8 +31,8 @@ export function RouteJsonLd({
     {
       "@type": "WebSite",
       "@id": websiteId,
-      name: siteName,
-      url: siteUrl,
+      name: SITE_NAME,
+      url: SITE_URL,
     },
     {
       "@type": "WebPage",
@@ -61,7 +59,7 @@ export function RouteJsonLd({
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: siteUrl,
+          item: SITE_URL,
         },
         {
           "@type": "ListItem",

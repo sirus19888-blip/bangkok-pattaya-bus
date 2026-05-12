@@ -7,6 +7,7 @@ import {
   type LocaleCode,
 } from "@/data/routes";
 import { getTranslations } from "@/lib/i18n";
+import { absoluteUrl } from "@/lib/site";
 
 type LocaleHomeProps = {
   params: Promise<{
@@ -14,10 +15,8 @@ type LocaleHomeProps = {
   }>;
 };
 
-const siteUrl = "https://www.bangkokpattayabus.com";
-
 function homeUrl(locale: string) {
-  return new URL(`/${locale}`, siteUrl).toString();
+  return absoluteUrl(`/${locale}`);
 }
 
 export function generateStaticParams() {
@@ -57,7 +56,7 @@ export async function generateMetadata({
     alternates: {
       canonical: homeUrl(locale),
       languages: {
-        "x-default": new URL("/", siteUrl).toString(),
+        "x-default": absoluteUrl("/"),
         ...languages,
       },
     },

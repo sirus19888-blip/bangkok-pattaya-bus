@@ -17,6 +17,7 @@ import {
   localizeSchedule,
   localizeStations,
 } from "@/lib/i18n";
+import { absoluteUrl } from "@/lib/site";
 
 type RoutePageProps = {
   params: Promise<{
@@ -25,10 +26,8 @@ type RoutePageProps = {
   }>;
 };
 
-const siteUrl = "https://www.bangkokpattayabus.com";
-
 function routeUrl(locale: string, slug: string) {
-  return new URL(`/${locale}/${slug}`, siteUrl).toString();
+  return absoluteUrl(`/${locale}/${slug}`);
 }
 
 export function generateStaticParams() {

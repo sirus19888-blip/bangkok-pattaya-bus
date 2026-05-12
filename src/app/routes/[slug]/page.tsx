@@ -5,6 +5,7 @@ import { getRoutePage } from "@/data/routes";
 import { getScheduleByRoute } from "@/data/schedules";
 import { getRouteSeoPage, routeSeoPages } from "@/data/seoRoutes";
 import { stations } from "@/data/stations";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 
 type SeoRoutePageProps = {
   params: Promise<{
@@ -12,11 +13,8 @@ type SeoRoutePageProps = {
   }>;
 };
 
-const siteUrl = "https://www.bangkokpattayabus.com";
-const siteName = "Bangkok Pattaya Bus Guide";
-
 function pageUrl(slug: string) {
-  return new URL(`/routes/${slug}`, siteUrl).toString();
+  return absoluteUrl(`/routes/${slug}`);
 }
 
 export function generateStaticParams() {
@@ -48,7 +46,7 @@ export async function generateMetadata({
       title: page.seoTitle,
       description: page.seoDescription,
       url: pageUrl(page.slug),
-      siteName,
+      siteName: SITE_NAME,
       images: [
         {
           url: page.ogImage,
@@ -356,13 +354,13 @@ function SeoJsonLd({
             "@type": "ListItem",
             position: 1,
             name: "Home",
-            item: siteUrl,
+            item: SITE_URL,
           },
           {
             "@type": "ListItem",
             position: 2,
             name: "Routes",
-            item: new URL("/routes", siteUrl).toString(),
+            item: absoluteUrl("/routes"),
           },
           {
             "@type": "ListItem",

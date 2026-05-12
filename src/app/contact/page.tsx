@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { TrustPage } from "@/components/TrustPage";
-
-const siteUrl = "https://www.bangkokpattayabus.com";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact | Bangkok Pattaya Bus Guide",
   description:
     "Contact Bangkok Pattaya Bus Guide or report outdated Bangkok to Pattaya bus schedule information.",
   alternates: {
-    canonical: new URL("/contact", siteUrl).toString(),
+    canonical: absoluteUrl("/contact"),
   },
 };
 
