@@ -4,7 +4,6 @@ import { Header } from "@/components/Header";
 import { MobileRouteDecisionCard } from "@/components/MobileRouteDecisionCard";
 import { RelatedRoutes } from "@/components/RelatedRoutes";
 import { RouteJsonLd } from "@/components/RouteJsonLd";
-import { RouteSummary } from "@/components/RouteSummary";
 import { StationCard } from "@/components/StationCard";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
 import { getTwelveGoButtonLabel } from "@/components/TwelveGoAffiliateButton";
@@ -68,6 +67,7 @@ export function RoutePageLayout({
 
         <MobileRouteDecisionCard
           affiliateLabel={getTwelveGoButtonLabel(locale)}
+          distance={route.distance}
           locale={locale}
           routeId={routePage.slug}
           routeTitle={routePage.title}
@@ -81,18 +81,6 @@ export function RoutePageLayout({
               locale === "pl" ? "Pokaż wszystkie trasy" : t.common.showAllDepartures,
           }}
           scheduleLabels={t.schedule}
-        />
-
-        <RouteSummary
-          route={route}
-          schedule={schedule}
-          from={routePage.from}
-          to={routePage.to}
-          labels={{
-            ...t.common,
-            ...t.routeSelector,
-            travelTime: t.nextBus.travelTime,
-          }}
         />
 
         <MobileDetailsSection title={t.station.title}>
@@ -114,7 +102,7 @@ export function RoutePageLayout({
 
         <div
           id="mobile-related-routes"
-          className="scroll-mt-6 md:hidden"
+          className="scroll-mt-6"
         >
           <RelatedRoutes
             currentRoute={routePage.slug}
@@ -151,18 +139,21 @@ function MobileDetailsSection({
   title: string;
 }) {
   return (
-    <details className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm md:border-0 md:bg-transparent md:p-0 md:shadow-none">
-      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a] md:hidden">
-        <span>{title}</span>
-        <span
-          aria-hidden="true"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8c8b4] bg-[#fffaf2] text-lg leading-none"
-        >
-          <span className="group-open:hidden">+</span>
-          <span className="hidden group-open:inline">-</span>
-        </span>
-      </summary>
-      <div className="mt-4 md:mt-0 md:block">{children}</div>
-    </details>
+    <>
+      <details className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm md:hidden">
+        <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a]">
+          <span>{title}</span>
+          <span
+            aria-hidden="true"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8c8b4] bg-[#fffaf2] text-lg leading-none"
+          >
+            <span className="group-open:hidden">+</span>
+            <span className="hidden group-open:inline">-</span>
+          </span>
+        </summary>
+        <div className="mt-4">{children}</div>
+      </details>
+      <section className="hidden md:block">{children}</section>
+    </>
   );
 }

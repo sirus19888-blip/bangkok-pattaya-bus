@@ -12,6 +12,7 @@ import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 type MobileRouteDecisionCardProps = {
   affiliateLabel: string;
   locale: LocaleCode;
+  distance: string;
   routeId: RouteId;
   routeTitle: string;
   schedule: Schedule;
@@ -27,6 +28,7 @@ type MobileRouteDecisionCardProps = {
 export function MobileRouteDecisionCard({
   affiliateLabel,
   locale,
+  distance,
   routeId,
   routeTitle,
   schedule,
@@ -143,7 +145,10 @@ export function MobileRouteDecisionCard({
       </div>
 
       <div className="mt-2 grid grid-cols-2 gap-2 md:mt-3">
-        <DecisionFact label={labels.travelTime} value={schedule.travelTime} />
+        <DecisionFact
+          label={labels.travelTime}
+          value={`${schedule.travelTime} • ${distance}`}
+        />
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
 

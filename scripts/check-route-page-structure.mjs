@@ -75,8 +75,14 @@ for (const path of expectedEnglishRoutes) {
     );
     assert.equal(
       count(visibleHtml, /Route summary/g),
-      1,
-      `${path} must render Route summary exactly once.`,
+      0,
+      `${path} must not render the removed Route summary card.`,
+    );
+    assert.ok(
+      visibleHtml.includes("150 km") ||
+        visibleHtml.includes("120 km") ||
+        visibleHtml.includes("155 km"),
+      `${path} must still show route distance near the travel time.`,
     );
     assert.ok(
       visibleHtml.includes("12Go"),
@@ -96,8 +102,8 @@ for (const path of expectedEnglishRoutes) {
     if (stationTipSample) {
       assert.equal(
         count(visibleHtml, new RegExp(escapeRegExp(stationTipSample), "g")),
-        1,
-        `${path} must render the first station tip once, not as both mobile and desktop copies.`,
+        2,
+        `${path} must render station tips once for mobile and once for desktop.`,
       );
     }
   }
@@ -121,18 +127,22 @@ assert.equal(
 );
 assert.equal(
   count(routeLayoutSource, /<RouteSummary\b/g),
-  1,
-  "Route summary must render exactly once.",
+  0,
+  "Route summary must not be rendered as a separate card.",
 );
 assert.equal(
   count(routeLayoutSource, /<StationCard\b/g),
   1,
-  "Station information must render exactly once.",
+  "Station information content must be declared once in RoutePageLayout.",
 );
 assert.equal(
   count(routeLayoutSource, /<FAQ\b/g),
   1,
-  "FAQ/questions must render exactly once.",
+  "FAQ/questions content must be declared once in RoutePageLayout.",
+);
+assert.ok(
+  routeLayoutSource.includes('className="hidden md:block"'),
+  "Desktop must render route detail sections outside closed mobile details.",
 );
 
 for (const oldDesktopMarker of [
@@ -141,7 +151,6 @@ for (const oldDesktopMarker of [
   "ScheduleList",
   "desktopRouteHeroImages",
   "hidden gap-4 md:grid",
-  "hidden md:block",
 ]) {
   assert.ok(
     !routeLayoutSource.includes(oldDesktopMarker),
