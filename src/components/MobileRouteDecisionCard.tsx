@@ -154,7 +154,7 @@ export function MobileRouteDecisionCard({
 
       </div>
 
-      <div className="md:col-start-2 md:row-span-3 md:row-start-1 md:min-w-0 md:rounded-2xl md:border md:border-[#eadcc7] md:bg-[#fffaf2] md:p-4 lg:mt-5">
+      <div className="relative md:col-start-2 md:row-span-3 md:row-start-1 md:min-w-0 md:rounded-2xl md:border md:border-[#eadcc7] md:bg-[#fffaf2] md:p-4 lg:mt-5 lg:pb-14">
       <p className="mt-2.5 text-xs font-black uppercase tracking-wide text-[#2f6f93] md:mt-0">
         {scheduleLabels.title}
       </p>
@@ -183,43 +183,59 @@ export function MobileRouteDecisionCard({
           </p>
         )}
       </div>
+      <div className="absolute bottom-3 right-3 hidden lg:block">
+        <details
+          className="group relative"
+          data-desktop-schedule-data="true"
+        >
+          <summary
+            aria-label={scheduleLabels.dataTitle}
+            className="flex h-10 w-10 cursor-pointer list-none items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-white shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
+          >
+            <Image
+              alt=""
+              aria-hidden="true"
+              className="h-full w-full object-cover"
+              height={40}
+              src="/images/icons/icon-schedule-data.png"
+              width={40}
+            />
+          </summary>
+          <div className="absolute bottom-[calc(100%+0.55rem)] right-0 z-30 w-[23rem] max-w-[calc(100vw-3rem)] rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 text-left text-xs font-semibold leading-5 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/20">
+            <p className="text-sm font-black text-[#13233a]">
+              {scheduleLabels.dataTitle}
+            </p>
+            <dl className="mt-3 grid gap-2">
+              <MobileScheduleInfoRow label={scheduleLabels.source}>
+                {schedule.sourceName}
+              </MobileScheduleInfoRow>
+              <MobileScheduleInfoRow label={scheduleLabels.lastVerified}>
+                {schedule.lastVerified}
+              </MobileScheduleInfoRow>
+              <MobileScheduleInfoRow label={scheduleLabels.sourceType}>
+                {schedule.sourceType}
+              </MobileScheduleInfoRow>
+              <MobileScheduleInfoRow label={scheduleLabels.verification}>
+                {schedule.verificationStatus}
+              </MobileScheduleInfoRow>
+              <MobileScheduleInfoRow label={scheduleLabels.fareNote}>
+                {schedule.fareNote}
+              </MobileScheduleInfoRow>
+              <MobileScheduleInfoRow label={scheduleLabels.dataQuality}>
+                {schedule.dataQuality}
+              </MobileScheduleInfoRow>
+              {schedule.boardingNote ? (
+                <MobileScheduleInfoRow label={scheduleLabels.boardingNote}>
+                  {schedule.boardingNote}
+                </MobileScheduleInfoRow>
+              ) : null}
+            </dl>
+            <p className="mt-3 rounded-xl bg-white px-3 py-2 font-bold text-[#13233a]">
+              {schedule.operatorNote}
+            </p>
+          </div>
+        </details>
       </div>
-
-      <div
-        className="mt-4 hidden rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 text-xs font-semibold leading-5 text-[#4f5d6c] lg:block"
-        data-desktop-schedule-data="true"
-      >
-        <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
-          {scheduleLabels.dataTitle}
-        </p>
-        <dl className="mt-3 grid gap-2 sm:grid-cols-2">
-          <DesktopScheduleInfoRow label={scheduleLabels.source}>
-            {schedule.sourceName}
-          </DesktopScheduleInfoRow>
-          <DesktopScheduleInfoRow label={scheduleLabels.lastVerified}>
-            {schedule.lastVerified}
-          </DesktopScheduleInfoRow>
-          <DesktopScheduleInfoRow label={scheduleLabels.sourceType}>
-            {schedule.sourceType}
-          </DesktopScheduleInfoRow>
-          <DesktopScheduleInfoRow label={scheduleLabels.verification}>
-            {schedule.verificationStatus}
-          </DesktopScheduleInfoRow>
-          <DesktopScheduleInfoRow label={scheduleLabels.fareNote}>
-            {schedule.fareNote}
-          </DesktopScheduleInfoRow>
-          <DesktopScheduleInfoRow label={scheduleLabels.dataQuality}>
-            {schedule.dataQuality}
-          </DesktopScheduleInfoRow>
-          {schedule.boardingNote ? (
-            <DesktopScheduleInfoRow label={scheduleLabels.boardingNote}>
-              {schedule.boardingNote}
-            </DesktopScheduleInfoRow>
-          ) : null}
-        </dl>
-        <p className="mt-3 rounded-xl bg-white px-3 py-2 font-bold text-[#13233a]">
-          {schedule.operatorNote}
-        </p>
       </div>
 
       <div className="md:col-start-1 md:row-start-2 lg:hidden">
@@ -444,21 +460,6 @@ function MobileScheduleInfoRow({
     <div className="grid gap-0.5">
       <dt className="font-black text-[#13233a]">{label}</dt>
       <dd className="font-semibold">{children}</dd>
-    </div>
-  );
-}
-
-function DesktopScheduleInfoRow({
-  children,
-  label,
-}: {
-  children: string;
-  label: string;
-}) {
-  return (
-    <div className="rounded-xl border border-[#eadcc7] bg-white px-3 py-2">
-      <dt className="font-black text-[#13233a]">{label}</dt>
-      <dd className="mt-0.5">{children}</dd>
     </div>
   );
 }
