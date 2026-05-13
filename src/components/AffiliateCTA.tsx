@@ -22,20 +22,18 @@ type AffiliateCTAProps = {
   className?: string;
   ctaPosition?: AffiliateCTAPosition;
   disclosureMode?: "full" | "short" | "none";
+  disclosureText?: string;
   href: string | null;
   label: string;
   lang: LocaleCode;
   provider: "12go";
   routeId: RouteId;
   from: string;
+  shortDisclosureText?: string;
   subId?: string;
   to: string;
   variant?: AffiliateCTAVariant;
 };
-
-const affiliateDisclosure =
-  "Some booking links may be affiliate links. Timetable information stays independent.";
-const shortAffiliateDisclosure = "Affiliate link";
 
 const variantClasses: Record<AffiliateCTAVariant, string> = {
   top: "mt-3",
@@ -60,12 +58,14 @@ export function AffiliateCTA({
   className,
   ctaPosition,
   disclosureMode,
+  disclosureText,
   href,
   label,
   lang,
   provider,
   routeId,
   from,
+  shortDisclosureText,
   subId,
   to,
   variant = "top",
@@ -120,8 +120,8 @@ export function AffiliateCTA({
       {effectiveDisclosureMode === "none" ? null : (
         <p className="mt-2 text-xs font-semibold leading-5 text-[#5f6874]">
           {effectiveDisclosureMode === "short"
-            ? shortAffiliateDisclosure
-            : affiliateDisclosure}
+            ? shortDisclosureText
+            : disclosureText}
         </p>
       )}
     </div>

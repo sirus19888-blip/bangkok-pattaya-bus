@@ -9,6 +9,7 @@ import {
   getAffiliateRoute,
   hasTwelveGoTickets,
 } from "@/lib/twelveGo";
+import { getUiTranslations } from "@/lib/uiTranslations";
 
 type TwelveGoAffiliateButtonProps = {
   ariaLabel?: string;
@@ -21,43 +22,19 @@ type TwelveGoAffiliateButtonProps = {
   variant?: AffiliateCTAVariant;
 };
 
-const labels: Record<LocaleCode, string> = {
-  de: "Tickets und Alternativen auf 12Go",
-  en: "Tickets and alternatives on 12Go",
-  fr: "Billets et alternatives sur 12Go",
-  pl: "Bilety i alternatywy na 12Go",
-  ru: "Билеты и альтернативы на 12Go",
-  th: "ตั๋วและทางเลือกอื่นบน 12Go",
-  zh: "12Go 车票和其他选择",
-};
-
-const disclosures: Record<LocaleCode, string> = {
-  de: "12Go-Optionen können von den hier gezeigten informativen Zeiten abweichen.",
-  en: "Some booking links may be affiliate links. This does not affect the timetable information. 12Go options may differ from the informational times shown here.",
-  fr: "Les options sur 12Go peuvent différer des horaires informatifs affichés ici.",
-  pl: "Niektóre linki do rezerwacji mogą być linkami afiliacyjnymi. Nie wpływa to na informacje o rozkładzie. Opcje na 12Go mogą różnić się od informacyjnych godzin pokazanych tutaj.",
-  ru: "Варианты на 12Go могут отличаться от информационного расписания на этой странице.",
-  th: "ตัวเลือกบน 12Go อาจแตกต่างจากเวลาข้อมูลที่แสดงบนหน้านี้",
-  zh: "12Go 上的选择可能与本页显示的参考时刻不同。",
-};
-
-const variantLabels: Record<AffiliateCTAVariant, string> = {
-  top: "Check live seats & prices",
-  afterSchedule: "Compare tickets and alternatives",
-  stickyMobile: "Book ticket",
-  afterFaq: "Compare tickets and alternatives",
-};
-
 export function getTwelveGoButtonLabel(locale: LocaleCode) {
-  return labels[locale] ?? labels.en;
+  return getUiTranslations(locale).affiliate.variantLabels.afterSchedule;
 }
 
-export function getTwelveGoVariantLabel(variant: AffiliateCTAVariant) {
-  return variantLabels[variant];
+export function getTwelveGoVariantLabel(
+  variant: AffiliateCTAVariant,
+  locale: LocaleCode = "en",
+) {
+  return getUiTranslations(locale).affiliate.variantLabels[variant];
 }
 
 export function getTwelveGoDisclosure(locale: LocaleCode) {
-  return disclosures[locale] ?? disclosures.en;
+  return getUiTranslations(locale).affiliate.disclosure;
 }
 
 export function TwelveGoAffiliateButton({
@@ -72,6 +49,7 @@ export function TwelveGoAffiliateButton({
 }: TwelveGoAffiliateButtonProps) {
   const affiliateUrl = build12GoRouteUrl(routeId, locale, ctaPosition);
   const affiliateRoute = getAffiliateRoute(routeId, locale);
+  const affiliateText = getUiTranslations(locale).affiliate;
   const subId = ctaPosition
     ? `${affiliateRoute?.subId}-${ctaPosition}`
     : affiliateRoute?.subId;
@@ -86,12 +64,14 @@ export function TwelveGoAffiliateButton({
       className={className}
       ctaPosition={ctaPosition}
       disclosureMode={disclosureMode}
+      disclosureText={affiliateText.disclosure}
       href={affiliateUrl}
-      label={label ?? getTwelveGoVariantLabel(variant)}
+      label={label ?? getTwelveGoVariantLabel(variant, locale)}
       lang={locale}
       provider="12go"
       routeId={routeId}
       from={affiliateRoute?.from ?? ""}
+      shortDisclosureText={affiliateText.shortDisclosure}
       subId={subId}
       to={affiliateRoute?.to ?? ""}
       variant={variant}

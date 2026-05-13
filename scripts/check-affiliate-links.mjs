@@ -22,23 +22,29 @@ const affiliateRouteSource = readFileSync(
 );
 const twelveGoSource = readFileSync(join(root, "src/lib/twelveGo.ts"), "utf8");
 const renderedAffiliateCTA = renderAffiliateCTAForTest({
+  disclosureText:
+    "Some booking links may be affiliate links. Timetable information stays independent.",
   from: "bangkok",
   href: "https://12go.asia/en/travel/bangkok/pattaya?z=15791301",
   label: "Tickets and alternatives on 12Go",
   lang: "en",
   provider: "12go",
   routeId: "bangkok-to-pattaya",
+  shortDisclosureText: "Affiliate link",
   subId: "bpb-bangkok-to-pattaya",
   to: "pattaya",
   variant: "top",
 });
 const clickTest = simulateAffiliateClickForTest({
+  disclosureText:
+    "Some booking links may be affiliate links. Timetable information stays independent.",
   from: "bangkok",
   href: "https://12go.asia/en/travel/bangkok/pattaya?z=15791301",
   label: "Tickets and alternatives on 12Go",
   lang: "en",
   provider: "12go",
   routeId: "bangkok-to-pattaya",
+  shortDisclosureText: "Affiliate link",
   subId: "bpb-bangkok-to-pattaya",
   to: "pattaya",
   variant: "afterSchedule",
@@ -61,8 +67,8 @@ assert.ok(
 );
 assert.match(
   ctaSource,
-  /Some booking links may be affiliate links\. Timetable information stays independent\./,
-  "Affiliate CTA must show the independent timetable disclosure.",
+  /disclosureText\?: string/,
+  "Affiliate CTA must receive the independent timetable disclosure from i18n.",
 );
 assert.match(
   analyticsSource,

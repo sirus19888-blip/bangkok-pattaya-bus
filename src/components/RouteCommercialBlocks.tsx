@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
+import { getUiTranslations } from "@/lib/uiTranslations";
 
 type RouteCommercialBlocksProps = {
   currentRoute: RouteId;
@@ -23,22 +24,23 @@ export function RouteCommercialBlocks({
   locale,
   routePages,
 }: RouteCommercialBlocksProps) {
+  const text = getUiTranslations(locale).commercial;
   const returnRouteId = returnRoutes[currentRoute];
   const returnRoute = routePages.find((route) => route.slug === returnRouteId);
 
   return (
     <section
-      aria-label="Extra travel options"
+      aria-label={text.ariaLabel}
       className="grid gap-3 rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5 lg:grid-cols-2 lg:p-4"
     >
       <CommercialInfoCard
-        body="Popular departures can sell out around weekends, holidays, and late afternoon travel. If the next bus is full, ask at the counter for the following departure and compare bookable alternatives before you move to another station."
-        title="What if the bus is full?"
+        body={text.busFullBody}
+        title={text.busFullTitle}
       >
         <TwelveGoAffiliateButton
           ctaPosition="route_after_schedule"
           disclosureMode="short"
-          label="Compare tickets and alternatives"
+          label={text.busFullCta}
           locale={locale}
           routeId={currentRoute}
           variant="afterSchedule"
@@ -46,13 +48,13 @@ export function RouteCommercialBlocks({
       </CommercialInfoCard>
 
       <CommercialInfoCard
-        body="After the last scheduled bus, your realistic choices are usually a taxi, private transfer, or waiting until the next morning. For airport routes, avoid relying on the final bus before a flight and compare alternatives early."
-        title="After the last bus"
+        body={text.afterLastBody}
+        title={text.afterLastTitle}
       >
         <TwelveGoAffiliateButton
           ctaPosition="route_after_schedule"
           disclosureMode="short"
-          label="Check alternatives"
+          label={text.afterLastCta}
           locale={locale}
           routeId={currentRoute}
           variant="afterSchedule"
@@ -60,34 +62,34 @@ export function RouteCommercialBlocks({
       </CommercialInfoCard>
 
       <CommercialInfoCard
-        body="The bus is usually the cheapest choice. Taxi and private transfer cost more, but they can be easier with luggage, late arrivals, or hotel-to-hotel travel. Always confirm the final price, tolls, pickup point, and luggage space before you go."
-        title="Bus vs taxi vs private transfer"
+        body={text.compareBody}
+        title={text.compareTitle}
       >
         <a
           className="mt-4 flex min-h-11 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-white"
           href="#mobile-related-routes"
         >
-          Compare route options
+          {text.compareCta}
         </a>
       </CommercialInfoCard>
 
       <CommercialInfoCard
-        body="Planning the way back now can save time later. Check the return route, station notes, first and last departures, and whether your destination in Bangkok is Ekkamai, Mo Chit, Suvarnabhumi, or Don Mueang."
-        title="Return route"
+        body={text.returnBody}
+        title={text.returnTitle}
       >
         {returnRoute ? (
           <Link
             className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#1d3455]"
             href={`/${locale}/${returnRoute.slug}`}
           >
-            View {returnRoute.title}
+            {text.returnRoutePrefix} {returnRoute.title}
           </Link>
         ) : (
           <Link
             className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#1d3455]"
             href={`/${locale}`}
           >
-            View all routes
+            {text.viewAllRoutes}
           </Link>
         )}
       </CommercialInfoCard>

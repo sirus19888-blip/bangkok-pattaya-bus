@@ -147,7 +147,8 @@
       "fareNote": "Cena opublikowana przez operatora: 162 THB za miejsce.",
       "operatorNote": "Autobus o 22:00 jedzie do North Pattaya Bus Station, a nie do terminalu Jomtien. Godziny mogą się zmienić, potwierdź przed podróżą.",
       "sourceType": "oficjalna strona operatora",
-      "dataQuality": "Oficjalne źródło, sprawdzone ręcznie"
+      "dataQuality": "Oficjalne źródło, sprawdzone ręcznie",
+      "boardingNote": "Wed?ug aktualnych danych trasy bilety kupuje si? na poziomie 1 w pobli?u bramki 8."
     },
     "pattaya-to-suvarnabhumi-airport": {
       "travelTime": "Około 2-2,5 godziny, zależnie od ruchu",

@@ -12,6 +12,7 @@ import { schedules } from "@/data/schedules";
 import type { Schedule } from "@/data/schedules";
 import { getTranslations, localizeRoutePage } from "@/lib/i18n";
 import type { Translations } from "@/lib/i18n";
+import { getUiTranslations } from "@/lib/uiTranslations";
 
 export function HomePage({ locale }: { locale: LocaleCode }) {
   const t = getTranslations(locale);
@@ -705,6 +706,7 @@ function MobileHome({
   t: Translations;
 }) {
   const copy = getMobileHomeCopy(locale);
+  const uiText = getUiTranslations(locale);
   const featuredRoute = routePagesForLocale[0];
   const countdownLabels = {
     check: copy.check,
@@ -837,10 +839,10 @@ function MobileHome({
                     {copy.viewRoute}
                   </Link>
                   <TwelveGoAffiliateButton
-                    ariaLabel="Compare tickets on 12Go"
+                    ariaLabel={uiText.affiliate.variantLabels.homepageCardAria}
                     className="mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-sm font-black text-[#13233a]"
                     disclosureMode="none"
-                    label="Check tickets"
+                    label={uiText.affiliate.variantLabels.homepageCardCta}
                     locale={locale}
                     routeId={featuredRoute.slug}
                   />
@@ -887,8 +889,7 @@ function MobileHome({
             ))}
           </div>
           <p className="px-4 pb-1 text-xs font-semibold leading-5 text-[#5f6874] md:px-0 md:pt-4">
-            Some booking links may be affiliate links. Timetable information
-            stays independent.
+            {uiText.affiliate.disclosure}
           </p>
         </section>
 
@@ -925,23 +926,25 @@ function MobileHome({
 }
 
 function HomepageRevenueHeroCard({ locale }: { locale: LocaleCode }) {
+  const uiText = getUiTranslations(locale).homepageRevenue;
+
   return (
     <aside className="rounded-[1.45rem] border border-[#eadcc7] bg-white p-4 text-[#13233a] shadow-sm lg:mt-4 lg:border-[#e8b05a]/70 lg:bg-[#fff8ec]">
       <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
-        Need a ticket today?
+        {uiText.title}
       </p>
       <h2 className="mt-1 text-xl font-black leading-tight">
-        Check before you go
+        {uiText.heading}
       </h2>
       <p className="mt-2 text-sm font-semibold leading-5 text-[#5f6874]">
-        Check live availability before you go to the station.
+        {uiText.text}
       </p>
       <TwelveGoAffiliateButton
-        ariaLabel="Check Bangkok to Pattaya tickets on 12Go"
+        ariaLabel={uiText.primaryAria}
         className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-4 text-sm font-black text-white shadow-sm transition hover:bg-[#1d3455]"
         ctaPosition="homepage_hero"
         disclosureMode="short"
-        label="Check Bangkok → Pattaya tickets"
+        label={uiText.primaryCta}
         locale={locale}
         routeId="bangkok-to-pattaya"
         variant="top"
@@ -950,7 +953,7 @@ function HomepageRevenueHeroCard({ locale }: { locale: LocaleCode }) {
         className="mt-3 flex min-h-10 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-4 text-sm font-black text-[#13233a] transition hover:bg-[#fffaf2]"
         href="#popular-routes"
       >
-        View all routes
+        {uiText.secondaryCta}
       </a>
     </aside>
   );
@@ -1022,10 +1025,10 @@ function MobileRouteCard({
         {copy.viewRoute}
       </Link>
       <TwelveGoAffiliateButton
-        ariaLabel="Compare tickets on 12Go"
+        ariaLabel={getUiTranslations(locale).affiliate.variantLabels.homepageCardAria}
         className="mt-2 flex min-h-10 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a]"
         disclosureMode="none"
-        label="Check tickets"
+        label={getUiTranslations(locale).affiliate.variantLabels.homepageCardCta}
         locale={locale}
         routeId={routePage.slug}
       />

@@ -115,7 +115,7 @@ export function NextBusCard({
         </a>
         <TwelveGoAffiliateButton
           ctaPosition="route_top"
-          label={getTwelveGoVariantLabel("top")}
+          label={getTwelveGoVariantLabel("top", locale)}
           locale={locale}
           routeId={routeId}
           variant="top"

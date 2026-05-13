@@ -8,6 +8,7 @@ import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
 import type { Translations } from "@/lib/i18n";
 import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
+import { getUiTranslations } from "@/lib/uiTranslations";
 
 type MobileRouteDecisionCardProps = {
   affiliateLabel: string;
@@ -59,6 +60,11 @@ export function MobileRouteDecisionCard({
     minutesUntilDeparture <= 15;
   const departures = schedule.departures;
   const hasDepartures = departures.length > 0;
+  const scheduleStatusLabels = getUiTranslations(locale).scheduleStatus;
+  const verificationStatus = getScheduleStatusLabel(
+    schedule.verificationStatus,
+    scheduleStatusLabels,
+  );
 
   useEffect(() => {
     function updateCountdown() {
@@ -216,7 +222,7 @@ export function MobileRouteDecisionCard({
                 {schedule.sourceType}
               </MobileScheduleInfoRow>
               <MobileScheduleInfoRow label={scheduleLabels.verification}>
-                {schedule.verificationStatus}
+                {verificationStatus}
               </MobileScheduleInfoRow>
               <MobileScheduleInfoRow label={scheduleLabels.fareNote}>
                 {schedule.fareNote}
@@ -308,6 +314,7 @@ export function MobileRouteDecisionCard({
 
 export function DesktopRouteBookingPanel({
   affiliateLabel,
+  compareAlternativesLabel,
   distance,
   locale,
   reportHref,
@@ -320,6 +327,7 @@ export function DesktopRouteBookingPanel({
   labels,
   routeTitle,
 }: MobileRouteDecisionCardProps & {
+  compareAlternativesLabel: string;
   reportHref: string;
   reportLabel: string;
 }) {
@@ -418,7 +426,7 @@ export function DesktopRouteBookingPanel({
       <TwelveGoAffiliateButton
         ctaPosition="route_after_schedule"
         disclosureMode="none"
-        label="Compare alternatives"
+        label={compareAlternativesLabel}
         locale={locale}
         routeId={routeId}
         variant="afterSchedule"
@@ -427,13 +435,13 @@ export function DesktopRouteBookingPanel({
       <div className="mt-4 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-xs font-semibold leading-5 text-[#4f5d6c]">
         <p>
           <span className="font-black text-[#13233a]">
-            {scheduleLabels.lastVerified}:
+            {trimTrailingColon(scheduleLabels.lastVerified)}:
           </span>{" "}
           {schedule.lastVerified}
         </p>
         <p className="mt-1">
           <span className="font-black text-[#13233a]">
-            {scheduleLabels.source}:
+            {trimTrailingColon(scheduleLabels.source)}:
           </span>{" "}
           {schedule.sourceName}
         </p>
@@ -462,6 +470,21 @@ function MobileScheduleInfoRow({
       <dd className="font-semibold">{children}</dd>
     </div>
   );
+}
+
+function getScheduleStatusLabel(
+  status: Schedule["verificationStatus"],
+  labels: ReturnType<typeof getUiTranslations>["scheduleStatus"],
+) {
+  if (status === "needs official confirmation") {
+    return labels.needsOfficialConfirmation;
+  }
+
+  return labels.partiallyVerified;
+}
+
+function trimTrailingColon(label: string) {
+  return label.replace(/\s*:+$/, "");
 }
 
 function formatCountdown(

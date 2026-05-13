@@ -9,6 +9,7 @@
     "lint": "eslint",
     "test:affiliate": "node scripts/check-affiliate-links.mjs",
     "test:homepage": "node scripts/check-homepage-structure.mjs",
+    "test:i18n": "node scripts/check-localized-ui.mjs",
     "test:next-bus": "node --experimental-strip-types scripts/check-next-departure.mjs",
     "test:routes": "node scripts/check-route-page-structure.mjs",
     "test:seo": "node scripts/check-seo-domains.mjs",

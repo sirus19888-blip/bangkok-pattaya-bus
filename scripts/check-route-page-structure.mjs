@@ -71,7 +71,10 @@ for (const path of expectedEnglishRoutes) {
     const todayOccurrences =
       count(visibleHtml, /Today&#x27;s departures/g) +
       count(visibleHtml, /Today's departures/g);
-    const scheduleDataOccurrences = count(visibleHtml, /Schedule data/g);
+    const scheduleDataOccurrences = count(
+      visibleHtml,
+      /data-desktop-schedule-data="true"/g,
+    );
     const stationInformationOccurrences = count(visibleHtml, /Station information/g);
     const questionsOccurrences = count(visibleHtml, /Questions/g);
 
@@ -221,8 +224,9 @@ assert.ok(
   "12Go affiliate CTA must remain on route pages.",
 );
 assert.ok(
-  ctaSource.includes("Some booking links may be affiliate links. Timetable information stays independent."),
-  "Affiliate disclosure must remain visible near the 12Go CTA.",
+  ctaSource.includes("disclosureText") &&
+    ctaSource.includes("shortDisclosureText"),
+  "Affiliate disclosure must be supplied to the 12Go CTA.",
 );
 assert.match(
   ctaSource,

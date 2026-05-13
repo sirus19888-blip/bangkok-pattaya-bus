@@ -147,7 +147,8 @@
       "fareNote": "Tarif publié par l'opérateur : 162 THB par siège.",
       "operatorNote": "Le bus de 22:00 va à North Pattaya Bus Station, et non au terminal de Jomtien. Les horaires peuvent changer, confirmez avant le voyage.",
       "sourceType": "site officiel de l'opérateur",
-      "dataQuality": "Source officielle, vérifiée manuellement"
+      "dataQuality": "Source officielle, vérifiée manuellement",
+      "boardingNote": "Selon les donn?es actuelles de la route, les billets s'ach?tent au niveau 1 pr?s de la porte 8."
     },
     "don-mueang-airport-to-pattaya": {
       "boardingNote": "La page officielle de l'aéroport indique des comptoirs au Terminal 1, bâtiment 1, étage 1, porte 1 et au Terminal 2, bâtiment 2, étage 1, porte 11. Le point de prise en charge est le Service Hall Building.",

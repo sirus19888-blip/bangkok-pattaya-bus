@@ -16,10 +16,8 @@ import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
-import {
-  getLocalizedFaqs,
-  type Translations,
-} from "@/lib/i18n";
+import { getLocalizedFaqs, type Translations } from "@/lib/i18n";
+import { getUiTranslations } from "@/lib/uiTranslations";
 
 type RoutePageLayoutProps = {
   routePage: RoutePage;
@@ -40,6 +38,7 @@ export function RoutePageLayout({
   t,
   locale,
 }: RoutePageLayoutProps) {
+  const uiText = getUiTranslations(locale);
   const localizedFaqs = getLocalizedFaqs(t, routePage.slug);
   const stationPhotoGroups = getStationPhotoGroupsForRoute(
     routePage.slug,
@@ -52,8 +51,7 @@ export function RoutePageLayout({
   const decisionLabels = {
     ...t.nextBus,
     nextBus: t.schedule.nextBus,
-    showAllDepartures:
-      locale === "pl" ? "PokaĹĽ wszystkie trasy" : t.common.showAllDepartures,
+    showAllDepartures: t.common.showAllDepartures,
   };
   const localizedRoutePages = routePages.map((page) => {
     const routeText = t.routePages[page.slug];
@@ -66,8 +64,10 @@ export function RoutePageLayout({
       to: endpoints.to ?? page.to,
     };
   });
-  const reportHref = buildDesktopOutdatedTimesMailto(locale, routePage.title);
-  const reportLabel = getDesktopReportOutdatedLabel(locale);
+  const reportHref = buildDesktopOutdatedTimesMailto(
+    uiText.report,
+    routePage.title,
+  );
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
@@ -90,34 +90,32 @@ export function RoutePageLayout({
 
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start lg:gap-8">
           <div className="min-w-0 space-y-5 lg:space-y-6">
-        <MobileRouteDecisionCard
-          affiliateLabel={getTwelveGoVariantLabel("stickyMobile")}
-          distance={route.distance}
-          locale={locale}
-          routeId={routePage.slug}
-          routeTitle={routePage.title}
-          schedule={schedule}
-          nextDeparture={nextDeparture}
-          sourceStatusLabel={sourceStatusLabel}
-          labels={{
-            ...t.nextBus,
-            nextBus: t.schedule.nextBus,
-            showAllDepartures:
-              locale === "pl" ? "Pokaż wszystkie trasy" : t.common.showAllDepartures,
-          }}
-          scheduleLabels={t.schedule}
-        />
+            <MobileRouteDecisionCard
+              affiliateLabel={getTwelveGoVariantLabel(
+                "stickyMobile",
+                locale,
+              )}
+              distance={route.distance}
+              locale={locale}
+              routeId={routePage.slug}
+              routeTitle={routePage.title}
+              schedule={schedule}
+              nextDeparture={nextDeparture}
+              sourceStatusLabel={sourceStatusLabel}
+              labels={decisionLabels}
+              scheduleLabels={t.schedule}
+            />
 
-        <RouteCommercialBlocks
-          currentRoute={routePage.slug}
-          locale={locale}
-          routePages={localizedRoutePages}
-        />
+            <RouteCommercialBlocks
+              currentRoute={routePage.slug}
+              locale={locale}
+              routePages={localizedRoutePages}
+            />
 
-        <MobileDetailsSection title={t.station.title}>
-          <StationCard
-            stations={stations}
-            locale={locale}
+            <MobileDetailsSection title={t.station.title}>
+              <StationCard
+                stations={stations}
+                locale={locale}
                 routeId={routePage.slug}
                 photoGroups={stationPhotoGroups}
                 showTitle={false}
@@ -126,36 +124,36 @@ export function RoutePageLayout({
                   openInGoogleMaps: t.common.openInGoogleMaps,
                 }}
               />
-        </MobileDetailsSection>
+            </MobileDetailsSection>
 
-        <MobileDetailsSection title={t.faq.title}>
+            <MobileDetailsSection title={t.faq.title}>
               <FAQ faqs={localizedFaqs} labels={t.faq} showTitle={false} />
-        </MobileDetailsSection>
+            </MobileDetailsSection>
 
-        <div
-          id="mobile-related-routes"
-          className="scroll-mt-6"
-        >
-          <RelatedRoutes
-            currentRoute={routePage.slug}
-            heading={t.common.relatedRoutes}
-            locale={locale}
-            routePages={localizedRoutePages}
-          />
-        </div>
+            <div id="mobile-related-routes" className="scroll-mt-6">
+              <RelatedRoutes
+                currentRoute={routePage.slug}
+                heading={t.common.relatedRoutes}
+                locale={locale}
+                routePages={localizedRoutePages}
+              />
+            </div>
 
-        <div className="lg:hidden">
-          <TravelerFeedback locale={locale} routeTitle={routePage.title} />
-        </div>
+            <div className="lg:hidden">
+              <TravelerFeedback locale={locale} routeTitle={routePage.title} />
+            </div>
           </div>
 
           <div className="hidden lg:sticky lg:top-24 lg:block">
             <DesktopRouteBookingPanel
-              affiliateLabel="Check availability"
+              affiliateLabel={uiText.affiliate.variantLabels.checkAvailability}
+              compareAlternativesLabel={
+                uiText.affiliate.variantLabels.compareAlternatives
+              }
               distance={route.distance}
               locale={locale}
               reportHref={reportHref}
-              reportLabel={reportLabel}
+              reportLabel={uiText.report.label}
               routeId={routePage.slug}
               routeTitle={routePage.title}
               schedule={schedule}
@@ -171,76 +169,14 @@ export function RoutePageLayout({
   );
 }
 
-function getDesktopReportOutdatedLabel(locale: LocaleCode) {
-  if (locale === "pl") {
-    return "Zglos nieaktualne godziny";
-  }
-
-  return "Report outdated times";
-}
-
 function buildDesktopOutdatedTimesMailto(
-  locale: LocaleCode,
+  report: ReturnType<typeof getUiTranslations>["report"],
   routeTitle: string,
 ) {
-  const subject =
-    locale === "pl"
-      ? "Zgloszenie nieaktualnych godzin autobusow"
-      : "Outdated bus time report";
-  const body =
-    locale === "pl"
-      ? `Czesc, znalazlem nieaktualne informacje na tej stronie trasy.\n\nTrasa: ${routeTitle}\n\nCo trzeba poprawic?`
-      : `Hi, I found outdated information on this route page.\n\nRoute: ${routeTitle}\n\nWhat needs to be corrected?`;
+  const body = `${report.intro}\n\n${report.routeLabel}: ${routeTitle}\n\n${report.prompt}`;
 
   return `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
-    subject,
-  )}&body=${encodeURIComponent(body)}`;
-}
-
-// TODO: Remove after the older report helper copy is safely migrated from prior local edits.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function getReportOutdatedLabel(locale: LocaleCode) {
-  if (locale === "pl") {
-    return "ZgĹ‚oĹ› nieaktualne godziny";
-  }
-
-  if (locale === "de") {
-    return "Veraltete Zeiten melden";
-  }
-
-  if (locale === "fr") {
-    return "Signaler des horaires obsolĂ¨tes";
-  }
-
-  if (locale === "ru") {
-    return "ĐˇĐľĐľĐ±Ń‰Đ¸Ń‚ŃŚ Đľ Đ˝ĐµĐ°ĐşŃ‚ŃĐ°Đ»ŃŚĐ˝ĐľĐĽ Ń€Đ°ŃĐżĐ¸ŃĐ°Đ˝Đ¸Đ¸";
-  }
-
-  if (locale === "th") {
-    return "ŕąŕ¸ŕą‰ŕ¸‡ŕą€ŕ¸§ŕ¸Ąŕ¸˛ŕ¸Łŕ¸–ŕ¸—ŕ¸µŕąŕą„ŕ¸ˇŕąŕ¸­ŕ¸±ŕ¸›ŕą€ŕ¸”ŕ¸•";
-  }
-
-  if (locale === "zh") {
-    return "ćŠĄĺ‘Ščż‡ćśźć—¶é—´";
-  }
-
-  return "Report outdated times";
-}
-
-// TODO: Remove after the older report helper copy is safely migrated from prior local edits.
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-function buildOutdatedTimesMailto(locale: LocaleCode, routeTitle: string) {
-  const subject =
-    locale === "pl"
-      ? "ZgĹ‚oszenie nieaktualnych godzin autobusĂłw"
-      : "Outdated bus time report";
-  const body =
-    locale === "pl"
-      ? `CzeĹ›Ä‡, znalazĹ‚em nieaktualne informacje na tej stronie trasy.\n\nTrasa: ${routeTitle}\n\nCo trzeba poprawiÄ‡?`
-      : `Hi, I found outdated information on this route page.\n\nRoute: ${routeTitle}\n\nWhat needs to be corrected?`;
-
-  return `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
-    subject,
+    report.subject,
   )}&body=${encodeURIComponent(body)}`;
 }
 
@@ -257,16 +193,16 @@ function MobileDetailsSection({
       open
     >
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a] md:min-h-0 md:cursor-default md:text-xl [&::-webkit-details-marker]:hidden">
-          <span>{title}</span>
+        <span>{title}</span>
         <span
           aria-hidden="true"
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8c8b4] bg-[#fffaf2] text-lg leading-none md:hidden"
         >
-            <span className="group-open:hidden">+</span>
-            <span className="hidden group-open:inline">-</span>
-          </span>
-        </summary>
-        <div className="mt-4 md:mt-0">{children}</div>
+          <span className="group-open:hidden">+</span>
+          <span className="hidden group-open:inline">-</span>
+        </span>
+      </summary>
+      <div className="mt-4 md:mt-0">{children}</div>
     </details>
   );
 }
