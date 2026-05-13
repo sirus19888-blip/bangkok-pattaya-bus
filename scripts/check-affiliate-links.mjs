@@ -49,6 +49,21 @@ const clickTest = simulateAffiliateClickForTest({
   to: "pattaya",
   variant: "afterSchedule",
 });
+const desktopSidebarClickTest = simulateAffiliateClickForTest({
+  ctaPosition: "desktop_sidebar",
+  disclosureText:
+    "Some booking links may be affiliate links. Timetable information stays independent.",
+  from: "bangkok",
+  href: "https://12go.asia/en/travel/bangkok/pattaya?z=15791301",
+  label: "Check availability",
+  lang: "en",
+  provider: "12go",
+  routeId: "bangkok-to-pattaya",
+  shortDisclosureText: "Affiliate link",
+  subId: "bpb-bangkok-to-pattaya-desktop_sidebar",
+  to: "pattaya",
+  variant: "top",
+});
 
 assert.match(
   ctaSource,
@@ -174,7 +189,7 @@ assert.match(
 for (const position of [
   "homepage_hero",
   "route_top",
-  "route_sticky_desktop",
+  "desktop_sidebar",
   "route_after_schedule",
   "route_sticky_mobile",
 ]) {
@@ -231,6 +246,20 @@ assert.deepEqual(
     to: "pattaya",
   },
   "Affiliate click tracking must include the full affiliate_click payload.",
+);
+assert.deepEqual(
+  JSON.parse(JSON.stringify(desktopSidebarClickTest.events[0])),
+  {
+    cta_position: "desktop_sidebar",
+    from: "bangkok",
+    href: "https://12go.asia/en/travel/bangkok/pattaya?z=15791301",
+    lang: "en",
+    provider: "12go",
+    route_id: "bangkok-to-pattaya",
+    sub_id: "bpb-bangkok-to-pattaya-desktop_sidebar",
+    to: "pattaya",
+  },
+  "Desktop sidebar affiliate CTA must send cta_position desktop_sidebar.",
 );
 assert.ok(
   !ctaSource.includes("preventDefault"),

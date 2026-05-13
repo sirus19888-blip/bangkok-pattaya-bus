@@ -13,31 +13,42 @@ const routeSlugs = [
   "don-mueang-airport-to-pattaya",
   "pattaya-to-don-mueang-airport",
 ];
+const requiredLocalizedPaths = [
+  ...locales.map((locale) => `/${locale}`),
+  ...locales.map((locale) => `/${locale}/bangkok-to-pattaya`),
+];
 
 const forbiddenPhrases = [
-  "Need a ticket today?",
+  "Need a ticket today",
   "Check before you go",
-  "Check live availability before you go to the station.",
+  "Check live availability",
   "View all routes",
-  "Check tickets",
-  "Book ticket",
   "Affiliate link",
-  "Some booking links may be affiliate links",
-  "What if the bus is full?",
+  "Book ticket",
+  "Check tickets",
+  "What if the bus is full",
   "After the last bus",
-  "Bus vs taxi vs private transfer",
+  "Bus vs taxi",
   "Return route",
-  "Compare tickets and alternatives",
+  "Compare tickets",
   "Check alternatives",
   "Check availability",
   "Report outdated times",
-  "Around 2-3 hours",
-  "THB per seat",
+  "Some booking links may be affiliate links",
+  "About",
+  "Contact",
+  "Privacy",
+  "Around",
+  "per seat",
   "partially verified",
   "Source ::",
   "Dernière vérification ::",
   "Zglos",
 ];
+
+function getBuiltHtmlPath(path) {
+  return join(root, ".next/server/app", `${path.replace(/^\/+/, "")}.html`);
+}
 
 function stripNonVisibleHtml(html) {
   const bodyHtml = html.split("</head>")[1] ?? html;
@@ -58,15 +69,24 @@ function assertNoForbiddenPhrase(path, html) {
   }
 }
 
-for (const locale of locales) {
-  const homepagePath = join(root, ".next/server/app", locale, "page.html");
+for (const path of requiredLocalizedPaths) {
+  const htmlPath = getBuiltHtmlPath(path);
 
-  if (existsSync(homepagePath)) {
-    assertNoForbiddenPhrase(`/${locale}`, readFileSync(homepagePath, "utf8"));
-  }
+  assert.ok(
+    existsSync(htmlPath),
+    `${path} must have a built static HTML file before i18n checks run.`,
+  );
+  assertNoForbiddenPhrase(path, readFileSync(htmlPath, "utf8"));
+}
+
+for (const locale of locales) {
+  assertNoForbiddenPhrase(
+    `/${locale}`,
+    readFileSync(getBuiltHtmlPath(`/${locale}`), "utf8"),
+  );
 
   for (const slug of routeSlugs) {
-    const routeHtmlPath = join(root, ".next/server/app", locale, `${slug}.html`);
+    const routeHtmlPath = getBuiltHtmlPath(`/${locale}/${slug}`);
 
     if (!existsSync(routeHtmlPath)) {
       continue;

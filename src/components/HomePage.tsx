@@ -10,7 +10,7 @@ import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import { schedules } from "@/data/schedules";
 import type { Schedule } from "@/data/schedules";
-import { getTranslations, localizeRoutePage } from "@/lib/i18n";
+import { getTranslations, localizeRoutePage, localizeSchedule } from "@/lib/i18n";
 import type { Translations } from "@/lib/i18n";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
@@ -19,12 +19,16 @@ export function HomePage({ locale }: { locale: LocaleCode }) {
   const localizedRoutePages = routePages.map((page) =>
     localizeRoutePage(page, t),
   );
+  const localizedSchedules = schedules.map((schedule) =>
+    localizeSchedule(schedule, t),
+  );
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
       <MobileHome
         locale={locale}
         routePagesForLocale={localizedRoutePages}
+        schedulesForLocale={localizedSchedules}
         t={t}
       />
     </main>
@@ -585,7 +589,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       checkTimes: "Voir les horaires",
       chooseBus: "Choisissez votre bus",
       chooseRoute: "Choisissez votre route",
-      contact: "Contact",
+      contact: "Nous contacter",
       dataFactLabel: "Données",
       dataFactValue: "Sources opérateurs",
       desktopIntro:
@@ -699,10 +703,12 @@ function getMobileHomeCopy(locale: LocaleCode) {
 function MobileHome({
   locale,
   routePagesForLocale,
+  schedulesForLocale,
   t,
 }: {
   locale: LocaleCode;
   routePagesForLocale: RoutePage[];
+  schedulesForLocale: Schedule[];
   t: Translations;
 }) {
   const copy = getMobileHomeCopy(locale);
@@ -716,7 +722,7 @@ function MobileHome({
     nextBus: copy.nextBus,
     now: copy.now,
   };
-  const featuredSchedule = schedules.find(
+  const featuredSchedule = schedulesForLocale.find(
     (schedule) => schedule.direction === featuredRoute?.slug,
   );
 
@@ -808,53 +814,53 @@ function MobileHome({
                   </div>
                 ) : null}
               </div>
-              {featuredRoute && featuredSchedule ? (
-                <aside className="hidden self-end rounded-[1.65rem] border border-white/15 bg-white/95 p-5 text-[#13233a] shadow-2xl shadow-black/20 lg:block">
-                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
-                    {copy.nextBus}
-                  </p>
-                  <h2 className="mt-2 text-2xl font-black leading-tight">
-                    {featuredRoute.title}
-                  </h2>
-                  <div className="mt-4 grid grid-cols-2 gap-3">
-                    <MobileMiniFact
-                      fallbackLabel={copy.check}
-                      label={copy.time}
-                      value={featuredSchedule.travelTime}
+              <div className="mt-4 lg:mt-0 lg:self-end">
+                <HomepageRevenueHeroCard locale={locale} />
+                {featuredRoute && featuredSchedule ? (
+                  <aside className="mt-4 hidden rounded-[1.65rem] border border-white/15 bg-white/95 p-5 text-[#13233a] shadow-2xl shadow-black/20 lg:block">
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
+                      {copy.nextBus}
+                    </p>
+                    <h2 className="mt-2 text-2xl font-black leading-tight">
+                      {featuredRoute.title}
+                    </h2>
+                    <div className="mt-4 grid grid-cols-2 gap-3">
+                      <MobileMiniFact
+                        fallbackLabel={copy.check}
+                        label={copy.time}
+                        value={featuredSchedule.travelTime}
+                      />
+                      <MobileMiniFact
+                        fallbackLabel={copy.check}
+                        label={copy.price}
+                        value={featuredSchedule.price}
+                      />
+                    </div>
+                    <MobileRouteCountdown
+                      labels={countdownLabels}
+                      schedule={featuredSchedule}
                     />
-                    <MobileMiniFact
-                      fallbackLabel={copy.check}
-                      label={copy.price}
-                      value={featuredSchedule.price}
+                    <Link
+                      href={`/${locale}/${featuredRoute.slug}`}
+                      className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white"
+                    >
+                      {copy.viewRoute}
+                    </Link>
+                    <TwelveGoAffiliateButton
+                      ariaLabel={
+                        uiText.affiliate.variantLabels.homepageCardAria
+                      }
+                      className="mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-sm font-black text-[#13233a]"
+                      disclosureMode="none"
+                      label={uiText.affiliate.variantLabels.homepageCardCta}
+                      locale={locale}
+                      routeId={featuredRoute.slug}
                     />
-                  </div>
-                  <MobileRouteCountdown
-                    labels={countdownLabels}
-                    schedule={featuredSchedule}
-                  />
-                  <Link
-                    href={`/${locale}/${featuredRoute.slug}`}
-                    className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white"
-                  >
-                    {copy.viewRoute}
-                  </Link>
-                  <TwelveGoAffiliateButton
-                    ariaLabel={uiText.affiliate.variantLabels.homepageCardAria}
-                    className="mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-sm font-black text-[#13233a]"
-                    disclosureMode="none"
-                    label={uiText.affiliate.variantLabels.homepageCardCta}
-                    locale={locale}
-                    routeId={featuredRoute.slug}
-                  />
-                  <HomepageRevenueHeroCard locale={locale} />
-                </aside>
-              ) : null}
+                  </aside>
+                ) : null}
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="px-4 pt-4 lg:hidden">
-          <HomepageRevenueHeroCard locale={locale} />
         </div>
 
         <section
@@ -882,7 +888,7 @@ function MobileHome({
                 key={routePage.slug}
                 locale={locale}
                 routePage={routePage}
-                schedule={schedules.find(
+                schedule={schedulesForLocale.find(
                   (schedule) => schedule.direction === routePage.slug,
                 )}
               />

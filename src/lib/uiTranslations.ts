@@ -9,6 +9,7 @@ type AffiliateVariantLabels = {
   compareAlternatives: string;
   homepageCardCta: string;
   homepageCardAria: string;
+  sidebarTitle: string;
 };
 
 type UiTranslations = {
@@ -77,6 +78,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         compareAlternatives: "Compare alternatives",
         homepageCardCta: "Check tickets",
         homepageCardAria: "Compare tickets on 12Go",
+        sidebarTitle: "Check tickets for this route",
       },
     },
     commercial: {
@@ -141,6 +143,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         compareAlternatives: "Porównaj alternatywy",
         homepageCardCta: "Sprawdź bilety",
         homepageCardAria: "Porównaj bilety w 12Go",
+        sidebarTitle: "Sprawdź bilety na tę trasę",
       },
     },
     commercial: {
@@ -205,6 +208,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         compareAlternatives: "Alternativen vergleichen",
         homepageCardCta: "Tickets prüfen",
         homepageCardAria: "Tickets auf 12Go vergleichen",
+        sidebarTitle: "Tickets für diese Route prüfen",
       },
     },
     commercial: {
@@ -270,6 +274,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         compareAlternatives: "Comparer les alternatives",
         homepageCardCta: "Vérifier les billets",
         homepageCardAria: "Comparer les billets sur 12Go",
+        sidebarTitle: "Voir les billets pour cet itinéraire",
       },
     },
     commercial: {
@@ -296,7 +301,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       title: "Bangkok Pattaya Bus Guide",
       ariaLabel: "Liens de pied de page",
       about: "À propos",
-      contact: "Contact",
+      contact: "Nous contacter",
       privacy: "Confidentialité",
     },
     homepageRevenue: {
@@ -335,6 +340,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         compareAlternatives: "Сравнить альтернативы",
         homepageCardCta: "Проверить билеты",
         homepageCardAria: "Сравнить билеты на 12Go",
+        sidebarTitle: "Проверить билеты на этот маршрут",
       },
     },
     commercial: {
@@ -400,6 +406,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         compareAlternatives: "เปรียบเทียบทางเลือก",
         homepageCardCta: "ตรวจสอบตั๋ว",
         homepageCardAria: "เปรียบเทียบตั๋วบน 12Go",
+        sidebarTitle: "ตรวจสอบตั๋วสำหรับเส้นทางนี้",
       },
     },
     commercial: {
@@ -464,6 +471,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         compareAlternatives: "比较替代选择",
         homepageCardCta: "查看车票",
         homepageCardAria: "在 12Go 比较车票",
+        sidebarTitle: "查看此路线车票",
       },
     },
     commercial: {

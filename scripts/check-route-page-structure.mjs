@@ -29,6 +29,10 @@ const stationMiniMapSource = readFileSync(
   "utf8",
 );
 const routesSource = readFileSync(join(root, "src/data/routes.ts"), "utf8");
+const homepageSource = readFileSync(
+  join(root, "src/components/HomePage.tsx"),
+  "utf8",
+);
 
 const expectedEnglishRoutes = [
   "/en/bangkok-to-pattaya",
@@ -38,6 +42,27 @@ const expectedEnglishRoutes = [
   "/en/don-mueang-airport-to-pattaya",
   "/en/pattaya-to-don-mueang-airport",
 ];
+
+const routeTitlesByPath = new Map([
+  ["/en/bangkok-to-pattaya", "Bangkok to Pattaya Bus"],
+  ["/en/pattaya-to-bangkok", "Pattaya to Bangkok Bus"],
+  [
+    "/en/suvarnabhumi-airport-to-pattaya",
+    "Suvarnabhumi Airport to Pattaya Bus",
+  ],
+  [
+    "/en/pattaya-to-suvarnabhumi-airport",
+    "Pattaya to Suvarnabhumi Airport Bus",
+  ],
+  [
+    "/en/don-mueang-airport-to-pattaya",
+    "Don Mueang Airport to Pattaya Bus",
+  ],
+  [
+    "/en/pattaya-to-don-mueang-airport",
+    "Pattaya to Don Mueang Airport Bus",
+  ],
+]);
 
 const stationTipSamplesByRoute = new Map([
   [
@@ -54,8 +79,38 @@ const stationTipSamplesByRoute = new Map([
   ],
 ]);
 
+const desktopSwipeTextPatterns = [
+  /(?<!md:hidden[^>]*>)Swipe(?![^<]*<\/span>)/,
+  /Swipe to see more/,
+  /Tip Swipe/,
+  /Wischen/,
+  /Faites glisser/,
+  /Przesuń/,
+  /Листайте/,
+  /滑动/,
+  /เลื่อน/,
+];
+
 function count(source, pattern) {
   return source.match(pattern)?.length ?? 0;
+}
+
+function stripDesktopHidden(source) {
+  let output = source;
+  const desktopHiddenElementPattern =
+    /<([a-z0-9]+)\b[^>]*class="[^"]*\bmd:hidden\b[^"]*"[^>]*>[\s\S]*?<\/\1>/gi;
+
+  for (let index = 0; index < 10; index += 1) {
+    const next = output.replace(desktopHiddenElementPattern, "");
+
+    if (next === output) {
+      return next;
+    }
+
+    output = next;
+  }
+
+  return output;
 }
 
 for (const path of expectedEnglishRoutes) {
@@ -68,6 +123,7 @@ for (const path of expectedEnglishRoutes) {
     const html = readFileSync(builtHtmlPath, "utf8");
     const bodyHtml = html.split("</head>")[1] ?? html;
     const visibleHtml = bodyHtml.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+    const desktopVisibleHtml = stripDesktopHidden(visibleHtml);
     const todayOccurrences =
       count(visibleHtml, /Today&#x27;s departures/g) +
       count(visibleHtml, /Today's departures/g);
@@ -83,6 +139,24 @@ for (const path of expectedEnglishRoutes) {
       1,
       `${path} must render exactly one visible H1.`,
     );
+    const routeTitle = routeTitlesByPath.get(path);
+
+    if (routeTitle) {
+      assert.equal(
+        count(
+          visibleHtml,
+          new RegExp(`<h2[^>]*>\\s*${escapeRegExp(routeTitle)}\\s*</h2>`, "g"),
+        ),
+        0,
+        `${path} desktop sidebar must not repeat the route title as an H2.`,
+      );
+    }
+    for (const pattern of desktopSwipeTextPatterns) {
+      assert.ok(
+        !pattern.test(desktopVisibleHtml),
+        `${path} desktop HTML must not show mobile swipe hint text: ${pattern}`,
+      );
+    }
     assert.equal(
       todayOccurrences,
       1,
@@ -124,6 +198,10 @@ for (const path of expectedEnglishRoutes) {
     assert.ok(
       visibleHtml.includes("Some booking links may be affiliate links."),
       `${path} must keep the affiliate disclosure.`,
+    );
+    assert.ok(
+      visibleHtml.includes("desktop_sidebar"),
+      `${path} must track the desktop sidebar CTA position.`,
     );
     assert.ok(
       visibleHtml.includes("Next bus"),
@@ -194,8 +272,27 @@ assert.ok(
   "Desktop booking panel must expose a stable test marker.",
 );
 assert.ok(
+  mobileDecisionSource.includes("{sidebarTitle}") &&
+    !mobileDecisionSource.includes("{routeTitle}\n      </h2>"),
+  "Desktop booking panel must use a commercial sidebar title, not the route H2.",
+);
+assert.ok(
   mobileDecisionSource.includes('data-desktop-schedule-data="true"'),
   "Desktop route layout must show schedule data in the left column.",
+);
+assert.ok(
+  homepageSource.includes("md:hidden") && homepageSource.includes("{copy.swipe}"),
+  "Homepage swipe hint must remain mobile-only.",
+);
+assert.ok(
+  stationCardSource.includes("md:hidden") &&
+    stationCardSource.includes("<span>Swipe</span>"),
+  "Station tip swipe hint must remain mobile-only.",
+);
+assert.ok(
+  stationPhotoGallerySource.includes("md:hidden") &&
+    stationPhotoGallerySource.includes("{swipeHint}"),
+  "Station photo swipe hint must remain mobile-only.",
 );
 
 for (const oldDesktopMarker of [

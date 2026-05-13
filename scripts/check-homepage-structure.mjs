@@ -1,4 +1,5 @@
 import { readFileSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { cwd } from "node:process";
 
@@ -69,8 +70,8 @@ assert(
   'Homepage "Swipe" hint must be hidden on desktop.',
 );
 assert(
-  source.includes("Need a ticket today?"),
-  "Homepage must render the revenue hero card.",
+  count(/<HomepageRevenueHeroCard\b/g) === 1,
+  "Homepage revenue hero card must be rendered once.",
 );
 assert(
   source.includes('ctaPosition="homepage_hero"'),
@@ -81,5 +82,35 @@ assert(
     source.includes('id="popular-routes"'),
   "Homepage revenue hero secondary CTA must scroll to Popular routes.",
 );
+
+const localizedRevenueTitles = {
+  de: "Brauchen Sie heute ein Ticket?",
+  en: "Need a ticket today?",
+  fr: "Besoin d&#x27;un billet aujourd&#x27;hui ?",
+  pl: "Potrzebujesz biletu na dziś?",
+  ru: "Нужен билет сегодня?",
+  th: "ต้องการตั๋ววันนี้ไหม?",
+  zh: "今天需要车票吗？",
+};
+
+for (const [locale, title] of Object.entries(localizedRevenueTitles)) {
+  const htmlPath = join(cwd(), ".next/server/app", `${locale}.html`);
+
+  if (!existsSync(htmlPath)) {
+    continue;
+  }
+
+  const html = readFileSync(htmlPath, "utf8");
+  const visibleHtml = html
+    .split("</head>")
+    .at(1)
+    ?.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "") ?? html;
+  const occurrences = visibleHtml.split(title).length - 1;
+
+  assert(
+    occurrences === 1,
+    `Homepage revenue title for ${locale} must occur exactly once.`,
+  );
+}
 
 console.log("Homepage structure checks passed.");

@@ -156,6 +156,7 @@ export function RoutePageLayout({
               reportLabel={uiText.report.label}
               routeId={routePage.slug}
               routeTitle={routePage.title}
+              sidebarTitle={uiText.affiliate.variantLabels.sidebarTitle}
               schedule={schedule}
               nextDeparture={nextDeparture}
               sourceStatusLabel={sourceStatusLabel}

@@ -320,16 +320,17 @@ export function DesktopRouteBookingPanel({
   reportHref,
   reportLabel,
   routeId,
+  sidebarTitle,
   schedule,
   scheduleLabels,
   nextDeparture,
   sourceStatusLabel,
   labels,
-  routeTitle,
 }: MobileRouteDecisionCardProps & {
   compareAlternativesLabel: string;
   reportHref: string;
   reportLabel: string;
+  sidebarTitle: string;
 }) {
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
@@ -368,7 +369,7 @@ export function DesktopRouteBookingPanel({
       data-desktop-booking-panel="true"
     >
       <h2 className="text-xl font-black leading-tight text-[#13233a]">
-        {routeTitle}
+        {sidebarTitle}
       </h2>
       <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
         {sourceStatusLabel}
@@ -417,7 +418,7 @@ export function DesktopRouteBookingPanel({
       </div>
 
       <TwelveGoAffiliateButton
-        ctaPosition="route_sticky_desktop"
+        ctaPosition="desktop_sidebar"
         label={affiliateLabel}
         locale={locale}
         routeId={routeId}

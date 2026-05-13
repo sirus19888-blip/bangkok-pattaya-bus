@@ -13,7 +13,7 @@ export type AffiliateCTAVariant =
 export type AffiliateCTAPosition =
   | "homepage_hero"
   | "route_top"
-  | "route_sticky_desktop"
+  | "desktop_sidebar"
   | "route_after_schedule"
   | "route_sticky_mobile";
 
