@@ -714,11 +714,14 @@ function MobileHome({
     nextBus: copy.nextBus,
     now: copy.now,
   };
+  const featuredSchedule = schedules.find(
+    (schedule) => schedule.direction === featuredRoute?.slug,
+  );
 
   return (
-    <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15 md:h-auto md:min-h-screen md:max-w-[1180px] md:overflow-visible md:bg-transparent md:px-6 md:py-6 md:shadow-none xl:max-w-[1320px]">
+    <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15 lg:h-auto lg:min-h-screen lg:max-w-7xl lg:overflow-visible lg:bg-transparent lg:px-8 lg:py-8 lg:shadow-none">
       <div className="flex-1 overflow-y-auto pb-24 md:overflow-visible md:pb-0">
-        <div className="overflow-hidden rounded-b-[2rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/20 md:rounded-[2rem]">
+        <div className="overflow-hidden rounded-b-[2rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/20 lg:rounded-[2rem]">
           <div className="flex items-center justify-between px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.9rem)] md:px-8 md:pb-4 md:pt-6">
             <Link href={`/${locale}`} className="flex min-w-0 items-center gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0e7b6b] p-1.5 shadow-sm ring-1 ring-white/10">
@@ -766,46 +769,96 @@ function MobileHome({
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/45 via-[#0e1e2e]/70 to-[#0e1e2e]" />
             </div>
-            <div className="relative pb-2 pt-4 md:min-h-[390px] md:pb-0 md:pt-10">
-              <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#e8b05a] ring-1 ring-white/15">
-                {copy.mobileHeroKicker}
-              </span>
-              <p className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight md:max-w-3xl md:text-5xl lg:text-6xl">
-                {copy.heroLineOne}{" "}
-                <span className="italic text-[#e8b05a]">
-                  {copy.heroSmart}
+            <div className="relative pb-2 pt-4 md:min-h-[390px] md:pb-0 md:pt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10">
+              <div className="min-w-0">
+                <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#e8b05a] ring-1 ring-white/15">
+                  {copy.mobileHeroKicker}
                 </span>
-                <br />
-                {copy.heroLineTwo}{" "}
-                <span className="italic text-[#e8b05a]">
-                  {copy.heroEasy}
-                </span>
-              </p>
-              <h1 className="mt-3 max-w-[18rem] text-[1.72rem] font-black leading-[1.02] tracking-tight text-white md:max-w-3xl md:text-4xl lg:text-5xl">
-                {copy.homepageH1}
-              </h1>
-              <p className="mt-2 max-w-[17.5rem] text-[0.84rem] font-semibold leading-5 text-[#e8edf5] md:max-w-xl md:text-base md:leading-7">
-                {copy.subtitle}
-              </p>
-              {featuredRoute ? (
-                <div className="mt-4 rounded-[1.45rem] bg-white/95 p-2.5 text-[#13233a] shadow-xl shadow-black/20 md:max-w-xl md:p-3">
-                  <RouteSearch
-                    allowCurrentRouteNavigation
-                    compact
-                    currentRoute={featuredRoute.slug}
-                    from={featuredRoute.from}
-                    labels={t.routeSelector}
-                    locale={locale}
-                    routePages={routePagesForLocale}
-                    to={featuredRoute.to}
+                <p className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight md:max-w-3xl md:text-5xl lg:text-6xl">
+                  {copy.heroLineOne}{" "}
+                  <span className="italic text-[#e8b05a]">
+                    {copy.heroSmart}
+                  </span>
+                  <br />
+                  {copy.heroLineTwo}{" "}
+                  <span className="italic text-[#e8b05a]">
+                    {copy.heroEasy}
+                  </span>
+                </p>
+                <h1 className="mt-3 max-w-[18rem] text-[1.72rem] font-black leading-[1.02] tracking-tight text-white md:max-w-3xl md:text-4xl lg:text-5xl">
+                  {copy.homepageH1}
+                </h1>
+                <p className="mt-2 max-w-[17.5rem] text-[0.84rem] font-semibold leading-5 text-[#e8edf5] md:max-w-xl md:text-base md:leading-7">
+                  {copy.subtitle}
+                </p>
+                {featuredRoute ? (
+                  <div className="mt-4 rounded-[1.45rem] bg-white/95 p-2.5 text-[#13233a] shadow-xl shadow-black/20 md:max-w-xl md:p-3">
+                    <RouteSearch
+                      allowCurrentRouteNavigation
+                      compact
+                      currentRoute={featuredRoute.slug}
+                      from={featuredRoute.from}
+                      labels={t.routeSelector}
+                      locale={locale}
+                      routePages={routePagesForLocale}
+                      to={featuredRoute.to}
+                    />
+                  </div>
+                ) : null}
+              </div>
+              {featuredRoute && featuredSchedule ? (
+                <aside className="hidden self-end rounded-[1.65rem] border border-white/15 bg-white/95 p-5 text-[#13233a] shadow-2xl shadow-black/20 lg:block">
+                  <p className="text-xs font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
+                    {copy.nextBus}
+                  </p>
+                  <h2 className="mt-2 text-2xl font-black leading-tight">
+                    {featuredRoute.title}
+                  </h2>
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    <MobileMiniFact
+                      fallbackLabel={copy.check}
+                      label={copy.time}
+                      value={featuredSchedule.travelTime}
+                    />
+                    <MobileMiniFact
+                      fallbackLabel={copy.check}
+                      label={copy.price}
+                      value={featuredSchedule.price}
+                    />
+                  </div>
+                  <MobileRouteCountdown
+                    labels={countdownLabels}
+                    schedule={featuredSchedule}
                   />
-                </div>
+                  <Link
+                    href={`/${locale}/${featuredRoute.slug}`}
+                    className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white"
+                  >
+                    {copy.viewRoute}
+                  </Link>
+                  <TwelveGoAffiliateButton
+                    ariaLabel="Compare tickets on 12Go"
+                    className="mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-sm font-black text-[#13233a]"
+                    disclosureMode="none"
+                    label="Check tickets"
+                    locale={locale}
+                    routeId={featuredRoute.slug}
+                  />
+                  <HomepageRevenueHeroCard locale={locale} />
+                </aside>
               ) : null}
             </div>
           </div>
         </div>
 
-        <section className="md:mt-6 md:rounded-[2rem] md:border md:border-[#eadcc7] md:bg-white md:p-6 md:shadow-sm">
+        <div className="px-4 pt-4 lg:hidden">
+          <HomepageRevenueHeroCard locale={locale} />
+        </div>
+
+        <section
+          id="popular-routes"
+          className="scroll-mt-6 md:mt-6 md:rounded-[2rem] md:border md:border-[#eadcc7] md:bg-white md:p-6 md:shadow-sm"
+        >
           <div className="mb-3 flex items-end justify-between gap-3 px-4 pt-5 md:px-0 md:pt-0">
             <div>
               <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
@@ -819,7 +872,7 @@ function MobileHome({
               {copy.swipe}
             </span>
           </div>
-          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 xl:grid-cols-6">
+          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-4 sm:pb-4 md:px-0 md:pb-0 lg:grid-cols-3">
             {routePagesForLocale.map((routePage) => (
               <MobileRouteCard
                 copy={copy}
@@ -833,6 +886,10 @@ function MobileHome({
               />
             ))}
           </div>
+          <p className="px-4 pb-1 text-xs font-semibold leading-5 text-[#5f6874] md:px-0 md:pt-4">
+            Some booking links may be affiliate links. Timetable information
+            stays independent.
+          </p>
         </section>
 
         <section className="mx-4 rounded-[1.5rem] border border-[#e8c986] bg-[#fff8ec] p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6">
@@ -867,6 +924,38 @@ function MobileHome({
   );
 }
 
+function HomepageRevenueHeroCard({ locale }: { locale: LocaleCode }) {
+  return (
+    <aside className="rounded-[1.45rem] border border-[#eadcc7] bg-white p-4 text-[#13233a] shadow-sm lg:mt-4 lg:border-[#e8b05a]/70 lg:bg-[#fff8ec]">
+      <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
+        Need a ticket today?
+      </p>
+      <h2 className="mt-1 text-xl font-black leading-tight">
+        Check before you go
+      </h2>
+      <p className="mt-2 text-sm font-semibold leading-5 text-[#5f6874]">
+        Check live availability before you go to the station.
+      </p>
+      <TwelveGoAffiliateButton
+        ariaLabel="Check Bangkok to Pattaya tickets on 12Go"
+        className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-4 text-sm font-black text-white shadow-sm transition hover:bg-[#1d3455]"
+        ctaPosition="homepage_hero"
+        disclosureMode="short"
+        label="Check Bangkok → Pattaya tickets"
+        locale={locale}
+        routeId="bangkok-to-pattaya"
+        variant="top"
+      />
+      <a
+        className="mt-3 flex min-h-10 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-4 text-sm font-black text-[#13233a] transition hover:bg-[#fffaf2]"
+        href="#popular-routes"
+      >
+        View all routes
+      </a>
+    </aside>
+  );
+}
+
 function MobileRouteCard({
   copy,
   countdownLabels,
@@ -886,7 +975,7 @@ function MobileRouteCard({
   const routeImage = mobileRouteImages[routePage.slug];
 
   return (
-    <article className="flex w-[172px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm md:w-auto md:min-w-0">
+    <article className="flex w-[172px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm sm:w-auto sm:min-w-0">
       <Link
         href={`/${locale}/${routePage.slug}`}
         className="relative block h-28 overflow-hidden bg-[#13233a] md:h-36"
@@ -933,8 +1022,10 @@ function MobileRouteCard({
         {copy.viewRoute}
       </Link>
       <TwelveGoAffiliateButton
+        ariaLabel="Compare tickets on 12Go"
         className="mt-2 flex min-h-10 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a]"
-        label="12Go"
+        disclosureMode="none"
+        label="Check tickets"
         locale={locale}
         routeId={routePage.slug}
       />

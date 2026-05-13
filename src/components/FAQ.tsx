@@ -4,14 +4,17 @@ import type { Translations } from "@/lib/i18n";
 type FAQProps = {
   faqs: FAQItem[];
   labels: Translations["faq"];
+  showTitle?: boolean;
 };
 
-export function FAQ({ faqs, labels }: FAQProps) {
+export function FAQ({ faqs, labels, showTitle = true }: FAQProps) {
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5 md:p-4">
-      <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
-        {labels.title}
-      </p>
+      {showTitle ? (
+        <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
+          {labels.title}
+        </p>
+      ) : null}
       <h2 className="mt-1 text-xl font-black leading-tight text-[#13233a] sm:text-2xl md:text-xl">{labels.heading}</h2>
       <div className="mt-4 space-y-3 sm:mt-5 md:mt-3 md:space-y-2">
         {faqs.map((faq) => (

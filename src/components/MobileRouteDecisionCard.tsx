@@ -95,7 +95,7 @@ export function MobileRouteDecisionCard({
   }
 
   return (
-    <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm md:grid md:grid-cols-[minmax(0,0.95fr)_minmax(23rem,1.05fr)] md:gap-4 md:p-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(30rem,1.15fr)]">
+    <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm md:grid md:grid-cols-[minmax(0,0.95fr)_minmax(23rem,1.05fr)] md:gap-4 md:p-5 lg:block">
       <div className="md:flex md:min-w-0 md:flex-col">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
@@ -111,7 +111,7 @@ export function MobileRouteDecisionCard({
         </span>
       </div>
 
-      <div className="mt-2.5 rounded-2xl bg-[#eaf5fb] p-3 md:mt-4 md:p-4">
+      <div className="mt-2.5 rounded-2xl bg-[#eaf5fb] p-3 md:mt-4 md:p-4 lg:hidden">
         <p className="text-xs font-bold text-[#4f5d6c]">
           {labels.timeZoneNote}
         </p>
@@ -144,7 +144,7 @@ export function MobileRouteDecisionCard({
         ) : null}
       </div>
 
-      <div className="mt-2 grid grid-cols-2 gap-2 md:mt-3">
+      <div className="mt-2 grid grid-cols-2 gap-2 md:mt-3 lg:hidden">
         <DecisionFact
           label={labels.travelTime}
           value={`${schedule.travelTime} • ${distance}`}
@@ -154,7 +154,7 @@ export function MobileRouteDecisionCard({
 
       </div>
 
-      <div className="md:col-start-2 md:row-span-3 md:row-start-1 md:min-w-0 md:rounded-2xl md:border md:border-[#eadcc7] md:bg-[#fffaf2] md:p-4">
+      <div className="md:col-start-2 md:row-span-3 md:row-start-1 md:min-w-0 md:rounded-2xl md:border md:border-[#eadcc7] md:bg-[#fffaf2] md:p-4 lg:mt-5">
       <p className="mt-2.5 text-xs font-black uppercase tracking-wide text-[#2f6f93] md:mt-0">
         {scheduleLabels.title}
       </p>
@@ -185,7 +185,44 @@ export function MobileRouteDecisionCard({
       </div>
       </div>
 
-      <div className="md:col-start-1 md:row-start-2">
+      <div
+        className="mt-4 hidden rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 text-xs font-semibold leading-5 text-[#4f5d6c] lg:block"
+        data-desktop-schedule-data="true"
+      >
+        <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
+          {scheduleLabels.dataTitle}
+        </p>
+        <dl className="mt-3 grid gap-2 sm:grid-cols-2">
+          <DesktopScheduleInfoRow label={scheduleLabels.source}>
+            {schedule.sourceName}
+          </DesktopScheduleInfoRow>
+          <DesktopScheduleInfoRow label={scheduleLabels.lastVerified}>
+            {schedule.lastVerified}
+          </DesktopScheduleInfoRow>
+          <DesktopScheduleInfoRow label={scheduleLabels.sourceType}>
+            {schedule.sourceType}
+          </DesktopScheduleInfoRow>
+          <DesktopScheduleInfoRow label={scheduleLabels.verification}>
+            {schedule.verificationStatus}
+          </DesktopScheduleInfoRow>
+          <DesktopScheduleInfoRow label={scheduleLabels.fareNote}>
+            {schedule.fareNote}
+          </DesktopScheduleInfoRow>
+          <DesktopScheduleInfoRow label={scheduleLabels.dataQuality}>
+            {schedule.dataQuality}
+          </DesktopScheduleInfoRow>
+          {schedule.boardingNote ? (
+            <DesktopScheduleInfoRow label={scheduleLabels.boardingNote}>
+              {schedule.boardingNote}
+            </DesktopScheduleInfoRow>
+          ) : null}
+        </dl>
+        <p className="mt-3 rounded-xl bg-white px-3 py-2 font-bold text-[#13233a]">
+          {schedule.operatorNote}
+        </p>
+      </div>
+
+      <div className="md:col-start-1 md:row-start-2 lg:hidden">
       <a
         href="#mobile-related-routes"
         onClick={handleShowRelatedRoutesClick}
@@ -194,6 +231,7 @@ export function MobileRouteDecisionCard({
         {labels.showAllDepartures}
       </a>
       <TwelveGoAffiliateButton
+        ctaPosition="route_sticky_mobile"
         label={affiliateLabel}
         locale={locale}
         routeId={routeId}
@@ -203,7 +241,7 @@ export function MobileRouteDecisionCard({
       <div className="relative mt-1.5 flex items-start justify-end gap-2 md:mt-3">
         <details className="group relative shrink-0">
           <summary
-            aria-label={scheduleLabels.dataTitle}
+            aria-label={scheduleLabels.showDetails}
             className="flex h-9 w-9 cursor-pointer list-none items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
           >
             <Image
@@ -217,7 +255,7 @@ export function MobileRouteDecisionCard({
           </summary>
           <div className="absolute right-0 top-[calc(100%+0.45rem)] z-30 w-[17.5rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-left text-xs leading-5 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/20">
             <p className="text-sm font-black text-[#13233a]">
-              {scheduleLabels.dataTitle}
+              {scheduleLabels.showDetails}
             </p>
             <dl className="mt-2 grid gap-1.5">
               <MobileScheduleInfoRow label={scheduleLabels.source}>
@@ -252,6 +290,149 @@ export function MobileRouteDecisionCard({
   );
 }
 
+export function DesktopRouteBookingPanel({
+  affiliateLabel,
+  distance,
+  locale,
+  reportHref,
+  reportLabel,
+  routeId,
+  schedule,
+  scheduleLabels,
+  nextDeparture,
+  sourceStatusLabel,
+  labels,
+  routeTitle,
+}: MobileRouteDecisionCardProps & {
+  reportHref: string;
+  reportLabel: string;
+}) {
+  const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
+  const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
+    number | null
+  >(() =>
+    getMinutesUntilDeparture(
+      calculatedNextDeparture.time,
+      calculatedNextDeparture.isTomorrow,
+    ),
+  );
+  const countdownText = formatCountdown(minutesUntilDeparture, labels);
+  const isUrgentCountdown =
+    minutesUntilDeparture !== null &&
+    minutesUntilDeparture > 0 &&
+    minutesUntilDeparture <= 15;
+
+  useEffect(() => {
+    function updateCountdown() {
+      setMinutesUntilDeparture(
+        getMinutesUntilDeparture(
+          calculatedNextDeparture.time,
+          calculatedNextDeparture.isTomorrow,
+        ),
+      );
+    }
+
+    updateCountdown();
+    const intervalId = window.setInterval(updateCountdown, 30_000);
+
+    return () => window.clearInterval(intervalId);
+  }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
+
+  return (
+    <aside
+      className="hidden rounded-2xl border border-[#eadcc7] bg-white p-5 shadow-sm lg:block"
+      data-desktop-booking-panel="true"
+    >
+      <h2 className="text-xl font-black leading-tight text-[#13233a]">
+        {routeTitle}
+      </h2>
+      <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
+        {sourceStatusLabel}
+      </p>
+      <div className="mt-3 rounded-2xl bg-[#eaf5fb] p-4">
+        <p className="text-xs font-bold text-[#4f5d6c]">
+          {labels.timeZoneNote}
+        </p>
+        <div className="mt-3 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
+              {labels.title.replace(":", "")}
+            </p>
+            <p className="mt-1 text-5xl font-black leading-none text-[#13233a]">
+              {calculatedNextDeparture.time}
+            </p>
+          </div>
+          {calculatedNextDeparture.isTomorrow ? (
+            <p className="rounded-xl bg-white px-3 py-2 text-xs font-black text-[#4f5d6c]">
+              {labels.nextServiceTomorrow}
+            </p>
+          ) : null}
+        </div>
+        {countdownText ? (
+          <div className="mt-4 rounded-xl border border-[#13233a]/10 bg-[#13233a] px-3 py-2 text-white shadow-sm">
+            <span className="block text-[0.62rem] font-black uppercase tracking-wide text-[#f3d77b]">
+              {labels.remainingTime}
+            </span>
+            <span
+              className={`mt-0.5 block text-lg font-black leading-tight ${
+                isUrgentCountdown ? "text-[#c81e1e]" : ""
+              }`}
+            >
+              {countdownText}
+            </span>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="mt-4 grid gap-3">
+        <DecisionFact
+          label={labels.travelTime}
+          value={`${schedule.travelTime} • ${distance}`}
+        />
+        <DecisionFact label={labels.ticketPrice} value={schedule.price} />
+      </div>
+
+      <TwelveGoAffiliateButton
+        ctaPosition="route_sticky_desktop"
+        label={affiliateLabel}
+        locale={locale}
+        routeId={routeId}
+        variant="top"
+      />
+      <TwelveGoAffiliateButton
+        ctaPosition="route_after_schedule"
+        disclosureMode="none"
+        label="Compare alternatives"
+        locale={locale}
+        routeId={routeId}
+        variant="afterSchedule"
+      />
+
+      <div className="mt-4 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-xs font-semibold leading-5 text-[#4f5d6c]">
+        <p>
+          <span className="font-black text-[#13233a]">
+            {scheduleLabels.lastVerified}:
+          </span>{" "}
+          {schedule.lastVerified}
+        </p>
+        <p className="mt-1">
+          <span className="font-black text-[#13233a]">
+            {scheduleLabels.source}:
+          </span>{" "}
+          {schedule.sourceName}
+        </p>
+      </div>
+
+      <a
+        href={reportHref}
+        className="mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-white"
+      >
+        {reportLabel}
+      </a>
+    </aside>
+  );
+}
+
 function MobileScheduleInfoRow({
   children,
   label,
@@ -263,6 +444,21 @@ function MobileScheduleInfoRow({
     <div className="grid gap-0.5">
       <dt className="font-black text-[#13233a]">{label}</dt>
       <dd className="font-semibold">{children}</dd>
+    </div>
+  );
+}
+
+function DesktopScheduleInfoRow({
+  children,
+  label,
+}: {
+  children: string;
+  label: string;
+}) {
+  return (
+    <div className="rounded-xl border border-[#eadcc7] bg-white px-3 py-2">
+      <dt className="font-black text-[#13233a]">{label}</dt>
+      <dd className="mt-0.5">{children}</dd>
     </div>
   );
 }

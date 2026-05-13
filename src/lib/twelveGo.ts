@@ -19,7 +19,11 @@ export function hasTwelveGoTickets(routeId: RouteId) {
   return routesWithTickets.includes(routeId);
 }
 
-export function build12GoRouteUrl(routeId: RouteId, lang: LocaleCode) {
+export function build12GoRouteUrl(
+  routeId: RouteId,
+  lang: LocaleCode,
+  subIdPosition?: string,
+) {
   const affiliateRoute = getAffiliateRoute(routeId, lang);
 
   if (!affiliateRoute) {
@@ -34,7 +38,12 @@ export function build12GoRouteUrl(routeId: RouteId, lang: LocaleCode) {
     url.searchParams.set("z", affiliateId);
   }
 
-  url.searchParams.set("sub_id", affiliateRoute.subId);
+  url.searchParams.set(
+    "sub_id",
+    subIdPosition
+      ? `${affiliateRoute.subId}-${subIdPosition}`
+      : affiliateRoute.subId,
+  );
 
   return url.toString();
 }

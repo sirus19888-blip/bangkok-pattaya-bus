@@ -1,5 +1,6 @@
 import {
   AffiliateCTA,
+  type AffiliateCTAPosition,
   type AffiliateCTAVariant,
 } from "@/components/AffiliateCTA";
 import type { LocaleCode, RouteId } from "@/data/routes";
@@ -10,7 +11,10 @@ import {
 } from "@/lib/twelveGo";
 
 type TwelveGoAffiliateButtonProps = {
+  ariaLabel?: string;
   className?: string;
+  ctaPosition?: AffiliateCTAPosition;
+  disclosureMode?: "full" | "short" | "none";
   label?: string;
   locale: LocaleCode;
   routeId: RouteId;
@@ -37,8 +41,19 @@ const disclosures: Record<LocaleCode, string> = {
   zh: "12Go 上的选择可能与本页显示的参考时刻不同。",
 };
 
+const variantLabels: Record<AffiliateCTAVariant, string> = {
+  top: "Check live seats & prices",
+  afterSchedule: "Compare tickets and alternatives",
+  stickyMobile: "Book ticket",
+  afterFaq: "Compare tickets and alternatives",
+};
+
 export function getTwelveGoButtonLabel(locale: LocaleCode) {
   return labels[locale] ?? labels.en;
+}
+
+export function getTwelveGoVariantLabel(variant: AffiliateCTAVariant) {
+  return variantLabels[variant];
 }
 
 export function getTwelveGoDisclosure(locale: LocaleCode) {
@@ -46,14 +61,20 @@ export function getTwelveGoDisclosure(locale: LocaleCode) {
 }
 
 export function TwelveGoAffiliateButton({
+  ariaLabel,
   className,
+  ctaPosition,
+  disclosureMode,
   label,
   locale,
   routeId,
   variant = "top",
 }: TwelveGoAffiliateButtonProps) {
-  const affiliateUrl = build12GoRouteUrl(routeId, locale);
+  const affiliateUrl = build12GoRouteUrl(routeId, locale, ctaPosition);
   const affiliateRoute = getAffiliateRoute(routeId, locale);
+  const subId = ctaPosition
+    ? `${affiliateRoute?.subId}-${ctaPosition}`
+    : affiliateRoute?.subId;
 
   if (!hasTwelveGoTickets(routeId) || !affiliateUrl) {
     return null;
@@ -61,14 +82,17 @@ export function TwelveGoAffiliateButton({
 
   return (
     <AffiliateCTA
+      ariaLabel={ariaLabel}
       className={className}
+      ctaPosition={ctaPosition}
+      disclosureMode={disclosureMode}
       href={affiliateUrl}
-      label={label ?? getTwelveGoButtonLabel(locale)}
+      label={label ?? getTwelveGoVariantLabel(variant)}
       lang={locale}
       provider="12go"
       routeId={routeId}
       from={affiliateRoute?.from ?? ""}
-      subId={affiliateRoute?.subId}
+      subId={subId}
       to={affiliateRoute?.to ?? ""}
       variant={variant}
     />

@@ -7,7 +7,7 @@ import { useNextDeparture } from "@/hooks/useNextDeparture";
 import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 import type { Translations } from "@/lib/i18n";
 import {
-  getTwelveGoButtonLabel,
+  getTwelveGoVariantLabel,
   TwelveGoAffiliateButton,
 } from "@/components/TwelveGoAffiliateButton";
 
@@ -114,7 +114,8 @@ export function NextBusCard({
           {labels.showAllDepartures}
         </a>
         <TwelveGoAffiliateButton
-          label={getTwelveGoButtonLabel(locale)}
+          ctaPosition="route_top"
+          label={getTwelveGoVariantLabel("top")}
           locale={locale}
           routeId={routeId}
           variant="top"

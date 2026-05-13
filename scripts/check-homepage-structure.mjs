@@ -51,5 +51,35 @@ assert(
   count(/copy\.tips\.map/g) === 1,
   "Homepage essential advice must be rendered once.",
 );
+assert(
+  source.includes("lg:max-w-7xl"),
+  "Homepage must use a wide desktop container.",
+);
+assert(
+  source.includes("lg:grid lg:grid-cols-[minmax(0,1fr)_380px]"),
+  "Homepage hero must switch to a two-column desktop layout.",
+);
+assert(
+  source.includes("sm:grid sm:grid-cols-2") &&
+    source.includes("lg:grid-cols-3"),
+  "Homepage popular routes must use a responsive desktop grid.",
+);
+assert(
+  source.includes("md:hidden") && source.includes("{copy.swipe}"),
+  'Homepage "Swipe" hint must be hidden on desktop.',
+);
+assert(
+  source.includes("Need a ticket today?"),
+  "Homepage must render the revenue hero card.",
+);
+assert(
+  source.includes('ctaPosition="homepage_hero"'),
+  "Homepage revenue hero CTA must use the homepage_hero affiliate position.",
+);
+assert(
+  source.includes('href="#popular-routes"') &&
+    source.includes('id="popular-routes"'),
+  "Homepage revenue hero secondary CTA must scroll to Popular routes.",
+);
 
 console.log("Homepage structure checks passed.");

@@ -91,7 +91,7 @@ assert.match(
 );
 assert.match(
   ctaSource,
-  /cta_position: variant/,
+  /cta_position: ctaPosition \?\? variant/,
   "Affiliate click tracking must include the CTA position.",
 );
 assert.match(
@@ -131,8 +131,8 @@ assert.ok(
 );
 assert.match(
   twelveGoSource,
-  /build12GoRouteUrl\(routeId: RouteId, lang: LocaleCode\)/,
-  "12Go links must be built per route and locale.",
+  /build12GoRouteUrl\(\s*routeId: RouteId,\s*lang: LocaleCode,\s*subIdPosition\?: string,/,
+  "12Go links must be built per route, locale, and CTA position.",
 );
 
 const requiredRoutes = [
@@ -160,6 +160,23 @@ assert.match(
   /deepLinkUrl: `https:\/\/12go\.asia\/\$\{lang\}\/travel\/\$\{route\.from\}\/\$\{route\.to\}`/,
   "Affiliate config must generate route-specific 12Go deep links.",
 );
+assert.match(
+  twelveGoSource,
+  /`\$\{affiliateRoute\.subId\}-\$\{subIdPosition\}`/,
+  "12Go sub_id must include the CTA position when provided.",
+);
+for (const position of [
+  "homepage_hero",
+  "route_top",
+  "route_sticky_desktop",
+  "route_after_schedule",
+  "route_sticky_mobile",
+]) {
+  assert.ok(
+    ctaSource.includes(position) || twelveGoSource.includes(position),
+    `Missing affiliate CTA position ${position}.`,
+  );
+}
 assert.match(
   renderedAffiliateCTA,
   /href="https:\/\/12go\.asia\/en\/travel\/bangkok\/pattaya\?z=15791301"/,

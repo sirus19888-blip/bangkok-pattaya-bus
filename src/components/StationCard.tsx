@@ -10,6 +10,7 @@ type StationCardProps = {
   locale: LocaleCode;
   routeId?: RouteId;
   photoGroups?: StationPhotoGroup[];
+  showTitle?: boolean;
   labels: Translations["station"] & {
     openInGoogleMaps: string;
   };
@@ -20,13 +21,16 @@ export function StationCard({
   locale,
   routeId,
   photoGroups = [],
+  showTitle = true,
   labels,
 }: StationCardProps) {
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 shadow-sm sm:p-5">
-      <p className="px-1 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
-        {labels.title}
-      </p>
+      {showTitle ? (
+        <p className="px-1 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
+          {labels.title}
+        </p>
+      ) : null}
       <div className="mt-3 grid gap-3 sm:mt-5 sm:grid-cols-2">
         {stations.map((station, index) => {
           const stationTip = getStationTip(station.id, station.tip, locale, routeId);

@@ -10,8 +10,18 @@ export type AffiliateCTAVariant =
   | "stickyMobile"
   | "afterFaq";
 
+export type AffiliateCTAPosition =
+  | "homepage_hero"
+  | "route_top"
+  | "route_sticky_desktop"
+  | "route_after_schedule"
+  | "route_sticky_mobile";
+
 type AffiliateCTAProps = {
+  ariaLabel?: string;
   className?: string;
+  ctaPosition?: AffiliateCTAPosition;
+  disclosureMode?: "full" | "short" | "none";
   href: string | null;
   label: string;
   lang: LocaleCode;
@@ -25,6 +35,7 @@ type AffiliateCTAProps = {
 
 const affiliateDisclosure =
   "Some booking links may be affiliate links. Timetable information stays independent.";
+const shortAffiliateDisclosure = "Affiliate link";
 
 const variantClasses: Record<AffiliateCTAVariant, string> = {
   top: "mt-3",
@@ -45,7 +56,10 @@ const buttonClasses: Record<AffiliateCTAVariant, string> = {
 };
 
 export function AffiliateCTA({
+  ariaLabel,
   className,
+  ctaPosition,
+  disclosureMode,
   href,
   label,
   lang,
@@ -60,6 +74,9 @@ export function AffiliateCTA({
     return null;
   }
 
+  const effectiveDisclosureMode =
+    disclosureMode ?? (variant === "stickyMobile" ? "short" : "full");
+
   return (
     <div
       className={variantClasses[variant]}
@@ -69,7 +86,7 @@ export function AffiliateCTA({
       data-affiliate-sub-id={subId}
     >
       <a
-        aria-label={label}
+        aria-label={ariaLabel ?? label}
         className={
           className ??
           `flex w-full items-center justify-center text-center font-black ${buttonClasses[variant]}`
@@ -77,7 +94,7 @@ export function AffiliateCTA({
         href={href}
         onClick={() =>
           trackAffiliateClick({
-            cta_position: variant,
+            cta_position: ctaPosition ?? variant,
             from,
             href,
             lang,
@@ -100,9 +117,13 @@ export function AffiliateCTA({
         />
         {label}
       </a>
-      <p className="mt-2 text-xs font-semibold leading-5 text-[#5f6874]">
-        {affiliateDisclosure}
-      </p>
+      {effectiveDisclosureMode === "none" ? null : (
+        <p className="mt-2 text-xs font-semibold leading-5 text-[#5f6874]">
+          {effectiveDisclosureMode === "short"
+            ? shortAffiliateDisclosure
+            : affiliateDisclosure}
+        </p>
+      )}
     </div>
   );
 }

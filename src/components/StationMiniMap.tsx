@@ -100,12 +100,38 @@ export function StationMiniMap({
         ? getFrenchStationMapLabel(station.id, station.mapLabel)
         : station.mapLabel;
   const [isMapOpen, setIsMapOpen] = useState(false);
+  const [shouldLoadMap, setShouldLoadMap] = useState(false);
   const openMapLabel = getOpenMapLabel(locale);
   const closeMapLabel = getCloseMapLabel(locale);
   const mapUrl = getOpenStreetMapEmbedUrl(station);
 
+  useEffect(() => {
+    const element = document.getElementById(`station-map-${station.id}`);
+
+    if (!element || !("IntersectionObserver" in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setShouldLoadMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "220px" },
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [station.id]);
+
   return (
-    <div className="overflow-hidden rounded-2xl border border-[#d6e8f4] bg-[#f4fbff]">
+    <div
+      id={`station-map-${station.id}`}
+      className="overflow-hidden rounded-2xl border border-[#d6e8f4] bg-[#f4fbff]"
+    >
       <div className="border-b border-[#d6e8f4] px-3 py-2.5 lg:py-2">
         <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
           {labels.title}
@@ -120,16 +146,30 @@ export function StationMiniMap({
       <button
         type="button"
         className="relative block h-[180px] w-full overflow-hidden bg-white text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 sm:h-[220px] lg:h-[210px] xl:h-[220px]"
-        onClick={() => setIsMapOpen(true)}
+        onClick={() => {
+          setShouldLoadMap(true);
+          setIsMapOpen(true);
+        }}
         aria-label={`${openMapLabel}: ${mapLabel}`}
       >
-        <iframe
-          src={mapUrl}
-          title={`${labels.title}: ${mapLabel}`}
-          className="pointer-events-none h-full w-full border-0"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
+        {shouldLoadMap ? (
+          <iframe
+            src={mapUrl}
+            title={`${labels.title}: ${mapLabel}`}
+            className="pointer-events-none h-full w-full border-0"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        ) : (
+          <span className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#eaf5fb] px-4 text-center">
+            <span className="text-sm font-black text-[#13233a]">
+              {labels.title}
+            </span>
+            <span className="text-xs font-semibold leading-5 text-[#4f5d6c]">
+              {labels.fallbackNote}
+            </span>
+          </span>
+        )}
         <span className="absolute bottom-2 right-2 rounded-full bg-[#13233a] px-3 py-1 text-xs font-black text-white shadow-sm">
           {openMapLabel}
         </span>

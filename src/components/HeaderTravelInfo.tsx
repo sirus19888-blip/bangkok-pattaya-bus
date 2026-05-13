@@ -238,6 +238,10 @@ export function HeaderTravelInfo({
   const [ratesOpen, setRatesOpen] = useState(false);
 
   useEffect(() => {
+    if (variant === "routeDesktop" && !weatherOpen) {
+      return;
+    }
+
     let ignore = false;
 
     async function loadWeather() {
@@ -283,7 +287,7 @@ export function HeaderTravelInfo({
       ignore = true;
       window.clearInterval(intervalId);
     };
-  }, [location.latitude, location.longitude]);
+  }, [location.latitude, location.longitude, variant, weatherOpen]);
 
   useEffect(() => {
     let ignore = false;

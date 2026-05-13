@@ -20,6 +20,14 @@ const stationCardSource = readFileSync(
   join(root, "src/components/StationCard.tsx"),
   "utf8",
 );
+const stationPhotoGallerySource = readFileSync(
+  join(root, "src/components/StationPhotoGallery.tsx"),
+  "utf8",
+);
+const stationMiniMapSource = readFileSync(
+  join(root, "src/components/StationMiniMap.tsx"),
+  "utf8",
+);
 const routesSource = readFileSync(join(root, "src/data/routes.ts"), "utf8");
 
 const expectedEnglishRoutes = [
@@ -58,10 +66,14 @@ for (const path of expectedEnglishRoutes) {
 
   if (existsSync(builtHtmlPath)) {
     const html = readFileSync(builtHtmlPath, "utf8");
-    const visibleHtml = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+    const bodyHtml = html.split("</head>")[1] ?? html;
+    const visibleHtml = bodyHtml.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
     const todayOccurrences =
       count(visibleHtml, /Today&#x27;s departures/g) +
       count(visibleHtml, /Today's departures/g);
+    const scheduleDataOccurrences = count(visibleHtml, /Schedule data/g);
+    const stationInformationOccurrences = count(visibleHtml, /Station information/g);
+    const questionsOccurrences = count(visibleHtml, /Questions/g);
 
     assert.equal(
       count(visibleHtml, /<h1\b/g),
@@ -72,6 +84,21 @@ for (const path of expectedEnglishRoutes) {
       todayOccurrences,
       1,
       `${path} must render Today's departures exactly once.`,
+    );
+    assert.equal(
+      scheduleDataOccurrences,
+      1,
+      `${path} must render Schedule data exactly once.`,
+    );
+    assert.equal(
+      stationInformationOccurrences,
+      1,
+      `${path} must render Station information exactly once.`,
+    );
+    assert.equal(
+      questionsOccurrences,
+      1,
+      `${path} must render Questions exactly once.`,
     );
     assert.equal(
       count(visibleHtml, /Route summary/g),
@@ -85,8 +112,11 @@ for (const path of expectedEnglishRoutes) {
       `${path} must still show route distance near the travel time.`,
     );
     assert.ok(
-      visibleHtml.includes("12Go"),
-      `${path} must keep the visible 12Go CTA.`,
+      visibleHtml.includes("Book ticket") ||
+        visibleHtml.includes("Check availability") ||
+        visibleHtml.includes("Check live seats &amp; prices") ||
+        visibleHtml.includes("Check live seats & prices"),
+      `${path} must keep the visible affiliate CTA.`,
     );
     assert.ok(
       visibleHtml.includes("Some booking links may be affiliate links."),
@@ -102,8 +132,8 @@ for (const path of expectedEnglishRoutes) {
     if (stationTipSample) {
       assert.equal(
         count(visibleHtml, new RegExp(escapeRegExp(stationTipSample), "g")),
-        2,
-        `${path} must render station tips once for mobile and once for desktop.`,
+        1,
+        `${path} must render station tips once, without mobile/desktop duplicate content.`,
       );
     }
   }
@@ -141,8 +171,28 @@ assert.equal(
   "FAQ/questions content must be declared once in RoutePageLayout.",
 );
 assert.ok(
-  routeLayoutSource.includes('className="hidden md:block"'),
-  "Desktop must render route detail sections outside closed mobile details.",
+  !routeLayoutSource.includes('className="hidden md:block"'),
+  "Route detail sections must not render duplicate desktop-only copies.",
+);
+assert.ok(
+  routeLayoutSource.includes("lg:grid lg:grid-cols-[minmax(0,1fr)_380px]"),
+  "Route pages must use a two-column desktop grid.",
+);
+assert.ok(
+  routeLayoutSource.includes("lg:sticky lg:top-24"),
+  "Route pages must keep a sticky desktop booking panel below the header.",
+);
+assert.ok(
+  routeLayoutSource.includes("DesktopRouteBookingPanel"),
+  "Route pages must render the desktop booking CTA panel.",
+);
+assert.ok(
+  mobileDecisionSource.includes('data-desktop-booking-panel="true"'),
+  "Desktop booking panel must expose a stable test marker.",
+);
+assert.ok(
+  mobileDecisionSource.includes('data-desktop-schedule-data="true"'),
+  "Desktop route layout must show schedule data in the left column.",
 );
 
 for (const oldDesktopMarker of [
@@ -187,6 +237,20 @@ assert.equal(
   count(stationCardSource, /stationTipPoints\.map/g),
   1,
   "Station tips should be rendered from one responsive list.",
+);
+assert.ok(
+  stationPhotoGallerySource.includes('loading="lazy"'),
+  "Station photos must be lazy-loaded.",
+);
+assert.ok(
+  stationMiniMapSource.includes("IntersectionObserver") &&
+    stationMiniMapSource.includes("shouldLoadMap"),
+  "Station maps must defer iframe loading until click or viewport entry.",
+);
+assert.ok(
+  mobileDecisionSource.includes('className="hidden rounded-2xl') &&
+    mobileDecisionSource.includes("lg:block"),
+  "Desktop sticky CTA must reserve a stable desktop-only panel.",
 );
 
 function escapeRegExp(value) {
