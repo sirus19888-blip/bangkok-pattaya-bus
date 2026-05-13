@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { StationMiniMap } from "@/components/StationMiniMap";
 import { StationPhotoGallery } from "@/components/StationPhotoGallery";
 import type { LocaleCode, RouteId } from "@/data/routes";
@@ -24,6 +27,12 @@ export function StationCard({
   showTitle = true,
   labels,
 }: StationCardProps) {
+  const [expandedStations, setExpandedStations] = useState<
+    Record<string, boolean>
+  >({});
+  const showMoreLabel = getShowMoreLabel(locale);
+  const showLessLabel = getShowLessLabel(locale);
+
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 shadow-sm sm:p-5">
       {showTitle ? (
@@ -40,6 +49,7 @@ export function StationCard({
             locale,
             routeId,
           );
+          const isExpanded = expandedStations[station.id] ?? false;
 
           return (
             <article
@@ -79,7 +89,6 @@ export function StationCard({
                       aria-hidden="true"
                       className="inline-flex items-center gap-1 rounded-full bg-[#fffaf2] px-2 py-0.5 text-[0.65rem] font-black uppercase tracking-wide text-[#b9832e] md:hidden"
                     >
-                      <span>Swipe</span>
                       <span className="text-sm leading-none">→</span>
                     </span>
                   </div>
@@ -87,17 +96,33 @@ export function StationCard({
                     aria-hidden="true"
                     className="pointer-events-none absolute bottom-2 right-0 top-10 z-10 w-10 bg-gradient-to-l from-white via-white/85 to-transparent md:hidden"
                   />
-                  <ul className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 pr-8 [scrollbar-width:thin] md:mx-0 md:block md:space-y-2 md:overflow-visible md:px-0 md:pb-0 md:pr-0">
-                    {stationTipPoints.map((point) => (
+                  <ul className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 pr-8 [scrollbar-width:thin] md:mx-0 md:grid md:grid-cols-2 md:gap-2 md:overflow-visible md:px-0 md:pb-0 md:pr-0">
+                    {stationTipPoints.map((point, pointIndex) => (
                       <li
                         key={point}
-                        className="flex w-[17rem] flex-none snap-start gap-2 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 leading-5 shadow-sm md:w-auto md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+                        className={`w-[17rem] flex-none snap-start gap-2 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 leading-5 shadow-sm md:w-auto md:flex md:border-[#eadcc7] md:bg-[#fffaf2] md:p-3 md:shadow-sm ${
+                          pointIndex < 3 || isExpanded ? "flex" : "hidden"
+                        }`}
                       >
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e8b05a]" />
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
+                  {stationTipPoints.length > 3 ? (
+                    <button
+                      type="button"
+                      className="mt-2 inline-flex min-h-9 items-center rounded-full border border-[#e8b05a] bg-[#fff8ec] px-3 text-xs font-black text-[#13233a] md:hidden"
+                      onClick={() =>
+                        setExpandedStations((current) => ({
+                          ...current,
+                          [station.id]: !isExpanded,
+                        }))
+                      }
+                    >
+                      {isExpanded ? showLessLabel : showMoreLabel}
+                    </button>
+                  ) : null}
                 </div>
               </div>
               <div className="space-y-3 p-3 sm:p-4">
@@ -120,6 +145,34 @@ export function StationCard({
       </div>
     </section>
   );
+}
+
+function getShowMoreLabel(locale: LocaleCode) {
+  const labels: Record<LocaleCode, string> = {
+    de: "Mehr anzeigen",
+    en: "Show more",
+    fr: "Voir plus",
+    pl: "Pokaż więcej",
+    ru: "Показать ещё",
+    th: "ดูเพิ่มเติม",
+    zh: "显示更多",
+  };
+
+  return labels[locale] ?? labels.en;
+}
+
+function getShowLessLabel(locale: LocaleCode) {
+  const labels: Record<LocaleCode, string> = {
+    de: "Weniger anzeigen",
+    en: "Show less",
+    fr: "Voir moins",
+    pl: "Pokaż mniej",
+    ru: "Скрыть",
+    th: "แสดงน้อยลง",
+    zh: "收起",
+  };
+
+  return labels[locale] ?? labels.en;
 }
 
 const donMueangDepartureTips: Record<LocaleCode, string[]> = {

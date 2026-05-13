@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { AdSlot } from "@/components/AdSlot";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
 import {
@@ -16,6 +17,7 @@ import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
+import { AD_SLOT_IDS } from "@/lib/ads";
 import { getLocalizedFaqs, type Translations } from "@/lib/i18n";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
@@ -106,6 +108,8 @@ export function RoutePageLayout({
               scheduleLabels={t.schedule}
             />
 
+            <AdSlot id={AD_SLOT_IDS.afterSchedule} />
+
             <RouteCommercialBlocks
               currentRoute={routePage.slug}
               locale={locale}
@@ -126,9 +130,13 @@ export function RoutePageLayout({
               />
             </MobileDetailsSection>
 
+            <AdSlot id={AD_SLOT_IDS.afterStationInformation} />
+
             <MobileDetailsSection title={t.faq.title}>
               <FAQ faqs={localizedFaqs} labels={t.faq} showTitle={false} />
             </MobileDetailsSection>
+
+            <AdSlot id={AD_SLOT_IDS.afterFaq} />
 
             <div id="mobile-related-routes" className="scroll-mt-6">
               <RelatedRoutes

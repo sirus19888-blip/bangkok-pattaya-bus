@@ -55,36 +55,37 @@ export function RelatedRoutes({
       <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
         {heading}
       </p>
-      <div className="mt-3 grid gap-2.5 sm:mt-4 sm:grid-cols-2 sm:gap-3 md:mt-3 md:grid-cols-3 md:gap-2.5">
+      <ul className="mt-3 grid gap-2.5 sm:mt-4 sm:grid-cols-2 sm:gap-3 md:mt-3 md:grid-cols-3 md:gap-2.5">
         {relatedRoutes.map((routePage) => (
-          <Link
-            key={routePage.slug}
-            href={`/${locale}/${routePage.slug}`}
-            className="relative min-h-[6.4rem] overflow-hidden rounded-xl border border-[#eadcc7] bg-[#13233a] p-3.5 shadow-sm transition hover:bg-white sm:p-4 md:min-h-0 md:bg-[#fffaf2] md:p-3"
-          >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover md:hidden"
-              fill
-              sizes="(max-width: 767px) 360px, 1px"
-              src={relatedRouteImages[routePage.slug]}
-            />
-            <span className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/15 via-[#0e1e2e]/35 to-[#0e1e2e]/88 md:hidden" />
-            <span className="relative block text-sm font-black leading-tight text-white drop-shadow sm:text-base md:text-sm md:text-[#13233a] md:drop-shadow-none">
-              {routePage.title}
-            </span>
-            <span className="relative mt-2 inline-flex rounded-full bg-white/90 px-2.5 py-1 text-[0.62rem] font-black uppercase tracking-wide text-[#0e7b6b] md:hidden">
-              {busRouteLabels[locale] ?? busRouteLabels.en}
-            </span>
-            <span className="relative mt-1 hidden text-sm font-semibold text-[#4f5d6c] md:block md:text-xs">
-        {routePage.from}{" "}
-        {routeConnectorLabels[locale] ?? routeConnectorLabels.en}{" "}
-        {routePage.to}
-      </span>
-          </Link>
+          <li key={routePage.slug} className="min-w-0">
+            <Link
+              href={`/${locale}/${routePage.slug}`}
+              className="relative block min-h-[6.4rem] overflow-hidden rounded-xl border border-[#eadcc7] bg-[#13233a] p-3.5 shadow-sm transition hover:bg-white sm:p-4 md:min-h-0 md:bg-[#fffaf2] md:p-3"
+            >
+              <Image
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 h-full w-full object-cover md:hidden"
+                fill
+                sizes="(max-width: 767px) 360px, 1px"
+                src={relatedRouteImages[routePage.slug]}
+              />
+              <span className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/15 via-[#0e1e2e]/35 to-[#0e1e2e]/88 md:hidden" />
+              <span className="relative block text-sm font-black leading-tight text-white drop-shadow sm:text-base md:text-sm md:text-[#13233a] md:drop-shadow-none">
+                {routePage.title}
+              </span>
+              <span className="relative mt-2 inline-flex rounded-full bg-white/90 px-2.5 py-1 text-[0.62rem] font-black uppercase tracking-wide text-[#0e7b6b] md:hidden">
+                {busRouteLabels[locale] ?? busRouteLabels.en}
+              </span>
+              <span className="relative mt-1 hidden text-sm font-semibold text-[#4f5d6c] md:block md:text-xs">
+                {routePage.from}{" "}
+                {routeConnectorLabels[locale] ?? routeConnectorLabels.en}{" "}
+                {routePage.to}
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

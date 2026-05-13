@@ -59,20 +59,6 @@ export function StationPhotoGallery({
         : locale === "fr"
           ? "Fermer l'image"
           : "Close image";
-  const swipeHint =
-    locale === "pl"
-      ? "Przesuń, aby zobaczyć więcej"
-      : locale === "ru"
-        ? "Проведите, чтобы увидеть больше"
-      : locale === "de"
-        ? "Wische, um mehr zu sehen"
-      : locale === "th"
-        ? "เลื่อนเพื่อดูเพิ่มเติม"
-      : locale === "zh"
-        ? "滑动查看更多"
-      : locale === "fr"
-        ? "Faites glisser pour voir plus"
-        : "Swipe to see more";
 
   return (
     <section
@@ -87,10 +73,6 @@ export function StationPhotoGallery({
           {galleryTitle}
         </h2>
       ) : null}
-      <p className={showTitle ? "mt-2 text-xs font-bold text-[#6b7280] md:hidden" : "text-xs font-bold text-[#6b7280] md:hidden"}>
-        {swipeHint}
-      </p>
-
       <div className={showTitle ? "mt-3 space-y-4 sm:mt-4" : "mt-2 space-y-4 md:mt-0"}>
         {visibleGroups.map((group) => (
           <section key={group.stationId} aria-labelledby={`${group.stationId}-photos`}>

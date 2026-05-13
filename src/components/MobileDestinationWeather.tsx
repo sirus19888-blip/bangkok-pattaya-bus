@@ -69,19 +69,76 @@ const labels: Record<
     prefix: string;
   }
 > = {
-  de: { fallback: "Schatzung", live: "Live", prefix: "Wetter in" },
+  de: { fallback: "Schätzung", live: "Live", prefix: "Wetter in" },
   en: { fallback: "Estimate", live: "Live", prefix: "Weather in" },
-  fr: { fallback: "Estime", live: "Live", prefix: "Meteo a" },
+  fr: { fallback: "Estimation", live: "En direct", prefix: "Météo à" },
   pl: { fallback: "Szacunek", live: "Live", prefix: "Pogoda w" },
-  ru: { fallback: "Prognoz", live: "Live", prefix: "Weather in" },
-  th: { fallback: "Estimate", live: "Live", prefix: "Weather in" },
-  zh: { fallback: "Estimate", live: "Live", prefix: "Weather in" },
+  ru: { fallback: "Прогноз", live: "Онлайн", prefix: "Погода в" },
+  th: { fallback: "ประมาณการ", live: "สด", prefix: "อากาศที่" },
+  zh: { fallback: "预估", live: "实时", prefix: "天气：" },
+};
+
+const destinationLabels: Record<RouteId, Record<LocaleCode, string>> = {
+  "bangkok-to-pattaya": {
+    de: "Pattaya",
+    en: "Pattaya",
+    fr: "Pattaya",
+    pl: "Pattaya",
+    ru: "Паттайе",
+    th: "พัทยา",
+    zh: "芭提雅",
+  },
+  "pattaya-to-bangkok": {
+    de: "Bangkok",
+    en: "Bangkok",
+    fr: "Bangkok",
+    pl: "Bangkoku",
+    ru: "Бангкоке",
+    th: "กรุงเทพฯ",
+    zh: "曼谷",
+  },
+  "suvarnabhumi-airport-to-pattaya": {
+    de: "Pattaya",
+    en: "Pattaya",
+    fr: "Pattaya",
+    pl: "Pattaya",
+    ru: "Паттайе",
+    th: "พัทยา",
+    zh: "芭提雅",
+  },
+  "pattaya-to-suvarnabhumi-airport": {
+    de: "Suvarnabhumi",
+    en: "Suvarnabhumi",
+    fr: "Suvarnabhumi",
+    pl: "Suvarnabhumi",
+    ru: "Суварнабхуми",
+    th: "สุวรรณภูมิ",
+    zh: "素万那普",
+  },
+  "don-mueang-airport-to-pattaya": {
+    de: "Pattaya",
+    en: "Pattaya",
+    fr: "Pattaya",
+    pl: "Pattaya",
+    ru: "Паттайе",
+    th: "พัทยา",
+    zh: "芭提雅",
+  },
+  "pattaya-to-don-mueang-airport": {
+    de: "Don Mueang",
+    en: "Don Mueang",
+    fr: "Don Mueang",
+    pl: "Don Mueang",
+    ru: "Дон Муанг",
+    th: "ดอนเมือง",
+    zh: "廊曼",
+  },
 };
 
 const conditionLabels: Record<LocaleCode, Record<string, string>> = {
   de: {
     clear: "Klar",
-    clouds: "Bewolkt",
+    clouds: "Bewölkt",
     drizzle: "Niesel",
     fog: "Nebel",
     rain: "Regen",
@@ -112,28 +169,28 @@ const conditionLabels: Record<LocaleCode, Record<string, string>> = {
     storm: "Burza",
   },
   ru: {
-    clear: "Clear",
-    clouds: "Clouds",
-    drizzle: "Drizzle",
-    fog: "Fog",
-    rain: "Rain",
-    storm: "Storm",
+    clear: "Ясно",
+    clouds: "Облачно",
+    drizzle: "Морось",
+    fog: "Туман",
+    rain: "Дождь",
+    storm: "Гроза",
   },
   th: {
-    clear: "Clear",
-    clouds: "Clouds",
-    drizzle: "Drizzle",
-    fog: "Fog",
-    rain: "Rain",
-    storm: "Storm",
+    clear: "ท้องฟ้าโปร่ง",
+    clouds: "มีเมฆ",
+    drizzle: "ฝนปรอย",
+    fog: "หมอก",
+    rain: "ฝน",
+    storm: "พายุฝน",
   },
   zh: {
-    clear: "Clear",
-    clouds: "Clouds",
-    drizzle: "Drizzle",
-    fog: "Fog",
-    rain: "Rain",
-    storm: "Storm",
+    clear: "晴",
+    clouds: "多云",
+    drizzle: "小雨",
+    fog: "雾",
+    rain: "雨",
+    storm: "雷雨",
   },
 };
 
@@ -142,6 +199,8 @@ export function MobileDestinationWeather({
   routeSlug,
 }: DestinationWeatherProps) {
   const destination = destinations[routeSlug];
+  const destinationLabel =
+    destinationLabels[routeSlug]?.[locale] ?? destination.label;
   const copy = labels[locale] ?? labels.en;
   const [isOpen, setIsOpen] = useState(false);
   const [weather, setWeather] = useState<WeatherState>(fallbackWeather);
@@ -209,7 +268,7 @@ export function MobileDestinationWeather({
           <button
             type="button"
             aria-expanded={isOpen}
-            aria-label={`${copy.prefix} ${destination.label}: ${weather.temperature} degrees, ${condition}`}
+            aria-label={`${copy.prefix} ${destinationLabel}: ${weather.temperature}°, ${condition}`}
             className="relative isolate h-14 w-[4.7rem] overflow-hidden rounded-2xl border border-white/15 bg-[#0b4d68] text-white shadow-lg shadow-black/15 ring-1 ring-white/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-[#0e7b6b]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
             onClick={() => setIsOpen((current) => !current)}
           >
@@ -257,7 +316,7 @@ export function MobileDestinationWeather({
                 {weather.temperature}&deg;
               </span>
               <span className="mt-0.5 max-w-full truncate text-[0.68rem] font-black leading-none text-white">
-                {copy.prefix} {destination.label}
+                {copy.prefix} {destinationLabel}
               </span>
               <span className="mt-1 text-[0.62rem] font-bold leading-none text-white/80">
                 {condition}

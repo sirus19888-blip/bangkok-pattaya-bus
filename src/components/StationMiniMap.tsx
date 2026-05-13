@@ -161,12 +161,15 @@ export function StationMiniMap({
             referrerPolicy="no-referrer-when-downgrade"
           />
         ) : (
-          <span className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#eaf5fb] px-4 text-center">
-            <span className="text-sm font-black text-[#13233a]">
-              {labels.title}
+          <span
+            aria-hidden="true"
+            className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#eaf5fb] px-4 text-center"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl shadow-sm">
+              ⌖
             </span>
-            <span className="text-xs font-semibold leading-5 text-[#4f5d6c]">
-              {labels.fallbackNote}
+            <span className="text-xs font-black text-[#13233a]">
+              {openMapLabel}
             </span>
           </span>
         )}

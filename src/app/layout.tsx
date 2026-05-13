@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { ConsentManagementPlaceholder } from "@/components/ConsentManagementPlaceholder";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased">
       <body className="flex min-h-full flex-col">
         {children}
+        <ConsentManagementPlaceholder />
         <SiteFooter />
         <Analytics />
       </body>

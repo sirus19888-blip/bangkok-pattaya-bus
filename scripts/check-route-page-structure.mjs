@@ -80,10 +80,11 @@ const stationTipSamplesByRoute = new Map([
 ]);
 
 const desktopSwipeTextPatterns = [
-  /(?<!md:hidden[^>]*>)Swipe(?![^<]*<\/span>)/,
+  /Swipe/,
   /Swipe to see more/,
   /Tip Swipe/,
   /Wischen/,
+  /Wische, um mehr zu sehen/,
   /Faites glisser/,
   /Przesuń/,
   /Листайте/,
@@ -157,6 +158,14 @@ for (const path of expectedEnglishRoutes) {
         `${path} desktop HTML must not show mobile swipe hint text: ${pattern}`,
       );
     }
+    assert.ok(
+      !visibleHtml.includes("Station map Use this map"),
+      `${path} station map text must not be glued together.`,
+    );
+    assert.ok(
+      visibleHtml.includes("<ul") && visibleHtml.includes("</ul>"),
+      `${path} related routes and repeated route cards should use semantic lists.`,
+    );
     assert.equal(
       todayOccurrences,
       1,
@@ -285,14 +294,14 @@ assert.ok(
   "Homepage swipe hint must remain mobile-only.",
 );
 assert.ok(
-  stationCardSource.includes("md:hidden") &&
-    stationCardSource.includes("<span>Swipe</span>"),
-  "Station tip swipe hint must remain mobile-only.",
+  !stationCardSource.includes("<span>Swipe</span>") &&
+    !stationPhotoGallerySource.includes("Swipe to see more"),
+  "Station sections must not render textual swipe hints.",
 );
 assert.ok(
-  stationPhotoGallerySource.includes("md:hidden") &&
-    stationPhotoGallerySource.includes("{swipeHint}"),
-  "Station photo swipe hint must remain mobile-only.",
+  stationCardSource.includes("getShowMoreLabel") &&
+    stationCardSource.includes("md:hidden"),
+  "Station tips must keep a localized mobile Show more control.",
 );
 
 for (const oldDesktopMarker of [
