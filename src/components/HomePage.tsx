@@ -716,10 +716,10 @@ function MobileHome({
   };
 
   return (
-    <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15">
-      <div className="flex-1 overflow-y-auto pb-24">
-        <div className="overflow-hidden rounded-b-[2rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/20">
-          <div className="flex items-center justify-between px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.9rem)]">
+    <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15 md:h-auto md:min-h-screen md:max-w-[1180px] md:overflow-visible md:bg-transparent md:px-6 md:py-6 md:shadow-none xl:max-w-[1320px]">
+      <div className="flex-1 overflow-y-auto pb-24 md:overflow-visible md:pb-0">
+        <div className="overflow-hidden rounded-b-[2rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/20 md:rounded-[2rem]">
+          <div className="flex items-center justify-between px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.9rem)] md:px-8 md:pb-4 md:pt-6">
             <Link href={`/${locale}`} className="flex min-w-0 items-center gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#0e7b6b] p-1.5 shadow-sm ring-1 ring-white/10">
                 <Image
@@ -753,24 +753,24 @@ function MobileHome({
             />
           ) : null}
 
-          <div className="relative px-4 pb-4 pt-3">
-            <div className="absolute inset-x-4 bottom-0 top-4 overflow-hidden rounded-[2rem]">
+          <div className="relative px-4 pb-4 pt-3 md:px-8 md:pb-8 md:pt-6">
+            <div className="absolute inset-x-4 bottom-0 top-4 overflow-hidden rounded-[2rem] md:inset-x-8 md:rounded-[2.25rem]">
               <Image
                 alt=""
                 aria-hidden="true"
                 className="h-full w-full object-cover opacity-55"
                 fill
                 priority
-                sizes="390px"
+                sizes="(min-width: 768px) 1180px, 390px"
                 src="/images/hero/mobile-home-bus-guide.png"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/45 via-[#0e1e2e]/70 to-[#0e1e2e]" />
             </div>
-            <div className="relative pb-2 pt-4">
+            <div className="relative pb-2 pt-4 md:min-h-[390px] md:pb-0 md:pt-10">
               <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#e8b05a] ring-1 ring-white/15">
                 {copy.mobileHeroKicker}
               </span>
-              <p className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight">
+              <p className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight md:max-w-3xl md:text-5xl lg:text-6xl">
                 {copy.heroLineOne}{" "}
                 <span className="italic text-[#e8b05a]">
                   {copy.heroSmart}
@@ -781,14 +781,14 @@ function MobileHome({
                   {copy.heroEasy}
                 </span>
               </p>
-              <h1 className="mt-3 max-w-[18rem] text-[1.72rem] font-black leading-[1.02] tracking-tight text-white">
+              <h1 className="mt-3 max-w-[18rem] text-[1.72rem] font-black leading-[1.02] tracking-tight text-white md:max-w-3xl md:text-4xl lg:text-5xl">
                 {copy.homepageH1}
               </h1>
-              <p className="mt-2 max-w-[17.5rem] text-[0.84rem] font-semibold leading-5 text-[#e8edf5]">
+              <p className="mt-2 max-w-[17.5rem] text-[0.84rem] font-semibold leading-5 text-[#e8edf5] md:max-w-xl md:text-base md:leading-7">
                 {copy.subtitle}
               </p>
               {featuredRoute ? (
-                <div className="mt-4 rounded-[1.45rem] bg-white/95 p-2.5 text-[#13233a] shadow-xl shadow-black/20">
+                <div className="mt-4 rounded-[1.45rem] bg-white/95 p-2.5 text-[#13233a] shadow-xl shadow-black/20 md:max-w-xl md:p-3">
                   <RouteSearch
                     allowCurrentRouteNavigation
                     compact
@@ -805,8 +805,8 @@ function MobileHome({
           </div>
         </div>
 
-        <section>
-          <div className="mb-3 flex items-end justify-between gap-3 px-4 pt-5">
+        <section className="md:mt-6 md:rounded-[2rem] md:border md:border-[#eadcc7] md:bg-white md:p-6 md:shadow-sm">
+          <div className="mb-3 flex items-end justify-between gap-3 px-4 pt-5 md:px-0 md:pt-0">
             <div>
               <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
                 {copy.popularRoutes}
@@ -815,11 +815,11 @@ function MobileHome({
                 {copy.chooseBus}
               </h2>
             </div>
-            <span className="text-xs font-black text-[#6b7280]">
+            <span className="text-xs font-black text-[#6b7280] md:hidden">
               {copy.swipe}
             </span>
           </div>
-          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3">
+          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 md:grid md:grid-cols-3 md:overflow-visible md:px-0 md:pb-0 xl:grid-cols-6">
             {routePagesForLocale.map((routePage) => (
               <MobileRouteCard
                 copy={copy}
@@ -835,7 +835,7 @@ function MobileHome({
           </div>
         </section>
 
-        <section className="mx-4 rounded-[1.5rem] border border-[#e8c986] bg-[#fff8ec] p-4 shadow-sm">
+        <section className="mx-4 rounded-[1.5rem] border border-[#e8c986] bg-[#fff8ec] p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6">
           <div className="flex items-center gap-3">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#efd18a]">
               <IconAsset name="tips" size="lg" />
@@ -849,7 +849,7 @@ function MobileHome({
               </h2>
             </div>
           </div>
-          <div className="mt-3 space-y-2">
+          <div className="mt-3 space-y-2 md:grid md:grid-cols-3 md:gap-3 md:space-y-0">
             {copy.tips.map((tip) => (
               <p
                 key={tip}
@@ -886,17 +886,17 @@ function MobileRouteCard({
   const routeImage = mobileRouteImages[routePage.slug];
 
   return (
-    <article className="flex w-[172px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm">
+    <article className="flex w-[172px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm md:w-auto md:min-w-0">
       <Link
         href={`/${locale}/${routePage.slug}`}
-        className="relative block h-28 overflow-hidden bg-[#13233a]"
+        className="relative block h-28 overflow-hidden bg-[#13233a] md:h-36"
       >
         <Image
           alt=""
           aria-hidden="true"
           className="h-full w-full object-cover"
           fill
-          sizes="172px"
+          sizes="(min-width: 1280px) 190px, (min-width: 768px) 33vw, 172px"
           src={routeImage}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-[#0e1e2e]/30 to-[#0e1e2e]/85" />

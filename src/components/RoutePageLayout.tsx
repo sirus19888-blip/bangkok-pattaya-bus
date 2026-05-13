@@ -114,7 +114,7 @@ export function RoutePageLayout({
 
         <div
           id="mobile-related-routes"
-          className="scroll-mt-6"
+          className="scroll-mt-6 md:hidden"
         >
           <RelatedRoutes
             currentRoute={routePage.slug}
@@ -151,8 +151,8 @@ function MobileDetailsSection({
   title: string;
 }) {
   return (
-    <details className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm">
-      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a]">
+    <details className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm md:border-0 md:bg-transparent md:p-0 md:shadow-none">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a] md:hidden">
         <span>{title}</span>
         <span
           aria-hidden="true"
@@ -162,7 +162,7 @@ function MobileDetailsSection({
           <span className="hidden group-open:inline">-</span>
         </span>
       </summary>
-      <div className="mt-4">{children}</div>
+      <div className="mt-4 md:mt-0 md:block">{children}</div>
     </details>
   );
 }

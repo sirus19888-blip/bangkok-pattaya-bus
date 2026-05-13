@@ -93,26 +93,27 @@ export function MobileRouteDecisionCard({
   }
 
   return (
-    <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm">
+    <section className="rounded-2xl border border-[#c8dbe9] bg-white p-3 shadow-sm md:grid md:grid-cols-[minmax(0,0.95fr)_minmax(23rem,1.05fr)] md:gap-4 md:p-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(30rem,1.15fr)]">
+      <div className="md:flex md:min-w-0 md:flex-col">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
             {sourceStatusLabel}
           </p>
-          <h1 className="mt-1 text-[1.45rem] font-black leading-[1.08] text-[#13233a]">
+          <h1 className="mt-1 text-[1.45rem] font-black leading-[1.08] text-[#13233a] md:text-[2.35rem] md:leading-[1.02] lg:text-[2.75rem]">
             {routeTitle}
           </h1>
         </div>
-        <span className="shrink-0 rounded-full bg-[#f3d77b] px-3 py-1 text-xs font-black text-[#3f3413]">
+        <span className="shrink-0 rounded-full bg-[#f3d77b] px-3 py-1 text-xs font-black text-[#3f3413] md:mt-1">
           {labels.title.replace(":", "")}
         </span>
       </div>
 
-      <div className="mt-2.5 rounded-2xl bg-[#eaf5fb] p-3">
+      <div className="mt-2.5 rounded-2xl bg-[#eaf5fb] p-3 md:mt-4 md:p-4">
         <p className="text-xs font-bold text-[#4f5d6c]">
           {labels.timeZoneNote}
         </p>
-        <p className="mt-1 text-4xl font-black leading-none text-[#13233a]">
+        <p className="mt-1 text-4xl font-black leading-none text-[#13233a] md:text-5xl">
           {calculatedNextDeparture.time}
         </p>
         {countdownText ? (
@@ -141,20 +142,23 @@ export function MobileRouteDecisionCard({
         ) : null}
       </div>
 
-      <div className="mt-2 grid grid-cols-2 gap-2">
+      <div className="mt-2 grid grid-cols-2 gap-2 md:mt-3">
         <DecisionFact label={labels.travelTime} value={schedule.travelTime} />
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
 
-      <p className="mt-2.5 text-xs font-black uppercase tracking-wide text-[#2f6f93]">
+      </div>
+
+      <div className="md:col-start-2 md:row-span-3 md:row-start-1 md:min-w-0 md:rounded-2xl md:border md:border-[#eadcc7] md:bg-[#fffaf2] md:p-4">
+      <p className="mt-2.5 text-xs font-black uppercase tracking-wide text-[#2f6f93] md:mt-0">
         {scheduleLabels.title}
       </p>
-      <div id="mobile-departures" className="mt-1.5 grid grid-cols-3 gap-1.5">
+      <div id="mobile-departures" className="mt-1.5 grid grid-cols-3 gap-1.5 md:grid-cols-5 md:gap-2 lg:grid-cols-6">
         {hasDepartures ? (
           departures.map((departure) => (
             <span
               key={departure}
-              className={`flex min-h-9 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black ${
+              className={`flex min-h-9 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black md:min-h-11 md:text-base ${
                 departure === calculatedNextDeparture.time
                   ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
                   : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
@@ -174,11 +178,13 @@ export function MobileRouteDecisionCard({
           </p>
         )}
       </div>
+      </div>
 
+      <div className="md:col-start-1 md:row-start-2">
       <a
         href="#mobile-related-routes"
         onClick={handleShowRelatedRoutesClick}
-        className="mt-2.5 flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-5 text-center text-sm font-black text-white shadow-sm"
+        className="mt-2.5 flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-5 text-center text-sm font-black text-white shadow-sm md:mt-0 md:max-w-sm"
       >
         {labels.showAllDepartures}
       </a>
@@ -188,7 +194,8 @@ export function MobileRouteDecisionCard({
         routeId={routeId}
         variant="stickyMobile"
       />
-      <div className="relative mt-1.5 flex items-start justify-end gap-2">
+
+      <div className="relative mt-1.5 flex items-start justify-end gap-2 md:mt-3">
         <details className="group relative shrink-0">
           <summary
             aria-label={scheduleLabels.dataTitle}
@@ -234,6 +241,7 @@ export function MobileRouteDecisionCard({
             </p>
           </div>
         </details>
+      </div>
       </div>
     </section>
   );
