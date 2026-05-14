@@ -91,8 +91,14 @@ export function RoutePageLayout({
           showDesktopRouteIcons
         />
 
-        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start lg:gap-8">
-          <div className="min-w-0 space-y-5 lg:space-y-6">
+        <div
+          className="lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start lg:gap-8"
+          data-visual-qa="route-layout"
+        >
+          <div
+            className="min-w-0 space-y-5 lg:space-y-6"
+            data-visual-qa="route-main-content"
+          >
             <MobileRouteDecisionCard
               affiliateLabel={getTwelveGoVariantLabel(
                 "stickyMobile",
@@ -153,7 +159,10 @@ export function RoutePageLayout({
             </div>
           </div>
 
-          <div className="hidden lg:sticky lg:top-24 lg:block">
+          <div
+            className="hidden lg:sticky lg:top-24 lg:block"
+            data-visual-qa="affiliate-sidebar-shell"
+          >
             <DesktopRouteBookingPanel
               affiliateLabel={uiText.affiliate.variantLabels.checkAvailability}
               compareAlternativesLabel={

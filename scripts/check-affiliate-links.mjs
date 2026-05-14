@@ -283,6 +283,16 @@ assert.match(
 );
 assert.match(
   renderedAffiliateCTA,
+  /data-affiliate-provider="12go"/,
+  'Rendered AffiliateCTA must mark the link with data-affiliate-provider="12go".',
+);
+assert.match(
+  renderedAffiliateCTA,
+  /data-affiliate-sub-id="bpb-bangkok-to-pattaya"/,
+  "Rendered AffiliateCTA must expose the affiliate sub_id on the link.",
+);
+assert.match(
+  renderedAffiliateCTA,
   /Some booking links may be affiliate links\. Timetable information stays independent\./,
   "Rendered AffiliateCTA must show the disclosure next to the CTA.",
 );
@@ -355,6 +365,11 @@ for (const { file, tag } of builtTwelveGoLinks) {
   assert.match(tag, /target="_blank"/, `${file} has a 12Go link without target="_blank".`);
   assert.match(tag, /rel="[^"]*\bsponsored\b[^"]*"/, `${file} has a 12Go link without rel sponsored.`);
   assert.match(tag, /rel="[^"]*\bnofollow\b[^"]*"/, `${file} has a 12Go link without rel nofollow.`);
+  assert.match(
+    tag,
+    /data-affiliate-provider="12go"/,
+    `${file} has a 12Go link without data-affiliate-provider="12go".`,
+  );
 
   const href = getHrefFromAnchorTag(tag);
   const url = new URL(href);
@@ -362,6 +377,11 @@ for (const { file, tag } of builtTwelveGoLinks) {
   const position = subId ? getAffiliatePositionFromSubId(subId) : null;
 
   assert.ok(subId, `${file} has a 12Go link without sub_id.`);
+  assert.match(
+    tag,
+    new RegExp(`data-affiliate-sub-id="${escapeRegExp(subId)}"`),
+    `${file} has a 12Go link whose data-affiliate-sub-id does not match href sub_id ${subId}.`,
+  );
   assert.ok(
     position,
     `${file} has a 12Go link with an invalid position-specific sub_id: ${subId}.`,
@@ -511,6 +531,10 @@ function getAffiliatePositionFromSubId(subId) {
   return requiredAffiliatePositions.find((position) =>
     subId.endsWith(`-${position}`),
   );
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
 function collectHtmlFiles(directory) {

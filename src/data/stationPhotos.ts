@@ -493,11 +493,11 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
   }
 
   if (locale === "zh") {
-    return text.zh ?? "车站照片";
+    return text.zh ?? "车站区域照片";
   }
 
   if (locale === "fr") {
-    return text.fr ?? "Photo de la station";
+    return text.fr ?? "Photo de la zone de station";
   }
 
   return text.en;
@@ -532,10 +532,10 @@ export function getStationPhotoGalleryTitle(locale: LocaleCode) {
     return "Stationsfotos";
   }
   if (locale === "zh") {
-    return "车站照片";
+    return "车站区域照片";
   }
   if (locale === "fr") {
-    return "Photos des stations";
+    return "Photos des zones de station";
   }
   return locale === "pl"
     ? "Jak wyglądają stacje"

@@ -96,7 +96,7 @@
     },
     "suvarnabhumi-airport-to-pattaya": {
       "label": "Suvarnabhumi Airport do Pattaya",
-      "title": "Autobus Suvarnabhumi Airport do Pattaya",
+      "title": "Autobus z lotniska Suvarnabhumi do Pattayi",
       "intro": "Informacje dla podróżnych jadących autobusem bezpośrednio z Suvarnabhumi Airport do Pattaya po przylocie.",
       "relatedDescription": "Praktyczne informacje o autobusie z lotniska Suvarnabhumi do Pattayi po przylocie.",
       "metadataTitle": "Autobus Suvarnabhumi Airport Pattaya – rozkład i cena",
@@ -104,10 +104,10 @@
     },
     "pattaya-to-suvarnabhumi-airport": {
       "label": "Pattaya na lotnisko Suvarnabhumi",
-      "title": "Autobus Pattaya na lotnisko Suvarnabhumi",
+      "title": "Autobus z Pattayi na lotnisko Suvarnabhumi",
       "intro": "Sprawdź godziny autobusów z Pattaya/Jomtien na lotnisko Suvarnabhumi, cenę biletu, czas podróży, miejsce odjazdu i wskazówki przed lotem.",
       "relatedDescription": "Sprawdź autobus z Pattayi na lotnisko Suvarnabhumi: godziny, cenę i miejsce odjazdu.",
-      "metadataTitle": "Autobus Pattaya na lotnisko Suvarnabhumi – rozkład i cena",
+      "metadataTitle": "Autobus z Pattayi na lotnisko Suvarnabhumi – rozkład i cena",
       "metadataDescription": "Sprawdź autobus z Pattaya/Jomtien na lotnisko Suvarnabhumi, godziny odjazdów, cenę biletu, czas podróży i miejsce odjazdu."
     },
     "don-mueang-airport-to-pattaya": {

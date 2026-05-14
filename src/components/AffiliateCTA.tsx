@@ -86,6 +86,7 @@ export function AffiliateCTA({
       data-affiliate-lang={lang}
       data-affiliate-route={routeId}
       data-affiliate-sub-id={subId}
+      data-affiliate-cta-position={ctaPosition ?? variant}
     >
       <a
         aria-label={ariaLabel ?? label}
@@ -93,6 +94,10 @@ export function AffiliateCTA({
           className ??
           `flex w-full items-center justify-center text-center font-black ${buttonClasses[variant]}`
         }
+        data-affiliate-cta-position={ctaPosition ?? variant}
+        data-affiliate-provider={provider}
+        data-affiliate-route={routeId}
+        data-affiliate-sub-id={subId}
         href={href}
         onClick={() =>
           trackAffiliateClick({

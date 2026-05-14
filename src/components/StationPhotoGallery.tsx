@@ -138,9 +138,9 @@ export function StationPhotoGallery({
                           : locale === "th"
                             ? photo.displayTitle.th ?? "ภาพสถานี"
                           : locale === "zh"
-                            ? photo.displayTitle.zh ?? "车站照片"
+                            ? photo.displayTitle.zh ?? "车站区域照片"
                           : locale === "fr"
-                            ? photo.displayTitle.fr ?? "Photo de la station"
+                            ? photo.displayTitle.fr ?? "Photo de la zone de station"
                             : photo.displayTitle.en)}
                       </p>
                     ) : null}
@@ -224,9 +224,9 @@ function PhotoLightbox({
       : locale === "th"
         ? photo.displayTitle.th ?? "ภาพสถานี"
       : locale === "zh"
-        ? photo.displayTitle.zh ?? "车站照片"
+        ? photo.displayTitle.zh ?? "车站区域照片"
       : locale === "fr"
-        ? photo.displayTitle.fr ?? "Photo de la station"
+        ? photo.displayTitle.fr ?? "Photo de la zone de station"
       : photo.displayTitle.en
     : photo.title);
 

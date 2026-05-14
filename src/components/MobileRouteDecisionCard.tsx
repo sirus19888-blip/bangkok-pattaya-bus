@@ -171,7 +171,11 @@ export function MobileRouteDecisionCard({
       <p className="mt-2.5 text-xs font-black uppercase tracking-wide text-[#2f6f93] md:mt-0">
         {scheduleLabels.title}
       </p>
-      <div id="mobile-departures" className="mt-1.5 grid grid-cols-3 gap-1.5 md:grid-cols-5 md:gap-2 lg:grid-cols-6">
+      <div
+        id="mobile-departures"
+        className="mt-1.5 grid grid-cols-3 gap-1.5 md:grid-cols-5 md:gap-2 lg:grid-cols-6"
+        data-visual-qa="schedule-grid"
+      >
         {hasDepartures ? (
           departures.map((departure) => {
             const isNextDeparture = isNextDepartureInTodaySchedule(

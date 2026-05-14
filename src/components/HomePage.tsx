@@ -866,6 +866,7 @@ function MobileHome({
 
         <section
           id="popular-routes"
+          data-visual-qa="homepage-popular-routes"
           className="scroll-mt-6 md:mt-6 md:rounded-[2rem] md:border md:border-[#eadcc7] md:bg-white md:p-6 md:shadow-sm"
         >
           <div className="mb-3 flex items-end justify-between gap-3 px-4 pt-5 md:px-0 md:pt-0">
@@ -878,7 +879,10 @@ function MobileHome({
               </h2>
             </div>
           </div>
-          <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-4 sm:pb-4 md:px-0 md:pb-0 lg:grid-cols-3">
+          <div
+            className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-4 sm:pb-4 md:px-0 md:pb-0 lg:grid-cols-3"
+            data-visual-qa="homepage-route-grid"
+          >
             {routePagesForLocale.map((routePage) => (
               <MobileRouteCard
                 copy={copy}
@@ -982,7 +986,10 @@ function MobileRouteCard({
   const routeImage = mobileRouteImages[routePage.slug];
 
   return (
-    <article className="flex w-[172px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm sm:w-auto sm:min-w-0">
+    <article
+      className="flex w-[172px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm sm:w-auto sm:min-w-0"
+      data-visual-qa="homepage-route-card"
+    >
       <Link
         href={`/${locale}/${routePage.slug}`}
         className="relative block h-28 overflow-hidden bg-[#13233a] md:h-36"

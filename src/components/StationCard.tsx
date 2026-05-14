@@ -35,7 +35,10 @@ export function StationCard({
   const showLessLabel = getShowLessLabel(locale);
 
   return (
-    <section className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 shadow-sm sm:p-5">
+    <section
+      className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 shadow-sm sm:p-5"
+      data-visual-qa="station-info"
+    >
       {showTitle ? (
         <p className="px-1 text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
           {labels.title}
