@@ -1,10 +1,20 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { cwd } from "node:process";
 
 const {
   getMinutesUntilDeparture,
   getNextDeparture,
   isNextDepartureInTodaySchedule,
 } = await import("../src/lib/scheduleTime.ts");
+const { getScheduleByRoute } = await import("../src/data/schedules.ts");
+
+const root = cwd();
+const mobileRouteDecisionSource = readFileSync(
+  join(root, "src/components/MobileRouteDecisionCard.tsx"),
+  "utf8",
+);
 
 const schedule = {
   departures: [
@@ -81,6 +91,15 @@ const consistencyCases = [
   ["22:01", 22, 1, "06:00", true],
 ];
 
+const routeIds = [
+  "bangkok-to-pattaya",
+  "pattaya-to-bangkok",
+  "suvarnabhumi-airport-to-pattaya",
+  "pattaya-to-suvarnabhumi-airport",
+  "don-mueang-airport-to-pattaya",
+  "pattaya-to-don-mueang-airport",
+];
+
 for (const [label, hour, minute, expectedTime, expectedTomorrow] of consistencyCases) {
   const now = bangkokDateAt(hour, minute);
   const nextDeparture = getNextDeparture(schedule.departures, now, "Asia/Bangkok");
@@ -118,5 +137,90 @@ for (const [label, hour, minute, expectedTime, expectedTomorrow] of consistencyC
     );
   }
 }
+
+const airportSchedule = getScheduleByRoute("suvarnabhumi-airport-to-pattaya");
+
+assert.ok(airportSchedule, "Suvarnabhumi route schedule must exist.");
+
+for (const [label, hour, minute, expectedTime, expectedTomorrow] of [
+  ["20:28", 20, 28, "21:00", false],
+  ["20:59", 20, 59, "21:00", false],
+  ["21:01", 21, 1, "22:00", false],
+  ["21:59", 21, 59, "22:00", false],
+  ["22:01", 22, 1, "06:00", true],
+  ["after midnight", 0, 1, "06:00", false],
+]) {
+  const nextDeparture = getNextDeparture(
+    airportSchedule,
+    bangkokDateAt(hour, minute),
+    "Asia/Bangkok",
+  );
+
+  assert.equal(
+    nextDeparture.time,
+    expectedTime,
+    `Suvarnabhumi ${label}: wrong next departure.`,
+  );
+  assert.equal(
+    nextDeparture.isTomorrow,
+    expectedTomorrow,
+    `Suvarnabhumi ${label}: wrong tomorrow flag.`,
+  );
+}
+
+for (const routeId of routeIds) {
+  const routeSchedule = getScheduleByRoute(routeId);
+
+  assert.ok(routeSchedule, `${routeId} schedule must exist.`);
+
+  for (const [label, hour, minute] of [
+    ["20:28", 20, 28],
+    ["20:59", 20, 59],
+    ["21:01", 21, 1],
+    ["21:59", 21, 59],
+    ["22:01", 22, 1],
+    ["after midnight", 0, 1],
+  ]) {
+    const now = bangkokDateAt(hour, minute);
+    const nextDeparture = getNextDeparture(routeSchedule, now, "Asia/Bangkok");
+    const heroNextDeparture = nextDeparture.time;
+    const scheduleGridNextDepartures = routeSchedule.departures.filter(
+      (departure) => isNextDepartureInTodaySchedule(departure, nextDeparture),
+    );
+    const sidebarNextDeparture = nextDeparture.time;
+
+    assert.equal(
+      heroNextDeparture,
+      sidebarNextDeparture,
+      `${routeId} ${label}: hero and sidebar must share one next departure.`,
+    );
+
+    if (nextDeparture.isTomorrow) {
+      assert.deepEqual(
+        scheduleGridNextDepartures,
+        [],
+        `${routeId} ${label}: today's schedule grid must not mark a past departure as next bus.`,
+      );
+    } else {
+      assert.deepEqual(
+        scheduleGridNextDepartures,
+        [nextDeparture.time],
+        `${routeId} ${label}: schedule grid must mark the same next bus as hero/sidebar.`,
+      );
+    }
+  }
+}
+
+assert.ok(
+  mobileRouteDecisionSource.indexOf("{labels.nextBus}") <
+    mobileRouteDecisionSource.indexOf("<span>{departure}</span>"),
+  "Schedule chip text must render as 'Next bus HH:MM', not 'HH:MM Next bus'.",
+);
+assert.ok(
+  mobileRouteDecisionSource.includes("data-next-bus-hero") &&
+    mobileRouteDecisionSource.includes("data-next-bus-chip") &&
+    mobileRouteDecisionSource.includes("data-next-bus-sidebar"),
+  "Hero, schedule chip, and sidebar must expose matching next bus markers for QA.",
+);
 
 console.log("Next departure checks passed.");

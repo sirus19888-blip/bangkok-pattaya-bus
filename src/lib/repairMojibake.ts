@@ -106,7 +106,8 @@ const cp1250ReverseMap = new Map<string, number>([
   ["˙", 0xff],
 ]);
 
-const mojibakePattern = /(?:â€|â€“|â€”|â–|âŚ|PokaĹ|wiÄ|Đ|ŕ|ć|ç«|ĺ|Ă)/;
+const mojibakePattern =
+  /(?:â€|â€“|â€”|â–|âŚ|PokaĹ|wiÄ|Đ|ŕ|ć|ç«|ĺ|Ă|Ä|Ĺ|č|ć|Â)/;
 
 export function repairMojibake(value: string): string {
   if (!mojibakePattern.test(value)) {

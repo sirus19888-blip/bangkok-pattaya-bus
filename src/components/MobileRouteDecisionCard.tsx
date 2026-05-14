@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
 import type { LocaleCode, RouteId } from "@/data/routes";
@@ -125,7 +126,9 @@ export function MobileRouteDecisionCard({
           {labels.timeZoneNote}
         </p>
         <p className="mt-1 text-4xl font-black leading-none text-[#13233a] md:text-5xl">
-          {calculatedNextDeparture.time}
+          <span data-next-bus-hero={calculatedNextDeparture.time}>
+            {calculatedNextDeparture.time}
+          </span>
         </p>
         {countdownText ? (
           <div className="mt-2 rounded-xl border border-[#13233a]/10 bg-[#13233a] px-3 py-2 text-white shadow-sm">
@@ -154,9 +157,10 @@ export function MobileRouteDecisionCard({
       </div>
 
       <div className="mt-2 grid grid-cols-2 gap-2 md:mt-3 lg:hidden">
-        <DecisionFact
+        <TravelTimeDistanceFact
+          distance={distance}
           label={labels.travelTime}
-          value={`${schedule.travelTime} • ${distance}`}
+          travelTime={schedule.travelTime}
         />
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
@@ -178,18 +182,22 @@ export function MobileRouteDecisionCard({
             return (
               <span
                 key={departure}
+                aria-label={
+                  isNextDeparture ? `${labels.nextBus} ${departure}` : departure
+                }
                 className={`flex min-h-9 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black md:min-h-11 md:text-base ${
                   isNextDeparture
                     ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
                     : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
                 }`}
+                data-next-bus-chip={isNextDeparture ? departure : undefined}
               >
-                {departure}
                 {isNextDeparture ? (
                   <span className="max-w-full truncate text-[0.56rem] uppercase leading-none tracking-wide text-[#f3d77b]">
                     {labels.nextBus}
                   </span>
                 ) : null}
+                <span>{departure}</span>
               </span>
             );
           })
@@ -299,7 +307,9 @@ export function DesktopRouteBookingPanel({
               {labels.title.replace(":", "")}
             </p>
             <p className="mt-1 text-5xl font-black leading-none text-[#13233a]">
-              {calculatedNextDeparture.time}
+              <span data-next-bus-sidebar={calculatedNextDeparture.time}>
+                {calculatedNextDeparture.time}
+              </span>
             </p>
           </div>
           {calculatedNextDeparture.isTomorrow ? (
@@ -325,9 +335,10 @@ export function DesktopRouteBookingPanel({
       </div>
 
       <div className="mt-4 grid gap-3">
-        <DecisionFact
+        <TravelTimeDistanceFact
+          distance={distance}
           label={labels.travelTime}
-          value={`${schedule.travelTime} • ${distance}`}
+          travelTime={schedule.travelTime}
         />
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
@@ -495,7 +506,33 @@ function formatCountdown(
   return `${hours} ${labels.hoursShort} ${minutes} ${labels.minutesShort}`;
 }
 
-function DecisionFact({ label, value }: { label: string; value: string }) {
+function TravelTimeDistanceFact({
+  distance,
+  label,
+  travelTime,
+}: {
+  distance: string;
+  label: string;
+  travelTime: string;
+}) {
+  return (
+    <DecisionFact label={label}>
+      <span>{travelTime}</span>
+      <span aria-hidden="true">{" • "}</span>
+      <span>{distance}</span>
+    </DecisionFact>
+  );
+}
+
+function DecisionFact({
+  children,
+  label,
+  value,
+}: {
+  children?: ReactNode;
+  label: string;
+  value?: string;
+}) {
   const cleanLabel = label.replace(":", "");
 
   return (
@@ -503,9 +540,9 @@ function DecisionFact({ label, value }: { label: string; value: string }) {
       <p className="text-[0.68rem] font-black uppercase tracking-wide text-[#5f6874]">
         {cleanLabel}
       </p>
-      <p className="mt-1 text-sm font-black leading-snug text-[#13233a]">
-        {value}
-      </p>
+      <div className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-0 text-sm font-black leading-snug text-[#13233a]">
+        {children ?? value}
+      </div>
     </div>
   );
 }

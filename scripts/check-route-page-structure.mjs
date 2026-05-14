@@ -42,6 +42,8 @@ const expectedEnglishRoutes = [
   "/en/don-mueang-airport-to-pattaya",
   "/en/pattaya-to-don-mueang-airport",
 ];
+const routeLocales = ["en", "th", "zh", "ru", "de", "fr", "pl"];
+const routeSlugs = expectedEnglishRoutes.map((path) => path.replace("/en/", ""));
 
 const routeTitlesByPath = new Map([
   ["/en/bangkok-to-pattaya", "Bangkok to Pattaya Bus"],
@@ -100,15 +102,12 @@ const cleanDesktopSwipeTextPatterns = [
 ];
 
 const forbiddenEncodingArtifacts = [
-  "â€˘",
-  "PokaĹĽ",
-  "wiÄ™cej",
-  "ĐźĐľ",
-  "ĐµŃ",
-  "â–ľ",
-  "âŚ",
-  "Ă—",
-];
+  [0xe2, 0x20ac, 0x02d8],
+  [0x50, 0x6f, 0x6b, 0x61, 0x0139, 0x013d],
+  [0x77, 0x69, 0x00c4, 0x2122, 0x63, 0x65, 0x6a],
+  [0x0110, 0x017a, 0x0110, 0x013e],
+  [0x0110, 0x00b5, 0x0143],
+].map((codes) => String.fromCodePoint(...codes));
 
 function count(source, pattern) {
   return source.match(pattern)?.length ?? 0;
@@ -130,6 +129,37 @@ function stripDesktopHidden(source) {
   }
 
   return output;
+}
+
+for (const locale of routeLocales) {
+  for (const slug of routeSlugs) {
+    const builtHtmlPath = join(root, ".next/server/app", locale, `${slug}.html`);
+
+    if (!existsSync(builtHtmlPath)) {
+      continue;
+    }
+
+    const html = readFileSync(builtHtmlPath, "utf8");
+
+    for (const artifact of forbiddenEncodingArtifacts) {
+      assert.ok(
+        !html.includes(artifact),
+        `/${locale}/${slug} HTML must not contain encoding artifact: ${artifact}`,
+      );
+    }
+
+    if (locale === "en" && slug === "suvarnabhumi-airport-to-pattaya") {
+      const text = normalizeText(toTextContent(html));
+      const cleanDurationAndDistance = `Around 2-2.5 hours ${String.fromCodePoint(
+        0x2022,
+      )} 120 km`;
+
+      assert.ok(
+        text.includes(cleanDurationAndDistance),
+        "/en/suvarnabhumi-airport-to-pattaya must render clean travel time and distance text.",
+      );
+    }
+  }
 }
 
 for (const path of expectedEnglishRoutes) {
@@ -434,6 +464,10 @@ function toTextContent(html) {
     .replace(/&#x27;/g, "'")
     .replace(/&quot;/g, '"')
     .replace(/&nbsp;/g, " ");
+}
+
+function normalizeText(value) {
+  return value.replace(/\s+/g, " ").trim();
 }
 
 console.log("Route page structure checks passed.");
