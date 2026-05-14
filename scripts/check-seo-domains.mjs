@@ -5,6 +5,7 @@ import { cwd } from "node:process";
 const root = cwd();
 const expectedSiteUrl = "https://www.bangkokpattayabus.com";
 const locales = ["en", "th", "zh", "ru", "de", "fr", "pl"];
+const expectedHreflangCodes = [...locales, "x-default"];
 const routeSlugs = [
   "bangkok-to-pattaya",
   "pattaya-to-bangkok",
@@ -193,6 +194,18 @@ function assertCanonicalSelf(path, expectedUrl) {
 function assertHreflangs(path, expectedHreflangs) {
   const { hreflangs } = readSeoForPath(path);
 
+  assert(
+    hreflangs.size === expectedHreflangCodes.length,
+    `${path} must contain exactly ${expectedHreflangCodes.length} hreflang links, got ${hreflangs.size}.`,
+  );
+
+  for (const lang of expectedHreflangCodes) {
+    assert(
+      hreflangs.has(lang),
+      `${path} must include hreflang ${lang}.`,
+    );
+  }
+
   for (const [lang, expectedUrl] of expectedHreflangs.entries()) {
     assert(
       hreflangs.has(lang) && sameUrl(hreflangs.get(lang), expectedUrl),
@@ -350,6 +363,10 @@ assertNoBannedDomains(sitemapXml, "sitemap.xml");
 
 const sitemapUrls = parseSitemapUrls(sitemapXml);
 assert(sitemapUrls.length > 0, "sitemap.xml must contain URL entries.");
+assert(
+  new Set(sitemapUrls).size === sitemapUrls.length,
+  "sitemap.xml must not contain duplicate URLs.",
+);
 
 for (const url of sitemapUrls) {
   const parsedUrl = new URL(url);
@@ -377,12 +394,36 @@ for (const requiredUrl of requiredSitemapUrls) {
   );
 }
 
+const localizedHomepageUrls = sitemapUrls.filter((url) => {
+  const pathname = new URL(url).pathname;
+
+  return locales.some((locale) => pathname === `/${locale}`);
+});
+
+assert(
+  localizedHomepageUrls.length === locales.length,
+  "sitemap.xml must contain exactly one homepage URL for each supported language.",
+);
+
 for (const locale of locales) {
   assert(
     sitemapUrls.includes(absolute(`/${locale}`)),
     `sitemap.xml is missing localized homepage /${locale}.`,
   );
 }
+
+const localizedRouteUrls = sitemapUrls.filter((url) => {
+  const pathname = new URL(url).pathname;
+
+  return routeSlugs.some((slug) =>
+    locales.some((locale) => pathname === `/${locale}/${slug}`),
+  );
+});
+
+assert(
+  localizedRouteUrls.length === locales.length * routeSlugs.length,
+  "sitemap.xml must contain every main route page for all 7 languages.",
+);
 
 for (const slug of routeSlugs) {
   for (const locale of locales) {

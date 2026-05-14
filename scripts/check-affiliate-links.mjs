@@ -21,6 +21,14 @@ const affiliateRouteSource = readFileSync(
   "utf8",
 );
 const twelveGoSource = readFileSync(join(root, "src/lib/twelveGo.ts"), "utf8");
+const requiredAffiliatePositions = [
+  "homepage_hero",
+  "homepage_route_card",
+  "route_after_schedule",
+  "route_commercial_help",
+  "desktop_sidebar",
+  "mobile_sticky",
+];
 const renderedAffiliateCTA = renderAffiliateCTAForTest({
   disclosureText:
     "Some booking links may be affiliate links. Timetable information stays independent.",
@@ -79,6 +87,23 @@ const mobileStickyClickTest = simulateAffiliateClickForTest({
   to: "pattaya",
   variant: "stickyMobile",
 });
+const requiredPositionClickTests = requiredAffiliatePositions.map((position) =>
+  simulateAffiliateClickForTest({
+    ctaPosition: position,
+    disclosureText:
+      "Some booking links may be affiliate links. Timetable information stays independent.",
+    from: "bangkok",
+    href: `https://12go.asia/en/travel/bangkok/pattaya?z=15791301&sub_id=bpb-bangkok-to-pattaya-${position}`,
+    label: "Tickets and alternatives on 12Go",
+    lang: "en",
+    provider: "12go",
+    routeId: "bangkok-to-pattaya",
+    shortDisclosureText: "Affiliate link",
+    subId: `bpb-bangkok-to-pattaya-${position}`,
+    to: "pattaya",
+    variant: position === "mobile_sticky" ? "stickyMobile" : "afterSchedule",
+  }),
+);
 
 assert.match(
   ctaSource,
@@ -215,6 +240,27 @@ for (const position of [
     `Missing affiliate CTA position ${position}.`,
   );
 }
+for (const [index, position] of requiredAffiliatePositions.entries()) {
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(requiredPositionClickTests[index].events[0])),
+    {
+      cta_position: position,
+      from: "bangkok",
+      href: `https://12go.asia/en/travel/bangkok/pattaya?z=15791301&sub_id=bpb-bangkok-to-pattaya-${position}`,
+      lang: "en",
+      provider: "12go",
+      route_id: "bangkok-to-pattaya",
+      sub_id: `bpb-bangkok-to-pattaya-${position}`,
+      to: "pattaya",
+    },
+    `Affiliate click tracking must include the full payload for ${position}.`,
+  );
+  assert.equal(
+    requiredPositionClickTests[index].preventDefaultCalled,
+    false,
+    `Affiliate CTA click for ${position} must not block 12Go navigation.`,
+  );
+}
 assert.match(
   renderedAffiliateCTA,
   /href="https:\/\/12go\.asia\/en\/travel\/bangkok\/pattaya\?z=15791301"/,
@@ -297,10 +343,37 @@ assert.ok(
   "Affiliate CTA must not call preventDefault on 12Go links.",
 );
 
-for (const { file, tag } of findBuiltTwelveGoLinks()) {
+const builtTwelveGoLinks = findBuiltTwelveGoLinks();
+const builtAffiliatePositions = new Set();
+
+assert.ok(
+  builtTwelveGoLinks.length > 0,
+  "The built app must contain rendered 12Go affiliate links.",
+);
+
+for (const { file, tag } of builtTwelveGoLinks) {
   assert.match(tag, /target="_blank"/, `${file} has a 12Go link without target="_blank".`);
   assert.match(tag, /rel="[^"]*\bsponsored\b[^"]*"/, `${file} has a 12Go link without rel sponsored.`);
   assert.match(tag, /rel="[^"]*\bnofollow\b[^"]*"/, `${file} has a 12Go link without rel nofollow.`);
+
+  const href = getHrefFromAnchorTag(tag);
+  const url = new URL(href);
+  const subId = url.searchParams.get("sub_id");
+  const position = subId ? getAffiliatePositionFromSubId(subId) : null;
+
+  assert.ok(subId, `${file} has a 12Go link without sub_id.`);
+  assert.ok(
+    position,
+    `${file} has a 12Go link with an invalid position-specific sub_id: ${subId}.`,
+  );
+  builtAffiliatePositions.add(position);
+}
+
+for (const position of requiredAffiliatePositions) {
+  assert.ok(
+    builtAffiliatePositions.has(position),
+    `Built 12Go links must include the ${position} sub_id position.`,
+  );
 }
 
 console.log("Affiliate link checks passed.");
@@ -424,6 +497,20 @@ function findBuiltTwelveGoLinks() {
   });
 
   return tags;
+}
+
+function getHrefFromAnchorTag(tag) {
+  const href = tag.match(/href="([^"]+)"/)?.[1];
+
+  assert.ok(href, "Rendered 12Go anchor must include an href.");
+
+  return href.replace(/&amp;/g, "&");
+}
+
+function getAffiliatePositionFromSubId(subId) {
+  return requiredAffiliatePositions.find((position) =>
+    subId.endsWith(`-${position}`),
+  );
 }
 
 function collectHtmlFiles(directory) {

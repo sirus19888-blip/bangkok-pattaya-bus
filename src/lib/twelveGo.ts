@@ -31,7 +31,7 @@ export function build12GoRouteUrl(
   }
 
   const affiliateId =
-    process.env.NEXT_PUBLIC_12GO_AFFILIATE_ID ?? fallbackAffiliateId;
+    process.env.NEXT_PUBLIC_12GO_AFFILIATE_ID || fallbackAffiliateId;
   const url = new URL(affiliateRoute.deepLinkUrl);
 
   if (affiliateId) {
