@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { LocaleCode } from "@/data/routes";
+import { repairMojibake } from "@/lib/repairMojibake";
 
 type TravelerFeedbackProps = {
   locale: LocaleCode;
@@ -144,6 +145,12 @@ function getCopy(locale: LocaleCode) {
   return copy.en;
 }
 
+function cleanCopy<T extends Record<string, string>>(source: T): T {
+  return Object.fromEntries(
+    Object.entries(source).map(([key, value]) => [key, repairMojibake(value)]),
+  ) as T;
+}
+
 export function TravelerFeedback({
   locale,
   routeTitle,
@@ -151,7 +158,7 @@ export function TravelerFeedback({
   const [helped, setHelped] = useState(false);
   const [isSendingHelped, setIsSendingHelped] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const text = getCopy(locale);
+  const text = cleanCopy(getCopy(locale));
   const pageUrl = typeof window === "undefined" ? "" : window.location.href;
   const feedbackStorageKey =
     typeof window === "undefined"
@@ -222,7 +229,10 @@ export function TravelerFeedback({
             {text.text}
           </p>
         </div>
-        <div className="grid gap-2 sm:min-w-64 sm:grid-cols-2 md:min-w-[22rem]">
+        <div
+          className="grid gap-2 sm:min-w-64 sm:grid-cols-2 md:min-w-[22rem]"
+          data-feedback-actions="true"
+        >
           <button
             type="button"
             onClick={handleHelpedClick}
@@ -234,7 +244,10 @@ export function TravelerFeedback({
                 : "bg-[#13233a] text-white hover:bg-[#233a5b]"
             }`}
           >
-            {isSendingHelped ? text.sending : `${helped ? "✓ " : ""}${text.helped}`}
+            <span>{isSendingHelped ? text.sending : text.helped}</span>
+            <span aria-hidden="true" className="sr-only">
+              {" "}
+            </span>
           </button>
           <a
             href={mailtoUrl}

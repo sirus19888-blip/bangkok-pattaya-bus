@@ -18,6 +18,8 @@ type StationPhotoGalleryProps = {
   showTitle?: boolean;
   showGroupTitles?: boolean;
   compact?: boolean;
+  mobilePreviewLimit?: number;
+  mobileShowAll?: boolean;
 };
 
 export function StationPhotoGallery({
@@ -26,6 +28,8 @@ export function StationPhotoGallery({
   showTitle = true,
   showGroupTitles = true,
   compact = false,
+  mobilePreviewLimit,
+  mobileShowAll = true,
 }: StationPhotoGalleryProps) {
   const visibleGroups = groups.filter((group) => group.photos.length > 0);
   const [activePhoto, setActivePhoto] = useState<StationPhoto | null>(null);
@@ -92,15 +96,21 @@ export function StationPhotoGallery({
                   : "flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:gap-2 md:overflow-visible md:pb-0 md:grid-cols-2 lg:grid-cols-3"
               }
             >
-              {group.photos.map((photo) => {
+              {group.photos.map((photo, photoIndex) => {
                 const photoText = getStationPhotoText(photo, locale);
                 const cleanAlt = repairMojibake(photoText.alt);
                 const cleanCaption = repairMojibake(photoText.caption);
+                const hideInMobilePreview =
+                  typeof mobilePreviewLimit === "number" &&
+                  !mobileShowAll &&
+                  photoIndex >= mobilePreviewLimit;
 
                 return (
                   <figure
                     key={`${group.stationId}-${photo.src}`}
-                    className="w-[240px] flex-none snap-start rounded-xl border border-[#eadcc7] bg-white p-2 md:w-auto md:flex-auto lg:p-1.5"
+                    className={`w-[240px] flex-none snap-start rounded-xl border border-[#eadcc7] bg-white p-2 md:w-auto md:flex-auto lg:p-1.5 ${
+                      hideInMobilePreview ? "hidden md:block" : ""
+                    }`}
                   >
                     <button
                       type="button"

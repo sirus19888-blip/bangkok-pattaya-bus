@@ -82,6 +82,7 @@
       "label": "Bangkok to Pattaya",
       "title": "Bangkok to Pattaya Bus",
       "intro": "Check bus times from Bangkok Ekkamai to Pattaya, including price, travel time, station information, and practical travel tips.",
+      "relatedDescription": "Check Bangkok to Pattaya bus times, ticket price, stations, and travel tips.",
       "metadataTitle": "Bangkok to Pattaya Bus Times – Schedule, Price & Stations",
       "metadataDescription": "Check Bangkok to Pattaya bus times, ticket price, travel time, station information, and practical tips. Times are shown in Thailand local time."
     },
@@ -89,6 +90,7 @@
       "label": "Pattaya to Bangkok",
       "title": "Pattaya to Bangkok Bus",
       "intro": "Check bus times from Pattaya to Bangkok, including departures to Ekkamai and Mo Chit, ticket prices, and station tips.",
+      "relatedDescription": "Plan the return trip from Pattaya to Bangkok with departure times and station tips.",
       "metadataTitle": "Pattaya to Bangkok Bus Times – Ekkamai & Mo Chit Schedule",
       "metadataDescription": "Check Pattaya to Bangkok bus departures to Ekkamai and Mo Chit, ticket prices, travel time, station information, and practical tips."
     },
@@ -96,6 +98,7 @@
       "label": "Suvarnabhumi Airport to Pattaya",
       "title": "Suvarnabhumi Airport to Pattaya Bus",
       "intro": "Check bus times from Suvarnabhumi Airport to Pattaya, including price, travel time, airport counter information, and arrival tips.",
+      "relatedDescription": "Useful airport bus information from Suvarnabhumi to Pattaya after arrival.",
       "metadataTitle": "Suvarnabhumi Airport to Pattaya Bus – Times, Price & Counter",
       "metadataDescription": "Check Suvarnabhumi Airport to Pattaya bus times, ticket price, travel time, bus counter information, and arrival tips."
     },
@@ -103,6 +106,7 @@
       "label": "Pattaya to Suvarnabhumi Airport",
       "title": "Pattaya to Suvarnabhumi Airport Bus",
       "intro": "Check bus times from Pattaya/Jomtien to Suvarnabhumi Airport, including ticket price, travel time, boarding information, and tips before your flight.",
+      "relatedDescription": "Check Pattaya to Suvarnabhumi Airport bus times, price, and boarding tips.",
       "metadataTitle": "Pattaya to Suvarnabhumi Airport Bus | Times, Price & Boarding Info",
       "metadataDescription": "Check Pattaya to Suvarnabhumi Airport bus times, ticket price, travel time, boarding area, and practical airport travel tips."
     },
@@ -110,6 +114,7 @@
       "label": "Don Mueang Airport to Pattaya",
       "title": "Don Mueang Airport to Pattaya Bus",
       "intro": "Check bus information from Don Mueang Airport to Pattaya, including departure times, travel time, station notes, and source information.",
+      "relatedDescription": "Check Don Mueang Airport to Pattaya bus information and station notes.",
       "metadataTitle": "Don Mueang Airport to Pattaya Bus - Schedule & Travel Info",
       "metadataDescription": "Check Don Mueang Airport to Pattaya bus information, departure times, travel time, station notes, and source status."
     },
@@ -117,6 +122,7 @@
       "label": "Pattaya to Don Mueang Airport",
       "title": "Pattaya to Don Mueang Airport Bus",
       "intro": "Check bus information from Pattaya to Don Mueang Airport, including travel time, source notes, and tips before your flight.",
+      "relatedDescription": "Check Pattaya to Don Mueang Airport bus information and flight-day tips.",
       "metadataTitle": "Pattaya to Don Mueang Airport Bus - Schedule & Travel Info",
       "metadataDescription": "Check Pattaya to Don Mueang Airport bus information, travel time, departure notes, source status, and airport travel tips."
     }

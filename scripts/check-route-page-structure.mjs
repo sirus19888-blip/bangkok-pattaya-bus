@@ -252,6 +252,16 @@ for (const path of expectedEnglishRoutes) {
       visibleHtml.includes("Next bus"),
       `${path} must keep the next bus UI.`,
     );
+    assert.ok(
+      visibleHtml.includes('data-feedback-actions="true"'),
+      `${path} must keep feedback actions as separate controls.`,
+    );
+    assert.ok(
+      !toTextContent(visibleHtml).includes(
+        "Yes, it helpedReport outdated times",
+      ),
+      `${path} feedback action labels must not be glued together in textContent.`,
+    );
 
     const stationTipSample = stationTipSamplesByRoute.get(path);
 
@@ -339,6 +349,18 @@ assert.ok(
     stationCardSource.includes("md:hidden"),
   "Station tips must keep a localized mobile Show more control.",
 );
+assert.ok(
+  stationCardSource.includes('zh: "查看更多"') &&
+    stationCardSource.includes('pl: "Pokaż więcej"') &&
+    stationCardSource.includes('ru: "Показать ещё"'),
+  "Mobile Station information must keep clean localized Show more labels.",
+);
+assert.ok(
+  stationPhotoGallerySource.includes("mobilePreviewLimit") &&
+    stationPhotoGallerySource.includes("mobileShowAll") &&
+    stationPhotoGallerySource.includes("hidden md:block"),
+  "Mobile Station information must preview one photo and reveal the rest with Show more.",
+);
 
 for (const oldDesktopMarker of [
   "NextBusCard",
@@ -401,6 +423,17 @@ assert.ok(
 
 function escapeRegExp(value) {
   return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function toTextContent(html) {
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/g, "")
+    .replace(/<[^>]*>/g, "")
+    .replace(/&amp;/g, "&")
+    .replace(/&#x27;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&nbsp;/g, " ");
 }
 
 console.log("Route page structure checks passed.");

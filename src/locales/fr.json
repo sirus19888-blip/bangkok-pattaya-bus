@@ -82,6 +82,7 @@
       "label": "Bangkok vers Pattaya",
       "title": "Bus de Bangkok à Pattaya",
       "intro": "Guide simple pour les touristes qui prennent le bus du centre de Bangkok à Pattaya, avec horaires et informations sur les stations.",
+      "relatedDescription": "Consultez les horaires, le prix, les stations et les conseils pour Bangkok - Pattaya.",
       "metadataTitle": "Bus de Bangkok à Pattaya | Horaires, stations et conseils",
       "metadataDescription": "Consultez les bus de Bangkok à Pattaya avec les départs, les stations, la durée du trajet, le prix du billet et des conseils pratiques. Les horaires peuvent changer, confirmez avant le voyage."
     },
@@ -89,6 +90,7 @@
       "label": "Pattaya vers Bangkok",
       "title": "Bus de Pattaya à Bangkok",
       "intro": "Préparez le retour de Pattaya à Bangkok avec les horaires, les stations et des conseils pratiques.",
+      "relatedDescription": "Préparez le retour de Pattaya à Bangkok avec les départs et les conseils de station.",
       "metadataTitle": "Bus de Pattaya à Bangkok | Horaires, stations et conseils",
       "metadataDescription": "Consultez les bus de Pattaya à Bangkok avec les départs, les stations, la durée du trajet, le prix du billet et des conseils pratiques. Les horaires peuvent changer, confirmez avant le voyage."
     },
@@ -96,6 +98,7 @@
       "label": "Suvarnabhumi Airport vers Pattaya",
       "title": "Bus de Suvarnabhumi Airport à Pattaya",
       "intro": "Informations utiles pour aller directement de Suvarnabhumi Airport à Pattaya en bus après l'arrivée.",
+      "relatedDescription": "Informations pratiques pour le bus de l'aéroport Suvarnabhumi à Pattaya après l'arrivée.",
       "metadataTitle": "Bus de Suvarnabhumi Airport à Pattaya | Horaires, stations et conseils",
       "metadataDescription": "Consultez les bus de Suvarnabhumi Airport à Pattaya avec les départs, les stations, la durée du trajet, le prix du billet et des conseils pratiques. Les horaires peuvent changer, confirmez avant le voyage."
     },
@@ -103,6 +106,7 @@
       "label": "Pattaya vers l'aéroport Suvarnabhumi",
       "title": "Bus de Pattaya vers l'aéroport Suvarnabhumi",
       "intro": "Consultez les horaires de bus de Pattaya/Jomtien vers l'aéroport Suvarnabhumi, le prix du billet, la durée du trajet, le lieu d'embarquement et les conseils avant le vol.",
+      "relatedDescription": "Consultez le bus de Pattaya vers Suvarnabhumi : horaires, prix et embarquement.",
       "metadataTitle": "Bus de Pattaya vers l'aéroport Suvarnabhumi | Horaires, prix et embarquement",
       "metadataDescription": "Consultez les bus de Pattaya/Jomtien vers l'aéroport Suvarnabhumi avec les départs, le prix du billet, la durée du trajet et le lieu d'embarquement."
     },
@@ -110,6 +114,7 @@
       "label": "Aéroport Don Mueang vers Pattaya",
       "title": "Bus de l'aéroport Don Mueang à Pattaya",
       "intro": "Consultez les informations sur le bus de l'aéroport Don Mueang à Pattaya, avec les départs, la durée du trajet, les notes de station et les sources.",
+      "relatedDescription": "Consultez le bus de l'aéroport Don Mueang à Pattaya et les notes de station.",
       "metadataTitle": "Bus de l'aéroport Don Mueang à Pattaya | Horaires et informations",
       "metadataDescription": "Consultez le bus de l'aéroport Don Mueang à Pattaya, les horaires, la durée du trajet, les notes de station et le statut des sources."
     },
@@ -117,6 +122,7 @@
       "label": "Pattaya vers l'aéroport Don Mueang",
       "title": "Bus de Pattaya vers l'aéroport Don Mueang",
       "intro": "Consultez les informations sur le bus de Pattaya vers l'aéroport Don Mueang, avec la durée du trajet, les sources et les conseils avant le vol.",
+      "relatedDescription": "Consultez le bus de Pattaya vers Don Mueang et les conseils avant le vol.",
       "metadataTitle": "Bus de Pattaya vers l'aéroport Don Mueang | Horaires et informations",
       "metadataDescription": "Consultez le bus de Pattaya vers l'aéroport Don Mueang, la durée du trajet, les horaires, le statut des sources et les conseils avant le vol."
     }

@@ -62,6 +62,7 @@ export function RoutePageLayout({
     return {
       ...page,
       title: routeText.title,
+      relatedDescription: routeText.relatedDescription ?? page.relatedDescription,
       from: endpoints.from ?? page.from,
       to: endpoints.to ?? page.to,
     };

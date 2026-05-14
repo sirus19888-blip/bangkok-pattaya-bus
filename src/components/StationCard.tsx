@@ -51,6 +51,14 @@ export function StationCard({
             routeId,
           );
           const isExpanded = expandedStations[station.id] ?? false;
+          const stationPhotoGroups = photoGroups.filter(
+            (group) => group.stationId === station.id,
+          );
+          const hasExtraMobilePhotos = stationPhotoGroups.some(
+            (group) => group.photos.length > 1,
+          );
+          const hasHiddenMobileDetails =
+            stationTipPoints.length > 3 || hasExtraMobilePhotos;
 
           return (
             <article
@@ -104,7 +112,7 @@ export function StationCard({
                       </li>
                     ))}
                   </ul>
-                  {stationTipPoints.length > 3 ? (
+                  {hasHiddenMobileDetails ? (
                     <button
                       type="button"
                       className="mt-2 inline-flex min-h-9 items-center rounded-full border border-[#e8b05a] bg-[#fff8ec] px-3 text-xs font-black text-[#13233a] md:hidden"
@@ -122,11 +130,13 @@ export function StationCard({
               </div>
               <div className="space-y-3 p-3 sm:p-4">
                 <StationPhotoGallery
-                  groups={photoGroups.filter((group) => group.stationId === station.id)}
+                  groups={stationPhotoGroups}
                   locale={locale}
                   showTitle={false}
                   showGroupTitles={false}
                   compact
+                  mobilePreviewLimit={1}
+                  mobileShowAll={isExpanded}
                 />
                 <StationMiniMap
                   station={station}
@@ -150,7 +160,7 @@ function getShowMoreLabel(locale: LocaleCode) {
     pl: "Pokaż więcej",
     ru: "Показать ещё",
     th: "ดูเพิ่มเติม",
-    zh: "显示更多",
+    zh: "查看更多",
   };
 
   return labels[locale] ?? labels.en;

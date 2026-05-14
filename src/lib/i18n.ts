@@ -127,6 +127,10 @@ export function localizeRoutePage(
     ...routePage,
     title: routeText.title ?? fallbackRouteText.title,
     intro: routeText.intro ?? fallbackRouteText.intro,
+    relatedDescription:
+      routeText.relatedDescription ??
+      fallbackRouteText.relatedDescription ??
+      routePage.relatedDescription,
     from: localizedEndpoints.from ?? routePage.from,
     to: localizedEndpoints.to ?? routePage.to,
     metadata: {

@@ -20,6 +20,7 @@ export type RoutePage = {
   slug: RouteId;
   title: string;
   intro: string;
+  relatedDescription: string;
   from: string;
   to: string;
   stationIds: string[];
@@ -98,6 +99,8 @@ export const routePages: RoutePage[] = [
     title: "Bangkok to Pattaya Bus",
     intro:
       "A simple guide for tourists taking the bus from central Bangkok to Pattaya, with departure times, station tips, and practical travel notes.",
+    relatedDescription:
+      "Check Bangkok to Pattaya bus times, ticket price, stations, and travel tips.",
     from: "Bangkok",
     to: "Pattaya",
     stationIds: ["ekkamai", "north-pattaya"],
@@ -112,6 +115,8 @@ export const routePages: RoutePage[] = [
     title: "Pattaya to Bangkok Bus",
     intro:
       "Plan the return trip from Pattaya to Bangkok with easy-to-read departure times, station details, and travel advice.",
+    relatedDescription:
+      "Plan the return trip from Pattaya to Bangkok with departure times and station tips.",
     from: "Pattaya",
     to: "Bangkok",
     stationIds: ["north-pattaya", "mo-chit", "ekkamai"],
@@ -126,6 +131,8 @@ export const routePages: RoutePage[] = [
     title: "Suvarnabhumi Airport to Pattaya Bus",
     intro:
       "Useful information for travelers going directly from Suvarnabhumi Airport to Pattaya by bus after arriving in Thailand.",
+    relatedDescription:
+      "Useful airport bus information from Suvarnabhumi to Pattaya after arrival.",
     from: "Suvarnabhumi Airport",
     to: "Pattaya",
     stationIds: ["suvarnabhumi-airport", "north-pattaya"],
@@ -141,6 +148,8 @@ export const routePages: RoutePage[] = [
     title: "Pattaya to Suvarnabhumi Airport Bus",
     intro:
       "Check bus times from Pattaya/Jomtien to Suvarnabhumi Airport, including ticket price, travel time, boarding information, and tips before your flight.",
+    relatedDescription:
+      "Check Pattaya to Suvarnabhumi Airport bus times, price, and boarding tips.",
     from: "Pattaya / Jomtien bus area",
     to: "Suvarnabhumi Airport",
     stationIds: ["jomtien-bus-area", "suvarnabhumi-airport"],
@@ -156,6 +165,8 @@ export const routePages: RoutePage[] = [
     title: "Don Mueang Airport to Pattaya Bus",
     intro:
       "Check bus information from Don Mueang Airport to Pattaya, including departure times, travel time, station notes, and source information.",
+    relatedDescription:
+      "Check Don Mueang Airport to Pattaya bus information and station notes.",
     from: "Don Mueang Airport",
     to: "Pattaya",
     stationIds: ["don-mueang-airport", "north-pattaya"],
@@ -170,6 +181,8 @@ export const routePages: RoutePage[] = [
     title: "Pattaya to Don Mueang Airport Bus",
     intro:
       "Check bus information from Pattaya to Don Mueang Airport, including travel time, source notes, and tips before your flight.",
+    relatedDescription:
+      "Check Pattaya to Don Mueang Airport bus information and flight-day tips.",
     from: "Pattaya",
     to: "Don Mueang Airport",
     stationIds: ["pattaya-sukhumvit", "don-mueang-airport"],
