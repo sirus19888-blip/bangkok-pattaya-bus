@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { LocaleCode } from "@/data/routes";
-import { repairMojibake } from "@/lib/repairMojibake";
+import { trackEvent } from "@/lib/analytics";
 
 type TravelerFeedbackProps = {
   locale: LocaleCode;
@@ -27,7 +27,7 @@ const copy = {
   },
   pl: {
     title: "Czy ten przewodnik był pomocny?",
-    text: "Pomóż nam utrzymać godziny autobusów jasne i przydatne dla innych podróżnych.",
+    text: "Pomóż nam utrzymać godziny autobusów dokładne i przydatne dla innych podróżnych.",
     helped: "Tak, pomógł",
     report: "Zgłoś nieaktualne godziny",
     thanks: "Dziękujemy - Twoja opinia pomaga ulepszać ten przewodnik.",
@@ -42,13 +42,13 @@ const copy = {
   },
   ru: {
     title: "Этот гид был полезен?",
-    text: "Помогите нам сохранять расписание понятным и полезным для других путешественников.",
+    text: "Помогите нам сохранять расписание точным и полезным для других путешественников.",
     helped: "Да, помог",
     report: "Сообщить о неактуальном расписании",
     thanks: "Спасибо - ваш отзыв помогает улучшать этот гид.",
     sending: "Отправка...",
     emailError: "Не удалось отправить автоматически. Открою готовое письмо.",
-    subject: "Сообщение о неактуальном расписании",
+    subject: "Сообщение о неактуальном расписании автобусов",
     helpedSubject: "Гид отмечен как полезный",
     bodyIntro: "Здравствуйте, я нашёл неактуальную информацию на странице маршрута:",
     helpedBodyIntro: "Путешественник отметил эту страницу маршрута как полезную:",
@@ -57,7 +57,7 @@ const copy = {
   },
   de: {
     title: "War dieser Guide hilfreich?",
-    text: "Hilf uns, Buszeiten klar und nützlich für andere Reisende zu halten.",
+    text: "Hilf uns, Buszeiten genau und nützlich für andere Reisende zu halten.",
     helped: "Ja, hilfreich",
     report: "Veraltete Zeiten melden",
     thanks: "Danke - dein Feedback hilft, diesen Guide zu verbessern.",
@@ -70,39 +70,9 @@ const copy = {
     routeLabel: "Route",
     prompt: "Was muss korrigiert werden?",
   },
-  th: {
-    title: "คู่มือนี้มีประโยชน์ไหม",
-    text: "ช่วยให้เรารักษาข้อมูลเวลาเดินรถให้ชัดเจนและเป็นประโยชน์กับนักเดินทางคนอื่น",
-    helped: "มีประโยชน์",
-    report: "แจ้งเวลารถที่ไม่อัปเดต",
-    thanks: "ขอบคุณ ความเห็นของคุณช่วยให้คู่มือนี้ดีขึ้น",
-    sending: "กำลังส่ง...",
-    emailError: "ส่งอัตโนมัติไม่ได้ จะเปิดอีเมลที่เตรียมไว้แทน",
-    subject: "แจ้งเวลารถที่ไม่อัปเดต",
-    helpedSubject: "คู่มือนี้ถูกระบุว่ามีประโยชน์",
-    bodyIntro: "สวัสดี ฉันพบข้อมูลที่ไม่อัปเดตในหน้าเส้นทางนี้:",
-    helpedBodyIntro: "นักเดินทางระบุว่าหน้าเส้นทางนี้มีประโยชน์:",
-    routeLabel: "เส้นทาง",
-    prompt: "ควรแก้ไขข้อมูลส่วนใด",
-  },
-  zh: {
-    title: "这份指南有帮助吗？",
-    text: "帮助我们保持巴士时间清楚、准确，并对其他旅客有用。",
-    helped: "有帮助",
-    report: "报告过期时间",
-    thanks: "谢谢，你的反馈会帮助我们改进这份指南。",
-    sending: "正在发送...",
-    emailError: "无法自动发送。我会改为打开已准备好的电子邮件。",
-    subject: "巴士时间过期报告",
-    helpedSubject: "指南被标记为有帮助",
-    bodyIntro: "你好，我在这个路线页面发现了过期信息：",
-    helpedBodyIntro: "一位旅客将这个路线指南标记为有帮助：",
-    routeLabel: "路线",
-    prompt: "需要更正什么？",
-  },
   fr: {
     title: "Ce guide vous a-t-il aidé ?",
-    text: "Aidez-nous à garder les horaires de bus clairs et utiles pour les autres voyageurs.",
+    text: "Aidez-nous à garder les horaires de bus exacts et utiles pour les autres voyageurs.",
     helped: "Oui, il m'a aidé",
     report: "Signaler des horaires obsolètes",
     thanks: "Merci - votre avis aide à améliorer ce guide.",
@@ -115,40 +85,40 @@ const copy = {
     routeLabel: "Itinéraire",
     prompt: "Que faut-il corriger ?",
   },
+  th: {
+    title: "คู่มือนี้มีประโยชน์ไหม",
+    text: "ช่วยให้เวลาเดินรถถูกต้องและเป็นประโยชน์สำหรับนักเดินทางคนอื่น",
+    helped: "มีประโยชน์",
+    report: "แจ้งเวลารถที่ไม่อัปเดต",
+    thanks: "ขอบคุณ - ความเห็นของคุณช่วยปรับปรุงคู่มือนี้",
+    sending: "กำลังส่ง...",
+    emailError: "ส่งอัตโนมัติไม่ได้ ระบบจะเปิดอีเมลที่เตรียมไว้แทน",
+    subject: "แจ้งเวลาเดินรถที่ไม่อัปเดต",
+    helpedSubject: "คู่มือนี้ถูกระบุว่ามีประโยชน์",
+    bodyIntro: "สวัสดี ฉันพบข้อมูลที่ไม่อัปเดตในหน้าเส้นทางนี้:",
+    helpedBodyIntro: "นักเดินทางระบุว่าหน้าเส้นทางนี้มีประโยชน์:",
+    routeLabel: "เส้นทาง",
+    prompt: "ควรแก้ไขข้อมูลส่วนใด?",
+  },
+  zh: {
+    title: "这个指南有帮助吗？",
+    text: "帮助我们保持巴士时间准确，并对其他旅客有用。",
+    helped: "有帮助",
+    report: "报告过期时刻",
+    thanks: "谢谢，你的反馈会帮助我们改进这个指南。",
+    sending: "正在发送...",
+    emailError: "无法自动发送。将改为打开已准备好的电子邮件。",
+    subject: "巴士时间过期报告",
+    helpedSubject: "指南被标记为有帮助",
+    bodyIntro: "你好，我在这个路线页面发现了过期信息：",
+    helpedBodyIntro: "一位旅客将这个路线指南标记为有帮助：",
+    routeLabel: "路线",
+    prompt: "需要更正什么？",
+  },
 } as const;
 
 function getCopy(locale: LocaleCode) {
-  if (locale === "pl") {
-    return copy.pl;
-  }
-
-  if (locale === "ru") {
-    return copy.ru;
-  }
-
-  if (locale === "de") {
-    return copy.de;
-  }
-
-  if (locale === "th") {
-    return copy.th;
-  }
-
-  if (locale === "zh") {
-    return copy.zh;
-  }
-
-  if (locale === "fr") {
-    return copy.fr;
-  }
-
-  return copy.en;
-}
-
-function cleanCopy<T extends Record<string, string>>(source: T): T {
-  return Object.fromEntries(
-    Object.entries(source).map(([key, value]) => [key, repairMojibake(value)]),
-  ) as T;
+  return copy[locale] ?? copy.en;
 }
 
 export function TravelerFeedback({
@@ -158,7 +128,7 @@ export function TravelerFeedback({
   const [helped, setHelped] = useState(false);
   const [isSendingHelped, setIsSendingHelped] = useState(false);
   const [emailError, setEmailError] = useState(false);
-  const text = cleanCopy(getCopy(locale));
+  const text = getCopy(locale);
   const pageUrl = typeof window === "undefined" ? "" : window.location.href;
   const feedbackStorageKey =
     typeof window === "undefined"
@@ -172,12 +142,18 @@ export function TravelerFeedback({
   const helpedMailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
     text.helpedSubject,
   )}&body=${encodeURIComponent(helpedBody)}`;
+  const trackingPayload = {
+    lang: locale,
+    page_url: pageUrl,
+    route_title: routeTitle,
+  };
 
   async function handleHelpedClick() {
     if (isSendingHelped) {
       return;
     }
 
+    trackEvent("feedback_helpful_click", trackingPayload);
     setHelped(true);
     setEmailError(false);
     setIsSendingHelped(true);
@@ -218,9 +194,13 @@ export function TravelerFeedback({
     }
   }
 
+  function handleReportClick() {
+    trackEvent("report_outdated_click", trackingPayload);
+  }
+
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm sm:p-5 md:p-4">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-lg font-black leading-tight text-[#13233a]">
             {text.title}
@@ -230,7 +210,7 @@ export function TravelerFeedback({
           </p>
         </div>
         <div
-          className="grid gap-2 sm:min-w-64 sm:grid-cols-2 md:min-w-[22rem]"
+          className="flex flex-col gap-3 sm:min-w-64 sm:flex-row md:min-w-[22rem]"
           data-feedback-actions="true"
         >
           <button
@@ -238,20 +218,21 @@ export function TravelerFeedback({
             onClick={handleHelpedClick}
             aria-pressed={helped}
             disabled={isSendingHelped}
-            className={`flex min-h-11 items-center justify-center rounded-xl px-4 text-center text-sm font-black transition md:min-h-10 md:text-xs ${
+            className={`flex min-h-11 flex-1 items-center justify-center rounded-xl px-4 text-center text-sm font-black transition md:min-h-10 md:text-xs ${
               helped
                 ? "bg-[#2f6f93] text-white"
                 : "bg-[#13233a] text-white hover:bg-[#233a5b]"
             }`}
           >
-            <span>{isSendingHelped ? text.sending : text.helped}</span>
-            <span aria-hidden="true" className="sr-only">
-              {" "}
-            </span>
+            {isSendingHelped ? text.sending : text.helped}
           </button>
+          <span aria-hidden="true" className="sr-only">
+            {" "}
+          </span>
           <a
             href={mailtoUrl}
-            className="flex min-h-11 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-white md:min-h-10 md:text-xs"
+            onClick={handleReportClick}
+            className="flex min-h-11 flex-1 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-white md:min-h-10 md:text-xs"
           >
             {text.report}
           </a>

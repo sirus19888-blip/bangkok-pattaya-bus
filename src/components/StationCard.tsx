@@ -59,6 +59,7 @@ export function StationCard({
           );
           const hasHiddenMobileDetails =
             stationTipPoints.length > 3 || hasExtraMobilePhotos;
+          const hasMobileShowMore = hasHiddenMobileDetails || Boolean(station.googleMapsUrl);
 
           return (
             <article
@@ -112,7 +113,7 @@ export function StationCard({
                       </li>
                     ))}
                   </ul>
-                  {hasHiddenMobileDetails ? (
+                  {hasMobileShowMore ? (
                     <button
                       type="button"
                       className="mt-2 inline-flex min-h-9 items-center rounded-full border border-[#e8b05a] bg-[#fff8ec] px-3 text-xs font-black text-[#13233a] md:hidden"
@@ -138,11 +139,30 @@ export function StationCard({
                   mobilePreviewLimit={1}
                   mobileShowAll={isExpanded}
                 />
-                <StationMiniMap
-                  station={station}
-                  locale={locale}
-                  openInGoogleMapsLabel={labels.openInGoogleMaps}
-                />
+                <div className="md:hidden">
+                  <a
+                    href={station.googleMapsUrl}
+                    className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#233a5b]"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {labels.openInGoogleMaps}
+                  </a>
+                </div>
+                <div className={isExpanded ? "md:hidden" : "hidden"}>
+                  <StationMiniMap
+                    station={station}
+                    locale={locale}
+                    openInGoogleMapsLabel={labels.openInGoogleMaps}
+                  />
+                </div>
+                <div className="hidden md:block">
+                  <StationMiniMap
+                    station={station}
+                    locale={locale}
+                    openInGoogleMapsLabel={labels.openInGoogleMaps}
+                  />
+                </div>
               </div>
             </article>
           );

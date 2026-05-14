@@ -52,12 +52,13 @@ export function RelatedRoutes({
                 src={relatedRouteImages[routePage.slug]}
               />
               <span className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/15 via-[#0e1e2e]/35 to-[#0e1e2e]/88 md:hidden" />
-              <h3 className="relative block text-sm font-black leading-tight text-white drop-shadow sm:text-base md:text-sm md:text-[#13233a] md:drop-shadow-none">
+              <span className="title relative block text-sm font-black leading-tight text-white drop-shadow sm:text-base md:text-sm md:text-[#13233a] md:drop-shadow-none">
                 {routePage.title}
-              </h3>
-              <p className="relative mt-2 max-w-[17rem] text-xs font-semibold leading-5 text-white/85 md:mt-1 md:max-w-none md:text-[#4f5d6c]">
+              </span>
+              <span className="description relative mt-2 block max-w-[17rem] text-xs font-semibold leading-5 text-white/85 md:mt-1 md:max-w-none md:text-[#4f5d6c]">
+                <span className="sr-only"> - </span>
                 {routePage.relatedDescription}
-              </p>
+              </span>
             </Link>
           </li>
         ))}

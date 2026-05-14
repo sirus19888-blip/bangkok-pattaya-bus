@@ -9,14 +9,30 @@ export type AffiliateClickEvent = {
   to: string;
 };
 
+export type AnalyticsEventParameters = Record<
+  string,
+  string | number | boolean | null | undefined
+>;
+
 declare global {
   interface Window {
     gtag?: (
       command: "event",
       eventName: string,
-      parameters: AffiliateClickEvent,
+      parameters: AnalyticsEventParameters,
     ) => void;
   }
+}
+
+export function trackEvent(
+  eventName: string,
+  parameters: AnalyticsEventParameters = {},
+) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") {
+    return;
+  }
+
+  window.gtag("event", eventName, parameters);
 }
 
 export function trackAffiliateClick(event: AffiliateClickEvent) {

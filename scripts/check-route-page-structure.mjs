@@ -28,6 +28,14 @@ const stationMiniMapSource = readFileSync(
   join(root, "src/components/StationMiniMap.tsx"),
   "utf8",
 );
+const travelerFeedbackSource = readFileSync(
+  join(root, "src/components/TravelerFeedback.tsx"),
+  "utf8",
+);
+const relatedRoutesSource = readFileSync(
+  join(root, "src/components/RelatedRoutes.tsx"),
+  "utf8",
+);
 const routesSource = readFileSync(join(root, "src/data/routes.ts"), "utf8");
 const homepageSource = readFileSync(
   join(root, "src/components/HomePage.tsx"),
@@ -228,6 +236,18 @@ for (const path of expectedEnglishRoutes) {
         !visibleHtml.includes("Autobus Bangkok do Pattaya Trasa autobusowa"),
       `${path} related route cards must not glue duplicate route labels together.`,
     );
+    const normalizedVisibleText = normalizeText(toTextContent(visibleHtml));
+
+    for (const gluedRelatedRouteText of [
+      "Bus Plan the return",
+      "Autobus z Pattayi do Bangkoku Zaplanuj",
+      "芭提雅到曼谷巴士 规划",
+    ]) {
+      assert.ok(
+        !normalizedVisibleText.includes(gluedRelatedRouteText),
+        `${path} related routes must separate title and description: ${gluedRelatedRouteText}`,
+      );
+    }
     assert.ok(
       visibleHtml.includes("<ul") && visibleHtml.includes("</ul>"),
       `${path} related routes and repeated route cards should use semantic lists.`,
@@ -379,10 +399,57 @@ assert.ok(
     stationCardSource.includes("md:hidden"),
   "Station tips must keep a localized mobile Show more control.",
 );
+const stationShowMoreLabels = {
+  de: "Mehr anzeigen",
+  fr: "Voir plus",
+  pl: String.fromCodePoint(
+    0x50,
+    0x6f,
+    0x6b,
+    0x61,
+    0x017c,
+    0x20,
+    0x77,
+    0x69,
+    0x0119,
+    0x63,
+    0x65,
+    0x6a,
+  ),
+  ru: String.fromCodePoint(
+    0x041f,
+    0x043e,
+    0x043a,
+    0x0430,
+    0x0437,
+    0x0430,
+    0x0442,
+    0x044c,
+    0x20,
+    0x0435,
+    0x0449,
+    0x0451,
+  ),
+  th: String.fromCodePoint(
+    0x0e14,
+    0x0e39,
+    0x0e40,
+    0x0e1e,
+    0x0e34,
+    0x0e48,
+    0x0e21,
+    0x0e40,
+    0x0e15,
+    0x0e34,
+    0x0e21,
+  ),
+  zh: String.fromCodePoint(0x67e5, 0x770b, 0x66f4, 0x591a),
+};
+
 assert.ok(
-  stationCardSource.includes('zh: "查看更多"') &&
-    stationCardSource.includes('pl: "Pokaż więcej"') &&
-    stationCardSource.includes('ru: "Показать ещё"'),
+  Object.entries(stationShowMoreLabels).every(([locale, label]) =>
+    stationCardSource.includes(`${locale}: "${label}"`),
+  ),
   "Mobile Station information must keep clean localized Show more labels.",
 );
 assert.ok(
@@ -390,6 +457,27 @@ assert.ok(
     stationPhotoGallerySource.includes("mobileShowAll") &&
     stationPhotoGallerySource.includes("hidden md:block"),
   "Mobile Station information must preview one photo and reveal the rest with Show more.",
+);
+assert.ok(
+  stationCardSource.includes("stationTipPoints.length > 3") &&
+    stationCardSource.includes("mobilePreviewLimit={1}") &&
+    stationCardSource.includes("isExpanded ? \"md:hidden\" : \"hidden\"") &&
+    stationCardSource.includes("labels.openInGoogleMaps"),
+  "Mobile Station information must show 2-3 tips, one photo, Google Maps, and hide extended details behind Show more.",
+);
+assert.ok(
+  relatedRoutesSource.includes("<ul") &&
+    relatedRoutesSource.includes("<li") &&
+    relatedRoutesSource.includes('className="title') &&
+    relatedRoutesSource.includes('className="description') &&
+    relatedRoutesSource.includes('<span className="sr-only"> - </span>'),
+  "Related routes must render semantic cards with separated title and description.",
+);
+assert.ok(
+  travelerFeedbackSource.includes('className="flex flex-col gap-3') &&
+    travelerFeedbackSource.includes('trackEvent("feedback_helpful_click"') &&
+    travelerFeedbackSource.includes('trackEvent("report_outdated_click"'),
+  "Feedback actions must be separated and tracked.",
 );
 
 for (const oldDesktopMarker of [
