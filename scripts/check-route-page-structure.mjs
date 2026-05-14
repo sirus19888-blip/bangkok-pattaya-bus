@@ -224,6 +224,20 @@ for (const path of expectedEnglishRoutes) {
       !visibleHtml.includes("Station map Use this map"),
       `${path} station map text must not be glued together.`,
     );
+    for (const stationMapId of [
+      "station-map-ekkamai",
+      "station-map-north-pattaya",
+      "station-map-mo-chit",
+      "station-map-suvarnabhumi-airport",
+      "station-map-jomtien-bus-area",
+      "station-map-don-mueang-airport",
+      "station-map-pattaya-sukhumvit",
+    ]) {
+      assert.ok(
+        count(visibleHtml, new RegExp(`id="${stationMapId}"`, "g")) <= 1,
+        `${path} must render at most one station map component for ${stationMapId}.`,
+      );
+    }
     assert.ok(
       !visibleHtml.includes("Enlarge station map Enlarge station map") &&
         !visibleHtml.includes("Powiększ mapę stacji Powiększ mapę stacji"),
@@ -461,20 +475,29 @@ assert.ok(
 assert.ok(
   stationCardSource.includes("stationTipPoints.length > 3") &&
     stationCardSource.includes("mobilePreviewLimit={1}") &&
-    stationCardSource.includes("isExpanded ? \"md:hidden\" : \"hidden\"") &&
+    stationCardSource.includes("isExpanded ? \"block\" : \"hidden md:block\"") &&
     stationCardSource.includes("labels.openInGoogleMaps"),
   "Mobile Station information must show 2-3 tips, one photo, Google Maps, and hide extended details behind Show more.",
+);
+assert.equal(
+  count(stationCardSource, /<StationMiniMap\b/g),
+  1,
+  "Station information must render one StationMiniMap component per station and use CSS for mobile/desktop layout.",
 );
 assert.ok(
   relatedRoutesSource.includes("<ul") &&
     relatedRoutesSource.includes("<li") &&
     relatedRoutesSource.includes('className="title') &&
     relatedRoutesSource.includes('className="description') &&
-    relatedRoutesSource.includes('<span className="sr-only"> - </span>'),
-  "Related routes must render semantic cards with separated title and description.",
+    relatedRoutesSource.includes('<span className="sr-only"> - </span>') &&
+    relatedRoutesSource.includes("getRelatedRouteCtaLabel") &&
+    relatedRoutesSource.includes("aria-label"),
+  "Related routes must render semantic cards with separated title, description, CTA, and aria-label.",
 );
 assert.ok(
   travelerFeedbackSource.includes('className="flex flex-col gap-3') &&
+    travelerFeedbackSource.includes("<button") &&
+    travelerFeedbackSource.includes("<a") &&
     travelerFeedbackSource.includes('trackEvent("feedback_helpful_click"') &&
     travelerFeedbackSource.includes('trackEvent("report_outdated_click"'),
   "Feedback actions must be separated and tracked.",

@@ -152,14 +152,7 @@ export function StationCard({
                     {labels.openInGoogleMaps}
                   </a>
                 </div>
-                <div className={isExpanded ? "md:hidden" : "hidden"}>
-                  <StationMiniMap
-                    station={station}
-                    locale={locale}
-                    openInGoogleMapsLabel={labels.openInGoogleMaps}
-                  />
-                </div>
-                <div className="hidden md:block">
+                <div className={isExpanded ? "block" : "hidden md:block"}>
                   <StationMiniMap
                     station={station}
                     locale={locale}

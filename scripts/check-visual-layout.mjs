@@ -21,6 +21,8 @@ const screenshotPages = [
   { name: "homepage-en", path: "/en" },
   { name: "route-en-bangkok-to-pattaya", path: "/en/bangkok-to-pattaya" },
   { name: "route-pl-bangkok-to-pattaya", path: "/pl/bangkok-to-pattaya" },
+  { name: "route-zh-bangkok-to-pattaya", path: "/zh/bangkok-to-pattaya" },
+  { name: "route-fr-bangkok-to-pattaya", path: "/fr/bangkok-to-pattaya" },
   { name: "route-th-bangkok-to-pattaya", path: "/th/bangkok-to-pattaya" },
 ];
 

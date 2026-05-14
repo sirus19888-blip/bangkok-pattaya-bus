@@ -58,6 +58,12 @@ const forbiddenPhrases = [
   "Source ::",
   "Dernière vérification ::",
   "Zglos",
+  "Autobus z lotniska Autobus z lotniska",
+  "Autobus Pattaya na lotnisko Don Mueang",
+  "Подходит для центр Бангкока",
+  "Подходит для город Паттайя",
+  "车站区域照片",
+  "Photo de la zone de station",
   ...[
     [0xe2, 0x20ac, 0x02d8],
     [0x50, 0x6f, 0x6b, 0x61, 0x0139, 0x013d],

@@ -30,6 +30,7 @@ export function RelatedRoutes({
   routePages,
 }: RelatedRoutesProps) {
   const relatedRoutes = routePages.filter((page) => page.slug !== currentRoute);
+  const ctaLabel = getRelatedRouteCtaLabel(locale);
 
   return (
     <section className="rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5 md:p-4">
@@ -41,6 +42,7 @@ export function RelatedRoutes({
           <li key={routePage.slug} className="min-w-0">
             <Link
               href={`/${locale}/${routePage.slug}`}
+              aria-label={`${routePage.title}: ${routePage.relatedDescription}`}
               className="relative block min-h-[6.4rem] overflow-hidden rounded-xl border border-[#eadcc7] bg-[#13233a] p-3.5 shadow-sm transition hover:bg-white sm:p-4 md:min-h-0 md:bg-[#fffaf2] md:p-3"
             >
               <Image
@@ -59,10 +61,27 @@ export function RelatedRoutes({
                 <span className="sr-only"> - </span>
                 {routePage.relatedDescription}
               </span>
+              <span className="relative mt-3 inline-flex text-xs font-black text-[#f3d77b] md:text-[#2f6f93]">
+                {ctaLabel}
+              </span>
             </Link>
           </li>
         ))}
       </ul>
     </section>
   );
+}
+
+function getRelatedRouteCtaLabel(locale: LocaleCode) {
+  const labels: Record<LocaleCode, string> = {
+    de: "Route ansehen",
+    en: "View route",
+    fr: "Voir l’itinéraire",
+    pl: "Zobacz trasę",
+    ru: "Открыть маршрут",
+    th: "ดูเส้นทาง",
+    zh: "查看路线",
+  };
+
+  return labels[locale] ?? labels.en;
 }

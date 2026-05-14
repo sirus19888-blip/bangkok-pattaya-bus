@@ -117,6 +117,12 @@ export const stationPhotos: StationPhoto[] = [
     stationId: "ekkamai",
     src: "/images/stations/ekkamai/ekkamai-entrance.jpg",
     title: "Ekkamai Bus Station 20240824.jpg",
+    displayTitle: {
+      en: "Entrance to Ekkamai Bus Terminal",
+      pl: "Wejście do dworca Ekkamai",
+      zh: "Ekkamai 巴士总站入口",
+      fr: "Entrée de la gare routière Ekkamai",
+    },
     caption: practicalCaptions.entrance,
     alt: {
       en: "Exterior entrance of Ekkamai Bus Terminal in Bangkok.",
@@ -132,6 +138,12 @@ export const stationPhotos: StationPhoto[] = [
     stationId: "ekkamai",
     src: "/images/stations/ekkamai/ekkamai-terminal.jpg",
     title: "Bangkok Busbahnhof Ekkamai (2025) - img 04.jpg",
+    displayTitle: {
+      en: "Ticket counters inside Ekkamai Bus Terminal",
+      pl: "Kasy biletowe na dworcu Ekkamai",
+      zh: "Ekkamai 站内售票柜台",
+      fr: "Guichets à l’intérieur de la gare Ekkamai",
+    },
     caption: practicalCaptions.counters,
     alt: {
       en: "Inside area of Ekkamai Bus Terminal with counters and signs near the boarding lanes.",
@@ -148,6 +160,12 @@ export const stationPhotos: StationPhoto[] = [
     stationId: "ekkamai",
     src: "/images/stations/ekkamai/ekkamai-bus-area.jpg",
     title: "Bangkok Busbahnhof Ekkamai (2025) - img 06.jpg",
+    displayTitle: {
+      en: "Boarding area at Ekkamai Bus Terminal",
+      pl: "Strefa odjazdu na dworcu Ekkamai",
+      zh: "Ekkamai 上车区域",
+      fr: "Zone d’embarquement à la gare Ekkamai",
+    },
     caption: practicalCaptions.boarding,
     alt: {
       en: "Bus boarding area at Ekkamai Bus Terminal with platform signs and minibuses.",
@@ -168,6 +186,8 @@ export const stationPhotos: StationPhoto[] = [
       en: "North Pattaya Bus Station",
       de: "Busbahnhof Nord-Pattaya",
       pl: "North Pattaya Bus Station",
+      zh: "North Pattaya Bus Terminal 入口",
+      fr: "Zone d’embarquement à la gare routière de Pattaya Nord",
       ru: "автовокзал Северной Паттайи",
       th: "สถานีขนส่งพัทยาเหนือ",
     },
@@ -493,11 +513,11 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
   }
 
   if (locale === "zh") {
-    return text.zh ?? "车站区域照片";
+    return text.zh ?? "车站识别参考图";
   }
 
   if (locale === "fr") {
-    return text.fr ?? "Photo de la zone de station";
+    return text.fr ?? "Photo pratique pour reconnaître la station";
   }
 
   return text.en;
@@ -532,10 +552,10 @@ export function getStationPhotoGalleryTitle(locale: LocaleCode) {
     return "Stationsfotos";
   }
   if (locale === "zh") {
-    return "车站区域照片";
+    return "车站识别照片";
   }
   if (locale === "fr") {
-    return "Photos des zones de station";
+    return "Photos pratiques des stations";
   }
   return locale === "pl"
     ? "Jak wyglądają stacje"
