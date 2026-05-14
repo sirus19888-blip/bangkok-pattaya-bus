@@ -6,6 +6,7 @@ import type { Route } from "@/data/routes";
 import type { Schedule, ScheduleSource } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
 import type { Translations } from "@/lib/i18n";
+import { isNextDepartureInTodaySchedule } from "@/lib/scheduleTime";
 
 type ScheduleListProps = {
   route: Route;
@@ -76,7 +77,10 @@ export function ScheduleList({
                     key={`${subRoute.id}-${departure}`}
                     departure={departure}
                     isNext={
-                      departure === calculatedNextDeparture.time &&
+                      isNextDepartureInTodaySchedule(
+                        departure,
+                        calculatedNextDeparture,
+                      ) &&
                       calculatedNextDeparture.subRoutes.some(
                         (nextSubRoute) => nextSubRoute.id === subRoute.id,
                       )
@@ -106,7 +110,10 @@ export function ScheduleList({
                 <DepartureTile
                   key={departure}
                   departure={departure}
-                  isNext={departure === calculatedNextDeparture.time}
+                  isNext={isNextDepartureInTodaySchedule(
+                    departure,
+                    calculatedNextDeparture,
+                  )}
                   labels={labels}
                 />
               ))}

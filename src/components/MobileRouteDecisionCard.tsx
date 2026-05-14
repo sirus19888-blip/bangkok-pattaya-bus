@@ -7,7 +7,10 @@ import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
 import type { Translations } from "@/lib/i18n";
-import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
+import {
+  getMinutesUntilDeparture,
+  isNextDepartureInTodaySchedule,
+} from "@/lib/scheduleTime";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
 type MobileRouteDecisionCardProps = {
@@ -166,23 +169,30 @@ export function MobileRouteDecisionCard({
       </p>
       <div id="mobile-departures" className="mt-1.5 grid grid-cols-3 gap-1.5 md:grid-cols-5 md:gap-2 lg:grid-cols-6">
         {hasDepartures ? (
-          departures.map((departure) => (
-            <span
-              key={departure}
-              className={`flex min-h-9 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black md:min-h-11 md:text-base ${
-                departure === calculatedNextDeparture.time
-                  ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
-                  : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
-              }`}
-            >
-              {departure}
-              {departure === calculatedNextDeparture.time ? (
-                <span className="max-w-full truncate text-[0.56rem] uppercase leading-none tracking-wide text-[#f3d77b]">
-                  {labels.nextBus}
-                </span>
-              ) : null}
-            </span>
-          ))
+          departures.map((departure) => {
+            const isNextDeparture = isNextDepartureInTodaySchedule(
+              departure,
+              calculatedNextDeparture,
+            );
+
+            return (
+              <span
+                key={departure}
+                className={`flex min-h-9 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black md:min-h-11 md:text-base ${
+                  isNextDeparture
+                    ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
+                    : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
+                }`}
+              >
+                {departure}
+                {isNextDeparture ? (
+                  <span className="max-w-full truncate text-[0.56rem] uppercase leading-none tracking-wide text-[#f3d77b]">
+                    {labels.nextBus}
+                  </span>
+                ) : null}
+              </span>
+            );
+          })
         ) : (
           <p className="col-span-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-sm font-black leading-5 text-[#13233a]">
             {calculatedNextDeparture.time}

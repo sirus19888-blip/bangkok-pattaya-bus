@@ -92,6 +92,13 @@ const desktopSwipeTextPatterns = [
   /เลื่อน/,
 ];
 
+const cleanDesktopSwipeTextPatterns = [
+  /Przesuń/,
+  /Листайте/,
+  /滑动/,
+  /เลื่อน/,
+];
+
 const forbiddenEncodingArtifacts = [
   "â€˘",
   "PokaĹĽ",
@@ -160,7 +167,10 @@ for (const path of expectedEnglishRoutes) {
         `${path} desktop sidebar must not repeat the route title as an H2.`,
       );
     }
-    for (const pattern of desktopSwipeTextPatterns) {
+    for (const pattern of [
+      ...desktopSwipeTextPatterns,
+      ...cleanDesktopSwipeTextPatterns,
+    ]) {
       assert.ok(
         !pattern.test(desktopVisibleHtml),
         `${path} desktop HTML must not show mobile swipe hint text: ${pattern}`,
@@ -316,8 +326,8 @@ assert.ok(
   "Desktop route layout must show schedule data in the left column.",
 );
 assert.ok(
-  homepageSource.includes("md:hidden") && homepageSource.includes("{copy.swipe}"),
-  "Homepage swipe hint must remain mobile-only.",
+  !homepageSource.includes("{copy.swipe}"),
+  "Homepage must not render textual swipe hints in shared markup.",
 );
 assert.ok(
   !stationCardSource.includes("<span>Swipe</span>") &&

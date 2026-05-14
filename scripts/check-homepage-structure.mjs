@@ -7,6 +7,10 @@ const source = readFileSync(
   join(cwd(), "src/components/HomePage.tsx"),
   "utf8",
 );
+const routeSearchSource = readFileSync(
+  join(cwd(), "src/components/RouteSearch.tsx"),
+  "utf8",
+);
 
 function assert(condition, message) {
   if (!condition) {
@@ -18,6 +22,38 @@ function count(pattern) {
   return source.match(pattern)?.length ?? 0;
 }
 
+function stripDesktopHidden(source) {
+  let output = source;
+  const desktopHiddenElementPattern =
+    /<([a-z0-9]+)\b[^>]*class="[^"]*\bmd:hidden\b[^"]*"[^>]*>[\s\S]*?<\/\1>/gi;
+
+  for (let index = 0; index < 10; index += 1) {
+    const next = output.replace(desktopHiddenElementPattern, "");
+
+    if (next === output) {
+      return next;
+    }
+
+    output = next;
+  }
+
+  return output;
+}
+
+function toTextContent(html) {
+  return html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/g, "")
+    .replace(/<[^>]*>/g, "")
+    .replace(/&deg;/g, "\u00b0")
+    .replace(/&#x27;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, "&")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 const forbiddenEncodingArtifacts = [
   "â€˘",
   "PokaĹĽ",
@@ -27,6 +63,27 @@ const forbiddenEncodingArtifacts = [
   "â–ľ",
   "âŚ",
   "Ă—",
+];
+
+const desktopSwipeTextPatterns = [
+  /Swipe/,
+  /Swipe to see more/,
+  /Tip Swipe/,
+  /Wischen/,
+  /Wische, um mehr zu sehen/,
+  /Faites glisser/,
+  /Przesuń/,
+  /Листайте/,
+  /滑动/,
+  /เลื่อน/,
+];
+
+const forbiddenTextContentFragments = [
+  "From:Bangkok",
+  "Z:Bangkok",
+  "31\u00b0M\u00e9t\u00e9o",
+  "Estimation 31\u00b0M\u00e9t\u00e9o",
+  "Szacunek 31\u00b0 Pogoda",
 ];
 
 assert(count(/<main\b/g) === 1, "Homepage must render exactly one <main>.");
@@ -56,6 +113,16 @@ assert(
   "Homepage From/To form must be rendered once.",
 );
 assert(
+  routeSearchSource.includes("htmlFor={fromSelectId}") &&
+    routeSearchSource.includes("htmlFor={toSelectId}"),
+  "Route finder labels must be separate elements linked to selects.",
+);
+assert(
+  routeSearchSource.includes("aria-label={`${getAriaLabelText(displayLabels.from)}") &&
+    routeSearchSource.includes("aria-label={`${getAriaLabelText(displayLabels.to)}"),
+  "Route finder selects must include localized aria-labels.",
+);
+assert(
   count(/<MobileRouteCard\b/g) === 1,
   "Homepage popular route cards must be rendered from one card list.",
 );
@@ -77,8 +144,8 @@ assert(
   "Homepage popular routes must use a responsive desktop grid.",
 );
 assert(
-  source.includes("md:hidden") && source.includes("{copy.swipe}"),
-  'Homepage "Swipe" hint must be hidden on desktop.',
+  !source.includes("{copy.swipe}"),
+  'Homepage must not render a textual "Swipe" hint in shared markup.',
 );
 assert(
   count(/<HomepageRevenueHeroCard\b/g) === 1,
@@ -116,6 +183,8 @@ for (const [locale, title] of Object.entries(localizedRevenueTitles)) {
     .split("</head>")
     .at(1)
     ?.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "") ?? html;
+  const desktopVisibleHtml = stripDesktopHidden(visibleHtml);
+  const textContent = toTextContent(visibleHtml);
   const occurrences = visibleHtml.split(title).length - 1;
 
   assert(
@@ -134,6 +203,20 @@ for (const [locale, title] of Object.entries(localizedRevenueTitles)) {
     assert(
       !visibleHtml.includes(artifact),
       `Homepage HTML for ${locale} must not contain mojibake artifact: ${artifact}`,
+    );
+  }
+
+  for (const pattern of desktopSwipeTextPatterns) {
+    assert(
+      !pattern.test(desktopVisibleHtml),
+      `Desktop homepage HTML for ${locale} must not show mobile swipe hint text: ${pattern}`,
+    );
+  }
+
+  for (const fragment of forbiddenTextContentFragments) {
+    assert(
+      !textContent.includes(fragment),
+      `Homepage public textContent for ${locale} must not contain glued text: ${fragment}`,
     );
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Translations } from "@/lib/i18n";
@@ -27,7 +27,7 @@ const goLabels: Record<LocaleCode, string> = {
   de: "Los",
   en: "Go",
   fr: "Aller",
-  pl: "Jedź",
+  pl: "Pokaż trasę",
   ru: "Ехать",
   th: "ไป",
   zh: "前往",
@@ -45,6 +45,7 @@ export function RouteSearch({
   to,
 }: RouteSearchProps) {
   const router = useRouter();
+  const routeSearchId = useId();
   const [selectedFrom, setSelectedFrom] = useState(from);
   const [selectedTo, setSelectedTo] = useState(to);
   const fromOptions = useMemo(
@@ -62,7 +63,10 @@ export function RouteSearch({
       ),
     [routePages, selectedFrom],
   );
+  const displayLabels = getRouteSearchLabels(locale, labels);
   const goLabel = goLabels[locale] ?? goLabels.en;
+  const fromSelectId = `${routeSearchId}-from`;
+  const toSelectId = `${routeSearchId}-to`;
 
   function openRoute(nextFrom: string, nextTo: string) {
     const matchingRoute = findMatchingRoute(routePages, nextFrom, nextTo);
@@ -112,6 +116,13 @@ export function RouteSearch({
     openRoute(selectedFrom, selectedTo);
   }
 
+  const labelClass = compact
+    ? "mb-1 block text-[0.58rem] font-black uppercase tracking-[0.14em] text-[#6b7280]"
+    : "mb-2 block text-sm font-bold text-[#344153]";
+  const selectClass = compact
+    ? "h-11 min-h-11 w-full rounded-xl border border-[#eadcc7] bg-[#fffaf2] px-2 text-sm font-black text-[#13233a] outline-none focus:border-[#0e7b6b]"
+    : "h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]";
+
   return (
     <div
       className={
@@ -126,27 +137,19 @@ export function RouteSearch({
             ? "grid grid-cols-[1fr_auto_1fr] items-end gap-2"
             : desktopGo
               ? "grid gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-end"
-            : "grid gap-3 sm:grid-cols-2"
+              : "grid gap-3 sm:grid-cols-2"
         }
       >
-        <label className="block">
-          <span
-            className={
-              compact
-                ? "mb-1 block text-[0.58rem] font-black uppercase tracking-[0.14em] text-[#6b7280]"
-                : "mb-2 block text-sm font-bold text-[#344153]"
-            }
-          >
-            {labels.from}
-          </span>
+        <div className="block">
+          <label className={labelClass} htmlFor={fromSelectId}>
+            {displayLabels.from}{" "}
+          </label>
           <select
+            id={fromSelectId}
+            aria-label={`${getAriaLabelText(displayLabels.from)} ${selectedFrom}`}
             value={selectedFrom}
             onChange={(event) => handleFromChange(event.target.value)}
-            className={
-              compact
-                ? "h-11 min-h-11 w-full rounded-xl border border-[#eadcc7] bg-[#fffaf2] px-2 text-sm font-black text-[#13233a] outline-none focus:border-[#0e7b6b]"
-                : "h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]"
-            }
+            className={selectClass}
           >
             {fromOptions.map((option) => (
               <option key={option} value={option}>
@@ -154,12 +157,12 @@ export function RouteSearch({
               </option>
             ))}
           </select>
-        </label>
+        </div>
 
         {compact || desktopGo ? (
           <button
             type="button"
-            aria-label={`${goLabel}: ${selectedFrom} ${labels.to} ${selectedTo}`}
+            aria-label={`${goLabel}: ${selectedFrom} ${displayLabels.to} ${selectedTo}`}
             onClick={handleGo}
             className={
               compact
@@ -171,24 +174,16 @@ export function RouteSearch({
           </button>
         ) : null}
 
-        <label className="block">
-          <span
-            className={
-              compact
-                ? "mb-1 block text-[0.58rem] font-black uppercase tracking-[0.14em] text-[#6b7280]"
-                : "mb-2 block text-sm font-bold text-[#344153]"
-            }
-          >
-            {labels.to}
-          </span>
+        <div className="block">
+          <label className={labelClass} htmlFor={toSelectId}>
+            {displayLabels.to}{" "}
+          </label>
           <select
+            id={toSelectId}
+            aria-label={`${getAriaLabelText(displayLabels.to)} ${selectedTo}`}
             value={selectedTo}
             onChange={(event) => handleToChange(event.target.value)}
-            className={
-              compact
-                ? "h-11 min-h-11 w-full rounded-xl border border-[#eadcc7] bg-[#fffaf2] px-2 text-sm font-black text-[#13233a] outline-none focus:border-[#0e7b6b]"
-                : "h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]"
-            }
+            className={selectClass}
           >
             {toOptions.map((option) => (
               <option key={option} value={option}>
@@ -196,10 +191,29 @@ export function RouteSearch({
               </option>
             ))}
           </select>
-        </label>
+        </div>
       </div>
     </div>
   );
+}
+
+function getRouteSearchLabels(
+  locale: LocaleCode,
+  labels: Translations["routeSelector"],
+) {
+  if (locale === "pl") {
+    return { from: "Z:", to: "Do:" };
+  }
+
+  if (locale === "fr") {
+    return { from: "De :", to: "À :" };
+  }
+
+  return labels;
+}
+
+function getAriaLabelText(label: string) {
+  return label.replace(/[:：]\s*$/, "").trim();
 }
 
 function findMatchingRoute(

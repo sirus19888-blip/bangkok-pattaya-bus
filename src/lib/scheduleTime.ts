@@ -10,6 +10,8 @@ export type NextDepartureResult = {
   }[];
 };
 
+export type RouteScheduleInput = Schedule | string[];
+
 const DEFAULT_TIMEZONE = "Asia/Bangkok";
 
 function createTimeFormatter(timezone: string) {
@@ -27,7 +29,13 @@ export function timeToMinutes(time: string) {
   return hours * 60 + minutes;
 }
 
-function getRouteDepartures(schedule: Schedule) {
+function getRouteDepartures(schedule: RouteScheduleInput) {
+  if (Array.isArray(schedule)) {
+    return Array.from(new Set(schedule)).sort(
+      (first, second) => timeToMinutes(first) - timeToMinutes(second),
+    );
+  }
+
   const departures = schedule.subRoutes?.length
     ? schedule.subRoutes.flatMap((subRoute) => subRoute.departures)
     : schedule.departures;
@@ -37,7 +45,11 @@ function getRouteDepartures(schedule: Schedule) {
   );
 }
 
-function getMatchingSubRoutes(schedule: Schedule, departure: string) {
+function getMatchingSubRoutes(schedule: RouteScheduleInput, departure: string) {
+  if (Array.isArray(schedule)) {
+    return [];
+  }
+
   return (
     schedule.subRoutes
       ?.filter((subRoute) => subRoute.departures.includes(departure))
@@ -69,7 +81,7 @@ export function getCurrentThailandTime(
 }
 
 export function getNextDeparture(
-  schedule: Schedule,
+  schedule: RouteScheduleInput,
   now = new Date(),
   timezone = DEFAULT_TIMEZONE,
 ): NextDepartureResult {
@@ -77,7 +89,7 @@ export function getNextDeparture(
 
   if (departures.length === 0) {
     return {
-      time: schedule.nextDeparture,
+      time: Array.isArray(schedule) ? "" : schedule.nextDeparture,
       isTomorrow: false,
       subRoutes: [],
     };
@@ -108,6 +120,13 @@ export function getNextDeparture(
       ? getMatchingSubRoutes(schedule, firstTomorrow)
       : [],
   };
+}
+
+export function isNextDepartureInTodaySchedule(
+  departure: string,
+  nextDeparture: NextDepartureResult,
+) {
+  return !nextDeparture.isTomorrow && departure === nextDeparture.time;
 }
 
 export function getMinutesUntilDeparture(

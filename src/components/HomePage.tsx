@@ -877,9 +877,6 @@ function MobileHome({
                 {copy.chooseBus}
               </h2>
             </div>
-            <span className="text-xs font-black text-[#6b7280] md:hidden">
-              {copy.swipe}
-            </span>
           </div>
           <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-4 sm:pb-4 md:px-0 md:pb-0 lg:grid-cols-3">
             {routePagesForLocale.map((routePage) => (

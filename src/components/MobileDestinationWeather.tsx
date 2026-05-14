@@ -282,14 +282,11 @@ export function MobileDestinationWeather({
               src="/images/weather/mobile-destination-weather.png"
             />
             <span className="absolute inset-0 -z-10 bg-gradient-to-br from-[#052032]/5 via-[#052032]/15 to-[#052032]/70" />
-            <span className="absolute right-2 top-1.5 rounded-full bg-white/18 px-1.5 py-0.5 text-[0.48rem] font-black uppercase tracking-[0.12em] text-[#ffe9ae] ring-1 ring-white/15">
-              {sourceLabel}
-            </span>
-            {" "}
             <span className="absolute bottom-1.5 right-2 text-[1.05rem] font-black leading-none tracking-[-0.06em]">
               {weather.temperature}&deg;
             </span>
           </button>
+          <span className="sr-only"> </span>
 
           <div
             className={`absolute right-0 top-[calc(100%+0.45rem)] isolate w-[14.5rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-[1.15rem] border border-white/15 bg-[#0d2638] p-2.5 text-white shadow-2xl shadow-black/30 ring-1 ring-white/10 transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
@@ -309,22 +306,25 @@ export function MobileDestinationWeather({
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#052032]/15 via-[#052032]/45 to-[#052032]/85" />
             </div>
-            <div className="ml-auto flex max-w-[8.8rem] flex-col items-end text-right">
-              <span className="rounded-full bg-white/14 px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#ffe9ae] ring-1 ring-white/15">
-                {sourceLabel}
-              </span>
-              {" "}
-              <span className="mt-1 text-[1.65rem] font-black leading-none tracking-[-0.07em]">
-                {weather.temperature}&deg;
-              </span>
-              {" "}
-              <span className="mt-0.5 max-w-full truncate text-[0.68rem] font-black leading-none text-white">
-                {copy.prefix} {destinationLabel}
-              </span>
-              {" "}
-              <span className="mt-1 text-[0.62rem] font-bold leading-none text-white/80">
+            <div className="ml-auto flex max-w-[9.6rem] flex-col items-end gap-1 text-right">
+              <p className="max-w-full truncate text-[0.68rem] font-black leading-none text-white">
+                <span>{copy.prefix}</span>{" "}
+                <span>{destinationLabel}</span>
+              </p>
+              <p className="flex items-center gap-1.5 leading-none">
+                <span className="rounded-full bg-white/14 px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#ffe9ae] ring-1 ring-white/15">
+                  {sourceLabel}
+                </span>
+                <span aria-hidden="true" className="text-white/35">
+                  ·
+                </span>
+                <span className="text-[1.65rem] font-black tracking-[-0.07em]">
+                  {weather.temperature}&deg;
+                </span>
+              </p>
+              <p className="text-[0.62rem] font-bold leading-none text-white/80">
                 {condition}
-              </span>
+              </p>
             </div>
           </div>
         </div>

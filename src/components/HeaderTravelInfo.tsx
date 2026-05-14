@@ -219,6 +219,95 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
   };
 }
 
+const headerConditionLabels: Record<LocaleCode, Record<string, string>> = {
+  de: {
+    clear: "Klar",
+    clouds: "Bewölkt",
+    drizzle: "Niesel",
+    fog: "Nebel",
+    rain: "Regen",
+    storm: "Gewitter",
+  },
+  en: {
+    clear: "Clear",
+    clouds: "Clouds",
+    drizzle: "Drizzle",
+    fog: "Fog",
+    rain: "Rain",
+    storm: "Storm",
+  },
+  fr: {
+    clear: "Clair",
+    clouds: "Nuages",
+    drizzle: "Bruine",
+    fog: "Brouillard",
+    rain: "Pluie",
+    storm: "Orage",
+  },
+  pl: {
+    clear: "Bezchmurnie",
+    clouds: "Chmury",
+    drizzle: "Mzawka",
+    fog: "Mgła",
+    rain: "Deszcz",
+    storm: "Burza",
+  },
+  ru: {
+    clear: "Ясно",
+    clouds: "Облачно",
+    drizzle: "Морось",
+    fog: "Туман",
+    rain: "Дождь",
+    storm: "Гроза",
+  },
+  th: {
+    clear: "ท้องฟ้าโปร่ง",
+    clouds: "มีเมฆ",
+    drizzle: "ฝนปรอย",
+    fog: "หมอก",
+    rain: "ฝน",
+    storm: "พายุฝน",
+  },
+  zh: {
+    clear: "晴",
+    clouds: "多云",
+    drizzle: "小雨",
+    fog: "雾",
+    rain: "雨",
+    storm: "雷雨",
+  },
+};
+
+function getHeaderConditionLabel(code: number, locale: LocaleCode) {
+  const localized = headerConditionLabels[locale] ?? headerConditionLabels.en;
+
+  if (code === 0 || code === 1) {
+    return localized.clear;
+  }
+
+  if (code === 2 || code === 3) {
+    return localized.clouds;
+  }
+
+  if (code === 45 || code === 48) {
+    return localized.fog;
+  }
+
+  if ((code >= 51 && code <= 57) || (code >= 80 && code <= 82)) {
+    return localized.drizzle;
+  }
+
+  if ((code >= 61 && code <= 67) || (code >= 71 && code <= 77)) {
+    return localized.rain;
+  }
+
+  if (code >= 95) {
+    return localized.storm;
+  }
+
+  return localized.clear;
+}
+
 export function HeaderTravelInfo({
   variant = "default",
   locale = "en",
@@ -357,6 +446,10 @@ export function HeaderTravelInfo({
   }, []);
 
   const mainRate = useMemo(() => formatRate(rates.rates.USD), [rates.rates]);
+  const condition = useMemo(
+    () => getHeaderConditionLabel(weather.code, locale),
+    [locale, weather.code],
+  );
 
   if (variant === "desktopHome") {
     return (
@@ -375,10 +468,13 @@ export function HeaderTravelInfo({
           />
           <span className="leading-tight">
             <span className="block text-xl font-black">
-              {weather.temperature}&deg;
+              {weather.temperature}&deg;{" "}
             </span>
             <span className="block max-w-[6rem] truncate text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#0e7b6b]">
               {locationLabel}
+            </span>
+            <span className="block max-w-[6rem] truncate text-[0.62rem] font-bold text-[#637083]">
+              {condition}
             </span>
           </span>
           <span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[0.58rem] font-black uppercase tracking-wide text-[#b9832e]">
@@ -425,10 +521,13 @@ export function HeaderTravelInfo({
             />
             <span className="leading-tight">
               <span className="block text-xl font-black">
-                {weather.temperature}&deg;
+                {weather.temperature}&deg;{" "}
               </span>
               <span className="block max-w-[6rem] truncate text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#0e7b6b]">
                 {locationLabel}
+              </span>
+              <span className="block max-w-[6rem] truncate text-[0.62rem] font-bold text-[#637083]">
+                {condition}
               </span>
             </span>
             <span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[0.58rem] font-black uppercase tracking-wide text-[#b9832e]">
@@ -480,7 +579,7 @@ export function HeaderTravelInfo({
           <button
             type="button"
             aria-expanded={weatherOpen}
-            aria-label={`${locationLabel} ${labels.weatherSuffix}: ${weather.temperature}°`}
+            aria-label={`${locationLabel} ${labels.weatherSuffix}: ${weather.temperature}°, ${condition}`}
             className="relative isolate flex h-10 min-w-[4.4rem] items-center justify-end overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#0b4d68] px-2 text-xs font-black text-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
             onClick={() => setWeatherOpen((current) => !current)}
             title={`${locationLabel} ${labels.weatherSuffix}`}
@@ -498,6 +597,7 @@ export function HeaderTravelInfo({
               {weather.temperature}&deg;
             </span>
           </button>
+          <span className="sr-only"> </span>
           <div
             className={`absolute right-0 top-[calc(100%+0.45rem)] isolate z-50 w-[14.5rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-[1.15rem] border border-white/15 bg-[#0d2638] p-2.5 text-white shadow-2xl shadow-black/30 ring-1 ring-white/10 transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
               weatherOpen
@@ -516,19 +616,25 @@ export function HeaderTravelInfo({
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#052032]/15 via-[#052032]/45 to-[#052032]/85" />
             </div>
-            <div className="ml-auto flex max-w-[8.8rem] flex-col items-end text-right">
-              <span className="rounded-full bg-white/14 px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#ffe9ae] ring-1 ring-white/15">
-                {weather.source === "live" ? labels.live : labels.estimated}
-              </span>
-              <span className="mt-1 text-[1.65rem] font-black leading-none tracking-[-0.07em]">
-                {weather.temperature}&deg;
-              </span>
-              <span className="mt-0.5 max-w-full truncate text-[0.68rem] font-black leading-none text-white">
-                {locationLabel}
-              </span>
-              <span className="mt-1 text-[0.62rem] font-bold leading-none text-white/80">
-                {labels.weatherSuffix}
-              </span>
+            <div className="ml-auto flex max-w-[9.6rem] flex-col items-end gap-1 text-right">
+              <p className="max-w-full truncate text-[0.68rem] font-black leading-none text-white">
+                <span>{locationLabel}</span>{" "}
+                <span>{labels.weatherSuffix}</span>
+              </p>
+              <p className="flex items-center gap-1.5 leading-none">
+                <span className="rounded-full bg-white/14 px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#ffe9ae] ring-1 ring-white/15">
+                  {weather.source === "live" ? labels.live : labels.estimated}
+                </span>
+                <span aria-hidden="true" className="text-white/35">
+                  ·
+                </span>
+                <span className="text-[1.65rem] font-black tracking-[-0.07em]">
+                  {weather.temperature}&deg;
+                </span>
+              </p>
+              <p className="text-[0.62rem] font-bold leading-none text-white/80">
+                {condition}
+              </p>
             </div>
           </div>
         </div>
@@ -546,8 +652,17 @@ export function HeaderTravelInfo({
             width={16}
           />
           <span>{weather.temperature}&deg;</span>
+          <span aria-hidden="true" className="text-[#9aa3ad]">
+            ·
+          </span>
           <span className="max-w-[5.6rem] truncate text-[0.68rem] font-semibold text-[#637083]">
             {locationLabel}
+          </span>
+          <span aria-hidden="true" className="text-[#9aa3ad]">
+            ·
+          </span>
+          <span className="max-w-[4.8rem] truncate text-[0.68rem] font-semibold text-[#637083]">
+            {condition}
           </span>
         </div>
       )}
