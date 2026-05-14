@@ -13,6 +13,13 @@ const routeSlugs = [
   "don-mueang-airport-to-pattaya",
   "pattaya-to-don-mueang-airport",
 ];
+const guideSlugs = [
+  "ekkamai-bus-terminal-to-pattaya-guide",
+  "suvarnabhumi-airport-gate-8-pattaya-bus",
+  "bangkok-to-pattaya-bus-vs-taxi",
+  "bangkok-to-pattaya-after-midnight",
+  "pattaya-to-bangkok-before-flight",
+];
 const bannedPatterns = [
   {
     label: "vercel.app preview domain",
@@ -109,6 +116,16 @@ function headOf(html) {
   return html.split("</head>")[0] ?? html;
 }
 
+function readSeoForPath(path) {
+  const html = readBuiltHtml(path);
+  const head = headOf(html);
+
+  return {
+    canonical: extractCanonical(head),
+    hreflangs: extractHreflangs(head),
+  };
+}
+
 function extractCanonical(head) {
   const directMatch = head.match(
     /<link\s+rel="canonical"\s+href="([^"]+)"[^>]*>/i,
@@ -163,9 +180,7 @@ function expectedRouteHreflangs(slug) {
 }
 
 function assertCanonicalSelf(path, expectedUrl) {
-  const html = readBuiltHtml(path);
-  const head = headOf(html);
-  const canonical = extractCanonical(head);
+  const { canonical } = readSeoForPath(path);
 
   assert(canonical, `${path} is missing canonical URL.`);
   assert(
@@ -176,9 +191,7 @@ function assertCanonicalSelf(path, expectedUrl) {
 }
 
 function assertHreflangs(path, expectedHreflangs) {
-  const html = readBuiltHtml(path);
-  const head = headOf(html);
-  const hreflangs = extractHreflangs(head);
+  const { hreflangs } = readSeoForPath(path);
 
   for (const [lang, expectedUrl] of expectedHreflangs.entries()) {
     assert(
@@ -194,6 +207,40 @@ function assertHreflangs(path, expectedHreflangs) {
       expectedHreflangs.has(lang),
       `${path} contains unexpected hreflang ${lang}.`,
     );
+  }
+}
+
+function assertHreflangReciprocal(pagePaths) {
+  const pageSeo = new Map(
+    pagePaths.map((path) => [
+      path,
+      {
+        ...readSeoForPath(path),
+        expectedUrl: absolute(path),
+      },
+    ]),
+  );
+
+  for (const [path, { expectedUrl, hreflangs }] of pageSeo.entries()) {
+    for (const [lang, href] of hreflangs.entries()) {
+      const targetPath = new URL(href).pathname;
+      const targetSeo = pageSeo.get(targetPath);
+
+      assert(
+        targetSeo,
+        `${path} hreflang ${lang} points to ${href}, but that target page is not part of the SEO QA set.`,
+      );
+
+      const reciprocalLang = path === "/" ? "x-default" : path.split("/")[1];
+      const reciprocalHref = targetSeo.hreflangs.get(reciprocalLang);
+
+      assert(
+        reciprocalHref && sameUrl(reciprocalHref, expectedUrl),
+        `${path} hreflang ${lang} must be reciprocal on ${targetPath} as ${reciprocalLang}; got ${
+          reciprocalHref ?? "missing"
+        }.`,
+      );
+    }
   }
 }
 
@@ -220,6 +267,11 @@ assert(
   sitemapFile.includes('from "@/lib/site"') &&
     sitemapFile.includes("absoluteUrl("),
   "sitemap.ts must use the shared www production URL helper.",
+);
+assert(
+  sitemapFile.includes('from "@/data/seoGuides"') &&
+    sitemapFile.includes("/en/${guide.slug}"),
+  "sitemap.ts must include English SEO guides.",
 );
 assert(
   robotsFile.includes('from "@/lib/site"') &&
@@ -256,6 +308,11 @@ for (const sourceRoot of sourceRoots) {
   }
 }
 
+const homepagePaths = ["/", ...locales.map((locale) => `/${locale}`)];
+const routePagePaths = routeSlugs.flatMap((slug) =>
+  locales.map((locale) => `/${locale}/${slug}`),
+);
+
 assertCanonicalSelf("/", absolute("/"));
 assertHreflangs("/", expectedHomeHreflangs());
 
@@ -275,6 +332,13 @@ for (const slug of routeSlugs) {
   }
 }
 
+assertHreflangReciprocal([...homepagePaths, ...routePagePaths]);
+
+for (const slug of guideSlugs) {
+  const guidePath = `/en/${slug}`;
+  assertCanonicalSelf(guidePath, absolute(guidePath));
+}
+
 const sitemapPath = join(root, ".next/server/app/sitemap.xml.body");
 assert(
   existsSync(sitemapPath),
@@ -288,8 +352,10 @@ const sitemapUrls = parseSitemapUrls(sitemapXml);
 assert(sitemapUrls.length > 0, "sitemap.xml must contain URL entries.");
 
 for (const url of sitemapUrls) {
+  const parsedUrl = new URL(url);
+
   assert(
-    url.startsWith(expectedSiteUrl),
+    parsedUrl.origin === expectedSiteUrl,
     `sitemap URL must use the www production domain: ${url}`,
   );
 }
@@ -301,6 +367,7 @@ const requiredSitemapUrls = [
     locales.map((locale) => absolute(`/${locale}/${slug}`)),
   ),
   ...routeSlugs.map((slug) => absolute(`/routes/${slug}`)),
+  ...guideSlugs.map((slug) => absolute(`/en/${slug}`)),
 ];
 
 for (const requiredUrl of requiredSitemapUrls) {
@@ -308,6 +375,22 @@ for (const requiredUrl of requiredSitemapUrls) {
     sitemapUrls.includes(requiredUrl),
     `sitemap.xml is missing ${requiredUrl}.`,
   );
+}
+
+for (const locale of locales) {
+  assert(
+    sitemapUrls.includes(absolute(`/${locale}`)),
+    `sitemap.xml is missing localized homepage /${locale}.`,
+  );
+}
+
+for (const slug of routeSlugs) {
+  for (const locale of locales) {
+    assert(
+      sitemapUrls.includes(absolute(`/${locale}/${slug}`)),
+      `sitemap.xml is missing route page /${locale}/${slug}.`,
+    );
+  }
 }
 
 const robotsPath = join(root, ".next/server/app/robots.txt.body");

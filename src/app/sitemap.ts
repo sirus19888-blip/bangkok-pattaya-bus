@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { routePages, supportedLocaleCodes } from "@/data/routes";
 import { getScheduleByRoute } from "@/data/schedules";
+import { seoGuides } from "@/data/seoGuides";
 import { routeSeoPages } from "@/data/seoRoutes";
 import { absoluteUrl } from "@/lib/site";
 
@@ -72,5 +73,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticPages, ...localeHomeUrls, ...routeUrls, ...seoRouteUrls];
+  const seoGuideUrls: MetadataRoute.Sitemap = seoGuides.map((guide) => ({
+    url: absoluteUrl(`/en/${guide.slug}`),
+    lastModified: new Date(`${guide.lastUpdated}T00:00:00.000Z`),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [
+    ...staticPages,
+    ...localeHomeUrls,
+    ...routeUrls,
+    ...seoRouteUrls,
+    ...seoGuideUrls,
+  ];
 }

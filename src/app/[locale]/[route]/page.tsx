@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { RoutePageLayout } from "@/components/RoutePageLayout";
+import { SeoGuidePage } from "@/components/SeoGuidePage";
 import {
   getRoutePage,
   isSupportedLocale,
@@ -9,6 +10,7 @@ import {
   supportedLocaleCodes,
 } from "@/data/routes";
 import { getScheduleByRoute } from "@/data/schedules";
+import { getSeoGuide, seoGuides } from "@/data/seoGuides";
 import { stations } from "@/data/stations";
 import {
   getTranslations,
@@ -31,12 +33,18 @@ function routeUrl(locale: string, slug: string) {
 }
 
 export function generateStaticParams() {
-  return supportedLocaleCodes.flatMap((locale) =>
-    routePages.map((page) => ({
-      locale,
-      route: page.slug,
+  return [
+    ...supportedLocaleCodes.flatMap((locale) =>
+      routePages.map((page) => ({
+        locale,
+        route: page.slug,
+      })),
+    ),
+    ...seoGuides.map((guide) => ({
+      locale: "en",
+      route: guide.slug,
     })),
-  );
+  ];
 }
 
 export async function generateMetadata({
@@ -47,6 +55,25 @@ export async function generateMetadata({
   if (!isSupportedLocale(locale)) {
     return {
       title: "Route not found | Bangkok Pattaya Bus Guide",
+    };
+  }
+
+  const guide = locale === "en" ? getSeoGuide(slug) : undefined;
+
+  if (guide) {
+    return {
+      title: guide.title,
+      description: guide.description,
+      alternates: {
+        canonical: routeUrl("en", guide.slug),
+      },
+      openGraph: {
+        title: guide.title,
+        description: guide.description,
+        url: routeUrl("en", guide.slug),
+        siteName: "Bangkok Pattaya Bus Guide",
+        type: "article",
+      },
     };
   }
 
@@ -84,6 +111,12 @@ export default async function Page({ params }: RoutePageProps) {
 
   if (!isSupportedLocale(locale)) {
     notFound();
+  }
+
+  const guide = locale === "en" ? getSeoGuide(slug) : undefined;
+
+  if (guide) {
+    return <SeoGuidePage guide={guide} />;
   }
 
   const routePage = getRoutePage(slug);

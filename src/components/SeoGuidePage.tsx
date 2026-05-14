@@ -1,0 +1,219 @@
+import Link from "next/link";
+import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
+import { getRoutePage } from "@/data/routes";
+import type { SeoGuide } from "@/data/seoGuides";
+import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
+
+function guideUrl(slug: string) {
+  return absoluteUrl(`/en/${slug}`);
+}
+
+export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
+  const routePage = getRoutePage(guide.routeId);
+
+  if (!routePage) {
+    return null;
+  }
+
+  return (
+    <main className="min-h-screen bg-[#f7f0e3] px-4 py-8 text-[#13233a]">
+      <GuideJsonLd guide={guide} />
+
+      <article className="mx-auto max-w-4xl">
+        <nav className="text-sm font-black text-[#0e7b6b]">
+          <Link href="/">Home</Link>
+          <span className="px-2 text-[#8a94a3]">/</span>
+          <Link href="/routes">Routes</Link>
+          <span className="px-2 text-[#8a94a3]">/</span>
+          <Link href={`/en/${routePage.slug}`}>{routePage.title}</Link>
+        </nav>
+
+        <header className="mt-5 rounded-[1.75rem] border border-[#eadcc7] bg-white p-6 shadow-sm md:p-8">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#b9832e]">
+            Practical travel guide
+          </p>
+          <h1 className="mt-3 text-4xl font-black leading-tight md:text-5xl">
+            {guide.h1}
+          </h1>
+          <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-[#4f5d6c]">
+            {guide.intro}
+          </p>
+          <p className="mt-4 text-sm font-black text-[#0e7b6b]">
+            Last updated: {guide.lastUpdated}
+          </p>
+        </header>
+
+        <section className="mt-6 rounded-[1.5rem] border border-[#c8dbe9] bg-[#eaf5fb] p-5">
+          <h2 className="text-2xl font-black">Quick facts</h2>
+          <ul className="mt-4 grid gap-3 md:grid-cols-3">
+            {guide.keyPoints.map((point) => (
+              <li
+                className="rounded-2xl border border-[#c8dbe9] bg-white p-4 text-sm font-semibold leading-6 text-[#4f5d6c]"
+                key={point}
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+          <div className="space-y-6">
+            {guide.sections.map((section) => (
+              <section
+                className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6"
+                key={section.title}
+              >
+                <h2 className="text-2xl font-black leading-tight">
+                  {section.title}
+                </h2>
+                <p className="mt-4 text-sm font-semibold leading-7 text-[#4f5d6c]">
+                  {section.body}
+                </p>
+              </section>
+            ))}
+
+            <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
+              <h2 className="text-2xl font-black leading-tight">
+                Related route page
+              </h2>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
+                Use the route page for current departure times, station details,
+                fare notes and source status before you travel.
+              </p>
+              <Link
+                className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white"
+                href={`/en/${routePage.slug}`}
+              >
+                {guide.routeLinkLabel}
+              </Link>
+            </section>
+
+            <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
+              <h2 className="text-2xl font-black leading-tight">FAQ</h2>
+              <div className="mt-4 space-y-3">
+                {guide.faq.map((faq) => (
+                  <details
+                    className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4"
+                    key={faq.question}
+                  >
+                    <summary className="cursor-pointer text-base font-black">
+                      {faq.question}
+                    </summary>
+                    <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
+                      {faq.answer}
+                    </p>
+                  </details>
+                ))}
+              </div>
+            </section>
+
+            <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
+              <h2 className="text-2xl font-black leading-tight">Sources</h2>
+              <ul className="mt-4 space-y-3">
+                {guide.sources.map((source) => (
+                  <li key={source.url}>
+                    <a
+                      className="text-sm font-black text-[#0e7b6b] underline-offset-4 hover:underline"
+                      href={source.url}
+                      rel={
+                        source.url.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                      target={
+                        source.url.startsWith("http") ? "_blank" : undefined
+                      }
+                    >
+                      {source.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
+
+          <aside className="h-fit rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm lg:sticky lg:top-24">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#b9832e]">
+              Booking options
+            </p>
+            <h2 className="mt-2 text-2xl font-black leading-tight">
+              Compare tickets and alternatives
+            </h2>
+            <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
+              Timetable information stays independent. Booking links help you
+              compare live seats, transfers and alternatives before going to the
+              station.
+            </p>
+            <TwelveGoAffiliateButton
+              ctaPosition="route_commercial_help"
+              label={guide.ctaLabel}
+              locale="en"
+              routeId={guide.routeId}
+              variant="afterSchedule"
+            />
+          </aside>
+        </div>
+      </article>
+    </main>
+  );
+}
+
+function GuideJsonLd({ guide }: { guide: SeoGuide }) {
+  const canonicalUrl = guideUrl(guide.slug);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        headline: guide.h1,
+        description: guide.description,
+        url: canonicalUrl,
+        inLanguage: "en",
+        dateModified: guide.lastUpdated,
+        publisher: {
+          "@type": "Organization",
+          name: SITE_NAME,
+          url: SITE_URL,
+        },
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: guide.faq.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: SITE_URL,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: guide.h1,
+            item: canonicalUrl,
+          },
+        ],
+      },
+    ],
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+      }}
+    />
+  );
+}
