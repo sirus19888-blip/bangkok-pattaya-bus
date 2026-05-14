@@ -54,6 +54,14 @@ const forbiddenPhrases = [
   "Source ::",
   "Dernière vérification ::",
   "Zglos",
+  "â€˘",
+  "PokaĹĽ",
+  "wiÄ™cej",
+  "ĐźĐľ",
+  "ĐµŃ",
+  "â–ľ",
+  "âŚ",
+  "Ă—",
 ];
 
 function getBuiltHtmlPath(path) {

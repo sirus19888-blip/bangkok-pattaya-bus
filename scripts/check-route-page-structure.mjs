@@ -92,6 +92,17 @@ const desktopSwipeTextPatterns = [
   /เลื่อน/,
 ];
 
+const forbiddenEncodingArtifacts = [
+  "â€˘",
+  "PokaĹĽ",
+  "wiÄ™cej",
+  "ĐźĐľ",
+  "ĐµŃ",
+  "â–ľ",
+  "âŚ",
+  "Ă—",
+];
+
 function count(source, pattern) {
   return source.match(pattern)?.length ?? 0;
 }
@@ -153,6 +164,12 @@ for (const path of expectedEnglishRoutes) {
       assert.ok(
         !pattern.test(desktopVisibleHtml),
         `${path} desktop HTML must not show mobile swipe hint text: ${pattern}`,
+      );
+    }
+    for (const artifact of forbiddenEncodingArtifacts) {
+      assert.ok(
+        !visibleHtml.includes(artifact),
+        `${path} HTML must not contain mojibake artifact: ${artifact}`,
       );
     }
     assert.ok(

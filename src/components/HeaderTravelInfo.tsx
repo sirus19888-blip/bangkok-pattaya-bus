@@ -590,7 +590,7 @@ export function HeaderTravelInfo({
           <span className="text-[#b9832e]">{labels.currencyButton}</span>
           <span>{mainRate}฿</span>
           <span className="text-[0.65rem] text-[#637083]" aria-hidden="true">
-            â–ľ
+            ▾
           </span>
         </button>
 

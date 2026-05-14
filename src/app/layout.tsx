@@ -29,6 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body className="flex min-h-full flex-col">
         {children}
         <ConsentManagementPlaceholder />

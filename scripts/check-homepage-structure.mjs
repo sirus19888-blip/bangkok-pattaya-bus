@@ -18,6 +18,17 @@ function count(pattern) {
   return source.match(pattern)?.length ?? 0;
 }
 
+const forbiddenEncodingArtifacts = [
+  "â€˘",
+  "PokaĹĽ",
+  "wiÄ™cej",
+  "ĐźĐľ",
+  "ĐµŃ",
+  "â–ľ",
+  "âŚ",
+  "Ă—",
+];
+
 assert(count(/<main\b/g) === 1, "Homepage must render exactly one <main>.");
 assert(count(/<h1\b/g) === 1, "Homepage must render exactly one <h1>.");
 assert(
@@ -87,10 +98,10 @@ const localizedRevenueTitles = {
   de: "Brauchen Sie heute ein Ticket?",
   en: "Need a ticket today?",
   fr: "Besoin d&#x27;un billet aujourd&#x27;hui ?",
-  pl: "Potrzebujesz biletu na dziś?",
-  ru: "Нужен билет сегодня?",
-  th: "ต้องการตั๋ววันนี้ไหม?",
-  zh: "今天需要车票吗？",
+  pl: "Potrzebujesz biletu na dzi\u015b?",
+  ru: "\u041d\u0443\u0436\u0435\u043d \u0431\u0438\u043b\u0435\u0442 \u0441\u0435\u0433\u043e\u0434\u043d\u044f?",
+  th: "\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e15\u0e31\u0e4b\u0e27\u0e27\u0e31\u0e19\u0e19\u0e35\u0e49\u0e44\u0e2b\u0e21?",
+  zh: "\u4eca\u5929\u9700\u8981\u8f66\u7968\u5417\uff1f",
 };
 
 for (const [locale, title] of Object.entries(localizedRevenueTitles)) {
@@ -118,6 +129,13 @@ for (const [locale, title] of Object.entries(localizedRevenueTitles)) {
       !visibleHtml.includes("Estimate31"),
     `Homepage weather widget for ${locale} must not concatenate source, temperature, and label.`,
   );
+
+  for (const artifact of forbiddenEncodingArtifacts) {
+    assert(
+      !visibleHtml.includes(artifact),
+      `Homepage HTML for ${locale} must not contain mojibake artifact: ${artifact}`,
+    );
+  }
 }
 
 console.log("Homepage structure checks passed.");

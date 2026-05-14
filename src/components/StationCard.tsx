@@ -7,6 +7,7 @@ import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Station } from "@/data/stations";
 import type { StationPhotoGroup } from "@/data/stationPhotos";
 import type { Translations } from "@/lib/i18n";
+import { repairMojibake, repairMojibakeList } from "@/lib/repairMojibake";
 
 type StationCardProps = {
   stations: Station[];
@@ -99,7 +100,7 @@ export function StationCard({
                         }`}
                       >
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e8b05a]" />
-                        <span>{point}</span>
+                      <span>{repairMojibake(point)}</span>
                       </li>
                     ))}
                   </ul>
@@ -146,10 +147,10 @@ function getShowMoreLabel(locale: LocaleCode) {
     de: "Mehr anzeigen",
     en: "Show more",
     fr: "Voir plus",
-    pl: "PokaĹĽ wiÄ™cej",
-    ru: "ĐźĐľĐşĐ°Đ·Đ°Ń‚ŃŚ ĐµŃ‰Ń‘",
-    th: "ŕ¸”ŕ¸ąŕą€ŕ¸žŕ¸´ŕąŕ¸ˇŕą€ŕ¸•ŕ¸´ŕ¸ˇ",
-    zh: "ćľç¤şć›´ĺ¤š",
+    pl: "Pokaż więcej",
+    ru: "Показать ещё",
+    th: "ดูเพิ่มเติม",
+    zh: "显示更多",
   };
 
   return labels[locale] ?? labels.en;
@@ -160,10 +161,10 @@ function getShowLessLabel(locale: LocaleCode) {
     de: "Weniger anzeigen",
     en: "Show less",
     fr: "Voir moins",
-    pl: "PokaĹĽ mniej",
-    ru: "ĐˇĐşŃ€Ń‹Ń‚ŃŚ",
-    th: "ŕąŕ¸Şŕ¸”ŕ¸‡ŕ¸™ŕą‰ŕ¸­ŕ¸˘ŕ¸Ąŕ¸‡",
-    zh: "ć”¶čµ·",
+    pl: "Pokaż mniej",
+    ru: "Скрыть",
+    th: "แสดงน้อยลง",
+    zh: "收起",
   };
 
   return labels[locale] ?? labels.en;
@@ -446,30 +447,30 @@ function getStationTip(
   routeId?: RouteId,
 ) {
   if (stationId === "don-mueang-airport" && routeId === "pattaya-to-don-mueang-airport") {
-    return donMueangDepartureTips[locale].join(" ");
+    return repairMojibakeList(donMueangDepartureTips[locale]).join(" ");
   }
 
   if (stationId === "suvarnabhumi-airport" && routeId === "pattaya-to-suvarnabhumi-airport") {
-    return suvarnabhumiDepartureTips[locale].join(" ");
+    return repairMojibakeList(suvarnabhumiDepartureTips[locale]).join(" ");
   }
 
   if (stationId === "suvarnabhumi-airport" && routeId === "suvarnabhumi-airport-to-pattaya") {
-    return suvarnabhumiArrivalBusTips[locale].join(" ");
+    return repairMojibakeList(suvarnabhumiArrivalBusTips[locale]).join(" ");
   }
 
   if (stationId === "north-pattaya" && routeId === "pattaya-to-bangkok") {
-    return northPattayaDepartureTips[locale].join(" ");
+    return repairMojibakeList(northPattayaDepartureTips[locale]).join(" ");
   }
 
   if (stationId === "mo-chit" && routeId === "pattaya-to-bangkok") {
-    return moChitArrivalTips[locale].join(" ");
+    return repairMojibakeList(moChitArrivalTips[locale]).join(" ");
   }
 
   if (stationId === "ekkamai" && routeId === "pattaya-to-bangkok") {
-    return ekkamaiArrivalTips[locale].join(" ");
+    return repairMojibakeList(ekkamaiArrivalTips[locale]).join(" ");
   }
 
-  return tip;
+  return repairMojibake(tip);
 }
 
 function getMobileTipPoints(
@@ -479,27 +480,27 @@ function getMobileTipPoints(
   routeId?: RouteId,
 ) {
   if (stationId === "don-mueang-airport" && routeId === "pattaya-to-don-mueang-airport") {
-    return donMueangDepartureTips[locale];
+    return repairMojibakeList(donMueangDepartureTips[locale]);
   }
 
   if (stationId === "suvarnabhumi-airport" && routeId === "pattaya-to-suvarnabhumi-airport") {
-    return suvarnabhumiDepartureTips[locale];
+    return repairMojibakeList(suvarnabhumiDepartureTips[locale]);
   }
 
   if (stationId === "suvarnabhumi-airport" && routeId === "suvarnabhumi-airport-to-pattaya") {
-    return suvarnabhumiArrivalBusTips[locale];
+    return repairMojibakeList(suvarnabhumiArrivalBusTips[locale]);
   }
 
   if (stationId === "north-pattaya" && routeId === "pattaya-to-bangkok") {
-    return northPattayaDepartureTips[locale];
+    return repairMojibakeList(northPattayaDepartureTips[locale]);
   }
 
   if (stationId === "mo-chit" && routeId === "pattaya-to-bangkok") {
-    return moChitArrivalTips[locale];
+    return repairMojibakeList(moChitArrivalTips[locale]);
   }
 
   if (stationId === "ekkamai" && routeId === "pattaya-to-bangkok") {
-    return ekkamaiArrivalTips[locale];
+    return repairMojibakeList(ekkamaiArrivalTips[locale]);
   }
 
   if (
@@ -508,17 +509,10 @@ function getMobileTipPoints(
     stationId !== "ekkamai" &&
     stationId !== "jomtien-bus-area"
   ) {
-    return [tip];
+    return [repairMojibake(tip)];
   }
 
-  if (locale === "th") {
-    return tip
-      .split(/(?=ŕ¸•ŕ¸±ŕ¸§ŕą€ŕ¸Ąŕ¸·ŕ¸­ŕ¸ŕ¸—ŕą‰ŕ¸­ŕ¸‡ŕ¸–ŕ¸´ŕąŕ¸™|ŕ¸–ŕą‰ŕ¸˛ŕ¸ˇŕ¸µŕ¸ŕ¸Łŕ¸°ŕą€ŕ¸›ŕą‹ŕ¸˛|ŕ¸–ŕą‰ŕ¸˛ŕąŕ¸Šŕą‰ŕąŕ¸—ŕą‡ŕ¸ŕ¸‹ŕ¸µŕą)/)
-      .map((point) => point.trim())
-      .filter(Boolean);
-  }
-
-  return tip
+  return repairMojibake(tip)
     .split(/(?<=[.!?ă€‚])\s+/)
     .map((point) => point.trim())
     .filter(Boolean);

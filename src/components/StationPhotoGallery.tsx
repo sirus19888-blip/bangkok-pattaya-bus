@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -10,6 +10,7 @@ import {
   type StationPhotoGroup,
 } from "@/data/stationPhotos";
 import type { StationPhoto } from "@/data/stationPhotos";
+import { repairMojibake } from "@/lib/repairMojibake";
 
 type StationPhotoGalleryProps = {
   groups: StationPhotoGroup[];
@@ -33,15 +34,15 @@ export function StationPhotoGallery({
     return null;
   }
 
-  const galleryTitle = getStationPhotoGalleryTitle(locale);
-  const attributionLabel = getStationPhotoAttributionLabel(locale);
+  const galleryTitle = repairMojibake(getStationPhotoGalleryTitle(locale));
+  const attributionLabel = repairMojibake(getStationPhotoAttributionLabel(locale));
   const openPhotoLabel =
     locale === "ru"
       ? "Открыть фото крупнее"
       : locale === "de"
         ? "Foto größer öffnen"
       : locale === "th"
-        ? "เปิดภาพขนาดใหญ่"
+        ? "เปิดรูปขนาดใหญ่"
       : locale === "zh"
         ? "打开大图"
       : locale === "fr"
@@ -53,7 +54,7 @@ export function StationPhotoGallery({
       : locale === "de"
         ? "Foto schließen"
         : locale === "th"
-          ? "ปิดภาพ"
+          ? "ปิดรูป"
         : locale === "zh"
           ? "关闭图片"
         : locale === "fr"
@@ -81,7 +82,7 @@ export function StationPhotoGallery({
                 id={`${group.stationId}-photos`}
                 className="text-sm font-black text-[#13233a] sm:text-base"
               >
-                {group.title}
+                {repairMojibake(group.title)}
               </h3>
             ) : null}
             <div
@@ -93,6 +94,8 @@ export function StationPhotoGallery({
             >
               {group.photos.map((photo) => {
                 const photoText = getStationPhotoText(photo, locale);
+                const cleanAlt = repairMojibake(photoText.alt);
+                const cleanCaption = repairMojibake(photoText.caption);
 
                 return (
                   <figure
@@ -103,11 +106,11 @@ export function StationPhotoGallery({
                       type="button"
                       className="relative block aspect-[4/3] w-full overflow-hidden rounded-xl text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 lg:rounded-lg"
                       onClick={() => setActivePhoto(photo)}
-                      aria-label={`${openPhotoLabel}: ${photoText.alt}`}
+                      aria-label={`${openPhotoLabel}: ${cleanAlt}`}
                     >
                       <Image
                         src={photo.src}
-                        alt={photoText.alt}
+                        alt={cleanAlt}
                         fill
                         loading="lazy"
                         sizes="(min-width: 1024px) 320px, (min-width: 640px) 50vw, 100vw"
@@ -116,7 +119,7 @@ export function StationPhotoGallery({
                     </button>
                     {photo.displayTitle ? (
                       <p className="mt-2 text-sm font-black leading-5 text-[#13233a] lg:mt-1.5 lg:text-xs lg:leading-4">
-                        {locale === "pl"
+                        {repairMojibake(locale === "pl"
                           ? photo.displayTitle.pl
                           : locale === "ru"
                             ? photo.displayTitle.ru ?? "Фото станции"
@@ -128,7 +131,7 @@ export function StationPhotoGallery({
                             ? photo.displayTitle.zh ?? "车站照片"
                           : locale === "fr"
                             ? photo.displayTitle.fr ?? "Photo de la station"
-                            : photo.displayTitle.en}
+                            : photo.displayTitle.en)}
                       </p>
                     ) : null}
                     <figcaption
@@ -138,12 +141,12 @@ export function StationPhotoGallery({
                           : "mt-2 text-[0.82rem] font-black leading-5 text-[#13233a] lg:mt-1 lg:text-[0.68rem] lg:leading-4"
                       }
                     >
-                      {photoText.caption}
+                      {cleanCaption}
                     </figcaption>
                     <p className="mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280] lg:text-[0.62rem] lg:leading-3">
                       <AttributionPrefix
                         label={attributionLabel}
-                        tooltip={`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`}
+                        tooltip={repairMojibake(`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`)}
                       />{" "}
                       <span className="hidden">
                       <a
@@ -199,7 +202,9 @@ function PhotoLightbox({
   photo: StationPhoto;
 }) {
   const photoText = getStationPhotoText(photo, locale);
-  const title = photo.displayTitle
+  const cleanAlt = repairMojibake(photoText.alt);
+  const cleanCaption = repairMojibake(photoText.caption);
+  const title = repairMojibake(photo.displayTitle
     ? locale === "pl"
       ? photo.displayTitle.pl
       : locale === "ru"
@@ -213,7 +218,7 @@ function PhotoLightbox({
       : locale === "fr"
         ? photo.displayTitle.fr ?? "Photo de la station"
       : photo.displayTitle.en
-    : photo.title;
+    : photo.title);
 
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
@@ -232,7 +237,7 @@ function PhotoLightbox({
       className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#13233a]/80 p-3 sm:p-5"
       role="dialog"
       aria-modal="true"
-      aria-label={photoText.alt}
+      aria-label={cleanAlt}
       onClick={onClose}
     >
       <div
@@ -261,7 +266,7 @@ function PhotoLightbox({
         >
           <Image
             src={photo.src}
-            alt={photoText.alt}
+            alt={cleanAlt}
             fill
             sizes="100vw"
             className="pointer-events-none object-contain"
@@ -270,12 +275,12 @@ function PhotoLightbox({
         </button>
         <div className="shrink-0 p-3">
           <p className="text-sm font-black leading-5 text-[#13233a]">
-            {photoText.caption}
+            {cleanCaption}
           </p>
           <p className="mt-1 text-xs font-semibold leading-5 text-[#6b7280]">
             <AttributionPrefix
               label={attributionLabel}
-              tooltip={`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`}
+              tooltip={repairMojibake(`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`)}
             />{" "}
             <span className="hidden">
             <a
@@ -338,3 +343,5 @@ function AttributionPrefix({
     </span>
   );
 }
+
+

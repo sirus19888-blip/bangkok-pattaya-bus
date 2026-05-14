@@ -153,7 +153,7 @@ export function MobileRouteDecisionCard({
       <div className="mt-2 grid grid-cols-2 gap-2 md:mt-3 lg:hidden">
         <DecisionFact
           label={labels.travelTime}
-          value={`${schedule.travelTime} â€˘ ${distance}`}
+          value={`${schedule.travelTime} • ${distance}`}
         />
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
@@ -317,7 +317,7 @@ export function DesktopRouteBookingPanel({
       <div className="mt-4 grid gap-3">
         <DecisionFact
           label={labels.travelTime}
-          value={`${schedule.travelTime} â€˘ ${distance}`}
+          value={`${schedule.travelTime} • ${distance}`}
         />
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>

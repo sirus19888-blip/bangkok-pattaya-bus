@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { LocaleCode } from "@/data/routes";
 import type { Station } from "@/data/stations";
+import { repairMojibake } from "@/lib/repairMojibake";
 
 type StationMiniMapProps = {
   station: Station;
@@ -73,7 +74,7 @@ export function StationMiniMap({
         : locale === "fr"
           ? mapLabels.fr
           : mapLabels.en;
-  const walkingNote =
+  const walkingNote = repairMojibake(
     locale === "pl"
       ? station.walkingNote.pl
       : locale === "ru"
@@ -86,8 +87,9 @@ export function StationMiniMap({
           ? getChineseWalkingNote(station.id)
         : locale === "fr"
           ? getFrenchWalkingNote(station.id)
-          : station.walkingNote.en;
-  const mapLabel =
+          : station.walkingNote.en,
+  );
+  const mapLabel = repairMojibake(
     locale === "ru"
       ? getRussianStationMapLabel(station.id, station.mapLabel)
       : locale === "de"
@@ -98,11 +100,12 @@ export function StationMiniMap({
         ? getChineseStationMapLabel(station.id, station.mapLabel)
       : locale === "fr"
         ? getFrenchStationMapLabel(station.id, station.mapLabel)
-        : station.mapLabel;
+        : station.mapLabel,
+  );
   const [isMapOpen, setIsMapOpen] = useState(false);
   const [shouldLoadMap, setShouldLoadMap] = useState(false);
-  const openMapLabel = getOpenMapLabel(locale);
-  const closeMapLabel = getCloseMapLabel(locale);
+  const openMapLabel = repairMojibake(getOpenMapLabel(locale));
+  const closeMapLabel = repairMojibake(getCloseMapLabel(locale));
   const mapUrl = getOpenStreetMapEmbedUrl(station);
 
   useEffect(() => {
@@ -134,13 +137,13 @@ export function StationMiniMap({
     >
       <div className="border-b border-[#d6e8f4] px-3 py-2.5 lg:py-2">
         <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
-          {labels.title}
+          {repairMojibake(labels.title)}
         </p>
         <p className="mt-1 text-sm font-black leading-5 text-[#13233a] lg:text-xs lg:leading-4">
           {mapLabel}
         </p>
         <p className="mt-1 text-xs font-semibold leading-5 text-[#4f5d6c] lg:leading-4">
-          {walkingNote || labels.fallbackNote}
+          {walkingNote || repairMojibake(labels.fallbackNote)}
         </p>
       </div>
       <button
@@ -155,7 +158,7 @@ export function StationMiniMap({
         {shouldLoadMap ? (
           <iframe
             src={mapUrl}
-            title={`${labels.title}: ${mapLabel}`}
+            title={`${repairMojibake(labels.title)}: ${mapLabel}`}
             className="pointer-events-none h-full w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -188,9 +191,9 @@ export function StationMiniMap({
         <StationMapLightbox
           closeMapLabel={closeMapLabel}
           mapLabel={mapLabel}
-          mapTitle={labels.title}
+          mapTitle={repairMojibake(labels.title)}
           mapUrl={mapUrl}
-          walkingNote={walkingNote || labels.fallbackNote}
+          walkingNote={walkingNote || repairMojibake(labels.fallbackNote)}
           onClose={() => setIsMapOpen(false)}
         />
       ) : null}
