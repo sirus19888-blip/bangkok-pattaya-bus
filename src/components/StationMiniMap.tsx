@@ -163,13 +163,10 @@ export function StationMiniMap({
         ) : (
           <span
             aria-hidden="true"
-            className="flex h-full w-full flex-col items-center justify-center gap-2 bg-[#eaf5fb] px-4 text-center"
+            className="flex h-full w-full items-center justify-center bg-[#eaf5fb] px-4 text-center"
           >
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl shadow-sm">
               ⌖
-            </span>
-            <span className="text-xs font-black text-[#13233a]">
-              {openMapLabel}
             </span>
           </span>
         )}

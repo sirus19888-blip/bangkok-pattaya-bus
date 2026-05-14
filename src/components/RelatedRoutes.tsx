@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 
@@ -22,25 +22,6 @@ const relatedRouteImages: Record<RouteId, string> = {
     "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
 };
 
-const busRouteLabels: Record<LocaleCode, string> = {
-  de: "Busroute",
-  en: "Bus route",
-  fr: "Route de bus",
-  pl: "Trasa autobusowa",
-  ru: "Автобусный маршрут",
-  th: "เส้นทางรถบัส",
-  zh: "巴士路线",
-};
-
-const routeConnectorLabels: Record<LocaleCode, string> = {
-  de: "nach",
-  en: "to",
-  fr: "vers",
-  pl: "do",
-  ru: "—",
-  th: "ไป",
-  zh: "到",
-};
 
 export function RelatedRoutes({
   currentRoute,
@@ -74,13 +55,8 @@ export function RelatedRoutes({
               <span className="relative block text-sm font-black leading-tight text-white drop-shadow sm:text-base md:text-sm md:text-[#13233a] md:drop-shadow-none">
                 {routePage.title}
               </span>
-              <span className="relative mt-2 inline-flex rounded-full bg-white/90 px-2.5 py-1 text-[0.62rem] font-black uppercase tracking-wide text-[#0e7b6b] md:hidden">
-                {busRouteLabels[locale] ?? busRouteLabels.en}
-              </span>
-              <span className="relative mt-1 hidden text-sm font-semibold text-[#4f5d6c] md:block md:text-xs">
-                {routePage.from}{" "}
-                {routeConnectorLabels[locale] ?? routeConnectorLabels.en}{" "}
-                {routePage.to}
+              <span className="relative mt-2 block max-w-[17rem] text-xs font-semibold leading-5 text-white/85 md:mt-1 md:max-w-none md:text-[#4f5d6c]">
+                {routePage.intro}
               </span>
             </Link>
           </li>

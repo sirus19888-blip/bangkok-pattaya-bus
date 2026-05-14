@@ -111,6 +111,13 @@ for (const [locale, title] of Object.entries(localizedRevenueTitles)) {
     occurrences === 1,
     `Homepage revenue title for ${locale} must occur exactly once.`,
   );
+
+  assert(
+    !visibleHtml.includes("Estimate 31°Weather") &&
+      !visibleHtml.includes("Estimate 31Â°Weather") &&
+      !visibleHtml.includes("Estimate31"),
+    `Homepage weather widget for ${locale} must not concatenate source, temperature, and label.`,
+  );
 }
 
 console.log("Homepage structure checks passed.");

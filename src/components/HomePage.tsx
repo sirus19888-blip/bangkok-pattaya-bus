@@ -851,6 +851,7 @@ function MobileHome({
                         uiText.affiliate.variantLabels.homepageCardAria
                       }
                       className="mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-sm font-black text-[#13233a]"
+                      ctaPosition="homepage_route_card"
                       disclosureMode="none"
                       label={uiText.affiliate.variantLabels.homepageCardCta}
                       locale={locale}
@@ -1033,6 +1034,7 @@ function MobileRouteCard({
       <TwelveGoAffiliateButton
         ariaLabel={getUiTranslations(locale).affiliate.variantLabels.homepageCardAria}
         className="mt-2 flex min-h-10 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a]"
+        ctaPosition="homepage_route_card"
         disclosureMode="none"
         label={getUiTranslations(locale).affiliate.variantLabels.homepageCardCta}
         locale={locale}

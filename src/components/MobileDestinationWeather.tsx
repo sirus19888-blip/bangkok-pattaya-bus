@@ -285,6 +285,7 @@ export function MobileDestinationWeather({
             <span className="absolute right-2 top-1.5 rounded-full bg-white/18 px-1.5 py-0.5 text-[0.48rem] font-black uppercase tracking-[0.12em] text-[#ffe9ae] ring-1 ring-white/15">
               {sourceLabel}
             </span>
+            {" "}
             <span className="absolute bottom-1.5 right-2 text-[1.05rem] font-black leading-none tracking-[-0.06em]">
               {weather.temperature}&deg;
             </span>
@@ -312,12 +313,15 @@ export function MobileDestinationWeather({
               <span className="rounded-full bg-white/14 px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#ffe9ae] ring-1 ring-white/15">
                 {sourceLabel}
               </span>
+              {" "}
               <span className="mt-1 text-[1.65rem] font-black leading-none tracking-[-0.07em]">
                 {weather.temperature}&deg;
               </span>
+              {" "}
               <span className="mt-0.5 max-w-full truncate text-[0.68rem] font-black leading-none text-white">
                 {copy.prefix} {destinationLabel}
               </span>
+              {" "}
               <span className="mt-1 text-[0.62rem] font-bold leading-none text-white/80">
                 {condition}
               </span>

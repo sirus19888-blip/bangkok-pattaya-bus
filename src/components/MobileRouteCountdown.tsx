@@ -126,6 +126,6 @@ function formatCountdown(
   const minutes = minutesUntilDeparture % 60;
 
   return minutes === 0
-    ? `${hours}${labels.hoursShort}`
-    : `${hours}${labels.hoursShort} ${minutes}${labels.minutesShort}`;
+    ? `${hours} ${labels.hoursShort}`
+    : `${hours} ${labels.hoursShort} ${minutes} ${labels.minutesShort}`;
 }

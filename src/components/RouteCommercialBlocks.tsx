@@ -38,7 +38,7 @@ export function RouteCommercialBlocks({
         title={text.busFullTitle}
       >
         <TwelveGoAffiliateButton
-          ctaPosition="route_after_schedule"
+          ctaPosition="route_commercial_help"
           disclosureMode="short"
           label={text.busFullCta}
           locale={locale}
@@ -52,7 +52,7 @@ export function RouteCommercialBlocks({
         title={text.afterLastTitle}
       >
         <TwelveGoAffiliateButton
-          ctaPosition="route_after_schedule"
+          ctaPosition="route_commercial_help"
           disclosureMode="short"
           label={text.afterLastCta}
           locale={locale}

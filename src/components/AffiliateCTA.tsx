@@ -12,10 +12,12 @@ export type AffiliateCTAVariant =
 
 export type AffiliateCTAPosition =
   | "homepage_hero"
+  | "homepage_route_card"
   | "route_top"
   | "desktop_sidebar"
   | "route_after_schedule"
-  | "route_sticky_mobile";
+  | "route_commercial_help"
+  | "mobile_sticky";
 
 type AffiliateCTAProps = {
   ariaLabel?: string;

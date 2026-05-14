@@ -48,7 +48,7 @@ export function Header({
             ? "bg-white/95 text-[#13233a]"
             : "bg-[#13233a] text-white"
         }`}>
-          {currentLocale === "th" ? "รถ" : currentLocale === "ru" ? "АБ" : "BP"}
+          {currentLocale === "th" ? "รถ" : "BP"}
         </span>
         <span className="min-w-0 leading-tight">
           <span className={`block truncate text-xs font-bold uppercase tracking-wide sm:text-sm ${

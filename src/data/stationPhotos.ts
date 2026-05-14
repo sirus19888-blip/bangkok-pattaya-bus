@@ -493,11 +493,11 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
   }
 
   if (locale === "zh") {
-    return text.zh ?? text.en;
+    return text.zh ?? "车站照片";
   }
 
   if (locale === "fr") {
-    return text.fr ?? text.en;
+    return text.fr ?? "Photo de la station";
   }
 
   return text.en;

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -153,7 +153,7 @@ export function MobileRouteDecisionCard({
       <div className="mt-2 grid grid-cols-2 gap-2 md:mt-3 lg:hidden">
         <DecisionFact
           label={labels.travelTime}
-          value={`${schedule.travelTime} • ${distance}`}
+          value={`${schedule.travelTime} â€˘ ${distance}`}
         />
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
@@ -189,59 +189,11 @@ export function MobileRouteDecisionCard({
           </p>
         )}
       </div>
-      <div className="absolute bottom-3 right-3 hidden lg:block">
-        <details
-          className="group relative"
-          data-desktop-schedule-data="true"
-        >
-          <summary
-            aria-label={scheduleLabels.dataTitle}
-            className="flex h-10 w-10 cursor-pointer list-none items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-white shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
-          >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="h-full w-full object-cover"
-              height={40}
-              src="/images/icons/icon-schedule-data.png"
-              width={40}
-            />
-          </summary>
-          <div className="absolute bottom-[calc(100%+0.55rem)] right-0 z-30 w-[23rem] max-w-[calc(100vw-3rem)] rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 text-left text-xs font-semibold leading-5 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/20">
-            <p className="text-sm font-black text-[#13233a]">
-              {scheduleLabels.dataTitle}
-            </p>
-            <dl className="mt-3 grid gap-2">
-              <MobileScheduleInfoRow label={scheduleLabels.source}>
-                {schedule.sourceName}
-              </MobileScheduleInfoRow>
-              <MobileScheduleInfoRow label={scheduleLabels.lastVerified}>
-                {schedule.lastVerified}
-              </MobileScheduleInfoRow>
-              <MobileScheduleInfoRow label={scheduleLabels.sourceType}>
-                {schedule.sourceType}
-              </MobileScheduleInfoRow>
-              <MobileScheduleInfoRow label={scheduleLabels.verification}>
-                {verificationStatus}
-              </MobileScheduleInfoRow>
-              <MobileScheduleInfoRow label={scheduleLabels.fareNote}>
-                {schedule.fareNote}
-              </MobileScheduleInfoRow>
-              <MobileScheduleInfoRow label={scheduleLabels.dataQuality}>
-                {schedule.dataQuality}
-              </MobileScheduleInfoRow>
-              {schedule.boardingNote ? (
-                <MobileScheduleInfoRow label={scheduleLabels.boardingNote}>
-                  {schedule.boardingNote}
-                </MobileScheduleInfoRow>
-              ) : null}
-            </dl>
-            <p className="mt-3 rounded-xl bg-white px-3 py-2 font-bold text-[#13233a]">
-              {schedule.operatorNote}
-            </p>
-          </div>
-        </details>
-      </div>
+      <ScheduleDataDetails
+        schedule={schedule}
+        scheduleLabels={scheduleLabels}
+        verificationStatus={verificationStatus}
+      />
       </div>
 
       <div className="md:col-start-1 md:row-start-2 lg:hidden">
@@ -253,60 +205,13 @@ export function MobileRouteDecisionCard({
         {labels.showAllDepartures}
       </a>
       <TwelveGoAffiliateButton
-        ctaPosition="route_sticky_mobile"
+        ctaPosition="mobile_sticky"
         label={affiliateLabel}
         locale={locale}
         routeId={routeId}
         variant="stickyMobile"
       />
 
-      <div className="relative mt-1.5 flex items-start justify-end gap-2 md:mt-3">
-        <details className="group relative shrink-0">
-          <summary
-            aria-label={scheduleLabels.showDetails}
-            className="flex h-9 w-9 cursor-pointer list-none items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] [&::-webkit-details-marker]:hidden"
-          >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="h-full w-full object-cover"
-              height={36}
-              src="/images/icons/icon-schedule-data.png"
-              width={36}
-            />
-          </summary>
-          <div className="absolute right-0 top-[calc(100%+0.45rem)] z-30 w-[17.5rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-left text-xs leading-5 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/20">
-            <p className="text-sm font-black text-[#13233a]">
-              {scheduleLabels.showDetails}
-            </p>
-            <dl className="mt-2 grid gap-1.5">
-              <MobileScheduleInfoRow label={scheduleLabels.source}>
-                {schedule.sourceName}
-              </MobileScheduleInfoRow>
-              <MobileScheduleInfoRow label={scheduleLabels.lastVerified}>
-                {schedule.lastVerified}
-              </MobileScheduleInfoRow>
-              <MobileScheduleInfoRow label={scheduleLabels.sourceType}>
-                {schedule.sourceType}
-              </MobileScheduleInfoRow>
-              <MobileScheduleInfoRow label={scheduleLabels.fareNote}>
-                {schedule.fareNote}
-              </MobileScheduleInfoRow>
-              {schedule.boardingNote ? (
-                <MobileScheduleInfoRow label={scheduleLabels.boardingNote}>
-                  {schedule.boardingNote}
-                </MobileScheduleInfoRow>
-              ) : null}
-              <MobileScheduleInfoRow label={scheduleLabels.dataQuality}>
-                {schedule.dataQuality}
-              </MobileScheduleInfoRow>
-            </dl>
-            <p className="mt-2 rounded-xl bg-white px-3 py-2 font-bold text-[#13233a]">
-              {schedule.operatorNote}
-            </p>
-          </div>
-        </details>
-      </div>
       </div>
     </section>
   );
@@ -412,7 +317,7 @@ export function DesktopRouteBookingPanel({
       <div className="mt-4 grid gap-3">
         <DecisionFact
           label={labels.travelTime}
-          value={`${schedule.travelTime} • ${distance}`}
+          value={`${schedule.travelTime} â€˘ ${distance}`}
         />
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
@@ -469,6 +374,72 @@ function MobileScheduleInfoRow({
     <div className="grid gap-0.5">
       <dt className="font-black text-[#13233a]">{label}</dt>
       <dd className="font-semibold">{children}</dd>
+    </div>
+  );
+}
+
+function ScheduleDataDetails({
+  schedule,
+  scheduleLabels,
+  verificationStatus,
+}: {
+  schedule: Schedule;
+  scheduleLabels: Translations["schedule"];
+  verificationStatus: string;
+}) {
+  return (
+    <div className="mt-2 flex items-start justify-end gap-2 md:mt-3 lg:absolute lg:bottom-3 lg:right-3 lg:mt-0">
+      <details
+        className="group relative shrink-0"
+        data-schedule-data="true"
+      >
+        <summary
+          aria-label={scheduleLabels.dataTitle}
+          className="flex h-9 w-9 cursor-pointer list-none items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] lg:h-10 lg:w-10 lg:bg-white [&::-webkit-details-marker]:hidden"
+        >
+          <Image
+            alt=""
+            aria-hidden="true"
+            className="h-full w-full object-cover"
+            height={40}
+            src="/images/icons/icon-schedule-data.png"
+            width={40}
+          />
+        </summary>
+        <div className="absolute right-0 top-[calc(100%+0.45rem)] z-30 w-[17.5rem] max-w-[calc(100vw-2rem)] rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-left text-xs leading-5 text-[#4f5d6c] shadow-2xl shadow-[#13233a]/20 lg:bottom-[calc(100%+0.55rem)] lg:top-auto lg:w-[23rem] lg:max-w-[calc(100vw-3rem)] lg:p-4 lg:font-semibold">
+          <p className="text-sm font-black text-[#13233a]">
+            {scheduleLabels.dataTitle}
+          </p>
+          <dl className="mt-2 grid gap-1.5 lg:mt-3 lg:gap-2">
+            <MobileScheduleInfoRow label={scheduleLabels.source}>
+              {schedule.sourceName}
+            </MobileScheduleInfoRow>
+            <MobileScheduleInfoRow label={scheduleLabels.lastVerified}>
+              {schedule.lastVerified}
+            </MobileScheduleInfoRow>
+            <MobileScheduleInfoRow label={scheduleLabels.sourceType}>
+              {schedule.sourceType}
+            </MobileScheduleInfoRow>
+            <MobileScheduleInfoRow label={scheduleLabels.verification}>
+              {verificationStatus}
+            </MobileScheduleInfoRow>
+            <MobileScheduleInfoRow label={scheduleLabels.fareNote}>
+              {schedule.fareNote}
+            </MobileScheduleInfoRow>
+            {schedule.boardingNote ? (
+              <MobileScheduleInfoRow label={scheduleLabels.boardingNote}>
+                {schedule.boardingNote}
+              </MobileScheduleInfoRow>
+            ) : null}
+            <MobileScheduleInfoRow label={scheduleLabels.dataQuality}>
+              {schedule.dataQuality}
+            </MobileScheduleInfoRow>
+          </dl>
+          <p className="mt-2 rounded-xl bg-white px-3 py-2 font-bold text-[#13233a] lg:mt-3">
+            {schedule.operatorNote}
+          </p>
+        </div>
+      </details>
     </div>
   );
 }

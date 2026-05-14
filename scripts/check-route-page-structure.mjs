@@ -128,10 +128,7 @@ for (const path of expectedEnglishRoutes) {
     const todayOccurrences =
       count(visibleHtml, /Today&#x27;s departures/g) +
       count(visibleHtml, /Today's departures/g);
-    const scheduleDataOccurrences = count(
-      visibleHtml,
-      /data-desktop-schedule-data="true"/g,
-    );
+    const scheduleDataOccurrences = count(visibleHtml, /data-schedule-data="true"/g);
     const stationInformationOccurrences = count(visibleHtml, /Station information/g);
     const questionsOccurrences = count(visibleHtml, /Questions/g);
 
@@ -161,6 +158,18 @@ for (const path of expectedEnglishRoutes) {
     assert.ok(
       !visibleHtml.includes("Station map Use this map"),
       `${path} station map text must not be glued together.`,
+    );
+    assert.ok(
+      !visibleHtml.includes("Enlarge station map Enlarge station map") &&
+        !visibleHtml.includes("Powiększ mapę stacji Powiększ mapę stacji"),
+      `${path} station map enlarge button text must not be duplicated.`,
+    );
+    assert.ok(
+      !visibleHtml.includes("Pattaya to Bangkok Bus Bus route") &&
+        !visibleHtml.includes("Bangkok to Pattaya Bus Bus route") &&
+        !visibleHtml.includes("Autobus Pattaya do Bangkok Trasa autobusowa") &&
+        !visibleHtml.includes("Autobus Bangkok do Pattaya Trasa autobusowa"),
+      `${path} related route cards must not glue duplicate route labels together.`,
     );
     assert.ok(
       visibleHtml.includes("<ul") && visibleHtml.includes("</ul>"),
@@ -286,7 +295,7 @@ assert.ok(
   "Desktop booking panel must use a commercial sidebar title, not the route H2.",
 );
 assert.ok(
-  mobileDecisionSource.includes('data-desktop-schedule-data="true"'),
+  mobileDecisionSource.includes('data-schedule-data="true"'),
   "Desktop route layout must show schedule data in the left column.",
 );
 assert.ok(

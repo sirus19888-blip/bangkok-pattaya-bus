@@ -64,6 +64,21 @@ const desktopSidebarClickTest = simulateAffiliateClickForTest({
   to: "pattaya",
   variant: "top",
 });
+const mobileStickyClickTest = simulateAffiliateClickForTest({
+  ctaPosition: "mobile_sticky",
+  disclosureText:
+    "Some booking links may be affiliate links. Timetable information stays independent.",
+  from: "bangkok",
+  href: "https://12go.asia/en/travel/bangkok/pattaya?z=15791301",
+  label: "Book ticket",
+  lang: "en",
+  provider: "12go",
+  routeId: "bangkok-to-pattaya",
+  shortDisclosureText: "Affiliate link",
+  subId: "bpb-bangkok-to-pattaya-mobile_sticky",
+  to: "pattaya",
+  variant: "stickyMobile",
+});
 
 assert.match(
   ctaSource,
@@ -188,10 +203,12 @@ assert.match(
 );
 for (const position of [
   "homepage_hero",
+  "homepage_route_card",
   "route_top",
   "desktop_sidebar",
   "route_after_schedule",
-  "route_sticky_mobile",
+  "route_commercial_help",
+  "mobile_sticky",
 ]) {
   assert.ok(
     ctaSource.includes(position) || twelveGoSource.includes(position),
@@ -260,6 +277,20 @@ assert.deepEqual(
     to: "pattaya",
   },
   "Desktop sidebar affiliate CTA must send cta_position desktop_sidebar.",
+);
+assert.deepEqual(
+  JSON.parse(JSON.stringify(mobileStickyClickTest.events[0])),
+  {
+    cta_position: "mobile_sticky",
+    from: "bangkok",
+    href: "https://12go.asia/en/travel/bangkok/pattaya?z=15791301",
+    lang: "en",
+    provider: "12go",
+    route_id: "bangkok-to-pattaya",
+    sub_id: "bpb-bangkok-to-pattaya-mobile_sticky",
+    to: "pattaya",
+  },
+  "Mobile sticky affiliate CTA must send cta_position mobile_sticky.",
 );
 assert.ok(
   !ctaSource.includes("preventDefault"),
