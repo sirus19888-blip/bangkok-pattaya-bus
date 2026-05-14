@@ -132,15 +132,15 @@ export function StationPhotoGallery({
                         {repairMojibake(locale === "pl"
                           ? photo.displayTitle.pl
                           : locale === "ru"
-                            ? photo.displayTitle.ru ?? "Фото станции"
+                            ? photo.displayTitle.ru ?? "Фото зоны станции"
                           : locale === "de"
-                            ? photo.displayTitle.de ?? "Stationsfoto"
+                            ? photo.displayTitle.de ?? "Foto des Stationsbereichs"
                           : locale === "th"
                             ? photo.displayTitle.th ?? "ภาพสถานี"
                           : locale === "zh"
-                            ? photo.displayTitle.zh ?? "车站识别参考图"
+                            ? photo.displayTitle.zh ?? "站点实景参考"
                           : locale === "fr"
-                            ? photo.displayTitle.fr ?? "Photo pratique pour reconnaître la station"
+                            ? photo.displayTitle.fr ?? "Repère visuel de la station"
                             : photo.displayTitle.en)}
                       </p>
                     ) : null}
@@ -218,15 +218,15 @@ function PhotoLightbox({
     ? locale === "pl"
       ? photo.displayTitle.pl
       : locale === "ru"
-        ? photo.displayTitle.ru ?? "Фото станции"
+        ? photo.displayTitle.ru ?? "Фото зоны станции"
       : locale === "de"
-        ? photo.displayTitle.de ?? "Stationsfoto"
+        ? photo.displayTitle.de ?? "Foto des Stationsbereichs"
       : locale === "th"
         ? photo.displayTitle.th ?? "ภาพสถานี"
       : locale === "zh"
-        ? photo.displayTitle.zh ?? "车站识别参考图"
+        ? photo.displayTitle.zh ?? "站点实景参考"
       : locale === "fr"
-        ? photo.displayTitle.fr ?? "Photo pratique pour reconnaître la station"
+        ? photo.displayTitle.fr ?? "Repère visuel de la station"
       : photo.displayTitle.en
     : photo.title);
 

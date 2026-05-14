@@ -81,18 +81,14 @@ export function StationCard({
                     <p className="mt-1 hidden text-xs font-bold uppercase tracking-wide text-[#2f6f93] md:block">
                       {labels.bestFor} {station.bestFor}
                     </p>
-                    <ul className="space-y-2 md:hidden">
-                      <li className="flex gap-2 text-base font-black leading-tight text-[#13233a]">
-                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e8b05a]" />
-                        <span>{station.name}</span>
-                      </li>
-                      <li className="flex gap-2 text-xs font-bold uppercase tracking-wide text-[#2f6f93]">
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e8b05a]" />
-                        <span>
-                          {labels.bestFor} {station.bestFor}
-                        </span>
-                      </li>
-                    </ul>
+                    <div className="md:hidden">
+                      <h2 className="text-base font-black leading-tight text-[#13233a]">
+                        {station.name}
+                      </h2>
+                      <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[#2f6f93]">
+                        {labels.bestFor} {station.bestFor}
+                      </p>
+                    </div>
                   </div>
                 </div>
                 <div className="relative mt-3 overflow-hidden rounded-xl border border-[#eadcc7] bg-white px-3 py-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
@@ -538,8 +534,28 @@ function getMobileTipPoints(
     return [repairMojibake(tip)];
   }
 
-  return repairMojibake(tip)
+  return splitTipSentences(repairMojibake(tip));
+}
+
+function splitTipSentences(tip: string) {
+  const placeholders = [
+    ["np. ", "np§ "],
+    ["z. B. ", "z§ B§ "],
+  ] as const;
+
+  const protectedTip = placeholders.reduce(
+    (current, [from, to]) => current.replaceAll(from, to),
+    tip,
+  );
+
+  return protectedTip
     .split(/(?<=[.!?。])\s+/)
+    .map((point) =>
+      placeholders.reduce(
+        (current, [from, to]) => current.replaceAll(to, from),
+        point,
+      ),
+    )
     .map((point) => point.trim())
     .filter(Boolean);
 }

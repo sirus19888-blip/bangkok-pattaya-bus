@@ -52,6 +52,7 @@ const expectedEnglishRoutes = [
 ];
 const routeLocales = ["en", "th", "zh", "ru", "de", "fr", "pl"];
 const routeSlugs = expectedEnglishRoutes.map((path) => path.replace("/en/", ""));
+const relatedRouteCheckLocales = ["en", "pl", "zh", "fr", "de", "ru", "th"];
 
 const routeTitlesByPath = new Map([
   ["/en/bangkok-to-pattaya", "Bangkok to Pattaya Bus"],
@@ -320,6 +321,11 @@ for (const path of expectedEnglishRoutes) {
       visibleHtml.includes('data-feedback-actions="true"'),
       `${path} must keep feedback actions as separate controls.`,
     );
+    assert.equal(
+      count(visibleHtml, /data-feedback-action=/g),
+      2,
+      `${path} must render helpful and report feedback as two separate action elements.`,
+    );
     assert.ok(
       !toTextContent(visibleHtml).includes(
         "Yes, it helpedReport outdated times",
@@ -336,6 +342,47 @@ for (const path of expectedEnglishRoutes) {
         `${path} must render station tips once, without mobile/desktop duplicate content.`,
       );
     }
+  }
+}
+
+for (const locale of relatedRouteCheckLocales) {
+  const builtHtmlPath = join(
+    root,
+    ".next/server/app",
+    locale,
+    "bangkok-to-pattaya.html",
+  );
+
+  if (!existsSync(builtHtmlPath)) {
+    continue;
+  }
+
+  const html = readFileSync(builtHtmlPath, "utf8");
+  const visibleHtml = html
+    .split("</head>")[1]
+    ?.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "") ?? html;
+
+  assert.ok(
+    visibleHtml.includes("<ul") &&
+      visibleHtml.includes("<li") &&
+      visibleHtml.includes('class="title') &&
+      visibleHtml.includes('class="description') &&
+      visibleHtml.includes("aria-label="),
+    `/${locale}/bangkok-to-pattaya related routes must render semantic cards with title, description, CTA/aria-label.`,
+  );
+
+  for (const gluedRelatedRouteText of [
+    "Bus Plan the return",
+    "Autobus z Pattayi do Bangkoku Zaplanuj",
+    "芭提雅到曼谷巴士 规划",
+    "Pattaya à Bangkok Planifier",
+    "Bus von Pattaya nach Bangkok Rückfahrt",
+    "Автобус из Паттайи в Бангкок Запланируйте",
+  ]) {
+    assert.ok(
+      !normalizeText(toTextContent(visibleHtml)).includes(gluedRelatedRouteText),
+      `/${locale}/bangkok-to-pattaya related route text must not be glued: ${gluedRelatedRouteText}`,
+    );
   }
 }
 
@@ -489,13 +536,15 @@ assert.ok(
     relatedRoutesSource.includes("<li") &&
     relatedRoutesSource.includes('className="title') &&
     relatedRoutesSource.includes('className="description') &&
-    relatedRoutesSource.includes('<span className="sr-only"> - </span>') &&
+    relatedRoutesSource.includes('<span className="sr-only">. </span>') &&
     relatedRoutesSource.includes("getRelatedRouteCtaLabel") &&
     relatedRoutesSource.includes("aria-label"),
   "Related routes must render semantic cards with separated title, description, CTA, and aria-label.",
 );
 assert.ok(
-  travelerFeedbackSource.includes('className="flex flex-col gap-3') &&
+  travelerFeedbackSource.includes('className="grid gap-3') &&
+    travelerFeedbackSource.includes('data-feedback-action="helpful"') &&
+    travelerFeedbackSource.includes('data-feedback-action="report_outdated"') &&
     travelerFeedbackSource.includes("<button") &&
     travelerFeedbackSource.includes("<a") &&
     travelerFeedbackSource.includes('trackEvent("feedback_helpful_click"') &&
@@ -541,6 +590,11 @@ assert.match(
 assert.ok(
   !stationCardSource.includes('<span className="hidden md:inline"> {stationTip}</span>'),
   "Station tips must not render a second hidden desktop paragraph.",
+);
+assert.ok(
+  !stationCardSource.includes('<ul className="space-y-2 md:hidden">') &&
+    stationCardSource.includes('<div className="md:hidden">'),
+  "Mobile station name and best-for metadata must be header/meta content, not duplicate bullet points.",
 );
 assert.equal(
   count(stationCardSource, /stationTipPoints\.map/g),

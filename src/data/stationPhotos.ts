@@ -119,7 +119,9 @@ export const stationPhotos: StationPhoto[] = [
     title: "Ekkamai Bus Station 20240824.jpg",
     displayTitle: {
       en: "Entrance to Ekkamai Bus Terminal",
+      de: "Eingang zum Busbahnhof Ekkamai",
       pl: "Wejście do dworca Ekkamai",
+      ru: "Вход на автовокзал Эккамай",
       zh: "Ekkamai 巴士总站入口",
       fr: "Entrée de la gare routière Ekkamai",
     },
@@ -140,7 +142,9 @@ export const stationPhotos: StationPhoto[] = [
     title: "Bangkok Busbahnhof Ekkamai (2025) - img 04.jpg",
     displayTitle: {
       en: "Ticket counters inside Ekkamai Bus Terminal",
+      de: "Ticketschalter im Busbahnhof Ekkamai",
       pl: "Kasy biletowe na dworcu Ekkamai",
+      ru: "Кассы внутри автовокзала Эккамай",
       zh: "Ekkamai 站内售票柜台",
       fr: "Guichets à l’intérieur de la gare Ekkamai",
     },
@@ -162,7 +166,9 @@ export const stationPhotos: StationPhoto[] = [
     title: "Bangkok Busbahnhof Ekkamai (2025) - img 06.jpg",
     displayTitle: {
       en: "Boarding area at Ekkamai Bus Terminal",
+      de: "Einstiegsbereich am Busbahnhof Ekkamai",
       pl: "Strefa odjazdu na dworcu Ekkamai",
+      ru: "Зона посадки на автовокзале Эккамай",
       zh: "Ekkamai 上车区域",
       fr: "Zone d’embarquement à la gare Ekkamai",
     },
@@ -188,7 +194,7 @@ export const stationPhotos: StationPhoto[] = [
       pl: "North Pattaya Bus Station",
       zh: "North Pattaya Bus Terminal 入口",
       fr: "Zone d’embarquement à la gare routière de Pattaya Nord",
-      ru: "автовокзал Северной Паттайи",
+      ru: "Вход на автовокзал Северной Паттайи",
       th: "สถานีขนส่งพัทยาเหนือ",
     },
     caption: {
@@ -346,6 +352,8 @@ export const stationPhotos: StationPhoto[] = [
       pl: "Pattaya Sukhumvit Road Bus Station",
       ru: "автостанция на дороге Сукхумвит в Паттайе",
       th: "สถานีรถบัสถนนสุขุมวิทพัทยา",
+      zh: "Pattaya Sukhumvit Road 上车点",
+      fr: "Point d’embarquement sur Sukhumvit Road à Pattaya",
     },
     caption: {
       en: "Sukhumvit Road area near the Pattaya bus boarding point. Confirm the exact stop before travel.",
@@ -501,11 +509,11 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
   }
 
   if (locale === "ru") {
-    return text.ru ?? "Фото станции";
+    return text.ru ?? "Фото зоны станции";
   }
 
   if (locale === "de") {
-    return text.de ?? "Stationsfoto";
+    return text.de ?? "Foto des Stationsbereichs";
   }
 
   if (locale === "th") {
@@ -513,11 +521,11 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
   }
 
   if (locale === "zh") {
-    return text.zh ?? "车站识别参考图";
+    return text.zh ?? "站点实景参考";
   }
 
   if (locale === "fr") {
-    return text.fr ?? "Photo pratique pour reconnaître la station";
+    return text.fr ?? "Repère visuel de la station";
   }
 
   return text.en;

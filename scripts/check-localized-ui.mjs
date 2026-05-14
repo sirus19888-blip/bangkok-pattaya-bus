@@ -63,7 +63,11 @@ const forbiddenPhrases = [
   "Подходит для центр Бангкока",
   "Подходит для город Паттайя",
   "车站区域照片",
+  "车站识别参考图",
   "Photo de la zone de station",
+  "Photo pratique pour reconnaître la station",
+  "Stationsfoto",
+  "Фото станции",
   ...[
     [0xe2, 0x20ac, 0x02d8],
     [0x50, 0x6f, 0x6b, 0x61, 0x0139, 0x013d],

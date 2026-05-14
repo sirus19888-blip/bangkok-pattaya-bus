@@ -210,15 +210,19 @@ export function TravelerFeedback({
           </p>
         </div>
         <div
-          className="flex flex-col gap-3 sm:min-w-64 sm:flex-row md:min-w-[22rem]"
+          className="grid gap-3 sm:min-w-64 sm:grid-cols-2 md:min-w-[22rem]"
           data-feedback-actions="true"
+          role="group"
+          aria-label={text.title}
         >
           <button
             type="button"
             onClick={handleHelpedClick}
             aria-pressed={helped}
+            aria-label={text.helped}
+            data-feedback-action="helpful"
             disabled={isSendingHelped}
-            className={`flex min-h-11 flex-1 items-center justify-center rounded-xl px-4 text-center text-sm font-black transition md:min-h-10 md:text-xs ${
+            className={`flex min-h-11 items-center justify-center rounded-xl px-4 text-center text-sm font-black shadow-sm transition md:min-h-10 md:text-xs ${
               helped
                 ? "bg-[#2f6f93] text-white"
                 : "bg-[#13233a] text-white hover:bg-[#233a5b]"
@@ -226,13 +230,13 @@ export function TravelerFeedback({
           >
             {isSendingHelped ? text.sending : text.helped}
           </button>
-          <span aria-hidden="true" className="sr-only">
-            {" "}
-          </span>
+          <span className="sr-only">. </span>
           <a
             href={mailtoUrl}
             onClick={handleReportClick}
-            className="flex min-h-11 flex-1 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-white md:min-h-10 md:text-xs"
+            aria-label={text.report}
+            data-feedback-action="report_outdated"
+            className="flex min-h-11 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-white md:min-h-10 md:text-xs"
           >
             {text.report}
           </a>
