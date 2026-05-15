@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:affiliate": "node scripts/check-affiliate-links.mjs",
+    "test:ga4": "node scripts/check-ga4.mjs",
     "test:homepage": "node scripts/check-homepage-structure.mjs",
     "test:i18n": "node scripts/check-localized-ui.mjs",
     "test:next-bus": "node --experimental-strip-types scripts/check-next-departure.mjs",

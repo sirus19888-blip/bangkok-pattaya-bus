@@ -16,11 +16,16 @@ export type AnalyticsEventParameters = Record<
 
 declare global {
   interface Window {
-    gtag?: (
-      command: "event",
-      eventName: string,
-      parameters: AnalyticsEventParameters,
-    ) => void;
+    dataLayer?: unknown[];
+    gtag?: {
+      (
+        command: "event",
+        eventName: string,
+        parameters: AnalyticsEventParameters,
+      ): void;
+      (command: "config", measurementId: string): void;
+      (command: "js", date: Date): void;
+    };
   }
 }
 
