@@ -12,6 +12,7 @@ import { RouteJsonLd } from "@/components/RouteJsonLd";
 import { StationCard } from "@/components/StationCard";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
 import { getTwelveGoVariantLabel } from "@/components/TwelveGoAffiliateButton";
+import { TravelGuideLinks } from "@/components/TravelGuideLinks";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, Route, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
@@ -122,6 +123,8 @@ export function RoutePageLayout({
               locale={locale}
               routePages={localizedRoutePages}
             />
+
+            <TravelGuideLinks locale={locale} routeId={routePage.slug} />
 
             <MobileDetailsSection title={t.station.title}>
               <StationCard

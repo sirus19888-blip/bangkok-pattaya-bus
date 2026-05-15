@@ -6,6 +6,7 @@ import { MobileDestinationWeather } from "@/components/MobileDestinationWeather"
 import { MobileRouteCountdown } from "@/components/MobileRouteCountdown";
 import { RouteSearch } from "@/components/RouteSearch";
 import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
+import { TravelGuideLinks } from "@/components/TravelGuideLinks";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import { schedules } from "@/data/schedules";
@@ -900,6 +901,11 @@ function MobileHome({
             {uiText.affiliate.disclosure}
           </p>
         </section>
+
+        <TravelGuideLinks
+          className="mx-4 rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6"
+          locale={locale}
+        />
 
         <section className="mx-4 rounded-[1.5rem] border border-[#e8c986] bg-[#fff8ec] p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6">
           <div className="flex items-center gap-3">
