@@ -210,37 +210,40 @@ export function TravelerFeedback({
             {text.text}
           </p>
         </div>
-        <div
+        <ul
           className="grid gap-3 sm:min-w-64 sm:grid-cols-2 md:min-w-[22rem]"
           data-feedback-actions="true"
-          role="group"
           aria-label={text.title}
         >
-          <button
-            type="button"
-            onClick={handleHelpedClick}
-            aria-pressed={helped}
-            aria-label={text.helped}
-            data-feedback-action="helpful"
-            disabled={isSendingHelped}
-            className={`flex min-h-11 items-center justify-center rounded-xl px-4 text-center text-sm font-black shadow-sm transition md:min-h-10 md:text-xs ${
-              helped
-                ? "bg-[#2f6f93] text-white"
-                : "bg-[#13233a] text-white hover:bg-[#233a5b]"
-            }`}
-          >
-            {isSendingHelped ? text.sending : text.helped}
-          </button>
-          <button
-            type="button"
-            onClick={handleReportClick}
-            aria-label={text.report}
-            data-feedback-action="report_outdated"
-            className="flex min-h-11 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-white md:min-h-10 md:text-xs"
-          >
-            {text.report}
-          </button>
-        </div>
+          <li>
+            <button
+              type="button"
+              onClick={handleHelpedClick}
+              aria-pressed={helped}
+              aria-label={text.helped}
+              data-feedback-action="helpful"
+              disabled={isSendingHelped}
+              className={`flex min-h-11 w-full items-center justify-center rounded-xl px-4 text-center text-sm font-black shadow-sm transition md:min-h-10 md:text-xs ${
+                helped
+                  ? "bg-[#2f6f93] text-white"
+                  : "bg-[#13233a] text-white hover:bg-[#233a5b]"
+              }`}
+            >
+              {isSendingHelped ? text.sending : text.helped}
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              onClick={handleReportClick}
+              aria-label={text.report}
+              data-feedback-action="report_outdated"
+              className="flex min-h-11 w-full items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-white md:min-h-10 md:text-xs"
+            >
+              {text.report}
+            </button>
+          </li>
+        </ul>
       </div>
       <div aria-live="polite" role="status">
         {helped ? (

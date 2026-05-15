@@ -95,36 +95,36 @@
       "metadataDescription": "Sprawdź odjazdy autobusów z Pattaya do Bangkoku, połączenia do Ekkamai i Mo Chit, ceny biletów, czas podróży i wskazówki."
     },
     "suvarnabhumi-airport-to-pattaya": {
-      "label": "Suvarnabhumi Airport do Pattaya",
+      "label": "Lotnisko Suvarnabhumi do Pattayi",
       "title": "Autobus z lotniska Suvarnabhumi do Pattayi",
-      "intro": "Informacje dla podróżnych jadących autobusem bezpośrednio z Suvarnabhumi Airport do Pattaya po przylocie.",
+      "intro": "Informacje dla podróżnych jadących autobusem bezpośrednio z lotniska Suvarnabhumi do Pattayi po przylocie.",
       "relatedDescription": "Praktyczne informacje o autobusie z lotniska Suvarnabhumi do Pattayi po przylocie.",
-      "metadataTitle": "Autobus Suvarnabhumi Airport Pattaya – rozkład i cena",
-      "metadataDescription": "Sprawdź autobus z lotniska Suvarnabhumi do Pattaya, godziny odjazdów, cenę biletu, stanowisko autobusu i praktyczne wskazówki po przylocie."
+      "metadataTitle": "Autobus z lotniska Suvarnabhumi do Pattayi - rozkład i cena",
+      "metadataDescription": "Sprawdź autobus z lotniska Suvarnabhumi do Pattayi, godziny odjazdów, cenę biletu, stanowisko autobusu i praktyczne wskazówki po przylocie."
     },
     "pattaya-to-suvarnabhumi-airport": {
       "label": "Pattaya na lotnisko Suvarnabhumi",
       "title": "Autobus z Pattayi na lotnisko Suvarnabhumi",
-      "intro": "Sprawdź godziny autobusów z Pattaya/Jomtien na lotnisko Suvarnabhumi, cenę biletu, czas podróży, miejsce odjazdu i wskazówki przed lotem.",
+      "intro": "Sprawdź godziny autobusów z Pattayi/Jomtien na lotnisko Suvarnabhumi, cenę biletu, czas podróży, miejsce odjazdu i wskazówki przed lotem.",
       "relatedDescription": "Sprawdź autobus z Pattayi na lotnisko Suvarnabhumi: godziny, cenę i miejsce odjazdu.",
       "metadataTitle": "Autobus z Pattayi na lotnisko Suvarnabhumi – rozkład i cena",
-      "metadataDescription": "Sprawdź autobus z Pattaya/Jomtien na lotnisko Suvarnabhumi, godziny odjazdów, cenę biletu, czas podróży i miejsce odjazdu."
+      "metadataDescription": "Sprawdź autobus z Pattayi/Jomtien na lotnisko Suvarnabhumi, godziny odjazdów, cenę biletu, czas podróży i miejsce odjazdu."
     },
     "don-mueang-airport-to-pattaya": {
-      "label": "Don Mueang Airport do Pattaya",
-      "title": "Autobus z lotniska Don Mueang do Pattaya",
-      "intro": "Sprawdź informacje o autobusie z lotniska Don Mueang do Pattaya, w tym godziny odjazdów, czas podróży, informacje o stacji i źródło danych.",
+      "label": "Lotnisko Don Mueang do Pattayi",
+      "title": "Autobus z lotniska Don Mueang do Pattayi",
+      "intro": "Sprawdź informacje o autobusie z lotniska Don Mueang do Pattayi, w tym godziny odjazdów, czas podróży, informacje o stacji i źródło danych.",
       "relatedDescription": "Sprawdź autobus z lotniska Don Mueang do Pattayi i informacje o stacji.",
-      "metadataTitle": "Autobus Don Mueang Airport do Pattaya - rozkład i informacje",
-      "metadataDescription": "Sprawdź autobus z lotniska Don Mueang do Pattaya, godziny odjazdów, czas podróży, informacje o stacji i status źródła."
+      "metadataTitle": "Autobus z lotniska Don Mueang do Pattayi - rozkład i informacje",
+      "metadataDescription": "Sprawdź autobus z lotniska Don Mueang do Pattayi, godziny odjazdów, czas podróży, informacje o stacji i status źródła."
     },
     "pattaya-to-don-mueang-airport": {
       "label": "Pattaya na lotnisko Don Mueang",
       "title": "Autobus z Pattayi na lotnisko Don Mueang",
-      "intro": "Sprawdź informacje o autobusie z Pattaya na lotnisko Don Mueang, w tym czas podróży, źródło danych i wskazówki przed lotem.",
+      "intro": "Sprawdź informacje o autobusie z Pattayi na lotnisko Don Mueang, w tym czas podróży, źródło danych i wskazówki przed lotem.",
       "relatedDescription": "Sprawdź autobus z Pattayi na lotnisko Don Mueang i wskazówki przed lotem.",
       "metadataTitle": "Autobus z Pattayi na lotnisko Don Mueang - rozkład i informacje",
-      "metadataDescription": "Sprawdź autobus z Pattaya na lotnisko Don Mueang, czas podróży, godziny, status źródła i wskazówki przed lotem."
+      "metadataDescription": "Sprawdź autobus z Pattayi na lotnisko Don Mueang, czas podróży, godziny, status źródła i wskazówki przed lotem."
     }
   },
   "schedules": {

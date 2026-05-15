@@ -68,6 +68,8 @@ const forbiddenPhrases = [
   "Zglos",
   "Autobus z lotniska Autobus z lotniska",
   "Autobus Pattaya na lotnisko Don Mueang",
+  "Autobus z lotniska Don Mueang do Pattaya",
+  "Trasa z lotniska Autobus z lotniska Don Mueang do Pattaya",
   "Подходит для центр Бангкока",
   "Подходит для город Паттайя",
   "车站区域照片",

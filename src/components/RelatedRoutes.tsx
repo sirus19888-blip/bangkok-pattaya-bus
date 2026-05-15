@@ -60,7 +60,7 @@ export function RelatedRoutes({
               <span className="description relative mt-2 block max-w-[17rem] text-xs font-semibold leading-5 text-white/85 md:mt-1 md:max-w-none md:text-[#4f5d6c]">
                 {routePage.relatedDescription}
               </span>
-              <span className="relative mt-3 inline-flex text-xs font-black text-[#f3d77b] md:text-[#2f6f93]">
+              <span className="cta relative mt-3 inline-flex text-xs font-black text-[#f3d77b] md:text-[#2f6f93]">
                 {ctaLabel}
               </span>
             </Link>

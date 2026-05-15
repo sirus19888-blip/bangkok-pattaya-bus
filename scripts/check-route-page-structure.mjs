@@ -560,7 +560,7 @@ assert.ok(
     relatedRoutesSource.includes("<Link") &&
     relatedRoutesSource.includes('className="title') &&
     relatedRoutesSource.includes('className="description') &&
-    relatedRoutesSource.includes("{ctaLabel}") &&
+    relatedRoutesSource.includes('className="cta') &&
     relatedRoutesSource.includes("getRelatedRouteCtaLabel") &&
     relatedRoutesSource.includes("aria-label"),
   "Related routes must render semantic linked cards with separated title, description, CTA, and aria-label.",
@@ -575,6 +575,8 @@ assert.ok(
 );
 assert.ok(
   travelerFeedbackSource.includes('className="grid gap-3') &&
+    travelerFeedbackSource.includes("<ul") &&
+    travelerFeedbackSource.includes("<li") &&
     travelerFeedbackSource.includes('data-feedback-action="helpful"') &&
     travelerFeedbackSource.includes('data-feedback-action="report_outdated"') &&
     count(travelerFeedbackSource, /<button\b/g) >= 2 &&
