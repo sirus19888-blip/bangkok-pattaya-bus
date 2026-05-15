@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useMemo, useState } from "react";
+import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Translations } from "@/lib/i18n";
@@ -116,6 +117,11 @@ export function RouteSearch({
     openRoute(selectedFrom, selectedTo);
   }
 
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    handleGo();
+  }
+
   const labelClass = compact
     ? "mb-1 block text-[0.58rem] font-black uppercase tracking-[0.14em] text-[#6b7280]"
     : "mb-2 block text-sm font-bold text-[#344153]";
@@ -124,7 +130,12 @@ export function RouteSearch({
     : "h-13 min-h-13 w-full rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-base font-black text-[#13233a] outline-none focus:border-[#2f6f93]";
 
   return (
-    <div
+    <form
+      aria-label={`${getAriaLabelText(displayLabels.from)} ${getAriaLabelText(
+        displayLabels.to,
+      )}`}
+      data-route-finder="true"
+      onSubmit={handleSubmit}
       className={
         compact
           ? "rounded-[1.2rem] bg-white"
@@ -161,9 +172,8 @@ export function RouteSearch({
 
         {compact || desktopGo ? (
           <button
-            type="button"
+            type="submit"
             aria-label={`${goLabel}: ${selectedFrom} ${displayLabels.to} ${selectedTo}`}
-            onClick={handleGo}
             className={
               compact
                 ? "mb-0.5 flex h-10 min-w-12 items-center justify-center rounded-full border border-[#e8b05a] bg-[#13233a] px-2.5 text-[0.7rem] font-black leading-none text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
@@ -193,7 +203,7 @@ export function RouteSearch({
           </select>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 

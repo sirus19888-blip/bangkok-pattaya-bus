@@ -113,14 +113,27 @@ assert(
   "Homepage From/To form must be rendered once.",
 );
 assert(
+  routeSearchSource.includes("<form") &&
+    routeSearchSource.includes('data-route-finder="true"') &&
+    routeSearchSource.includes("onSubmit={handleSubmit}"),
+  "Route finder must be a semantic form with a submit handler.",
+);
+assert(
+  routeSearchSource.includes("<label") &&
+    routeSearchSource.includes("<select") &&
+    routeSearchSource.includes("<button"),
+  "Route finder must use labels, selects, and a button as separate controls.",
+);
+assert(
   routeSearchSource.includes("htmlFor={fromSelectId}") &&
     routeSearchSource.includes("htmlFor={toSelectId}"),
   "Route finder labels must be separate elements linked to selects.",
 );
 assert(
   routeSearchSource.includes("aria-label={`${getAriaLabelText(displayLabels.from)}") &&
-    routeSearchSource.includes("aria-label={`${getAriaLabelText(displayLabels.to)}"),
-  "Route finder selects must include localized aria-labels.",
+    routeSearchSource.includes("aria-label={`${getAriaLabelText(displayLabels.to)}") &&
+    routeSearchSource.includes("aria-label={`${goLabel}:"),
+  "Route finder selects and submit button must include localized aria-labels.",
 );
 assert(
   count(/<MobileRouteCard\b/g) === 1,

@@ -333,9 +333,9 @@ for (const path of expectedEnglishRoutes) {
     );
     assert.ok(
       !toTextContent(visibleHtml).includes(
-        "Yes, it helpedReport outdated times",
+        "Yes, it helped. Report outdated times",
       ),
-      `${path} feedback action labels must not be glued together in textContent.`,
+      `${path} feedback action labels must not be joined with a hidden punctuation separator.`,
     );
 
     const stationTipSample = stationTipSamplesByRoute.get(path);
@@ -559,10 +559,13 @@ assert.ok(
     relatedRoutesSource.includes("<li") &&
     relatedRoutesSource.includes('className="title') &&
     relatedRoutesSource.includes('className="description') &&
-    relatedRoutesSource.includes('<span className="sr-only">. </span>') &&
     relatedRoutesSource.includes("getRelatedRouteCtaLabel") &&
     relatedRoutesSource.includes("aria-label"),
   "Related routes must render semantic cards with separated title, description, CTA, and aria-label.",
+);
+assert.ok(
+  !relatedRoutesSource.includes('<span className="sr-only">. </span>'),
+  "Related routes must not use hidden punctuation to separate card text.",
 );
 assert.ok(
   travelerFeedbackSource.includes('className="grid gap-3') &&

@@ -231,7 +231,6 @@ export function TravelerFeedback({
           >
             {isSendingHelped ? text.sending : text.helped}
           </button>
-          <span className="sr-only">. </span>
           <button
             type="button"
             onClick={handleReportClick}

@@ -53,11 +53,9 @@ export function RelatedRoutes({
               <span className="title relative block text-sm font-black leading-tight text-white drop-shadow sm:text-base md:text-sm md:text-[#13233a] md:drop-shadow-none">
                 {routePage.title}
               </span>
-              <span className="sr-only">. </span>
               <span className="description relative mt-2 block max-w-[17rem] text-xs font-semibold leading-5 text-white/85 md:mt-1 md:max-w-none md:text-[#4f5d6c]">
                 {routePage.relatedDescription}
               </span>
-              <span className="sr-only">. </span>
               <span className="relative mt-3 inline-flex text-xs font-black text-[#f3d77b] md:text-[#2f6f93]">
                 {ctaLabel}
               </span>

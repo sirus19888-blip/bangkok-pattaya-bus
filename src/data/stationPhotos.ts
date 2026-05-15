@@ -549,9 +549,11 @@ export function getStationPhotoGroupsForRoute(
 }
 
 export function getStationPhotoText(photo: StationPhoto, locale: LocaleCode) {
+  const displayTitle = getStationPhotoDisplayTitle(photo, locale);
+
   return {
-    caption: textForLocale(photo.caption, locale),
-    alt: textForLocale(photo.alt, locale),
+    caption: textForLocaleWithFallback(photo.caption, locale, displayTitle),
+    alt: textForLocaleWithFallback(photo.alt, locale, displayTitle),
   };
 }
 
@@ -563,6 +565,22 @@ export function getStationPhotoDisplayTitle(photo: StationPhoto, locale: LocaleC
   const fallbackByPhoto = getPhotoDisplayTitleFallback(photo);
 
   return fallbackByPhoto[locale] ?? fallbackByPhoto.en;
+}
+
+function textForLocaleWithFallback(
+  text: LocalizedText,
+  locale: LocaleCode,
+  fallback: string,
+) {
+  if (locale === "en") {
+    return text.en;
+  }
+
+  if (locale === "pl") {
+    return text.pl;
+  }
+
+  return text[locale] ?? fallback;
 }
 
 function getPhotoDisplayTitleFallback(photo: StationPhoto): Record<LocaleCode, string> {
