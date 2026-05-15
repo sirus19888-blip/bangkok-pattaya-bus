@@ -22,6 +22,7 @@ const affiliateRouteSource = readFileSync(
 );
 const twelveGoSource = readFileSync(join(root, "src/lib/twelveGo.ts"), "utf8");
 const requiredAffiliatePositions = [
+  "guide_body",
   "homepage_hero",
   "homepage_route_card",
   "route_after_schedule",
@@ -227,6 +228,7 @@ assert.match(
   "12Go sub_id must include the CTA position when provided.",
 );
 for (const position of [
+  "guide_body",
   "homepage_hero",
   "homepage_route_card",
   "route_top",
@@ -528,6 +530,10 @@ function getHrefFromAnchorTag(tag) {
 }
 
 function getAffiliatePositionFromSubId(subId) {
+  if (subId.includes("-guide_")) {
+    return "guide_body";
+  }
+
   return requiredAffiliatePositions.find((position) =>
     subId.endsWith(`-${position}`),
   );

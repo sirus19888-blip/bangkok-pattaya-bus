@@ -23,6 +23,7 @@ export function build12GoRouteUrl(
   routeId: RouteId,
   lang: LocaleCode,
   subIdPosition?: string,
+  subIdOverride?: string,
 ) {
   const affiliateRoute = getAffiliateRoute(routeId, lang);
 
@@ -38,12 +39,13 @@ export function build12GoRouteUrl(
     url.searchParams.set("z", affiliateId);
   }
 
-  url.searchParams.set(
-    "sub_id",
-    subIdPosition
+  const subId =
+    subIdOverride ??
+    (subIdPosition
       ? `${affiliateRoute.subId}-${subIdPosition}`
-      : affiliateRoute.subId,
-  );
+      : affiliateRoute.subId);
+
+  url.searchParams.set("sub_id", subId);
 
   return url.toString();
 }

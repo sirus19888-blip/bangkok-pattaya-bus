@@ -13,6 +13,7 @@ export type AffiliateCTAVariant =
 export type AffiliateCTAPosition =
   | "homepage_hero"
   | "homepage_route_card"
+  | "guide_body"
   | "route_top"
   | "desktop_sidebar"
   | "route_after_schedule"

@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
+import { AffiliateCTA } from "@/components/AffiliateCTA";
 import { getRoutePage } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
+import { build12GoRouteUrl, getAffiliateRoute } from "@/lib/twelveGo";
 
 function guideUrl(slug: string) {
   return absoluteUrl(`/en/${slug}`);
@@ -10,6 +11,17 @@ function guideUrl(slug: string) {
 
 export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
   const routePage = getRoutePage(guide.routeId);
+  const ctaPosition = guide.ctaPosition ?? "route_commercial_help";
+  const affiliateRoute = getAffiliateRoute(guide.routeId, "en");
+  const affiliateHref = build12GoRouteUrl(
+    guide.routeId,
+    "en",
+    ctaPosition,
+    guide.ctaSubId,
+  );
+  const affiliateSubId =
+    guide.ctaSubId ??
+    (affiliateRoute ? `${affiliateRoute.subId}-${ctaPosition}` : undefined);
 
   if (!routePage) {
     return null;
@@ -43,6 +55,15 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
           </p>
         </header>
 
+        {guide.shortAnswer ? (
+          <section className="mt-6 rounded-[1.5rem] border border-[#e8b05a] bg-[#fff8ec] p-5 shadow-sm">
+            <h2 className="text-xl font-black leading-tight">Short answer</h2>
+            <p className="mt-3 text-sm font-semibold leading-7 text-[#4f5d6c]">
+              {guide.shortAnswer}
+            </p>
+          </section>
+        ) : null}
+
         <section className="mt-6 rounded-[1.5rem] border border-[#c8dbe9] bg-[#eaf5fb] p-5">
           <h2 className="text-2xl font-black">Quick facts</h2>
           <ul className="mt-4 grid gap-3 md:grid-cols-3">
@@ -75,7 +96,7 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
 
             <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
               <h2 className="text-2xl font-black leading-tight">
-                Related route page
+                Related route: Bangkok to Pattaya Bus
               </h2>
               <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
                 Use the route page for current departure times, station details,
@@ -88,6 +109,31 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
                 {guide.routeLinkLabel}
               </Link>
             </section>
+
+            {guide.internalLinks ? (
+              <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
+                <h2 className="text-2xl font-black leading-tight">
+                  Useful links
+                </h2>
+                <ul className="mt-4 grid gap-3 md:grid-cols-3">
+                  {guide.internalLinks.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        className="block h-full rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 transition hover:border-[#e8b05a]"
+                        href={link.href}
+                      >
+                        <span className="block text-sm font-black text-[#13233a]">
+                          {link.label}
+                        </span>
+                        <span className="mt-2 block text-xs font-semibold leading-5 text-[#5f6874]">
+                          {link.description}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
 
             <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
               <h2 className="text-2xl font-black leading-tight">FAQ</h2>
@@ -109,7 +155,13 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
             </section>
 
             <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
-              <h2 className="text-2xl font-black leading-tight">Sources</h2>
+              <h2 className="text-2xl font-black leading-tight">
+                Sources and last checked
+              </h2>
+              <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
+                Last checked: {guide.lastUpdated}. Always confirm at the station
+                or with the operator before travel.
+              </p>
               <ul className="mt-4 space-y-3">
                 {guide.sources.map((source) => (
                   <li key={source.url}>
@@ -145,11 +197,18 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
               compare live seats, transfers and alternatives before going to the
               station.
             </p>
-            <TwelveGoAffiliateButton
-              ctaPosition="route_commercial_help"
+            <AffiliateCTA
+              ctaPosition={ctaPosition}
+              disclosureText="Some booking links may be affiliate links. Timetable information stays independent."
+              href={affiliateHref}
               label={guide.ctaLabel}
-              locale="en"
+              lang="en"
+              provider="12go"
               routeId={guide.routeId}
+              from={affiliateRoute?.from ?? ""}
+              shortDisclosureText="Affiliate link"
+              subId={affiliateSubId}
+              to={affiliateRoute?.to ?? ""}
               variant="afterSchedule"
             />
           </aside>
