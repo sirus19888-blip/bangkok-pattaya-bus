@@ -274,7 +274,6 @@ const robotsFile = readProjectFile("src/app/robots.ts");
 const routePageFile = readProjectFile("src/app/[locale]/[route]/page.tsx");
 const localeHomeFile = readProjectFile("src/app/[locale]/page.tsx");
 const rootHomeFile = readProjectFile("src/app/page.tsx");
-const seoRoutePageFile = readProjectFile("src/app/routes/[slug]/page.tsx");
 
 assert(
   sitemapFile.includes('from "@/lib/site"') &&
@@ -285,6 +284,12 @@ assert(
   sitemapFile.includes('from "@/data/seoGuides"') &&
     sitemapFile.includes("/en/${guide.slug}"),
   "sitemap.ts must include English SEO guides.",
+);
+assert(
+  !sitemapFile.includes('from "@/data/seoRoutes"') &&
+    !sitemapFile.includes("seoRouteUrls") &&
+    !sitemapFile.includes("absoluteUrl(`/routes/${routePage.slug}`)"),
+  "sitemap.ts must not include old /routes route aliases.",
 );
 assert(
   robotsFile.includes('from "@/lib/site"') &&
@@ -302,10 +307,6 @@ assert(
 assert(
   rootHomeFile.includes("canonical: absoluteUrl(\"/\")"),
   "Root homepage canonical must be generated from the shared site URL.",
-);
-assert(
-  seoRoutePageFile.includes("canonical: pageUrl(page.slug)"),
-  "SEO route landing page canonical must be generated from the shared route URL.",
 );
 
 for (const sourceRoot of sourceRoots) {
@@ -383,7 +384,6 @@ const requiredSitemapUrls = [
   ...routeSlugs.flatMap((slug) =>
     locales.map((locale) => absolute(`/${locale}/${slug}`)),
   ),
-  ...routeSlugs.map((slug) => absolute(`/routes/${slug}`)),
   ...guideSlugs.map((slug) => absolute(`/en/${slug}`)),
 ];
 
@@ -391,6 +391,23 @@ for (const requiredUrl of requiredSitemapUrls) {
   assert(
     sitemapUrls.includes(requiredUrl),
     `sitemap.xml is missing ${requiredUrl}.`,
+  );
+}
+
+for (const url of sitemapUrls) {
+  const pathname = new URL(url).pathname;
+
+  assert(
+    pathname !== "/routes" && !pathname.startsWith("/routes/"),
+    `sitemap.xml must not contain old /routes aliases: ${url}.`,
+  );
+
+  const { canonical } = readSeoForPath(pathname);
+
+  assert(canonical, `${url} is in sitemap.xml but has no canonical URL.`);
+  assert(
+    sameUrl(canonical, url),
+    `${url} is in sitemap.xml but its canonical points to ${canonical}.`,
   );
 }
 

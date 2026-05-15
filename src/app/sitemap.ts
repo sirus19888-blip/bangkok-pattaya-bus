@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { routePages, supportedLocaleCodes } from "@/data/routes";
 import { getScheduleByRoute } from "@/data/schedules";
 import { seoGuides } from "@/data/seoGuides";
-import { routeSeoPages } from "@/data/seoRoutes";
 import { absoluteUrl } from "@/lib/site";
 
 const staticLastModified = new Date("2026-05-08T00:00:00.000Z");
@@ -33,12 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "yearly",
       priority: 0.3,
     },
-    {
-      url: absoluteUrl("/routes"),
-      lastModified: staticLastModified,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
   ];
 
   const localeHomeUrls: MetadataRoute.Sitemap = supportedLocaleCodes.map(
@@ -66,13 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }),
   );
 
-  const seoRouteUrls: MetadataRoute.Sitemap = routeSeoPages.map((routePage) => ({
-    url: absoluteUrl(`/routes/${routePage.slug}`),
-    lastModified: staticLastModified,
-    changeFrequency: "weekly",
-    priority: 0.85,
-  }));
-
   const seoGuideUrls: MetadataRoute.Sitemap = seoGuides.map((guide) => ({
     url: absoluteUrl(`/en/${guide.slug}`),
     lastModified: new Date(`${guide.lastUpdated}T00:00:00.000Z`),
@@ -84,7 +70,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPages,
     ...localeHomeUrls,
     ...routeUrls,
-    ...seoRouteUrls,
     ...seoGuideUrls,
   ];
 }
