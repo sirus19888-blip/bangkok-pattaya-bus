@@ -160,7 +160,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "suvarnabhumi-airport-to-pattaya",
     routeLinkLabel: "Open Suvarnabhumi Airport to Pattaya bus times",
     ctaLabel: "Compare airport to Pattaya tickets",
-    lastUpdated: "2026-05-14",
+    lastUpdated: "2026-05-15",
     keyPoints: [
       "Allow time for immigration, baggage claim and walking through the airport.",
       "Current route data says the bus counter is on Level 1 near Gate 8.",
@@ -219,7 +219,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Open Bangkok to Pattaya bus times",
     ctaLabel: "Compare bus, taxi and transfer options",
-    lastUpdated: "2026-05-14",
+    lastUpdated: "2026-05-15",
     keyPoints: [
       "Bus from Ekkamai is usually the lowest-cost option for solo travelers.",
       "Taxi or private transfer is easier with luggage, family travel or hotel pickup.",
@@ -278,7 +278,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Check the next Bangkok to Pattaya bus",
     ctaLabel: "Check late-night alternatives",
-    lastUpdated: "2026-05-14",
+    lastUpdated: "2026-05-15",
     keyPoints: [
       "If the last bus has passed, the next scheduled bus may be the following morning.",
       "Late-night taxi or private transfer can be convenient but should have a clear price.",
@@ -337,7 +337,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "pattaya-to-bangkok",
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Compare tickets and airport alternatives",
-    lastUpdated: "2026-05-14",
+    lastUpdated: "2026-05-15",
     keyPoints: [
       "Do not rely on the last possible bus before your flight.",
       "Confirm whether your Bangkok destination is Ekkamai, Mo Chit, Suvarnabhumi or Don Mueang.",
