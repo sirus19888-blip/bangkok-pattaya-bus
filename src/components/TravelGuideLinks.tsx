@@ -28,6 +28,11 @@ export function TravelGuideLinks({
     return null;
   }
 
+  const eyebrow = routeId ? "Popular travel guides" : "Travel guides";
+  const heading = routeId
+    ? "Helpful guides for this route"
+    : "Practical Bangkok and Pattaya guides";
+
   return (
     <section
       className={
@@ -38,10 +43,10 @@ export function TravelGuideLinks({
       <div className="flex items-end justify-between gap-3">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
-            Travel guides
+            {eyebrow}
           </p>
           <h2 className="mt-1 text-xl font-black leading-tight text-[#13233a]">
-            Practical Bangkok and Pattaya guides
+            {heading}
           </h2>
         </div>
       </div>

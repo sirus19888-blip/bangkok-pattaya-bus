@@ -14,17 +14,38 @@ const guideHrefs = [
 
 assertGuideLinks("/", guideHrefs);
 assertGuideLinks("/en", guideHrefs);
-assertGuideLinks("/en/bangkok-to-pattaya", [
-  "/en/ekkamai-bus-terminal-to-pattaya-guide",
-  "/en/bangkok-to-pattaya-bus-vs-taxi",
-  "/en/bangkok-to-pattaya-after-midnight",
-]);
-assertGuideLinks("/en/suvarnabhumi-airport-to-pattaya", [
-  "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
-]);
-assertGuideLinks("/en/pattaya-to-bangkok", [
-  "/en/pattaya-to-bangkok-before-flight",
-]);
+assertRouteGuideLinks(
+  "/en/bangkok-to-pattaya",
+  [
+    "/en/ekkamai-bus-terminal-to-pattaya-guide",
+    "/en/bangkok-to-pattaya-bus-vs-taxi",
+    "/en/bangkok-to-pattaya-after-midnight",
+  ],
+  [
+    "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
+    "/en/pattaya-to-bangkok-before-flight",
+  ],
+);
+assertRouteGuideLinks(
+  "/en/suvarnabhumi-airport-to-pattaya",
+  ["/en/suvarnabhumi-airport-gate-8-pattaya-bus"],
+  [
+    "/en/ekkamai-bus-terminal-to-pattaya-guide",
+    "/en/bangkok-to-pattaya-bus-vs-taxi",
+    "/en/bangkok-to-pattaya-after-midnight",
+    "/en/pattaya-to-bangkok-before-flight",
+  ],
+);
+assertRouteGuideLinks(
+  "/en/pattaya-to-bangkok",
+  ["/en/pattaya-to-bangkok-before-flight"],
+  [
+    "/en/ekkamai-bus-terminal-to-pattaya-guide",
+    "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
+    "/en/bangkok-to-pattaya-bus-vs-taxi",
+    "/en/bangkok-to-pattaya-after-midnight",
+  ],
+);
 
 assertGuideBacklink(
   "/en/ekkamai-bus-terminal-to-pattaya-guide",
@@ -60,6 +81,28 @@ function assertGuideLinks(path, expectedHrefs) {
 
   for (const href of expectedHrefs) {
     assertHref(html, href, `${path} must link to ${href}.`);
+  }
+}
+
+function assertRouteGuideLinks(path, expectedHrefs, absentHrefs) {
+  const html = readBuiltHtml(path);
+
+  assert.match(
+    html,
+    />Popular travel guides</,
+    `${path} must render the Popular travel guides section.`,
+  );
+
+  for (const href of expectedHrefs) {
+    assertHref(html, href, `${path} must link to ${href}.`);
+  }
+
+  for (const href of absentHrefs) {
+    assert.doesNotMatch(
+      html,
+      new RegExp(`href="${escapeRegExp(href)}"`),
+      `${path} must not link to unrelated guide ${href}.`,
+    );
   }
 }
 
