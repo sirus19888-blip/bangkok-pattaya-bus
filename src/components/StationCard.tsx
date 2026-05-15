@@ -526,10 +526,10 @@ function getMobileTipPoints(
     return [repairMojibake(tip)];
   }
 
-  return splitTipSentences(repairMojibake(tip));
+  return splitTipSentences(repairMojibake(tip), locale);
 }
 
-function splitTipSentences(tip: string) {
+function splitTipSentences(tip: string, locale?: LocaleCode) {
   const placeholders = [
     ["np. ", "np§ "],
     ["z. B. ", "z§ B§ "],
@@ -540,8 +540,15 @@ function splitTipSentences(tip: string) {
     tip,
   );
 
-  return protectedTip
-    .split(/(?<=[.!?。])\s+/)
+  const splitPattern =
+    locale === "zh"
+      ? /(?<=[。！？；])\s*/u
+      : locale === "th"
+        ? /\s+(?=(?:จาก|ถ้า|ควร|ตัวเลือก|ค่า|มัก|ผู้ให้บริการ|สองแถว|Grab\/Bolt|BTS|หลัง|ตรวจสอบ))/u
+        : /(?<=[.!?。])\s+/u;
+
+  const points = protectedTip
+    .split(splitPattern)
     .map((point) =>
       placeholders.reduce(
         (current, [from, to]) => current.replaceAll(to, from),
@@ -550,6 +557,8 @@ function splitTipSentences(tip: string) {
     )
     .map((point) => point.trim())
     .filter(Boolean);
+
+  return points.length > 1 ? points : [tip];
 }
 
 function normalizeForComparison(value: string) {

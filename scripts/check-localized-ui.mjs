@@ -60,6 +60,7 @@ const forbiddenPhrases = [
   "Exterior entrance of Ekkamai Bus Terminal",
   "Inside area of Ekkamai Bus Terminal",
   "Bus boarding area at Ekkamai Bus Terminal",
+  "North Pattaya Bus Station entrance",
   "Swipe",
   "Swipe to see more",
   "Source ::",

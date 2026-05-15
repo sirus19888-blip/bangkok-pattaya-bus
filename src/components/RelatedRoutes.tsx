@@ -40,7 +40,11 @@ export function RelatedRoutes({
       <ul className="mt-3 grid gap-2.5 sm:mt-4 sm:grid-cols-2 sm:gap-3 md:mt-3 md:grid-cols-3 md:gap-2.5">
         {relatedRoutes.map((routePage) => (
           <li key={routePage.slug} className="min-w-0">
-            <article className="relative min-h-[6.4rem] overflow-hidden rounded-xl border border-[#eadcc7] bg-[#13233a] p-3.5 shadow-sm transition hover:bg-white sm:p-4 md:min-h-0 md:bg-[#fffaf2] md:p-3">
+            <Link
+              href={`/${locale}/${routePage.slug}`}
+              aria-label={`${routePage.title}: ${routePage.relatedDescription}`}
+              className="relative block min-h-[6.4rem] overflow-hidden rounded-xl border border-[#eadcc7] bg-[#13233a] p-3.5 shadow-sm transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a] focus-visible:ring-offset-2 sm:p-4 md:min-h-0 md:bg-[#fffaf2] md:p-3"
+            >
               <Image
                 alt=""
                 aria-hidden="true"
@@ -59,12 +63,7 @@ export function RelatedRoutes({
               <span className="relative mt-3 inline-flex text-xs font-black text-[#f3d77b] md:text-[#2f6f93]">
                 {ctaLabel}
               </span>
-              <Link
-                href={`/${locale}/${routePage.slug}`}
-                aria-label={`${routePage.title}: ${routePage.relatedDescription}`}
-                className="absolute inset-0 z-10 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a] focus-visible:ring-offset-2"
-              />
-            </article>
+            </Link>
           </li>
         ))}
       </ul>

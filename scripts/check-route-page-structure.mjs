@@ -557,15 +557,21 @@ assert.equal(
 assert.ok(
   relatedRoutesSource.includes("<ul") &&
     relatedRoutesSource.includes("<li") &&
+    relatedRoutesSource.includes("<Link") &&
     relatedRoutesSource.includes('className="title') &&
     relatedRoutesSource.includes('className="description') &&
+    relatedRoutesSource.includes("{ctaLabel}") &&
     relatedRoutesSource.includes("getRelatedRouteCtaLabel") &&
     relatedRoutesSource.includes("aria-label"),
-  "Related routes must render semantic cards with separated title, description, CTA, and aria-label.",
+  "Related routes must render semantic linked cards with separated title, description, CTA, and aria-label.",
 );
 assert.ok(
   !relatedRoutesSource.includes('<span className="sr-only">. </span>'),
   "Related routes must not use hidden punctuation to separate card text.",
+);
+assert.ok(
+  !relatedRoutesSource.includes("absolute inset-0 z-10"),
+  "Related routes must not use an empty overlay link instead of linked card content.",
 );
 assert.ok(
   travelerFeedbackSource.includes('className="grid gap-3') &&
@@ -575,6 +581,10 @@ assert.ok(
     travelerFeedbackSource.includes('trackEvent("feedback_helpful_click"') &&
     travelerFeedbackSource.includes('trackEvent("report_outdated_click"'),
   "Feedback actions must be separated and tracked.",
+);
+assert.ok(
+  !travelerFeedbackSource.includes('<span className="sr-only">. </span>'),
+  "Feedback actions must not use hidden punctuation between buttons.",
 );
 
 for (const oldDesktopMarker of [

@@ -80,7 +80,9 @@ const desktopSwipeTextPatterns = [
 
 const forbiddenTextContentFragments = [
   "From:Bangkok",
+  "From: Bangkok Pattaya Suvarnabhumi Airport",
   "Z:Bangkok",
+  "Z: Bangkok Pattaya Suvarnabhumi Airport",
   "31\u00b0M\u00e9t\u00e9o",
   "Estimation 31\u00b0M\u00e9t\u00e9o",
   "Szacunek 31\u00b0 Pogoda",
@@ -134,6 +136,10 @@ assert(
     routeSearchSource.includes("aria-label={`${getAriaLabelText(displayLabels.to)}") &&
     routeSearchSource.includes("aria-label={`${goLabel}:"),
   "Route finder selects and submit button must include localized aria-labels.",
+);
+assert(
+  routeSearchSource.includes('data-route-finder="true"'),
+  "Route finder must expose a stable accessibility test marker.",
 );
 assert(
   count(/<MobileRouteCard\b/g) === 1,
