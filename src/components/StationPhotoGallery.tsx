@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import type { LocaleCode } from "@/data/routes";
 import {
   getStationPhotoAttributionLabel,
+  getStationPhotoDisplayTitle,
   getStationPhotoGalleryTitle,
   getStationPhotoText,
   type StationPhotoGroup,
@@ -100,6 +101,9 @@ export function StationPhotoGallery({
                 const photoText = getStationPhotoText(photo, locale);
                 const cleanAlt = repairMojibake(photoText.alt);
                 const cleanCaption = repairMojibake(photoText.caption);
+                const cleanTitle = repairMojibake(
+                  getStationPhotoDisplayTitle(photo, locale),
+                );
                 const hideInMobilePreview =
                   typeof mobilePreviewLimit === "number" &&
                   !mobileShowAll &&
@@ -127,29 +131,11 @@ export function StationPhotoGallery({
                         className="object-cover transition duration-200 hover:scale-[1.02]"
                       />
                     </button>
-                    {photo.displayTitle ? (
-                      <p className="mt-2 text-sm font-black leading-5 text-[#13233a] lg:mt-1.5 lg:text-xs lg:leading-4">
-                        {repairMojibake(locale === "pl"
-                          ? photo.displayTitle.pl
-                          : locale === "ru"
-                            ? photo.displayTitle.ru ?? "Фото зоны станции"
-                          : locale === "de"
-                            ? photo.displayTitle.de ?? "Foto des Stationsbereichs"
-                          : locale === "th"
-                            ? photo.displayTitle.th ?? "ภาพสถานี"
-                          : locale === "zh"
-                            ? photo.displayTitle.zh ?? "站点实景参考"
-                          : locale === "fr"
-                            ? photo.displayTitle.fr ?? "Repère visuel de la station"
-                            : photo.displayTitle.en)}
-                      </p>
-                    ) : null}
+                    <p className="mt-2 text-sm font-black leading-5 text-[#13233a] lg:mt-1.5 lg:text-xs lg:leading-4">
+                      {cleanTitle}
+                    </p>
                     <figcaption
-                      className={
-                        photo.displayTitle
-                          ? "mt-1 text-[0.82rem] font-semibold leading-5 text-[#4f5d6c] lg:text-[0.68rem] lg:leading-4"
-                          : "mt-2 text-[0.82rem] font-black leading-5 text-[#13233a] lg:mt-1 lg:text-[0.68rem] lg:leading-4"
-                      }
+                      className="mt-1 text-[0.82rem] font-semibold leading-5 text-[#4f5d6c] lg:text-[0.68rem] lg:leading-4"
                     >
                       {cleanCaption}
                     </figcaption>
@@ -214,21 +200,7 @@ function PhotoLightbox({
   const photoText = getStationPhotoText(photo, locale);
   const cleanAlt = repairMojibake(photoText.alt);
   const cleanCaption = repairMojibake(photoText.caption);
-  const title = repairMojibake(photo.displayTitle
-    ? locale === "pl"
-      ? photo.displayTitle.pl
-      : locale === "ru"
-        ? photo.displayTitle.ru ?? "Фото зоны станции"
-      : locale === "de"
-        ? photo.displayTitle.de ?? "Foto des Stationsbereichs"
-      : locale === "th"
-        ? photo.displayTitle.th ?? "ภาพสถานี"
-      : locale === "zh"
-        ? photo.displayTitle.zh ?? "站点实景参考"
-      : locale === "fr"
-        ? photo.displayTitle.fr ?? "Repère visuel de la station"
-      : photo.displayTitle.en
-    : photo.title);
+  const title = repairMojibake(getStationPhotoDisplayTitle(photo, locale));
 
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {

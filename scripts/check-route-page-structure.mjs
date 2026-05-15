@@ -326,6 +326,11 @@ for (const path of expectedEnglishRoutes) {
       2,
       `${path} must render helpful and report feedback as two separate action elements.`,
     );
+    assert.equal(
+      count(visibleHtml, /<button\b[^>]*data-feedback-action=/g),
+      2,
+      `${path} must render helpful and report feedback as two separate button elements.`,
+    );
     assert.ok(
       !toTextContent(visibleHtml).includes(
         "Yes, it helpedReport outdated times",
@@ -340,6 +345,24 @@ for (const path of expectedEnglishRoutes) {
         count(visibleHtml, new RegExp(escapeRegExp(stationTipSample), "g")),
         1,
         `${path} must render station tips once, without mobile/desktop duplicate content.`,
+      );
+    }
+
+    for (const stationName of [
+      "Bangkok Ekkamai Bus Terminal",
+      "North Pattaya Bus Terminal",
+      "Mo Chit Bus Terminal",
+      "Suvarnabhumi Airport Bus Counter",
+      "Pattaya / Jomtien Airport Bus Area",
+      "Don Mueang Airport",
+      "Pattaya Sukhumvit Road Bus Station",
+    ]) {
+      assert.ok(
+        count(
+          visibleHtml,
+          new RegExp(`<h2[^>]*>\\s*${escapeRegExp(stationName)}\\s*</h2>`, "g"),
+        ) <= 1,
+        `${path} must not render station name "${stationName}" as H2 more than once in one station card.`,
       );
     }
   }
@@ -545,8 +568,7 @@ assert.ok(
   travelerFeedbackSource.includes('className="grid gap-3') &&
     travelerFeedbackSource.includes('data-feedback-action="helpful"') &&
     travelerFeedbackSource.includes('data-feedback-action="report_outdated"') &&
-    travelerFeedbackSource.includes("<button") &&
-    travelerFeedbackSource.includes("<a") &&
+    count(travelerFeedbackSource, /<button\b/g) >= 2 &&
     travelerFeedbackSource.includes('trackEvent("feedback_helpful_click"') &&
     travelerFeedbackSource.includes('trackEvent("report_outdated_click"'),
   "Feedback actions must be separated and tracked.",

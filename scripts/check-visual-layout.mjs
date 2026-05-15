@@ -26,6 +26,10 @@ const screenshotPages = [
   { name: "route-de-bangkok-to-pattaya", path: "/de/bangkok-to-pattaya" },
   { name: "route-ru-bangkok-to-pattaya", path: "/ru/bangkok-to-pattaya" },
   { name: "route-th-bangkok-to-pattaya", path: "/th/bangkok-to-pattaya" },
+  {
+    name: "route-en-suvarnabhumi-airport-to-pattaya",
+    path: "/en/suvarnabhumi-airport-to-pattaya",
+  },
 ];
 
 const desktopSwipePatterns = [

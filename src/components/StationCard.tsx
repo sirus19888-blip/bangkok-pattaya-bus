@@ -52,7 +52,7 @@ export function StationCard({
             stationTip,
             locale,
             routeId,
-          );
+          ).filter((point) => !isStationMetaTip(point, station, labels.bestFor));
           const isExpanded = expandedStations[station.id] ?? false;
           const stationPhotoGroups = photoGroups.filter(
             (group) => group.stationId === station.id,
@@ -75,20 +75,12 @@ export function StationCard({
                     {index + 1}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h2 className="hidden text-lg font-black leading-tight text-[#13233a] md:block sm:text-xl">
+                    <h2 className="text-base font-black leading-tight text-[#13233a] md:text-lg sm:text-xl">
                       {station.name}
                     </h2>
-                    <p className="mt-1 hidden text-xs font-bold uppercase tracking-wide text-[#2f6f93] md:block">
+                    <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[#2f6f93]">
                       {labels.bestFor} {station.bestFor}
                     </p>
-                    <div className="md:hidden">
-                      <h2 className="text-base font-black leading-tight text-[#13233a]">
-                        {station.name}
-                      </h2>
-                      <p className="mt-1 text-xs font-bold uppercase tracking-wide text-[#2f6f93]">
-                        {labels.bestFor} {station.bestFor}
-                      </p>
-                    </div>
                   </div>
                 </div>
                 <div className="relative mt-3 overflow-hidden rounded-xl border border-[#eadcc7] bg-white px-3 py-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
@@ -558,4 +550,25 @@ function splitTipSentences(tip: string) {
     )
     .map((point) => point.trim())
     .filter(Boolean);
+}
+
+function normalizeForComparison(value: string) {
+  return repairMojibake(value)
+    .toLocaleLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function isStationMetaTip(point: string, station: Station, bestForLabel: string) {
+  const normalizedPoint = normalizeForComparison(point);
+  const stationName = normalizeForComparison(station.name);
+  const stationBestFor = normalizeForComparison(station.bestFor);
+  const label = normalizeForComparison(bestForLabel);
+
+  return (
+    normalizedPoint === stationName ||
+    normalizedPoint === stationBestFor ||
+    normalizedPoint === `${label} ${stationBestFor}`.trim()
+  );
 }

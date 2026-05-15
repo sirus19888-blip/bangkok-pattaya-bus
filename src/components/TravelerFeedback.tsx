@@ -196,6 +196,7 @@ export function TravelerFeedback({
 
   function handleReportClick() {
     trackEvent("report_outdated_click", trackingPayload);
+    window.location.href = mailtoUrl;
   }
 
   return (
@@ -231,15 +232,15 @@ export function TravelerFeedback({
             {isSendingHelped ? text.sending : text.helped}
           </button>
           <span className="sr-only">. </span>
-          <a
-            href={mailtoUrl}
+          <button
+            type="button"
             onClick={handleReportClick}
             aria-label={text.report}
             data-feedback-action="report_outdated"
             className="flex min-h-11 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-white md:min-h-10 md:text-xs"
           >
             {text.report}
-          </a>
+          </button>
         </div>
       </div>
       <div aria-live="polite" role="status">

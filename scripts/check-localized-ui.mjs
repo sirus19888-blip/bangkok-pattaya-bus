@@ -4,6 +4,10 @@ import { join } from "node:path";
 import { cwd } from "node:process";
 
 const root = cwd();
+const languageSwitcherSource = readFileSync(
+  join(root, "src/components/LanguageSwitcher.tsx"),
+  "utf8",
+);
 const locales = ["th", "zh", "ru", "de", "fr", "pl"];
 const routeSlugs = [
   "bangkok-to-pattaya",
@@ -79,6 +83,26 @@ const forbiddenPhrases = [
   "âŚ",
   "Ă—",
 ];
+
+const forbiddenLocalizedLanguageCodes = [
+  [0x0410, 0x041d, 0x0413],
+  [0x0422, 0x0410, 0x0419],
+  [0x041a, 0x0418, 0x0422],
+  [0x041d, 0x0415, 0x041c],
+  [0x041f, 0x041e, 0x041b],
+].map((codes) => String.fromCodePoint(...codes));
+
+for (const forbiddenLanguageCode of forbiddenLocalizedLanguageCodes) {
+  assert.ok(
+    !languageSwitcherSource.includes(forbiddenLanguageCode),
+    `Language switcher must use stable language codes, not localized code ${forbiddenLanguageCode}.`,
+  );
+}
+
+assert.ok(
+  !languageSwitcherSource.includes("localeLabels"),
+  "Language switcher must not localize language code labels.",
+);
 
 function getBuiltHtmlPath(path) {
   return join(root, ".next/server/app", `${path.replace(/^\/+/, "")}.html`);

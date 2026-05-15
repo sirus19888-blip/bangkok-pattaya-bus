@@ -13,19 +13,6 @@ export function LanguageSwitcher({
   currentLocale,
   routeSlug,
 }: LanguageSwitcherProps) {
-  const localeLabels =
-    currentLocale === "ru"
-      ? {
-          en: "АНГ",
-          th: "ТАЙ",
-          zh: "КИТ",
-          ru: "РУ",
-          de: "НЕМ",
-          fr: "ФР",
-          pl: "ПОЛ",
-        }
-      : null;
-
   function handleLanguageChange(nextLocale: LocaleCode) {
     const nextPath = routeSlug ? `/${nextLocale}/${routeSlug}` : `/${nextLocale}`;
 
@@ -45,7 +32,7 @@ export function LanguageSwitcher({
       >
         {supportedLocales.map((locale) => (
           <option key={locale.code} value={locale.code}>
-            {localeLabels?.[locale.code] ?? locale.code.toUpperCase()}
+            {locale.code.toUpperCase()}
           </option>
         ))}
       </select>

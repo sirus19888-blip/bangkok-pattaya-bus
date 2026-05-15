@@ -92,23 +92,29 @@ const practicalCaptions = {
   entrance: {
     en: "Use this photo to recognize the terminal entrance.",
     de: "Dieses Foto hilft dir, den Eingang zum Terminal zu erkennen.",
+    fr: "Cette photo aide à reconnaître l’entrée du terminal.",
     pl: "To zdjęcie pomoże rozpoznać wejście do terminalu.",
     ru: "Это фото поможет узнать вход в терминал.",
     th: "ใช้ภาพนี้ช่วยจำทางเข้าสถานี",
+    zh: "这张照片可帮助你识别车站入口。",
   },
   counters: {
     en: "Look for the ticket counters inside the terminal.",
     de: "Suche die Ticketschalter im Terminal.",
+    fr: "Repérez les guichets à l’intérieur du terminal.",
     pl: "Szukaj kas biletowych wewnątrz terminalu.",
     ru: "Ищите кассы внутри терминала.",
     th: "มองหาเคาน์เตอร์จำหน่ายตั๋วภายในสถานี",
+    zh: "请在车站内寻找售票柜台。",
   },
   boarding: {
     en: "Boarding areas may change. Check signs at the station.",
     de: "Einstiegsbereiche können sich ändern. Prüfe die Schilder an der Station.",
+    fr: "Les zones d’embarquement peuvent changer. Vérifiez les panneaux à la gare.",
     pl: "Miejsca odjazdu mogą się zmieniać. Sprawdź oznaczenia na dworcu.",
     ru: "Места посадки могут меняться. Проверьте указатели на станции.",
     th: "จุดขึ้นรถอาจเปลี่ยนได้ โปรดดูป้ายที่สถานี",
+    zh: "上车区域可能会变化。到站后请查看现场标识。",
   },
 } satisfies Record<string, LocalizedText>;
 
@@ -509,11 +515,11 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
   }
 
   if (locale === "ru") {
-    return text.ru ?? "Фото зоны станции";
+    return text.ru ?? text.en;
   }
 
   if (locale === "de") {
-    return text.de ?? "Foto des Stationsbereichs";
+    return text.de ?? text.en;
   }
 
   if (locale === "th") {
@@ -521,11 +527,11 @@ function textForLocale(text: LocalizedText, locale: LocaleCode) {
   }
 
   if (locale === "zh") {
-    return text.zh ?? "站点实景参考";
+    return text.zh ?? text.en;
   }
 
   if (locale === "fr") {
-    return text.fr ?? "Repère visuel de la station";
+    return text.fr ?? text.en;
   }
 
   return text.en;
@@ -546,6 +552,198 @@ export function getStationPhotoText(photo: StationPhoto, locale: LocaleCode) {
   return {
     caption: textForLocale(photo.caption, locale),
     alt: textForLocale(photo.alt, locale),
+  };
+}
+
+export function getStationPhotoDisplayTitle(photo: StationPhoto, locale: LocaleCode) {
+  if (photo.displayTitle) {
+    return textForLocale(photo.displayTitle, locale);
+  }
+
+  const fallbackByPhoto = getPhotoDisplayTitleFallback(photo);
+
+  return fallbackByPhoto[locale] ?? fallbackByPhoto.en;
+}
+
+function getPhotoDisplayTitleFallback(photo: StationPhoto): Record<LocaleCode, string> {
+  const path = photo.src;
+
+  if (path.includes("pattaya-ticket-area")) {
+    return {
+      de: "Einstiegsbereich am Busbahnhof Nord-Pattaya",
+      en: "Boarding area at North Pattaya Bus Station",
+      fr: "Zone d’embarquement au terminal de bus North Pattaya",
+      pl: "Strefa odjazdu na North Pattaya Bus Station",
+      ru: "Зона посадки на автовокзале Северной Паттайи",
+      th: "จุดขึ้นรถที่สถานีขนส่งพัทยาเหนือ",
+      zh: "North Pattaya Bus Terminal 上车区域",
+    };
+  }
+
+  if (path.includes("pattaya-bus-area")) {
+    return {
+      de: "Busse am Busbahnhof Nord-Pattaya",
+      en: "Buses at North Pattaya Bus Station",
+      fr: "Bus au terminal de bus North Pattaya",
+      pl: "Autobusy na North Pattaya Bus Station",
+      ru: "Автобусы на автовокзале Северной Паттайи",
+      th: "รถบัสที่สถานีขนส่งพัทยาเหนือ",
+      zh: "North Pattaya Bus Terminal 巴士区域",
+    };
+  }
+
+  if (path.includes("mo-chit-front")) {
+    return {
+      de: "Eingang zum Busbahnhof Mo Chit 2",
+      en: "Entrance to Mo Chit 2 Bus Terminal",
+      fr: "Entrée de la gare routière Mo Chit 2",
+      pl: "Wejście do dworca Mo Chit 2",
+      ru: "Вход на автовокзал Мо Чит 2",
+      th: "ทางเข้าสถานีขนส่งหมอชิต 2",
+      zh: "Mo Chit 2 汽车站入口",
+    };
+  }
+
+  if (path.includes("mo-chit-terminal")) {
+    return {
+      de: "Ticketschalter im Busbahnhof Mo Chit 2",
+      en: "Ticket counters inside Mo Chit 2 Bus Terminal",
+      fr: "Guichets à l’intérieur de la gare Mo Chit 2",
+      pl: "Kasy biletowe na dworcu Mo Chit 2",
+      ru: "Кассы внутри автовокзала Мо Чит 2",
+      th: "เคาน์เตอร์ตั๋วในสถานีขนส่งหมอชิต 2",
+      zh: "Mo Chit 2 站内售票柜台",
+    };
+  }
+
+  if (path.includes("mo-chit-bus-area")) {
+    return {
+      de: "Einstiegsbereich am Busbahnhof Mo Chit 2",
+      en: "Boarding area at Mo Chit 2 Bus Terminal",
+      fr: "Zone d’embarquement à la gare Mo Chit 2",
+      pl: "Strefa odjazdu na dworcu Mo Chit 2",
+      ru: "Зона посадки на автовокзале Мо Чит 2",
+      th: "จุดขึ้นรถที่สถานีขนส่งหมอชิต 2",
+      zh: "Mo Chit 2 上车区域",
+    };
+  }
+
+  if (path.includes("suvarnabhumi-bus-terminal")) {
+    return {
+      de: "Busbereich am Flughafen Suvarnabhumi",
+      en: "Suvarnabhumi Airport bus terminal area",
+      fr: "Zone du terminal de bus à l’aéroport Suvarnabhumi",
+      pl: "Strefa terminalu autobusowego na Suvarnabhumi",
+      ru: "Автобусная зона аэропорта Суварнабхуми",
+      th: "พื้นที่สถานีรถบัสที่สนามบินสุวรรณภูมิ",
+      zh: "素万那普机场巴士总站区域",
+    };
+  }
+
+  if (path.includes("suvarnabhumi-bus-area")) {
+    return {
+      de: "Busbereich im Transportzentrum Suvarnabhumi",
+      en: "Bus area at Suvarnabhumi transport center",
+      fr: "Zone de bus au centre de transport de Suvarnabhumi",
+      pl: "Strefa autobusowa w centrum transportowym Suvarnabhumi",
+      ru: "Автобусная зона транспортного центра Суварнабхуми",
+      th: "พื้นที่รถบัสในศูนย์ขนส่งสุวรรณภูมิ",
+      zh: "素万那普交通中心巴士区域",
+    };
+  }
+
+  if (path.includes("suvarnabhumi-buses")) {
+    return {
+      de: "Busbuchten am Flughafen Suvarnabhumi",
+      en: "Bus bays at Suvarnabhumi Airport",
+      fr: "Quais de bus à l’aéroport Suvarnabhumi",
+      pl: "Stanowiska autobusowe na lotnisku Suvarnabhumi",
+      ru: "Автобусные платформы аэропорта Суварнабхуми",
+      th: "ช่องจอดรถบัสที่สนามบินสุวรรณภูมิ",
+      zh: "素万那普机场巴士站台",
+    };
+  }
+
+  if (path.includes("pattaya-sukhumvit-road")) {
+    return {
+      de: "Einstiegspunkt an der Sukhumvit Road in Pattaya",
+      en: "Pattaya Sukhumvit Road boarding point",
+      fr: "Point d’embarquement sur Sukhumvit Road à Pattaya",
+      pl: "Miejsce odjazdu przy Sukhumvit Road w Pattayi",
+      ru: "Место посадки на Sukhumvit Road в Паттайе",
+      th: "จุดขึ้นรถบนถนนสุขุมวิทในพัทยา",
+      zh: "Pattaya Sukhumvit Road 上车点",
+    };
+  }
+
+  if (path.includes("pattaya-sukhumvit-songthaew-crowded")) {
+    return {
+      de: "Lokaler Songthaew auf der Sukhumvit Road",
+      en: "Local songthaew on Sukhumvit Road",
+      fr: "Songthaew local sur Sukhumvit Road",
+      pl: "Lokalny songthaew na Sukhumvit Road",
+      ru: "Местный сонгтео на Sukhumvit Road",
+      th: "สองแถวท้องถิ่นบนถนนสุขุมวิท",
+      zh: "Sukhumvit Road 本地双条车",
+    };
+  }
+
+  if (path.includes("pattaya-sukhumvit-songthaew")) {
+    return {
+      de: "Songthaew auf der Sukhumvit Road",
+      en: "Songthaew on Sukhumvit Road",
+      fr: "Songthaew sur Sukhumvit Road",
+      pl: "Songthaew na Sukhumvit Road",
+      ru: "Сонгтео на Sukhumvit Road",
+      th: "สองแถวบนถนนสุขุมวิท",
+      zh: "Sukhumvit Road 双条车",
+    };
+  }
+
+  if (path.includes("don-mueang-bus-station")) {
+    return {
+      de: "Busstation am Flughafen Don Mueang",
+      en: "Bus station area at Don Mueang Airport",
+      fr: "Zone de bus à l’aéroport Don Mueang",
+      pl: "Strefa autobusowa na lotnisku Don Mueang",
+      ru: "Автобусная зона аэропорта Дон Муанг",
+      th: "พื้นที่รถบัสที่สนามบินดอนเมือง",
+      zh: "廊曼机场巴士区域",
+    };
+  }
+
+  if (path.includes("don-mueang-terminal-2")) {
+    return {
+      de: "Vorderer Bereich von Terminal 2",
+      en: "Terminal 2 front area",
+      fr: "Entrée du Terminal 2",
+      pl: "Wejście do Terminalu 2",
+      ru: "Входная зона Терминала 2",
+      th: "ด้านหน้าอาคารผู้โดยสาร 2",
+      zh: "廊曼机场 2 号航站楼入口",
+    };
+  }
+
+  if (path.includes("don-mueang-terminal-1")) {
+    return {
+      de: "Gebäude von Terminal 1",
+      en: "Terminal 1 building",
+      fr: "Bâtiment du Terminal 1",
+      pl: "Budynek Terminalu 1",
+      ru: "Здание Терминала 1",
+      th: "อาคารผู้โดยสาร 1",
+      zh: "廊曼机场 1 号航站楼",
+    };
+  }
+
+  return {
+    de: "Stationsbereich",
+    en: "Station area",
+    fr: "Zone de la station",
+    pl: "Okolica stacji",
+    ru: "Зона станции",
+    th: "พื้นที่สถานี",
+    zh: "车站区域",
   };
 }
 
