@@ -11,6 +11,7 @@
     "test:ga4": "node scripts/check-ga4.mjs",
     "test:guide:ekkamai": "node scripts/check-ekkamai-guide.mjs",
     "test:guide:jomtien": "node scripts/check-jomtien-guide.mjs",
+    "test:guide:mochit": "node scripts/check-mochit-guide.mjs",
     "test:guide-links": "node scripts/check-seo-guide-links.mjs",
     "test:homepage": "node scripts/check-homepage-structure.mjs",
     "test:i18n": "node scripts/check-localized-ui.mjs",

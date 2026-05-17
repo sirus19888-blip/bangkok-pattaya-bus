@@ -17,6 +17,13 @@ export const seoGuideLinks: SeoGuideLink[] = [
   },
   {
     description:
+      "Compare Mo Chit 2 with Ekkamai and plan tickets, travel time and return options.",
+    href: "/en/mo-chit-bus-terminal-to-pattaya",
+    slug: "mo-chit-bus-terminal-to-pattaya",
+    title: "Mo Chit Bus Terminal to Pattaya guide",
+  },
+  {
+    description:
       "Use the Level 1 Gate 8 guide before taking the airport bus to Pattaya.",
     href: "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
     slug: "suvarnabhumi-airport-gate-8-pattaya-bus",
@@ -55,6 +62,7 @@ export const seoGuideLinks: SeoGuideLink[] = [
 const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
   "bangkok-to-pattaya": [
     "ekkamai-bus-terminal-to-pattaya-guide",
+    "mo-chit-bus-terminal-to-pattaya",
     "bangkok-to-pattaya-bus-vs-taxi",
     "bangkok-to-pattaya-after-midnight",
   ],

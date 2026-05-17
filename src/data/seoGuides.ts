@@ -150,6 +150,115 @@ export const seoGuides: SeoGuide[] = [
     ],
   },
   {
+    slug: "mo-chit-bus-terminal-to-pattaya",
+    title: "Mo Chit Bus Terminal to Pattaya: Bus Times, Tickets & Tips",
+    description:
+      "Guide to traveling from Bangkok Mo Chit Bus Terminal to Pattaya, including ticket tips, travel time, station notes and alternatives.",
+    h1: "Mo Chit Bus Terminal to Pattaya Guide",
+    intro:
+      "Mo Chit Bus Terminal, often called Mo Chit 2, is one of Bangkok's main long-distance bus terminals. This guide explains when it makes sense for Pattaya, how it compares with Ekkamai, where to buy tickets, and how to plan the return route from Pattaya to Mo Chit.",
+    shortAnswer:
+      "Use Mo Chit Bus Terminal for Pattaya if you are already staying in northern Bangkok or near Chatuchak. If you are staying around Sukhumvit, Ekkamai is often simpler. Buy tickets at the official counter, confirm whether the bus goes to Pattaya or North Pattaya Bus Station, and check the Bangkok to Pattaya route page before travel.",
+    routeId: "bangkok-to-pattaya",
+    routeLinkLabel: "Open Bangkok to Pattaya bus times",
+    ctaLabel: "Check Bangkok to Pattaya tickets",
+    ctaPosition: "guide_body",
+    ctaSubId: "bpb-bangkok-to-pattaya-guide_mochit",
+    lastUpdated: "2026-05-17",
+    keyPoints: [
+      "Best for travelers starting in northern Bangkok, Chatuchak or areas closer to Mo Chit 2.",
+      "Mo Chit 2 is not the same as BTS Mo Chit, so plan the transfer to the terminal.",
+      "Confirm the Pattaya destination and counter before paying, especially if you need North Pattaya Bus Station.",
+    ],
+    sections: [
+      {
+        title: "Where is Mo Chit Bus Terminal?",
+        body: "Mo Chit Bus Terminal, also known as Mo Chit 2, is a major Bangkok bus terminal in the northern part of the city. It is useful if you are starting near Chatuchak, Ari, northern Bangkok or a nearby taxi route. It is not directly the same place as BTS Mo Chit, so allow time to reach the actual bus terminal.",
+      },
+      {
+        title: "Mo Chit vs Ekkamai for Pattaya",
+        body: "Ekkamai is usually easier if you are staying around Sukhumvit because it is close to BTS Ekkamai and has a simpler terminal layout. Mo Chit can make more sense if your hotel is in northern Bangkok or if the next useful Pattaya departure is from Mo Chit. Choose the station that saves the most transfer time before the bus.",
+      },
+      {
+        title: "Where to buy tickets",
+        body: "Use the official ticket counters inside Mo Chit Bus Terminal and confirm that the ticket is for Pattaya before you pay. Ask which platform or bay to use, keep small cash available, and avoid unclear offers from unofficial drivers outside the terminal.",
+      },
+      {
+        title: "Travel time and fare notes",
+        body: "Bangkok to Pattaya commonly takes around 2-3 hours, but Bangkok traffic can change the real travel time. Fare notes can vary by station, operator and route, so use the route page for current planning information and confirm the final fare at the counter before boarding.",
+      },
+      {
+        title: "What if the bus is full?",
+        body: "Ask the official counter for the next Pattaya departure first. If the wait is too long, compare Ekkamai, another bus, minivan, taxi, Grab, Bolt, inDrive or private transfer. Do not leave with a driver unless the vehicle, destination and final price are clear.",
+      },
+      {
+        title: "Return route from Pattaya to Mo Chit",
+        body: "For the return trip, check whether your Pattaya ticket goes to Ekkamai, Mo Chit 2 or another Bangkok stop before buying. The Pattaya to Bangkok route page is the best place to compare return options and avoid choosing the wrong Bangkok arrival station.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Bangkok to Pattaya Bus",
+        href: "/en/bangkok-to-pattaya",
+        description:
+          "Check current Bangkok to Pattaya times, fare notes, station information and source status.",
+      },
+      {
+        label: "Pattaya to Bangkok Bus",
+        href: "/en/pattaya-to-bangkok",
+        description:
+          "Plan the return route from Pattaya to Bangkok, including Ekkamai and Mo Chit options.",
+      },
+      {
+        label: "Ekkamai Bus Terminal to Pattaya guide",
+        href: "/en/ekkamai-bus-terminal-to-pattaya-guide",
+        description:
+          "Compare Mo Chit with the more convenient Ekkamai option for Sukhumvit travelers.",
+      },
+    ],
+    faq: [
+      {
+        question: "Is Mo Chit Bus Terminal good for Pattaya?",
+        answer:
+          "Yes, especially if you are staying in northern Bangkok or near Chatuchak. If you are near Sukhumvit, Ekkamai is often easier.",
+      },
+      {
+        question: "Is Mo Chit 2 the same as BTS Mo Chit?",
+        answer:
+          "No. BTS Mo Chit is a rail station, while Mo Chit 2 is the long-distance bus terminal. Allow extra time to reach the actual terminal.",
+      },
+      {
+        question: "How long is the bus from Mo Chit to Pattaya?",
+        answer:
+          "The trip is commonly around 2-3 hours, depending on traffic and the final Pattaya stop. Leave extra time on weekends and holidays.",
+      },
+      {
+        question: "Can I buy Mo Chit to Pattaya tickets online?",
+        answer:
+          "You can compare online ticket and transfer options, but many travelers still buy bus tickets at the official counter. Confirm the operator, time and destination before travel.",
+      },
+      {
+        question: "Can I return from Pattaya to Mo Chit?",
+        answer:
+          "Some Pattaya to Bangkok buses may go to Mo Chit, but you should confirm the Bangkok arrival station before buying the ticket.",
+      },
+    ],
+    sources: [
+      {
+        label: "Pattaya Bus / Roong Reuang Coach",
+        url: "https://pattayabus.com/",
+      },
+      {
+        label: "Bangkok to Pattaya route page",
+        url: "/en/bangkok-to-pattaya",
+      },
+      {
+        label: "Pattaya to Bangkok route page",
+        url: "/en/pattaya-to-bangkok",
+      },
+    ],
+  },
+  {
     slug: "pattaya-bus-station-to-jomtien",
     title: "Pattaya Bus Station to Jomtien: Taxi, Songthaew & Transfer Guide",
     description:
