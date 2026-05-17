@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { Suspense } from "react";
 import { ConsentManagementPlaceholder } from "@/components/ConsentManagementPlaceholder";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
-import { PageViewTracker } from "@/components/PageViewTracker";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -40,9 +38,6 @@ export default function RootLayout({
         <ConsentManagementPlaceholder />
         <SiteFooter />
         <GoogleAnalytics />
-        <Suspense fallback={null}>
-          <PageViewTracker />
-        </Suspense>
         <Analytics />
       </body>
     </html>

@@ -14,12 +14,6 @@ export type AffiliateClickEvent = AnalyticsEventParameters & {
   to: string;
 };
 
-export type PageViewEvent = AnalyticsEventParameters & {
-  page_location: string;
-  page_path: string;
-  page_title: string;
-};
-
 declare global {
   interface Window {
     dataLayer?: unknown[];
@@ -43,15 +37,13 @@ export function trackEvent(
   eventName: string,
   parameters: AnalyticsEventParameters = {},
 ) {
-  sendGtagEvent(eventName, withOptionalDebugMode(parameters));
-}
-
-export function trackPageView(event: PageViewEvent) {
-  sendGtagEvent("page_view", withOptionalDebugMode(event));
+  sendGtagEvent(eventName, parameters);
 }
 
 export function trackAffiliateClick(event: AffiliateClickEvent) {
-  sendGtagEvent("affiliate_click", withOptionalDebugMode(event));
+  if (typeof window !== "undefined" && typeof window.gtag === "function") {
+    window.gtag("event", "affiliate_click", event);
+  }
 }
 
 function sendGtagEvent(
@@ -64,43 +56,5 @@ function sendGtagEvent(
 
   if (typeof window.gtag === "function") {
     window.gtag("event", eventName, parameters);
-    debugGaEvent(eventName, parameters);
-    return;
   }
-
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(["event", eventName, parameters]);
-  debugGaEvent(eventName, parameters);
-}
-
-function withOptionalDebugMode(
-  parameters: AnalyticsEventParameters,
-): AnalyticsEventParameters {
-  if (!isGaDebugEnabled()) {
-    return parameters;
-  }
-
-  return {
-    ...parameters,
-    debug_mode: true,
-  };
-}
-
-function debugGaEvent(
-  eventName: string,
-  parameters: AnalyticsEventParameters,
-) {
-  if (!isGaDebugEnabled() || typeof console === "undefined") {
-    return;
-  }
-
-  console.debug(`GA4 ${eventName} sent`, parameters);
-}
-
-function isGaDebugEnabled() {
-  return (
-    typeof process !== "undefined" &&
-    (process.env.NODE_ENV === "development" ||
-      process.env.NEXT_PUBLIC_GA_DEBUG === "true")
-  );
 }
