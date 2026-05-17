@@ -23,6 +23,11 @@ assert.match(
   /<GoogleAnalytics\s*\/>/,
   "Root layout must render the GoogleAnalytics component globally.",
 );
+assert.match(
+  layoutSource,
+  /<head>[\s\S]*<GoogleAnalytics\s*\/>[\s\S]*<\/head>/,
+  "Root layout must render the Google tag in the document head.",
+);
 assert.doesNotMatch(
   layoutSource,
   /PageViewTracker/,
@@ -37,6 +42,11 @@ assert.doesNotMatch(
   gaSource,
   /send_page_view:\s*false/,
   "GA4 config must not disable automatic page_view.",
+);
+assert.doesNotMatch(
+  gaSource,
+  /analytics_storage/,
+  "GA4 config must not set consent mode or analytics_storage.",
 );
 
 const htmlWithEnv = renderGoogleAnalyticsForTest(measurementId);
@@ -78,6 +88,11 @@ assert.doesNotMatch(
   /send_page_view/,
   "Rendered GA4 HTML must not contain send_page_view overrides.",
 );
+assert.doesNotMatch(
+  htmlWithEnv,
+  /analytics_storage|denied/,
+  "Rendered GA4 HTML must not deny analytics storage or set consent mode.",
+);
 
 const htmlWithoutEnv = renderGoogleAnalyticsForTest(undefined);
 
@@ -93,10 +108,13 @@ for (const route of [
   "/en/ekkamai-bus-terminal-to-pattaya-guide",
   "/en/pattaya-bus-station-to-jomtien",
 ]) {
-  assert.match(
-    layoutSource,
-    /<GoogleAnalytics\s*\/>/,
-    `The global root layout must make GA4 available on ${route}.`,
+  assert.ok(
+    htmlWithEnv.includes(`googletagmanager.com/gtag/js?id=${measurementId}`),
+    `The global Google tag script must be available to ${route}.`,
+  );
+  assert.ok(
+    htmlWithEnv.includes(`gtag("config", "${measurementId}")`),
+    `The global Google tag config must be available to ${route}.`,
   );
 }
 
@@ -179,15 +197,6 @@ function loadGoogleAnalyticsModuleForTest() {
     require: (request) => {
       if (request === "react/jsx-runtime") {
         return requireFromRoot("react/jsx-runtime");
-      }
-
-      if (request === "next/script") {
-        return {
-          __esModule: true,
-          default: function Script(props) {
-            return React.createElement("script", props, props.children);
-          },
-        };
       }
 
       return requireFromRoot(request);

@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
 
 export function GoogleAnalytics() {
@@ -9,19 +7,22 @@ export function GoogleAnalytics() {
 
   return (
     <>
-      <Script
+      <script
+        async
         src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-        strategy="afterInteractive"
       />
-      <Script id="ga4-init" strategy="afterInteractive">
-        {`
+      <script
+        id="ga4-init"
+        dangerouslySetInnerHTML={{
+          __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           window.gtag = gtag;
           gtag("js", new Date());
           gtag("config", "${gaMeasurementId}");
-        `}
-      </Script>
+        `,
+        }}
+      />
     </>
   );
 }
