@@ -96,7 +96,7 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
 
             <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
               <h2 className="text-2xl font-black leading-tight">
-                Related route: Bangkok to Pattaya Bus
+                Related route: {routePage.title}
               </h2>
               <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
                 Use the route page for current departure times, station details,

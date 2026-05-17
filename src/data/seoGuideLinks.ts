@@ -43,6 +43,13 @@ export const seoGuideLinks: SeoGuideLink[] = [
     slug: "pattaya-to-bangkok-before-flight",
     title: "Pattaya to Bangkok before a flight",
   },
+  {
+    description:
+      "Plan the local transfer from North Pattaya Bus Station to Jomtien or Thappraya.",
+    href: "/en/pattaya-bus-station-to-jomtien",
+    slug: "pattaya-bus-station-to-jomtien",
+    title: "Pattaya Bus Station to Jomtien guide",
+  },
 ];
 
 const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
@@ -55,6 +62,7 @@ const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
   "suvarnabhumi-airport-to-pattaya": [
     "suvarnabhumi-airport-gate-8-pattaya-bus",
   ],
+  "pattaya-to-suvarnabhumi-airport": ["pattaya-bus-station-to-jomtien"],
 };
 
 export function getHomepageSeoGuideLinks() {

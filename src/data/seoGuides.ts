@@ -150,6 +150,115 @@ export const seoGuides: SeoGuide[] = [
     ],
   },
   {
+    slug: "pattaya-bus-station-to-jomtien",
+    title: "Pattaya Bus Station to Jomtien: Taxi, Songthaew & Transfer Guide",
+    description:
+      "Practical guide to getting from North Pattaya Bus Station to Jomtien, including taxi, songthaew, Grab/Bolt, travel time and airport bus connection tips.",
+    h1: "Pattaya Bus Station to Jomtien Guide",
+    intro:
+      "North Pattaya Bus Station is useful for buses arriving from Bangkok, but it is not in Jomtien. This guide explains the simplest ways to continue from the Pattaya bus station to Jomtien, including taxi, Grab or Bolt, songthaew and the Jomtien / Thappraya airport bus area.",
+    shortAnswer:
+      "For most travelers, the easiest way from North Pattaya Bus Station to Jomtien is a taxi, Grab or Bolt, especially with luggage. Songthaews can be cheaper, but the route is less obvious for first-time visitors. If you need the Suvarnabhumi airport bus, confirm the Jomtien / Thappraya boarding point before you go.",
+    routeId: "pattaya-to-suvarnabhumi-airport",
+    routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
+    ctaLabel: "Check Pattaya → Suvarnabhumi Airport tickets",
+    ctaPosition: "guide_body",
+    ctaSubId: "bpb-pattaya-to-suvarnabhumi-guide_jomtien",
+    lastUpdated: "2026-05-17",
+    keyPoints: [
+      "North Pattaya Bus Station and the Jomtien / Thappraya airport bus area are different places.",
+      "Taxi, Grab or Bolt is usually easiest with luggage or after a long bus ride.",
+      "Songthaew can be cheaper, but ask where it goes before boarding and allow extra time.",
+    ],
+    sections: [
+      {
+        title: "Where do buses arrive in Pattaya?",
+        body: "Many Bangkok to Pattaya buses arrive at North Pattaya Bus Station. This is a practical arrival point for Pattaya city, but it is north of central Pattaya and not the same as Jomtien or the Thappraya airport bus office. Before leaving the station, check your hotel area and choose a local transfer that goes in the right direction.",
+      },
+      {
+        title: "How far is North Pattaya Bus Station from Jomtien?",
+        body: "Jomtien is south of central Pattaya, so the transfer is not usually a short walk. Travel time depends on traffic, hotel location and the route across Pattaya. Plan roughly 20-45 minutes by taxi or app ride, and more if you use a shared songthaew with transfers.",
+      },
+      {
+        title: "Taxi, Grab/Bolt or songthaew?",
+        body: "Taxi, Grab or Bolt is the simplest option if you have luggage, arrive at night or want to go directly to your hotel. Prices vary by traffic, demand and pickup point, so check the app fare before booking. Songthaews can be cheaper, but routes may not be obvious and you may need to change vehicles.",
+      },
+      {
+        title: "How to reach the Jomtien / Thappraya airport bus area",
+        body: "If you are connecting to the Suvarnabhumi Airport bus from the Jomtien / Thappraya area, do not assume it departs from North Pattaya Bus Station. Confirm the airport bus counter or Thappraya bus office location, leave a time buffer and use a direct taxi or app ride if you have bags or a flight connection.",
+      },
+      {
+        title: "What to do with luggage",
+        body: "With suitcases, a direct taxi, Grab or Bolt is usually worth considering because you avoid carrying bags between songthaews. Keep valuables with you, confirm the destination before loading luggage and allow extra time if you need to buy an airport bus ticket after arriving in Jomtien.",
+      },
+      {
+        title: "Related routes",
+        body: "Use the Bangkok to Pattaya route page when planning your arrival at North Pattaya Bus Station. Use the Pattaya to Bangkok route page for the return to Bangkok, and the Pattaya to Suvarnabhumi Airport route page if you are connecting from Jomtien or Thappraya toward the airport.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Bangkok to Pattaya Bus",
+        href: "/en/bangkok-to-pattaya",
+        description:
+          "Plan the bus arrival into Pattaya before arranging your transfer to Jomtien.",
+      },
+      {
+        label: "Pattaya to Bangkok Bus",
+        href: "/en/pattaya-to-bangkok",
+        description:
+          "Check return buses from Pattaya to Bangkok, including station and timing notes.",
+      },
+      {
+        label: "Pattaya to Suvarnabhumi Airport Bus",
+        href: "/en/pattaya-to-suvarnabhumi-airport",
+        description:
+          "Check airport bus times, fare notes and boarding information before a flight.",
+      },
+    ],
+    faq: [
+      {
+        question: "Is North Pattaya Bus Station the same as Jomtien Bus Station?",
+        answer:
+          "No. North Pattaya Bus Station is in North Pattaya, while the Jomtien bus station or Thappraya airport bus area is farther south. Confirm the exact airport bus boarding point before travel.",
+      },
+      {
+        question: "How do I get from Pattaya Bus Station to Jomtien?",
+        answer:
+          "The easiest way is usually taxi, Grab or Bolt. A shared songthaew may be cheaper, but routes can be confusing if it is your first time in Pattaya.",
+      },
+      {
+        question: "How long does it take from North Pattaya Bus Station to Jomtien?",
+        answer:
+          "Allow about 20-45 minutes by taxi or app ride, depending on traffic and your exact Jomtien destination. Shared transport can take longer.",
+      },
+      {
+        question: "Can I take the Suvarnabhumi airport bus from North Pattaya Bus Station?",
+        answer:
+          "Do not assume that. Current Pattaya airport bus information is connected with the Jomtien bus area, so confirm the counter and boarding point before going.",
+      },
+      {
+        question: "What is easiest with luggage?",
+        answer:
+          "Taxi, Grab, Bolt or a pre-arranged transfer is usually easiest with luggage because it avoids changing vehicles or walking with bags.",
+      },
+    ],
+    sources: [
+      {
+        label: "Pattaya to Suvarnabhumi Airport route page",
+        url: "/en/pattaya-to-suvarnabhumi-airport",
+      },
+      {
+        label: "Bangkok to Pattaya route page",
+        url: "/en/bangkok-to-pattaya",
+      },
+      {
+        label: "Airport Pattaya Bus",
+        url: "https://airportpattayabus.com/",
+      },
+    ],
+  },
+  {
     slug: "suvarnabhumi-airport-gate-8-pattaya-bus",
     title: "Suvarnabhumi Airport Gate 8 to Pattaya Bus | Practical Guide",
     description:
