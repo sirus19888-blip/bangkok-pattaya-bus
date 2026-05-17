@@ -208,6 +208,101 @@ for (const path of expectedEnglishRoutes) {
         `${path} desktop sidebar must not repeat the route title as an H2.`,
       );
     }
+    if (path === "/en/bangkok-to-pattaya") {
+      assert.ok(
+        html.includes(
+          "<title>Bangkok to Pattaya Bus: Times, Price, Stations &amp; Tickets</title>",
+        ),
+        `${path} must render the targeted SEO title.`,
+      );
+      assert.ok(
+        html.includes(
+          'name="description" content="Check Bangkok to Pattaya bus times, ticket price, Ekkamai station tips, travel time, arrival station details and online ticket options."',
+        ),
+        `${path} must render the targeted SEO meta description.`,
+      );
+      assert.equal(
+        count(visibleHtml, />\s*Bangkok to Pattaya Bus\s*</g),
+        1,
+        `${path} must keep one visible Bangkok to Pattaya Bus H1 text occurrence.`,
+      );
+    }
+    if (path === "/en/pattaya-to-bangkok") {
+      assert.ok(
+        html.includes(
+          "<title>Pattaya to Bangkok Bus: Times, Stations, Price &amp; Tickets</title>",
+        ),
+        `${path} must render the targeted SEO title.`,
+      );
+      assert.ok(
+        html.includes(
+          'name="description" content="Check Pattaya to Bangkok bus times, ticket price, departure station details, Ekkamai and Mo Chit arrival options and online ticket alternatives."',
+        ),
+        `${path} must render the targeted SEO meta description.`,
+      );
+      assert.equal(
+        count(visibleHtml, />\s*Pattaya to Bangkok Bus\s*</g),
+        1,
+        `${path} must keep one visible Pattaya to Bangkok Bus H1 text occurrence.`,
+      );
+    }
+    if (path === "/en/suvarnabhumi-airport-to-pattaya") {
+      assert.ok(
+        html.includes(
+          "<title>Suvarnabhumi Airport to Pattaya Bus: Times, Gate 8 &amp; Tickets</title>",
+        ),
+        `${path} must render the targeted SEO title.`,
+      );
+      assert.ok(
+        html.includes(
+          'name="description" content="Find Suvarnabhumi Airport to Pattaya bus times, Gate 8 ticket tips, travel time, fare notes, Jomtien/Pattaya arrival details and ticket alternatives."',
+        ),
+        `${path} must render the targeted SEO meta description.`,
+      );
+      assert.equal(
+        count(visibleHtml, />\s*Suvarnabhumi Airport to Pattaya Bus\s*</g),
+        1,
+        `${path} must keep one visible Suvarnabhumi Airport to Pattaya Bus H1 text occurrence.`,
+      );
+    }
+    if (path === "/en/pattaya-to-suvarnabhumi-airport") {
+      assert.ok(
+        html.includes(
+          "<title>Pattaya to Suvarnabhumi Airport Bus: Times, Price &amp; Tickets</title>",
+        ),
+        `${path} must render the targeted SEO title.`,
+      );
+      assert.ok(
+        html.includes(
+          'name="description" content="Check Pattaya to Suvarnabhumi Airport bus times, ticket price, Jomtien/Pattaya departure tips, travel time and alternatives for flights."',
+        ),
+        `${path} must render the targeted SEO meta description.`,
+      );
+      assert.equal(
+        count(visibleHtml, />\s*Pattaya to Suvarnabhumi Airport Bus\s*</g),
+        1,
+        `${path} must keep one visible Pattaya to Suvarnabhumi Airport Bus H1 text occurrence.`,
+      );
+    }
+    if (path === "/en/don-mueang-airport-to-pattaya") {
+      assert.ok(
+        html.includes(
+          "<title>Don Mueang Airport to Pattaya Bus: Routes, Times &amp; Tickets</title>",
+        ),
+        `${path} must render the targeted SEO title.`,
+      );
+      assert.ok(
+        html.includes(
+          'name="description" content="Compare ways to get from Don Mueang Airport to Pattaya by bus, via Mo Chit or transfer, with travel time, route tips and ticket alternatives."',
+        ),
+        `${path} must render the targeted SEO meta description.`,
+      );
+      assert.equal(
+        count(visibleHtml, />\s*Don Mueang Airport to Pattaya Bus\s*</g),
+        1,
+        `${path} must keep one visible Don Mueang Airport to Pattaya Bus H1 text occurrence.`,
+      );
+    }
     for (const pattern of [
       ...desktopSwipeTextPatterns,
       ...cleanDesktopSwipeTextPatterns,
