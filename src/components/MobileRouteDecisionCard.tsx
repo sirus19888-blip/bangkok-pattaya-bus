@@ -45,12 +45,7 @@ export function MobileRouteDecisionCard({
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
     number | null
-  >(() =>
-    getMinutesUntilDeparture(
-      calculatedNextDeparture.time,
-      calculatedNextDeparture.isTomorrow,
-    ),
-  );
+  >(null);
   const hasMultipleNextSubRoutes = calculatedNextDeparture.subRoutes.length > 1;
   const nextSubRouteText = hasMultipleNextSubRoutes
     ? `${labels.availableTo} ${calculatedNextDeparture.subRoutes
@@ -262,12 +257,7 @@ export function DesktopRouteBookingPanel({
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
     number | null
-  >(() =>
-    getMinutesUntilDeparture(
-      calculatedNextDeparture.time,
-      calculatedNextDeparture.isTomorrow,
-    ),
-  );
+  >(null);
   const countdownText = formatCountdown(minutesUntilDeparture, labels);
   const isUrgentCountdown =
     minutesUntilDeparture !== null &&

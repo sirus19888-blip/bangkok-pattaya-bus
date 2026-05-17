@@ -45,11 +45,7 @@ export function MobileRouteCountdown({
   );
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
     number | null
-  >(() =>
-    schedule
-      ? getMinutesUntilDeparture(nextDeparture.time, nextDeparture.isTomorrow)
-      : null,
-  );
+  >(null);
 
   useEffect(() => {
     if (!schedule) {

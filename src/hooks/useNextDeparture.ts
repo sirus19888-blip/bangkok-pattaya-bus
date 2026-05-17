@@ -9,7 +9,7 @@ export function useNextDeparture(
   initialNextDeparture: string,
 ): NextDepartureResult {
   const [nextDeparture, setNextDeparture] = useState<NextDepartureResult>(() =>
-    getNextDeparture(schedule),
+    getStableInitialNextDeparture(schedule, initialNextDeparture),
   );
 
   useEffect(() => {
@@ -30,4 +30,24 @@ export function useNextDeparture(
         isTomorrow: false,
         subRoutes: [],
       };
+}
+
+function getStableInitialNextDeparture(
+  schedule: Schedule,
+  initialNextDeparture: string,
+): NextDepartureResult {
+  const time = initialNextDeparture || schedule.nextDeparture || "";
+
+  return {
+    time,
+    isTomorrow: false,
+    subRoutes:
+      schedule.subRoutes
+        ?.filter((subRoute) => subRoute.departures.includes(time))
+        .map((subRoute) => ({
+          id: subRoute.id,
+          label: subRoute.label,
+          to: subRoute.to,
+        })) ?? [],
+  };
 }

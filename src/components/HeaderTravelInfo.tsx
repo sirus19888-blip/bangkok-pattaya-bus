@@ -43,6 +43,7 @@ const fallbackWeather: WeatherState = {
   code: 1,
   source: "fallback",
 };
+const thailandTimePlaceholder = "--:--";
 
 const routeWeatherLocations: Record<RouteId, WeatherLocation> = {
   "bangkok-to-pattaya": {
@@ -323,7 +324,7 @@ export function HeaderTravelInfo({
     source: "fallback",
   });
   const [weatherOpen, setWeatherOpen] = useState(false);
-  const [thaiTime, setThaiTime] = useState(() => formatThailandTime());
+  const [thaiTime, setThaiTime] = useState(thailandTimePlaceholder);
   const [ratesOpen, setRatesOpen] = useState(false);
 
   useEffect(() => {
