@@ -53,6 +53,11 @@ assert.match(
 );
 assert.match(
   htmlWithEnv,
+  /window\.gtag = gtag/,
+  "GA4 init script must expose window.gtag globally.",
+);
+assert.match(
+  htmlWithEnv,
   /id="ga4-init"/,
   "GA4 init script must use a stable script ID.",
 );
@@ -79,30 +84,39 @@ const gtagCalls = [];
 const analyticsModule = loadAnalyticsModuleForTest({
   gtag: (...args) => gtagCalls.push(args),
 });
+const trackedPageViews = [
+  "/",
+  "/en/bangkok-to-pattaya",
+  "/en/ekkamai-bus-terminal-to-pattaya-guide",
+  "/en/pattaya-bus-station-to-jomtien",
+];
 
-analyticsModule.trackPageView({
-  page_location: "https://www.bangkokpattayabus.com/en/bangkok-to-pattaya",
-  page_path: "/en/bangkok-to-pattaya",
-  page_title: "Bangkok to Pattaya Bus",
-});
+for (const pagePath of trackedPageViews) {
+  analyticsModule.trackPageView({
+    page_location: `https://www.bangkokpattayabus.com${pagePath}`,
+    page_path: pagePath,
+    page_title: pagePath === "/" ? "Bangkok Pattaya Bus Guide" : "Route page",
+  });
+}
+
 analyticsModule.trackAffiliateClick(affiliatePayload);
 
 assert.deepEqual(
   gtagCalls,
   [
-    [
+    ...trackedPageViews.map((pagePath) => [
       "event",
       "page_view",
       {
-        page_location:
-          "https://www.bangkokpattayabus.com/en/bangkok-to-pattaya",
-        page_path: "/en/bangkok-to-pattaya",
-        page_title: "Bangkok to Pattaya Bus",
+        page_location: `https://www.bangkokpattayabus.com${pagePath}`,
+        page_path: pagePath,
+        page_title:
+          pagePath === "/" ? "Bangkok Pattaya Bus Guide" : "Route page",
       },
-    ],
+    ]),
     ["event", "affiliate_click", affiliatePayload],
   ],
-  "GA4 helpers must send page_view and affiliate_click through gtag with the full payload.",
+  "GA4 helpers must send page_view for every page type and affiliate_click through gtag with the full payload.",
 );
 
 const queuedDataLayer = [];
@@ -121,7 +135,17 @@ assert.deepEqual(
 );
 assert.match(
   pageViewTrackerSource,
-  /trackPageView\(\{\s*page_path:\s*`\$\{window\.location\.pathname\}\$\{window\.location\.search\}`,\s*page_location:\s*window\.location\.href,\s*page_title:\s*document\.title,\s*\}\)/,
+  /usePathname/,
+  "PageViewTracker must use the App Router pathname.",
+);
+assert.match(
+  pageViewTrackerSource,
+  /useSearchParams/,
+  "PageViewTracker must use the App Router search params.",
+);
+assert.match(
+  pageViewTrackerSource,
+  /trackPageView\(\{\s*page_path:\s*pagePath,\s*page_location:\s*window\.location\.href,\s*page_title:\s*document\.title,\s*\}\)/,
   "PageViewTracker must send page_path, page_location, and page_title.",
 );
 

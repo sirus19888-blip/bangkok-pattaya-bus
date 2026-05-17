@@ -23,6 +23,7 @@ const affiliateRouteSource = readFileSync(
 const twelveGoSource = readFileSync(join(root, "src/lib/twelveGo.ts"), "utf8");
 const requiredAffiliatePositions = [
   "guide_body",
+  "guide_sidebar",
   "homepage_hero",
   "homepage_route_card",
   "route_after_schedule",
@@ -30,6 +31,9 @@ const requiredAffiliatePositions = [
   "desktop_sidebar",
   "mobile_sticky",
 ];
+const requiredBuiltAffiliatePositions = requiredAffiliatePositions.filter(
+  (position) => position !== "guide_sidebar",
+);
 const renderedAffiliateCTA = renderAffiliateCTAForTest({
   disclosureText:
     "Some booking links may be affiliate links. Timetable information stays independent.",
@@ -128,7 +132,7 @@ assert.match(
 );
 assert.match(
   analyticsSource,
-  /sendGtagEvent\("affiliate_click", event\)/,
+  /sendGtagEvent\("affiliate_click", withOptionalDebugMode\(event\)\)/,
   "Affiliate tracking must send the affiliate_click event through the shared GA4 helper.",
 );
 for (const parameter of [
@@ -229,6 +233,7 @@ assert.match(
 );
 for (const position of [
   "guide_body",
+  "guide_sidebar",
   "homepage_hero",
   "homepage_route_card",
   "route_top",
@@ -391,7 +396,7 @@ for (const { file, tag } of builtTwelveGoLinks) {
   builtAffiliatePositions.add(position);
 }
 
-for (const position of requiredAffiliatePositions) {
+for (const position of requiredBuiltAffiliatePositions) {
   assert.ok(
     builtAffiliatePositions.has(position),
     `Built 12Go links must include the ${position} sub_id position.`,

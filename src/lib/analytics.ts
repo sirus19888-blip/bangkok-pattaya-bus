@@ -29,7 +29,11 @@ declare global {
         eventName: string,
         parameters: AnalyticsEventParameters,
       ): void;
-      (command: "config", measurementId: string): void;
+      (
+        command: "config",
+        measurementId: string,
+        parameters?: AnalyticsEventParameters,
+      ): void;
       (command: "js", date: Date): void;
     };
   }
@@ -39,15 +43,15 @@ export function trackEvent(
   eventName: string,
   parameters: AnalyticsEventParameters = {},
 ) {
-  sendGtagEvent(eventName, parameters);
+  sendGtagEvent(eventName, withOptionalDebugMode(parameters));
 }
 
 export function trackPageView(event: PageViewEvent) {
-  sendGtagEvent("page_view", event);
+  sendGtagEvent("page_view", withOptionalDebugMode(event));
 }
 
 export function trackAffiliateClick(event: AffiliateClickEvent) {
-  sendGtagEvent("affiliate_click", event);
+  sendGtagEvent("affiliate_click", withOptionalDebugMode(event));
 }
 
 function sendGtagEvent(
@@ -60,9 +64,43 @@ function sendGtagEvent(
 
   if (typeof window.gtag === "function") {
     window.gtag("event", eventName, parameters);
+    debugGaEvent(eventName, parameters);
     return;
   }
 
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push(["event", eventName, parameters]);
+  debugGaEvent(eventName, parameters);
+}
+
+function withOptionalDebugMode(
+  parameters: AnalyticsEventParameters,
+): AnalyticsEventParameters {
+  if (!isGaDebugEnabled()) {
+    return parameters;
+  }
+
+  return {
+    ...parameters,
+    debug_mode: true,
+  };
+}
+
+function debugGaEvent(
+  eventName: string,
+  parameters: AnalyticsEventParameters,
+) {
+  if (!isGaDebugEnabled() || typeof console === "undefined") {
+    return;
+  }
+
+  console.debug(`GA4 ${eventName} sent`, parameters);
+}
+
+function isGaDebugEnabled() {
+  return (
+    typeof process !== "undefined" &&
+    (process.env.NODE_ENV === "development" ||
+      process.env.NEXT_PUBLIC_GA_DEBUG === "true")
+  );
 }

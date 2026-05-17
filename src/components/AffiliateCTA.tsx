@@ -14,6 +14,7 @@ export type AffiliateCTAPosition =
   | "homepage_hero"
   | "homepage_route_card"
   | "guide_body"
+  | "guide_sidebar"
   | "route_top"
   | "desktop_sidebar"
   | "route_after_schedule"
