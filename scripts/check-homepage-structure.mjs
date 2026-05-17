@@ -81,8 +81,10 @@ const desktopSwipeTextPatterns = [
 const forbiddenTextContentFragments = [
   "From:Bangkok",
   "From: Bangkok Pattaya Suvarnabhumi Airport",
+  "From: Bangkok Pattaya Suvarnabhumi Airport Pattaya",
   "Z:Bangkok",
   "Z: Bangkok Pattaya Suvarnabhumi Airport",
+  "Z: Bangkok Pattaya Suvarnabhumi Airport Pattaya",
   "31\u00b0M\u00e9t\u00e9o",
   "Estimation 31\u00b0M\u00e9t\u00e9o",
   "Szacunek 31\u00b0 Pogoda",
@@ -127,15 +129,23 @@ assert(
   "Route finder must use labels, selects, and a button as separate controls.",
 );
 assert(
-  routeSearchSource.includes("htmlFor={fromSelectId}") &&
+  routeSearchSource.includes('const fromSelectId = "from"') &&
+    routeSearchSource.includes('const toSelectId = "to"') &&
+    routeSearchSource.includes("htmlFor={fromSelectId}") &&
     routeSearchSource.includes("htmlFor={toSelectId}"),
-  "Route finder labels must be separate elements linked to selects.",
+  'Route finder labels must be linked to stable "from" and "to" select ids.',
+);
+assert(
+  routeSearchSource.includes('name="from"') &&
+    routeSearchSource.includes('name="to"'),
+  "Route finder selects must expose semantic form field names.",
 );
 assert(
   routeSearchSource.includes("aria-label={`${getAriaLabelText(displayLabels.from)}") &&
     routeSearchSource.includes("aria-label={`${getAriaLabelText(displayLabels.to)}") &&
-    routeSearchSource.includes("aria-label={`${goLabel}:"),
-  "Route finder selects and submit button must include localized aria-labels.",
+    routeSearchSource.includes("aria-label={`${goLabel}:") &&
+    routeSearchSource.includes("aria-label={routeFinderAriaLabel}"),
+  "Route finder form, selects, and submit button must include localized aria-labels.",
 );
 assert(
   routeSearchSource.includes('data-route-finder="true"'),
@@ -205,6 +215,26 @@ for (const [locale, title] of Object.entries(localizedRevenueTitles)) {
   const desktopVisibleHtml = stripDesktopHidden(visibleHtml);
   const textContent = toTextContent(visibleHtml);
   const occurrences = visibleHtml.split(title).length - 1;
+
+  assert(
+    /<form\b[^>]*data-route-finder="true"/.test(visibleHtml) &&
+      /<form\b[^>]*aria-label="[^"]+"/.test(visibleHtml),
+    `Homepage route finder for ${locale} must render as an accessible form.`,
+  );
+  assert(
+    visibleHtml.includes('for="from"') &&
+      visibleHtml.includes('id="from"') &&
+      visibleHtml.includes('name="from"') &&
+      visibleHtml.includes('for="to"') &&
+      visibleHtml.includes('id="to"') &&
+      visibleHtml.includes('name="to"'),
+    `Homepage route finder for ${locale} must render linked labels and named selects.`,
+  );
+  assert(
+    /<button\b[^>]*type="submit"/.test(visibleHtml) &&
+      /<button\b[^>]*aria-label="[^"]+"/.test(visibleHtml),
+    `Homepage route finder for ${locale} must render an accessible submit button.`,
+  );
 
   assert(
     occurrences === 1,

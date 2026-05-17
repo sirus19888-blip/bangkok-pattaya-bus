@@ -53,6 +53,8 @@ const expectedEnglishRoutes = [
 const routeLocales = ["en", "th", "zh", "ru", "de", "fr", "pl"];
 const routeSlugs = expectedEnglishRoutes.map((path) => path.replace("/en/", ""));
 const relatedRouteCheckLocales = ["en", "pl", "zh", "fr", "de", "ru", "th"];
+const strictRelatedRouteSemanticLocales = ["en", "pl"];
+const feedbackButtonCheckLocales = ["en", "pl"];
 
 const routeTitlesByPath = new Map([
   ["/en/bangkok-to-pattaya", "Bangkok to Pattaya Bus"],
@@ -409,6 +411,110 @@ for (const locale of relatedRouteCheckLocales) {
   }
 }
 
+for (const locale of strictRelatedRouteSemanticLocales) {
+  const builtHtmlPath = join(
+    root,
+    ".next/server/app",
+    locale,
+    "bangkok-to-pattaya.html",
+  );
+
+  if (!existsSync(builtHtmlPath)) {
+    continue;
+  }
+
+  const html = readFileSync(builtHtmlPath, "utf8");
+  const visibleHtml = html
+    .split("</head>")[1]
+    ?.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "") ?? html;
+  const relatedSection =
+    visibleHtml.match(
+      /<section\b[^>]*data-related-routes="true"[\s\S]*?<\/section>/,
+    )?.[0] ?? "";
+  const relatedAnchors = relatedSection.match(/<a\b[\s\S]*?<\/a>/g) ?? [];
+
+  assert.ok(
+    relatedSection.includes("<ul") &&
+      relatedSection.includes("<li") &&
+      relatedSection.includes('data-related-route-card="true"'),
+    `/${locale}/bangkok-to-pattaya related routes must use a semantic ul/li card list.`,
+  );
+  assert.ok(
+    count(relatedSection, /data-related-route-card="true"/g) >= 1,
+    `/${locale}/bangkok-to-pattaya must render at least one related route card.`,
+  );
+  assert.ok(
+    relatedSection.includes('class="title') &&
+      relatedSection.includes('class="description') &&
+      relatedSection.includes('class="cta') &&
+      relatedSection.includes("aria-label=") &&
+      relatedSection.includes("href="),
+    `/${locale}/bangkok-to-pattaya related route cards must include title, description, CTA/aria-label, and href.`,
+  );
+  assert.ok(
+    relatedAnchors.every(
+      (anchor) =>
+        !(
+          anchor.includes('class="title') &&
+          anchor.includes('class="description')
+        ),
+    ),
+    `/${locale}/bangkok-to-pattaya related route title and description must not be inside one link.`,
+  );
+  assert.ok(
+    relatedAnchors.every(
+      (anchor) =>
+        !(
+          anchor.includes('class="description') &&
+          anchor.includes('class="cta')
+        ),
+    ),
+    `/${locale}/bangkok-to-pattaya related route description and CTA must not be inside one link.`,
+  );
+}
+
+for (const locale of feedbackButtonCheckLocales) {
+  const builtHtmlPath = join(
+    root,
+    ".next/server/app",
+    locale,
+    "bangkok-to-pattaya.html",
+  );
+
+  if (!existsSync(builtHtmlPath)) {
+    continue;
+  }
+
+  const html = readFileSync(builtHtmlPath, "utf8");
+  const visibleHtml = html
+    .split("</head>")[1]
+    ?.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "") ?? html;
+  const feedbackActions =
+    visibleHtml.match(
+      /<ul\b[^>]*data-feedback-actions="true"[\s\S]*?<\/ul>/,
+    )?.[0] ?? "";
+
+  assert.ok(
+    feedbackActions.includes("gap-3"),
+    `/${locale}/bangkok-to-pattaya feedback actions must keep visible spacing between buttons.`,
+  );
+  assert.equal(
+    count(feedbackActions, /<button\b/g),
+    2,
+    `/${locale}/bangkok-to-pattaya feedback must render helpful and report as two separate button elements.`,
+  );
+  assert.equal(
+    count(feedbackActions, /data-feedback-action="helpful"/g),
+    1,
+    `/${locale}/bangkok-to-pattaya feedback must render one helpful button.`,
+  );
+  assert.equal(
+    count(feedbackActions, /data-feedback-action="report_outdated"/g),
+    1,
+    `/${locale}/bangkok-to-pattaya feedback must render one report outdated button.`,
+  );
+}
+
 assert.equal(
   count(mobileDecisionSource, /<h1\b/g),
   1,
@@ -539,15 +645,17 @@ assert.ok(
 assert.ok(
   stationPhotoGallerySource.includes("mobilePreviewLimit") &&
     stationPhotoGallerySource.includes("mobileShowAll") &&
+    stationPhotoGallerySource.includes("mobileShowCredits") &&
     stationPhotoGallerySource.includes("hidden md:block"),
-  "Mobile Station information must preview one photo and reveal the rest with Show more.",
+  "Mobile Station information must preview one photo and reveal the rest/credits with Show more.",
 );
 assert.ok(
   stationCardSource.includes("stationTipPoints.length > 3") &&
     stationCardSource.includes("mobilePreviewLimit={1}") &&
+    stationCardSource.includes("mobileShowCredits={isExpanded}") &&
     stationCardSource.includes("isExpanded ? \"block\" : \"hidden md:block\"") &&
     stationCardSource.includes("labels.openInGoogleMaps"),
-  "Mobile Station information must show 2-3 tips, one photo, Google Maps, and hide extended details behind Show more.",
+  "Mobile Station information must show 2-3 tips, one photo, Google Maps, and hide maps/credits/extended details behind Show more.",
 );
 assert.equal(
   count(stationCardSource, /<StationMiniMap\b/g),

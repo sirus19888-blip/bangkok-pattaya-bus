@@ -20,6 +20,7 @@ type StationPhotoGalleryProps = {
   showGroupTitles?: boolean;
   compact?: boolean;
   mobilePreviewLimit?: number;
+  mobileShowCredits?: boolean;
   mobileShowAll?: boolean;
 };
 
@@ -30,6 +31,7 @@ export function StationPhotoGallery({
   showGroupTitles = true,
   compact = false,
   mobilePreviewLimit,
+  mobileShowCredits = true,
   mobileShowAll = true,
 }: StationPhotoGalleryProps) {
   const visibleGroups = groups.filter((group) => group.photos.length > 0);
@@ -139,7 +141,11 @@ export function StationPhotoGallery({
                     >
                       {cleanCaption}
                     </figcaption>
-                    <p className="mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280] lg:text-[0.62rem] lg:leading-3">
+                    <p
+                      className={`mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280] lg:text-[0.62rem] lg:leading-3 ${
+                        mobileShowCredits ? "" : "hidden md:block"
+                      }`}
+                    >
                       <AttributionPrefix
                         label={attributionLabel}
                         tooltip={repairMojibake(`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`)}

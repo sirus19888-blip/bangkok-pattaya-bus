@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import type { LocaleCode, RouteId } from "@/data/routes";
@@ -46,7 +46,6 @@ export function RouteSearch({
   to,
 }: RouteSearchProps) {
   const router = useRouter();
-  const routeSearchId = useId();
   const [selectedFrom, setSelectedFrom] = useState(from);
   const [selectedTo, setSelectedTo] = useState(to);
   const fromOptions = useMemo(
@@ -66,8 +65,11 @@ export function RouteSearch({
   );
   const displayLabels = getRouteSearchLabels(locale, labels);
   const goLabel = goLabels[locale] ?? goLabels.en;
-  const fromSelectId = `${routeSearchId}-from`;
-  const toSelectId = `${routeSearchId}-to`;
+  const fromSelectId = "from";
+  const toSelectId = "to";
+  const routeFinderAriaLabel = `${getAriaLabelText(
+    displayLabels.from,
+  )} ${getAriaLabelText(displayLabels.to)} route finder`;
 
   function openRoute(nextFrom: string, nextTo: string) {
     const matchingRoute = findMatchingRoute(routePages, nextFrom, nextTo);
@@ -131,9 +133,7 @@ export function RouteSearch({
 
   return (
     <form
-      aria-label={`${getAriaLabelText(displayLabels.from)} ${getAriaLabelText(
-        displayLabels.to,
-      )}`}
+      aria-label={routeFinderAriaLabel}
       data-route-finder="true"
       onSubmit={handleSubmit}
       className={
@@ -157,6 +157,7 @@ export function RouteSearch({
           </label>
           <select
             id={fromSelectId}
+            name="from"
             aria-label={`${getAriaLabelText(displayLabels.from)} ${selectedFrom}`}
             value={selectedFrom}
             onChange={(event) => handleFromChange(event.target.value)}
@@ -190,6 +191,7 @@ export function RouteSearch({
           </label>
           <select
             id={toSelectId}
+            name="to"
             aria-label={`${getAriaLabelText(displayLabels.to)} ${selectedTo}`}
             value={selectedTo}
             onChange={(event) => handleToChange(event.target.value)}

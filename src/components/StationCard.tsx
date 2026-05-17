@@ -129,6 +129,7 @@ export function StationCard({
                   compact
                   mobilePreviewLimit={1}
                   mobileShowAll={isExpanded}
+                  mobileShowCredits={isExpanded}
                 />
                 <div className="md:hidden">
                   <a

@@ -33,17 +33,23 @@ export function RelatedRoutes({
   const ctaLabel = getRelatedRouteCtaLabel(locale);
 
   return (
-    <section className="rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5 md:p-4">
+    <section
+      className="rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5 md:p-4"
+      data-related-routes="true"
+    >
       <p className="text-xs font-bold uppercase tracking-wide text-[#2f6f93] sm:text-sm">
         {heading}
       </p>
       <ul className="mt-3 grid gap-2.5 sm:mt-4 sm:grid-cols-2 sm:gap-3 md:mt-3 md:grid-cols-3 md:gap-2.5">
         {relatedRoutes.map((routePage) => (
-          <li key={routePage.slug} className="min-w-0">
-            <Link
-              href={`/${locale}/${routePage.slug}`}
-              aria-label={`${routePage.title}: ${routePage.relatedDescription}`}
-              className="relative block min-h-[6.4rem] overflow-hidden rounded-xl border border-[#eadcc7] bg-[#13233a] p-3.5 shadow-sm transition hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a] focus-visible:ring-offset-2 sm:p-4 md:min-h-0 md:bg-[#fffaf2] md:p-3"
+          <li
+            key={routePage.slug}
+            className="min-w-0"
+            data-related-route-card="true"
+          >
+            <article
+              className="relative min-h-[6.4rem] overflow-hidden rounded-xl border border-[#eadcc7] bg-[#13233a] p-3.5 shadow-sm transition hover:bg-white sm:p-4 md:min-h-0 md:bg-[#fffaf2] md:p-3"
+              data-related-route-href={`/${locale}/${routePage.slug}`}
             >
               <Image
                 alt=""
@@ -54,16 +60,24 @@ export function RelatedRoutes({
                 src={relatedRouteImages[routePage.slug]}
               />
               <span className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/15 via-[#0e1e2e]/35 to-[#0e1e2e]/88 md:hidden" />
-              <span className="title relative block text-sm font-black leading-tight text-white drop-shadow sm:text-base md:text-sm md:text-[#13233a] md:drop-shadow-none">
+              <Link
+                href={`/${locale}/${routePage.slug}`}
+                aria-label={routePage.title}
+                className="title relative block text-sm font-black leading-tight text-white drop-shadow transition hover:text-[#f3d77b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a] focus-visible:ring-offset-2 sm:text-base md:text-sm md:text-[#13233a] md:drop-shadow-none md:hover:text-[#0e7b6b]"
+              >
                 {routePage.title}
-              </span>
-              <span className="description relative mt-2 block max-w-[17rem] text-xs font-semibold leading-5 text-white/85 md:mt-1 md:max-w-none md:text-[#4f5d6c]">
+              </Link>
+              <p className="description relative mt-2 max-w-[17rem] text-xs font-semibold leading-5 text-white/85 md:mt-1 md:max-w-none md:text-[#4f5d6c]">
                 {routePage.relatedDescription}
-              </span>
-              <span className="cta relative mt-3 inline-flex text-xs font-black text-[#f3d77b] md:text-[#2f6f93]">
+              </p>
+              <Link
+                href={`/${locale}/${routePage.slug}`}
+                aria-label={`${ctaLabel}: ${routePage.title}`}
+                className="cta relative mt-3 inline-flex text-xs font-black text-[#f3d77b] transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a] focus-visible:ring-offset-2 md:text-[#2f6f93] md:hover:text-[#13233a]"
+              >
                 {ctaLabel}
-              </span>
-            </Link>
+              </Link>
+            </article>
           </li>
         ))}
       </ul>
