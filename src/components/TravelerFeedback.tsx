@@ -129,37 +129,28 @@ export function TravelerFeedback({
   const [isSendingHelped, setIsSendingHelped] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const text = getCopy(locale);
-  const pageUrl = typeof window === "undefined" ? "" : window.location.href;
-  const feedbackStorageKey =
-    typeof window === "undefined"
-      ? ""
-      : `traveler-feedback-helped:${window.location.pathname}`;
-  const body = `${text.bodyIntro}\n${pageUrl}\n\n${text.routeLabel}: ${routeTitle}\n\n${text.prompt}`;
-  const mailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
-    text.subject,
-  )}&body=${encodeURIComponent(body)}`;
-  const helpedBody = `${text.helpedBodyIntro}\n${pageUrl}\n\n${text.routeLabel}: ${routeTitle}\n\nLocale: ${locale}`;
-  const helpedMailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
-    text.helpedSubject,
-  )}&body=${encodeURIComponent(helpedBody)}`;
-  const trackingPayload = {
-    lang: locale,
-    page_url: pageUrl,
-    route_title: routeTitle,
-  };
 
   async function handleHelpedClick() {
     if (isSendingHelped) {
       return;
     }
 
-    trackEvent("feedback_helpful_click", trackingPayload);
+    const page = getCurrentPage();
+    const helpedBody = `${text.helpedBodyIntro}\n${page.url}\n\n${text.routeLabel}: ${routeTitle}\n\nLocale: ${locale}`;
+    const helpedMailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
+      text.helpedSubject,
+    )}&body=${encodeURIComponent(helpedBody)}`;
+
+    trackEvent("feedback_helpful_click", trackingPayload(page));
     setHelped(true);
     setEmailError(false);
     setIsSendingHelped(true);
 
-    if (feedbackStorageKey) {
-      window.localStorage.setItem(feedbackStorageKey, "yes");
+    if (page.path) {
+      window.localStorage.setItem(
+        `traveler-feedback-helped:${page.path}`,
+        "yes",
+      );
     }
 
     try {
@@ -175,7 +166,7 @@ export function TravelerFeedback({
             _captcha: "false",
             _subject: text.helpedSubject,
             message: helpedBody,
-            page: pageUrl,
+            page: page.url,
             route: routeTitle,
             locale,
             feedback: text.helped,
@@ -188,15 +179,36 @@ export function TravelerFeedback({
       }
     } catch {
       setEmailError(true);
-      window.location.href = helpedMailtoUrl;
+      window.location.assign(helpedMailtoUrl);
     } finally {
       setIsSendingHelped(false);
     }
   }
 
   function handleReportClick() {
-    trackEvent("report_outdated_click", trackingPayload);
-    window.location.href = mailtoUrl;
+    const page = getCurrentPage();
+    const body = `${text.bodyIntro}\n${page.url}\n\n${text.routeLabel}: ${routeTitle}\n\n${text.prompt}`;
+    const mailtoUrl = `mailto:bangkokpattayabus@gmail.com?subject=${encodeURIComponent(
+      text.subject,
+    )}&body=${encodeURIComponent(body)}`;
+
+    trackEvent("report_outdated_click", trackingPayload(page));
+    window.location.assign(mailtoUrl);
+  }
+
+  function getCurrentPage() {
+    return {
+      path: window.location.pathname,
+      url: window.location.href,
+    };
+  }
+
+  function trackingPayload(page = getCurrentPage()) {
+    return {
+      lang: locale,
+      page_url: page.url,
+      route_title: routeTitle,
+    };
   }
 
   return (

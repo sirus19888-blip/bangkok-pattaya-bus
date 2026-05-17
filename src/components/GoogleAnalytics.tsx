@@ -19,7 +19,7 @@ export function GoogleAnalytics() {
           function gtag(){window.dataLayer.push(arguments);}
           window.gtag = window.gtag || gtag;
           window.gtag('js', new Date());
-          window.gtag('config', '${gaMeasurementId}');
+          window.gtag('config', '${gaMeasurementId}', { send_page_view: false });
         `}
       </Script>
     </>

@@ -1,4 +1,9 @@
-export type AffiliateClickEvent = {
+export type AnalyticsEventParameters = Record<
+  string,
+  string | number | boolean | null | undefined
+>;
+
+export type AffiliateClickEvent = AnalyticsEventParameters & {
   cta_position: string;
   from: string;
   href: string;
@@ -9,10 +14,11 @@ export type AffiliateClickEvent = {
   to: string;
 };
 
-export type AnalyticsEventParameters = Record<
-  string,
-  string | number | boolean | null | undefined
->;
+export type PageViewEvent = AnalyticsEventParameters & {
+  page_location: string;
+  page_path: string;
+  page_title: string;
+};
 
 declare global {
   interface Window {
@@ -33,17 +39,30 @@ export function trackEvent(
   eventName: string,
   parameters: AnalyticsEventParameters = {},
 ) {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") {
-    return;
-  }
+  sendGtagEvent(eventName, parameters);
+}
 
-  window.gtag("event", eventName, parameters);
+export function trackPageView(event: PageViewEvent) {
+  sendGtagEvent("page_view", event);
 }
 
 export function trackAffiliateClick(event: AffiliateClickEvent) {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") {
+  sendGtagEvent("affiliate_click", event);
+}
+
+function sendGtagEvent(
+  eventName: string,
+  parameters: AnalyticsEventParameters,
+) {
+  if (typeof window === "undefined") {
     return;
   }
 
-  window.gtag("event", "affiliate_click", event);
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, parameters);
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(["event", eventName, parameters]);
 }

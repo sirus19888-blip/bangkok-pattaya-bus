@@ -13,14 +13,21 @@ const moduleRequire = createRequire(import.meta.url);
 const gaSourcePath = join(root, "src/components/GoogleAnalytics.tsx");
 const layoutSourcePath = join(root, "src/app/layout.tsx");
 const analyticsSourcePath = join(root, "src/lib/analytics.ts");
+const pageViewTrackerSourcePath = join(root, "src/components/PageViewTracker.tsx");
 const gaSource = readFileSync(gaSourcePath, "utf8");
 const layoutSource = readFileSync(layoutSourcePath, "utf8");
 const analyticsSource = readFileSync(analyticsSourcePath, "utf8");
+const pageViewTrackerSource = readFileSync(pageViewTrackerSourcePath, "utf8");
 
 assert.match(
   layoutSource,
   /<GoogleAnalytics\s*\/>/,
   "Root layout must render the GoogleAnalytics component.",
+);
+assert.match(
+  layoutSource,
+  /<PageViewTracker\s*\/>/,
+  "Root layout must render the PageViewTracker component.",
 );
 assert.match(
   gaSource,
@@ -41,8 +48,8 @@ assert.match(
 );
 assert.match(
   htmlWithEnv,
-  /gtag\('config', 'G-TEST123'\)/,
-  "GA4 init script must configure the env measurement ID.",
+  /gtag\('config', 'G-TEST123', \{ send_page_view: false \}\)/,
+  "GA4 init script must configure the env measurement ID without relying on automatic page_view.",
 );
 assert.match(
   htmlWithEnv,
@@ -73,19 +80,49 @@ const analyticsModule = loadAnalyticsModuleForTest({
   gtag: (...args) => gtagCalls.push(args),
 });
 
+analyticsModule.trackPageView({
+  page_location: "https://www.bangkokpattayabus.com/en/bangkok-to-pattaya",
+  page_path: "/en/bangkok-to-pattaya",
+  page_title: "Bangkok to Pattaya Bus",
+});
 analyticsModule.trackAffiliateClick(affiliatePayload);
 
 assert.deepEqual(
   gtagCalls,
-  [["event", "affiliate_click", affiliatePayload]],
-  "trackAffiliateClick must send affiliate_click through gtag with the full payload.",
+  [
+    [
+      "event",
+      "page_view",
+      {
+        page_location:
+          "https://www.bangkokpattayabus.com/en/bangkok-to-pattaya",
+        page_path: "/en/bangkok-to-pattaya",
+        page_title: "Bangkok to Pattaya Bus",
+      },
+    ],
+    ["event", "affiliate_click", affiliatePayload],
+  ],
+  "GA4 helpers must send page_view and affiliate_click through gtag with the full payload.",
 );
 
-const analyticsModuleWithoutGtag = loadAnalyticsModuleForTest({});
+const queuedDataLayer = [];
+const analyticsModuleWithoutGtag = loadAnalyticsModuleForTest({
+  dataLayer: queuedDataLayer,
+});
 
 assert.doesNotThrow(
   () => analyticsModuleWithoutGtag.trackAffiliateClick(affiliatePayload),
   "trackAffiliateClick must not block navigation or throw when GA4 is unavailable.",
+);
+assert.deepEqual(
+  JSON.parse(JSON.stringify(queuedDataLayer)),
+  [["event", "affiliate_click", affiliatePayload]],
+  "trackAffiliateClick must queue affiliate_click in dataLayer when gtag has not loaded yet.",
+);
+assert.match(
+  pageViewTrackerSource,
+  /trackPageView\(\{\s*page_path:\s*`\$\{window\.location\.pathname\}\$\{window\.location\.search\}`,\s*page_location:\s*window\.location\.href,\s*page_title:\s*document\.title,\s*\}\)/,
+  "PageViewTracker must send page_path, page_location, and page_title.",
 );
 
 console.log("GA4 checks passed.");
