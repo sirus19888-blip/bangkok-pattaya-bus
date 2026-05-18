@@ -131,14 +131,51 @@ const affiliatePayload = {
 const gtagCalls = [];
 const analyticsModule = loadAnalyticsModuleForTest({
   gtag: (...args) => gtagCalls.push(args),
-});
+}, measurementId);
+const expectedAffiliatePayload = {
+  ...affiliatePayload,
+  send_to: measurementId,
+};
 
 analyticsModule.trackAffiliateClick(affiliatePayload);
 
 assert.deepEqual(
-  gtagCalls,
-  [["event", "affiliate_click", affiliatePayload]],
-  'trackAffiliateClick must call window.gtag("event", "affiliate_click", params).',
+  JSON.parse(JSON.stringify(gtagCalls)),
+  [["event", "affiliate_click", expectedAffiliatePayload]],
+  'trackAffiliateClick must call window.gtag("event", "affiliate_click", params with send_to).',
+);
+assert.equal(
+  gtagCalls[0][2].send_to,
+  measurementId,
+  "affiliate_click must include send_to with the GA4 measurement ID.",
+);
+for (const parameter of [
+  "route_id",
+  "lang",
+  "provider",
+  "cta_position",
+  "sub_id",
+  "href",
+]) {
+  assert.equal(
+    gtagCalls[0][2][parameter],
+    expectedAffiliatePayload[parameter],
+    `affiliate_click must include ${parameter}.`,
+  );
+}
+
+const pageViewPayload = {
+  page_location: "https://www.bangkokpattayabus.com/en/bangkok-to-pattaya",
+  page_path: "/en/bangkok-to-pattaya",
+  page_title: "Bangkok to Pattaya Bus",
+};
+
+analyticsModule.trackPageView(pageViewPayload);
+
+assert.deepEqual(
+  JSON.parse(JSON.stringify(gtagCalls[1])),
+  ["event", "page_view", { ...pageViewPayload, send_to: measurementId }],
+  "trackPageView must call page_view with send_to.",
 );
 
 const analyticsModuleWithoutGtag = loadAnalyticsModuleForTest({});
@@ -149,8 +186,18 @@ assert.doesNotThrow(
 );
 assert.match(
   analyticsSource,
-  /window\.gtag\("event", "affiliate_click", event\)/,
-  'trackAffiliateClick must stay as a direct window.gtag("event", "affiliate_click", params) call.',
+  /window\.gtag\("event", "affiliate_click", withGaDestination\(event\)\)/,
+  'trackAffiliateClick must route affiliate_click through withGaDestination.',
+);
+assert.match(
+  analyticsSource,
+  /window\.gtag\("event", "page_view", withGaDestination\(event\)\)/,
+  'trackPageView must route page_view through withGaDestination.',
+);
+assert.match(
+  analyticsSource,
+  /send_to: gaMeasurementId/,
+  "GA4 events must include send_to from NEXT_PUBLIC_GA_MEASUREMENT_ID.",
 );
 
 console.log("GA4 checks passed.");
@@ -210,7 +257,7 @@ function loadGoogleAnalyticsModuleForTest() {
   return cjsModule.exports;
 }
 
-function loadAnalyticsModuleForTest(windowValue) {
+function loadAnalyticsModuleForTest(windowValue, nextMeasurementId = measurementId) {
   const transformed = ts.transpileModule(analyticsSource, {
     compilerOptions: {
       esModuleInterop: true,
@@ -223,6 +270,11 @@ function loadAnalyticsModuleForTest(windowValue) {
   const sandbox = {
     exports: cjsModule.exports,
     module: cjsModule,
+    process: {
+      env: nextMeasurementId
+        ? { NEXT_PUBLIC_GA_MEASUREMENT_ID: nextMeasurementId }
+        : {},
+    },
     window: windowValue,
   };
 
