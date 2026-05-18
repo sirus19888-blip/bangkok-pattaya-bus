@@ -14,7 +14,7 @@ export type AffiliateClickEvent = AnalyticsEventParameters & {
   to: string;
 };
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-0DYTH1TLGB";
+const GA_ID = "G-0DYTH1TLGB";
 
 declare global {
   interface Window {
@@ -63,7 +63,7 @@ export function trackAffiliateClick(params: AffiliateClickEvent) {
   }
 
   window.gtag("event", "affiliate_click", {
-    send_to: GA_ID,
+    send_to: "G-0DYTH1TLGB",
     ...params,
   });
 }

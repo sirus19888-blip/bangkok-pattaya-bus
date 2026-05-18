@@ -1,12 +1,10 @@
+/* eslint-disable @next/next/next-script-for-ga -- Hard GA4 reset uses the raw official snippet for g/collect testing. */
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { ConsentManagementPlaceholder } from "@/components/ConsentManagementPlaceholder";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
-
-const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-0DYTH1TLGB";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -34,13 +32,27 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased">
       <head>
         <meta charSet="utf-8" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-0DYTH1TLGB"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-0DYTH1TLGB');
+      `,
+          }}
+        />
       </head>
       <body className="flex min-h-full flex-col">
         {children}
         <ConsentManagementPlaceholder />
         <SiteFooter />
         <Analytics />
-        <GoogleAnalytics gaId={GA_ID} />
       </body>
     </html>
   );

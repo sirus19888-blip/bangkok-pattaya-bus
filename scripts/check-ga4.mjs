@@ -15,49 +15,65 @@ const analyticsSource = readFileSync(analyticsSourcePath, "utf8");
 const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8"));
 const measurementId = "G-0DYTH1TLGB";
 
-assert.ok(
+assert.equal(
   packageJson.dependencies?.["@next/third-parties"],
-  "The official @next/third-parties package must be installed.",
+  undefined,
+  "The official @next/third-parties package must not be used during the hard GA4 reset.",
 );
 assert.equal(
   existsSync(oldGoogleAnalyticsPath),
   false,
   "The custom GoogleAnalytics component must not exist.",
 );
-assert.match(
-  layoutSource,
-  /import \{ GoogleAnalytics \} from "@next\/third-parties\/google"/,
-  "Root layout must use the official @next/third-parties/google integration.",
-);
 assert.doesNotMatch(
   layoutSource,
-  /@\/components\/GoogleAnalytics|from "next\/script"|<Script\b|ga4-loader|ga4-init/,
-  "Root layout must not use custom GA4 scripts or the old GoogleAnalytics component.",
+  /@next\/third-parties|@\/components\/GoogleAnalytics|from "next\/script"|<GoogleAnalytics|<Script\b|ga4-loader|ga4-init/,
+  "Root layout must not use @next/third-parties, custom GA component, or next/script for GA4.",
 );
 assert.match(
   layoutSource,
-  /const GA_ID = process\.env\.NEXT_PUBLIC_GA_MEASUREMENT_ID \|\| "G-0DYTH1TLGB"/,
-  "GA4 measurement ID must use NEXT_PUBLIC_GA_MEASUREMENT_ID with the production fallback.",
+  /<head>[\s\S]*<script\s+async\s+src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-0DYTH1TLGB"\s*\/>[\s\S]*<script\s+dangerouslySetInnerHTML=\{\{[\s\S]*<\/head>/,
+  "Root layout must render raw GA4 scripts directly in head.",
 );
 assert.match(
   layoutSource,
-  /<Analytics\s*\/>[\s\S]*<GoogleAnalytics gaId=\{GA_ID\}\s*\/>/,
-  "GoogleAnalytics must render at the end of the body after Vercel Analytics.",
+  /window\.dataLayer = window\.dataLayer \|\| \[\]/,
+  "GA4 init must initialize dataLayer.",
+);
+assert.match(
+  layoutSource,
+  /function gtag\(\)\{dataLayer\.push\(arguments\);\}/,
+  "GA4 init must define the raw global gtag function.",
+);
+assert.match(
+  layoutSource,
+  /window\.gtag = gtag/,
+  "GA4 init must expose window.gtag globally.",
+);
+assert.match(
+  layoutSource,
+  /gtag\('js', new Date\(\)\)/,
+  "GA4 init must send the standard js command.",
+);
+assert.match(
+  layoutSource,
+  /gtag\('config', 'G-0DYTH1TLGB'\)/,
+  "GA4 init must use the hardcoded production config call.",
 );
 assert.match(
   layoutSource,
   new RegExp(measurementId),
-  "The production GA4 Measurement ID must appear in the root layout fallback.",
+  "The production GA4 Measurement ID must appear in the root layout.",
 );
 assert.doesNotMatch(
   layoutSource,
-  /send_page_view:\s*false|analytics_storage|gtm\/js|GTM-|AW-/i,
-  "Root layout must not disable page_view, set consent mode, use GTM, or use Google Ads tag.",
+  /NEXT_PUBLIC_GA_MEASUREMENT_ID|send_page_view:\s*false|analytics_storage|gtm\/js|GTM-|AW-/i,
+  "Root layout must not use env GA ID, disable page_view, set consent mode, use GTM, or use Google Ads tag.",
 );
 assert.doesNotMatch(
   analyticsSource,
-  /trackPageView|PageViewEvent|send_page_view|analytics_storage|denied/i,
-  "Analytics helper must not contain manual page_view or consent blocking.",
+  /trackPageView|PageViewEvent|send_page_view|analytics_storage|denied|NEXT_PUBLIC_GA_MEASUREMENT_ID/i,
+  "Analytics helper must not contain manual page_view, consent blocking, or GA env routing.",
 );
 
 for (const route of [
@@ -67,8 +83,12 @@ for (const route of [
   "/en/pattaya-bus-station-to-jomtien",
 ]) {
   assert.ok(
-    layoutSource.includes("<GoogleAnalytics gaId={GA_ID} />"),
-    `The official GoogleAnalytics component must be available to ${route}.`,
+    layoutSource.includes("https://www.googletagmanager.com/gtag/js?id=G-0DYTH1TLGB"),
+    `The hardcoded Google tag script must be available to ${route}.`,
+  );
+  assert.ok(
+    layoutSource.includes("gtag('config', 'G-0DYTH1TLGB')"),
+    `The hardcoded Google tag config must be available to ${route}.`,
   );
 }
 
@@ -85,7 +105,7 @@ const affiliatePayload = {
 const gtagCalls = [];
 const analyticsModule = loadAnalyticsModuleForTest({
   gtag: (...args) => gtagCalls.push(args),
-}, measurementId);
+});
 
 analyticsModule.trackAffiliateClick(affiliatePayload);
 
@@ -112,13 +132,13 @@ assert.doesNotThrow(
 );
 assert.match(
   analyticsSource,
-  /window\.gtag\("event", "affiliate_click", \{\s*send_to: GA_ID,[\s\S]*\.\.\.params,/,
-  "trackAffiliateClick must call affiliate_click directly through window.gtag with send_to.",
+  /window\.gtag\("event", "affiliate_click", \{\s*send_to: "G-0DYTH1TLGB",[\s\S]*\.\.\.params,/,
+  "trackAffiliateClick must call affiliate_click directly through window.gtag with the hardcoded GA4 ID.",
 );
 
 console.log("GA4 checks passed.");
 
-function loadAnalyticsModuleForTest(windowValue, nextMeasurementId = measurementId) {
+function loadAnalyticsModuleForTest(windowValue) {
   const transformed = ts.transpileModule(analyticsSource, {
     compilerOptions: {
       esModuleInterop: true,
@@ -132,9 +152,7 @@ function loadAnalyticsModuleForTest(windowValue, nextMeasurementId = measurement
     exports: cjsModule.exports,
     module: cjsModule,
     process: {
-      env: nextMeasurementId
-        ? { NEXT_PUBLIC_GA_MEASUREMENT_ID: nextMeasurementId }
-        : {},
+      env: {},
     },
     window: windowValue,
   };
