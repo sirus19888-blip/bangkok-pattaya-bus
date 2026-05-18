@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cwd } from "node:process";
 import vm from "node:vm";
@@ -8,24 +8,31 @@ import ts from "typescript";
 const root = cwd();
 const layoutSourcePath = join(root, "src/app/layout.tsx");
 const analyticsSourcePath = join(root, "src/lib/analytics.ts");
+const packageJsonPath = join(root, "package.json");
+const oldGoogleAnalyticsPath = join(root, "src/components/GoogleAnalytics.tsx");
 const layoutSource = readFileSync(layoutSourcePath, "utf8");
 const analyticsSource = readFileSync(analyticsSourcePath, "utf8");
+const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8"));
 const measurementId = "G-0DYTH1TLGB";
 
-assert.doesNotMatch(
-  layoutSource,
-  /import \{ GoogleAnalytics \} from "@/,
-  "Root layout must not import the GoogleAnalytics component.",
+assert.ok(
+  packageJson.dependencies?.["@next/third-parties"],
+  "The official @next/third-parties package must be installed.",
 );
-assert.doesNotMatch(
-  layoutSource,
-  /<GoogleAnalytics\s*\/>/,
-  "Root layout must not render the GoogleAnalytics component.",
+assert.equal(
+  existsSync(oldGoogleAnalyticsPath),
+  false,
+  "The custom GoogleAnalytics component must not exist.",
 );
 assert.match(
   layoutSource,
-  /import Script from "next\/script"/,
-  "Root layout must import next/script directly.",
+  /import \{ GoogleAnalytics \} from "@next\/third-parties\/google"/,
+  "Root layout must use the official @next/third-parties/google integration.",
+);
+assert.doesNotMatch(
+  layoutSource,
+  /@\/components\/GoogleAnalytics|from "next\/script"|<Script\b|ga4-loader|ga4-init/,
+  "Root layout must not use custom GA4 scripts or the old GoogleAnalytics component.",
 );
 assert.match(
   layoutSource,
@@ -34,43 +41,8 @@ assert.match(
 );
 assert.match(
   layoutSource,
-  /id="ga4-loader"[\s\S]*src=\{`https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=\$\{GA_ID\}`\}[\s\S]*strategy="beforeInteractive"/,
-  "Root layout must load the GA4 gtag script directly with beforeInteractive.",
-);
-assert.match(
-  layoutSource,
-  /<Script id="ga4-init" strategy="beforeInteractive">/,
-  "Root layout must initialize GA4 directly with beforeInteractive.",
-);
-assert.match(
-  layoutSource,
-  /<body[^>]*>[\s\S]*id="ga4-loader"[\s\S]*id="ga4-init"[\s\S]*\{children\}/,
-  "GA4 scripts must be rendered in the body before children.",
-);
-assert.match(
-  layoutSource,
-  /window\.dataLayer = window\.dataLayer \|\| \[\]/,
-  "GA4 init must initialize dataLayer.",
-);
-assert.match(
-  layoutSource,
-  /function gtag\(\)\{window\.dataLayer\.push\(arguments\);\}/,
-  "GA4 init must define the global gtag function.",
-);
-assert.match(
-  layoutSource,
-  /window\.gtag = gtag/,
-  "GA4 init must expose window.gtag globally.",
-);
-assert.match(
-  layoutSource,
-  /gtag\('js', new Date\(\)\)/,
-  "GA4 init must send the standard js command.",
-);
-assert.match(
-  layoutSource,
-  /gtag\('config', '\$\{GA_ID\}'\)/,
-  "GA4 init must use the standard config call.",
+  /<Analytics\s*\/>[\s\S]*<GoogleAnalytics gaId=\{GA_ID\}\s*\/>/,
+  "GoogleAnalytics must render at the end of the body after Vercel Analytics.",
 );
 assert.match(
   layoutSource,
@@ -95,12 +67,8 @@ for (const route of [
   "/en/pattaya-bus-station-to-jomtien",
 ]) {
   assert.ok(
-    layoutSource.includes("googletagmanager.com/gtag/js"),
-    `The global Google tag script must be available to ${route}.`,
-  );
-  assert.ok(
-    layoutSource.includes("gtag('config', '${GA_ID}')"),
-    `The global Google tag config must be available to ${route}.`,
+    layoutSource.includes("<GoogleAnalytics gaId={GA_ID} />"),
+    `The official GoogleAnalytics component must be available to ${route}.`,
   );
 }
 
@@ -144,8 +112,8 @@ assert.doesNotThrow(
 );
 assert.match(
   analyticsSource,
-  /trackAffiliateClick\(params: AffiliateClickEvent\) \{\s*trackEvent\("affiliate_click", params\);/,
-  'trackAffiliateClick must stay simple and call trackEvent("affiliate_click", params).',
+  /window\.gtag\("event", "affiliate_click", \{\s*send_to: GA_ID,[\s\S]*\.\.\.params,/,
+  "trackAffiliateClick must call affiliate_click directly through window.gtag with send_to.",
 );
 
 console.log("GA4 checks passed.");
