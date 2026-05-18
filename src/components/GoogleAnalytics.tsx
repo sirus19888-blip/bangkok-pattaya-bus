@@ -12,6 +12,7 @@ export function GoogleAnalytics() {
   return (
     <>
       <Script
+        id="ga4-script"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
         strategy="afterInteractive"
       />
@@ -22,6 +23,12 @@ export function GoogleAnalytics() {
           window.gtag = gtag;
           gtag('js', new Date());
           gtag('config', '${GA_ID}');
+          gtag('event', 'page_view', {
+            send_to: '${GA_ID}',
+            page_title: document.title,
+            page_location: window.location.href,
+            page_path: window.location.pathname
+          });
         `}
       </Script>
     </>

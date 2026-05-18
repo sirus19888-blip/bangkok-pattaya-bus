@@ -77,6 +77,11 @@ for (const html of [htmlWithEnv, htmlWithFallback]) {
   );
   assert.match(
     html,
+    /id="ga4-script"/,
+    "External GA4 script must include id=\"ga4-script\".",
+  );
+  assert.match(
+    html,
     /window\.dataLayer = window\.dataLayer \|\| \[\]/,
     "GA4 init must initialize dataLayer.",
   );
@@ -94,6 +99,13 @@ for (const html of [htmlWithEnv, htmlWithFallback]) {
     html,
     new RegExp(`gtag\\('config', '${measurementId}'\\)`),
     "GA4 init must use the standard gtag config call.",
+  );
+  assert.match(
+    html,
+    new RegExp(
+      `gtag\\('event', 'page_view', \\{[\\s\\S]*send_to: '${measurementId}',[\\s\\S]*page_title: document\\.title,[\\s\\S]*page_location: window\\.location\\.href,[\\s\\S]*page_path: window\\.location\\.pathname`,
+    ),
+    "GA4 init must manually send page_view to the measurement ID after config.",
   );
   assert.doesNotMatch(
     html,
@@ -154,8 +166,8 @@ assert.doesNotThrow(
 );
 assert.match(
   analyticsSource,
-  /window\.gtag\("event", "affiliate_click", \{\s*send_to: GA_ID,[\s\S]*\.\.\.params,/,
-  "trackAffiliateClick must stay simple and include send_to.",
+  /trackAffiliateClick\(params: AffiliateClickEvent\) \{\s*trackEvent\("affiliate_click", params\);/,
+  'trackAffiliateClick must stay simple and call trackEvent("affiliate_click", params).',
 );
 
 console.log("GA4 checks passed.");

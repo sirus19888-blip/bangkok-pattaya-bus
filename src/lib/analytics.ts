@@ -54,16 +54,5 @@ export function trackEvent(
 }
 
 export function trackAffiliateClick(params: AffiliateClickEvent) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  if (typeof window.gtag !== "function") {
-    return;
-  }
-
-  window.gtag("event", "affiliate_click", {
-    send_to: GA_ID,
-    ...params,
-  });
+  trackEvent("affiliate_click", params);
 }
