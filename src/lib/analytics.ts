@@ -14,13 +14,7 @@ export type AffiliateClickEvent = AnalyticsEventParameters & {
   to: string;
 };
 
-export type PageViewEvent = AnalyticsEventParameters & {
-  page_location: string;
-  page_path: string;
-  page_title: string;
-};
-
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-0DYTH1TLGB";
 
 declare global {
   interface Window {
@@ -45,43 +39,31 @@ export function trackEvent(
   eventName: string,
   parameters: AnalyticsEventParameters = {},
 ) {
-  sendGtagEvent(eventName, parameters);
-}
-
-export function trackAffiliateClick(event: AffiliateClickEvent) {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", "affiliate_click", withGaDestination(event));
-  }
-}
-
-export function trackPageView(event: PageViewEvent) {
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", "page_view", withGaDestination(event));
-  }
-}
-
-function sendGtagEvent(
-  eventName: string,
-  parameters: AnalyticsEventParameters,
-) {
   if (typeof window === "undefined") {
     return;
   }
 
-  if (typeof window.gtag === "function") {
-    window.gtag("event", eventName, withGaDestination(parameters));
+  if (typeof window.gtag !== "function") {
+    return;
   }
+
+  window.gtag("event", eventName, {
+    send_to: GA_ID,
+    ...parameters,
+  });
 }
 
-function withGaDestination(
-  parameters: AnalyticsEventParameters,
-): AnalyticsEventParameters {
-  if (!gaMeasurementId) {
-    return parameters;
+export function trackAffiliateClick(params: AffiliateClickEvent) {
+  if (typeof window === "undefined") {
+    return;
   }
 
-  return {
-    ...parameters,
-    send_to: gaMeasurementId,
-  };
+  if (typeof window.gtag !== "function") {
+    return;
+  }
+
+  window.gtag("event", "affiliate_click", {
+    send_to: GA_ID,
+    ...params,
+  });
 }

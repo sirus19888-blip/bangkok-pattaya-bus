@@ -20,23 +20,28 @@ const measurementId = "G-0DYTH1TLGB";
 
 assert.match(
   layoutSource,
-  /<GoogleAnalytics\s*\/>/,
-  "Root layout must render the GoogleAnalytics component globally.",
-);
-assert.match(
-  layoutSource,
-  /<head>[\s\S]*<GoogleAnalytics\s*\/>[\s\S]*<\/head>/,
-  "Root layout must render the Google tag in the document head.",
+  /<body[^>]*>[\s\S]*<GoogleAnalytics\s*\/>[\s\S]*<\/body>/,
+  "Root layout must render GoogleAnalytics globally in the body.",
 );
 assert.doesNotMatch(
   layoutSource,
   /PageViewTracker/,
-  "Root layout must not render the manual PageViewTracker while GA4 automatic page_view is restored.",
+  "Root layout must not render a manual PageViewTracker.",
 );
 assert.match(
   gaSource,
-  /process\.env\.NEXT_PUBLIC_GA_MEASUREMENT_ID/,
-  "GA4 measurement ID must come from NEXT_PUBLIC_GA_MEASUREMENT_ID.",
+  /"use client"/,
+  "GoogleAnalytics must be a client component.",
+);
+assert.match(
+  gaSource,
+  /import Script from "next\/script"/,
+  "GoogleAnalytics must use next/script.",
+);
+assert.match(
+  gaSource,
+  /process\.env\.NEXT_PUBLIC_GA_MEASUREMENT_ID \|\| "G-0DYTH1TLGB"/,
+  "GA4 measurement ID must use NEXT_PUBLIC_GA_MEASUREMENT_ID with the production fallback.",
 );
 assert.doesNotMatch(
   gaSource,
@@ -45,62 +50,57 @@ assert.doesNotMatch(
 );
 assert.doesNotMatch(
   gaSource,
-  /analytics_storage/,
-  "GA4 config must not set consent mode or analytics_storage.",
+  /analytics_storage|denied|consent/i,
+  "GA4 config must not set consent mode or block analytics storage.",
+);
+assert.doesNotMatch(
+  analyticsSource,
+  /trackPageView|PageViewEvent|send_page_view|analytics_storage|denied/i,
+  "Analytics helper must not contain manual page_view or consent blocking.",
 );
 
 const htmlWithEnv = renderGoogleAnalyticsForTest(measurementId);
+const htmlWithFallback = renderGoogleAnalyticsForTest(undefined);
 
-assert.match(
-  htmlWithEnv,
-  new RegExp(measurementId),
-  "The production GA4 Measurement ID must appear in rendered GA4 HTML when env is set.",
-);
-assert.match(
-  htmlWithEnv,
-  new RegExp(
-    `https://www\\.googletagmanager\\.com/gtag/js\\?id=${measurementId}`,
-  ),
-  "GA4 script must render with the env measurement ID.",
-);
-assert.match(
-  htmlWithEnv,
-  /window\.dataLayer = window\.dataLayer \|\| \[\]/,
-  "GA4 init must initialize dataLayer.",
-);
-assert.match(
-  htmlWithEnv,
-  /function gtag\(\)\{window\.dataLayer\.push\(arguments\);\}/,
-  "GA4 init must define the global gtag function.",
-);
-assert.match(
-  htmlWithEnv,
-  /window\.gtag = gtag/,
-  "GA4 init must expose window.gtag globally.",
-);
-assert.match(
-  htmlWithEnv,
-  new RegExp(`gtag\\("config", "${measurementId}"\\)`),
-  "GA4 init must use standard gtag config without send_page_view:false.",
-);
-assert.doesNotMatch(
-  htmlWithEnv,
-  /send_page_view/,
-  "Rendered GA4 HTML must not contain send_page_view overrides.",
-);
-assert.doesNotMatch(
-  htmlWithEnv,
-  /analytics_storage|denied/,
-  "Rendered GA4 HTML must not deny analytics storage or set consent mode.",
-);
-
-const htmlWithoutEnv = renderGoogleAnalyticsForTest(undefined);
-
-assert.equal(
-  htmlWithoutEnv,
-  "",
-  "GA4 script must not render when NEXT_PUBLIC_GA_MEASUREMENT_ID is missing.",
-);
+for (const html of [htmlWithEnv, htmlWithFallback]) {
+  assert.match(
+    html,
+    new RegExp(measurementId),
+    "The production GA4 Measurement ID must appear in rendered GA4 HTML.",
+  );
+  assert.match(
+    html,
+    new RegExp(
+      `https://www\\.googletagmanager\\.com/gtag/js\\?id=${measurementId}`,
+    ),
+    "GA4 script must render with the production measurement ID.",
+  );
+  assert.match(
+    html,
+    /window\.dataLayer = window\.dataLayer \|\| \[\]/,
+    "GA4 init must initialize dataLayer.",
+  );
+  assert.match(
+    html,
+    /function gtag\(\)\{window\.dataLayer\.push\(arguments\);\}/,
+    "GA4 init must define the global gtag function.",
+  );
+  assert.match(
+    html,
+    /window\.gtag = gtag/,
+    "GA4 init must expose window.gtag globally.",
+  );
+  assert.match(
+    html,
+    new RegExp(`gtag\\('config', '${measurementId}'\\)`),
+    "GA4 init must use the standard gtag config call.",
+  );
+  assert.doesNotMatch(
+    html,
+    /send_page_view|analytics_storage|denied/i,
+    "Rendered GA4 HTML must not contain page_view overrides or consent blocking.",
+  );
+}
 
 for (const route of [
   "/",
@@ -109,12 +109,8 @@ for (const route of [
   "/en/pattaya-bus-station-to-jomtien",
 ]) {
   assert.ok(
-    htmlWithEnv.includes(`googletagmanager.com/gtag/js?id=${measurementId}`),
+    htmlWithFallback.includes(`googletagmanager.com/gtag/js?id=${measurementId}`),
     `The global Google tag script must be available to ${route}.`,
-  );
-  assert.ok(
-    htmlWithEnv.includes(`gtag("config", "${measurementId}")`),
-    `The global Google tag config must be available to ${route}.`,
   );
 }
 
@@ -132,50 +128,22 @@ const gtagCalls = [];
 const analyticsModule = loadAnalyticsModuleForTest({
   gtag: (...args) => gtagCalls.push(args),
 }, measurementId);
-const expectedAffiliatePayload = {
-  ...affiliatePayload,
-  send_to: measurementId,
-};
 
 analyticsModule.trackAffiliateClick(affiliatePayload);
 
 assert.deepEqual(
   JSON.parse(JSON.stringify(gtagCalls)),
-  [["event", "affiliate_click", expectedAffiliatePayload]],
-  'trackAffiliateClick must call window.gtag("event", "affiliate_click", params with send_to).',
-);
-assert.equal(
-  gtagCalls[0][2].send_to,
-  measurementId,
-  "affiliate_click must include send_to with the GA4 measurement ID.",
-);
-for (const parameter of [
-  "route_id",
-  "lang",
-  "provider",
-  "cta_position",
-  "sub_id",
-  "href",
-]) {
-  assert.equal(
-    gtagCalls[0][2][parameter],
-    expectedAffiliatePayload[parameter],
-    `affiliate_click must include ${parameter}.`,
-  );
-}
-
-const pageViewPayload = {
-  page_location: "https://www.bangkokpattayabus.com/en/bangkok-to-pattaya",
-  page_path: "/en/bangkok-to-pattaya",
-  page_title: "Bangkok to Pattaya Bus",
-};
-
-analyticsModule.trackPageView(pageViewPayload);
-
-assert.deepEqual(
-  JSON.parse(JSON.stringify(gtagCalls[1])),
-  ["event", "page_view", { ...pageViewPayload, send_to: measurementId }],
-  "trackPageView must call page_view with send_to.",
+  [
+    [
+      "event",
+      "affiliate_click",
+      {
+        send_to: measurementId,
+        ...affiliatePayload,
+      },
+    ],
+  ],
+  'trackAffiliateClick must call window.gtag("event", "affiliate_click", params).',
 );
 
 const analyticsModuleWithoutGtag = loadAnalyticsModuleForTest({});
@@ -186,18 +154,8 @@ assert.doesNotThrow(
 );
 assert.match(
   analyticsSource,
-  /window\.gtag\("event", "affiliate_click", withGaDestination\(event\)\)/,
-  'trackAffiliateClick must route affiliate_click through withGaDestination.',
-);
-assert.match(
-  analyticsSource,
-  /window\.gtag\("event", "page_view", withGaDestination\(event\)\)/,
-  'trackPageView must route page_view through withGaDestination.',
-);
-assert.match(
-  analyticsSource,
-  /send_to: gaMeasurementId/,
-  "GA4 events must include send_to from NEXT_PUBLIC_GA_MEASUREMENT_ID.",
+  /window\.gtag\("event", "affiliate_click", \{\s*send_to: GA_ID,[\s\S]*\.\.\.params,/,
+  "trackAffiliateClick must stay simple and include send_to.",
 );
 
 console.log("GA4 checks passed.");
@@ -244,6 +202,23 @@ function loadGoogleAnalyticsModuleForTest() {
     require: (request) => {
       if (request === "react/jsx-runtime") {
         return requireFromRoot("react/jsx-runtime");
+      }
+
+      if (request === "next/script") {
+        return {
+          __esModule: true,
+          default: function Script(scriptProps) {
+            return React.createElement(
+              "script",
+              {
+                id: scriptProps.id,
+                src: scriptProps.src,
+                "data-strategy": scriptProps.strategy,
+              },
+              scriptProps.children,
+            );
+          },
+        };
       }
 
       return requireFromRoot(request);

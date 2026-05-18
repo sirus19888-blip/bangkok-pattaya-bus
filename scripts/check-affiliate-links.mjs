@@ -132,8 +132,8 @@ assert.match(
 );
 assert.match(
   analyticsSource,
-  /window\.gtag\("event", "affiliate_click", withGaDestination\(event\)\)/,
-  "Affiliate tracking must send affiliate_click through the GA4 destination helper.",
+  /window\.gtag\("event", "affiliate_click", \{\s*send_to: GA_ID,[\s\S]*\.\.\.params,/,
+  "Affiliate tracking must send affiliate_click directly through window.gtag with send_to.",
 );
 for (const parameter of [
   "route_id",

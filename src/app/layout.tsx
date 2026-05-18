@@ -32,9 +32,9 @@ export default function RootLayout({
     <html lang="en" className="h-full antialiased">
       <head>
         <meta charSet="utf-8" />
-        <GoogleAnalytics />
       </head>
       <body className="flex min-h-full flex-col">
+        <GoogleAnalytics />
         {children}
         <ConsentManagementPlaceholder />
         <SiteFooter />
