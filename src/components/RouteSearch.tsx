@@ -145,9 +145,9 @@ export function RouteSearch({
       <div
         className={
           compact
-            ? "grid grid-cols-[1fr_auto_1fr] items-end gap-2"
+            ? "grid grid-cols-[1fr_1fr_auto] items-end gap-2"
             : desktopGo
-              ? "grid gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-end"
+              ? "grid gap-3 sm:grid-cols-[1fr_1fr_auto] sm:items-end"
               : "grid gap-3 sm:grid-cols-2"
         }
       >
@@ -171,20 +171,6 @@ export function RouteSearch({
           </select>
         </div>
 
-        {compact || desktopGo ? (
-          <button
-            type="submit"
-            aria-label={`${goLabel}: ${selectedFrom} ${displayLabels.to} ${selectedTo}`}
-            className={
-              compact
-                ? "mb-0.5 flex h-10 min-w-12 items-center justify-center rounded-full border border-[#e8b05a] bg-[#13233a] px-2.5 text-[0.7rem] font-black leading-none text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
-                : "flex h-13 min-h-13 min-w-16 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#13233a] px-5 text-sm font-black uppercase tracking-[0.08em] text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
-            }
-          >
-            {goLabel}
-          </button>
-        ) : null}
-
         <div className="block">
           <label className={labelClass} htmlFor={toSelectId}>
             {displayLabels.to}{" "}
@@ -204,6 +190,20 @@ export function RouteSearch({
             ))}
           </select>
         </div>
+
+        {compact || desktopGo ? (
+          <button
+            type="submit"
+            aria-label={`${goLabel}: ${selectedFrom} ${displayLabels.to} ${selectedTo}`}
+            className={
+              compact
+                ? "mb-0.5 flex h-10 min-w-12 items-center justify-center rounded-full border border-[#e8b05a] bg-[#13233a] px-2.5 text-[0.7rem] font-black leading-none text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+                : "flex h-13 min-h-13 min-w-16 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#13233a] px-5 text-sm font-black uppercase tracking-[0.08em] text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+            }
+          >
+            {goLabel}
+          </button>
+        ) : null}
       </div>
     </form>
   );
@@ -225,7 +225,7 @@ function getRouteSearchLabels(
 }
 
 function getAriaLabelText(label: string) {
-  return label.replace(/[:：]\s*$/, "").trim();
+  return label.replace(/[:：]\s*$/u, "").trim();
 }
 
 function findMatchingRoute(

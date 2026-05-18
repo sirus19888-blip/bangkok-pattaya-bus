@@ -166,6 +166,200 @@ const mobileRouteImages: Record<RouteId, string> = {
     "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
 };
 
+type TouristShortcut = {
+  routeId: RouteId;
+  title: string;
+  description: string;
+};
+
+function getTouristShortcuts(locale: LocaleCode): {
+  title: string;
+  items: TouristShortcut[];
+} {
+  const shortcuts: Record<
+    LocaleCode,
+    { title: string; items: TouristShortcut[] }
+  > = {
+    de: {
+      title: "Am nützlichsten für Reisende",
+      items: [
+        {
+          routeId: "bangkok-to-pattaya",
+          title: "Bangkok City nach Pattaya",
+          description: "Buszeiten ab Ekkamai und Tipps zur Anreise.",
+        },
+        {
+          routeId: "suvarnabhumi-airport-to-pattaya",
+          title: "Flughafen Suvarnabhumi nach Pattaya",
+          description: "Gate-8-Bus, Preisnotizen und Ankunftstipps.",
+        },
+        {
+          routeId: "don-mueang-airport-to-pattaya",
+          title: "Flughafen Don Mueang nach Pattaya",
+          description: "Route ab DMK mit praktischen Transferhinweisen.",
+        },
+        {
+          routeId: "pattaya-to-suvarnabhumi-airport",
+          title: "Pattaya zum Flughafen Bangkok",
+          description: "Planen Sie die Fahrt vor dem Flug.",
+        },
+      ],
+    },
+    en: {
+      title: "Most useful for travelers",
+      items: [
+        {
+          routeId: "bangkok-to-pattaya",
+          title: "Bangkok city to Pattaya",
+          description: "Start here for Ekkamai bus times and station tips.",
+        },
+        {
+          routeId: "suvarnabhumi-airport-to-pattaya",
+          title: "Suvarnabhumi Airport to Pattaya",
+          description: "Gate 8 bus notes, fare tips, and arrival details.",
+        },
+        {
+          routeId: "don-mueang-airport-to-pattaya",
+          title: "Don Mueang Airport to Pattaya",
+          description: "DMK route notes and transfer planning help.",
+        },
+        {
+          routeId: "pattaya-to-suvarnabhumi-airport",
+          title: "Pattaya to Bangkok airport",
+          description: "Useful before a flight from Suvarnabhumi.",
+        },
+      ],
+    },
+    fr: {
+      title: "Le plus utile pour les voyageurs",
+      items: [
+        {
+          routeId: "bangkok-to-pattaya",
+          title: "Centre de Bangkok vers Pattaya",
+          description: "Horaires depuis Ekkamai et conseils de station.",
+        },
+        {
+          routeId: "suvarnabhumi-airport-to-pattaya",
+          title: "Aéroport Suvarnabhumi vers Pattaya",
+          description: "Bus Gate 8, notes de prix et arrivée à Pattaya.",
+        },
+        {
+          routeId: "don-mueang-airport-to-pattaya",
+          title: "Aéroport Don Mueang vers Pattaya",
+          description: "Notes de route depuis DMK et conseils de transfert.",
+        },
+        {
+          routeId: "pattaya-to-suvarnabhumi-airport",
+          title: "Pattaya vers l’aéroport de Bangkok",
+          description: "Utile avant un vol depuis Suvarnabhumi.",
+        },
+      ],
+    },
+    pl: {
+      title: "Najbardziej przydatne dla podróżnych",
+      items: [
+        {
+          routeId: "bangkok-to-pattaya",
+          title: "Centrum Bangkoku do Pattayi",
+          description: "Godziny z Ekkamai i praktyczne wskazówki o dworcu.",
+        },
+        {
+          routeId: "suvarnabhumi-airport-to-pattaya",
+          title: "Lotnisko Suvarnabhumi do Pattayi",
+          description: "Autobus z Gate 8, cena i dojazd po przylocie.",
+        },
+        {
+          routeId: "don-mueang-airport-to-pattaya",
+          title: "Lotnisko Don Mueang do Pattayi",
+          description: "Notatki dla DMK i planowanie przesiadki.",
+        },
+        {
+          routeId: "pattaya-to-suvarnabhumi-airport",
+          title: "Pattaya na lotnisko w Bangkoku",
+          description: "Praktyczne przed lotem z Suvarnabhumi.",
+        },
+      ],
+    },
+    ru: {
+      title: "Самое полезное для путешественников",
+      items: [
+        {
+          routeId: "bangkok-to-pattaya",
+          title: "Центр Бангкока в Паттайю",
+          description: "Время автобусов от Эккамай и советы по станции.",
+        },
+        {
+          routeId: "suvarnabhumi-airport-to-pattaya",
+          title: "Аэропорт Суварнабхуми в Паттайю",
+          description: "Автобус у Gate 8, цена и прибытие в Паттайю.",
+        },
+        {
+          routeId: "don-mueang-airport-to-pattaya",
+          title: "Аэропорт Дон Муанг в Паттайю",
+          description: "Маршрут от DMK и советы по пересадке.",
+        },
+        {
+          routeId: "pattaya-to-suvarnabhumi-airport",
+          title: "Паттайя в аэропорт Бангкока",
+          description: "Полезно перед вылетом из Суварнабхуми.",
+        },
+      ],
+    },
+    th: {
+      title: "มีประโยชน์ที่สุดสำหรับนักท่องเที่ยว",
+      items: [
+        {
+          routeId: "bangkok-to-pattaya",
+          title: "กรุงเทพฯ ไปพัทยา",
+          description: "เวลาออกจากเอกมัยและคำแนะนำเรื่องสถานี",
+        },
+        {
+          routeId: "suvarnabhumi-airport-to-pattaya",
+          title: "สุวรรณภูมิไปพัทยา",
+          description: "รถบัส Gate 8 ราคา และข้อมูลหลังถึงพัทยา",
+        },
+        {
+          routeId: "don-mueang-airport-to-pattaya",
+          title: "ดอนเมืองไปพัทยา",
+          description: "ข้อมูลเส้นทางจาก DMK และการต่อรถ",
+        },
+        {
+          routeId: "pattaya-to-suvarnabhumi-airport",
+          title: "พัทยาไปสนามบินกรุงเทพฯ",
+          description: "เหมาะสำหรับวางแผนก่อนขึ้นเครื่องที่สุวรรณภูมิ",
+        },
+      ],
+    },
+    zh: {
+      title: "旅客最常用",
+      items: [
+        {
+          routeId: "bangkok-to-pattaya",
+          title: "曼谷市区到芭提雅",
+          description: "查看亿甲迈发车时间和车站提示。",
+        },
+        {
+          routeId: "suvarnabhumi-airport-to-pattaya",
+          title: "素万那普机场到芭提雅",
+          description: "Gate 8 巴士、票价提示和抵达信息。",
+        },
+        {
+          routeId: "don-mueang-airport-to-pattaya",
+          title: "廊曼机场到芭提雅",
+          description: "DMK 路线说明和换乘建议。",
+        },
+        {
+          routeId: "pattaya-to-suvarnabhumi-airport",
+          title: "芭提雅到曼谷机场",
+          description: "从素万那普起飞前很实用。",
+        },
+      ],
+    },
+  };
+
+  return shortcuts[locale] ?? shortcuts.en;
+}
+
 const thaiMobileRouteMeta: Record<RouteId, { badge: string; note: string }> = {
   "bangkok-to-pattaya": {
     badge: "เส้นทางยอดนิยม",
@@ -713,6 +907,7 @@ function MobileHome({
   t: Translations;
 }) {
   const copy = getMobileHomeCopy(locale);
+  const touristShortcuts = getTouristShortcuts(locale);
   const uiText = getUiTranslations(locale);
   const featuredRoute = routePagesForLocale[0];
   const countdownLabels = {
@@ -900,6 +1095,55 @@ function MobileHome({
           <p className="px-4 pb-1 text-xs font-semibold leading-5 text-[#5f6874] md:px-0 md:pt-4">
             {uiText.affiliate.disclosure}
           </p>
+        </section>
+
+        <section className="mx-4 mt-2 rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6">
+          <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
+            {touristShortcuts.title}
+          </p>
+          <ul className="mt-3 grid grid-cols-2 gap-3 md:grid-cols-4">
+            {touristShortcuts.items.map((shortcut) => {
+              const routePage = routePagesForLocale.find(
+                (page) => page.slug === shortcut.routeId,
+              );
+
+              if (!routePage) {
+                return null;
+              }
+
+              return (
+                <li key={shortcut.routeId} className="min-w-0">
+                  <Link
+                    href={`/${locale}/${shortcut.routeId}`}
+                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
+                  >
+                    <span className="relative block h-20 overflow-hidden bg-[#13233a]">
+                      <Image
+                        alt=""
+                        aria-hidden="true"
+                        className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                        fill
+                        sizes="(min-width: 768px) 180px, 45vw"
+                        src={mobileRouteImages[shortcut.routeId]}
+                      />
+                      <span className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/10 via-[#0e1e2e]/25 to-[#0e1e2e]/70" />
+                    </span>
+                    <span className="flex flex-1 flex-col p-3">
+                      <span className="text-sm font-black leading-tight text-[#13233a]">
+                        {shortcut.title}
+                      </span>
+                      <span className="mt-1 text-xs font-semibold leading-5 text-[#5f6874]">
+                        {shortcut.description}
+                      </span>
+                      <span className="mt-auto pt-3 text-xs font-black text-[#0e7b6b]">
+                        {copy.viewRoute}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </section>
 
         <TravelGuideLinks

@@ -189,6 +189,23 @@ assert(
     source.includes('id="popular-routes"'),
   "Homepage revenue hero secondary CTA must scroll to Popular routes.",
 );
+assert(
+  source.includes("getTouristShortcuts(locale)") &&
+    source.includes("Most useful for travelers") &&
+    source.includes("Bangkok city to Pattaya") &&
+    source.includes("Suvarnabhumi Airport to Pattaya") &&
+    source.includes("Don Mueang Airport to Pattaya") &&
+    source.includes("Pattaya to Bangkok airport"),
+  "Homepage must render concise tourist shortcut cards for the most useful routes.",
+);
+assert(
+  source.includes("touristShortcuts.items.map") &&
+    source.includes("<ul") &&
+    source.includes("<li key={shortcut.routeId}") &&
+    source.includes("shortcut.description") &&
+    source.includes("copy.viewRoute"),
+  "Homepage tourist shortcuts must render semantic cards with title, description, and CTA text.",
+);
 
 const localizedRevenueTitles = {
   de: "Brauchen Sie heute ein Ticket?",
