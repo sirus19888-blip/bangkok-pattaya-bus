@@ -226,6 +226,7 @@ for (const path of expectedEnglishRoutes) {
         1,
         `${path} must keep one visible Bangkok to Pattaya Bus H1 text occurrence.`,
       );
+      assertCanonicalAndHreflangsUnchanged(html, path, slug);
     }
     if (path === "/en/pattaya-to-bangkok") {
       assert.ok(
@@ -245,6 +246,7 @@ for (const path of expectedEnglishRoutes) {
         1,
         `${path} must keep one visible Pattaya to Bangkok Bus H1 text occurrence.`,
       );
+      assertCanonicalAndHreflangsUnchanged(html, path, slug);
     }
     if (path === "/en/suvarnabhumi-airport-to-pattaya") {
       assert.ok(
@@ -264,6 +266,7 @@ for (const path of expectedEnglishRoutes) {
         1,
         `${path} must keep one visible Suvarnabhumi Airport to Pattaya Bus H1 text occurrence.`,
       );
+      assertCanonicalAndHreflangsUnchanged(html, path, slug);
     }
     if (path === "/en/pattaya-to-suvarnabhumi-airport") {
       assert.ok(
@@ -873,6 +876,30 @@ function toTextContent(html) {
 
 function normalizeText(value) {
   return value.replace(/\s+/g, " ").trim();
+}
+
+function assertCanonicalAndHreflangsUnchanged(html, path, slug) {
+  const canonical = `https://www.bangkokpattayabus.com${path}`;
+
+  assert.ok(
+    html.includes(`<link rel="canonical" href="${canonical}"/>`),
+    `${path} canonical must remain ${canonical}.`,
+  );
+  assert.ok(
+    html.includes(
+      `<link rel="alternate" hrefLang="x-default" href="https://www.bangkokpattayabus.com/en/${slug}"/>`,
+    ),
+    `${path} must keep x-default hreflang pointing to the English route.`,
+  );
+
+  for (const locale of routeLocales) {
+    const href = `https://www.bangkokpattayabus.com/${locale}/${slug}`;
+
+    assert.ok(
+      html.includes(`<link rel="alternate" hrefLang="${locale}" href="${href}"/>`),
+      `${path} must keep hreflang ${locale} pointing to ${href}.`,
+    );
+  }
 }
 
 console.log("Route page structure checks passed.");
