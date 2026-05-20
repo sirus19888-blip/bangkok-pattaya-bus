@@ -46,7 +46,12 @@ export function StationCard({
       ) : null}
       <div className="mt-3 grid gap-3 sm:mt-5 sm:grid-cols-2">
         {stations.map((station, index) => {
-          const stationTip = getStationTip(station.id, station.tip, locale, routeId);
+          const stationTip = getStationTip(
+            station.id,
+            station.tip,
+            locale,
+            routeId,
+          );
           const stationTipPoints = getMobileTipPoints(
             station.id,
             stationTip,
@@ -54,15 +59,21 @@ export function StationCard({
             routeId,
           ).filter((point) => !isStationMetaTip(point, station, labels.bestFor));
           const isExpanded = expandedStations[station.id] ?? false;
+          const mobileTipPreviewCount = 1;
           const stationPhotoGroups = photoGroups.filter(
             (group) => group.stationId === station.id,
           );
           const hasExtraMobilePhotos = stationPhotoGroups.some(
             (group) => group.photos.length > 1,
           );
+          const hasHiddenMobileTips =
+            stationTipPoints.length > mobileTipPreviewCount;
           const hasHiddenMobileDetails =
-            stationTipPoints.length > 3 || hasExtraMobilePhotos;
-          const hasMobileShowMore = hasHiddenMobileDetails || Boolean(station.googleMapsUrl);
+            stationTipPoints.length > 3 ||
+            hasHiddenMobileTips ||
+            hasExtraMobilePhotos;
+          const hasMobileShowMore =
+            hasHiddenMobileDetails || Boolean(station.googleMapsUrl);
 
           return (
             <article
@@ -87,37 +98,21 @@ export function StationCard({
                   <div className="flex items-center justify-between gap-3">
                     <span className="font-black text-[#13233a]">{labels.tip}</span>
                   </div>
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute bottom-2 right-0 top-10 z-10 w-10 bg-gradient-to-l from-white via-white/85 to-transparent md:hidden"
-                  />
-                  <ul className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 pr-8 [scrollbar-width:thin] md:mx-0 md:grid md:grid-cols-2 md:gap-2 md:overflow-visible md:px-0 md:pb-0 md:pr-0">
+                  <ul className="mt-2 grid gap-2 md:grid-cols-2">
                     {stationTipPoints.map((point, pointIndex) => (
                       <li
                         key={point}
-                        className={`w-[17rem] flex-none snap-start gap-2 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 leading-5 shadow-sm md:w-auto md:flex md:border-[#eadcc7] md:bg-[#fffaf2] md:p-3 md:shadow-sm ${
-                          pointIndex < 3 || isExpanded ? "flex" : "hidden md:flex"
+                        className={`gap-2 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 leading-5 shadow-sm md:flex ${
+                          pointIndex < mobileTipPreviewCount || isExpanded
+                            ? "flex"
+                            : "hidden md:flex"
                         }`}
                       >
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e8b05a]" />
-                      <span>{repairMojibake(point)}</span>
+                        <span>{repairMojibake(point)}</span>
                       </li>
                     ))}
                   </ul>
-                  {hasMobileShowMore ? (
-                    <button
-                      type="button"
-                      className="mt-2 inline-flex min-h-9 items-center rounded-full border border-[#e8b05a] bg-[#fff8ec] px-3 text-xs font-black text-[#13233a] md:hidden"
-                      onClick={() =>
-                        setExpandedStations((current) => ({
-                          ...current,
-                          [station.id]: !isExpanded,
-                        }))
-                      }
-                    >
-                      {isExpanded ? showLessLabel : showMoreLabel}
-                    </button>
-                  ) : null}
                 </div>
               </div>
               <div className="space-y-3 p-3 sm:p-4">
@@ -127,19 +122,36 @@ export function StationCard({
                   showTitle={false}
                   showGroupTitles={false}
                   compact
+                  mobileCompactPreview
                   mobilePreviewLimit={1}
                   mobileShowAll={isExpanded}
                   mobileShowCredits={isExpanded}
                 />
                 <div className="md:hidden">
-                  <a
-                    href={station.googleMapsUrl}
-                    className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#233a5b]"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {labels.openInGoogleMaps}
-                  </a>
+                  <div className="grid gap-2">
+                    <a
+                      href={station.googleMapsUrl}
+                      className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#233a5b]"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {labels.openInGoogleMaps}
+                    </a>
+                    {hasMobileShowMore ? (
+                      <button
+                        type="button"
+                        className="flex min-h-11 w-full items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-sm font-black text-[#13233a] transition hover:bg-white"
+                        onClick={() =>
+                          setExpandedStations((current) => ({
+                            ...current,
+                            [station.id]: !isExpanded,
+                          }))
+                        }
+                      >
+                        {isExpanded ? showLessLabel : showMoreLabel}
+                      </button>
+                    ) : null}
+                  </div>
                 </div>
                 <div className={isExpanded ? "block" : "hidden md:block"}>
                   <StationMiniMap
