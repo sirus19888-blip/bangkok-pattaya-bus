@@ -19,7 +19,6 @@ type StationPhotoGalleryProps = {
   showTitle?: boolean;
   showGroupTitles?: boolean;
   compact?: boolean;
-  mobileCompactPreview?: boolean;
   mobilePreviewLimit?: number;
   mobileShowCredits?: boolean;
   mobileShowAll?: boolean;
@@ -31,7 +30,6 @@ export function StationPhotoGallery({
   showTitle = true,
   showGroupTitles = true,
   compact = false,
-  mobileCompactPreview = false,
   mobilePreviewLimit,
   mobileShowCredits = true,
   mobileShowAll = true,
@@ -69,11 +67,6 @@ export function StationPhotoGallery({
         : locale === "fr"
           ? "Fermer l'image"
           : "Close image";
-  const useMobileCompactPreview =
-    compact &&
-    mobileCompactPreview &&
-    typeof mobilePreviewLimit === "number" &&
-    !mobileShowAll;
 
   return (
     <section
@@ -103,8 +96,6 @@ export function StationPhotoGallery({
               className={
                 showGroupTitles
                   ? "mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3"
-                  : useMobileCompactPreview
-                    ? "space-y-2 md:grid md:grid-cols-2 md:gap-2 md:space-y-0 md:overflow-visible md:pb-0 lg:grid-cols-3"
                   : "flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:gap-2 md:overflow-visible md:pb-0 md:grid-cols-2 lg:grid-cols-3"
               }
             >
@@ -123,21 +114,13 @@ export function StationPhotoGallery({
                 return (
                   <figure
                     key={`${group.stationId}-${photo.src}`}
-                    className={`snap-start rounded-xl border border-[#eadcc7] bg-white p-2 lg:p-1.5 ${
-                      useMobileCompactPreview
-                        ? "flex w-full items-center gap-3 md:block md:w-auto md:flex-auto"
-                        : "w-[240px] flex-none md:w-auto md:flex-auto"
-                    } ${
+                    className={`w-[240px] flex-none snap-start rounded-xl border border-[#eadcc7] bg-white p-2 md:w-auto md:flex-auto lg:p-1.5 ${
                       hideInMobilePreview ? "hidden md:block" : ""
                     }`}
                   >
                     <button
                       type="button"
-                      className={`relative block overflow-hidden rounded-xl text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 lg:rounded-lg ${
-                        useMobileCompactPreview
-                          ? "h-20 w-24 shrink-0 md:aspect-[4/3] md:h-auto md:w-full"
-                          : "aspect-[4/3] w-full"
-                      }`}
+                      className="relative block aspect-[4/3] w-full overflow-hidden rounded-xl text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 lg:rounded-lg"
                       onClick={() => setActivePhoto(photo)}
                       aria-label={`${openPhotoLabel}: ${cleanAlt}`}
                     >
@@ -150,57 +133,43 @@ export function StationPhotoGallery({
                         className="object-cover transition duration-200 hover:scale-[1.02]"
                       />
                     </button>
-                    <div
-                      className={
-                        useMobileCompactPreview
-                          ? "min-w-0 flex-1 md:min-w-0"
-                          : ""
-                      }
+                    <p className="mt-2 text-sm font-black leading-5 text-[#13233a] lg:mt-1.5 lg:text-xs lg:leading-4">
+                      {cleanTitle}
+                    </p>
+                    <figcaption
+                      className="mt-1 text-[0.82rem] font-semibold leading-5 text-[#4f5d6c] lg:text-[0.68rem] lg:leading-4"
                     >
-                      <p
-                        className={`text-sm font-black leading-5 text-[#13233a] lg:text-xs lg:leading-4 ${
-                          useMobileCompactPreview
-                            ? "md:mt-2 lg:mt-1.5"
-                            : "mt-2 lg:mt-1.5"
-                        }`}
+                      {cleanCaption}
+                    </figcaption>
+                    <p
+                      className={`mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280] lg:text-[0.62rem] lg:leading-3 ${
+                        mobileShowCredits ? "" : "hidden md:block"
+                      }`}
+                    >
+                      <AttributionPrefix
+                        label={attributionLabel}
+                        tooltip={repairMojibake(`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`)}
+                      />{" "}
+                      <span className="hidden">
+                      <a
+                        href={photo.sourceUrl}
+                        className="underline decoration-[#d6b45f] underline-offset-2"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        {cleanTitle}
-                      </p>
-                      <figcaption
-                        className="mt-1 text-[0.82rem] font-semibold leading-5 text-[#4f5d6c] lg:text-[0.68rem] lg:leading-4"
+                        {photo.author}
+                      </a>
+                      ,{" "}
+                      <a
+                        href={photo.licenseUrl}
+                        className="underline decoration-[#d6b45f] underline-offset-2"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        {cleanCaption}
-                      </figcaption>
-                      <p
-                        className={`mt-1 text-[0.72rem] font-semibold leading-4 text-[#6b7280] lg:text-[0.62rem] lg:leading-3 ${
-                          mobileShowCredits ? "" : "hidden md:block"
-                        }`}
-                      >
-                        <AttributionPrefix
-                          label={attributionLabel}
-                          tooltip={repairMojibake(`${attributionLabel}: ${photo.author} / Wikimedia Commons / ${photo.licenseName}`)}
-                        />{" "}
-                        <span className="hidden">
-                          <a
-                            href={photo.sourceUrl}
-                            className="underline decoration-[#d6b45f] underline-offset-2"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {photo.author}
-                          </a>
-                          ,{" "}
-                          <a
-                            href={photo.licenseUrl}
-                            className="underline decoration-[#d6b45f] underline-offset-2"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {photo.licenseName}
-                          </a>
-                        </span>
-                      </p>
-                    </div>
+                        {photo.licenseName}
+                      </a>
+                      </span>
+                    </p>
                   </figure>
                 );
               })}

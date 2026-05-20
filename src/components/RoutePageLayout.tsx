@@ -211,7 +211,7 @@ function MobileDetailsSection({
 }) {
   return (
     <details
-      className="group/mobile-details rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm md:border-0 md:bg-transparent md:p-0 md:shadow-none"
+      className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm md:border-0 md:bg-transparent md:p-0 md:shadow-none"
       open
     >
       <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a] md:min-h-0 md:cursor-default md:text-xl [&::-webkit-details-marker]:hidden">
@@ -220,8 +220,8 @@ function MobileDetailsSection({
           aria-hidden="true"
           className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8c8b4] bg-[#fffaf2] text-lg leading-none md:hidden"
         >
-          <span className="group-open/mobile-details:hidden">+</span>
-          <span className="hidden group-open/mobile-details:inline">-</span>
+          <span className="group-open:hidden">+</span>
+          <span className="hidden group-open:inline">-</span>
         </span>
       </summary>
       <div className="mt-4 md:mt-0">{children}</div>
