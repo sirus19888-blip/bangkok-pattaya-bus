@@ -139,12 +139,12 @@
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel."
     },
     "suvarnabhumi-airport-to-pattaya": {
-      "travelTime": "Around 2-2.5 hours",
-      "price": "162 THB per seat",
+      "travelTime": "Around 2 hours",
+      "price": "139 THB per seat",
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel."
     },
     "pattaya-to-suvarnabhumi-airport": {
-      "travelTime": "Around 2-2.5 hours, depending on traffic",
+      "travelTime": "Around 2 hours, depending on traffic",
       "price": "162 THB per seat",
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
       "boardingNote": "Tickets are shown by the operator as available at the counter service at Jomtien bus station."
@@ -249,8 +249,8 @@
         "body": "Current route information points to the counter on Level 1 near Gate 8."
       },
       {
-        "title": "Check the late bus destination",
-        "body": "The 22:00 bus may go to North Pattaya Bus Station instead of Jomtien."
+        "title": "Confirm Pattaya Bus Station",
+        "body": "This schedule is for Pattaya Bus Station. If you need Jomtien, confirm the separate Jomtien service before buying."
       }
     ],
     "pattaya-to-suvarnabhumi-airport": [
@@ -366,7 +366,7 @@
     "suvarnabhumi-airport-to-pattaya": [
       {
         "question": "How long is the bus journey from Suvarnabhumi Airport to Pattaya?",
-        "answer": "The bus usually takes around 2-2.5 hours, depending on traffic."
+        "answer": "The bus usually takes around 2 hours, depending on traffic."
       },
       {
         "question": "Where is the bus counter at Suvarnabhumi Airport?",
@@ -377,14 +377,14 @@
         "answer": "No. Allow time for immigration, baggage claim, walking through the airport, and the bus counter."
       },
       {
-        "question": "Does every airport bus go to Jomtien?",
-        "answer": "Not always. The 22:00 bus may go to North Pattaya Bus Station instead of Jomtien. Confirm before travel."
+        "question": "Does this airport bus go to Jomtien?",
+        "answer": "This route data is for Pattaya Bus Station. If you need Jomtien, confirm the separate Jomtien service with the operator before buying."
       }
     ],
     "pattaya-to-suvarnabhumi-airport": [
       {
         "question": "How long is the bus journey from Pattaya to Suvarnabhumi Airport?",
-        "answer": "The trip is usually around 2-2.5 hours, depending on traffic and the boarding point."
+        "answer": "The trip is usually around 2 hours, depending on traffic and the boarding point."
       },
       {
         "question": "Where do I board the airport bus in Pattaya?",

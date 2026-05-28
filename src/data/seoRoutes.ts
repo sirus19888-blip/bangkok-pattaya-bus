@@ -210,7 +210,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     legalBoarding:
       "Current route data points travelers to the bus counter on Level 1 near Gate 8. Confirm signs and counter information after arrival.",
     estimatedPrices: [
-      "Airport bus: 162 THB per seat, based on operator information.",
+      "Airport bus: 139 THB per seat, based on operator information.",
       "Private taxi or transfer: commonly advertised from around 1,199 THB and higher depending on vehicle and provider.",
       "Grab, Bolt and inDrive: prices vary by airport pickup rules, demand, traffic and tolls.",
     ],
@@ -222,8 +222,8 @@ export const routeSeoPages: RouteSeoPage[] = [
     options: [
       {
         title: "Airport bus",
-        price: "162 THB per seat",
-        duration: "Around 2-2.5 hours",
+        price: "139 THB per seat",
+        duration: "Around 2 hours",
         bestFor: "Low-cost direct travel",
         note: "Confirm counter and destination before buying the ticket.",
       },
@@ -251,7 +251,7 @@ export const routeSeoPages: RouteSeoPage[] = [
       {
         question: "How much is the airport bus to Pattaya?",
         answer:
-          "The published operator fare shown in the app data is 162 THB per seat. Confirm before travel.",
+          "The published operator fare shown in the app data is 139 THB per seat. Confirm before travel.",
       },
       {
         question: "Should I book taxi instead after a long flight?",
@@ -298,7 +298,7 @@ export const routeSeoPages: RouteSeoPage[] = [
       {
         title: "Airport bus from Pattaya/Jomtien",
         price: "162 THB per seat",
-        duration: "Around 2-2.5 hours",
+        duration: "Around 2 hours",
         bestFor: "Budget airport travel",
         note: "Best when you have enough time before your flight.",
       },

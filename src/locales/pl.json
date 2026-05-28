@@ -147,17 +147,17 @@
       "dataQuality": "Oficjalne źródło, sprawdzone ręcznie"
     },
     "suvarnabhumi-airport-to-pattaya": {
-      "travelTime": "Około 2-2,5 godziny",
-      "price": "162 THB za miejsce",
+      "travelTime": "Około 2 godziny",
+      "price": "139 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
-      "fareNote": "Cena opublikowana przez operatora: 162 THB za miejsce.",
-      "operatorNote": "Autobus o 22:00 jedzie do North Pattaya Bus Station, a nie do terminalu Jomtien. Godziny mogą się zmienić, potwierdź przed podróżą.",
+      "fareNote": "Cena opublikowana przez operatora: 139 THB za miejsce.",
+      "operatorNote": "To rozkład dla połączenia z lotniska Suvarnabhumi do Pattaya Bus Station. Godziny mogą się zmienić, potwierdź przed podróżą.",
       "sourceType": "oficjalna strona operatora",
       "dataQuality": "Oficjalne źródło, sprawdzone ręcznie",
       "boardingNote": "Wed?ug aktualnych danych trasy bilety kupuje si? na poziomie 1 w pobli?u bramki 8."
     },
     "pattaya-to-suvarnabhumi-airport": {
-      "travelTime": "Około 2-2,5 godziny, zależnie od ruchu",
+      "travelTime": "Około 2 godziny, zależnie od ruchu",
       "price": "162 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
       "boardingNote": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien.",
@@ -274,8 +274,8 @@
         "body": "Z aktualnych danych trasy wynika, że bilety kupuje się przy stanowisku obsługi na poziomie 1 w pobliżu bramki 8."
       },
       {
-        "title": "Sprawdź cel późnego autobusu",
-        "body": "Z aktualnych danych trasy wynika, że autobus o 22:00 może jechać do North Pattaya Bus Station, a nie do Jomtien Bus Terminal."
+        "title": "Potwierdź Pattaya Bus Station",
+        "body": "Ten rozkład dotyczy Pattaya Bus Station. Jeśli jedziesz do Jomtien, potwierdź osobne połączenie do Jomtien przed zakupem biletu."
       }
     ],
     "pattaya-to-suvarnabhumi-airport": [
@@ -391,7 +391,7 @@
     "suvarnabhumi-airport-to-pattaya": [
       {
         "question": "Ile trwa autobus z Suvarnabhumi Airport do Pattaya?",
-        "answer": "Zwykle około 2–2,5 godziny, zależnie od ruchu drogowego i miejsca wysiadki."
+        "answer": "Zwykle około 2 godziny, zależnie od ruchu drogowego."
       },
       {
         "question": "Gdzie jest stanowisko autobusu na lotnisku Suvarnabhumi?",
@@ -402,14 +402,14 @@
         "answer": "Lepiej zostawić zapas czasu na kontrolę paszportową, odbiór bagażu i dojście do stanowiska autobusu."
       },
       {
-        "question": "Czy każdy autobus z lotniska jedzie do Jomtien?",
-        "answer": "Nie zawsze. Z aktualnych danych wynika, że późny autobus o 22:00 może jechać do North Pattaya Bus Station. Potwierdź cel przed zakupem biletu."
+        "question": "Czy ten autobus lotniskowy jedzie do Jomtien?",
+        "answer": "Dane tej trasy dotyczą Pattaya Bus Station. Jeśli jedziesz do Jomtien, potwierdź osobne połączenie do Jomtien u operatora przed zakupem biletu."
       }
     ],
     "pattaya-to-suvarnabhumi-airport": [
       {
         "question": "Ile trwa autobus z Pattaya na lotnisko Suvarnabhumi?",
-        "answer": "Podróż zwykle trwa około 2-2,5 godziny, zależnie od ruchu i miejsca odjazdu."
+        "answer": "Podróż zwykle trwa około 2 godziny, zależnie od ruchu i miejsca odjazdu."
       },
       {
         "question": "Gdzie w Pattayi wsiąść do autobusu na lotnisko?",

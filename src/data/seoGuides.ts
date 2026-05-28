@@ -54,7 +54,7 @@ export const seoGuides: SeoGuide[] = [
     ctaLabel: "Check Bangkok → Pattaya tickets",
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_ekkamai",
-    lastUpdated: "2026-05-23",
+    lastUpdated: "2026-05-28",
     keyPoints: [
       "Best for travelers staying near Sukhumvit, Thong Lo, Phrom Phong, Asok or BTS Ekkamai.",
       "The Ekkamai to Pattaya bus is usually a straightforward station-to-station trip, not a hotel pickup service.",
@@ -164,7 +164,7 @@ export const seoGuides: SeoGuide[] = [
     ctaLabel: "Check Bangkok to Pattaya tickets",
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_mochit",
-    lastUpdated: "2026-05-23",
+    lastUpdated: "2026-05-28",
     keyPoints: [
       "Best for travelers starting in northern Bangkok, Chatuchak or areas closer to Mo Chit 2.",
       "Mo Chit 2 is not the same as BTS Mo Chit, so plan the transfer to the terminal.",
@@ -273,7 +273,7 @@ export const seoGuides: SeoGuide[] = [
     ctaLabel: "Check Pattaya → Suvarnabhumi Airport tickets",
     ctaPosition: "guide_body",
     ctaSubId: "bpb-pattaya-to-suvarnabhumi-guide_jomtien",
-    lastUpdated: "2026-05-23",
+    lastUpdated: "2026-05-28",
     keyPoints: [
       "North Pattaya Bus Station and the Jomtien / Thappraya airport bus area are different places.",
       "Taxi, Grab or Bolt is usually easiest with luggage or after a long bus ride.",
@@ -378,11 +378,11 @@ export const seoGuides: SeoGuide[] = [
     routeId: "suvarnabhumi-airport-to-pattaya",
     routeLinkLabel: "Open Suvarnabhumi Airport to Pattaya bus times",
     ctaLabel: "Compare airport to Pattaya tickets",
-    lastUpdated: "2026-05-23",
+    lastUpdated: "2026-05-28",
     keyPoints: [
       "Allow time for immigration, baggage claim and walking through the airport.",
       "Current route data says the bus counter is on Level 1 near Gate 8.",
-      "The operator fare shown in current app data is 162 THB per seat.",
+      "The operator fare shown in current app data is 139 THB per seat.",
     ],
     sections: [
       {
@@ -407,7 +407,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How much is the airport bus to Pattaya?",
         answer:
-          "Current operator information in the app shows 162 THB per seat. Confirm before travel.",
+          "Current operator information in the app shows 139 THB per seat. Confirm before travel.",
       },
       {
         question: "Should I take the bus after a long flight?",
@@ -437,7 +437,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Open Bangkok to Pattaya bus times",
     ctaLabel: "Compare bus, taxi and transfer options",
-    lastUpdated: "2026-05-23",
+    lastUpdated: "2026-05-28",
     keyPoints: [
       "Bus from Ekkamai is usually the lowest-cost option for solo travelers.",
       "Taxi or private transfer is easier with luggage, family travel or hotel pickup.",
@@ -496,7 +496,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Check the next Bangkok to Pattaya bus",
     ctaLabel: "Check late-night alternatives",
-    lastUpdated: "2026-05-23",
+    lastUpdated: "2026-05-28",
     keyPoints: [
       "If the last bus has passed, the next scheduled bus may be the following morning.",
       "Late-night taxi or private transfer can be convenient but should have a clear price.",
@@ -555,7 +555,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "pattaya-to-bangkok",
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Compare tickets and airport alternatives",
-    lastUpdated: "2026-05-23",
+    lastUpdated: "2026-05-28",
     keyPoints: [
       "Do not rely on the last possible bus before your flight.",
       "Confirm whether your Bangkok destination is Ekkamai, Mo Chit, Suvarnabhumi or Don Mueang.",

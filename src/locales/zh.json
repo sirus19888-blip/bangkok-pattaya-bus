@@ -161,18 +161,18 @@
       "dataQuality": "官方来源，人工检查"
     },
     "suvarnabhumi-airport-to-pattaya": {
-      "travelTime": "约 2–2.5 小时",
-      "price": "每座 162 泰铢",
+      "travelTime": "约 2 小时",
+      "price": "139 泰铢/座",
       "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
-      "fareNote": "运营商公布票价：每座 162 泰铢。",
+      "fareNote": "运营商公布票价：每座 139 泰铢。",
       "boardingNote": "当前路线数据说明，车票可在 1 层 8 号门附近的柜台购买。",
-      "operatorNote": "22:00 的巴士可能前往芭提雅北部汽车站，而不是中天巴士站。时间可能会变动。",
+      "operatorNote": "此时刻表适用于素万那普机场至芭提雅巴士站服务。巴士时间可能会变动。",
       "sourceName": "Airport Pattaya Bus",
       "sourceType": "官方运营商网站",
       "dataQuality": "官方来源，人工检查"
     },
     "pattaya-to-suvarnabhumi-airport": {
-      "travelTime": "约 2–2.5 小时，视交通而定",
+      "travelTime": "约 2 小时，视交通而定",
       "price": "每座 162 泰铢",
       "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
       "fareNote": "运营商公布票价：每座 162 泰铢。",
@@ -292,8 +292,8 @@
         "body": "当前路线数据说明，巴士柜台在 1 层 8 号门附近。"
       },
       {
-        "title": "确认晚班车目的地",
-        "body": "22:00 的巴士可能去芭提雅北部汽车站，而不是中天。"
+        "title": "确认芭提雅巴士站",
+        "body": "此时刻表适用于芭提雅巴士站。如果你要去中天，请在购票前向运营商确认单独的中天服务。"
       }
     ],
     "pattaya-to-suvarnabhumi-airport": [
@@ -409,7 +409,7 @@
     "suvarnabhumi-airport-to-pattaya": [
       {
         "question": "从素万那普机场到芭提雅坐巴士要多久？",
-        "answer": "通常约 2–2.5 小时，具体取决于交通和下车地点。"
+        "answer": "通常约 2 小时，具体取决于交通情况。"
       },
       {
         "question": "素万那普机场巴士柜台在哪里？",
@@ -420,14 +420,14 @@
         "answer": "不建议。请为入境、取行李和前往巴士柜台预留时间。"
       },
       {
-        "question": "每班机场巴士都去中天吗？",
-        "answer": "不一定。22:00 的晚班车可能前往芭提雅北部汽车站。买票前请确认目的地。"
+        "question": "这班机场巴士去中天吗？",
+        "answer": "此路线数据适用于芭提雅巴士站。如果你要去中天，请在购票前向运营商确认单独的中天服务。"
       }
     ],
     "pattaya-to-suvarnabhumi-airport": [
       {
         "question": "从芭提雅到素万那普机场坐巴士要多久？",
-        "answer": "通常约 2–2.5 小时，具体取决于交通和上车地点。"
+        "answer": "通常约 2 小时，具体取决于交通和上车地点。"
       },
       {
         "question": "在芭提雅哪里上机场巴士？",
