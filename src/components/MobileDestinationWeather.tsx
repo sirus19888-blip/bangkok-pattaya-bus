@@ -261,7 +261,7 @@ export function MobileDestinationWeather({
 
   return (
     <div className="relative z-20 px-4 pb-1">
-      <div className="flex min-h-14 items-start justify-end gap-2">
+      <div className="flex min-h-[3.25rem] items-start justify-end gap-2">
         <div className="min-w-0 flex-1" aria-hidden="true" />
 
         <div className="group relative w-[4.7rem] shrink-0">
@@ -269,69 +269,70 @@ export function MobileDestinationWeather({
             type="button"
             aria-expanded={isOpen}
             aria-label={`${copy.prefix} ${destinationLabel}: ${weather.temperature}°, ${condition}`}
-            className="relative isolate h-14 w-[4.7rem] overflow-hidden rounded-2xl border border-white/15 bg-[#0b4d68] text-white shadow-lg shadow-black/15 ring-1 ring-white/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-[#0e7b6b]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+            className="relative flex h-[3.25rem] w-[4.7rem] items-center justify-start gap-1.5 overflow-hidden rounded-2xl border border-white/20 bg-[#fffaf2] p-1.5 text-[#13233a] shadow-lg shadow-black/15 ring-1 ring-white/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-[#0e7b6b]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
             onClick={() => setIsOpen((current) => !current)}
           >
+            <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white to-[#f7f0e3]" />
             <Image
               alt=""
               aria-hidden="true"
-              className="absolute inset-0 -z-10 h-full w-full object-cover object-left"
-              fill
+              className="relative h-9 w-9 shrink-0 rounded-xl object-contain"
+              height={36}
               priority
-              sizes="75px"
-              src="/images/weather/mobile-destination-weather.png"
+              src="/images/icons/icon-header-weather.png"
+              width={36}
             />
-            <span className="absolute inset-0 -z-10 bg-gradient-to-br from-[#052032]/5 via-[#052032]/15 to-[#052032]/70" />
-            <span className="absolute bottom-1.5 right-2 text-[1.05rem] font-black leading-none tracking-[-0.06em]">
+            <span className="relative text-[0.82rem] font-black leading-none text-[#13233a]">
               {weather.temperature}&deg;
             </span>
           </button>
           <span className="sr-only"> </span>
 
           <div
-            className={`absolute right-0 top-[calc(100%+0.45rem)] isolate w-[14.5rem] max-w-[calc(100vw-2rem)] overflow-hidden rounded-[1.15rem] border border-white/15 bg-[#0d2638] p-2.5 text-white shadow-2xl shadow-black/30 ring-1 ring-white/10 transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
+            className={`absolute right-0 top-[calc(100%+0.45rem)] z-50 w-[14.5rem] max-w-[calc(100vw-2rem)] rounded-[1.15rem] border border-[#d8c8b4] bg-[#fffaf2] p-3 text-[#13233a] shadow-2xl shadow-black/25 ring-1 ring-white/60 transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100 ${
               isOpen
                 ? "pointer-events-auto translate-y-0 opacity-100"
                 : "pointer-events-none translate-y-1 opacity-0"
             }`}
           >
-            <div className="absolute inset-0 -z-10">
-              <Image
-                alt=""
-                aria-hidden="true"
-                className="h-full w-full object-cover object-left opacity-80"
-                fill
-                sizes="280px"
-                src="/images/weather/mobile-destination-weather.png"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#052032]/15 via-[#052032]/45 to-[#052032]/85" />
-            </div>
-            <div className="ml-auto flex max-w-[9.6rem] flex-col items-end gap-1 text-right">
-              <p className="max-w-full truncate text-[0.68rem] font-black leading-none text-white">
-                <span>{copy.prefix}</span>{" "}
-                <span>{destinationLabel}</span>
-              </p>
-              <p className="flex items-center gap-1.5 leading-none">
-                <span className="rounded-full bg-white/14 px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#ffe9ae] ring-1 ring-white/15">
-                  {sourceLabel}
-                </span>
-                <span aria-hidden="true" className="text-white/35">
-                  ·
-                </span>
-                <span className="text-[1.65rem] font-black tracking-[-0.07em]">
-                  {weather.temperature}&deg;
-                </span>
-              </p>
-              <p className="text-[0.62rem] font-bold leading-none text-white/80">
-                {condition}
-              </p>
+            <div className="flex items-start gap-3">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-white p-1.5 shadow-sm ring-1 ring-[#eadcc7]">
+                <Image
+                  alt=""
+                  aria-hidden="true"
+                  className="h-full w-full rounded-xl object-contain"
+                  height={40}
+                  src="/images/icons/icon-header-weather.png"
+                  width={40}
+                />
+              </span>
+              <div className="min-w-0 flex-1 text-right">
+                <p className="max-w-full truncate text-[0.68rem] font-black uppercase tracking-[0.14em] text-[#0e7b6b]">
+                  <span>{copy.prefix}</span>{" "}
+                  <span>{destinationLabel}</span>
+                </p>
+                <p className="mt-1 flex items-center justify-end gap-1.5 leading-none">
+                  <span className="rounded-full bg-white px-1.5 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.14em] text-[#8a5b12] ring-1 ring-[#eadcc7]">
+                    {sourceLabel}
+                  </span>
+                  <span aria-hidden="true" className="text-[#9aa3ad]">
+                    ·
+                  </span>
+                  <span className="text-[1.65rem] font-black tracking-[-0.06em] text-[#13233a]">
+                    {weather.temperature}&deg;
+                  </span>
+                </p>
+                <p className="mt-1 text-[0.72rem] font-bold leading-none text-[#4f5d6c]">
+                  {condition}
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
         <Link
           aria-label="Postaw mi kawę"
-          className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/15 bg-[#fffaf2] shadow-lg shadow-black/15 ring-1 ring-white/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-[#e8b05a]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+          className="flex h-[3.25rem] w-[3.25rem] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/20 bg-[#fffaf2] p-1.5 shadow-lg shadow-black/15 ring-1 ring-white/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-[#e8b05a]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
           href="https://www.buymeacoffee.com/Pawel_"
           rel="noopener noreferrer"
           target="_blank"
@@ -340,10 +341,10 @@ export function MobileDestinationWeather({
           <Image
             alt=""
             aria-hidden="true"
-            className="h-full w-full object-cover"
-            height={56}
+            className="h-full w-full rounded-xl object-contain"
+            height={40}
             src="/images/icons/icon-support-coffee.png"
-            width={56}
+            width={40}
           />
         </Link>
       </div>
