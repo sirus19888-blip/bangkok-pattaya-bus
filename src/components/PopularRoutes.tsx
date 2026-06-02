@@ -34,16 +34,16 @@ const routeCards: Record<
   "suvarnabhumi-airport-to-pattaya": {
     cta: "Check times",
     note: "From airport counter",
-    price: "162 THB",
+    price: "139 THB",
     title: "Suvarnabhumi Airport to Pattaya Bus",
-    travelTime: "Around 2-2.5 hours",
+    travelTime: "Around 2 hours",
   },
   "pattaya-to-suvarnabhumi-airport": {
     cta: "Check times",
     note: "From Jomtien bus station",
     price: "162 THB",
     title: "Pattaya to Suvarnabhumi Airport Bus",
-    travelTime: "Around 2-2.5 hours",
+    travelTime: "Around 2 hours",
   },
   "don-mueang-airport-to-pattaya": {
     cta: "Check times",

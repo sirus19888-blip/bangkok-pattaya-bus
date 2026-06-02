@@ -91,7 +91,11 @@ export function StationCard({
                     aria-hidden="true"
                     className="pointer-events-none absolute bottom-2 right-0 top-10 z-10 w-10 bg-gradient-to-l from-white via-white/85 to-transparent md:hidden"
                   />
-                  <ul className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 pr-8 [scrollbar-width:thin] md:mx-0 md:grid md:grid-cols-2 md:gap-2 md:overflow-visible md:px-0 md:pb-0 md:pr-0">
+                  <ul
+                    aria-label={`${labels.tip}: ${station.name}`}
+                    className="-mx-3 mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto px-3 pb-2 pr-8 [scrollbar-width:thin] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#13233a] focus-visible:ring-offset-2 md:mx-0 md:grid md:grid-cols-2 md:gap-2 md:overflow-visible md:px-0 md:pb-0 md:pr-0"
+                    tabIndex={0}
+                  >
                     {stationTipPoints.map((point, pointIndex) => (
                       <li
                         key={point}
@@ -107,7 +111,7 @@ export function StationCard({
                   {hasMobileShowMore ? (
                     <button
                       type="button"
-                      className="mt-2 inline-flex min-h-9 items-center rounded-full border border-[#e8b05a] bg-[#fff8ec] px-3 text-xs font-black text-[#13233a] md:hidden"
+                      className="mt-2 inline-flex min-h-11 items-center rounded-full border border-[#e8b05a] bg-[#fff8ec] px-4 text-xs font-black text-[#13233a] md:hidden"
                       onClick={() =>
                         setExpandedStations((current) => ({
                           ...current,

@@ -125,7 +125,7 @@ export function RouteSearch({
   }
 
   const labelClass = compact
-    ? "mb-1 block text-[0.58rem] font-black uppercase tracking-[0.14em] text-[#6b7280]"
+    ? "mb-1 block text-[0.65rem] font-black uppercase tracking-[0.14em] text-[#4f5d6c]"
     : "mb-2 block text-sm font-bold text-[#344153]";
   const selectClass = compact
     ? "h-11 min-h-11 w-full rounded-xl border border-[#eadcc7] bg-[#fffaf2] px-2 text-sm font-black text-[#13233a] outline-none focus:border-[#0e7b6b]"
@@ -197,7 +197,7 @@ export function RouteSearch({
             aria-label={`${goLabel}: ${selectedFrom} ${displayLabels.to} ${selectedTo}`}
             className={
               compact
-                ? "mb-0.5 flex h-10 min-w-12 items-center justify-center rounded-full border border-[#e8b05a] bg-[#13233a] px-2.5 text-[0.7rem] font-black leading-none text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+                ? "flex h-11 min-w-12 items-center justify-center rounded-full border border-[#e8b05a] bg-[#13233a] px-2.5 text-[0.7rem] font-black leading-none text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
                 : "flex h-13 min-h-13 min-w-16 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#13233a] px-5 text-sm font-black uppercase tracking-[0.08em] text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-[#0e7b6b] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
             }
           >

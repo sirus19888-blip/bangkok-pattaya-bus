@@ -478,7 +478,7 @@ export function HeaderTravelInfo({
               {condition}
             </span>
           </span>
-          <span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[0.58rem] font-black uppercase tracking-wide text-[#b9832e]">
+          <span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[0.65rem] font-black uppercase tracking-wide text-[#8a5b12]">
             {weather.source === "live" ? labels.live : labels.estimated}
           </span>
         </div>
@@ -531,7 +531,7 @@ export function HeaderTravelInfo({
                 {condition}
               </span>
             </span>
-            <span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[0.58rem] font-black uppercase tracking-wide text-[#b9832e]">
+            <span className="ml-auto rounded-full bg-white px-2 py-0.5 text-[0.65rem] font-black uppercase tracking-wide text-[#8a5b12]">
               {weather.source === "live" ? labels.live : labels.estimated}
             </span>
           </div>
@@ -581,7 +581,7 @@ export function HeaderTravelInfo({
             type="button"
             aria-expanded={weatherOpen}
             aria-label={`${locationLabel} ${labels.weatherSuffix}: ${weather.temperature}°, ${condition}`}
-            className="relative isolate flex h-10 min-w-[4.4rem] items-center justify-end overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#0b4d68] px-2 text-xs font-black text-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+            className="relative isolate flex h-11 min-w-[4.6rem] items-center justify-end overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#0b4d68] px-2 text-xs font-black text-white shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
             onClick={() => setWeatherOpen((current) => !current)}
             title={`${locationLabel} ${labels.weatherSuffix}`}
           >
@@ -670,7 +670,7 @@ export function HeaderTravelInfo({
 
       <Link
         aria-label={labels.buyMeCoffee}
-        className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:hidden"
+        className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:hidden"
         href="https://www.buymeacoffee.com/Pawel_"
         rel="noopener noreferrer"
         target="_blank"
@@ -690,7 +690,7 @@ export function HeaderTravelInfo({
       <div className="relative">
         <button
           type="button"
-          className="flex h-10 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-2.5 text-xs font-bold text-[#13233a] shadow-sm"
+          className="flex h-11 items-center gap-1.5 rounded-lg border border-[#d8c8b4] bg-[#fffaf2] px-3 text-xs font-bold text-[#13233a] shadow-sm"
           aria-expanded={ratesOpen}
           aria-label={labels.currencyAria}
           onClick={() => setRatesOpen((current) => !current)}
@@ -703,7 +703,7 @@ export function HeaderTravelInfo({
             src="/images/icons/icon-currency.png"
             width={16}
           />
-          <span className="text-[#b9832e]">{labels.currencyButton}</span>
+          <span className="text-[#8a5b12]">{labels.currencyButton}</span>
           <span>{mainRate}฿</span>
           <span className="text-[0.65rem] text-[#637083]" aria-hidden="true">
             ▾

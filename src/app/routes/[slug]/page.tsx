@@ -88,14 +88,18 @@ export default async function SeoRoutePage({ params }: SeoRoutePageProps) {
       />
 
       <article className="mx-auto max-w-5xl">
-        <nav className="text-sm font-black text-[#0e7b6b]">
-          <Link href="/">Home</Link>
+        <nav className="flex flex-wrap items-center gap-1 text-sm font-black text-[#0e7b6b]">
+          <Link className="inline-flex min-h-11 items-center rounded-lg px-2" href="/">
+            Home
+          </Link>
           <span className="px-2 text-[#8a94a3]">/</span>
-          <Link href="/routes">Routes</Link>
+          <Link className="inline-flex min-h-11 items-center rounded-lg px-2" href="/routes">
+            Routes
+          </Link>
         </nav>
 
         <section className="mt-5 rounded-[1.75rem] border border-[#eadcc7] bg-white p-6 shadow-sm md:p-8">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#b9832e]">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#8a5b12]">
             Thailand transport guide
           </p>
           <h1 className="mt-3 text-4xl font-black leading-tight md:text-5xl">
@@ -232,7 +236,7 @@ export default async function SeoRoutePage({ params }: SeoRoutePageProps) {
                 className="rounded-2xl border border-[#eadcc7] bg-white p-4"
                 key={faq.question}
               >
-                <summary className="cursor-pointer text-base font-black">
+                <summary className="flex min-h-11 cursor-pointer list-none items-center text-base font-black [&::-webkit-details-marker]:hidden">
                   {faq.question}
                 </summary>
                 <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
@@ -284,7 +288,7 @@ function Highlight({ title, value }: { title: string; value: string }) {
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <dt className="text-xs font-black uppercase tracking-wide text-[#8a94a3]">
+      <dt className="text-xs font-black uppercase tracking-wide text-[#4f5d6c]">
         {label}
       </dt>
       <dd className="mt-1 font-black text-[#13233a]">{value}</dd>
@@ -317,7 +321,7 @@ function AppRideCard({
 function InfoPanel({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-4">
-      <p className="text-xs font-black uppercase tracking-wide text-[#8a94a3]">
+      <p className="text-xs font-black uppercase tracking-wide text-[#4f5d6c]">
         {label}
       </p>
       <p className="mt-1 font-black text-[#13233a]">{value}</p>

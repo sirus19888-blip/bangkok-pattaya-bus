@@ -78,7 +78,7 @@ export function MobileRouteCountdown({
     <div className="mt-3 rounded-2xl border border-[#c8dbe9] bg-[#eaf5fb] p-2">
       <div className="grid grid-cols-2 gap-2">
         <span>
-          <span className="block text-[0.58rem] font-black uppercase tracking-wide text-[#5f6874]">
+          <span className="block text-[0.65rem] font-black uppercase tracking-wide text-[#4f5d6c]">
             {labels.nextBus}
           </span>
           <span className="mt-0.5 block text-base font-black leading-tight text-[#13233a]">
@@ -86,7 +86,7 @@ export function MobileRouteCountdown({
           </span>
         </span>
         <span>
-          <span className="block text-[0.58rem] font-black uppercase tracking-wide text-[#5f6874]">
+          <span className="block text-[0.65rem] font-black uppercase tracking-wide text-[#4f5d6c]">
             {labels.leavesIn}
           </span>
           <span

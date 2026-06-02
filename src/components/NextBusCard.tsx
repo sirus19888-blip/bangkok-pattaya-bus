@@ -61,7 +61,7 @@ export function NextBusCard({
   }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
 
   return (
-    <aside className="rounded-2xl border border-[#c8dbe9] bg-[#eaf5fb] p-4 shadow-sm sm:p-6 md:p-4 min-[1180px]:sticky min-[1180px]:top-5 min-[1180px]:self-start">
+    <div className="rounded-2xl border border-[#c8dbe9] bg-[#eaf5fb] p-4 shadow-sm sm:p-6 md:p-4 min-[1180px]:sticky min-[1180px]:top-5 min-[1180px]:self-start">
       <div className="rounded-2xl bg-white p-5 shadow-sm sm:p-6 md:p-4">
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -121,7 +121,7 @@ export function NextBusCard({
           variant="top"
         />
       </div>
-    </aside>
+    </div>
   );
 }
 

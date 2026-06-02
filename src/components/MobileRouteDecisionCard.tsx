@@ -181,10 +181,7 @@ export function MobileRouteDecisionCard({
             return (
               <span
                 key={departure}
-                aria-label={
-                  isNextDeparture ? `${labels.nextBus} ${departure}` : departure
-                }
-                className={`flex min-h-9 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black md:min-h-11 md:text-base ${
+                className={`flex min-h-11 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black md:text-base ${
                   isNextDeparture
                     ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
                     : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
@@ -281,7 +278,7 @@ export function DesktopRouteBookingPanel({
   }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
 
   return (
-    <aside
+    <div
       className="hidden rounded-2xl border border-[#eadcc7] bg-white p-5 shadow-sm lg:block"
       data-desktop-booking-panel="true"
     >
@@ -374,7 +371,7 @@ export function DesktopRouteBookingPanel({
       >
         {reportLabel}
       </a>
-    </aside>
+    </div>
   );
 }
 
@@ -410,7 +407,7 @@ function ScheduleDataDetails({
       >
         <summary
           aria-label={scheduleLabels.dataTitle}
-          className="flex h-9 w-9 cursor-pointer list-none items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] lg:h-10 lg:w-10 lg:bg-white [&::-webkit-details-marker]:hidden"
+          className="flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition group-open:ring-2 group-open:ring-[#e8b05a] lg:bg-white [&::-webkit-details-marker]:hidden"
         >
           <Image
             alt=""

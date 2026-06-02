@@ -22,11 +22,11 @@ export function FAQ({ faqs, labels, showTitle = true }: FAQProps) {
             key={faq.question}
             className="group rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3.5 sm:p-4 md:p-3"
           >
-            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 text-left text-sm font-black leading-6 text-[#13233a] sm:text-base md:min-h-10 md:text-sm md:leading-5 [&::-webkit-details-marker]:hidden">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 text-left text-sm font-black leading-6 text-[#13233a] sm:text-base md:min-h-11 md:text-sm md:leading-5 [&::-webkit-details-marker]:hidden">
               <span>{faq.question}</span>
               <span
                 aria-hidden="true"
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8c8b4] bg-white text-lg leading-none text-[#13233a] md:h-8 md:w-8"
+                className="flex min-h-9 min-w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8c8b4] bg-white text-lg leading-none text-[#13233a]"
               >
                 <span className="group-open:hidden">+</span>
                 <span className="hidden group-open:inline">-</span>

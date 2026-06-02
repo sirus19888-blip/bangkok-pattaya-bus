@@ -168,8 +168,8 @@ export function StationMiniMap({
             aria-hidden="true"
             className="flex h-full w-full items-center justify-center bg-[#eaf5fb] px-4 text-center"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xl shadow-sm">
-              ⌖
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm">
+              <span className="block h-4 w-4 rounded-full border-2 border-[#13233a] bg-[#e8b05a]" />
             </span>
           </span>
         )}
@@ -180,7 +180,7 @@ export function StationMiniMap({
       <div className="border-t border-[#d6e8f4] bg-white p-2.5 lg:p-2">
         <a
           href={station.googleMapsUrl}
-          className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#233a5b] lg:min-h-10 lg:text-xs"
+          className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-4 text-center text-sm font-black text-white transition hover:bg-[#233a5b] lg:text-xs"
           target="_blank"
           rel="noopener noreferrer"
         >

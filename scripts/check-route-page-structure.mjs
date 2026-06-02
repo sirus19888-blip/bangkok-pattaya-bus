@@ -161,7 +161,7 @@ for (const locale of routeLocales) {
 
     if (locale === "en" && slug === "suvarnabhumi-airport-to-pattaya") {
       const text = normalizeText(toTextContent(html));
-      const cleanDurationAndDistance = `Around 2-2.5 hours ${String.fromCodePoint(
+      const cleanDurationAndDistance = `Around 2 hours ${String.fromCodePoint(
         0x2022,
       )} 120 km`;
 

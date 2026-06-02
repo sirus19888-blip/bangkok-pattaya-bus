@@ -282,9 +282,12 @@ async function ensureServer() {
   }
 
   const nextBin = join(root, "node_modules", "next", "dist", "bin", "next");
+  const nextCommand = existsSync(join(root, ".next", "BUILD_ID"))
+    ? "start"
+    : "dev";
   serverProcess = spawn(
     process.execPath,
-    [nextBin, "dev", "-H", url.hostname, "-p", url.port || "3000"],
+    [nextBin, nextCommand, "-H", url.hostname, "-p", url.port || "3000"],
     {
       cwd: root,
       env: { ...process.env, NEXT_TELEMETRY_DISABLED: "1" },
@@ -371,10 +374,33 @@ async function assertNoVisibleDesktopSwipeText(page, contextLabel) {
 }
 
 async function cssValue(locator, property) {
-  return locator.evaluate(
-    (element, cssProperty) => window.getComputedStyle(element).getPropertyValue(cssProperty),
-    property,
+  return retryOnNavigation(() =>
+    locator.evaluate(
+      (element, cssProperty) =>
+        window.getComputedStyle(element).getPropertyValue(cssProperty),
+      property,
+    ),
   );
+}
+
+async function retryOnNavigation(callback, attempts = 3) {
+  let lastError;
+
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    try {
+      return await callback();
+    } catch (error) {
+      lastError = error;
+
+      if (!String(error?.message ?? "").includes("Execution context was destroyed")) {
+        throw error;
+      }
+
+      await delay(750);
+    }
+  }
+
+  throw lastError;
 }
 
 async function firstVisibleWidths(locator, count) {
@@ -418,6 +444,7 @@ async function visibleLinkTextCount(page, text) {
 }
 
 async function expectVisible(locator, label) {
+  await locator.waitFor({ state: "visible", timeout: 15_000 });
   assert.equal(await locator.isVisible(), true, `${label} must be visible.`);
 }
 

@@ -32,16 +32,25 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
       <GuideJsonLd guide={guide} />
 
       <article className="mx-auto max-w-4xl">
-        <nav className="text-sm font-black text-[#0e7b6b]">
-          <Link href="/">Home</Link>
+        <nav className="flex flex-wrap items-center gap-1 text-sm font-black text-[#0e7b6b]">
+          <Link className="inline-flex min-h-11 items-center rounded-lg px-2" href="/">
+            Home
+          </Link>
           <span className="px-2 text-[#8a94a3]">/</span>
-          <Link href="/routes">Routes</Link>
+          <Link className="inline-flex min-h-11 items-center rounded-lg px-2" href="/routes">
+            Routes
+          </Link>
           <span className="px-2 text-[#8a94a3]">/</span>
-          <Link href={`/en/${routePage.slug}`}>{routePage.title}</Link>
+          <Link
+            className="inline-flex min-h-11 items-center rounded-lg px-2"
+            href={`/en/${routePage.slug}`}
+          >
+            {routePage.title}
+          </Link>
         </nav>
 
         <header className="mt-5 rounded-[1.75rem] border border-[#eadcc7] bg-white p-6 shadow-sm md:p-8">
-          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#b9832e]">
+          <p className="text-xs font-black uppercase tracking-[0.22em] text-[#8a5b12]">
             Practical travel guide
           </p>
           <h1 className="mt-3 text-4xl font-black leading-tight md:text-5xl">
@@ -143,7 +152,7 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
                     className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4"
                     key={faq.question}
                   >
-                    <summary className="cursor-pointer text-base font-black">
+                    <summary className="flex min-h-11 cursor-pointer list-none items-center text-base font-black [&::-webkit-details-marker]:hidden">
                       {faq.question}
                     </summary>
                     <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
@@ -166,7 +175,7 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
                 {guide.sources.map((source) => (
                   <li key={source.url}>
                     <a
-                      className="text-sm font-black text-[#0e7b6b] underline-offset-4 hover:underline"
+                      className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm font-black text-[#0e7b6b] underline-offset-4 hover:underline"
                       href={source.url}
                       rel={
                         source.url.startsWith("http")
@@ -185,8 +194,8 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
             </section>
           </div>
 
-          <aside className="h-fit rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm lg:sticky lg:top-24">
-            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#b9832e]">
+          <div className="h-fit rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm lg:sticky lg:top-24">
+            <p className="text-xs font-black uppercase tracking-[0.2em] text-[#8a5b12]">
               Booking options
             </p>
             <h2 className="mt-2 text-2xl font-black leading-tight">
@@ -211,7 +220,7 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
               to={affiliateRoute?.to ?? ""}
               variant="afterSchedule"
             />
-          </aside>
+          </div>
         </div>
       </article>
     </main>

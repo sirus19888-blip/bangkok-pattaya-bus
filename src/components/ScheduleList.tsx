@@ -160,7 +160,7 @@ function DepartureTile({
       }`}
     >
       <p
-        className={`text-[0.58rem] font-black uppercase tracking-wide sm:text-xs md:text-[0.6rem] ${
+        className={`text-[0.65rem] font-black uppercase tracking-wide sm:text-xs md:text-[0.65rem] ${
           isNext ? "text-[#f3d77b]" : "text-[#5f6874]"
         }`}
       >
@@ -259,7 +259,7 @@ function ScheduleSourceInfo({
         <button
           type="button"
           aria-label={labels.dataTitle}
-          className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
+          className="flex min-h-11 min-w-11 items-center justify-center overflow-hidden rounded-xl border border-[#eadcc7] bg-[#fffaf2] shadow-sm ring-1 ring-[#13233a]/5 transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
         >
           <Image
             alt=""

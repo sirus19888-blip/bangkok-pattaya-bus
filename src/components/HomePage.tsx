@@ -971,21 +971,21 @@ function MobileHome({
                 sizes="(min-width: 768px) 1180px, 390px"
                 src="/images/hero/mobile-home-bus-guide.png"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/45 via-[#0e1e2e]/70 to-[#0e1e2e]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/80 via-[#0e1e2e]/88 to-[#0e1e2e]" />
             </div>
             <div className="relative pb-2 pt-4 md:min-h-[390px] md:pb-0 md:pt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10">
               <div className="min-w-0">
-                <span className="inline-flex rounded-full bg-white/10 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#e8b05a] ring-1 ring-white/15">
+                <span className="inline-flex rounded-full bg-[#0e1e2e]/90 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#f3d77b] ring-1 ring-white/20">
                   {copy.mobileHeroKicker}
                 </span>
                 <p className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight md:max-w-3xl md:text-5xl lg:text-6xl">
                   {copy.heroLineOne}{" "}
-                  <span className="italic text-[#e8b05a]">
+                  <span className="italic text-[#f3d77b]">
                     {copy.heroSmart}
                   </span>
                   <br />
                   {copy.heroLineTwo}{" "}
-                  <span className="italic text-[#e8b05a]">
+                  <span className="italic text-[#f3d77b]">
                     {copy.heroEasy}
                   </span>
                 </p>
@@ -1009,11 +1009,53 @@ function MobileHome({
                     />
                   </div>
                 ) : null}
+                {featuredRoute && featuredSchedule ? (
+                  <div className="mt-3 rounded-[1.35rem] border border-white/15 bg-white/95 p-3 text-[#13233a] shadow-xl shadow-black/20 lg:hidden">
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="min-w-0">
+                        <p className="text-[0.65rem] font-black uppercase tracking-[0.16em] text-[#0e7b6b]">
+                          {copy.nextBus}
+                        </p>
+                        <h2 className="mt-1 text-base font-black leading-tight">
+                          {featuredRoute.title}
+                        </h2>
+                      </div>
+                      <Link
+                        href={`/${locale}/${featuredRoute.slug}`}
+                        className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl bg-[#13233a] px-3 text-xs font-black text-white"
+                      >
+                        {copy.viewRoute}
+                      </Link>
+                    </div>
+                    <div className="mt-3 grid grid-cols-2 gap-2">
+                      <MobileMiniFact
+                        compact
+                        fallbackLabel={copy.check}
+                        label={copy.time}
+                        value={featuredSchedule.travelTime}
+                      />
+                      <MobileMiniFact
+                        compact
+                        fallbackLabel={copy.check}
+                        label={copy.price}
+                        value={featuredSchedule.price}
+                      />
+                    </div>
+                    <MobileRouteCountdown
+                      labels={countdownLabels}
+                      schedule={featuredSchedule}
+                    />
+                    <p className="mt-2 text-[0.65rem] font-bold leading-4 text-[#4f5d6c]">
+                      {t.schedule.source}: {featuredSchedule.sourceName} ·{" "}
+                      {t.schedule.lastVerified}: {featuredSchedule.lastVerified}
+                    </p>
+                  </div>
+                ) : null}
               </div>
               <div className="mt-4 lg:mt-0 lg:self-end">
                 <HomepageRevenueHeroCard locale={locale} />
                 {featuredRoute && featuredSchedule ? (
-                  <aside className="mt-4 hidden rounded-[1.65rem] border border-white/15 bg-white/95 p-5 text-[#13233a] shadow-2xl shadow-black/20 lg:block">
+                  <div className="mt-4 hidden rounded-[1.65rem] border border-white/15 bg-white/95 p-5 text-[#13233a] shadow-2xl shadow-black/20 lg:block">
                     <p className="text-xs font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
                       {copy.nextBus}
                     </p>
@@ -1053,7 +1095,7 @@ function MobileHome({
                       locale={locale}
                       routeId={featuredRoute.slug}
                     />
-                  </aside>
+                  </div>
                 ) : null}
               </div>
             </div>
@@ -1076,8 +1118,11 @@ function MobileHome({
             </div>
           </div>
           <div
-            className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-4 sm:pb-4 md:px-0 md:pb-0 lg:grid-cols-3"
+            aria-label={copy.popularRoutes}
+            className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#13233a] focus-visible:ring-offset-2 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-4 sm:pb-4 md:px-0 md:pb-0 lg:grid-cols-3"
             data-visual-qa="homepage-route-grid"
+            role="group"
+            tabIndex={0}
           >
             {routePagesForLocale.map((routePage) => (
               <MobileRouteCard
@@ -1157,7 +1202,7 @@ function MobileHome({
               <IconAsset name="tips" size="lg" />
             </span>
             <div>
-              <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#b9832e]">
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#8a5b12]">
                 {copy.beforeTravel}
               </p>
               <h2 className="text-xl font-black text-[#13233a]">
@@ -1187,7 +1232,7 @@ function HomepageRevenueHeroCard({ locale }: { locale: LocaleCode }) {
   const uiText = getUiTranslations(locale).homepageRevenue;
 
   return (
-    <aside className="rounded-[1.45rem] border border-[#eadcc7] bg-white p-4 text-[#13233a] shadow-sm lg:mt-4 lg:border-[#e8b05a]/70 lg:bg-[#fff8ec]">
+    <div className="rounded-[1.45rem] border border-[#eadcc7] bg-white p-4 text-[#13233a] shadow-sm lg:mt-4 lg:border-[#e8b05a]/70 lg:bg-[#fff8ec]">
       <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
         {uiText.title}
       </p>
@@ -1208,12 +1253,12 @@ function HomepageRevenueHeroCard({ locale }: { locale: LocaleCode }) {
         variant="top"
       />
       <a
-        className="mt-3 flex min-h-10 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-4 text-sm font-black text-[#13233a] transition hover:bg-[#fffaf2]"
+        className="mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-4 text-sm font-black text-[#13233a] transition hover:bg-[#fffaf2]"
         href="#popular-routes"
       >
         {uiText.secondaryCta}
       </a>
-    </aside>
+    </div>
   );
 }
 
@@ -1253,7 +1298,7 @@ function MobileRouteCard({
           src={routeImage}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-[#0e1e2e]/30 to-[#0e1e2e]/85" />
-        <span className="absolute left-2 top-2 rounded-full bg-white/90 px-2 py-0.5 text-[0.58rem] font-black uppercase tracking-wide text-[#0e7b6b]">
+        <span className="absolute left-2 top-2 rounded-full bg-white px-2 py-0.5 text-[0.65rem] font-black uppercase tracking-wide text-[#0e7b6b]">
           {meta.badge}
         </span>
         <h3 className="absolute inset-x-2 bottom-2 text-sm font-black leading-tight text-white">
@@ -1281,13 +1326,13 @@ function MobileRouteCard({
       <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
       <Link
         href={`/${locale}/${routePage.slug}`}
-        className="mt-3 flex min-h-10 items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white"
+        className="mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white"
       >
         {copy.viewRoute}
       </Link>
       <TwelveGoAffiliateButton
         ariaLabel={getUiTranslations(locale).affiliate.variantLabels.homepageCardAria}
-        className="mt-2 flex min-h-10 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a]"
+        className="mt-2 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a]"
         ctaPosition="homepage_route_card"
         disclosureMode="none"
         label={getUiTranslations(locale).affiliate.variantLabels.homepageCardCta}
@@ -1340,7 +1385,7 @@ function MobileBottomNav({
           item.icon === "airport" ? (
             <details key={item.label} className="group relative">
               <summary
-                className="flex min-h-10 cursor-pointer list-none flex-col items-center justify-center rounded-xl text-[0.62rem] font-black text-[#6b7280] transition group-open:bg-[#eaf5fb] group-open:text-[#0e7b6b] [&::-webkit-details-marker]:hidden"
+                className="flex min-h-11 cursor-pointer list-none flex-col items-center justify-center rounded-xl text-[0.62rem] font-black text-[#6b7280] transition group-open:bg-[#eaf5fb] group-open:text-[#0e7b6b] [&::-webkit-details-marker]:hidden"
                 id="mobile-airports"
               >
                 <span
@@ -1369,7 +1414,7 @@ function MobileBottomNav({
               href={item.href}
               target={item.target}
               rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
-              className={`flex min-h-10 flex-col items-center justify-center rounded-xl text-[0.62rem] font-black ${
+              className={`flex min-h-11 flex-col items-center justify-center rounded-xl text-[0.62rem] font-black ${
                 item.active
                   ? "bg-[#eaf5fb] text-[#0e7b6b]"
                   : "text-[#6b7280]"
@@ -1403,7 +1448,7 @@ function MobileMiniFact({
 }) {
   return (
     <span className="rounded-2xl bg-[#fffaf2] p-2">
-      <span className="block text-[0.58rem] font-black uppercase tracking-wide text-[#6b7280]">
+      <span className="block text-[0.65rem] font-black uppercase tracking-wide text-[#4f5d6c]">
         {label}
       </span>
       <span

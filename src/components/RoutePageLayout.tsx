@@ -214,7 +214,7 @@ function MobileDetailsSection({
       className="group rounded-2xl border border-[#eadcc7] bg-white p-4 shadow-sm md:border-0 md:bg-transparent md:p-0 md:shadow-none"
       open
     >
-      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a] md:min-h-0 md:cursor-default md:text-xl [&::-webkit-details-marker]:hidden">
+      <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 text-base font-black text-[#13233a] md:cursor-default md:text-xl [&::-webkit-details-marker]:hidden">
         <span>{title}</span>
         <span
           aria-hidden="true"

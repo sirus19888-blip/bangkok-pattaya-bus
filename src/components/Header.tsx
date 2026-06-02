@@ -33,16 +33,8 @@ export function Header({
           ? "border-[#13233a]/25 bg-[#13233a] bg-cover bg-center"
           : "border-[#eadcc7] bg-white/90"
       }`}
-      style={
-        hasDesktopFeatureBackground
-          ? {
-              backgroundImage:
-                "linear-gradient(90deg, rgba(14,30,46,0.88), rgba(14,30,46,0.48)), url('/images/hero/mobile-home-bus-guide.png')",
-            }
-          : undefined
-      }
     >
-      <Link href={`/${currentLocale}`} className="relative z-10 flex min-w-0 items-center gap-3">
+      <Link href={`/${currentLocale}`} className="relative z-10 flex min-h-11 min-w-0 items-center gap-3">
         <span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-sm font-black shadow-sm sm:h-10 sm:w-10 sm:text-base ${
           hasDesktopFeatureBackground
             ? "bg-white/95 text-[#13233a]"
@@ -57,7 +49,7 @@ export function Header({
             {labels.brandPrimary}
           </span>
           <span className={`block truncate text-[0.7rem] font-semibold sm:text-xs ${
-            hasDesktopFeatureBackground ? "text-[#e8b05a]" : "text-[#5f6874]"
+            hasDesktopFeatureBackground ? "text-[#f3d77b]" : "text-[#5f6874]"
           }`}>
             {labels.brandSecondary}
           </span>

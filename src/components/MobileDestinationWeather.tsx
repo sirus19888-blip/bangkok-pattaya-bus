@@ -260,7 +260,7 @@ export function MobileDestinationWeather({
   const sourceLabel = weather.source === "live" ? copy.live : copy.fallback;
 
   return (
-    <aside className="relative z-20 px-4 pb-1">
+    <div className="relative z-20 px-4 pb-1">
       <div className="flex min-h-14 items-start justify-end gap-2">
         <div className="min-w-0 flex-1" aria-hidden="true" />
 
@@ -347,7 +347,7 @@ export function MobileDestinationWeather({
           />
         </Link>
       </div>
-    </aside>
+    </div>
   );
 }
 

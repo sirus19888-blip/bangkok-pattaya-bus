@@ -26,7 +26,12 @@ export function StationAccessGuide({
       <p className="mt-3 text-xs font-bold text-[#6b7280] md:hidden">
         {swipeHint}
       </p>
-      <div className="mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:gap-2 md:overflow-visible md:pb-0 lg:mt-2.5">
+      <div
+        aria-label={`${title}: ${swipeHint}`}
+        className="mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#13233a] focus-visible:ring-offset-2 md:grid md:gap-2 md:overflow-visible md:pb-0 lg:mt-2.5"
+        role="group"
+        tabIndex={0}
+      >
         {items.map((item, index) => (
           <div
             key={item}

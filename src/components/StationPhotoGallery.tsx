@@ -83,7 +83,12 @@ export function StationPhotoGallery({
       ) : null}
       <div className={showTitle ? "mt-3 space-y-4 sm:mt-4" : "mt-2 space-y-4 md:mt-0"}>
         {visibleGroups.map((group) => (
-          <section key={group.stationId} aria-labelledby={`${group.stationId}-photos`}>
+          <section
+            key={group.stationId}
+            {...(showGroupTitles
+              ? { "aria-labelledby": `${group.stationId}-photos` }
+              : {})}
+          >
             {showGroupTitles ? (
               <h3
                 id={`${group.stationId}-photos`}
@@ -93,11 +98,14 @@ export function StationPhotoGallery({
               </h3>
             ) : null}
             <div
+              aria-label={repairMojibake(group.title)}
               className={
                 showGroupTitles
-                  ? "mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3"
-                  : "flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 md:grid md:gap-2 md:overflow-visible md:pb-0 md:grid-cols-2 lg:grid-cols-3"
+                  ? "mt-2 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#13233a] focus-visible:ring-offset-2 md:grid md:grid-cols-2 md:overflow-visible md:pb-0 lg:grid-cols-3"
+                  : "flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#13233a] focus-visible:ring-offset-2 md:grid md:gap-2 md:overflow-visible md:pb-0 md:grid-cols-2 lg:grid-cols-3"
               }
+              role="group"
+              tabIndex={0}
             >
               {group.photos.map((photo, photoIndex) => {
                 const photoText = getStationPhotoText(photo, locale);
@@ -311,13 +319,13 @@ function AttributionPrefix({
         type="button"
         aria-label={label}
         aria-expanded={isOpen}
-        className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-[#d8c8b4] bg-[#fffaf2] text-[#13233a] outline-none transition hover:border-[#2f6f93] focus:border-[#2f6f93] focus:ring-2 focus:ring-[#c8dbe9]"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-[#d8c8b4] bg-[#fffaf2] text-[#13233a] outline-none transition hover:border-[#2f6f93] focus:border-[#2f6f93] focus:ring-2 focus:ring-[#c8dbe9]"
         onClick={() => setIsOpen((current) => !current)}
       >
         <Image
           alt=""
           aria-hidden="true"
-          className="h-4 w-4 object-contain"
+          className="h-5 w-5 object-contain"
           height={16}
           src="/images/icons/icon-camera.png"
           width={16}
