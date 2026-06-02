@@ -50,6 +50,7 @@ export function RouteJsonLd({
       mainEntity: {
         "@id": tripId,
       },
+      dateModified: schedule.lastUpdated,
     },
     {
       "@type": "BreadcrumbList",

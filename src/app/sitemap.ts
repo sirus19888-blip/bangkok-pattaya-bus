@@ -4,7 +4,7 @@ import { getScheduleByRoute } from "@/data/schedules";
 import { seoGuides } from "@/data/seoGuides";
 import { absoluteUrl } from "@/lib/site";
 
-const staticLastModified = new Date("2026-05-23T00:00:00.000Z");
+const staticLastModified = new Date("2026-06-02T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -51,7 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         return {
           url: absoluteUrl(`/${locale}/${routePage.slug}`),
           lastModified: schedule
-            ? new Date(`${schedule.lastVerified}T00:00:00.000Z`)
+            ? new Date(`${schedule.lastUpdated}T00:00:00.000Z`)
             : staticLastModified,
           changeFrequency: "weekly",
           priority: locale === "en" ? 0.9 : 0.8,

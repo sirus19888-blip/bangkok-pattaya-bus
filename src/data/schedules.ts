@@ -65,7 +65,7 @@ export const schedules: Schedule[] = [
       "22:00",
     ],
     nextDeparture: "14:00",
-    lastUpdated: "2026-05-30",
+    lastUpdated: "2026-06-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Pattaya Bus / Roong Reuang Coach",
@@ -105,7 +105,7 @@ export const schedules: Schedule[] = [
       "22:00",
     ],
     nextDeparture: "14:00",
-    lastUpdated: "2026-05-30",
+    lastUpdated: "2026-06-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Pattaya Bus / Roong Reuang Coach",
@@ -195,7 +195,7 @@ export const schedules: Schedule[] = [
       "18:30",
     ],
     nextDeparture: "13:30",
-    lastUpdated: "2026-05-30",
+    lastUpdated: "2026-06-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Airport Pattaya Bus",
@@ -236,7 +236,7 @@ export const schedules: Schedule[] = [
       "22:00",
     ],
     nextDeparture: "14:00",
-    lastUpdated: "2026-05-30",
+    lastUpdated: "2026-06-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Airport Pattaya Bus",
@@ -260,7 +260,7 @@ export const schedules: Schedule[] = [
     price: "155 THB per person",
     departures: ["06:30", "10:30", "13:30", "17:30"],
     nextDeparture: "10:30",
-    lastUpdated: "2026-05-30",
+    lastUpdated: "2026-06-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Transport Co., Ltd. / Don Mueang Airport",
@@ -286,7 +286,7 @@ export const schedules: Schedule[] = [
     price: "Around 170 THB",
     departures: ["07:00", "10:00", "14:30", "17:00"],
     nextDeparture: "10:00",
-    lastUpdated: "2026-05-30",
+    lastUpdated: "2026-06-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Transport Co. via secondary sources",

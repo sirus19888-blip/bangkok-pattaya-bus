@@ -408,7 +408,7 @@ function SeoJsonLd({
           name: schedule.sourceName,
           url: schedule.sourceUrl,
         },
-        dateModified: schedule.lastVerified,
+        dateModified: schedule.lastUpdated,
       },
     ],
   };
