@@ -278,7 +278,6 @@ export function MobileDestinationWeather({
               aria-hidden="true"
               className="relative h-9 w-9 shrink-0 rounded-xl object-contain"
               height={36}
-              priority
               src="/images/icons/icon-header-weather.png"
               width={36}
             />

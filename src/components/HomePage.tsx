@@ -966,9 +966,11 @@ function MobileHome({
                 alt=""
                 aria-hidden="true"
                 className="h-full w-full object-cover opacity-55"
+                fetchPriority="high"
                 fill
-                priority
-                sizes="(min-width: 768px) 1180px, 390px"
+                loading="eager"
+                preload
+                sizes="(min-width: 1280px) 1216px, (min-width: 768px) calc(100vw - 4rem), (min-width: 390px) 358px, calc(100vw - 2rem)"
                 src="/images/hero/mobile-home-bus-guide.png"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/80 via-[#0e1e2e]/88 to-[#0e1e2e]" />
