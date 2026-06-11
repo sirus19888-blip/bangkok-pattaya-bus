@@ -41,7 +41,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     h1: "Bangkok to Pattaya Transport Guide",
     intro:
       "Compare the main ways to travel from Bangkok to Pattaya, including the Ekkamai bus, taxi, app-based rides and private transfer options. Bus schedule data on this site is informational and should be confirmed before travel.",
-    ogImage: "/images/routes/bangkok-pattaya.jpg",
+    ogImage: "/images/stations/ekkamai/ekkamai-terminal.jpg",
     keywords: [
       "Bangkok to Pattaya transport",
       "Bangkok to Pattaya bus",
@@ -118,7 +118,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     h1: "Pattaya to Bangkok Transport Guide",
     intro:
       "Plan the return trip from Pattaya to Bangkok with bus departures to Ekkamai and Mo Chit, plus taxi and app-based alternatives.",
-    ogImage: "/images/routes/pattaya-bangkok.jpg",
+    ogImage: "/images/stations/pattaya-north/pattaya-station.jpg",
     keywords: [
       "Pattaya to Bangkok transport",
       "Pattaya to Bangkok bus",
@@ -194,7 +194,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     h1: "Suvarnabhumi Airport to Pattaya Transport Guide",
     intro:
       "Compare the airport bus from Suvarnabhumi to Pattaya with taxi, app-based rides and private transfers after arriving in Thailand.",
-    ogImage: "/images/routes/suvarnabhumi-pattaya.jpg",
+    ogImage: "/images/stations/suvarnabhumi/suvarnabhumi-bus-area.jpg",
     keywords: [
       "Suvarnabhumi Airport to Pattaya",
       "BKK Airport to Pattaya bus",
@@ -269,7 +269,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     h1: "Pattaya to Suvarnabhumi Airport Transport Guide",
     intro:
       "Plan travel from Pattaya or Jomtien to Suvarnabhumi Airport with airport bus information and alternatives for flights.",
-    ogImage: "/images/routes/pattaya-bangkok.jpg",
+    ogImage: "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
     keywords: [
       "Pattaya to Suvarnabhumi Airport",
       "Pattaya to BKK airport bus",
@@ -344,7 +344,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     h1: "Don Mueang Airport to Pattaya Transport Guide",
     intro:
       "Compare Transport Co. bus information from Don Mueang Airport to Pattaya with taxi, app-based rides and private transfer options.",
-    ogImage: "/images/routes/don-mueang-pattaya.jpg",
+    ogImage: "/images/stations/don-mueang/don-mueang-terminal-1.jpg",
     keywords: [
       "Don Mueang Airport to Pattaya",
       "DMK to Pattaya bus",
@@ -419,7 +419,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     h1: "Pattaya to Don Mueang Airport Transport Guide",
     intro:
       "Plan the route from Pattaya to Don Mueang Airport with bus information from secondary sources and safer alternatives before a flight.",
-    ogImage: "/images/routes/pattaya-bangkok.jpg",
+    ogImage: "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
     keywords: [
       "Pattaya to Don Mueang Airport",
       "Pattaya to DMK bus",

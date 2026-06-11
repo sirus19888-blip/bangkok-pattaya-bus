@@ -35,27 +35,36 @@ export async function generateMetadata({
     };
   }
 
+  const canonicalUrl = pageUrl(page.slug);
+  const imageUrl = absoluteUrl(page.ogImage);
+
   return {
     title: page.seoTitle,
     description: page.seoDescription,
     keywords: page.keywords,
     alternates: {
-      canonical: pageUrl(page.slug),
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: page.seoTitle,
       description: page.seoDescription,
-      url: pageUrl(page.slug),
+      url: canonicalUrl,
       siteName: SITE_NAME,
       images: [
         {
-          url: page.ogImage,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: page.h1,
         },
       ],
       type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.seoTitle,
+      description: page.seoDescription,
+      images: [imageUrl],
     },
   };
 }
