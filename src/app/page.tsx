@@ -9,7 +9,7 @@ const pageDescription =
 const openGraphDescription =
   "Check Bangkok to Pattaya, Pattaya to Bangkok, and Suvarnabhumi Airport to Pattaya bus times, prices, stations, and tips.";
 const pageUrl = absoluteUrl("/");
-const openGraphImageUrl = absoluteUrl("/images/hero/mobile-home-bus-guide.png");
+const openGraphImageUrl = absoluteUrl("/images/hero/home-og-bus-guide.jpg");
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: openGraphImageUrl,
-        width: 1774,
-        height: 887,
+        width: 1200,
+        height: 630,
         alt: "Bangkok Pattaya Bus Guide",
       },
     ],
