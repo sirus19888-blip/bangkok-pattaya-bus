@@ -419,7 +419,7 @@ export const routeSeoPages: RouteSeoPage[] = [
     h1: "Pattaya to Don Mueang Airport Transport Guide",
     intro:
       "Plan the route from Pattaya to Don Mueang Airport with bus information from secondary sources and safer alternatives before a flight.",
-    ogImage: "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
+    ogImage: "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-songthaew.jpg",
     keywords: [
       "Pattaya to Don Mueang Airport",
       "Pattaya to DMK bus",
