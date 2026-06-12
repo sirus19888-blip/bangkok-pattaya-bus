@@ -28,7 +28,7 @@ export function RouteSummary({
         <SummaryItem label={labels.from} value={from} />
         <SummaryItem label={labels.to} value={to} />
         <SummaryItem label={labels.travelTime} value={schedule.travelTime} />
-        <SummaryItem label={labels.distance} value={route.distance} />
+        <SummaryItem label={labels.distance} value={schedule.distance} />
       </div>
     </section>
   );

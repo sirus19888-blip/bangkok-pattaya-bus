@@ -159,6 +159,16 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
   const isFrench = t.nextBus.title === "Prochain bus :";
   const isChinese = t.nextBus.title === "下一班巴士";
   const polishSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "bangkok-ekkamai-to-pattaya": {
+      label: "Ekkamai Bus Terminal",
+      from: "dworzec autobusowy Ekkamai",
+      to: "dworzec autobusowy w Pattayi",
+    },
+    "bangkok-mochit-to-pattaya": {
+      label: "Mo Chit 2 Bus Terminal",
+      from: "dworzec autobusowy Mo Chit 2",
+      to: "dworzec autobusowy w Pattayi",
+    },
     "pattaya-to-mochit": {
       label: "Pattaya do Mo Chit 2",
       from: "dworzec autobusowy w Pattayi",
@@ -171,6 +181,16 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     },
   };
   const frenchSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "bangkok-ekkamai-to-pattaya": {
+      label: "Gare routiere Ekkamai",
+      from: "gare routiere Ekkamai",
+      to: "gare routiere de Pattaya",
+    },
+    "bangkok-mochit-to-pattaya": {
+      label: "Gare routiere Mo Chit 2",
+      from: "gare routiere Mo Chit 2",
+      to: "gare routiere de Pattaya",
+    },
     "pattaya-to-mochit": {
       label: "Pattaya vers Mo Chit 2",
       from: "gare routière de Pattaya",
@@ -183,6 +203,16 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     },
   };
   const chineseSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "bangkok-ekkamai-to-pattaya": {
+      label: "Ekkamai Bus Terminal",
+      from: "Ekkamai Bus Terminal",
+      to: "Pattaya Bus Station",
+    },
+    "bangkok-mochit-to-pattaya": {
+      label: "Mo Chit 2 Bus Terminal",
+      from: "Mo Chit 2 Bus Terminal",
+      to: "Pattaya Bus Station",
+    },
     "pattaya-to-mochit": {
       label: "芭提雅到 Mo Chit 2",
       from: "芭提雅巴士站",
@@ -195,6 +225,16 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     },
   };
   const thaiSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "bangkok-ekkamai-to-pattaya": {
+      label: "Ekkamai Bus Terminal",
+      from: "Ekkamai Bus Terminal",
+      to: "Pattaya Bus Station",
+    },
+    "bangkok-mochit-to-pattaya": {
+      label: "Mo Chit 2 Bus Terminal",
+      from: "Mo Chit 2 Bus Terminal",
+      to: "Pattaya Bus Station",
+    },
     "pattaya-to-mochit": {
       label: "พัทยาไปหมอชิต 2",
       from: "สถานีขนส่งพัทยา",
@@ -207,6 +247,16 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     },
   };
   const russianSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "bangkok-ekkamai-to-pattaya": {
+      label: "Ekkamai Bus Terminal",
+      from: "Ekkamai Bus Terminal",
+      to: "Pattaya Bus Station",
+    },
+    "bangkok-mochit-to-pattaya": {
+      label: "Mo Chit 2 Bus Terminal",
+      from: "Mo Chit 2 Bus Terminal",
+      to: "Pattaya Bus Station",
+    },
     "pattaya-to-mochit": {
       label: "Паттайя — Мо Чит 2",
       from: "автовокзал Паттайи",
@@ -219,6 +269,16 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     },
   };
   const germanSubRouteText: Record<string, { label: string; from: string; to: string }> = {
+    "bangkok-ekkamai-to-pattaya": {
+      label: "Busbahnhof Ekkamai",
+      from: "Busbahnhof Ekkamai",
+      to: "Busbahnhof Pattaya",
+    },
+    "bangkok-mochit-to-pattaya": {
+      label: "Busbahnhof Mo Chit 2",
+      from: "Busbahnhof Mo Chit 2",
+      to: "Busbahnhof Pattaya",
+    },
     "pattaya-to-mochit": {
       label: "Pattaya nach Mo Chit 2",
       from: "Busbahnhof Pattaya",
@@ -233,6 +293,11 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
 
   return {
     ...schedule,
+    distance: isThai
+      ? schedule.distance.replace("km", "กม.")
+      : isRussian
+        ? schedule.distance.replace("km", "км")
+        : schedule.distance,
     travelTime: scheduleText.travelTime,
     price: scheduleText.price,
     disclaimer: scheduleText.disclaimer,
@@ -255,7 +320,7 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
       return {
         ...subRoute,
         dataQuality: sourceText.dataQuality ?? subRoute.dataQuality,
-        fareNote: sourceText.fareNote ?? subRoute.fareNote,
+        fareNote: subRoute.fareNote,
         label:
           thaiText?.label ??
           russianText?.label ??

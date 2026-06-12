@@ -20,6 +20,7 @@ export type ScheduleSubRoute = ScheduleSource & {
   label: string;
   from: string;
   to: string;
+  price: string;
   departures: string[];
   boardingNote?: string;
 };
@@ -29,6 +30,7 @@ export type Schedule = {
   from: string;
   to: string;
   direction: RouteId;
+  distance: string;
   travelTime: string;
   price: string;
   departures: string[];
@@ -45,10 +47,14 @@ export const schedules: Schedule[] = [
     from: "Bangkok Ekkamai",
     to: "Pattaya Bus Station",
     direction: "bangkok-to-pattaya",
-    travelTime: "Around 2-3 hours",
-    price: "148 THB per seat",
+    distance: "150 km",
+    travelTime: "Around 2 hours, depending on traffic",
+    price: "148-158 THB per seat (depends on terminal)",
     departures: [
+      "05:00",
       "06:00",
+      "07:00",
+      "08:00",
       "09:00",
       "10:00",
       "11:00",
@@ -64,25 +70,95 @@ export const schedules: Schedule[] = [
       "21:00",
       "22:00",
     ],
-    nextDeparture: "14:00",
-    lastUpdated: "2026-06-10",
+    nextDeparture: "05:00",
+    lastUpdated: "2026-06-12",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
-    sourceName: "Pattaya Bus / Roong Reuang Coach",
+    sourceName: "Roong Reuang Coach",
     sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
     sourceType: "official operator website",
-    lastVerified: "2026-06-10",
+    lastVerified: "2026-06-12",
     verificationStatus: "partially verified",
-    fareNote: "Fare published by the operator: 148 THB per seat.",
+    fareNote:
+      "Fares published by the operator: 148 THB from Ekkamai Bus Terminal and 158 THB from Mo Chit 2 Bus Terminal.",
     operatorNote:
       "Bus times may change. Confirm at the station or with the operator before travel.",
     dataQuality: "Official source, manually verified",
+    subRoutes: [
+      {
+        id: "bangkok-ekkamai-to-pattaya",
+        label: "Ekkamai Bus Terminal",
+        from: "Ekkamai Bus Terminal",
+        to: "Pattaya Bus Station",
+        price: "148 THB per seat",
+        sourceName: "Roong Reuang Coach",
+        sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
+        sourceType: "official operator website",
+        lastVerified: "2026-06-12",
+        verificationStatus: "partially verified",
+        fareNote: "Fare published by the operator: 148 THB per seat.",
+        operatorNote:
+          "Bus times may change. Confirm at the station or with the operator before travel.",
+        dataQuality: "Official source, manually verified",
+        departures: [
+          "05:00",
+          "06:00",
+          "09:00",
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00",
+          "16:00",
+          "17:00",
+          "18:00",
+          "19:00",
+          "20:00",
+          "21:00",
+          "22:00",
+        ],
+      },
+      {
+        id: "bangkok-mochit-to-pattaya",
+        label: "Mo Chit 2 Bus Terminal",
+        from: "Mo Chit 2 Bus Terminal",
+        to: "Pattaya Bus Station",
+        price: "158 THB per seat",
+        sourceName: "Roong Reuang Coach",
+        sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
+        sourceType: "official operator website",
+        lastVerified: "2026-06-12",
+        verificationStatus: "partially verified",
+        fareNote: "Fare published by the operator: 158 THB per seat.",
+        operatorNote:
+          "Bus times may change. Confirm at the station or with the operator before travel.",
+        dataQuality: "Official source, manually verified",
+        departures: [
+          "05:00",
+          "06:00",
+          "07:00",
+          "08:00",
+          "09:00",
+          "10:00",
+          "11:00",
+          "12:00",
+          "13:00",
+          "14:00",
+          "15:00",
+          "16:00",
+          "17:00",
+          "18:00",
+        ],
+      },
+    ],
   },
   {
     id: "pattaya-to-bangkok-ekkamai",
     from: "Pattaya Bus Station",
     to: "Bangkok Mochit / Ekkamai",
     direction: "pattaya-to-bangkok",
+    distance: "150 km",
     travelTime: "Around 2-3 hours",
     price: "148-158 THB per seat",
     departures: [
@@ -124,6 +200,7 @@ export const schedules: Schedule[] = [
         label: "Pattaya to Mochit",
         from: "Pattaya Bus Station",
         to: "Bangkok Mochit",
+        price: "158 THB per seat",
         sourceName: "Pattaya Bus / Roong Reuang Coach",
         sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
         sourceType: "official operator website",
@@ -153,6 +230,7 @@ export const schedules: Schedule[] = [
         label: "Pattaya to Ekkamai",
         from: "Pattaya Bus Station",
         to: "Bangkok Ekkamai",
+        price: "148 THB per seat",
         sourceName: "Pattaya Bus / Roong Reuang Coach",
         sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
         sourceType: "official operator website",
@@ -183,6 +261,7 @@ export const schedules: Schedule[] = [
     from: "Suvarnabhumi Airport",
     to: "Pattaya Bus Station",
     direction: "suvarnabhumi-airport-to-pattaya",
+    distance: "120 km",
     travelTime: "Around 2 hours",
     price: "139 THB per seat",
     departures: [
@@ -214,6 +293,7 @@ export const schedules: Schedule[] = [
     from: "Pattaya / Jomtien bus area",
     to: "Suvarnabhumi Airport",
     direction: "pattaya-to-suvarnabhumi-airport",
+    distance: "120 km",
     travelTime: "Around 2 hours, depending on traffic",
     price: "162 THB per seat",
     departures: [
@@ -256,6 +336,7 @@ export const schedules: Schedule[] = [
     from: "Don Mueang Airport",
     to: "Pattaya",
     direction: "don-mueang-airport-to-pattaya",
+    distance: "155 km",
     travelTime: "Around 3-3.5 hours",
     price: "155 THB per person",
     departures: ["06:30", "10:30", "13:30", "17:30"],
@@ -282,6 +363,7 @@ export const schedules: Schedule[] = [
     from: "Pattaya Sukhumvit Road Bus Station",
     to: "Don Mueang Airport",
     direction: "pattaya-to-don-mueang-airport",
+    distance: "155 km",
     travelTime: "Around 3-3.5 hours",
     price: "Around 170 THB",
     departures: ["07:00", "10:00", "14:30", "17:00"],

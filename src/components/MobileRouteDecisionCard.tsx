@@ -59,6 +59,7 @@ export function MobileRouteDecisionCard({
     minutesUntilDeparture <= 15;
   const departures = schedule.departures;
   const hasDepartures = departures.length > 0;
+  const hasSubRoutes = Boolean(schedule.subRoutes?.length);
   const scheduleStatusLabels = getUiTranslations(locale).scheduleStatus;
   const verificationStatus = getScheduleStatusLabel(
     schedule.verificationStatus,
@@ -168,10 +169,54 @@ export function MobileRouteDecisionCard({
       </p>
       <div
         id="mobile-departures"
-        className="mt-1.5 grid grid-cols-3 gap-1.5 md:grid-cols-5 md:gap-2 lg:grid-cols-6"
-        data-visual-qa="schedule-grid"
+        className={
+          hasSubRoutes
+            ? "mt-1.5 grid gap-2"
+            : "mt-1.5 grid grid-cols-3 gap-1.5 md:grid-cols-5 md:gap-2 lg:grid-cols-6"
+        }
+        data-visual-qa={hasSubRoutes ? undefined : "schedule-grid"}
       >
-        {hasDepartures ? (
+        {hasSubRoutes ? (
+          schedule.subRoutes?.map((subRoute, index) => (
+            <div
+              key={subRoute.id}
+              className="rounded-xl border border-[#eadcc7] bg-white p-2"
+            >
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                <h3 className="text-sm font-black leading-tight text-[#13233a]">
+                  {subRoute.label}
+                </h3>
+                <p className="text-xs font-black leading-tight text-[#5f6874]">
+                  {subRoute.price}
+                </p>
+              </div>
+              <div
+                className="mt-2 grid grid-cols-3 gap-1.5 md:grid-cols-5 md:gap-2 lg:grid-cols-6"
+                data-visual-qa={index === 0 ? "schedule-grid" : undefined}
+              >
+                {subRoute.departures.map((departure) => {
+                  const isNextDeparture =
+                    isNextDepartureInTodaySchedule(
+                      departure,
+                      calculatedNextDeparture,
+                    ) &&
+                    calculatedNextDeparture.subRoutes.some(
+                      (nextSubRoute) => nextSubRoute.id === subRoute.id,
+                    );
+
+                  return (
+                    <DepartureChip
+                      departure={departure}
+                      isNextDeparture={isNextDeparture}
+                      key={`${subRoute.id}-${departure}`}
+                      labels={labels}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          ))
+        ) : hasDepartures ? (
           departures.map((departure) => {
             const isNextDeparture = isNextDepartureInTodaySchedule(
               departure,
@@ -179,22 +224,12 @@ export function MobileRouteDecisionCard({
             );
 
             return (
-              <span
+              <DepartureChip
+                departure={departure}
+                isNextDeparture={isNextDeparture}
                 key={departure}
-                className={`flex min-h-11 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black md:text-base ${
-                  isNextDeparture
-                    ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
-                    : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
-                }`}
-                data-next-bus-chip={isNextDeparture ? departure : undefined}
-              >
-                {isNextDeparture ? (
-                  <span className="max-w-full truncate text-[0.56rem] uppercase leading-none tracking-wide text-[#f3d77b]">
-                    {labels.nextBus}
-                  </span>
-                ) : null}
-                <span>{departure}</span>
-              </span>
+                labels={labels}
+              />
             );
           })
         ) : (
@@ -228,6 +263,34 @@ export function MobileRouteDecisionCard({
 
       </div>
     </section>
+  );
+}
+
+function DepartureChip({
+  departure,
+  isNextDeparture,
+  labels,
+}: {
+  departure: string;
+  isNextDeparture: boolean;
+  labels: MobileRouteDecisionCardProps["labels"];
+}) {
+  return (
+    <span
+      className={`flex min-h-11 flex-col items-center justify-center rounded-xl border px-1 text-sm font-black md:text-base ${
+        isNextDeparture
+          ? "border-[#13233a] bg-[#13233a] text-white ring-2 ring-[#f3d77b]"
+          : "border-[#eadcc7] bg-[#fffaf2] text-[#13233a]"
+      }`}
+      data-next-bus-chip={isNextDeparture ? departure : undefined}
+    >
+      {isNextDeparture ? (
+        <span className="max-w-full truncate text-[0.56rem] uppercase leading-none tracking-wide text-[#f3d77b]">
+          {labels.nextBus}
+        </span>
+      ) : null}
+      <span>{departure}</span>
+    </span>
   );
 }
 

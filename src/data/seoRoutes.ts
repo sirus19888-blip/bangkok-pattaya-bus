@@ -40,7 +40,7 @@ export const routeSeoPages: RouteSeoPage[] = [
       "Compare Bangkok to Pattaya bus, taxi, Grab, Bolt, inDrive and private transfer options with prices, travel time, station tips and safety advice.",
     h1: "Bangkok to Pattaya Transport Guide",
     intro:
-      "Compare the main ways to travel from Bangkok to Pattaya, including the Ekkamai bus, taxi, app-based rides and private transfer options. Bus schedule data on this site is informational and should be confirmed before travel.",
+      "Compare the main ways to travel from Bangkok to Pattaya, including the Ekkamai and Mo Chit buses, taxi, app-based rides and private transfer options. Bus schedule data on this site is informational and should be confirmed before travel.",
     ogImage: "/images/stations/ekkamai/ekkamai-terminal.jpg",
     keywords: [
       "Bangkok to Pattaya transport",
@@ -50,15 +50,15 @@ export const routeSeoPages: RouteSeoPage[] = [
       "Ekkamai to Pattaya bus",
     ],
     cheapestWay:
-      "The scheduled bus from Ekkamai is usually the cheapest practical option for solo travelers.",
+      "The scheduled bus from Ekkamai or Mo Chit is usually the cheapest practical option for solo travelers.",
     fastestWay:
       "A private taxi or app-based car can be fastest door-to-door, but Bangkok traffic can change the journey time.",
     bestWithLuggage:
       "Taxi, Grab, Bolt, inDrive or a private transfer is usually easier if you have large luggage or travel as a group.",
     legalBoarding:
-      "For the main bus route, use Ekkamai Bus Terminal and buy tickets at the official counter. Avoid unofficial drivers around terminals.",
+      "For the main bus route, use Ekkamai Bus Terminal or Mo Chit 2 Bus Terminal and buy tickets at the official counter. Avoid unofficial drivers around terminals.",
     estimatedPrices: [
-      "Bus: around 148 THB per seat from Ekkamai, based on operator information.",
+      "Bus: 148 THB from Ekkamai or 158 THB from Mo Chit 2, based on operator information.",
       "Private taxi or transfer: commonly advertised around 1,200-2,000 THB depending on pickup point, vehicle and provider.",
       "Grab, Bolt and inDrive: app prices vary by traffic, demand, tolls and driver availability. Check the app before booking.",
     ],
@@ -70,11 +70,11 @@ export const routeSeoPages: RouteSeoPage[] = [
     ],
     options: [
       {
-        title: "Bus from Ekkamai",
-        price: "148 THB per seat",
-        duration: "Around 2-3 hours",
+        title: "Bus from Ekkamai or Mo Chit 2",
+        price: "148-158 THB per seat",
+        duration: "Around 2 hours, depending on traffic",
         bestFor: "Budget travelers",
-        note: "Cheap and simple if you are staying near Sukhumvit or BTS.",
+        note: "Cheap and simple if you are staying near Sukhumvit, BTS, or northern Bangkok.",
       },
       {
         title: "Grab, Bolt or inDrive",

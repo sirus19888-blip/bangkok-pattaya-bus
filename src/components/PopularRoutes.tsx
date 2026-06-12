@@ -12,52 +12,38 @@ const routeCards: Record<
   {
     cta: string;
     note: string;
-    price: string;
     title: string;
-    travelTime: string;
   }
 > = {
   "bangkok-to-pattaya": {
     cta: "Check times",
     note: "Buses from Ekkamai",
-    price: "From 148 THB",
     title: "Bangkok to Pattaya Bus",
-    travelTime: "Around 2-3 hours",
   },
   "pattaya-to-bangkok": {
     cta: "Check times",
     note: "To Ekkamai and Mo Chit",
-    price: "From 148 / 158 THB",
     title: "Pattaya to Bangkok Bus",
-    travelTime: "Around 2-3 hours",
   },
   "suvarnabhumi-airport-to-pattaya": {
     cta: "Check times",
     note: "From airport counter",
-    price: "139 THB",
     title: "Suvarnabhumi Airport to Pattaya Bus",
-    travelTime: "Around 2 hours",
   },
   "pattaya-to-suvarnabhumi-airport": {
     cta: "Check times",
     note: "From Jomtien bus station",
-    price: "162 THB",
     title: "Pattaya to Suvarnabhumi Airport Bus",
-    travelTime: "Around 2 hours",
   },
   "don-mueang-airport-to-pattaya": {
     cta: "Check times",
     note: "From Don Mueang Airport",
-    price: "155 THB",
     title: "Don Mueang Airport to Pattaya Bus",
-    travelTime: "Around 3-3.5 hours",
   },
   "pattaya-to-don-mueang-airport": {
     cta: "Check times",
     note: "Confirm the Pattaya boarding point",
-    price: "Around 170 THB",
     title: "Pattaya to Don Mueang Airport Bus",
-    travelTime: "Around 3-3.5 hours",
   },
 };
 
@@ -92,13 +78,13 @@ export function PopularRoutes({ routePages, schedules }: PopularRoutesProps) {
                     <span className="block text-xs uppercase tracking-wide text-[#5f6874]">
                       Travel time
                     </span>
-                    {card.travelTime}
+                    {schedule.travelTime}
                   </p>
                   <p className="rounded-xl bg-[#eaf5fb] p-2.5 font-bold leading-5 text-[#13233a] sm:p-3">
                     <span className="block text-xs uppercase tracking-wide text-[#5f6874]">
                       Ticket price
                     </span>
-                    {card.price}
+                    {schedule.price}
                   </p>
                 </div>
               ) : null}

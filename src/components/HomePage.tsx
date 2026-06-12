@@ -1040,7 +1040,7 @@ function MobileHome({
                         compact
                         fallbackLabel={copy.check}
                         label={copy.price}
-                        value={featuredSchedule.price}
+                        value={getHomepageSchedulePrice(featuredSchedule)}
                       />
                     </div>
                     <MobileRouteCountdown
@@ -1073,7 +1073,7 @@ function MobileHome({
                       <MobileMiniFact
                         fallbackLabel={copy.check}
                         label={copy.price}
-                        value={featuredSchedule.price}
+                        value={getHomepageSchedulePrice(featuredSchedule)}
                       />
                     </div>
                     <MobileRouteCountdown
@@ -1322,7 +1322,7 @@ function MobileRouteCard({
           compact
           fallbackLabel={copy.check}
           label={copy.price}
-          value={schedule?.price}
+          value={schedule ? getHomepageSchedulePrice(schedule) : undefined}
         />
       </div>
       <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
@@ -1344,6 +1344,14 @@ function MobileRouteCard({
       </div>
     </article>
   );
+}
+
+function getHomepageSchedulePrice(schedule: Schedule) {
+  if (schedule.direction === "bangkok-to-pattaya") {
+    return schedule.subRoutes?.[0]?.price ?? schedule.price;
+  }
+
+  return schedule.price;
 }
 
 function MobileBottomNav({

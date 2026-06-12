@@ -14,7 +14,7 @@ import { TravelerFeedback } from "@/components/TravelerFeedback";
 import { getTwelveGoVariantLabel } from "@/components/TwelveGoAffiliateButton";
 import { TravelGuideLinks } from "@/components/TravelGuideLinks";
 import { routePages } from "@/data/routes";
-import type { LocaleCode, Route, RoutePage } from "@/data/routes";
+import type { LocaleCode, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
@@ -24,7 +24,6 @@ import { getUiTranslations } from "@/lib/uiTranslations";
 
 type RoutePageLayoutProps = {
   routePage: RoutePage;
-  route: Route;
   schedule: Schedule;
   stations: Station[];
   nextDeparture: string;
@@ -34,7 +33,6 @@ type RoutePageLayoutProps = {
 
 export function RoutePageLayout({
   routePage,
-  route,
   schedule,
   stations,
   nextDeparture,
@@ -105,7 +103,7 @@ export function RoutePageLayout({
                 "stickyMobile",
                 locale,
               )}
-              distance={route.distance}
+              distance={schedule.distance}
               locale={locale}
               routeId={routePage.slug}
               routeTitle={routePage.title}
@@ -171,7 +169,7 @@ export function RoutePageLayout({
               compareAlternativesLabel={
                 uiText.affiliate.variantLabels.compareAlternatives
               }
-              distance={route.distance}
+              distance={schedule.distance}
               locale={locale}
               reportHref={reportHref}
               reportLabel={uiText.report.label}

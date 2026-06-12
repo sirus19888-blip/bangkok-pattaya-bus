@@ -141,10 +141,10 @@
   },
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
-      "travelTime": "etwa 2–3 Stunden",
-      "price": "148 Baht pro Sitz",
+      "travelTime": "etwa 2 Stunden, je nach Verkehr",
+      "price": "148–158 Baht pro Sitz, je nach Terminal",
       "disclaimer": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
-      "fareNote": "Vom Betreiber veröffentlichter Preis: 148 Baht pro Sitz.",
+      "fareNote": "Vom Betreiber veröffentlichte Preise: 148 Baht ab Ekkamai Bus Terminal und 158 Baht ab Mo Chit 2 Bus Terminal.",
       "operatorNote": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
       "sourceName": "Pattaya Bus / Roong Reuang Coach",
       "sourceType": "offizielle Betreiberwebsite",

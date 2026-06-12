@@ -71,6 +71,9 @@ export function ScheduleList({
               <h3 className="mt-1 text-base font-black leading-tight text-[#13233a] sm:text-lg">
                 {subRoute.label}
               </h3>
+              <p className="mt-1 text-xs font-black leading-tight text-[#5f6874]">
+                {subRoute.price}
+              </p>
               <div className="mt-2.5 grid grid-cols-3 gap-2 min-[390px]:grid-cols-4 sm:mt-3 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 md:gap-2 lg:grid-cols-4 xl:grid-cols-5">
                 {subRoute.departures.map((departure) => (
                   <DepartureTile

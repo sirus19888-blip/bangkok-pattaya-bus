@@ -6,7 +6,6 @@ import {
   getRoutePage,
   isSupportedLocale,
   routePages,
-  routes,
   supportedLocaleCodes,
 } from "@/data/routes";
 import { getScheduleByRoute } from "@/data/schedules";
@@ -14,7 +13,6 @@ import { getSeoGuide, seoGuides } from "@/data/seoGuides";
 import { stations } from "@/data/stations";
 import {
   getTranslations,
-  localizeRoute,
   localizeRoutePage,
   localizeSchedule,
   localizeStations,
@@ -125,10 +123,9 @@ export default async function Page({ params }: RoutePageProps) {
     notFound();
   }
 
-  const route = routes.find((item) => item.id === routePage.slug);
   const schedule = getScheduleByRoute(routePage.slug);
 
-  if (!route || !schedule) {
+  if (!schedule) {
     notFound();
   }
 
@@ -138,14 +135,12 @@ export default async function Page({ params }: RoutePageProps) {
   const nextDeparture = schedule.nextDeparture;
   const t = getTranslations(locale);
   const localizedRoutePage = localizeRoutePage(routePage, t);
-  const localizedRoute = localizeRoute(route, t);
   const localizedSchedule = localizeSchedule(schedule, t);
   const localizedStations = localizeStations(routeStations, t);
 
   return (
     <RoutePageLayout
       routePage={localizedRoutePage}
-      route={localizedRoute}
       schedule={localizedSchedule}
       stations={localizedStations}
       nextDeparture={nextDeparture}
