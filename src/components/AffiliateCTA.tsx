@@ -19,6 +19,10 @@ export type AffiliateCTAPosition =
   | "desktop_sidebar"
   | "route_after_schedule"
   | "route_commercial_help"
+  | "route_help_online_vs_station"
+  | "route_help_bus_full"
+  | "route_help_after_last"
+  | "route_help_vs_taxi"
   | "mobile_sticky";
 
 type AffiliateCTAProps = {

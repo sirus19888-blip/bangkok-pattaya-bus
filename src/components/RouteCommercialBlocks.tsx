@@ -57,7 +57,7 @@ export function RouteCommercialBlocks({
             {text.bookOnlineClosing}
           </p>
           <TwelveGoAffiliateButton
-            ctaPosition="route_commercial_help"
+            ctaPosition="route_help_online_vs_station"
             disclosureMode="short"
             label={text.bookOnlineCta}
             locale={locale}
@@ -72,7 +72,7 @@ export function RouteCommercialBlocks({
         title={text.busFullTitle}
       >
         <TwelveGoAffiliateButton
-          ctaPosition="route_commercial_help"
+          ctaPosition="route_help_bus_full"
           disclosureMode="short"
           label={text.busFullCta}
           locale={locale}
@@ -86,7 +86,7 @@ export function RouteCommercialBlocks({
         title={text.afterLastTitle}
       >
         <TwelveGoAffiliateButton
-          ctaPosition="route_commercial_help"
+          ctaPosition="route_help_after_last"
           disclosureMode="short"
           label={text.afterLastCta}
           locale={locale}
@@ -100,7 +100,7 @@ export function RouteCommercialBlocks({
         title={text.compareTitle}
       >
         <TwelveGoAffiliateButton
-          ctaPosition="route_commercial_help"
+          ctaPosition="route_help_vs_taxi"
           disclosureMode="short"
           label={text.compareCta}
           locale={locale}

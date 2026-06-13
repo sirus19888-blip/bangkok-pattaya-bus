@@ -28,6 +28,10 @@ const requiredAffiliatePositions = [
   "homepage_route_card",
   "route_after_schedule",
   "route_commercial_help",
+  "route_help_online_vs_station",
+  "route_help_bus_full",
+  "route_help_after_last",
+  "route_help_vs_taxi",
   "desktop_sidebar",
   "mobile_sticky",
 ];
@@ -240,6 +244,10 @@ for (const position of [
   "desktop_sidebar",
   "route_after_schedule",
   "route_commercial_help",
+  "route_help_online_vs_station",
+  "route_help_bus_full",
+  "route_help_after_last",
+  "route_help_vs_taxi",
   "mobile_sticky",
 ]) {
   assert.ok(
