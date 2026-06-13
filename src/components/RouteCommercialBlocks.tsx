@@ -33,6 +33,40 @@ export function RouteCommercialBlocks({
       aria-label={text.ariaLabel}
       className="grid gap-3 rounded-2xl border border-[#eadcc7] bg-white p-3.5 shadow-sm sm:p-5 lg:grid-cols-2 lg:p-4"
     >
+      {currentRoute === "bangkok-to-pattaya" ? (
+        <article className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4">
+          <h2 className="text-base font-black leading-tight text-[#13233a]">
+            {text.bookOnlineTitle}
+          </h2>
+          <p className="mt-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
+            {text.bookOnlineLead}
+          </p>
+          <h3 className="mt-4 text-sm font-black leading-6 text-[#13233a]">
+            {text.bookOnlineStationTitle}
+          </h3>
+          <p className="mt-1 text-sm font-semibold leading-6 text-[#4f5d6c]">
+            {text.bookOnlineStationBody}
+          </p>
+          <h3 className="mt-4 text-sm font-black leading-6 text-[#13233a]">
+            {text.bookOnlineOnlineTitle}
+          </h3>
+          <p className="mt-1 text-sm font-semibold leading-6 text-[#4f5d6c]">
+            {text.bookOnlineOnlineBody}
+          </p>
+          <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
+            {text.bookOnlineClosing}
+          </p>
+          <TwelveGoAffiliateButton
+            ctaPosition="route_commercial_help"
+            disclosureMode="short"
+            label={text.bookOnlineCta}
+            locale={locale}
+            routeId={currentRoute}
+            variant="afterSchedule"
+          />
+        </article>
+      ) : null}
+
       <CommercialInfoCard
         body={text.busFullBody}
         title={text.busFullTitle}
