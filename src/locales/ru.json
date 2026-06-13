@@ -141,7 +141,7 @@
   },
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
-      "travelTime": "примерно 2 часа, зависит от трафика",
+      "travelTime": "примерно 2-3 часа, зависит от трафика",
       "price": "148–158 бат за место, зависит от терминала",
       "subRoutePrices": {
         "bangkok-ekkamai-to-pattaya": "148 бат за место",

@@ -48,7 +48,7 @@ export const schedules: Schedule[] = [
     to: "Pattaya Bus Station",
     direction: "bangkok-to-pattaya",
     distance: "150 km",
-    travelTime: "Around 2 hours, depending on traffic",
+    travelTime: "Around 2-3 hours, depending on traffic",
     price: "148-158 THB per seat (depends on terminal)",
     departures: [
       "05:00",

@@ -141,7 +141,7 @@
   },
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
-      "travelTime": "etwa 2 Stunden, je nach Verkehr",
+      "travelTime": "etwa 2-3 Stunden, je nach Verkehr",
       "price": "148–158 Baht pro Sitz, je nach Terminal",
       "subRoutePrices": {
         "bangkok-ekkamai-to-pattaya": "148 Baht pro Sitz",

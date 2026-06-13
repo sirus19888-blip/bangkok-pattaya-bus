@@ -129,7 +129,7 @@
   },
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
-      "travelTime": "Environ 2 heures, selon la circulation",
+      "travelTime": "Environ 2-3 heures, selon la circulation",
       "price": "148-158 THB par siège selon la gare",
       "subRoutePrices": {
         "bangkok-ekkamai-to-pattaya": "148 THB par siège",

@@ -141,7 +141,7 @@
   },
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
-      "travelTime": "约 2 小时，视交通而定",
+      "travelTime": "约 2-3 小时，视交通而定",
       "price": "每座 148–158 泰铢，取决于车站",
       "subRoutePrices": {
         "bangkok-ekkamai-to-pattaya": "每座 148 泰铢",

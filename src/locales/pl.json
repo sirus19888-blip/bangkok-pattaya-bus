@@ -129,7 +129,7 @@
   },
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
-      "travelTime": "Około 2 godziny, zależnie od ruchu",
+      "travelTime": "Około 2-3 godziny, zależnie od ruchu",
       "price": "148-158 THB za miejsce (zależnie od dworca)",
       "subRoutePrices": {
         "bangkok-ekkamai-to-pattaya": "148 THB za miejsce",
