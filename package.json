@@ -18,6 +18,7 @@
     "test:i18n": "node scripts/check-localized-ui.mjs",
     "test:next-bus": "node --experimental-strip-types scripts/check-next-departure.mjs",
     "test:routes": "node scripts/check-route-page-structure.mjs",
+    "test:travel-consistency": "node scripts/check-travel-time-consistency.mjs",
     "test:visual": "node scripts/check-visual-layout.mjs",
     "test:ads": "node scripts/check-ads-readiness.mjs",
     "test:seo": "node scripts/check-seo-domains.mjs",

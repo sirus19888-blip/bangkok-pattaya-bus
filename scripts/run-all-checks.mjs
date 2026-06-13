@@ -18,9 +18,15 @@ const buildBackedTests = new Set([
 ]);
 
 const slowOrServerTests = new Set(["test:visual"]);
+const standaloneTests = new Set(["test:travel-consistency"]);
 
 const testScripts = Object.keys(packageJson.scripts ?? {})
-  .filter((name) => name.startsWith("test:") && name !== "test:all")
+  .filter(
+    (name) =>
+      name.startsWith("test:") &&
+      name !== "test:all" &&
+      !standaloneTests.has(name),
+  )
   .sort((left, right) => {
     const leftRank = rankTest(left);
     const rightRank = rankTest(right);
