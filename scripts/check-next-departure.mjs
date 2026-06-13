@@ -143,12 +143,12 @@ const airportSchedule = getScheduleByRoute("suvarnabhumi-airport-to-pattaya");
 assert.ok(airportSchedule, "Suvarnabhumi route schedule must exist.");
 
 for (const [label, hour, minute, expectedTime, expectedTomorrow] of [
-  ["20:28", 20, 28, "21:00", false],
-  ["20:59", 20, 59, "21:00", false],
-  ["21:01", 21, 1, "22:00", false],
-  ["21:59", 21, 59, "22:00", false],
-  ["22:01", 22, 1, "06:00", true],
-  ["after midnight", 0, 1, "06:00", false],
+  ["20:28", 20, 28, "07:30", true],
+  ["20:59", 20, 59, "07:30", true],
+  ["21:01", 21, 1, "07:30", true],
+  ["21:59", 21, 59, "07:30", true],
+  ["22:01", 22, 1, "07:30", true],
+  ["after midnight", 0, 1, "07:30", false],
 ]) {
   const nextDeparture = getNextDeparture(
     airportSchedule,
