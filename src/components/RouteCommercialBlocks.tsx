@@ -99,12 +99,14 @@ export function RouteCommercialBlocks({
         body={text.compareBody}
         title={text.compareTitle}
       >
-        <a
-          className="mt-4 flex min-h-11 items-center justify-center rounded-xl border border-[#7fb7d8] bg-[#f4fbff] px-4 text-center text-sm font-black text-[#13233a] transition hover:bg-white"
-          href="#mobile-related-routes"
-        >
-          {text.compareCta}
-        </a>
+        <TwelveGoAffiliateButton
+          ctaPosition="route_commercial_help"
+          disclosureMode="short"
+          label={text.compareCta}
+          locale={locale}
+          routeId={currentRoute}
+          variant="afterSchedule"
+        />
       </CommercialInfoCard>
 
       <CommercialInfoCard
