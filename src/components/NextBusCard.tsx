@@ -5,7 +5,11 @@ import type { Schedule } from "@/data/schedules";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
 import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
-import type { Translations } from "@/lib/i18n";
+import {
+  getLocalizedSchedulePrice,
+  getTranslations,
+  type Translations,
+} from "@/lib/i18n";
 import {
   getTwelveGoVariantLabel,
   TwelveGoAffiliateButton,
@@ -28,6 +32,7 @@ export function NextBusCard({
   nextDeparture,
   labels,
 }: NextBusCardProps) {
+  const t = getTranslations(locale);
   const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
     number | null
@@ -43,6 +48,7 @@ export function NextBusCard({
     minutesUntilDeparture !== null &&
     minutesUntilDeparture > 0 &&
     minutesUntilDeparture <= 15;
+  const ticketPrice = getLocalizedSchedulePrice(schedule.id, t, schedule.price);
 
   useEffect(() => {
     function updateCountdown() {
@@ -104,7 +110,7 @@ export function NextBusCard({
 
         <div className="mt-5 grid grid-cols-1 gap-3 sm:mt-6 md:mt-4 md:gap-2.5">
           <MiniFact label={labels.travelTime} value={schedule.travelTime} />
-          <MiniFact label={labels.ticketPrice} value={schedule.price} />
+          <MiniFact label={labels.ticketPrice} value={ticketPrice} />
         </div>
 
         <a

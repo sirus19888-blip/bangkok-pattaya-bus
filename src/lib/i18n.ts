@@ -86,6 +86,36 @@ export function getTranslations(locale: LocaleCode): Translations {
   };
 }
 
+type ScheduleText = {
+  price?: string;
+  subRoutePrices?: Record<string, string>;
+};
+
+export function getLocalizedSchedulePrice(
+  scheduleId: string,
+  t: Translations,
+  fallback: string,
+) {
+  const scheduleText = t.schedules[
+    scheduleId as keyof Translations["schedules"]
+  ] as ScheduleText | undefined;
+
+  return scheduleText?.price ?? fallback;
+}
+
+export function getLocalizedSubRoutePrice(
+  scheduleId: string,
+  subRouteId: string,
+  t: Translations,
+  fallback: string,
+) {
+  const scheduleText = t.schedules[
+    scheduleId as keyof Translations["schedules"]
+  ] as ScheduleText | undefined;
+
+  return scheduleText?.subRoutePrices?.[subRouteId] ?? fallback;
+}
+
 export function localizeRoute(route: Route, t: Translations): Route {
   const routeText = t.routePages[route.id] ?? en.routePages[route.id];
   const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
@@ -299,7 +329,7 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
         ? schedule.distance.replace("km", "км")
         : schedule.distance,
     travelTime: scheduleText.travelTime,
-    price: scheduleText.price,
+    price: getLocalizedSchedulePrice(schedule.id, t, schedule.price),
     disclaimer: scheduleText.disclaimer,
     boardingNote: sourceText.boardingNote ?? schedule.boardingNote,
     dataQuality: sourceText.dataQuality ?? schedule.dataQuality,
@@ -320,7 +350,7 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
       return {
         ...subRoute,
         dataQuality: sourceText.dataQuality ?? subRoute.dataQuality,
-        fareNote: subRoute.fareNote,
+        fareNote: sourceText.fareNote ?? subRoute.fareNote,
         label:
           thaiText?.label ??
           russianText?.label ??
@@ -330,6 +360,12 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
           chineseText?.label ??
           subRoute.label,
         operatorNote: sourceText.operatorNote ?? subRoute.operatorNote,
+        price: getLocalizedSubRoutePrice(
+          schedule.id,
+          subRoute.id,
+          t,
+          subRoute.price,
+        ),
         sourceName: sourceText.sourceName ?? subRoute.sourceName,
         sourceType: sourceText.sourceType ?? subRoute.sourceType,
         from:

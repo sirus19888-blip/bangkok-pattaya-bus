@@ -143,6 +143,10 @@
     "bangkok-ekkamai-to-pattaya": {
       "travelTime": "etwa 2 Stunden, je nach Verkehr",
       "price": "148–158 Baht pro Sitz, je nach Terminal",
+      "subRoutePrices": {
+        "bangkok-ekkamai-to-pattaya": "148 Baht pro Sitz",
+        "bangkok-mochit-to-pattaya": "158 Baht pro Sitz"
+      },
       "disclaimer": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
       "fareNote": "Vom Betreiber veröffentlichte Preise: 148 Baht ab Ekkamai Bus Terminal und 158 Baht ab Mo Chit 2 Bus Terminal.",
       "operatorNote": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
@@ -153,6 +157,10 @@
     "pattaya-to-bangkok-ekkamai": {
       "travelTime": "etwa 2–3 Stunden",
       "price": "148–158 Baht pro Sitz",
+      "subRoutePrices": {
+        "pattaya-to-mochit": "158 Baht pro Sitz",
+        "pattaya-to-ekkamai": "148 Baht pro Sitz"
+      },
       "disclaimer": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
       "fareNote": "Vom Betreiber veröffentlichte Preise: 148–158 Baht pro Sitz.",
       "operatorNote": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",

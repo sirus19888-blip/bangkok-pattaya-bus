@@ -5,13 +5,17 @@ import type { ReactNode } from "react";
 import type { Route } from "@/data/routes";
 import type { Schedule, ScheduleSource } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
-import type { Translations } from "@/lib/i18n";
+import {
+  getLocalizedSubRoutePrice,
+  type Translations,
+} from "@/lib/i18n";
 import { isNextDepartureInTodaySchedule } from "@/lib/scheduleTime";
 
 type ScheduleListProps = {
   route: Route;
   schedule: Schedule;
   nextDeparture: string;
+  t: Translations;
   labels: Translations["schedule"];
   sourceOnly?: boolean;
   showSourceInfo?: boolean;
@@ -22,6 +26,7 @@ export function ScheduleList({
   route,
   schedule,
   nextDeparture,
+  t,
   labels,
   sourceOnly = false,
   showSourceInfo = false,
@@ -72,7 +77,12 @@ export function ScheduleList({
                 {subRoute.label}
               </h3>
               <p className="mt-1 text-xs font-black leading-tight text-[#5f6874]">
-                {subRoute.price}
+                {getLocalizedSubRoutePrice(
+                  schedule.id,
+                  subRoute.id,
+                  t,
+                  subRoute.price,
+                )}
               </p>
               <div className="mt-2.5 grid grid-cols-3 gap-2 min-[390px]:grid-cols-4 sm:mt-3 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 md:gap-2 lg:grid-cols-4 xl:grid-cols-5">
                 {subRoute.departures.map((departure) => (

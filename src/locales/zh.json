@@ -143,6 +143,10 @@
     "bangkok-ekkamai-to-pattaya": {
       "travelTime": "约 2 小时，视交通而定",
       "price": "每座 148–158 泰铢，取决于车站",
+      "subRoutePrices": {
+        "bangkok-ekkamai-to-pattaya": "每座 148 泰铢",
+        "bangkok-mochit-to-pattaya": "每座 158 泰铢"
+      },
       "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
       "fareNote": "运营商公布票价：Ekkamai Bus Terminal 每座 148 泰铢，Mo Chit 2 Bus Terminal 每座 158 泰铢。",
       "operatorNote": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
@@ -153,6 +157,10 @@
     "pattaya-to-bangkok-ekkamai": {
       "travelTime": "约 2–3 小时",
       "price": "每座 148–158 泰铢",
+      "subRoutePrices": {
+        "pattaya-to-mochit": "每座 158 泰铢",
+        "pattaya-to-ekkamai": "每座 148 泰铢"
+      },
       "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
       "fareNote": "运营商公布票价：每座 148–158 泰铢。",
       "operatorNote": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
