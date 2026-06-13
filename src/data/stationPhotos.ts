@@ -488,8 +488,12 @@ export const stationPhotos: StationPhoto[] = [
   },
 ];
 
+const moChitPhotos: StationPhoto[] = stationPhotos.filter(
+  (photo) => photo.stationId === "mo-chit",
+);
+
 const routeStationPhotoOrder: Record<RouteId, StationPhotoStationId[]> = {
-  "bangkok-to-pattaya": ["ekkamai", "north-pattaya"],
+  "bangkok-to-pattaya": ["ekkamai", "mo-chit", "north-pattaya"],
   "pattaya-to-bangkok": ["north-pattaya", "ekkamai", "mo-chit"],
   "suvarnabhumi-airport-to-pattaya": [
     "suvarnabhumi-airport",
@@ -544,7 +548,10 @@ export function getStationPhotoGroupsForRoute(
   return routeStationPhotoOrder[routeId].map((stationId) => ({
     stationId,
     title: textForLocale(stationTitles[stationId], locale),
-    photos: stationPhotos.filter((photo) => photo.stationId === stationId),
+    photos:
+      stationId === "mo-chit"
+        ? moChitPhotos
+        : stationPhotos.filter((photo) => photo.stationId === stationId),
   }));
 }
 

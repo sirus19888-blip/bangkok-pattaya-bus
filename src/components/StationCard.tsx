@@ -369,6 +369,65 @@ const northPattayaDepartureTips: Record<LocaleCode, string[]> = {
   ],
 };
 
+const moChitDepartureTips: Record<LocaleCode, string[]> = {
+  en: [
+    "Mo Chit 2 is NOT at Mo Chit BTS Station - the terminal is about 2.1-2.3 km away (roughly a 15-minute walk through Wachirabenchathat Park).",
+    "From BTS Mo Chit: use Exit 3 or 4, then take a short taxi or motorbike taxi (about 40-60 THB, ~5 min). Grab works well - set the pin to 'Mo Chit 2 Bus Terminal'.",
+    "From the MRT: Kamphaeng Phet Station, Exit 1 (about 2 km). A motorbike taxi costs about 40 THB, a metered taxi about 50 THB.",
+    "Mo Chit 2 is open 24/7 and is the largest of Bangkok's long-distance bus terminals - arrive 20-30 minutes before departure to locate your platform.",
+    "Left luggage is on floor 1: about 50-100 THB per bag per day, open 6:00-22:00, ID required.",
+    "Locals call it 'Mo Chit Mai' or 'Mo Chit 2' (officially: Bangkok Bus Terminal, Chatuchak). Don't confuse it with the BTS station of the same name.",
+  ],
+  pl: [
+    "Mo Chit 2 NIE znajduje się przy stacji BTS Mo Chit - terminal jest oddalony o około 2,1-2,3 km (mniej więcej 15 minut pieszo przez park Wachirabenchathat).",
+    "Z BTS Mo Chit: użyj wyjścia 3 albo 4, potem weź krótką taksówkę lub motorbike taxi (około 40-60 THB, ~5 min). Grab działa dobrze - ustaw pinezkę na 'Mo Chit 2 Bus Terminal'.",
+    "Z MRT: stacja Kamphaeng Phet, wyjście 1 (około 2 km). Motorbike taxi kosztuje około 40 THB, taksówka z taksometrem około 50 THB.",
+    "Mo Chit 2 jest otwarte 24/7 i jest największym z terminali autobusów dalekobieżnych w Bangkoku - przyjedź 20-30 minut przed odjazdem, żeby znaleźć swój peron.",
+    "Przechowalnia bagażu jest na poziomie 1: około 50-100 THB za torbę za dzień, czynna 6:00-22:00, wymagany dokument tożsamości.",
+    "Miejscowi mówią na niego 'Mo Chit Mai' albo 'Mo Chit 2' (oficjalnie: Bangkok Bus Terminal, Chatuchak). Nie pomyl go ze stacją BTS o tej samej nazwie.",
+  ],
+  de: [
+    "Mo Chit 2 liegt NICHT an der BTS-Station Mo Chit - das Terminal ist etwa 2,1-2,3 km entfernt (ungefähr 15 Minuten zu Fuß durch den Wachirabenchathat Park).",
+    "Von BTS Mo Chit: Nutze Exit 3 oder 4 und nimm dann ein kurzes Taxi oder Motorradtaxi (etwa 40-60 THB, ~5 Min.). Grab funktioniert gut - setze den Pin auf 'Mo Chit 2 Bus Terminal'.",
+    "Von der MRT: Kamphaeng Phet Station, Exit 1 (etwa 2 km). Ein Motorradtaxi kostet etwa 40 THB, ein Taxi mit Meter etwa 50 THB.",
+    "Mo Chit 2 ist 24/7 geöffnet und Bangkoks größtes Fernbus-Terminal - komme 20-30 Minuten vor Abfahrt an, um deinen Bussteig zu finden.",
+    "Gepäckaufbewahrung ist auf Etage 1: etwa 50-100 THB pro Gepäckstück und Tag, geöffnet 6:00-22:00, Ausweis erforderlich.",
+    "Einheimische nennen es 'Mo Chit Mai' oder 'Mo Chit 2' (offiziell: Bangkok Bus Terminal, Chatuchak). Verwechsle es nicht mit der gleichnamigen BTS-Station.",
+  ],
+  fr: [
+    "Mo Chit 2 n'est PAS à la station BTS Mo Chit - le terminal est à environ 2,1-2,3 km (environ 15 minutes à pied à travers le parc Wachirabenchathat).",
+    "Depuis BTS Mo Chit : utilisez la sortie 3 ou 4, puis prenez un court taxi ou moto-taxi (environ 40-60 THB, ~5 min). Grab fonctionne bien - placez le repère sur 'Mo Chit 2 Bus Terminal'.",
+    "Depuis le MRT : station Kamphaeng Phet, sortie 1 (environ 2 km). Un moto-taxi coûte environ 40 THB, un taxi au compteur environ 50 THB.",
+    "Mo Chit 2 est ouvert 24/7 et c'est le plus grand terminal de bus longue distance de Bangkok - arrivez 20-30 minutes avant le départ pour trouver votre quai.",
+    "La consigne à bagages est au 1er étage : environ 50-100 THB par sac et par jour, ouverte de 6:00 à 22:00, pièce d'identité requise.",
+    "Les habitants l'appellent 'Mo Chit Mai' ou 'Mo Chit 2' (officiellement : Bangkok Bus Terminal, Chatuchak). Ne le confondez pas avec la station BTS du même nom.",
+  ],
+  ru: [
+    "Mo Chit 2 НЕ находится у станции BTS Mo Chit - терминал примерно в 2,1-2,3 км от неё (около 15 минут пешком через парк Wachirabenchathat).",
+    "От BTS Mo Chit: используйте выход 3 или 4, затем возьмите короткое такси или мототакси (около 40-60 THB, ~5 мин). Grab работает хорошо - поставьте точку на 'Mo Chit 2 Bus Terminal'.",
+    "От MRT: станция Kamphaeng Phet, выход 1 (около 2 км). Мототакси стоит около 40 THB, такси по счётчику около 50 THB.",
+    "Mo Chit 2 открыт 24/7 и является крупнейшим терминалом междугородних автобусов Бангкока - приезжайте за 20-30 минут до отправления, чтобы найти свою платформу.",
+    "Камера хранения находится на 1 этаже: около 50-100 THB за сумку в день, открыта 6:00-22:00, требуется документ.",
+    "Местные называют его 'Mo Chit Mai' или 'Mo Chit 2' (официально: Bangkok Bus Terminal, Chatuchak). Не путайте его с одноимённой станцией BTS.",
+  ],
+  th: [
+    "Mo Chit 2 ไม่ได้อยู่ที่สถานี BTS Mo Chit - เทอร์มินัลอยู่ห่างประมาณ 2.1-2.3 กม. (เดินประมาณ 15 นาทีผ่านสวนวชิรเบญจทัศ).",
+    "จาก BTS Mo Chit: ใช้ทางออก 3 หรือ 4 แล้วต่อแท็กซี่หรือมอเตอร์ไซค์รับจ้างระยะสั้น (ประมาณ 40-60 THB, ~5 นาที). Grab ใช้ได้ดี - ปักหมุดที่ 'Mo Chit 2 Bus Terminal'.",
+    "จาก MRT: สถานี Kamphaeng Phet ทางออก 1 (ประมาณ 2 กม.). มอเตอร์ไซค์รับจ้างประมาณ 40 THB แท็กซี่มิเตอร์ประมาณ 50 THB.",
+    "Mo Chit 2 เปิด 24/7 และเป็นเทอร์มินัลรถบัสทางไกลที่ใหญ่ที่สุดของกรุงเทพฯ - มาถึงก่อนเวลาออก 20-30 นาทีเพื่อหาชานชาลาของคุณ.",
+    "ฝากกระเป๋าอยู่ที่ชั้น 1: ประมาณ 50-100 THB ต่อใบต่อวัน เปิด 6:00-22:00 ต้องใช้บัตรประจำตัว.",
+    "คนท้องถิ่นเรียกว่า 'Mo Chit Mai' หรือ 'Mo Chit 2' (ชื่อทางการ: Bangkok Bus Terminal, Chatuchak). อย่าสับสนกับสถานี BTS ชื่อเดียวกัน.",
+  ],
+  zh: [
+    "Mo Chit 2 不在 BTS Mo Chit 站 - 车站距离那里约 2.1-2.3 公里（穿过 Wachirabenchathat Park 步行大约 15 分钟）。",
+    "从 BTS Mo Chit：使用 3 或 4 号出口，然后乘坐短途出租车或摩托车出租（约 40-60 THB，~5 分钟）。Grab 很好用 - 定位到 'Mo Chit 2 Bus Terminal'。",
+    "从 MRT：Kamphaeng Phet Station，1 号出口（约 2 公里）。摩托车出租约 40 THB，打表出租车约 50 THB。",
+    "Mo Chit 2 24/7 开放，是曼谷最大的长途巴士总站 - 请在发车前 20-30 分钟到达，以便找到你的站台。",
+    "行李寄存在 1 楼：每件每天约 50-100 THB，开放时间 6:00-22:00，需要身份证件。",
+    "当地人称它为 'Mo Chit Mai' 或 'Mo Chit 2'（官方名称：Bangkok Bus Terminal, Chatuchak）。不要和同名 BTS 站混淆。",
+  ],
+};
+
 const moChitArrivalTips: Record<LocaleCode, string[]> = {
   en: [
     "After getting off at Mo Chit 2, first open your hotel address in Google Maps and choose whether you need Sukhumvit, Siam, Silom, Riverside, Khao San, or Don Mueang.",
@@ -481,6 +540,10 @@ function getStationTip(
     return repairMojibakeList(northPattayaDepartureTips[locale]).join(" ");
   }
 
+  if (stationId === "mo-chit" && routeId === "bangkok-to-pattaya") {
+    return repairMojibakeList(moChitDepartureTips[locale]).join(" ");
+  }
+
   if (stationId === "mo-chit" && routeId === "pattaya-to-bangkok") {
     return repairMojibakeList(moChitArrivalTips[locale]).join(" ");
   }
@@ -512,6 +575,10 @@ function getMobileTipPoints(
 
   if (stationId === "north-pattaya" && routeId === "pattaya-to-bangkok") {
     return repairMojibakeList(northPattayaDepartureTips[locale]);
+  }
+
+  if (stationId === "mo-chit" && routeId === "bangkok-to-pattaya") {
+    return repairMojibakeList(moChitDepartureTips[locale]);
   }
 
   if (stationId === "mo-chit" && routeId === "pattaya-to-bangkok") {
