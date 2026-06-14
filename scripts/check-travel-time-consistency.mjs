@@ -51,14 +51,28 @@ for (const locale of locales) {
       continue;
     }
 
+    const heroRange = toRange(heroResult.value);
+    const faqRange = toRange(faqResult.value);
+
+    if (!heroRange || !faqRange) {
+      warn(
+        slug,
+        locale,
+        `could not convert parsed values to ranges: hero=${heroResult.value}, FAQ=${faqResult.value}`,
+      );
+      continue;
+    }
+
     parsedPairs += 1;
 
-    if (heroResult.value !== faqResult.value) {
+    if (!rangesOverlap(heroRange, faqRange)) {
       inconsistencies.push({
         slug,
         locale,
         hero: heroResult.value,
         faq: faqResult.value,
+        heroRange,
+        faqRange,
       });
     }
   }
@@ -75,7 +89,9 @@ if (inconsistencies.length > 0) {
 
   for (const inconsistency of inconsistencies) {
     console.log(
-      `- ${inconsistency.slug}/${inconsistency.locale}: hero=${inconsistency.hero}, FAQ=${inconsistency.faq}`,
+      `- ${inconsistency.slug}/${inconsistency.locale}: hero=${inconsistency.hero} (${formatRange(
+        inconsistency.heroRange,
+      )}), FAQ=${inconsistency.faq} (${formatRange(inconsistency.faqRange)})`,
     );
   }
 }
@@ -185,12 +201,9 @@ function extractHourValues(text) {
 
   for (const match of normalizedText.matchAll(hourPattern)) {
     const suffix = normalizedText.slice(match.index + match[0].length);
+    const minuteMatch = suffix.match(minuteUnits);
 
-    if (minuteUnits.test(suffix)) {
-      continue;
-    }
-
-    values.push(canonicalizeHourValue(match[1]));
+    values.push(canonicalizeHourValue(match[1], extractMinuteValue(minuteMatch)));
   }
 
   return values;
@@ -205,12 +218,67 @@ function normalizeHourText(text) {
     .trim();
 }
 
-function canonicalizeHourValue(value) {
-  return value
+function canonicalizeHourValue(value, minuteValue = null) {
+  const canonicalValue = value
     .replace(/[–—]/g, "-")
     .replace(/(\d),(\d)/g, "$1.$2")
     .replace(/\s*(?:-|to|à)\s*/giu, "-")
     .trim();
+
+  if (!minuteValue) {
+    return canonicalValue;
+  }
+
+  const minutes = Number.parseFloat(minuteValue.replace(",", "."));
+  const hourRange = toRange(canonicalValue);
+
+  if (!Number.isFinite(minutes) || !hourRange) {
+    return canonicalValue;
+  }
+
+  const minuteHours = minutes / 60;
+
+  return hourRange[0] === hourRange[1]
+    ? formatHourNumber(hourRange[0] + minuteHours)
+    : `${formatHourNumber(hourRange[0] + minuteHours)}-${formatHourNumber(
+        hourRange[1] + minuteHours,
+      )}`;
+}
+
+function extractMinuteValue(minuteMatch) {
+  if (!minuteMatch) {
+    return null;
+  }
+
+  return /^(?:\s|&nbsp;)*(\d+(?:[.,]\d+)?)/iu.exec(minuteMatch[0])?.[1] ?? null;
+}
+
+function toRange(value) {
+  const parts = value.split("-").map((part) => Number.parseFloat(part));
+
+  if (
+    parts.length === 0 ||
+    parts.length > 2 ||
+    parts.some((part) => !Number.isFinite(part))
+  ) {
+    return null;
+  }
+
+  const [start, end = start] = parts;
+
+  return start <= end ? [start, end] : [end, start];
+}
+
+function rangesOverlap(firstRange, secondRange) {
+  return firstRange[0] <= secondRange[1] && secondRange[0] <= firstRange[1];
+}
+
+function formatRange(range) {
+  return `[${formatHourNumber(range[0])}, ${formatHourNumber(range[1])}]`;
+}
+
+function formatHourNumber(value) {
+  return Number.parseFloat(value.toFixed(4)).toString();
 }
 
 function extractParagraphTexts(html) {
