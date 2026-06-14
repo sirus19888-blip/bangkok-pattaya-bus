@@ -1,4 +1,4 @@
-import type { RouteId } from "@/data/routes";
+﻿import type { RouteId } from "@/data/routes";
 import type { AffiliateCTAPosition } from "@/components/AffiliateCTA";
 
 export type SeoGuideSource = {
@@ -367,52 +367,110 @@ export const seoGuides: SeoGuide[] = [
       },
     ],
   },
-  {
+    {
     slug: "suvarnabhumi-airport-gate-8-pattaya-bus",
-    title: "Suvarnabhumi Airport Gate 8 to Pattaya Bus | Practical Guide",
+    title:
+      "Suvarnabhumi Airport to Pattaya Bus from Gate 8 | Operators, Price & Tips",
     description:
-      "Guide to the Suvarnabhumi Airport to Pattaya bus near Level 1 Gate 8, with travel tips, schedule link, ticket notes and sources.",
-    h1: "Suvarnabhumi Airport Gate 8 to Pattaya Bus",
+      "Complete guide to the Suvarnabhumi Airport to Pattaya bus from Level 1 Gate 8: operators, fares, travel time, where to find the counter, and what to do after a late flight.",
+    h1: "Suvarnabhumi Airport to Pattaya Bus (Gate 8)",
     intro:
-      "The Suvarnabhumi Airport to Pattaya bus is useful after landing in Bangkok when you want a direct, low-cost route to Pattaya. Current route information points travelers to Level 1 near Gate 8, but you should always confirm signs at the airport.",
+      "The Suvarnabhumi Airport to Pattaya bus is one of the cheapest and most popular ways to reach Pattaya after landing in Bangkok. Several operators run direct services from the airport, and the ticket counters are on Level 1 near Gate 8 in the arrivals area. This guide explains how to find the counter, which operators run the route, how much the bus usually costs, how long it takes, and when a taxi or private transfer makes more sense.",
+    shortAnswer:
+      "After arrivals, go to Level 1 and look for the bus counters near Gate 8 (the Pattaya / Hua Hin counter). Buy a ticket for Pattaya, confirm whether the bus stops at Jomtien or North Pattaya, and board there. The trip usually takes about 2 hours and commonly costs around 120-250 THB depending on the operator and whether you book online or at the counter.",
     routeId: "suvarnabhumi-airport-to-pattaya",
     routeLinkLabel: "Open Suvarnabhumi Airport to Pattaya bus times",
     ctaLabel: "Compare airport to Pattaya tickets",
-    lastUpdated: "2026-06-10",
+    lastUpdated: "2026-06-14",
     keyPoints: [
-      "Allow time for immigration, baggage claim and walking through the airport.",
-      "Current route data says the bus counter is on Level 1 near Gate 8.",
-      "The operator fare shown in current app data is 139 THB per seat.",
+      "The bus counters are on Level 1 (Arrivals) near Gate 8 - look for the Pattaya / Hua Hin service desk.",
+      "Several operators run this route, including Roong Reuang Coach, the 999 / Transport Co. bus, Bell Travel and Mekong Transfer, so fares and timings vary a little.",
+      "The journey usually takes around 2 hours, sometimes longer on Friday evenings, weekends and holidays.",
     ],
     sections: [
       {
-        title: "Finding the bus counter",
-        body: "After arrivals, follow airport transport signs toward Level 1. Look for the Pattaya bus counter near Gate 8 and confirm the destination before buying your ticket.",
+        title: "Where to find the Pattaya bus at Suvarnabhumi",
+        body: "After clearing immigration and collecting your baggage, follow the airport transport signs down to Level 1, the arrivals level. The Pattaya bus counters are near Gate 8, often shown as the Pattaya / Hua Hin service desk. Buy your ticket at the official counter, then ask which door or waiting area to use before boarding. Always confirm the signs at the airport, because counter and gate layouts can change.",
       },
       {
-        title: "When taxi may be better",
-        body: "If you arrive late, have heavy luggage, travel with family, or miss the next bus, a taxi or private transfer can be easier. Final prices can vary by traffic, tolls and provider.",
+        title: "Which operators run the airport to Pattaya bus",
+        body: "This route is served by more than one company. Roong Reuang Coach has the most frequent departures, running roughly every hour from early morning until late evening. The 999 / Transport Co. bus, Bell Travel and Mekong Transfer also run services, sometimes with fewer daily departures. If one counter is sold out or the next bus is too far away, ask whether another operator has an earlier seat.",
       },
       {
-        title: "Arrival in Pattaya",
-        body: "Some buses may stop at Jomtien or North Pattaya depending on the service. Confirm the final stop before buying, then plan a songthaew, taxi or app ride to your hotel.",
+        title: "How much the airport bus to Pattaya costs",
+        body: "Fares are affordable and vary by operator and how you buy the ticket. As a planning guide, expect roughly 120-250 THB per person. Booking online in advance is sometimes a little more than the counter price, but it can guarantee a seat on busy days. Confirm the exact fare at the counter or on the booking platform before you travel, because operator prices change.",
+      },
+      {
+        title: "How long the bus takes",
+        body: "The bus usually takes around 2 hours to reach Pattaya, depending on traffic and your final stop. Highway 7 is fast when clear, but Friday evenings, weekends and Thai holidays can add time. If you have a tight onward plan in Pattaya, leave a comfortable buffer.",
+      },
+      {
+        title: "Where the bus drops you in Pattaya",
+        body: "Depending on the operator and service, the airport bus may stop at Jomtien Bus Station or North Pattaya Bus Station. These are different parts of the Pattaya area, so check your hotel location and confirm the final stop before boarding. From either station, continue by songthaew (baht bus), taxi, Grab or Bolt to your hotel.",
+      },
+      {
+        title: "When a taxi or private transfer is better",
+        body: "The bus is the cheapest option, but a taxi or pre-booked private transfer can be easier if you land late at night, travel with family, carry large luggage, or want to go straight to your hotel door. Airport taxis and private cars cost much more than the bus - often well over 1,000 THB - but save you waiting and transfers. Final prices vary by traffic, tolls, demand and pickup point.",
+      },
+      {
+        title: "After a late or delayed flight",
+        body: "Airport buses do not run all night. If you land late in the evening, check whether the last Pattaya bus has already gone before you commit to the counter. After the last bus, your realistic options are a metered taxi, an app ride or a pre-booked private transfer. Avoid unofficial drivers offering unclear fares, vehicles or destinations.",
+      },
+      {
+        title: "Buying tickets: counter vs online",
+        body: "You can buy at the airport counter or book online before you fly. The counter is simple if seats are available and you are flexible. Booking online can be worth it on weekends, holidays or if you want a guaranteed seat after a long flight. Either way, the timetable on this site stays independent - booking links just let you compare live seats and transfers.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Suvarnabhumi Airport to Pattaya Bus",
+        href: "/en/suvarnabhumi-airport-to-pattaya",
+        description:
+          "Check current airport to Pattaya times, fare notes and source status.",
+      },
+      {
+        label: "Pattaya to Suvarnabhumi Airport Bus",
+        href: "/en/pattaya-to-suvarnabhumi-airport",
+        description:
+          "Plan the return trip to the airport before your flight.",
+      },
+      {
+        label: "Pattaya Bus Station to Jomtien guide",
+        href: "/en/pattaya-bus-station-to-jomtien",
+        description:
+          "If your bus stops at North Pattaya, plan the transfer south to Jomtien.",
       },
     ],
     faq: [
       {
         question: "Where is the Pattaya bus counter at Suvarnabhumi Airport?",
         answer:
-          "Current route data says Level 1 near Gate 8. Follow airport signs and confirm at the counter.",
+          "It is on Level 1 in the arrivals area, near Gate 8 - look for the Pattaya / Hua Hin service desk. Follow airport signs and confirm at the counter.",
       },
       {
-        question: "How much is the airport bus to Pattaya?",
+        question: "How much is the bus from Suvarnabhumi Airport to Pattaya?",
         answer:
-          "Current operator information in the app shows 139 THB per seat. Confirm before travel.",
+          "Fares vary by operator and booking method, but expect roughly 120-250 THB per person. Confirm the exact price at the counter or online before travel.",
       },
       {
-        question: "Should I take the bus after a long flight?",
+        question: "Which companies run the airport to Pattaya bus?",
         answer:
-          "The bus is affordable, but taxi or private transfer can be easier if you are tired, arrive late or carry large luggage.",
+          "Roong Reuang Coach runs the most frequent service, with others such as the 999 / Transport Co. bus, Bell Travel and Mekong Transfer also operating the route.",
+      },
+      {
+        question: "How long does the airport bus to Pattaya take?",
+        answer:
+          "Usually around 2 hours, depending on traffic and your final stop. Allow extra time on Friday evenings, weekends and holidays.",
+      },
+      {
+        question: "Does the bus go to Jomtien or North Pattaya?",
+        answer:
+          "It depends on the operator and service. Some buses stop at Jomtien Bus Station and others at North Pattaya Bus Station, so confirm the final stop before boarding.",
+      },
+      {
+        question: "What should I do if I land late at night?",
+        answer:
+          "Check whether the last bus has already gone. After the last departure, a metered taxi, app ride or pre-booked private transfer is usually the safest option.",
       },
     ],
     sources: [
@@ -423,6 +481,10 @@ export const seoGuides: SeoGuide[] = [
       {
         label: "Suvarnabhumi Airport to Pattaya route page",
         url: "/en/suvarnabhumi-airport-to-pattaya",
+      },
+      {
+        label: "Roong Reuang Coach",
+        url: "https://pattayabus.com/",
       },
     ],
   },
