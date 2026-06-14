@@ -408,8 +408,20 @@
     ],
     "don-mueang-airport-to-pattaya": [
       {
+        "question": "Combien de temps dure le trajet en bus de Don Mueang Airport à Pattaya ?",
+        "answer": "Le trajet dure généralement environ 3 a 3,5 heures, selon la circulation."
+      },
+      {
         "question": "Où prendre le bus à Don Mueang Airport?",
         "answer": "La page officielle de Don Mueang indique des comptoirs au Terminal 1, Building 1, Floor 1, Gate 1 et au Terminal 2, Building 2, Floor 1, Gate 11. Le point de prise en charge est Service Hall Building. Après la sortie de l'avion, suivez Arrivals, récupérez vos bagages et confirmez le bus Transport Co. / TCL vers Pattaya au comptoir."
+      },
+      {
+        "question": "Faut-il prévoir du temps supplémentaire après l'atterrissage ?",
+        "answer": "Oui. Prévoyez du temps pour les bagages, la marche dans l'aéroport et trouver le bon comptoir ou point de prise en charge."
+      },
+      {
+        "question": "Les horaires de bus sont-ils confirmés ?",
+        "answer": "Les horaires sont basés sur les informations officielles de transport de l'aéroport, mais ils peuvent changer. Confirmez avant le voyage."
       }
     ],
     "pattaya-to-suvarnabhumi-airport": [
