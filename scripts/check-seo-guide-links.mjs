@@ -1,4 +1,4 @@
-﻿import assert from "node:assert/strict";
+import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cwd } from "node:process";
@@ -38,7 +38,10 @@ assertRouteGuideLinks(
 );
 assertRouteGuideLinks(
   "/en/pattaya-to-bangkok",
-  ["/en/pattaya-to-bangkok-before-flight"],
+  [
+    "/en/pattaya-to-bangkok-before-flight",
+    "/en/pattaya-to-bangkok-which-terminal",
+  ],
   [
     "/en/ekkamai-bus-terminal-to-pattaya-guide",
     "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
@@ -65,6 +68,10 @@ assertGuideBacklink(
 );
 assertGuideBacklink(
   "/en/pattaya-to-bangkok-before-flight",
+  "/en/pattaya-to-bangkok",
+);
+assertGuideBacklink(
+  "/en/pattaya-to-bangkok-which-terminal",
   "/en/pattaya-to-bangkok",
 );
 

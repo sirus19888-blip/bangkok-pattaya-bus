@@ -1,4 +1,4 @@
-﻿import type { RouteId } from "@/data/routes";
+import type { RouteId } from "@/data/routes";
 
 export type SeoGuideLink = {
   description: string;
@@ -78,6 +78,13 @@ export const seoGuideLinks: SeoGuideLink[] = [
     slug: "pattaya-to-suvarnabhumi-airport-before-flight",
     title: "Pattaya to Suvarnabhumi before a flight guide",
   },
+  {
+    description:
+      "Choosing between Ekkamai and Mo Chit for the bus from Pattaya to Bangkok - which terminal fits your destination and onward transport.",
+    href: "/en/pattaya-to-bangkok-which-terminal",
+    slug: "pattaya-to-bangkok-which-terminal",
+    title: "Pattaya to Bangkok: which terminal guide",
+  },
 ];
 
 const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
@@ -89,7 +96,7 @@ const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
     "bangkok-to-pattaya-bus-vs-taxi",
     "bangkok-to-pattaya-after-midnight",
   ],
-  "pattaya-to-bangkok": ["pattaya-to-bangkok-before-flight"],
+  "pattaya-to-bangkok": ["pattaya-to-bangkok-before-flight", "pattaya-to-bangkok-which-terminal"],
   "suvarnabhumi-airport-to-pattaya": [
     "suvarnabhumi-airport-gate-8-pattaya-bus",
   ],

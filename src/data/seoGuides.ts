@@ -1,4 +1,4 @@
-﻿import type { RouteId } from "@/data/routes";
+import type { RouteId } from "@/data/routes";
 import type { AffiliateCTAPosition } from "@/components/AffiliateCTA";
 
 export type SeoGuideSource = {
@@ -1029,6 +1029,126 @@ export const seoGuides: SeoGuide[] = [
       {
         label: "Roong Reuang Coach",
         url: "https://pattayabus.com/",
+      },
+    ],
+  },
+  {
+    slug: "pattaya-to-bangkok-which-terminal",
+    title: "Pattaya to Bangkok: Which Terminal? Ekkamai vs Mo Chit",
+    description:
+      "Choosing between Ekkamai and Mo Chit when taking the bus from Pattaya to Bangkok: which terminal suits your Bangkok destination, onward transport by BTS or taxi, fares and luggage tips.",
+    h1: "Pattaya to Bangkok: Ekkamai or Mo Chit?",
+    intro:
+      "Buses from Pattaya to Bangkok arrive at one of two main terminals - Ekkamai or Mo Chit - and choosing the right one makes your onward journey much easier. The best terminal depends on where you are heading in Bangkok and how you plan to continue from there. This guide explains the difference between the two terminals, how to reach your final destination from each, and practical tips on fares, luggage and departure from Pattaya.",
+    shortAnswer:
+      "Most Pattaya to Bangkok buses arrive at either Ekkamai (eastern Bangkok, on the BTS Sukhumvit line) or Mo Chit (northern Bangkok, near Chatuchak). Choose Ekkamai if you are heading to Sukhumvit areas like Asok, Thong Lo or Phrom Phong, because it connects directly to the BTS. Choose Mo Chit if you are going to northern Bangkok, or if you prefer to continue by taxi. Check the Pattaya to Bangkok route page for current departure times.",
+    routeId: "pattaya-to-bangkok",
+    routeLinkLabel: "Open Pattaya to Bangkok bus times",
+    ctaLabel: "Compare tickets and onward transfers",
+    lastUpdated: "2026-06-14",
+    keyPoints: [
+      "Ekkamai is the only major Bangkok bus terminal within walking distance of a BTS station, ideal for Sukhumvit destinations.",
+      "Mo Chit serves northern Bangkok and is better if you are heading that way or continuing by taxi - the BTS is about 2 km from the terminal.",
+      "Buses leave from the North Pattaya Bus Terminal, about 3 km from central Pattaya - allow time to reach it by taxi or songthaew.",
+    ],
+    sections: [
+      {
+        title: "The two Bangkok terminals at a glance",
+        body: "Pattaya to Bangkok buses run by the main coach operators arrive at one of two terminals. Ekkamai (the Eastern Bus Terminal) sits on Sukhumvit Road in eastern Bangkok, right next to Ekkamai BTS station. Mo Chit (the Northern Bus Terminal, sometimes called Mo Chit 2 or the Chatuchak Coach Station) is in northern Bangkok, near Chatuchak Park. Both are served by the same Pattaya buses, so your choice is mainly about where you want to end up in Bangkok.",
+      },
+      {
+        title: "Choose Ekkamai if you are heading to Sukhumvit",
+        body: "Ekkamai is the most convenient terminal for most visitors because it is the only major Bangkok bus station within easy walking distance of a BTS station. From Ekkamai BTS you can reach Sukhumvit areas such as Asok, Nana, Phrom Phong and Thong Lo quickly, and connect to the wider BTS and MRT network. If your hotel is anywhere along the Sukhumvit corridor, or you want the simplest onward journey, Ekkamai is usually the better choice.",
+      },
+      {
+        title: "Choose Mo Chit if you are heading north or prefer a taxi",
+        body: "Mo Chit is the better choice if you are staying in northern Bangkok, near Chatuchak, or in riverside and Khao San areas that are not on the BTS network. The catch is that the terminal is not right next to a train station - BTS Mo Chit and MRT Chatuchak Park are about 2 km away, so you would take a short taxi, Grab or motorcycle taxi to reach them. If you are continuing entirely by taxi anyway, Mo Chit can be just as convenient as Ekkamai.",
+      },
+      {
+        title: "How to continue from each terminal",
+        body: "From Ekkamai, walk to Ekkamai BTS and take the Sukhumvit line - simple and traffic-free. From Mo Chit, take a taxi or Grab directly to your destination, or a short ride to BTS Mo Chit or MRT Chatuchak Park if you want the train. As a rough guide, a taxi from the terminal area to central Sukhumvit or Siam can range widely with traffic and demand, so use a meter or agree the fare first. For Bangkok's traffic, the BTS or MRT is often faster than a taxi for Sukhumvit, Siam and Silom.",
+      },
+      {
+        title: "Where the bus leaves from in Pattaya",
+        body: "Most Pattaya to Bangkok buses depart from the North Pattaya Bus Terminal on North Pattaya Road, roughly 3 km from the center of Pattaya. It is too far to walk comfortably from most hotels, so plan to reach it by taxi, Grab or songthaew. If your hotel is in Jomtien, Pratumnak or Naklua, allow extra time. Open the terminal in a map app before you leave so you know how long the transfer will take.",
+      },
+      {
+        title: "Travel time and fares",
+        body: "The journey usually takes around 2.5 to 3 hours depending on traffic, especially near Bangkok. Fares are modest - typically in the range of about 150 THB per seat, though exact prices vary by operator and can change. Both Ekkamai and Mo Chit services are similar in price and time, so the fare is rarely the deciding factor - your Bangkok destination matters more. Check the route page for current departure times and fare notes before you travel.",
+      },
+      {
+        title: "Luggage and tickets",
+        body: "You can usually buy tickets at the counter at the North Pattaya terminal on the day, or book online in advance for busy weekends and holidays. Standard luggage allowance is generally one main bag plus a carry-on, with a small extra charge (around 20 THB) for additional bags. Arrive 20 to 30 minutes before departure so you have time to buy your ticket and find the right platform.",
+      },
+      {
+        title: "Which terminal should you pick?",
+        body: "In short: pick Ekkamai for Sukhumvit and anywhere easily reached by BTS, and pick Mo Chit for northern Bangkok or if you are continuing by taxi. If you are unsure, Ekkamai is the safer default for most tourists because of its direct BTS connection. Whichever you choose, confirm the destination terminal when you buy your ticket, since some services run to one terminal and not the other.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Pattaya to Bangkok Bus",
+        href: "/en/pattaya-to-bangkok",
+        description:
+          "Check current departure times to Ekkamai and Mo Chit, fares and station details.",
+      },
+      {
+        label: "Mo Chit Bus Terminal to Pattaya guide",
+        href: "/en/mo-chit-bus-terminal-to-pattaya",
+        description:
+          "Planning the trip the other way? Compare the same terminals from Bangkok to Pattaya.",
+      },
+      {
+        label: "Ekkamai Bus Terminal to Pattaya guide",
+        href: "/en/ekkamai-bus-terminal-to-pattaya-guide",
+        description:
+          "More on Ekkamai terminal and its BTS connection.",
+      },
+    ],
+    faq: [
+      {
+        question: "Which is better for Pattaya to Bangkok - Ekkamai or Mo Chit?",
+        answer:
+          "Ekkamai is better for Sukhumvit areas because it connects directly to the BTS. Mo Chit is better for northern Bangkok or if you are continuing by taxi. For most tourists, Ekkamai is the easier default.",
+      },
+      {
+        question: "Is Ekkamai terminal close to the BTS?",
+        answer:
+          "Yes. Ekkamai is the only major Bangkok bus terminal within easy walking distance of a BTS station (Ekkamai station on the Sukhumvit line).",
+      },
+      {
+        question: "How far is Mo Chit terminal from the BTS?",
+        answer:
+          "About 2 km. BTS Mo Chit and MRT Chatuchak Park are a short taxi, Grab or motorcycle-taxi ride from the Mo Chit bus terminal.",
+      },
+      {
+        question: "Where does the bus leave from in Pattaya?",
+        answer:
+          "From the North Pattaya Bus Terminal on North Pattaya Road, about 3 km from central Pattaya. Reach it by taxi, Grab or songthaew.",
+      },
+      {
+        question: "How much does the Pattaya to Bangkok bus cost?",
+        answer:
+          "Typically around 150 THB per seat, though prices vary by operator and can change. Check the route page or the counter for current fares.",
+      },
+      {
+        question: "Can I choose which terminal the bus goes to?",
+        answer:
+          "Often yes - different services run to Ekkamai or Mo Chit. Confirm the destination terminal when you buy your ticket.",
+      },
+    ],
+    sources: [
+      {
+        label: "Pattaya to Bangkok route page",
+        url: "/en/pattaya-to-bangkok",
+      },
+      {
+        label: "Thailand Life - Pattaya to Bangkok",
+        url: "https://thailandlife.info/how-to-get-from-pattaya-to-bangkok/",
+      },
+      {
+        label: "Klook - Bangkok Pattaya guide",
+        url: "https://www.klook.com/blog/bangkok-to-pattaya-guide/",
       },
     ],
   },
