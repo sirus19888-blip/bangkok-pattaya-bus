@@ -1,4 +1,4 @@
-import assert from "node:assert/strict";
+﻿import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { cwd } from "node:process";
@@ -68,6 +68,32 @@ assertGuideBacklink(
   "/en/pattaya-to-bangkok",
 );
 
+assertRouteGuideLinks(
+  "/en/don-mueang-airport-to-pattaya",
+  ["/en/don-mueang-airport-to-pattaya-bus"],
+  [
+    "/en/ekkamai-bus-terminal-to-pattaya-guide",
+    "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
+    "/en/pattaya-to-bangkok-before-flight",
+  ],
+);
+assertRouteGuideLinks(
+  "/en/pattaya-to-don-mueang-airport",
+  ["/en/pattaya-to-don-mueang-airport-bus"],
+  [
+    "/en/ekkamai-bus-terminal-to-pattaya-guide",
+    "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
+    "/en/pattaya-to-bangkok-before-flight",
+  ],
+);
+assertGuideBacklink(
+  "/en/don-mueang-airport-to-pattaya-bus",
+  "/en/don-mueang-airport-to-pattaya",
+);
+assertGuideBacklink(
+  "/en/pattaya-to-don-mueang-airport-bus",
+  "/en/pattaya-to-don-mueang-airport",
+);
 console.log("SEO guide internal link checks passed.");
 
 function assertGuideLinks(path, expectedHrefs) {

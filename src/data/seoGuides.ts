@@ -669,6 +669,248 @@ export const seoGuides: SeoGuide[] = [
       },
     ],
   },
+  {
+    slug: "don-mueang-airport-to-pattaya-bus",
+    title:
+      "Don Mueang Airport to Pattaya Bus | Direct Service, Price & Tips",
+    description:
+      "How to take the direct bus from Don Mueang Airport (DMK) to Pattaya: where to find the counter after landing, operator, fare, travel time, and what to do if you miss the last bus.",
+    h1: "Don Mueang Airport to Pattaya Bus (Direct)",
+    intro:
+      "There is now a direct bus from Don Mueang Airport (DMK) to Pattaya, run by the government operator Transport Co. (also known as the 999 bus). This is a big improvement over the older route, where travelers had to transfer through Mo Chit bus terminal in Bangkok first. This guide explains where to find the bus after landing, how much it costs, how long it takes, and what to do if you arrive late.",
+    shortAnswer:
+      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The direct bus costs around 155 THB and the trip usually takes about 2.5 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
+    routeId: "don-mueang-airport-to-pattaya",
+    routeLinkLabel: "Open Don Mueang Airport to Pattaya bus times",
+    ctaLabel: "Check Don Mueang to Pattaya tickets",
+    lastUpdated: "2026-06-14",
+    keyPoints: [
+      "The bus is a direct service to Pattaya - you do not need to transfer through Mo Chit or central Bangkok.",
+      "It is operated by Transport Co. (the government 999 bus), with ticket counters on Floor 1 at Don Mueang.",
+      "The fare is around 155 THB and the bus is an air-conditioned coach; the trip usually takes about 2.5 to 3.5 hours depending on traffic.",
+    ],
+    sections: [
+      {
+        title: "Finding the bus after you land at Don Mueang",
+        body: "After you leave the aircraft, follow the Arrivals signs. If you arrived on an international flight, clear immigration first, then collect your baggage and go out to the public arrivals area on Floor 1. Look for the Transport Co. / 999 bus counter or service hall for the Pattaya service. Tickets are sold on Floor 1, and counters are linked to the International Terminal (Building 1) and Domestic Terminal (Building 2). Always confirm the signs at the airport, because counter locations can change.",
+      },
+      {
+        title: "Why the direct bus is easier than the old route",
+        body: "Until recently, getting from Don Mueang to Pattaya meant first taking a shuttle or taxi to Mo Chit bus terminal in Bangkok, then changing to a Pattaya bus - often around four hours in total with the transfer. The direct Transport Co. bus skips that, taking you from the airport toward Pattaya without changing vehicles. Some older guides still describe only the Mo Chit route, so it is worth knowing the direct service exists.",
+      },
+      {
+        title: "How much the bus costs",
+        body: "The direct airport bus fare is around 155 THB per person. This is cheaper than going via Bangkok's Northern Bus Terminal and changing buses, and far cheaper than a taxi. Confirm the current fare on the route page or at the counter before travel, because operator prices can change.",
+      },
+      {
+        title: "How long the journey takes",
+        body: "The bus usually takes around 2.5 to 3.5 hours, depending on traffic and the time of day. The official schedule lists about two and a half hours, but Bangkok and motorway traffic - especially on Friday evenings, weekends and holidays - can add time. If you have an onward plan in Pattaya, leave a comfortable buffer.",
+      },
+      {
+        title: "Departure times and how often the bus runs",
+        body: "The direct bus runs several times a day rather than continuously, so the timing matters more than for a frequent city route. Check the Don Mueang to Pattaya route page on this site for the current departure times, then plan your arrival around the next available bus. If your flight lands between scheduled departures, you may have a wait.",
+      },
+      {
+        title: "Where the bus drops you in Pattaya",
+        body: "The bus heads to a Transport Co. stop on Sukhumvit Road in the Pattaya area, between North and Central Pattaya. From there, continue to your hotel by songthaew (baht bus), taxi, Grab or Bolt. Check your hotel location before boarding so you know roughly which part of Pattaya you are heading to.",
+      },
+      {
+        title: "When a taxi or private transfer is better",
+        body: "The bus is the cheapest option, but a taxi or pre-booked private transfer can be easier if you land late, travel with family, carry large luggage, or want to go straight to your hotel door. A taxi from Don Mueang to Pattaya usually costs well over 1,000 THB, but saves waiting and transfers. Confirm the price and route before you go.",
+      },
+      {
+        title: "If you land late or miss the last bus",
+        body: "The direct bus does not run late at night, so if you land in the evening, check whether the last departure has already gone before heading to the counter. After the last bus, your realistic options are a metered taxi, an app ride or a pre-booked private transfer. Avoid unofficial drivers offering unclear fares, vehicles or destinations.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Don Mueang Airport to Pattaya Bus",
+        href: "/en/don-mueang-airport-to-pattaya",
+        description:
+          "Check current departure times, fare notes and source status.",
+      },
+      {
+        label: "Pattaya to Don Mueang Airport Bus",
+        href: "/en/pattaya-to-don-mueang-airport",
+        description:
+          "Plan the return trip to the airport before your flight.",
+      },
+      {
+        label: "Bangkok to Pattaya Bus",
+        href: "/en/bangkok-to-pattaya",
+        description:
+          "Compare other ways to reach Pattaya from Bangkok and its airports.",
+      },
+    ],
+    faq: [
+      {
+        question: "Is there a direct bus from Don Mueang Airport to Pattaya?",
+        answer:
+          "Yes. Transport Co. (the government 999 bus) runs a direct service from Don Mueang to Pattaya, so you no longer have to transfer through Mo Chit bus terminal.",
+      },
+      {
+        question: "How much is the bus from Don Mueang to Pattaya?",
+        answer:
+          "The fare is around 155 THB per person. Confirm the current price at the counter or on the route page before travel.",
+      },
+      {
+        question: "Where do I catch the bus at Don Mueang Airport?",
+        answer:
+          "On Floor 1 in the public arrivals area, look for the Transport Co. / 999 Pattaya bus counter. Counters are linked to the International (Building 1) and Domestic (Building 2) terminals.",
+      },
+      {
+        question: "How long does the bus take to Pattaya?",
+        answer:
+          "Usually around 2.5 to 3.5 hours, depending on traffic. The official schedule lists about two and a half hours, but allow extra time on busy days.",
+      },
+      {
+        question: "Where does the bus stop in Pattaya?",
+        answer:
+          "At a Transport Co. stop on Sukhumvit Road between North and Central Pattaya. Continue to your hotel by songthaew, taxi, Grab or Bolt.",
+      },
+      {
+        question: "What if I land late at night?",
+        answer:
+          "The direct bus does not run late, so check whether the last departure has gone. After that, a metered taxi, app ride or pre-booked transfer is usually the safest option.",
+      },
+    ],
+    sources: [
+      {
+        label: "Don Mueang Airport (AOT) - Transport",
+        url: "https://donmueang.airportthai.co.th/",
+      },
+      {
+        label: "Don Mueang Airport to Pattaya route page",
+        url: "/en/don-mueang-airport-to-pattaya",
+      },
+      {
+        label: "Transport Co. (Bus 999)",
+        url: "https://www.transport.co.th/",
+      },
+    ],
+  },
+  {
+    slug: "pattaya-to-don-mueang-airport-bus",
+    title:
+      "Pattaya to Don Mueang Airport Bus | Direct Service & Flight Tips",
+    description:
+      "How to take the direct bus from Pattaya to Don Mueang Airport (DMK) before a flight: where it departs, operator, fare, travel time, and how much buffer to leave for check-in.",
+    h1: "Pattaya to Don Mueang Airport Bus (Direct)",
+    intro:
+      "There is a direct bus from Pattaya to Don Mueang Airport (DMK), run by the government operator Transport Co. (the 999 bus). It is the cheapest and simplest way to reach DMK for a flight without changing buses in Bangkok. Because you are traveling to catch a flight, the most important thing is leaving enough time for traffic and check-in. This guide explains where the bus departs, how long it takes, and how much buffer to plan.",
+    shortAnswer:
+      "The direct Pattaya to Don Mueang bus departs from a Transport Co. stop on Sukhumvit Road and costs around 155 THB. Plan for roughly 2.5 to 3.5 hours of travel, then add time for check-in and security - do not take the last possible bus before an early flight. Check the Pattaya to Don Mueang route page for current departure times.",
+    routeId: "pattaya-to-don-mueang-airport",
+    routeLinkLabel: "Open Pattaya to Don Mueang Airport bus times",
+    ctaLabel: "Check Pattaya to Don Mueang tickets",
+    lastUpdated: "2026-06-14",
+    keyPoints: [
+      "The bus goes direct to Don Mueang - you do not need to change buses in Bangkok.",
+      "It departs from a Transport Co. stop on Sukhumvit Road in Pattaya and costs around 155 THB.",
+      "Leave a generous buffer for traffic, check-in and security - do not rely on the last bus before an early or international flight.",
+    ],
+    sections: [
+      {
+        title: "Where the bus departs in Pattaya",
+        body: "The direct Don Mueang bus leaves from a Transport Co. office and stop on Sukhumvit Road, on the east side of Pattaya City. Check exactly where it is before your travel day, especially if your hotel is in Jomtien, on Beach Road or in Naklua, because you will need a songthaew, taxi or app ride to reach the departure point first. Allow time for that local transfer as well.",
+      },
+      {
+        title: "Why the direct bus is simpler before a flight",
+        body: "The direct Transport Co. bus takes you from Pattaya toward Don Mueang without changing vehicles. The older alternative - a bus to Bangkok's Northern Bus Terminal and then a shuttle to the airport - adds connection time and uncertainty. For a flight, fewer changes means fewer things that can go wrong, which is why the direct bus is usually the better choice if the timing fits.",
+      },
+      {
+        title: "How much the bus costs",
+        body: "The fare is around 155 THB per person. This is cheaper than taking a bus to Bangkok's Northern Bus Terminal (around 175 THB) and then a shuttle bus, and far cheaper than a private taxi. Confirm the current fare on the route page or at the counter before travel.",
+      },
+      {
+        title: "How long the journey takes - and your flight buffer",
+        body: "Plan for around 2.5 to 3.5 hours of travel, depending on traffic. The official schedule lists about two and a half hours, but the road into Bangkok can be slow, especially on Friday evenings, weekends and holidays. On top of the travel time, add time for check-in, baggage drop and security at Don Mueang. For an early or international flight, leave a generous buffer and avoid the last possible departure.",
+      },
+      {
+        title: "Departure times and how often the bus runs",
+        body: "The bus runs several times a day rather than continuously, so departures need planning around your flight. Check the Pattaya to Don Mueang route page on this site for current times, then choose a departure that gets you to the airport with a comfortable buffer - not one that arrives just before check-in closes.",
+      },
+      {
+        title: "Arriving at Don Mueang",
+        body: "The bus arrives at Don Mueang Airport. Once there, check your terminal - Don Mueang handles both international and domestic flights from different buildings - and head to check-in with time to spare. Confirm your airline's terminal and check-in counter on your booking so you do not lose time finding it after the bus.",
+      },
+      {
+        title: "When a taxi or private transfer is better",
+        body: "A taxi or pre-booked private transfer can be worth it if you have an early flight, travel with family, carry large luggage, or your hotel is far from the Sukhumvit Road departure point. It costs much more than the bus - usually well over 1,000 THB - but gives you a fixed pickup time and door-to-door travel. Confirm the price and route before you go.",
+      },
+      {
+        title: "Don't rely on the last bus before a flight",
+        body: "The bus does not run late into the night, and the last departure may be in the late afternoon or early evening. For a late or early-morning flight, the bus timing may not work at all - in that case, plan a taxi or private transfer instead. Never build a tight flight plan around the final bus of the day.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Pattaya to Don Mueang Airport Bus",
+        href: "/en/pattaya-to-don-mueang-airport",
+        description:
+          "Check current departure times, fare notes and source status.",
+      },
+      {
+        label: "Don Mueang Airport to Pattaya Bus",
+        href: "/en/don-mueang-airport-to-pattaya",
+        description:
+          "Plan the trip the other way, from the airport to Pattaya.",
+      },
+      {
+        label: "Pattaya to Bangkok Bus",
+        href: "/en/pattaya-to-bangkok",
+        description:
+          "Compare other routes from Pattaya toward Bangkok and its airports.",
+      },
+    ],
+    faq: [
+      {
+        question: "Is there a direct bus from Pattaya to Don Mueang Airport?",
+        answer:
+          "Yes. Transport Co. (the government 999 bus) runs a direct service from Pattaya to Don Mueang, so you do not need to change buses in Bangkok.",
+      },
+      {
+        question: "How much is the bus from Pattaya to Don Mueang?",
+        answer:
+          "Around 155 THB per person. Confirm the current price at the counter or on the route page before travel.",
+      },
+      {
+        question: "Where does the bus leave from in Pattaya?",
+        answer:
+          "From a Transport Co. stop on Sukhumvit Road, on the east side of Pattaya. Allow time to reach it from your hotel by songthaew, taxi or app ride.",
+      },
+      {
+        question: "How much time should I leave before my flight?",
+        answer:
+          "Plan around 2.5 to 3.5 hours of travel, then add check-in and security time. For early or international flights, leave a generous buffer and avoid the last bus.",
+      },
+      {
+        question: "How long does the bus take to Don Mueang?",
+        answer:
+          "Usually around 2.5 to 3.5 hours, depending on traffic. The official schedule lists about two and a half hours, but allow extra on busy days.",
+      },
+      {
+        question: "Can I take the bus for an early morning flight?",
+        answer:
+          "Often not - the bus does not run late at night or very early. For early flights, a taxi or pre-booked private transfer is usually the safer choice.",
+      },
+    ],
+    sources: [
+      {
+        label: "Don Mueang Airport (AOT) - Transport",
+        url: "https://donmueang.airportthai.co.th/",
+      },
+      {
+        label: "Pattaya to Don Mueang Airport route page",
+        url: "/en/pattaya-to-don-mueang-airport",
+      },
+      {
+        label: "Transport Co. (Bus 999)",
+        url: "https://www.transport.co.th/",
+      },
+    ],
+  },
 ];
 
 export function getSeoGuide(slug: string) {

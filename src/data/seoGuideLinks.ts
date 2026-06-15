@@ -1,4 +1,4 @@
-import type { RouteId } from "@/data/routes";
+﻿import type { RouteId } from "@/data/routes";
 
 export type SeoGuideLink = {
   description: string;
@@ -57,9 +57,25 @@ export const seoGuideLinks: SeoGuideLink[] = [
     slug: "pattaya-bus-station-to-jomtien",
     title: "Pattaya Bus Station to Jomtien guide",
   },
+  {
+    description:
+      "Take the direct Transport Co. bus from Don Mueang Airport to Pattaya - operator, fare, where to find the counter and travel tips.",
+    href: "/en/don-mueang-airport-to-pattaya-bus",
+    slug: "don-mueang-airport-to-pattaya-bus",
+    title: "Don Mueang Airport to Pattaya bus guide",
+  },
+  {
+    description:
+      "Plan the direct Pattaya to Don Mueang Airport bus before a flight - departure point, fare, travel time and check-in buffer.",
+    href: "/en/pattaya-to-don-mueang-airport-bus",
+    slug: "pattaya-to-don-mueang-airport-bus",
+    title: "Pattaya to Don Mueang Airport bus guide",
+  },
 ];
 
 const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
+  "don-mueang-airport-to-pattaya": ["don-mueang-airport-to-pattaya-bus"],
+  "pattaya-to-don-mueang-airport": ["pattaya-to-don-mueang-airport-bus"],
   "bangkok-to-pattaya": [
     "ekkamai-bus-terminal-to-pattaya-guide",
     "mo-chit-bus-terminal-to-pattaya",
