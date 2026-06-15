@@ -71,6 +71,13 @@ export const seoGuideLinks: SeoGuideLink[] = [
     slug: "pattaya-to-don-mueang-airport-bus",
     title: "Pattaya to Don Mueang Airport bus guide",
   },
+  {
+    description:
+      "Plan the bus from Pattaya to Suvarnabhumi Airport before a flight - departure point, fare, travel time, baggage and how much buffer to leave.",
+    href: "/en/pattaya-to-suvarnabhumi-airport-before-flight",
+    slug: "pattaya-to-suvarnabhumi-airport-before-flight",
+    title: "Pattaya to Suvarnabhumi before a flight guide",
+  },
 ];
 
 const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
@@ -86,7 +93,7 @@ const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
   "suvarnabhumi-airport-to-pattaya": [
     "suvarnabhumi-airport-gate-8-pattaya-bus",
   ],
-  "pattaya-to-suvarnabhumi-airport": ["pattaya-bus-station-to-jomtien"],
+  "pattaya-to-suvarnabhumi-airport": ["pattaya-bus-station-to-jomtien", "pattaya-to-suvarnabhumi-airport-before-flight"],
 };
 
 export function getHomepageSeoGuideLinks() {

@@ -94,6 +94,22 @@ assertGuideBacklink(
   "/en/pattaya-to-don-mueang-airport-bus",
   "/en/pattaya-to-don-mueang-airport",
 );
+assertRouteGuideLinks(
+  "/en/pattaya-to-suvarnabhumi-airport",
+  [
+    "/en/pattaya-bus-station-to-jomtien",
+    "/en/pattaya-to-suvarnabhumi-airport-before-flight",
+  ],
+  [
+    "/en/ekkamai-bus-terminal-to-pattaya-guide",
+    "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
+    "/en/bangkok-to-pattaya-after-midnight",
+  ],
+);
+assertGuideBacklink(
+  "/en/pattaya-to-suvarnabhumi-airport-before-flight",
+  "/en/pattaya-to-suvarnabhumi-airport",
+);
 console.log("SEO guide internal link checks passed.");
 
 function assertGuideLinks(path, expectedHrefs) {

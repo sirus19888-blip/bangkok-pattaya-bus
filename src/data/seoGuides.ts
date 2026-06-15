@@ -911,6 +911,127 @@ export const seoGuides: SeoGuide[] = [
       },
     ],
   },
+  {
+    slug: "pattaya-to-suvarnabhumi-airport-before-flight",
+    title:
+      "Pattaya to Suvarnabhumi Airport Before a Flight | Bus Timing & Tips",
+    description:
+      "How to take the bus from Pattaya to Suvarnabhumi Airport (BKK) before a flight: where it departs, fare, travel time, how much buffer to leave, baggage limits, and when a taxi is safer.",
+    h1: "Pattaya to Suvarnabhumi Airport Before a Flight",
+    intro:
+      "Taking the bus from Pattaya to Suvarnabhumi Airport (BKK) is the cheapest way to reach your flight, and it drops you right at the departure terminal. Because you are traveling to catch a flight, timing matters more than anything else - traffic, check-in and security all eat into your buffer. This guide explains where the bus departs in Pattaya, how long it takes, how much time to leave, and when a taxi or private transfer is the safer choice.",
+    shortAnswer:
+      "The Pattaya to Suvarnabhumi bus departs from the Pattaya / Jomtien bus area and drops you at the airport departure terminal. Plan for around 2 to 2.5 hours of travel, then add check-in and security time - leave a generous buffer and do not rely on the last bus before an early or international flight. Check the Pattaya to Suvarnabhumi route page for current departure times.",
+    routeId: "pattaya-to-suvarnabhumi-airport",
+    routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
+    ctaLabel: "Compare tickets and airport transfers",
+    lastUpdated: "2026-06-14",
+    keyPoints: [
+      "The bus drops you directly at the Suvarnabhumi departure terminal, where you check in - no airport transfer needed.",
+      "Plan around 2 to 2.5 hours of travel, then add time for check-in and security - leave a generous buffer.",
+      "Do not build a tight flight plan around the last bus of the day - if the timing is tight, take a taxi or private transfer instead.",
+    ],
+    sections: [
+      {
+        title: "Where the bus departs in Pattaya",
+        body: "The airport bus leaves from the Pattaya / Jomtien bus area, on the Jomtien and Thappraya side of Pattaya. Check exactly where your operator departs before your travel day, because some services leave from the Jomtien area and others from the North Pattaya terminal. If your hotel is on Beach Road, in Naklua or central Pattaya, allow time to reach the departure point first by songthaew, taxi or app ride.",
+      },
+      {
+        title: "How much time to leave before your flight",
+        body: "This is the most important part of the trip. Plan around 2 to 2.5 hours of travel, but that is only the bus ride. On top of it, add time to reach the departure point in Pattaya, possible traffic near Bangkok, and check-in, baggage drop and security at the airport. A common guideline is to allow at least two hours of buffer beyond the expected travel time for an international flight. If your schedule is tight, do not take the bus.",
+      },
+      {
+        title: "Where the bus drops you at the airport",
+        body: "One advantage of the airport bus is that it drops you at the Suvarnabhumi departure terminal, right where you check in for your flight - you do not need a separate airport transfer. Once you arrive, head straight to your airline's check-in row. Confirm your terminal and check-in counter on your booking so you do not lose time after getting off the bus.",
+      },
+      {
+        title: "How much the bus costs",
+        body: "The bus is the cheapest way to the airport, usually somewhere around 140 to 190 THB depending on the operator and whether you book online or pay at the counter. This is a fraction of the taxi fare. Confirm the current price on the route page or at the counter before travel, because operator prices change.",
+      },
+      {
+        title: "How long the journey takes",
+        body: "Plan for around 2 to 2.5 hours. The road from Pattaya to Suvarnabhumi is mostly motorway and usually predictable, but Friday evenings, weekends and Thai holidays can add time because the same road carries a lot of airport traffic. The bus runs direct with no comfort stop, so use the restroom before boarding.",
+      },
+      {
+        title: "Booking: online or at the counter",
+        body: "You can usually buy at the counter on the day or book online in advance. For weekday travel, buying at the counter is often fine. For weekends, Thai holidays or an important flight, booking online ahead of time can secure your seat - the bus can sell out at busy times. Either way, the timetable on this site stays independent; booking links just let you compare live seats and transfers.",
+      },
+      {
+        title: "Baggage on the airport bus",
+        body: "The airport bus is a full coach with luggage storage, but baggage allowances can apply - often broadly similar to airline limits, such as around 20 kg per person and a limit on the number of bags. If you have oversized or extra luggage, check with the operator before travel, or consider a private transfer where space is less of an issue.",
+      },
+      {
+        title: "When a taxi or private transfer is safer",
+        body: "For an early-morning flight, a late arrival, or a tight connection, a taxi or pre-booked private transfer is usually the safer choice. It costs much more than the bus - often well over 1,000 THB - but gives you a fixed pickup time and door-to-door travel, with no dependence on the bus schedule. If missing your flight is not an option, pay for the certainty.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Pattaya to Suvarnabhumi Airport Bus",
+        href: "/en/pattaya-to-suvarnabhumi-airport",
+        description:
+          "Check current departure times, fare notes and boarding information.",
+      },
+      {
+        label: "Suvarnabhumi Airport to Pattaya Bus (Gate 8)",
+        href: "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
+        description:
+          "Plan the trip the other way, from the airport to Pattaya.",
+      },
+      {
+        label: "Pattaya Bus Station to Jomtien guide",
+        href: "/en/pattaya-bus-station-to-jomtien",
+        description:
+          "Find your way around the Jomtien and Thappraya bus area before departure.",
+      },
+    ],
+    faq: [
+      {
+        question: "Where does the Pattaya to Suvarnabhumi Airport bus leave from?",
+        answer:
+          "From the Pattaya / Jomtien bus area on the Thappraya side of Pattaya. Some services leave from Jomtien and others from the North Pattaya terminal, so confirm your operator's departure point before travel.",
+      },
+      {
+        question: "How much time should I leave before my flight?",
+        answer:
+          "Plan around 2 to 2.5 hours of travel, then add check-in and security time. For international flights, leave a generous buffer and avoid the last bus of the day.",
+      },
+      {
+        question: "Where does the bus drop me at the airport?",
+        answer:
+          "At the Suvarnabhumi departure terminal, where you check in - so you do not need a separate airport transfer.",
+      },
+      {
+        question: "How much does the bus cost?",
+        answer:
+          "Usually around 140 to 190 THB depending on operator and booking method. Confirm the current price on the route page or at the counter.",
+      },
+      {
+        question: "Can I take the bus for an early morning flight?",
+        answer:
+          "Often the schedule does not start early enough, and the buffer is risky. For early flights, a taxi or pre-booked private transfer is usually safer.",
+      },
+      {
+        question: "Are there baggage limits on the airport bus?",
+        answer:
+          "Yes, allowances can apply, often broadly similar to airline limits such as around 20 kg per person. Check with the operator if you have oversized or extra bags.",
+      },
+    ],
+    sources: [
+      {
+        label: "Pattaya to Suvarnabhumi Airport route page",
+        url: "/en/pattaya-to-suvarnabhumi-airport",
+      },
+      {
+        label: "Airport Pattaya Bus",
+        url: "https://airportpattayabus.com/",
+      },
+      {
+        label: "Roong Reuang Coach",
+        url: "https://pattayabus.com/",
+      },
+    ],
+  },
 ];
 
 export function getSeoGuide(slug: string) {
