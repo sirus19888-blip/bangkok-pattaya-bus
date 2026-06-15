@@ -30,6 +30,8 @@ function routeUrl(locale: string, slug: string) {
   return absoluteUrl(`/${locale}/${slug}`);
 }
 
+const ogImageUrl = absoluteUrl("/images/hero/home-og-bus-guide.jpg");
+
 export function generateStaticParams() {
   return [
     ...supportedLocaleCodes.flatMap((locale) =>
@@ -70,7 +72,21 @@ export async function generateMetadata({
         description: guide.description,
         url: routeUrl("en", guide.slug),
         siteName: "Bangkok Pattaya Bus Guide",
+        images: [
+          {
+            url: ogImageUrl,
+            width: 1200,
+            height: 630,
+            alt: guide.title,
+          },
+        ],
         type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: guide.title,
+        description: guide.description,
+        images: [ogImageUrl],
       },
     };
   }
@@ -100,6 +116,27 @@ export async function generateMetadata({
         "x-default": routeUrl("en", routePage.slug),
         ...languages,
       },
+    },
+    openGraph: {
+      title: localizedRoutePage.metadata.title,
+      description: localizedRoutePage.metadata.description,
+      url: routeUrl(locale, routePage.slug),
+      siteName: "Bangkok Pattaya Bus Guide",
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: localizedRoutePage.metadata.title,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: localizedRoutePage.metadata.title,
+      description: localizedRoutePage.metadata.description,
+      images: [ogImageUrl],
     },
   };
 }
