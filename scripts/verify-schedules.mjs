@@ -2,38 +2,68 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
-const SOURCE_URL = "https://airportpattayabus.com/bangkok-terminal-pattaya/";
 const SCHEDULES_PATH = path.join(process.cwd(), "src", "data", "schedules.ts");
 const DEPARTURE_HEADING =
   "\u0e40\u0e14\u0e34\u0e19\u0e17\u0e32\u0e07\u0e08\u0e32\u0e01";
+
 const STATIONS = {
   mochit: "\u0e2b\u0e21\u0e2d\u0e0a\u0e34\u0e15",
   ekkamai: "\u0e40\u0e2d\u0e01\u0e21\u0e31\u0e22",
   pattaya: "\u0e1e\u0e31\u0e17\u0e22\u0e32",
+  suvarnabhumi: "\u0e2a\u0e38\u0e27\u0e23\u0e23\u0e13\u0e20\u0e39\u0e21\u0e34",
 };
 
-const routeSections = [
+// Lista zrodel: kazde ma wlasny URL i wlasna liste tras (parsowanych osobno).
+// Bangkok-Pattaya: 4 sekcje na stronie. Suvarnabhumi-Pattaya: 2 sekcje.
+const SOURCES = [
   {
-    routeId: "bangkok-mochit-to-pattaya",
-    sectionLabel: "mochit-to-pattaya",
-    stationKeyword: STATIONS.mochit,
+    name: "Bangkok-Pattaya",
+    url: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
+    routes: [
+      {
+        routeId: "bangkok-mochit-to-pattaya",
+        sectionLabel: "mochit-to-pattaya",
+        stationKeyword: STATIONS.mochit,
+      },
+      {
+        routeId: "pattaya-to-mochit",
+        sectionLabel: "pattaya-to-mochit",
+        stationKeyword: STATIONS.pattaya,
+      },
+      {
+        routeId: "bangkok-ekkamai-to-pattaya",
+        sectionLabel: "ekkamai-to-pattaya",
+        stationKeyword: STATIONS.ekkamai,
+      },
+      {
+        routeId: "pattaya-to-ekkamai",
+        sectionLabel: "pattaya-to-ekkamai",
+        stationKeyword: STATIONS.pattaya,
+      },
+    ],
   },
   {
-    routeId: "pattaya-to-mochit",
-    sectionLabel: "pattaya-to-mochit",
-    stationKeyword: STATIONS.pattaya,
-  },
-  {
-    routeId: "bangkok-ekkamai-to-pattaya",
-    sectionLabel: "ekkamai-to-pattaya",
-    stationKeyword: STATIONS.ekkamai,
-  },
-  {
-    routeId: "pattaya-to-ekkamai",
-    sectionLabel: "pattaya-to-ekkamai",
-    stationKeyword: STATIONS.pattaya,
+    name: "Suvarnabhumi-Pattaya",
+    url: "https://airportpattayabus.com/airport-pattaya/",
+    routes: [
+      {
+        routeId: "suvarnabhumi-airport-to-pattaya",
+        sectionLabel: "suvarnabhumi-to-pattaya",
+        stationKeyword: STATIONS.suvarnabhumi,
+      },
+      {
+        routeId: "pattaya-to-suvarnabhumi-airport",
+        sectionLabel: "pattaya-to-suvarnabhumi",
+        stationKeyword: STATIONS.pattaya,
+      },
+    ],
   },
 ];
+
+// Wszystkie routeId ze wszystkich zrodel (do wyciagania z schedules.ts)
+const ALL_ROUTE_IDS = new Set(
+  SOURCES.flatMap((source) => source.routes.map((route) => route.routeId)),
+);
 
 function normalizeTime(hour, minute) {
   return `${hour.padStart(2, "0")}:${minute.padStart(2, "0")}`;
@@ -86,7 +116,9 @@ function htmlToLines(html) {
     .filter(Boolean);
 }
 
-function parseSourceSections(html) {
+// Parsuje sekcje dla JEDNEGO zrodla. Mapuje sekcje "edzintagjak" po kolejnosci
+// na route'y danego zrodla, weryfikuje przez stationKeyword.
+function parseSourceSections(html, routes) {
   const lines = htmlToLines(html);
   const headingIndexes = [];
 
@@ -96,7 +128,7 @@ function parseSourceSections(html) {
     }
   });
 
-  return routeSections.map((route, index) => {
+  return routes.map((route, index) => {
     const start = headingIndexes[index];
     const nextHeading = headingIndexes[index + 1];
 
@@ -136,7 +168,6 @@ function parseSourceSections(html) {
 }
 
 function extractAppSchedules(source) {
-  const routeIds = new Set(routeSections.map((route) => route.routeId));
   const schedules = new Map();
   const blocks = source.matchAll(
     /id:\s*"([^"]+)"([\s\S]*?)departures:\s*\[([\s\S]*?)\]/g,
@@ -145,7 +176,7 @@ function extractAppSchedules(source) {
   for (const block of blocks) {
     const routeId = block[1];
 
-    if (!routeIds.has(routeId) || schedules.has(routeId)) {
+    if (!ALL_ROUTE_IDS.has(routeId) || schedules.has(routeId)) {
       continue;
     }
 
@@ -155,8 +186,8 @@ function extractAppSchedules(source) {
   return schedules;
 }
 
-async function fetchSourceHtml() {
-  const response = await fetch(SOURCE_URL, {
+async function fetchSourceHtml(url) {
+  const response = await fetch(url, {
     headers: {
       "user-agent":
         "BangkokPattayaBusGuideScheduleVerify/1.0 (+https://www.bangkokpattayabus.com)",
@@ -186,12 +217,13 @@ function printUnverifiable(route, reason) {
   console.log(`  powod: ${reason}`);
 }
 
+// Zwraca true jesli trasa ma ROZNICE (do zliczenia globalnego statusu)
 function printRouteResult(route, appTimes, sourceTimes) {
   const { missingFromSource, extraInSource } = compareTimes(appTimes, sourceTimes);
 
   if (missingFromSource.length === 0 && extraInSource.length === 0) {
     console.log(`ZGODNE ${route.sectionLabel} (${route.routeId})`);
-    return;
+    return false;
   }
 
   console.log(`ROZNICE ${route.sectionLabel} (${route.routeId})`);
@@ -203,53 +235,75 @@ function printRouteResult(route, appTimes, sourceTimes) {
   if (extraInSource.length > 0) {
     console.log(`  nadmiar na stronie: ${extraInSource.join(", ")}`);
   }
+
+  return true;
 }
 
 async function main() {
   const scheduleSource = await readFile(SCHEDULES_PATH, "utf8");
   const appSchedules = extractAppSchedules(scheduleSource);
 
-  console.log("Weryfikacja rozkladow Bangkok-Pattaya");
-  console.log(`Zrodlo: ${SOURCE_URL}`);
+  console.log("Weryfikacja rozkladow (wielozrodlowa)");
   console.log("Tryb: read-only; skrypt nie zmienia danych.");
 
-  let sourceSections = [];
-  let sourceError = null;
+  let hasAnyDifference = false;
 
-  try {
-    const html = await fetchSourceHtml();
-    sourceSections = parseSourceSections(html);
-  } catch (error) {
-    sourceError = error instanceof Error ? error.message : "nieznany blad";
+  for (const source of SOURCES) {
+    console.log("");
+    console.log(`=== Zrodlo: ${source.name} ===`);
+    console.log(`URL: ${source.url}`);
+
+    let sourceSections = [];
+    let sourceError = null;
+
+    try {
+      const html = await fetchSourceHtml(source.url);
+      sourceSections = parseSourceSections(html, source.routes);
+    } catch (error) {
+      sourceError = error instanceof Error ? error.message : "nieznany blad";
+    }
+
+    for (const route of source.routes) {
+      const appTimes = appSchedules.get(route.routeId);
+      const sourceSection = sourceSections.find(
+        (section) => section.routeId === route.routeId,
+      );
+
+      if (!appTimes || appTimes.length === 0) {
+        printUnverifiable(route, "nie znaleziono rozkladu w schedules.ts");
+        hasAnyDifference = true;
+        continue;
+      }
+
+      if (sourceError) {
+        printUnverifiable(route, `nie udalo sie pobrac strony: ${sourceError}`);
+        hasAnyDifference = true;
+        continue;
+      }
+
+      if (!sourceSection || sourceSection.error) {
+        printUnverifiable(
+          route,
+          sourceSection?.error ?? "nie udalo sie sparsowac sekcji",
+        );
+        hasAnyDifference = true;
+        continue;
+      }
+
+      const hasDiff = printRouteResult(
+        route,
+        appTimes,
+        sourceSection.sourceTimes,
+      );
+      if (hasDiff) {
+        hasAnyDifference = true;
+      }
+    }
   }
 
-  for (const route of routeSections) {
-    const appTimes = appSchedules.get(route.routeId);
-    const sourceSection = sourceSections.find(
-      (section) => section.routeId === route.routeId,
-    );
-
+  if (hasAnyDifference) {
     console.log("");
-
-    if (!appTimes || appTimes.length === 0) {
-      printUnverifiable(route, "nie znaleziono rozkladu w schedules.ts");
-      continue;
-    }
-
-    if (sourceError) {
-      printUnverifiable(route, `nie udalo sie pobrac strony: ${sourceError}`);
-      continue;
-    }
-
-    if (!sourceSection || sourceSection.error) {
-      printUnverifiable(
-        route,
-        sourceSection?.error ?? "nie udalo sie sparsowac sekcji",
-      );
-      continue;
-    }
-
-    printRouteResult(route, appTimes, sourceSection.sourceTimes);
+    console.log("ROZNICE wykryto - sprawdz powyzsze trasy.");
   }
 }
 
