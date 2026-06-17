@@ -1,5 +1,6 @@
 import type { FAQItem, GuideTip } from "@/data/faqs";
 import type { LocaleCode, Route, RouteId, RoutePage } from "@/data/routes";
+import type { SeoGuide } from "@/data/seoGuides";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
 import de from "@/locales/de.json";
@@ -83,6 +84,7 @@ export function getTranslations(locale: LocaleCode): Translations {
     ),
     faqItems: dictionary.faqItems ?? en.faqItems,
     routeFaqItems: mergeArrayRecord(en.routeFaqItems, dictionary.routeFaqItems),
+    guides: mergeTextRecord(en.guides, dictionary.guides),
   };
 }
 
@@ -487,4 +489,16 @@ export function getLocalizedFaqs(
   }
 
   return t.routeFaqItems[routeId] ?? t.faqItems;
+}
+
+export function localizeSeoGuide(guide: SeoGuide, t: Translations): SeoGuide {
+  const guideText = (
+    t.guides as Record<string, { title?: string; intro?: string } | undefined>
+  )[guide.slug];
+
+  return {
+    ...guide,
+    title: guideText?.title ?? guide.title,
+    intro: guideText?.intro ?? guide.intro,
+  };
 }

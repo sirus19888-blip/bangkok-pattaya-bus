@@ -444,4 +444,11 @@
       }
     ]
   }
+,
+  "guides": {
+    "ekkamai-bus-terminal-to-pattaya-guide": {
+      "title": "Ekkamai Bus Terminal to Pattaya Bus Guide",
+      "intro": "Ekkamai Bus Terminal is the most convenient Bangkok bus station for many tourists staying around Sukhumvit. This guide explains how to reach the terminal, where to buy Pattaya tickets, how early to arrive, and what to do if the next bus is full."
+    }
+  }
 }
