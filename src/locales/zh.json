@@ -486,5 +486,19 @@
         "answer": "这些时间基于次要订票和旅行来源。请向运营商或车站确认。"
       }
     ]
+  },
+  "guides": {
+    "ekkamai-bus-terminal-to-pattaya-guide": {
+      "title": "Ekkamai 巴士总站到芭提雅巴士指南",
+      "description": "从曼谷 Ekkamai 巴士总站乘坐巴士前往芭提雅的实用指南，包括车站提示、车票、行程时间和替代方案。",
+      "h1": "Ekkamai 巴士总站到芭提雅指南",
+      "intro": "对于住在 Sukhumvit 一带的许多游客来说，Ekkamai 巴士总站是曼谷最方便的巴士站。本指南介绍如何前往车站、在哪里购买芭提雅车票、需要提前多久到达，以及如果下一班巴士满员该怎么办。",
+      "shortAnswer": "最简单的方法是乘坐 BTS 到 Ekkamai 站，步行约 5 分钟到 Ekkamai 巴士总站，在官方售票柜台购买芭提雅车票，并在上车前确认站台。出发前请查看曼谷到芭提雅路线页面了解当前班次时间。",
+      "keyPoints": [
+        "最适合住在 Sukhumvit、Thong Lo、Phrom Phong、Asok 或 BTS Ekkamai 附近的旅客。",
+        "Ekkamai 到芭提雅的巴士通常是直接的站到站行程，而非酒店接送服务。",
+        "请在发车前 20-30 分钟到达，以便有时间购票并找到正确的站台。"
+      ]
+    }
   }
 }

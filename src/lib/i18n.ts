@@ -491,14 +491,43 @@ export function getLocalizedFaqs(
   return t.routeFaqItems[routeId] ?? t.faqItems;
 }
 
+type SeoGuideText = {
+  title?: string;
+  description?: string;
+  h1?: string;
+  intro?: string;
+  shortAnswer?: string;
+  keyPoints?: string[];
+  sections?: { title?: string; body?: string }[];
+  faq?: { question?: string; answer?: string }[];
+};
+
 export function localizeSeoGuide(guide: SeoGuide, t: Translations): SeoGuide {
-  const guideText = (
-    t.guides as Record<string, { title?: string; intro?: string } | undefined>
-  )[guide.slug];
+  const guideText = (t.guides as Record<string, SeoGuideText | undefined>)[
+    guide.slug
+  ];
+
+  if (!guideText) {
+    return guide;
+  }
 
   return {
     ...guide,
-    title: guideText?.title ?? guide.title,
-    intro: guideText?.intro ?? guide.intro,
+    title: guideText.title ?? guide.title,
+    description: guideText.description ?? guide.description,
+    h1: guideText.h1 ?? guide.h1,
+    intro: guideText.intro ?? guide.intro,
+    shortAnswer: guideText.shortAnswer ?? guide.shortAnswer,
+    keyPoints: guideText.keyPoints ?? guide.keyPoints,
+    sections: guide.sections.map((section, index) => ({
+      ...section,
+      title: guideText.sections?.[index]?.title ?? section.title,
+      body: guideText.sections?.[index]?.body ?? section.body,
+    })),
+    faq: guide.faq.map((item, index) => ({
+      ...item,
+      question: guideText.faq?.[index]?.question ?? item.question,
+      answer: guideText.faq?.[index]?.answer ?? item.answer,
+    })),
   };
 }
