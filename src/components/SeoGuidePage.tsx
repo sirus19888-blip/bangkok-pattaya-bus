@@ -1,21 +1,22 @@
 import Link from "next/link";
 import { AffiliateCTA } from "@/components/AffiliateCTA";
 import { getRoutePage } from "@/data/routes";
+import type { LocaleCode } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 import { build12GoRouteUrl, getAffiliateRoute } from "@/lib/twelveGo";
 
-function guideUrl(slug: string) {
-  return absoluteUrl(`/en/${slug}`);
+function guideUrl(slug: string, locale: LocaleCode) {
+  return absoluteUrl(`/${locale}/${slug}`);
 }
 
-export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
+export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale?: LocaleCode }) {
   const routePage = getRoutePage(guide.routeId);
   const ctaPosition = guide.ctaPosition ?? "route_commercial_help";
-  const affiliateRoute = getAffiliateRoute(guide.routeId, "en");
+  const affiliateRoute = getAffiliateRoute(guide.routeId, locale);
   const affiliateHref = build12GoRouteUrl(
     guide.routeId,
-    "en",
+    locale,
     ctaPosition,
     guide.ctaSubId,
   );
@@ -29,7 +30,7 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] px-4 py-8 text-[#13233a]">
-      <GuideJsonLd guide={guide} />
+      <GuideJsonLd guide={guide} locale={locale} />
 
       <article className="mx-auto max-w-4xl">
         <nav className="flex flex-wrap items-center gap-1 text-sm font-black text-[#0e7b6b]">
@@ -227,8 +228,8 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
   );
 }
 
-function GuideJsonLd({ guide }: { guide: SeoGuide }) {
-  const canonicalUrl = guideUrl(guide.slug);
+function GuideJsonLd({ guide, locale }: { guide: SeoGuide; locale: LocaleCode }) {
+  const canonicalUrl = guideUrl(guide.slug, locale);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [

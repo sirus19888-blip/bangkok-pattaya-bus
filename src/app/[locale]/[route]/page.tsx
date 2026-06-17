@@ -16,6 +16,7 @@ import {
   localizeRoutePage,
   localizeSchedule,
   localizeStations,
+  localizeSeoGuide,
 } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/site";
 
@@ -40,10 +41,12 @@ export function generateStaticParams() {
         route: page.slug,
       })),
     ),
-    ...seoGuides.map((guide) => ({
-      locale: "en",
-      route: guide.slug,
-    })),
+    ...supportedLocaleCodes.flatMap((locale) =>
+      seoGuides.map((guide) => ({
+        locale,
+        route: guide.slug,
+      })),
+    ),
   ];
 }
 
@@ -58,19 +61,33 @@ export async function generateMetadata({
     };
   }
 
-  const guide = locale === "en" ? getSeoGuide(slug) : undefined;
+  const baseGuide = getSeoGuide(slug);
+  const guide = baseGuide
+    ? localizeSeoGuide(baseGuide, getTranslations(locale))
+    : undefined;
 
   if (guide) {
+    const guideLanguages = Object.fromEntries(
+      supportedLocaleCodes.map((localeCode) => [
+        localeCode,
+        routeUrl(localeCode, guide.slug),
+      ]),
+    );
+
     return {
       title: guide.title,
       description: guide.description,
       alternates: {
-        canonical: routeUrl("en", guide.slug),
+        canonical: routeUrl(locale, guide.slug),
+        languages: {
+          "x-default": routeUrl("en", guide.slug),
+          ...guideLanguages,
+        },
       },
       openGraph: {
         title: guide.title,
         description: guide.description,
-        url: routeUrl("en", guide.slug),
+        url: routeUrl(locale, guide.slug),
         siteName: "Bangkok Pattaya Bus Guide",
         images: [
           {
@@ -148,10 +165,12 @@ export default async function Page({ params }: RoutePageProps) {
     notFound();
   }
 
-  const guide = locale === "en" ? getSeoGuide(slug) : undefined;
+  const baseGuide = getSeoGuide(slug);
 
-  if (guide) {
-    return <SeoGuidePage guide={guide} />;
+  if (baseGuide) {
+    const guideTranslations = getTranslations(locale);
+    const localizedGuide = localizeSeoGuide(baseGuide, guideTranslations);
+    return <SeoGuidePage guide={localizedGuide} locale={locale} />;
   }
 
   const routePage = getRoutePage(slug);
