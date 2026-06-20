@@ -43,7 +43,7 @@ export const seoGuides: SeoGuide[] = [
     slug: "ekkamai-bus-terminal-to-pattaya-guide",
     title: "Ekkamai Bus Terminal to Pattaya Bus Guide",
     description:
-      "Practical guide to taking the bus from Bangkok Ekkamai Bus Terminal to Pattaya, including station tips, tickets, travel time and alternatives.",
+      "Get from Bangkok's Ekkamai Bus Terminal to Pattaya by bus: departure times, tickets, 2-3h travel time, fares, plus faster private-transfer options.",
     h1: "Ekkamai Bus Terminal to Pattaya Guide",
     intro:
       "Ekkamai Bus Terminal is the most convenient Bangkok bus station for many tourists staying around Sukhumvit. This guide explains how to reach the terminal, where to buy Pattaya tickets, how early to arrive, and what to do if the next bus is full.",
