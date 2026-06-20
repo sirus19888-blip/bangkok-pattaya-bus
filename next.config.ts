@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
     "192.168.8.174",
     "192.168.8.174:3000",
   ],
+  async redirects() {
+    return [
+      { source: "/routes", destination: "/en", permanent: true },
+      { source: "/routes/:slug", destination: "/en/:slug", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

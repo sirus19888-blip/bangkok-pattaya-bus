@@ -38,7 +38,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             Home
           </Link>
           <span className="px-2 text-[#8a94a3]">/</span>
-          <Link className="inline-flex min-h-11 items-center rounded-lg px-2" href="/routes">
+          <Link className="inline-flex min-h-11 items-center rounded-lg px-2" href={`/${locale}`}>
             Routes
           </Link>
           <span className="px-2 text-[#8a94a3]">/</span>
