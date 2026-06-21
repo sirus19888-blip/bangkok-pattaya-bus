@@ -41,6 +41,9 @@ type UiTranslations = {
     returnBody: string;
     returnRoutePrefix: string;
     viewAllRoutes: string;
+    airportTransferTitle?: string;
+    airportTransferBody?: string;
+    airportTransferCta?: string;
   };
   footer: {
     title: string;
@@ -120,6 +123,9 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         "Planning the way back now can save time later. Check the return route, station notes, first and last departures, and whether your destination in Bangkok is Ekkamai, Mo Chit, Suvarnabhumi, or Don Mueang.",
       returnRoutePrefix: "View",
       viewAllRoutes: "View all routes",
+      airportTransferTitle: "Private transfer or van - door to door",
+      airportTransferBody: "Skip the terminal: a private car or van takes you straight from the airport to your Pattaya hotel. Best with luggage, late flights, or traveling as a group.",
+      airportTransferCta: "Check transfer prices",
     },
     footer: {
       title: "Bangkok Pattaya Bus Guide",

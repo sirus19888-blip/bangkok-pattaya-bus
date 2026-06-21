@@ -23,6 +23,7 @@ export type AffiliateCTAPosition =
   | "route_help_bus_full"
   | "route_help_after_last"
   | "route_help_vs_taxi"
+  | "route_airport_transfer"
   | "mobile_sticky";
 
 type AffiliateCTAProps = {
