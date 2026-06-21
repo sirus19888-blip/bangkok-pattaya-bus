@@ -116,7 +116,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       afterLastCta: "Check alternatives",
       compareTitle: "Bus vs taxi vs private transfer",
       compareBody:
-        "The bus is usually the cheapest choice. Taxi and private transfer cost more, but they can be easier with luggage, late arrivals, or hotel-to-hotel travel. Always confirm the final price, tolls, pickup point, and luggage space before you go.",
+        "The bus is the cheapest option but the slowest. A shared van is a faster mid-price choice. A private transfer is the quickest and most comfortable - door to door with no terminal, no waiting, and room for luggage - which makes it the easiest option for early or late flights and group travel. A metered taxi works on demand but usually costs the most. Always confirm the final price, pickup point, and luggage space before you go.",
       compareCta: "Compare route options",
       returnTitle: "Return route",
       returnBody:
