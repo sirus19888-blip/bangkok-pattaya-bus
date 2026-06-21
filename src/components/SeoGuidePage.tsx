@@ -10,6 +10,10 @@ function guideUrl(slug: string, locale: LocaleCode) {
   return absoluteUrl(`/${locale}/${slug}`);
 }
 
+function localizeInternalHref(href: string, locale: LocaleCode) {
+  return href.startsWith("/en/") ? `/${locale}/${href.slice(4)}` : href;
+}
+
 export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale?: LocaleCode }) {
   const routePage = getRoutePage(guide.routeId);
   const ctaPosition = guide.ctaPosition ?? "route_commercial_help";
@@ -130,7 +134,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
                     <li key={link.href}>
                       <Link
                         className="block h-full rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 transition hover:border-[#e8b05a]"
-                        href={link.href}
+                        href={localizeInternalHref(link.href, locale)}
                       >
                         <span className="block text-sm font-black text-[#13233a]">
                           {link.label}
@@ -177,7 +181,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
                   <li key={source.url}>
                     <a
                       className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm font-black text-[#0e7b6b] underline-offset-4 hover:underline"
-                      href={source.url}
+                      href={localizeInternalHref(source.url, locale)}
                       rel={
                         source.url.startsWith("http")
                           ? "noopener noreferrer"
