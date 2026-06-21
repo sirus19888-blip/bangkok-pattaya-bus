@@ -44,7 +44,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
           <span className="px-2 text-[#8a94a3]">/</span>
           <Link
             className="inline-flex min-h-11 items-center rounded-lg px-2"
-            href={`/en/${routePage.slug}`}
+            href={`/${locale}/${routePage.slug}`}
           >
             {routePage.title}
           </Link>
@@ -114,7 +114,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
               </p>
               <Link
                 className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white"
-                href={`/en/${routePage.slug}`}
+                href={`/${locale}/${routePage.slug}`}
               >
                 {guide.routeLinkLabel}
               </Link>
