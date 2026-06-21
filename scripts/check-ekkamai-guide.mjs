@@ -37,12 +37,12 @@ assert.match(
 );
 assert.match(
   head,
-  /<title>Ekkamai Bus Terminal to Pattaya Bus Guide<\/title>/,
+  /<title>Ekkamai to Pattaya Bus: Schedule, Fare &amp; Tickets \(2026\)<\/title>/,
   "Guide must render the requested meta title.",
 );
 assert.match(
   head,
-  /Practical guide to taking the bus from Bangkok Ekkamai Bus Terminal to Pattaya, including station tips, tickets, travel time and alternatives\./,
+  /Get from Bangkok&#x27;s Ekkamai Bus Terminal to Pattaya by bus: departure times, tickets, 2-3h travel time, fares, plus faster private-transfer options\./,
   "Guide must render the requested meta description.",
 );
 assert.match(
