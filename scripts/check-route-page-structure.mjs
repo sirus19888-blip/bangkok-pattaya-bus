@@ -231,13 +231,13 @@ for (const path of expectedEnglishRoutes) {
     if (path === "/en/pattaya-to-bangkok") {
       assert.ok(
         html.includes(
-          "<title>Pattaya to Bangkok Bus: Times, Stations, Price &amp; Tickets</title>",
+          "<title>Pattaya to Bangkok Bus 2026: Times, Fares from ฿148</title>",
         ),
         `${path} must render the targeted SEO title.`,
       );
       assert.ok(
         html.includes(
-          'name="description" content="Check Pattaya to Bangkok bus times, ticket price, departure station details, Ekkamai and Mo Chit arrival options and online ticket alternatives."',
+          'name="description" content="Pattaya to Bangkok by bus in about 2 hours from ฿148. Departure times, Ekkamai &amp; Mo Chit arrival options, tickets, plus faster private-transfer alternatives."',
         ),
         `${path} must render the targeted SEO meta description.`,
       );
