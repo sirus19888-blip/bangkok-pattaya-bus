@@ -42,6 +42,25 @@ const desktopSwipePatterns = [
 
 let serverProcess = null;
 
+const visualQaForced =
+  process.env.VISUAL_QA === "1" || Boolean(process.env.VISUAL_QA_BASE_URL);
+
+if (!visualQaForced) {
+  const serverUp = await isReachable(baseUrl);
+  const hasBrowser = Boolean(findBrowserExecutable());
+
+  if (!serverUp || !hasBrowser) {
+    console.log(
+      "Visual layout QA skipped: " +
+        (!serverUp
+          ? "no local server reachable at " + baseUrl
+          : "no local browser found") +
+        ". Set VISUAL_QA=1 and start a local server to enable visual checks.",
+    );
+    process.exit(0);
+  }
+}
+
 try {
   await mkdir(screenshotDir, { recursive: true });
   await ensureServer();
