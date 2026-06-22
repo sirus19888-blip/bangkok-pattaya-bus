@@ -271,13 +271,13 @@ for (const path of expectedEnglishRoutes) {
     if (path === "/en/pattaya-to-suvarnabhumi-airport") {
       assert.ok(
         html.includes(
-          "<title>Pattaya to Suvarnabhumi Airport Bus: Times, Price &amp; Tickets</title>",
+          "<title>Pattaya to Suvarnabhumi Airport Bus 2026: Times &amp; ฿162 Fares</title>",
         ),
         `${path} must render the targeted SEO title.`,
       );
       assert.ok(
         html.includes(
-          'name="description" content="Check Pattaya to Suvarnabhumi Airport bus times, ticket price, Jomtien/Pattaya departure tips, travel time and alternatives for flights."',
+          'name="description" content="Pattaya to Suvarnabhumi Airport by bus in about 2 hours from ฿162. Departure times, Jomtien boarding tips, tickets, plus faster private-transfer options for flights."',
         ),
         `${path} must render the targeted SEO meta description.`,
       );
