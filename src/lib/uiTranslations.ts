@@ -44,6 +44,9 @@ type UiTranslations = {
     airportTransferTitle?: string;
     airportTransferBody?: string;
     airportTransferCta?: string;
+    cityTransferTitle?: string;
+    cityTransferBody?: string;
+    cityTransferCta?: string;
   };
   footer: {
     title: string;
@@ -126,6 +129,9 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       airportTransferTitle: "Private transfer or van - door to door",
       airportTransferBody: "Skip the terminal: a private car or van takes you straight from the airport to your Pattaya hotel. Best with luggage, late flights, or traveling as a group.",
       airportTransferCta: "Check transfer prices",
+      cityTransferTitle: "Private transfer or van - door to door",
+      cityTransferBody: "Skip the bus terminal: a private car or van takes you straight to your hotel. Best with luggage, groups, or a fixed schedule.",
+      cityTransferCta: "Check transfer prices",
     },
     footer: {
       title: "Bangkok Pattaya Bus Guide",

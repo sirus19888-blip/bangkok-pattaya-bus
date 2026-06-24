@@ -57,6 +57,21 @@ export function RouteCommercialBlocks({
         </CommercialInfoCard>
       ) : null}
 
+      {currentRoute === "bangkok-to-pattaya" && text.cityTransferTitle ? (
+        <CommercialInfoCard
+          body={text.cityTransferBody ?? ""}
+          title={text.cityTransferTitle}
+        >
+          <TwelveGoAffiliateButton
+            ctaPosition="route_city_transfer"
+            disclosureMode="short"
+            label={text.cityTransferCta ?? ""}
+            locale={locale}
+            routeId={currentRoute}
+            variant="afterSchedule"
+          />
+        </CommercialInfoCard>
+      ) : null}
       {currentRoute === "bangkok-to-pattaya" ? (
         <article className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4">
           <h2 className="text-base font-black leading-tight text-[#13233a]">
