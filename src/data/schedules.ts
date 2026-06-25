@@ -297,7 +297,7 @@ export const schedules: Schedule[] = [
     direction: "pattaya-to-suvarnabhumi-airport",
     distance: "120 km",
     travelTime: "Around 2 hours, depending on traffic",
-    price: "139 THB per seat",
+    price: "162 THB per seat",
     departures: [
       "08:00",
       "10:00",
@@ -316,7 +316,7 @@ export const schedules: Schedule[] = [
     sourceType: "official operator website",
     lastVerified: "2026-06-25",
     verificationStatus: "partially verified",
-    fareNote: "Fare published by the operator: 139 THB per seat.",
+    fareNote: "Fare published by the operator: 162 THB per seat.",
     boardingNote:
       "Tickets are shown by the operator as available at the counter service at Pattaya bus station.",
     operatorNote:

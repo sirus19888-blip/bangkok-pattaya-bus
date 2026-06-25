@@ -1,14 +1,20 @@
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
+import { createRequire } from "node:module";
 import { join } from "node:path";
 import { cwd } from "node:process";
+import vm from "node:vm";
+import ts from "typescript";
 
 const root = cwd();
+const moduleRequire = createRequire(import.meta.url);
 const languageSwitcherSource = readFileSync(
   join(root, "src/components/LanguageSwitcher.tsx"),
   "utf8",
 );
+const schedules = loadSchedulesForTest();
 const locales = ["th", "zh", "ru", "de", "fr", "pl"];
+const scheduleDataLocales = ["en", ...locales];
 const routeSlugs = [
   "bangkok-to-pattaya",
   "pattaya-to-bangkok",
@@ -133,6 +139,82 @@ function assertNoForbiddenPhrase(path, html) {
   }
 }
 
+function assertCanonicalScheduleData(path, html, slug) {
+  const schedule = schedules.find((item) => item.direction === slug);
+
+  if (!schedule) {
+    return;
+  }
+
+  const visibleHtml = stripNonVisibleHtml(html);
+  const departures = new Set(
+    schedule.subRoutes?.length
+      ? schedule.subRoutes.flatMap((subRoute) => subRoute.departures)
+      : schedule.departures,
+  );
+
+  assert.ok(
+    visibleHtml.includes(schedule.sourceName),
+    `${path} must show the canonical source name ${schedule.sourceName}.`,
+  );
+  assert.ok(
+    visibleHtml.includes(schedule.lastVerified),
+    `${path} must show canonical last verified date ${schedule.lastVerified}.`,
+  );
+
+  for (const departure of departures) {
+    assert.ok(
+      visibleHtml.includes(departure),
+      `${path} must show canonical departure time ${departure}.`,
+    );
+  }
+
+  const priceNumbers = new Set([
+    ...getNumberTokens(schedule.price),
+    ...(schedule.subRoutes?.flatMap((subRoute) =>
+      getNumberTokens(subRoute.price),
+    ) ?? []),
+  ]);
+
+  for (const priceNumber of priceNumbers) {
+    assert.ok(
+      visibleHtml.includes(priceNumber),
+      `${path} must show canonical price number ${priceNumber}.`,
+    );
+  }
+}
+
+function getNumberTokens(value) {
+  return [...new Set(value.match(/\d+/g) ?? [])];
+}
+
+function loadSchedulesForTest() {
+  const source = readFileSync(join(root, "src/data/schedules.ts"), "utf8");
+  const transformed = ts.transpileModule(source, {
+    compilerOptions: {
+      esModuleInterop: true,
+      module: ts.ModuleKind.CommonJS,
+      target: ts.ScriptTarget.ES2022,
+    },
+    fileName: "schedules.ts",
+  }).outputText;
+  const cjsModule = { exports: {} };
+
+  vm.runInNewContext(
+    transformed,
+    {
+      exports: cjsModule.exports,
+      module: cjsModule,
+      require: (request) => moduleRequire(request),
+    },
+    {
+      filename: "schedules.cjs",
+    },
+  );
+
+  return cjsModule.exports.schedules;
+}
+
 for (const path of requiredLocalizedPaths) {
   const htmlPath = getBuiltHtmlPath(path);
 
@@ -159,6 +241,27 @@ for (const locale of locales) {
     assertNoForbiddenPhrase(
       `/${locale}/${slug}`,
       readFileSync(routeHtmlPath, "utf8"),
+    );
+    assertCanonicalScheduleData(
+      `/${locale}/${slug}`,
+      readFileSync(routeHtmlPath, "utf8"),
+      slug,
+    );
+  }
+}
+
+for (const locale of scheduleDataLocales) {
+  for (const slug of routeSlugs) {
+    const routeHtmlPath = getBuiltHtmlPath(`/${locale}/${slug}`);
+
+    if (!existsSync(routeHtmlPath)) {
+      continue;
+    }
+
+    assertCanonicalScheduleData(
+      `/${locale}/${slug}`,
+      readFileSync(routeHtmlPath, "utf8"),
+      slug,
     );
   }
 }

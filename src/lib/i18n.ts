@@ -337,7 +337,7 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     dataQuality: sourceText.dataQuality ?? schedule.dataQuality,
     fareNote: sourceText.fareNote ?? schedule.fareNote,
     operatorNote: sourceText.operatorNote ?? schedule.operatorNote,
-    sourceName: sourceText.sourceName ?? schedule.sourceName,
+    sourceName: schedule.sourceName,
     sourceType: sourceText.sourceType ?? schedule.sourceType,
     subRoutes: schedule.subRoutes?.map((subRoute) => {
       const thaiText = isThai ? thaiSubRouteText[subRoute.id] : undefined;
@@ -368,7 +368,7 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
           t,
           subRoute.price,
         ),
-        sourceName: sourceText.sourceName ?? subRoute.sourceName,
+        sourceName: subRoute.sourceName,
         sourceType: sourceText.sourceType ?? subRoute.sourceType,
         from:
           thaiText?.from ??
