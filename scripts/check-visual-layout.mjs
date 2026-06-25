@@ -183,7 +183,7 @@ async function runRouteMobileChecks(browser) {
   const routeLayout = page.locator('[data-visual-qa="route-layout"]');
   const bookingPanel = page.locator('[data-desktop-booking-panel="true"]');
   const mobileSticky = page.locator(
-    'div[data-affiliate-cta-position="mobile_sticky"]',
+    '[data-mobile-booking-bar="true"]',
   );
   const showMore = page.getByRole("button", { name: "Show more" }).first();
 
@@ -197,12 +197,12 @@ async function runRouteMobileChecks(browser) {
     false,
     "Mobile route page must not show the full desktop sidebar after content.",
   );
-  await expectVisible(mobileSticky, "mobile sticky CTA");
+  await expectVisible(mobileSticky, "mobile booking CTA");
 
   assert.equal(
     await cssValue(mobileSticky, "position"),
-    "sticky",
-    "Mobile CTA must use sticky positioning inside the mobile route content.",
+    "fixed",
+    "Mobile CTA must stay fixed at the bottom of the mobile viewport.",
   );
 
   const stickyBox = await mobileSticky.boundingBox();
@@ -210,7 +210,7 @@ async function runRouteMobileChecks(browser) {
     stickyBox &&
       stickyBox.x >= 0 &&
       stickyBox.x + stickyBox.width <= viewports[0].width,
-    "Mobile sticky CTA must stay inside the horizontal viewport.",
+    "Mobile booking CTA must stay inside the horizontal viewport.",
   );
 
   await expectVisible(showMore, "mobile Station information Show more");
@@ -227,7 +227,7 @@ async function runRouteMobileChecks(browser) {
     assert.equal(
       boxesOverlap(finalStickyBox, feedbackBox),
       false,
-      "Mobile sticky CTA must not overlap the final feedback controls.",
+      "Mobile booking CTA must not overlap the final feedback controls.",
     );
   }
 

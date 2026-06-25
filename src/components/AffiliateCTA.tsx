@@ -43,6 +43,7 @@ type AffiliateCTAProps = {
   subId?: string;
   to: string;
   variant?: AffiliateCTAVariant;
+  wrapperClassName?: string;
 };
 
 const variantClasses: Record<AffiliateCTAVariant, string> = {
@@ -79,6 +80,7 @@ export function AffiliateCTA({
   subId,
   to,
   variant = "top",
+  wrapperClassName,
 }: AffiliateCTAProps) {
   if (!href) {
     return null;
@@ -89,7 +91,7 @@ export function AffiliateCTA({
 
   return (
     <div
-      className={variantClasses[variant]}
+      className={wrapperClassName ?? variantClasses[variant]}
       data-affiliate-provider={provider}
       data-affiliate-lang={lang}
       data-affiliate-route={routeId}

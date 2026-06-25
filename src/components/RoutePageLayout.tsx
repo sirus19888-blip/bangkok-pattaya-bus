@@ -11,15 +11,19 @@ import { RouteCommercialBlocks } from "@/components/RouteCommercialBlocks";
 import { RouteJsonLd } from "@/components/RouteJsonLd";
 import { StationCard } from "@/components/StationCard";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
-import { getTwelveGoVariantLabel } from "@/components/TwelveGoAffiliateButton";
+import {
+  getTwelveGoVariantLabel,
+  TwelveGoAffiliateButton,
+} from "@/components/TwelveGoAffiliateButton";
 import { TravelGuideLinks } from "@/components/TravelGuideLinks";
 import { routePages } from "@/data/routes";
-import type { LocaleCode, RoutePage } from "@/data/routes";
+import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
 import { AD_SLOT_IDS } from "@/lib/ads";
 import { getLocalizedFaqs, type Translations } from "@/lib/i18n";
+import { hasTwelveGoTickets } from "@/lib/twelveGo";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
 type RoutePageLayoutProps = {
@@ -70,9 +74,13 @@ export function RoutePageLayout({
     uiText.report,
     routePage.title,
   );
+  const mobileAffiliateLabel = getTwelveGoVariantLabel(
+    "stickyMobile",
+    locale,
+  );
 
   return (
-    <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
+    <main className="min-h-screen bg-[#f7f0e3] pb-24 text-[#13233a] lg:pb-0">
       <RouteJsonLd
         faqs={localizedFaqs}
         locale={locale}
@@ -99,10 +107,7 @@ export function RoutePageLayout({
             data-visual-qa="route-main-content"
           >
             <MobileRouteDecisionCard
-              affiliateLabel={getTwelveGoVariantLabel(
-                "stickyMobile",
-                locale,
-              )}
+              affiliateLabel={mobileAffiliateLabel}
               distance={schedule.distance}
               locale={locale}
               routeId={routePage.slug}
@@ -185,6 +190,11 @@ export function RoutePageLayout({
           </div>
         </div>
       </section>
+      <MobileRouteBookingBar
+        affiliateLabel={mobileAffiliateLabel}
+        locale={locale}
+        routeId={routePage.slug}
+      />
     </main>
   );
 }
@@ -224,5 +234,36 @@ function MobileDetailsSection({
       </summary>
       <div className="mt-4 md:mt-0">{children}</div>
     </details>
+  );
+}
+
+function MobileRouteBookingBar({
+  affiliateLabel,
+  locale,
+  routeId,
+}: {
+  affiliateLabel: string;
+  locale: LocaleCode;
+  routeId: RouteId;
+}) {
+  if (!hasTwelveGoTickets(routeId)) {
+    return null;
+  }
+
+  return (
+    <div
+      className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-[28rem] border-t border-[#eadcc7] bg-white/95 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-12px_28px_rgba(19,35,58,0.14)] backdrop-blur lg:hidden"
+      data-mobile-booking-bar="true"
+    >
+      <TwelveGoAffiliateButton
+        ctaPosition="mobile_sticky"
+        disclosureMode="none"
+        label={affiliateLabel}
+        locale={locale}
+        routeId={routeId}
+        variant="stickyMobile"
+        wrapperClassName="w-full"
+      />
+    </div>
   );
 }

@@ -20,6 +20,7 @@ type TwelveGoAffiliateButtonProps = {
   locale: LocaleCode;
   routeId: RouteId;
   variant?: AffiliateCTAVariant;
+  wrapperClassName?: string;
 };
 
 export function getTwelveGoButtonLabel(locale: LocaleCode) {
@@ -46,6 +47,7 @@ export function TwelveGoAffiliateButton({
   locale,
   routeId,
   variant = "top",
+  wrapperClassName,
 }: TwelveGoAffiliateButtonProps) {
   const affiliateUrl = build12GoRouteUrl(routeId, locale, ctaPosition);
   const affiliateRoute = getAffiliateRoute(routeId, locale);
@@ -75,6 +77,7 @@ export function TwelveGoAffiliateButton({
       subId={subId}
       to={affiliateRoute?.to ?? ""}
       variant={variant}
+      wrapperClassName={wrapperClassName}
     />
   );
 }

@@ -31,10 +31,8 @@ type MobileRouteDecisionCardProps = {
 };
 
 export function MobileRouteDecisionCard({
-  affiliateLabel,
   locale,
   distance,
-  routeId,
   routeTitle,
   schedule,
   scheduleLabels,
@@ -253,14 +251,6 @@ export function MobileRouteDecisionCard({
       >
         {labels.showAllDepartures}
       </a>
-      <TwelveGoAffiliateButton
-        ctaPosition="mobile_sticky"
-        label={affiliateLabel}
-        locale={locale}
-        routeId={routeId}
-        variant="stickyMobile"
-      />
-
       </div>
     </section>
   );
