@@ -14,6 +14,14 @@ const buttonSource = readFileSync(
   join(root, "src/components/TwelveGoAffiliateButton.tsx"),
   "utf8",
 );
+const travelDateAwareButtonSource = readFileSync(
+  join(root, "src/components/TravelDateAwareTwelveGoAffiliateButton.tsx"),
+  "utf8",
+);
+const travelDateContextSource = readFileSync(
+  join(root, "src/components/TravelDateContext.tsx"),
+  "utf8",
+);
 const ctaSource = readFileSync(join(root, "src/components/AffiliateCTA.tsx"), "utf8");
 const analyticsSource = readFileSync(join(root, "src/lib/analytics.ts"), "utf8");
 const affiliateRouteSource = readFileSync(
@@ -205,6 +213,51 @@ assert.match(
   twelveGoSource,
   /build12GoRouteUrl\(\s*routeId: RouteId,\s*lang: LocaleCode,\s*subIdPosition\?: string,/,
   "12Go links must be built per route, locale, and CTA position.",
+);
+assert.match(
+  twelveGoSource,
+  /travelDate\?: string/,
+  "12Go links must accept an optional travel date.",
+);
+assert.match(
+  twelveGoSource,
+  /url\.searchParams\.set\("date", travelDate\)/,
+  '12Go links must pass the selected travel date as the "date" query parameter.',
+);
+assert.match(
+  buttonSource,
+  /travelDate\?: string/,
+  "TwelveGoAffiliateButton must accept an optional travel date.",
+);
+assert.match(
+  buttonSource,
+  /build12GoRouteUrl\(\s*routeId,\s*locale,\s*ctaPosition,\s*undefined,\s*travelDate,?\s*\)/,
+  "TwelveGoAffiliateButton must forward its travel date to build12GoRouteUrl.",
+);
+assert.match(
+  travelDateContextSource,
+  /getLocalDateValue/,
+  "Travel-date-aware buttons must default to today's local date before opening 12Go.",
+);
+assert.match(
+  travelDateContextSource,
+  /type="date"/,
+  "The shared travel date control must render a date input.",
+);
+assert.match(
+  travelDateContextSource,
+  /useId/,
+  "The shared travel date control must use unique input IDs when multiple date fields render on the same page.",
+);
+assert.match(
+  travelDateAwareButtonSource,
+  /useTravelDateValue/,
+  "Travel-date-aware 12Go buttons must read the shared travel date.",
+);
+assert.match(
+  travelDateAwareButtonSource,
+  /travelDate=\{travelDate \|\| undefined\}/,
+  "Travel-date-aware 12Go buttons must pass the resolved travel date to TwelveGoAffiliateButton.",
 );
 
 const requiredRoutes = [

@@ -12,8 +12,8 @@ import {
 } from "@/lib/i18n";
 import {
   getTwelveGoVariantLabel,
-  TwelveGoAffiliateButton,
 } from "@/components/TwelveGoAffiliateButton";
+import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
 
 type NextBusCardProps = {
   locale: LocaleCode;
@@ -119,7 +119,7 @@ export function NextBusCard({
         >
           {labels.showAllDepartures}
         </a>
-        <TwelveGoAffiliateButton
+        <TravelDateAwareTwelveGoAffiliateButton
           ctaPosition="route_top"
           label={getTwelveGoVariantLabel("top", locale)}
           locale={locale}

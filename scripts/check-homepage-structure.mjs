@@ -11,6 +11,14 @@ const routeSearchSource = readFileSync(
   join(cwd(), "src/components/RouteSearch.tsx"),
   "utf8",
 );
+const homepageRevenueHeroSource = readFileSync(
+  join(cwd(), "src/components/HomepageRevenueHeroCard.tsx"),
+  "utf8",
+);
+const travelDateContextSource = readFileSync(
+  join(cwd(), "src/components/TravelDateContext.tsx"),
+  "utf8",
+);
 
 function assert(condition, message) {
   if (!condition) {
@@ -181,11 +189,28 @@ assert(
   "Homepage revenue hero card must be rendered once.",
 );
 assert(
-  source.includes('ctaPosition="homepage_hero"'),
+  homepageRevenueHeroSource.includes('ctaPosition="homepage_hero"'),
   "Homepage revenue hero CTA must use the homepage_hero affiliate position.",
 );
 assert(
-  source.includes('href="#popular-routes"') &&
+  travelDateContextSource.includes('type="date"') &&
+    homepageRevenueHeroSource.includes("<TravelDateField"),
+  "Homepage revenue hero CTA must let users choose a travel date before opening 12Go.",
+);
+assert(
+  !source.includes("<TwelveGoAffiliateButton"),
+  "Homepage route cards must use travel-date-aware 12Go buttons.",
+);
+assert(
+  source.includes("<TravelDateProvider>"),
+  "Homepage must provide one shared travel date for every homepage 12Go CTA.",
+);
+assert(
+  count(/<TravelDateAwareTwelveGoAffiliateButton\b/g) === 2,
+  "Homepage must render travel-date-aware buttons for both the next-bus card and the route cards.",
+);
+assert(
+  homepageRevenueHeroSource.includes('href="#popular-routes"') &&
     source.includes('id="popular-routes"'),
   "Homepage revenue hero secondary CTA must scroll to Popular routes.",
 );

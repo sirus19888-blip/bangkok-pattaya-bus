@@ -24,6 +24,7 @@ export function build12GoRouteUrl(
   lang: LocaleCode,
   subIdPosition?: string,
   subIdOverride?: string,
+  travelDate?: string,
 ) {
   const affiliateRoute = getAffiliateRoute(routeId, lang);
 
@@ -37,6 +38,10 @@ export function build12GoRouteUrl(
 
   if (affiliateId) {
     url.searchParams.set("z", affiliateId);
+  }
+
+  if (travelDate && /^\d{4}-\d{2}-\d{2}$/.test(travelDate)) {
+    url.searchParams.set("date", travelDate);
   }
 
   const subId =

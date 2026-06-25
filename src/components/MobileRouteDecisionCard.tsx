@@ -3,7 +3,8 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
-import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
+import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
+import { TravelDateField } from "@/components/TravelDateContext";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
@@ -387,14 +388,15 @@ export function DesktopRouteBookingPanel({
         <DecisionFact label={labels.ticketPrice} value={schedule.price} />
       </div>
 
-      <TwelveGoAffiliateButton
+      <TravelDateField locale={locale} />
+      <TravelDateAwareTwelveGoAffiliateButton
         ctaPosition="desktop_sidebar"
         label={affiliateLabel}
         locale={locale}
         routeId={routeId}
         variant="top"
       />
-      <TwelveGoAffiliateButton
+      <TravelDateAwareTwelveGoAffiliateButton
         ctaPosition="route_after_schedule"
         disclosureMode="none"
         label={compareAlternativesLabel}

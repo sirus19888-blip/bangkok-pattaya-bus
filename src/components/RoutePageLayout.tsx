@@ -13,8 +13,12 @@ import { StationCard } from "@/components/StationCard";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
 import {
   getTwelveGoVariantLabel,
-  TwelveGoAffiliateButton,
 } from "@/components/TwelveGoAffiliateButton";
+import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
+import {
+  TravelDateField,
+  TravelDateProvider,
+} from "@/components/TravelDateContext";
 import { TravelGuideLinks } from "@/components/TravelGuideLinks";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
@@ -80,121 +84,123 @@ export function RoutePageLayout({
   );
 
   return (
-    <main className="min-h-screen bg-[#f7f0e3] pb-24 text-[#13233a] lg:pb-0">
-      <RouteJsonLd
-        faqs={localizedFaqs}
-        locale={locale}
-        routePage={routePage}
-        schedule={schedule}
-      />
-      <section className="mx-auto flex w-full max-w-[92rem] flex-col gap-5 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 md:gap-4 md:pb-8 md:pt-4 lg:px-6 xl:px-8">
-        <Header
-          labels={{
-            ...t.app,
-            chooseLanguage: t.navigation.chooseLanguage,
-          }}
-          currentLocale={locale}
-          routeSlug={routePage.slug}
-          showDesktopRouteIcons
+    <main className="min-h-screen bg-[#f7f0e3] pb-40 text-[#13233a] lg:pb-0">
+      <TravelDateProvider>
+        <RouteJsonLd
+          faqs={localizedFaqs}
+          locale={locale}
+          routePage={routePage}
+          schedule={schedule}
         />
+        <section className="mx-auto flex w-full max-w-[92rem] flex-col gap-5 px-4 pb-10 pt-3 sm:gap-8 sm:px-6 sm:pb-12 sm:pt-5 md:gap-4 md:pb-8 md:pt-4 lg:px-6 xl:px-8">
+          <Header
+            labels={{
+              ...t.app,
+              chooseLanguage: t.navigation.chooseLanguage,
+            }}
+            currentLocale={locale}
+            routeSlug={routePage.slug}
+            showDesktopRouteIcons
+          />
 
-        <div
-          className="lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start lg:gap-8"
-          data-visual-qa="route-layout"
-        >
           <div
-            className="min-w-0 space-y-5 lg:space-y-6"
-            data-visual-qa="route-main-content"
+            className="lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:items-start lg:gap-8"
+            data-visual-qa="route-layout"
           >
-            <MobileRouteDecisionCard
-              affiliateLabel={mobileAffiliateLabel}
-              distance={schedule.distance}
-              locale={locale}
-              routeId={routePage.slug}
-              routeTitle={routePage.title}
-              schedule={schedule}
-              nextDeparture={nextDeparture}
-              sourceStatusLabel={sourceStatusLabel}
-              labels={decisionLabels}
-              scheduleLabels={t.schedule}
-            />
-
-            <AdSlot id={AD_SLOT_IDS.afterSchedule} />
-
-            <RouteCommercialBlocks
-              currentRoute={routePage.slug}
-              locale={locale}
-              routePages={localizedRoutePages}
-            />
-
-            <TravelGuideLinks locale={locale} routeId={routePage.slug} />
-
-            <MobileDetailsSection title={t.station.title}>
-              <StationCard
-                stations={stations}
+            <div
+              className="min-w-0 space-y-5 lg:space-y-6"
+              data-visual-qa="route-main-content"
+            >
+              <MobileRouteDecisionCard
+                affiliateLabel={mobileAffiliateLabel}
+                distance={schedule.distance}
                 locale={locale}
                 routeId={routePage.slug}
-                photoGroups={stationPhotoGroups}
-                showTitle={false}
-                labels={{
-                  ...t.station,
-                  openInGoogleMaps: t.common.openInGoogleMaps,
-                }}
+                routeTitle={routePage.title}
+                schedule={schedule}
+                nextDeparture={nextDeparture}
+                sourceStatusLabel={sourceStatusLabel}
+                labels={decisionLabels}
+                scheduleLabels={t.schedule}
               />
-            </MobileDetailsSection>
 
-            <AdSlot id={AD_SLOT_IDS.afterStationInformation} />
+              <AdSlot id={AD_SLOT_IDS.afterSchedule} />
 
-            <MobileDetailsSection title={t.faq.title}>
-              <FAQ faqs={localizedFaqs} labels={t.faq} showTitle={false} />
-            </MobileDetailsSection>
-
-            <AdSlot id={AD_SLOT_IDS.afterFaq} />
-
-            <div id="mobile-related-routes" className="scroll-mt-6">
-              <RelatedRoutes
+              <RouteCommercialBlocks
                 currentRoute={routePage.slug}
-                heading={t.common.relatedRoutes}
                 locale={locale}
                 routePages={localizedRoutePages}
               />
+
+              <TravelGuideLinks locale={locale} routeId={routePage.slug} />
+
+              <MobileDetailsSection title={t.station.title}>
+                <StationCard
+                  stations={stations}
+                  locale={locale}
+                  routeId={routePage.slug}
+                  photoGroups={stationPhotoGroups}
+                  showTitle={false}
+                  labels={{
+                    ...t.station,
+                    openInGoogleMaps: t.common.openInGoogleMaps,
+                  }}
+                />
+              </MobileDetailsSection>
+
+              <AdSlot id={AD_SLOT_IDS.afterStationInformation} />
+
+              <MobileDetailsSection title={t.faq.title}>
+                <FAQ faqs={localizedFaqs} labels={t.faq} showTitle={false} />
+              </MobileDetailsSection>
+
+              <AdSlot id={AD_SLOT_IDS.afterFaq} />
+
+              <div id="mobile-related-routes" className="scroll-mt-6">
+                <RelatedRoutes
+                  currentRoute={routePage.slug}
+                  heading={t.common.relatedRoutes}
+                  locale={locale}
+                  routePages={localizedRoutePages}
+                />
+              </div>
+
+              <div className="lg:hidden">
+                <TravelerFeedback locale={locale} routeTitle={routePage.title} />
+              </div>
             </div>
 
-            <div className="lg:hidden">
-              <TravelerFeedback locale={locale} routeTitle={routePage.title} />
+            <div
+              className="hidden lg:sticky lg:top-24 lg:block"
+              data-visual-qa="affiliate-sidebar-shell"
+            >
+              <DesktopRouteBookingPanel
+                affiliateLabel={uiText.affiliate.variantLabels.checkAvailability}
+                compareAlternativesLabel={
+                  uiText.affiliate.variantLabels.compareAlternatives
+                }
+                distance={schedule.distance}
+                locale={locale}
+                reportHref={reportHref}
+                reportLabel={uiText.report.label}
+                routeId={routePage.slug}
+                routeTitle={routePage.title}
+                sidebarTitle={uiText.affiliate.variantLabels.sidebarTitle}
+                schedule={schedule}
+                nextDeparture={nextDeparture}
+                sourceStatusLabel={sourceStatusLabel}
+                labels={decisionLabels}
+                scheduleLabels={t.schedule}
+              />
             </div>
           </div>
-
-          <div
-            className="hidden lg:sticky lg:top-24 lg:block"
-            data-visual-qa="affiliate-sidebar-shell"
-          >
-            <DesktopRouteBookingPanel
-              affiliateLabel={uiText.affiliate.variantLabels.checkAvailability}
-              compareAlternativesLabel={
-                uiText.affiliate.variantLabels.compareAlternatives
-              }
-              distance={schedule.distance}
-              locale={locale}
-              reportHref={reportHref}
-              reportLabel={uiText.report.label}
-              routeId={routePage.slug}
-              routeTitle={routePage.title}
-              sidebarTitle={uiText.affiliate.variantLabels.sidebarTitle}
-              schedule={schedule}
-              nextDeparture={nextDeparture}
-              sourceStatusLabel={sourceStatusLabel}
-              labels={decisionLabels}
-              scheduleLabels={t.schedule}
-            />
-          </div>
-        </div>
-      </section>
-      <MobileRouteBookingBar
-        affiliateLabel={mobileAffiliateLabel}
-        locale={locale}
-        routeId={routePage.slug}
-      />
+        </section>
+        <MobileRouteBookingBar
+          affiliateLabel={mobileAffiliateLabel}
+          locale={locale}
+          routeId={routePage.slug}
+        />
+      </TravelDateProvider>
     </main>
   );
 }
@@ -255,7 +261,13 @@ function MobileRouteBookingBar({
       className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-[28rem] border-t border-[#eadcc7] bg-white/95 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-12px_28px_rgba(19,35,58,0.14)] backdrop-blur lg:hidden"
       data-mobile-booking-bar="true"
     >
-      <TwelveGoAffiliateButton
+      <TravelDateField
+        className="mb-2"
+        inputClassName="min-h-10 w-full rounded-xl border border-[#d8c8b4] bg-white px-3 text-sm font-black text-[#13233a] shadow-sm outline-none"
+        labelClassName="sr-only"
+        locale={locale}
+      />
+      <TravelDateAwareTwelveGoAffiliateButton
         ctaPosition="mobile_sticky"
         disclosureMode="none"
         label={affiliateLabel}

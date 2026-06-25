@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { TwelveGoAffiliateButton } from "@/components/TwelveGoAffiliateButton";
+import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
@@ -46,7 +46,7 @@ export function RouteCommercialBlocks({
           body={text.airportTransferBody ?? ""}
           title={text.airportTransferTitle}
         >
-          <TwelveGoAffiliateButton
+          <TravelDateAwareTwelveGoAffiliateButton
             ctaPosition="route_airport_transfer"
             disclosureMode="short"
             label={text.airportTransferCta ?? ""}
@@ -62,7 +62,7 @@ export function RouteCommercialBlocks({
           body={text.cityTransferBody ?? ""}
           title={text.cityTransferTitle}
         >
-          <TwelveGoAffiliateButton
+          <TravelDateAwareTwelveGoAffiliateButton
             ctaPosition="route_city_transfer"
             disclosureMode="short"
             label={text.cityTransferCta ?? ""}
@@ -95,7 +95,7 @@ export function RouteCommercialBlocks({
           <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
             {text.bookOnlineClosing}
           </p>
-          <TwelveGoAffiliateButton
+          <TravelDateAwareTwelveGoAffiliateButton
             ctaPosition="route_help_online_vs_station"
             disclosureMode="short"
             label={text.bookOnlineCta}
@@ -110,7 +110,7 @@ export function RouteCommercialBlocks({
         body={text.busFullBody}
         title={text.busFullTitle}
       >
-        <TwelveGoAffiliateButton
+        <TravelDateAwareTwelveGoAffiliateButton
           ctaPosition="route_help_bus_full"
           disclosureMode="short"
           label={text.busFullCta}
@@ -124,7 +124,7 @@ export function RouteCommercialBlocks({
         body={text.afterLastBody}
         title={text.afterLastTitle}
       >
-        <TwelveGoAffiliateButton
+        <TravelDateAwareTwelveGoAffiliateButton
           ctaPosition="route_help_after_last"
           disclosureMode="short"
           label={text.afterLastCta}
@@ -138,7 +138,7 @@ export function RouteCommercialBlocks({
         body={text.compareBody}
         title={text.compareTitle}
       >
-        <TwelveGoAffiliateButton
+        <TravelDateAwareTwelveGoAffiliateButton
           ctaPosition="route_help_vs_taxi"
           disclosureMode="short"
           label={text.compareCta}

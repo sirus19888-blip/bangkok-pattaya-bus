@@ -11,7 +11,7 @@ import {
 } from "@/lib/twelveGo";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
-type TwelveGoAffiliateButtonProps = {
+export type TwelveGoAffiliateButtonProps = {
   ariaLabel?: string;
   className?: string;
   ctaPosition?: AffiliateCTAPosition;
@@ -19,6 +19,7 @@ type TwelveGoAffiliateButtonProps = {
   label?: string;
   locale: LocaleCode;
   routeId: RouteId;
+  travelDate?: string;
   variant?: AffiliateCTAVariant;
   wrapperClassName?: string;
 };
@@ -46,10 +47,17 @@ export function TwelveGoAffiliateButton({
   label,
   locale,
   routeId,
+  travelDate,
   variant = "top",
   wrapperClassName,
 }: TwelveGoAffiliateButtonProps) {
-  const affiliateUrl = build12GoRouteUrl(routeId, locale, ctaPosition);
+  const affiliateUrl = build12GoRouteUrl(
+    routeId,
+    locale,
+    ctaPosition,
+    undefined,
+    travelDate,
+  );
   const affiliateRoute = getAffiliateRoute(routeId, locale);
   const affiliateText = getUiTranslations(locale).affiliate;
   const subId = ctaPosition
