@@ -208,7 +208,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             </h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
               Timetable information stays independent. Booking links help you
-              compare live seats, transfers and alternatives before going to the
+              compare live seats and available alternatives before going to the
               station.
             </p>
             <AffiliateCTA

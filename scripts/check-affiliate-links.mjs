@@ -33,6 +33,7 @@ const requiredAffiliatePositions = [
   "route_help_after_last",
   "route_help_vs_taxi",
   "route_airport_transfer",
+  "route_city_transfer",
   "desktop_sidebar",
   "mobile_sticky",
 ];

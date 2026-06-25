@@ -498,7 +498,7 @@ export const seoGuides: SeoGuide[] = [
       "The bus is usually the cheapest way from Bangkok to Pattaya, while taxi or private transfer is easier door-to-door. This guide helps tourists choose based on budget, luggage, time and comfort.",
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Open Bangkok to Pattaya bus times",
-    ctaLabel: "Compare bus, taxi and transfer options",
+    ctaLabel: "Check prices & availability",
     lastUpdated: "2026-06-25",
     keyPoints: [
       "Bus from Ekkamai is usually the lowest-cost option for solo travelers.",
@@ -924,7 +924,7 @@ export const seoGuides: SeoGuide[] = [
       "The Pattaya to Suvarnabhumi bus departs from the Pattaya / Jomtien bus area and drops you at the airport departure terminal. Plan for around 2 to 2.5 hours of travel, then add check-in and security time - leave a generous buffer and do not rely on the last bus before an early or international flight. Check the Pattaya to Suvarnabhumi route page for current departure times.",
     routeId: "pattaya-to-suvarnabhumi-airport",
     routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
-    ctaLabel: "Compare tickets and airport transfers",
+    ctaLabel: "Check prices & availability",
     lastUpdated: "2026-06-25",
     keyPoints: [
       "The bus drops you directly at the Suvarnabhumi departure terminal, where you check in - no airport transfer needed.",
@@ -1044,7 +1044,7 @@ export const seoGuides: SeoGuide[] = [
       "Most Pattaya to Bangkok buses arrive at either Ekkamai (eastern Bangkok, on the BTS Sukhumvit line) or Mo Chit (northern Bangkok, near Chatuchak). Choose Ekkamai if you are heading to Sukhumvit areas like Asok, Thong Lo or Phrom Phong, because it connects directly to the BTS. Choose Mo Chit if you are going to northern Bangkok, or if you prefer to continue by taxi. Check the Pattaya to Bangkok route page for current departure times.",
     routeId: "pattaya-to-bangkok",
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
-    ctaLabel: "Compare tickets and onward transfers",
+    ctaLabel: "Check prices & availability",
     lastUpdated: "2026-06-25",
     keyPoints: [
       "Ekkamai is the only major Bangkok bus terminal within walking distance of a BTS station, ideal for Sukhumvit destinations.",
