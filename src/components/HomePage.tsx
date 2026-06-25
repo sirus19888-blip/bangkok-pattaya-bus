@@ -13,6 +13,7 @@ import { schedules } from "@/data/schedules";
 import type { Schedule } from "@/data/schedules";
 import { getTranslations, localizeRoutePage, localizeSchedule } from "@/lib/i18n";
 import type { Translations } from "@/lib/i18n";
+import { hasTwelveGoTickets } from "@/lib/twelveGo";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
 export function HomePage({ locale }: { locale: LocaleCode }) {
@@ -921,6 +922,9 @@ function MobileHome({
   const featuredSchedule = schedulesForLocale.find(
     (schedule) => schedule.direction === featuredRoute?.slug,
   );
+  const featuredRouteHasTickets = featuredRoute
+    ? hasTwelveGoTickets(featuredRoute.slug)
+    : false;
 
   return (
     <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15 lg:h-auto lg:min-h-screen lg:max-w-7xl lg:overflow-visible lg:bg-transparent lg:px-8 lg:py-8 lg:shadow-none">
@@ -1080,23 +1084,29 @@ function MobileHome({
                       labels={countdownLabels}
                       schedule={featuredSchedule}
                     />
+                    {featuredRouteHasTickets ? (
+                      <TwelveGoAffiliateButton
+                        ariaLabel={
+                          uiText.affiliate.variantLabels.homepageCardAria
+                        }
+                        className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white shadow-sm transition hover:bg-[#1d3455]"
+                        ctaPosition="homepage_route_card"
+                        disclosureMode="none"
+                        label={uiText.affiliate.variantLabels.homepageCardCta}
+                        locale={locale}
+                        routeId={featuredRoute.slug}
+                      />
+                    ) : null}
                     <Link
                       href={`/${locale}/${featuredRoute.slug}`}
-                      className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white"
+                      className={
+                        featuredRouteHasTickets
+                          ? "mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-5 text-sm font-black text-[#13233a] transition hover:bg-[#fffaf2]"
+                          : "mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white shadow-sm transition hover:bg-[#1d3455]"
+                      }
                     >
                       {copy.viewRoute}
                     </Link>
-                    <TwelveGoAffiliateButton
-                      ariaLabel={
-                        uiText.affiliate.variantLabels.homepageCardAria
-                      }
-                      className="mt-3 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-sm font-black text-[#13233a]"
-                      ctaPosition="homepage_route_card"
-                      disclosureMode="none"
-                      label={uiText.affiliate.variantLabels.homepageCardCta}
-                      locale={locale}
-                      routeId={featuredRoute.slug}
-                    />
                   </div>
                 ) : null}
               </div>
@@ -1281,6 +1291,8 @@ function MobileRouteCard({
 }) {
   const meta = copy.routeMeta[routePage.slug];
   const routeImage = mobileRouteImages[routePage.slug];
+  const hasTickets = hasTwelveGoTickets(routePage.slug);
+  const affiliateText = getUiTranslations(locale).affiliate.variantLabels;
 
   return (
     <article
@@ -1326,21 +1338,27 @@ function MobileRouteCard({
         />
       </div>
       <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
+      {hasTickets ? (
+        <TwelveGoAffiliateButton
+          ariaLabel={affiliateText.homepageCardAria}
+          className="mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-3 text-center text-xs font-black text-white shadow-sm transition hover:bg-[#1d3455]"
+          ctaPosition="homepage_route_card"
+          disclosureMode="none"
+          label={affiliateText.homepageCardCta}
+          locale={locale}
+          routeId={routePage.slug}
+        />
+      ) : null}
       <Link
         href={`/${locale}/${routePage.slug}`}
-        className="mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] text-xs font-black text-white"
+        className={
+          hasTickets
+            ? "mt-2 flex min-h-11 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-3 text-center text-xs font-black text-[#13233a] transition hover:bg-[#fffaf2]"
+            : "mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-3 text-center text-xs font-black text-white shadow-sm transition hover:bg-[#1d3455]"
+        }
       >
         {copy.viewRoute}
       </Link>
-      <TwelveGoAffiliateButton
-        ariaLabel={getUiTranslations(locale).affiliate.variantLabels.homepageCardAria}
-        className="mt-2 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] text-xs font-black text-[#13233a]"
-        ctaPosition="homepage_route_card"
-        disclosureMode="none"
-        label={getUiTranslations(locale).affiliate.variantLabels.homepageCardCta}
-        locale={locale}
-        routeId={routePage.slug}
-      />
       </div>
     </article>
   );
