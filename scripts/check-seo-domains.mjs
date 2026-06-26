@@ -113,6 +113,65 @@ function readBuiltHtml(path) {
   return readFileSync(htmlPath, "utf8");
 }
 
+function extractJsonLdBlocks(html) {
+  return [
+    ...html.matchAll(
+      /<script(?=[^>]*\btype="application\/ld\+json")[^>]*>([\s\S]*?)<\/script>/gi,
+    ),
+  ].map((match) => match[1].trim());
+}
+
+function parseJsonLdBlocks(path) {
+  return extractJsonLdBlocks(readBuiltHtml(path)).map((block, index) => {
+    try {
+      return JSON.parse(block);
+    } catch (error) {
+      throw new Error(
+        `${path} JSON-LD block ${index + 1} must be valid JSON: ${
+          error.message
+        }`,
+      );
+    }
+  });
+}
+
+function jsonLdTypes(document) {
+  const graph = Array.isArray(document["@graph"])
+    ? document["@graph"]
+    : [document];
+
+  return new Set(graph.map((node) => node?.["@type"]).filter(Boolean));
+}
+
+function assertHomepageStructuredData(path) {
+  const html = readBuiltHtml(path);
+  const blocks = extractJsonLdBlocks(html);
+
+  assert(
+    blocks.length > 0,
+    `${path} must include an application/ld+json block.`,
+  );
+  assert(
+    blocks.some(
+      (block) =>
+        block.includes('"@type":"WebSite"') &&
+        block.includes('"@type":"Organization"'),
+    ),
+    `${path} JSON-LD must contain WebSite and Organization nodes.`,
+  );
+
+  const hasRequiredTypes = parseJsonLdBlocks(path).some((document) => {
+    const types = jsonLdTypes(document);
+
+    return types.has("WebSite") && types.has("Organization");
+  });
+
+  assert(
+    hasRequiredTypes,
+    `${path} JSON-LD must parse with WebSite and Organization nodes.`,
+  );
+}
+
 function headOf(html) {
   return html.split("</head>")[0] ?? html;
 }
@@ -345,6 +404,8 @@ const routePagePaths = routeSlugs.flatMap((slug) =>
 assertHtmlLang("/", "en");
 assertCanonicalSelf("/", absolute("/"));
 assertHreflangs("/", expectedHomeHreflangs());
+assertHomepageStructuredData("/");
+assertHomepageStructuredData("/pl");
 
 for (const locale of locales) {
   const homePath = `/${locale}`;

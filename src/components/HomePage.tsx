@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import type { ComponentProps } from "react";
 import Image from "next/image";
+import { HomepageJsonLd } from "@/components/HomepageJsonLd";
 import { HomepageRevenueHeroCard } from "@/components/HomepageRevenueHeroCard";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MobileDestinationWeather } from "@/components/MobileDestinationWeather";
@@ -32,6 +33,7 @@ export function HomePage({ locale }: { locale: LocaleCode }) {
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
+      <HomepageJsonLd locale={locale} />
       <TravelDateProvider>
         <MobileHome
           locale={locale}
