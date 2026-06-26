@@ -1417,7 +1417,7 @@ function MobileBottomNav({
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 mx-auto max-w-[390px] border-t border-[#eadcc7] bg-white/95 px-2.5 pb-[calc(env(safe-area-inset-bottom)+0.3rem)] pt-1.5 shadow-[0_-8px_24px_rgba(19,35,58,0.08)] backdrop-blur md:hidden">
+    <nav className="fixed bottom-0 left-0 right-0 z-[60] mx-auto max-w-[390px] border-t border-[#eadcc7] bg-white/95 px-2.5 pb-[calc(env(safe-area-inset-bottom)+0.3rem)] pt-1.5 shadow-[0_-8px_24px_rgba(19,35,58,0.08)] backdrop-blur md:hidden">
       <div className="grid grid-cols-3 gap-0.5">
         {items.map((item) =>
           item.icon === "airport" ? (
@@ -1434,7 +1434,7 @@ function MobileBottomNav({
                 </span>
                 {item.label}
               </summary>
-              <div className="absolute bottom-[calc(100%+0.55rem)] left-1/2 z-50 w-44 -translate-x-1/2 rounded-2xl border border-[#eadcc7] bg-white p-2 shadow-2xl shadow-[#13233a]/20">
+              <div className="absolute bottom-[calc(100%+0.55rem)] left-0 z-50 w-44 rounded-2xl border border-[#eadcc7] bg-white p-2 shadow-2xl shadow-[#13233a]/20">
                 {airportOptions.map((option) => (
                   <Link
                     key={option.href}
