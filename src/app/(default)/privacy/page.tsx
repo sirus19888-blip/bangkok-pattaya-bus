@@ -28,7 +28,7 @@ export default function PrivacyPage() {
         },
         {
           title: "Analytics",
-          body: "This site may use privacy-conscious analytics to understand which pages are useful, find technical issues, and improve the guide. Analytics data may include page views, device or browser information, referrer information, approximate location, and interaction events. The site does not use analytics to change timetable information.",
+          body: "This site uses cookie-free traffic analytics from Vercel to understand basic page usage without storing analytics cookies. Google Analytics is loaded only after you agree in the analytics consent banner; it may set _ga cookies and you can withdraw that choice later from the cookie settings link in the footer.",
         },
         {
           title: "Affiliate links",
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
         },
         {
           title: "Consent and withdrawal",
-          body: "If a cookie or consent banner is enabled in the future, you will be able to accept, reject, or manage optional cookies where required. You may also withdraw consent by clearing cookies in your browser or using the consent controls that will be provided before advertising is enabled.",
+          body: "The analytics consent banner lets you accept or reject Google Analytics before it loads. You can change your analytics choice later from the cookie settings link in the footer, and you may also withdraw consent by clearing cookies in your browser.",
         },
         {
           title: "Data retention basics",

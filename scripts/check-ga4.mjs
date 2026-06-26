@@ -8,17 +8,27 @@ import ts from "typescript";
 const root = cwd();
 const layoutSourcePath = join(root, "src/app/DocumentLayout.tsx");
 const analyticsSourcePath = join(root, "src/lib/analytics.ts");
+const analyticsConsentSourcePath = join(root, "src/lib/analyticsConsent.ts");
+const analyticsConsentComponentPath = join(
+  root,
+  "src/components/AnalyticsConsent.tsx",
+);
 const packageJsonPath = join(root, "package.json");
 const oldGoogleAnalyticsPath = join(root, "src/components/GoogleAnalytics.tsx");
 const layoutSource = readFileSync(layoutSourcePath, "utf8");
 const analyticsSource = readFileSync(analyticsSourcePath, "utf8");
+const analyticsConsentSource = readFileSync(analyticsConsentSourcePath, "utf8");
+const analyticsConsentComponentSource = readFileSync(
+  analyticsConsentComponentPath,
+  "utf8",
+);
 const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8"));
 const measurementId = "G-0DYTH1TLGB";
 
 assert.equal(
   packageJson.dependencies?.["@next/third-parties"],
   undefined,
-  "The official @next/third-parties package must not be used during the hard GA4 reset.",
+  "The official @next/third-parties package must not be used for GA4.",
 );
 assert.equal(
   existsSync(oldGoogleAnalyticsPath),
@@ -27,53 +37,96 @@ assert.equal(
 );
 assert.doesNotMatch(
   layoutSource,
-  /@next\/third-parties|@\/components\/GoogleAnalytics|from "next\/script"|<GoogleAnalytics|<Script\b|ga4-loader|ga4-init/,
+  /@next\/third-parties|@\/components\/GoogleAnalytics|from "next\/script"|<GoogleAnalytics|<Script\b/,
   "Root layout must not use @next/third-parties, custom GA component, or next/script for GA4.",
-);
-assert.match(
-  layoutSource,
-  /<head>[\s\S]*<script\s+async\s+src="https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=G-0DYTH1TLGB"\s*\/>[\s\S]*<script\s+dangerouslySetInnerHTML=\{\{[\s\S]*<\/head>/,
-  "Root layout must render raw GA4 scripts directly in head.",
-);
-assert.match(
-  layoutSource,
-  /window\.dataLayer = window\.dataLayer \|\| \[\]/,
-  "GA4 init must initialize dataLayer.",
-);
-assert.match(
-  layoutSource,
-  /function gtag\(\)\{dataLayer\.push\(arguments\);\}/,
-  "GA4 init must define the raw global gtag function.",
-);
-assert.match(
-  layoutSource,
-  /window\.gtag = gtag/,
-  "GA4 init must expose window.gtag globally.",
-);
-assert.match(
-  layoutSource,
-  /gtag\('js', new Date\(\)\)/,
-  "GA4 init must send the standard js command.",
-);
-assert.match(
-  layoutSource,
-  /gtag\('config', 'G-0DYTH1TLGB'\)/,
-  "GA4 init must use the hardcoded production config call.",
-);
-assert.match(
-  layoutSource,
-  new RegExp(measurementId),
-  "The production GA4 Measurement ID must appear in the root layout.",
 );
 assert.doesNotMatch(
   layoutSource,
-  /NEXT_PUBLIC_GA_MEASUREMENT_ID|send_page_view:\s*false|analytics_storage|gtm\/js|GTM-|AW-/i,
-  "Root layout must not use env GA ID, disable page_view, set consent mode, use GTM, or use Google Ads tag.",
+  /googletagmanager\.com\/gtag\/js|gtag\('js'|gtag\('config'|dangerouslySetInnerHTML/,
+  "Root layout must not load or configure GA4 before analytics consent.",
+);
+assert.match(
+  layoutSource,
+  /<AnalyticsConsent lang=\{lang\} \/>/,
+  "Root layout must render the analytics consent component.",
+);
+assert.match(
+  layoutSource,
+  /import \{ Analytics \} from "@vercel\/analytics\/next"/,
+  "Root layout must import Vercel Analytics.",
+);
+assert.match(
+  layoutSource,
+  /<Analytics \/>/,
+  "Root layout must render Vercel Analytics without GA4 consent gating.",
+);
+assert.doesNotMatch(
+  analyticsConsentComponentSource,
+  /@vercel\/analytics|<Analytics \/>/,
+  "Analytics consent component must not gate Vercel Analytics.",
+);
+assert.match(
+  analyticsSource,
+  new RegExp(measurementId),
+  "Analytics helper must define the production GA4 Measurement ID.",
+);
+assert.match(
+  analyticsConsentComponentSource,
+  /import \{ GA_ID \} from "@\/lib\/analytics"/,
+  "Analytics consent component must use the shared GA4 Measurement ID.",
+);
+assert.match(
+  analyticsConsentComponentSource,
+  /GOOGLE_TAG_SRC = `https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=\$\{GA_ID\}`/,
+  "GA4 script URL must be created only inside the consent component.",
+);
+assert.ok(
+  analyticsConsentComponentSource.includes(
+    'window.gtag?.("consent", "default", deniedConsent)',
+  ),
+  "GA4 must set denied consent defaults before config.",
+);
+assert.ok(
+  analyticsConsentComponentSource.includes(
+    'window.gtag?.("consent", "update", {',
+  ) && analyticsConsentComponentSource.includes('analytics_storage: "granted"'),
+  "GA4 must update analytics_storage to granted only after consent.",
+);
+assert.ok(
+  analyticsConsentComponentSource.includes(
+    'window.gtag("consent", "update", deniedConsent)',
+  ),
+  "GA4 must support revoking analytics consent.",
+);
+assert.match(
+  analyticsConsentComponentSource,
+  /data-analytics-consent="banner"/,
+  "Analytics consent UI must expose a stable test marker.",
+);
+assert.match(
+  analyticsConsentSource,
+  /ANALYTICS_CONSENT_STORAGE_KEY = "bpb:analytics-consent"/,
+  "Analytics consent choice must be persisted under the expected storage key.",
+);
+assert.match(
+  analyticsConsentSource,
+  /ANALYTICS_CONSENT_OPEN_EVENT = "bpb:open-analytics-consent"/,
+  "Analytics consent settings must be reopenable from the footer.",
+);
+assert.match(
+  analyticsSource,
+  /hasAnalyticsConsentGranted/,
+  "Analytics helper must check consent before sending events.",
+);
+assert.match(
+  analyticsSource,
+  /if \(!hasAnalyticsConsentGranted\(\)\) \{\s*return;\s*\}/,
+  "Analytics helper must return before sending events when consent is missing.",
 );
 assert.doesNotMatch(
   analyticsSource,
-  /trackPageView|PageViewEvent|send_page_view|analytics_storage|denied|NEXT_PUBLIC_GA_MEASUREMENT_ID/i,
-  "Analytics helper must not contain manual page_view, consent blocking, or GA env routing.",
+  /NEXT_PUBLIC_GA_MEASUREMENT_ID|gtm\/js|GTM-|AW-/i,
+  "Analytics helper must not use env GA ID, GTM, or Google Ads tags.",
 );
 
 for (const route of [
@@ -83,12 +136,8 @@ for (const route of [
   "/en/pattaya-bus-station-to-jomtien",
 ]) {
   assert.ok(
-    layoutSource.includes("https://www.googletagmanager.com/gtag/js?id=G-0DYTH1TLGB"),
-    `The hardcoded Google tag script must be available to ${route}.`,
-  );
-  assert.ok(
-    layoutSource.includes("gtag('config', 'G-0DYTH1TLGB')"),
-    `The hardcoded Google tag config must be available to ${route}.`,
+    layoutSource.includes("<AnalyticsConsent lang={lang} />"),
+    `The analytics consent gate must be available to ${route}.`,
   );
 }
 
@@ -102,15 +151,15 @@ const affiliatePayload = {
   sub_id: "bpb-bangkok-to-pattaya-desktop_sidebar",
   to: "pattaya",
 };
-const gtagCalls = [];
-const analyticsModule = loadAnalyticsModuleForTest({
-  gtag: (...args) => gtagCalls.push(args),
-});
+const grantedGtagCalls = [];
+const analyticsModuleWithConsent = loadAnalyticsModuleForTest(
+  createWindowForConsentTest("granted", (...args) => grantedGtagCalls.push(args)),
+);
 
-analyticsModule.trackAffiliateClick(affiliatePayload);
+analyticsModuleWithConsent.trackAffiliateClick(affiliatePayload);
 
 assert.deepEqual(
-  JSON.parse(JSON.stringify(gtagCalls)),
+  JSON.parse(JSON.stringify(grantedGtagCalls)),
   [
     [
       "event",
@@ -121,22 +170,53 @@ assert.deepEqual(
       },
     ],
   ],
-  'trackAffiliateClick must call window.gtag("event", "affiliate_click", params).',
+  "trackAffiliateClick must call GA4 only when analytics consent is granted.",
 );
 
-const analyticsModuleWithoutGtag = loadAnalyticsModuleForTest({});
+const deniedGtagCalls = [];
+const analyticsModuleWithoutConsent = loadAnalyticsModuleForTest(
+  createWindowForConsentTest("denied", (...args) => deniedGtagCalls.push(args)),
+);
+
+analyticsModuleWithoutConsent.trackAffiliateClick(affiliatePayload);
+
+assert.deepEqual(
+  deniedGtagCalls,
+  [],
+  "trackAffiliateClick must not call GA4 when analytics consent is denied.",
+);
+
+const analyticsModuleWithoutGtag = loadAnalyticsModuleForTest(
+  createWindowForConsentTest("granted"),
+);
 
 assert.doesNotThrow(
   () => analyticsModuleWithoutGtag.trackAffiliateClick(affiliatePayload),
   "trackAffiliateClick must not throw when window.gtag is unavailable.",
 );
-assert.match(
-  analyticsSource,
-  /window\.gtag\("event", "affiliate_click", \{\s*send_to: "G-0DYTH1TLGB",[\s\S]*\.\.\.params,/,
-  "trackAffiliateClick must call affiliate_click directly through window.gtag with the hardcoded GA4 ID.",
-);
+
+const builtHomePath = join(root, ".next/server/app/index.html");
+
+if (existsSync(builtHomePath)) {
+  const builtHome = readFileSync(builtHomePath, "utf8");
+
+  assert.ok(
+    !builtHome.includes("https://www.googletagmanager.com/gtag/js"),
+    "Built homepage HTML must not include the GA4 network script before consent.",
+  );
+}
 
 console.log("GA4 checks passed.");
+
+function createWindowForConsentTest(consentValue, gtag) {
+  return {
+    gtag,
+    localStorage: {
+      getItem: (key) =>
+        key === "bpb:analytics-consent" ? consentValue : undefined,
+    },
+  };
+}
 
 function loadAnalyticsModuleForTest(windowValue) {
   const transformed = ts.transpileModule(analyticsSource, {
@@ -151,8 +231,15 @@ function loadAnalyticsModuleForTest(windowValue) {
   const sandbox = {
     exports: cjsModule.exports,
     module: cjsModule,
-    process: {
-      env: {},
+    require: (request) => {
+      if (request === "@/lib/analyticsConsent") {
+        return {
+          ANALYTICS_CONSENT_GRANTED: "granted",
+          ANALYTICS_CONSENT_STORAGE_KEY: "bpb:analytics-consent",
+        };
+      }
+
+      throw new Error(`Unexpected test import: ${request}`);
     },
     window: windowValue,
   };
