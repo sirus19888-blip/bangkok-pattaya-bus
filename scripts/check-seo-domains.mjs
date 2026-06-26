@@ -117,6 +117,21 @@ function headOf(html) {
   return html.split("</head>")[0] ?? html;
 }
 
+function extractHtmlLang(html) {
+  return html.match(/<html\s+lang="([^"]+)"/i)?.[1];
+}
+
+function assertHtmlLang(path, expectedLang) {
+  const htmlLang = extractHtmlLang(readBuiltHtml(path));
+
+  assert(
+    htmlLang === expectedLang,
+    `${path} must render <html lang="${expectedLang}">, got ${
+      htmlLang ?? "missing"
+    }.`,
+  );
+}
+
 function readSeoForPath(path) {
   const html = readBuiltHtml(path);
   const head = headOf(html);
@@ -273,7 +288,7 @@ const sitemapFile = readProjectFile("src/app/sitemap.ts");
 const robotsFile = readProjectFile("src/app/robots.ts");
 const routePageFile = readProjectFile("src/app/[locale]/[route]/page.tsx");
 const localeHomeFile = readProjectFile("src/app/[locale]/page.tsx");
-const rootHomeFile = readProjectFile("src/app/page.tsx");
+const rootHomeFile = readProjectFile("src/app/(default)/page.tsx");
 
 assert(
   sitemapFile.includes('from "@/lib/site"') &&
@@ -327,11 +342,13 @@ const routePagePaths = routeSlugs.flatMap((slug) =>
   locales.map((locale) => `/${locale}/${slug}`),
 );
 
+assertHtmlLang("/", "en");
 assertCanonicalSelf("/", absolute("/"));
 assertHreflangs("/", expectedHomeHreflangs());
 
 for (const locale of locales) {
   const homePath = `/${locale}`;
+  assertHtmlLang(homePath, locale);
   assertCanonicalSelf(homePath, absolute(homePath));
   assertHreflangs(homePath, expectedHomeHreflangs());
 }
@@ -341,9 +358,14 @@ for (const slug of routeSlugs) {
 
   for (const locale of locales) {
     const routePath = `/${locale}/${slug}`;
+    assertHtmlLang(routePath, locale);
     assertCanonicalSelf(routePath, absolute(routePath));
     assertHreflangs(routePath, routeHreflangs);
   }
+}
+
+for (const locale of locales) {
+  assertHtmlLang(`/${locale}/${guideSlugs[0]}`, locale);
 }
 
 assertHreflangReciprocal([...homepagePaths, ...routePagePaths]);

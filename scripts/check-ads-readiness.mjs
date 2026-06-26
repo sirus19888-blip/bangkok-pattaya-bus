@@ -4,7 +4,10 @@ import { join } from "node:path";
 import { cwd } from "node:process";
 
 const root = cwd();
-const privacySource = readFileSync(join(root, "src/app/privacy/page.tsx"), "utf8");
+const privacySource = readFileSync(
+  join(root, "src/app/(default)/privacy/page.tsx"),
+  "utf8",
+);
 const routeLayoutSource = readFileSync(
   join(root, "src/components/RoutePageLayout.tsx"),
   "utf8",
@@ -15,7 +18,10 @@ const cmpSource = readFileSync(
   "utf8",
 );
 const adsLibSource = readFileSync(join(root, "src/lib/ads.ts"), "utf8");
-const layoutSource = readFileSync(join(root, "src/app/layout.tsx"), "utf8");
+const layoutSource = readFileSync(
+  join(root, "src/app/DocumentLayout.tsx"),
+  "utf8",
+);
 const envExamplePath = join(root, ".env.local.example");
 const envExample = existsSync(envExamplePath)
   ? readFileSync(envExamplePath, "utf8")

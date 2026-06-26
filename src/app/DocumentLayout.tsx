@@ -1,35 +1,16 @@
 /* eslint-disable @next/next/next-script-for-ga -- Hard GA4 reset uses the raw official snippet for g/collect testing. */
-import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { ConsentManagementPlaceholder } from "@/components/ConsentManagementPlaceholder";
 import { SiteFooter } from "@/components/SiteFooter";
-import { SITE_URL } from "@/lib/site";
-import "./globals.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: "Bangkok Pattaya Bus Guide",
-  description:
-    "Mobile bus schedules, station tips, and travel guidance between Bangkok and Pattaya.",
-  applicationName: "Bangkok Pattaya Bus Guide",
-  manifest: "/manifest.webmanifest",
-  appleWebApp: {
-    capable: true,
-    title: "BP Bus Guide",
-    statusBarStyle: "default",
-  },
-  verification: {
-    google: "ifux0qG_0u-B8hmrEgqocKaAcCTfk5EqOBqU8udza5A",
-  },
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
+type DocumentLayoutProps = Readonly<{
   children: React.ReactNode;
-}>) {
+  lang: string;
+}>;
+
+export function DocumentLayout({ children, lang }: DocumentLayoutProps) {
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang={lang} className="h-full antialiased">
       <head>
         <meta charSet="utf-8" />
         <script

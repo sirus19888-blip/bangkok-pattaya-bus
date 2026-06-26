@@ -6,7 +6,7 @@ import vm from "node:vm";
 import ts from "typescript";
 
 const root = cwd();
-const layoutSourcePath = join(root, "src/app/layout.tsx");
+const layoutSourcePath = join(root, "src/app/DocumentLayout.tsx");
 const analyticsSourcePath = join(root, "src/lib/analytics.ts");
 const packageJsonPath = join(root, "package.json");
 const oldGoogleAnalyticsPath = join(root, "src/components/GoogleAnalytics.tsx");
