@@ -81,22 +81,22 @@ export function MobileRouteDecisionCard({
     return () => window.clearInterval(intervalId);
   }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
 
-  function handleShowRelatedRoutesClick(
+  function handleShowDeparturesClick(
     event: React.MouseEvent<HTMLAnchorElement>,
   ) {
-    const relatedRoutes = document.getElementById("mobile-related-routes");
+    const departuresSection = document.getElementById("mobile-departures");
 
-    if (!relatedRoutes) {
+    if (!departuresSection) {
       return;
     }
 
     event.preventDefault();
-    relatedRoutes.scrollIntoView({
+    departuresSection.scrollIntoView({
       behavior: "smooth",
       block: "center",
     });
 
-    window.history.replaceState(null, "", "#mobile-related-routes");
+    window.history.replaceState(null, "", "#mobile-departures");
   }
 
   return (
@@ -246,8 +246,8 @@ export function MobileRouteDecisionCard({
 
       <div className="md:col-start-1 md:row-start-2 lg:hidden">
       <a
-        href="#mobile-related-routes"
-        onClick={handleShowRelatedRoutesClick}
+        href="#mobile-departures"
+        onClick={handleShowDeparturesClick}
         className="mt-2.5 flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-5 text-center text-sm font-black text-white shadow-sm md:mt-0 md:max-w-sm"
       >
         {labels.showAllDepartures}
