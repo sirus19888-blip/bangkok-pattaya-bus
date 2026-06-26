@@ -23,7 +23,7 @@ export function HomepageRevenueHeroCard({ locale }: { locale: LocaleCode }) {
       <TravelDateField locale={locale} />
       <TravelDateAwareTwelveGoAffiliateButton
         ariaLabel={uiText.primaryAria}
-        className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-4 text-sm font-black text-white shadow-sm transition hover:bg-[#1d3455]"
+        className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#e8b05a] px-4 text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
         ctaPosition="homepage_hero"
         disclosureMode="short"
         label={uiText.primaryCta}

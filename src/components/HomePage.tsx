@@ -1368,7 +1368,7 @@ function MobileHomepageBookingBar({ locale }: { locale: LocaleCode }) {
         />
         <TravelDateAwareTwelveGoAffiliateButton
           ariaLabel={affiliateText.homepageCardAria}
-          className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-3 text-center text-xs font-black leading-tight text-white shadow-sm transition hover:bg-[#1d3455]"
+          className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#e8b05a] px-3 text-center text-xs font-black leading-tight text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
           ctaPosition="homepage_mobile_sticky"
           disclosureMode="none"
           label={affiliateText.stickyMobile}
