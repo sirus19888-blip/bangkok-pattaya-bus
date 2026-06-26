@@ -19,6 +19,10 @@ const travelDateContextSource = readFileSync(
   join(cwd(), "src/components/TravelDateContext.tsx"),
   "utf8",
 );
+const touristShortcutsSource = source.slice(
+  source.indexOf("function getTouristShortcuts"),
+  source.indexOf("const thaiMobileRouteMeta"),
+);
 
 function assert(condition, message) {
   if (!condition) {
@@ -206,8 +210,16 @@ assert(
   "Homepage must provide one shared travel date for every homepage 12Go CTA.",
 );
 assert(
-  count(/<TravelDateAwareTwelveGoAffiliateButton\b/g) === 3,
-  "Homepage must render travel-date-aware buttons for the hero, mobile sticky bar, and route cards.",
+  count(/<TravelDateAwareTwelveGoAffiliateButton\b/g) === 4,
+  "Homepage must render travel-date-aware buttons for the hero, airport highlight, mobile sticky bar, and route cards.",
+);
+assert(
+  source.includes('data-homepage-airport-highlight="true"') &&
+    source.includes('ctaPosition="homepage_airport_highlight"') &&
+    source.includes("<MobileAirportHighlightSection") &&
+    source.includes("suvarnabhumi-airport-to-pattaya") &&
+    source.includes("don-mueang-airport-to-pattaya"),
+  "Homepage must render a measurable airport-to-Pattaya highlight section.",
 );
 assert(
   source.includes('data-mobile-homepage-booking-bar="true"') &&
@@ -222,12 +234,14 @@ assert(
 );
 assert(
   source.includes("getTouristShortcuts(locale)") &&
-    source.includes("Most useful for travelers") &&
-    source.includes("Bangkok city to Pattaya") &&
-    source.includes("Suvarnabhumi Airport to Pattaya") &&
-    source.includes("Don Mueang Airport to Pattaya") &&
-    source.includes("Pattaya to Bangkok airport"),
-  "Homepage must render concise tourist shortcut cards for the most useful routes.",
+    touristShortcutsSource.includes("Most useful for travelers") &&
+    touristShortcutsSource.includes("Bangkok city to Pattaya") &&
+    touristShortcutsSource.includes("Pattaya to Bangkok airport") &&
+    !touristShortcutsSource.includes(
+      'routeId: "suvarnabhumi-airport-to-pattaya"',
+    ) &&
+    !touristShortcutsSource.includes('routeId: "don-mueang-airport-to-pattaya"'),
+  "Homepage tourist shortcuts must stay concise and avoid duplicating airport highlight routes.",
 );
 assert(
   source.includes("touristShortcuts.items.map") &&

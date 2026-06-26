@@ -12,6 +12,7 @@ export type AffiliateCTAVariant =
 
 export type AffiliateCTAPosition =
   | "homepage_hero"
+  | "homepage_airport_highlight"
   | "homepage_mobile_sticky"
   | "homepage_route_card"
   | "guide_body"

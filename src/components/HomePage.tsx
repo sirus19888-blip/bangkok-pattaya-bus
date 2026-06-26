@@ -174,6 +174,11 @@ const mobileRouteImages: Record<RouteId, string> = {
     "/images/stations/pattaya-sukhumvit/pattaya-sukhumvit-road.jpg",
 };
 
+const airportHighlightRouteIds: RouteId[] = [
+  "suvarnabhumi-airport-to-pattaya",
+  "don-mueang-airport-to-pattaya",
+];
+
 type TouristShortcut = {
   routeId: RouteId;
   title: string;
@@ -197,16 +202,6 @@ function getTouristShortcuts(locale: LocaleCode): {
           description: "Buszeiten ab Ekkamai und Tipps zur Anreise.",
         },
         {
-          routeId: "suvarnabhumi-airport-to-pattaya",
-          title: "Flughafen Suvarnabhumi nach Pattaya",
-          description: "Gate-8-Bus, Preisnotizen und Ankunftstipps.",
-        },
-        {
-          routeId: "don-mueang-airport-to-pattaya",
-          title: "Flughafen Don Mueang nach Pattaya",
-          description: "Route ab DMK mit praktischen Transferhinweisen.",
-        },
-        {
           routeId: "pattaya-to-suvarnabhumi-airport",
           title: "Pattaya zum Flughafen Bangkok",
           description: "Planen Sie die Fahrt vor dem Flug.",
@@ -220,16 +215,6 @@ function getTouristShortcuts(locale: LocaleCode): {
           routeId: "bangkok-to-pattaya",
           title: "Bangkok city to Pattaya",
           description: "Start here for Ekkamai bus times and station tips.",
-        },
-        {
-          routeId: "suvarnabhumi-airport-to-pattaya",
-          title: "Suvarnabhumi Airport to Pattaya",
-          description: "Gate 8 bus notes, fare tips, and arrival details.",
-        },
-        {
-          routeId: "don-mueang-airport-to-pattaya",
-          title: "Don Mueang Airport to Pattaya",
-          description: "DMK route notes and transfer planning help.",
         },
         {
           routeId: "pattaya-to-suvarnabhumi-airport",
@@ -247,16 +232,6 @@ function getTouristShortcuts(locale: LocaleCode): {
           description: "Horaires depuis Ekkamai et conseils de station.",
         },
         {
-          routeId: "suvarnabhumi-airport-to-pattaya",
-          title: "Aéroport Suvarnabhumi vers Pattaya",
-          description: "Bus Gate 8, notes de prix et arrivée à Pattaya.",
-        },
-        {
-          routeId: "don-mueang-airport-to-pattaya",
-          title: "Aéroport Don Mueang vers Pattaya",
-          description: "Notes de route depuis DMK et conseils de transfert.",
-        },
-        {
           routeId: "pattaya-to-suvarnabhumi-airport",
           title: "Pattaya vers l’aéroport de Bangkok",
           description: "Utile avant un vol depuis Suvarnabhumi.",
@@ -270,16 +245,6 @@ function getTouristShortcuts(locale: LocaleCode): {
           routeId: "bangkok-to-pattaya",
           title: "Centrum Bangkoku do Pattayi",
           description: "Godziny z Ekkamai i praktyczne wskazówki o dworcu.",
-        },
-        {
-          routeId: "suvarnabhumi-airport-to-pattaya",
-          title: "Lotnisko Suvarnabhumi do Pattayi",
-          description: "Autobus z Gate 8, cena i dojazd po przylocie.",
-        },
-        {
-          routeId: "don-mueang-airport-to-pattaya",
-          title: "Lotnisko Don Mueang do Pattayi",
-          description: "Notatki dla DMK i planowanie przesiadki.",
         },
         {
           routeId: "pattaya-to-suvarnabhumi-airport",
@@ -297,16 +262,6 @@ function getTouristShortcuts(locale: LocaleCode): {
           description: "Время автобусов от Эккамай и советы по станции.",
         },
         {
-          routeId: "suvarnabhumi-airport-to-pattaya",
-          title: "Аэропорт Суварнабхуми в Паттайю",
-          description: "Автобус у Gate 8, цена и прибытие в Паттайю.",
-        },
-        {
-          routeId: "don-mueang-airport-to-pattaya",
-          title: "Аэропорт Дон Муанг в Паттайю",
-          description: "Маршрут от DMK и советы по пересадке.",
-        },
-        {
           routeId: "pattaya-to-suvarnabhumi-airport",
           title: "Паттайя в аэропорт Бангкока",
           description: "Полезно перед вылетом из Суварнабхуми.",
@@ -322,16 +277,6 @@ function getTouristShortcuts(locale: LocaleCode): {
           description: "เวลาออกจากเอกมัยและคำแนะนำเรื่องสถานี",
         },
         {
-          routeId: "suvarnabhumi-airport-to-pattaya",
-          title: "สุวรรณภูมิไปพัทยา",
-          description: "รถบัส Gate 8 ราคา และข้อมูลหลังถึงพัทยา",
-        },
-        {
-          routeId: "don-mueang-airport-to-pattaya",
-          title: "ดอนเมืองไปพัทยา",
-          description: "ข้อมูลเส้นทางจาก DMK และการต่อรถ",
-        },
-        {
           routeId: "pattaya-to-suvarnabhumi-airport",
           title: "พัทยาไปสนามบินกรุงเทพฯ",
           description: "เหมาะสำหรับวางแผนก่อนขึ้นเครื่องที่สุวรรณภูมิ",
@@ -345,16 +290,6 @@ function getTouristShortcuts(locale: LocaleCode): {
           routeId: "bangkok-to-pattaya",
           title: "曼谷市区到芭提雅",
           description: "查看亿甲迈发车时间和车站提示。",
-        },
-        {
-          routeId: "suvarnabhumi-airport-to-pattaya",
-          title: "素万那普机场到芭提雅",
-          description: "Gate 8 巴士、票价提示和抵达信息。",
-        },
-        {
-          routeId: "don-mueang-airport-to-pattaya",
-          title: "廊曼机场到芭提雅",
-          description: "DMK 路线说明和换乘建议。",
         },
         {
           routeId: "pattaya-to-suvarnabhumi-airport",
@@ -460,6 +395,8 @@ function getMobileHomeCopy(locale: LocaleCode) {
         "Ta strona nie jest oficjalną stroną operatora autobusowego. Dane rozkładów opierają się na informacjach operatorów i ręcznych sprawdzeniach tam, gdzie to możliwe. Godziny mogą się zmienić, więc potwierdź je przed podróżą.",
       aboutTitle: "Niezależne informacje dla podróżnych",
       airport: "Lotnisko",
+      airportHighlightEyebrow: "Po przylocie?",
+      airportHighlightTitle: "Lotnisko → Pattaya",
       beforeTravel: "Przed podróżą",
       brandPrimary: "Bangkok Pattaya",
       brandSecondary: "Przewodnik autobusowy",
@@ -525,6 +462,8 @@ function getMobileHomeCopy(locale: LocaleCode) {
         "Этот сайт не является официальным сайтом автобусного оператора. Данные расписания основаны на информации операторов и ручных проверках, где это возможно. Время может измениться, поэтому подтвердите его перед поездкой.",
       aboutTitle: "Независимая информация для путешественников",
       airport: "Аэропорт",
+      airportHighlightEyebrow: "Только прилетели?",
+      airportHighlightTitle: "Аэропорт → Паттайя",
       beforeTravel: "Перед поездкой",
       brandPrimary: "Бангкок Паттайя",
       brandSecondary: "Гид по автобусам",
@@ -590,6 +529,8 @@ function getMobileHomeCopy(locale: LocaleCode) {
         "Diese Website ist keine offizielle Website eines Busbetreibers. Fahrplandaten basieren auf Betreiberinformationen und manuellen Prüfungen, soweit möglich. Zeiten können sich ändern, bitte bestätigen Sie sie vor der Reise.",
       aboutTitle: "Unabhängige Reiseinformationen",
       airport: "Flughafen",
+      airportHighlightEyebrow: "Gerade gelandet?",
+      airportHighlightTitle: "Flughafen → Pattaya",
       beforeTravel: "Vor der Reise",
       brandPrimary: "Bangkok Pattaya",
       brandSecondary: "Bus Guide",
@@ -655,6 +596,8 @@ function getMobileHomeCopy(locale: LocaleCode) {
         "เว็บไซต์นี้ไม่ใช่เว็บไซต์อย่างเป็นทางการของผู้ให้บริการรถบัส ข้อมูลตารางเวลาอ้างอิงจากข้อมูลของผู้ให้บริการและการตรวจสอบด้วยตนเองเท่าที่ทำได้ เวลาเดินรถอาจเปลี่ยนแปลงได้ โปรดยืนยันก่อนเดินทาง",
       aboutTitle: "ข้อมูลเดินทางอิสระสำหรับนักท่องเที่ยว",
       airport: "สนามบิน",
+      airportHighlightEyebrow: "เพิ่งลงเครื่อง?",
+      airportHighlightTitle: "สนามบิน → พัทยา",
       beforeTravel: "ก่อนเดินทาง",
       brandPrimary: "กรุงเทพฯ พัทยา",
       brandSecondary: "คู่มือรถบัส",
@@ -719,6 +662,8 @@ function getMobileHomeCopy(locale: LocaleCode) {
         "本网站不是官方巴士运营商网站。时刻表数据基于运营商信息，并尽可能进行人工检查。巴士时间可能会变动，出行前请再次确认。",
       aboutTitle: "面向旅客的独立出行信息",
       airport: "机场",
+      airportHighlightEyebrow: "刚落地？",
+      airportHighlightTitle: "机场 → 芭提雅",
       beforeTravel: "出行前",
       brandPrimary: "曼谷芭提雅",
       brandSecondary: "巴士指南",
@@ -783,6 +728,8 @@ function getMobileHomeCopy(locale: LocaleCode) {
         "Ce site n’est pas le site officiel d’un opérateur de bus. Les horaires sont basés sur les informations des opérateurs et des vérifications manuelles lorsque c’est possible. Les horaires peuvent changer, confirmez-les avant de voyager.",
       aboutTitle: "Informations de voyage indépendantes",
       airport: "Aéroport",
+      airportHighlightEyebrow: "Vous venez d’atterrir ?",
+      airportHighlightTitle: "Aéroport → Pattaya",
       beforeTravel: "Avant le départ",
       brandPrimary: "Bangkok Pattaya",
       brandSecondary: "Guide bus",
@@ -847,6 +794,8 @@ function getMobileHomeCopy(locale: LocaleCode) {
       "This website is not an official bus operator. Schedule data is based on published operator information and manual checks where possible. Bus times may change, so confirm before travel.",
     aboutTitle: "Independent travel information",
     airport: "Airport",
+    airportHighlightEyebrow: "Just landed?",
+    airportHighlightTitle: "Airport → Pattaya",
     beforeTravel: "Before you travel",
     brandPrimary: "Bangkok Pattaya",
     brandSecondary: "Bus Guide",
@@ -932,6 +881,11 @@ function MobileHome({
   const featuredRouteHasTickets = featuredRoute
     ? hasTwelveGoTickets(featuredRoute.slug)
     : false;
+  const airportHighlightRoutes = airportHighlightRouteIds
+    .map((routeId) =>
+      routePagesForLocale.find((routePage) => routePage.slug === routeId),
+    )
+    .filter((routePage): routePage is RoutePage => Boolean(routePage));
 
   return (
     <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15 lg:h-auto lg:min-h-screen lg:max-w-7xl lg:overflow-visible lg:bg-transparent lg:px-8 lg:py-8 lg:shadow-none">
@@ -1121,6 +1075,14 @@ function MobileHome({
           </div>
         </div>
 
+        <MobileAirportHighlightSection
+          copy={copy}
+          countdownLabels={countdownLabels}
+          locale={locale}
+          routePages={airportHighlightRoutes}
+          schedulesForLocale={schedulesForLocale}
+        />
+
         <section
           id="popular-routes"
           data-visual-qa="homepage-popular-routes"
@@ -1244,6 +1206,130 @@ function MobileHome({
 
       <MobileHomepageBookingBar locale={locale} />
       <MobileBottomNav copy={copy} locale={locale} />
+    </section>
+  );
+}
+
+function MobileAirportHighlightSection({
+  copy,
+  countdownLabels,
+  locale,
+  routePages,
+  schedulesForLocale,
+}: {
+  copy: ReturnType<typeof getMobileHomeCopy>;
+  countdownLabels: NonNullable<
+    ComponentProps<typeof MobileRouteCountdown>["labels"]
+  >;
+  locale: LocaleCode;
+  routePages: RoutePage[];
+  schedulesForLocale: Schedule[];
+}) {
+  const affiliateText = getUiTranslations(locale).affiliate.variantLabels;
+
+  if (routePages.length === 0) {
+    return null;
+  }
+
+  return (
+    <section
+      className="mx-4 mt-4 rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6"
+      data-homepage-airport-highlight="true"
+    >
+      <div className="mb-3 flex items-end justify-between gap-3">
+        <div>
+          <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[#0e7b6b]">
+            {copy.airportHighlightEyebrow}
+          </p>
+          <h2 className="text-xl font-black leading-tight text-[#13233a]">
+            {copy.airportHighlightTitle}
+          </h2>
+        </div>
+      </div>
+      <div className="grid gap-3 md:grid-cols-2">
+        {routePages.map((routePage) => {
+          const schedule = schedulesForLocale.find(
+            (routeSchedule) => routeSchedule.direction === routePage.slug,
+          );
+          const meta = copy.routeMeta[routePage.slug];
+          const routeImage = mobileRouteImages[routePage.slug];
+          const hasTickets = hasTwelveGoTickets(routePage.slug);
+
+          return (
+            <article
+              key={routePage.slug}
+              className="overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-[#fffaf2] shadow-sm"
+            >
+              <Link
+                href={`/${locale}/${routePage.slug}`}
+                className="grid grid-cols-[5rem_minmax(0,1fr)] gap-3 p-3"
+              >
+                <span className="relative block h-20 overflow-hidden rounded-2xl bg-[#13233a]">
+                  <Image
+                    alt=""
+                    aria-hidden="true"
+                    className="h-full w-full object-cover"
+                    fill
+                    sizes="80px"
+                    src={routeImage}
+                  />
+                  <span className="absolute inset-0 bg-gradient-to-b from-black/5 via-[#0e1e2e]/15 to-[#0e1e2e]/50" />
+                </span>
+                <span className="min-w-0 self-center">
+                  <span className="block text-[0.65rem] font-black uppercase tracking-[0.14em] text-[#0e7b6b]">
+                    {meta.badge}
+                  </span>
+                  <span className="mt-1 block text-sm font-black leading-tight text-[#13233a]">
+                    {routePage.title}
+                  </span>
+                  <span className="mt-1 block text-xs font-semibold leading-4 text-[#5f6874]">
+                    {meta.note}
+                  </span>
+                </span>
+              </Link>
+              <div className="px-3 pb-3">
+                <div className="grid grid-cols-2 gap-2">
+                  <MobileMiniFact
+                    compact
+                    fallbackLabel={copy.check}
+                    label={copy.time}
+                    value={schedule?.travelTime}
+                  />
+                  <MobileMiniFact
+                    compact
+                    fallbackLabel={copy.check}
+                    label={copy.price}
+                    value={
+                      schedule ? getHomepageSchedulePrice(schedule) : undefined
+                    }
+                  />
+                </div>
+                <MobileRouteCountdown
+                  labels={countdownLabels}
+                  schedule={schedule}
+                />
+                {hasTickets ? (
+                  <TravelDateAwareTwelveGoAffiliateButton
+                    ariaLabel={affiliateText.homepageCardAria}
+                    className="mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#e8b05a] px-3 text-center text-xs font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
+                    ctaPosition="homepage_airport_highlight"
+                    disclosureMode="none"
+                    label={affiliateText.homepageCardCta}
+                    locale={locale}
+                    routeId={routePage.slug}
+                  />
+                ) : null}
+                <Link
+                  href={`/${locale}/${routePage.slug}`}
+                  className="mt-2 flex min-h-11 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-3 text-center text-xs font-black text-[#13233a] transition hover:bg-[#fffaf2]"
+                >
+                  {copy.viewRoute}
+                </Link>
+              </div>
+            </article>
+          );
+        })}
+      </div>
     </section>
   );
 }
