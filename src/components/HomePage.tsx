@@ -7,7 +7,10 @@ import { MobileDestinationWeather } from "@/components/MobileDestinationWeather"
 import { MobileRouteCountdown } from "@/components/MobileRouteCountdown";
 import { RouteSearch } from "@/components/RouteSearch";
 import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
-import { TravelDateProvider } from "@/components/TravelDateContext";
+import {
+  TravelDateField,
+  TravelDateProvider,
+} from "@/components/TravelDateContext";
 import { TravelGuideLinks } from "@/components/TravelGuideLinks";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
@@ -932,7 +935,7 @@ function MobileHome({
 
   return (
     <section className="mx-auto flex h-dvh min-h-dvh w-full max-w-[390px] flex-col overflow-hidden bg-[#fbf8f3] text-[#13233a] shadow-2xl shadow-[#13233a]/15 lg:h-auto lg:min-h-screen lg:max-w-7xl lg:overflow-visible lg:bg-transparent lg:px-8 lg:py-8 lg:shadow-none">
-      <div className="flex-1 overflow-y-auto pb-24 md:overflow-visible md:pb-0">
+      <div className="flex-1 overflow-y-auto pb-44 md:overflow-visible md:pb-0">
         <div className="overflow-hidden rounded-b-[2rem] bg-[#0e1e2e] text-white shadow-xl shadow-[#13233a]/20 lg:rounded-[2rem]">
           <div className="flex items-center justify-between px-4 pb-3 pt-[calc(env(safe-area-inset-top)+0.9rem)] md:px-8 md:pb-4 md:pt-6">
             <Link href={`/${locale}`} className="flex min-w-0 items-center gap-3">
@@ -1239,6 +1242,7 @@ function MobileHome({
         </section>
       </div>
 
+      <MobileHomepageBookingBar locale={locale} />
       <MobileBottomNav copy={copy} locale={locale} />
     </section>
   );
@@ -1340,6 +1344,42 @@ function getHomepageSchedulePrice(schedule: Schedule) {
   }
 
   return schedule.price;
+}
+
+function MobileHomepageBookingBar({ locale }: { locale: LocaleCode }) {
+  const routeId: RouteId = "bangkok-to-pattaya";
+  const affiliateText = getUiTranslations(locale).affiliate.variantLabels;
+
+  if (!hasTwelveGoTickets(routeId)) {
+    return null;
+  }
+
+  return (
+    <div
+      className="fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+4.15rem)] z-50 mx-auto w-full max-w-[390px] px-4 md:hidden"
+      data-mobile-homepage-booking-bar="true"
+    >
+      <div className="grid grid-cols-[minmax(0,0.82fr)_minmax(0,1fr)] gap-2 rounded-2xl border border-[#eadcc7] bg-white/95 p-2 shadow-[0_-12px_28px_rgba(19,35,58,0.16)] backdrop-blur">
+        <TravelDateField
+          className="min-w-0"
+          inputClassName="min-h-11 w-full rounded-xl border border-[#d8c8b4] bg-white px-2 text-xs font-black text-[#13233a] shadow-sm outline-none transition focus:border-[#e8b05a] focus:ring-2 focus:ring-[#e8b05a]/35"
+          labelClassName="sr-only"
+          locale={locale}
+        />
+        <TravelDateAwareTwelveGoAffiliateButton
+          ariaLabel={affiliateText.homepageCardAria}
+          className="flex min-h-11 w-full items-center justify-center rounded-xl bg-[#13233a] px-3 text-center text-xs font-black leading-tight text-white shadow-sm transition hover:bg-[#1d3455]"
+          ctaPosition="homepage_mobile_sticky"
+          disclosureMode="none"
+          label={affiliateText.stickyMobile}
+          locale={locale}
+          routeId={routeId}
+          variant="stickyMobile"
+          wrapperClassName="min-w-0"
+        />
+      </div>
+    </div>
+  );
 }
 
 function MobileBottomNav({

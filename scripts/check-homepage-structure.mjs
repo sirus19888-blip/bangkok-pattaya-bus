@@ -206,8 +206,14 @@ assert(
   "Homepage must provide one shared travel date for every homepage 12Go CTA.",
 );
 assert(
-  count(/<TravelDateAwareTwelveGoAffiliateButton\b/g) === 2,
-  "Homepage must render travel-date-aware buttons for both the next-bus card and the route cards.",
+  count(/<TravelDateAwareTwelveGoAffiliateButton\b/g) === 3,
+  "Homepage must render travel-date-aware buttons for the hero, mobile sticky bar, and route cards.",
+);
+assert(
+  source.includes('data-mobile-homepage-booking-bar="true"') &&
+    source.includes('ctaPosition="homepage_mobile_sticky"') &&
+    source.includes("<MobileHomepageBookingBar"),
+  "Homepage must render a mobile sticky ticket CTA with a dedicated affiliate position.",
 );
 assert(
   homepageRevenueHeroSource.includes('href="#popular-routes"') &&
