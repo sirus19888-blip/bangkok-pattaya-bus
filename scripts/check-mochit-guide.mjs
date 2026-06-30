@@ -77,7 +77,11 @@ assert.match(
   "Guide FAQ answer must be present in HTML.",
 );
 
-const guideCta = findAnchorByText(html, "Check Bangkok to Pattaya tickets");
+const guideCta = findAnchorByText(
+  html,
+  "Check Bangkok to Pattaya tickets",
+  "guide_body",
+);
 
 assert(guideCta, "Guide must render the requested 12Go CTA.");
 assert.match(
@@ -151,10 +155,15 @@ assert.equal(
 
 console.log("Mo Chit guide checks passed.");
 
-function findAnchorByText(source, text) {
+function findAnchorByText(source, text, ctaPosition) {
   const anchors = source.match(/<a\b[^>]*>[\s\S]*?<\/a>/g) ?? [];
 
-  return anchors.find((anchor) => stripTags(anchor).includes(text));
+  return anchors.find(
+    (anchor) =>
+      stripTags(anchor).includes(text) &&
+      (!ctaPosition ||
+        anchor.includes(`data-affiliate-cta-position="${ctaPosition}"`)),
+  );
 }
 
 function stripTags(value) {

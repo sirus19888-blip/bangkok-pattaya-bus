@@ -18,6 +18,8 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
   const routePage = getRoutePage(guide.routeId);
   const ctaPosition = guide.ctaPosition ?? "route_commercial_help";
   const affiliateRoute = getAffiliateRoute(guide.routeId, locale);
+  const affiliateDisclosureText =
+    "Some booking links may be affiliate links. Timetable information stays independent.";
   const affiliateHref = build12GoRouteUrl(
     guide.routeId,
     locale,
@@ -27,13 +29,31 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
   const affiliateSubId =
     guide.ctaSubId ??
     (affiliateRoute ? `${affiliateRoute.subId}-${ctaPosition}` : undefined);
+  const shortAnswerCtaPosition = "guide_short_answer";
+  const shortAnswerAffiliateHref = build12GoRouteUrl(
+    guide.routeId,
+    locale,
+    shortAnswerCtaPosition,
+  );
+  const shortAnswerAffiliateSubId = affiliateRoute
+    ? `${affiliateRoute.subId}-${shortAnswerCtaPosition}`
+    : undefined;
+  const mobileStickyCtaPosition = "guide_mobile_sticky";
+  const mobileStickyAffiliateHref = build12GoRouteUrl(
+    guide.routeId,
+    locale,
+    mobileStickyCtaPosition,
+  );
+  const mobileStickyAffiliateSubId = affiliateRoute
+    ? `${affiliateRoute.subId}-${mobileStickyCtaPosition}`
+    : undefined;
 
   if (!routePage) {
     return null;
   }
 
   return (
-    <main className="min-h-screen bg-[#f7f0e3] px-4 py-8 text-[#13233a]">
+    <main className="min-h-screen bg-[#f7f0e3] px-4 py-8 pb-40 text-[#13233a] lg:pb-0">
       <GuideJsonLd guide={guide} locale={locale} />
 
       <article className="mx-auto max-w-4xl">
@@ -75,6 +95,21 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             <p className="mt-3 text-sm font-semibold leading-7 text-[#4f5d6c]">
               {guide.shortAnswer}
             </p>
+            <AffiliateCTA
+              className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl bg-[#e8b05a] px-5 text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
+              ctaPosition={shortAnswerCtaPosition}
+              disclosureText={affiliateDisclosureText}
+              href={shortAnswerAffiliateHref}
+              label={guide.ctaLabel}
+              lang="en"
+              provider="12go"
+              routeId={guide.routeId}
+              from={affiliateRoute?.from ?? ""}
+              shortDisclosureText="Affiliate link"
+              subId={shortAnswerAffiliateSubId}
+              to={affiliateRoute?.to ?? ""}
+              variant="afterSchedule"
+            />
           </section>
         ) : null}
 
@@ -213,7 +248,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             </p>
             <AffiliateCTA
               ctaPosition={ctaPosition}
-              disclosureText="Some booking links may be affiliate links. Timetable information stays independent."
+              disclosureText={affiliateDisclosureText}
               href={affiliateHref}
               label={guide.ctaLabel}
               lang="en"
@@ -228,6 +263,29 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
           </div>
         </div>
       </article>
+      {mobileStickyAffiliateHref ? (
+        <div
+          className="fixed inset-x-0 bottom-0 z-50 mx-auto w-full max-w-[28rem] border-t border-[#eadcc7] bg-white/95 px-4 pb-[calc(env(safe-area-inset-bottom)+0.75rem)] pt-3 shadow-[0_-12px_28px_rgba(19,35,58,0.14)] backdrop-blur lg:hidden"
+          data-mobile-booking-bar="true"
+        >
+          <AffiliateCTA
+            ctaPosition={mobileStickyCtaPosition}
+            disclosureMode="none"
+            disclosureText={affiliateDisclosureText}
+            href={mobileStickyAffiliateHref}
+            label={guide.ctaLabel}
+            lang="en"
+            provider="12go"
+            routeId={guide.routeId}
+            from={affiliateRoute?.from ?? ""}
+            shortDisclosureText="Affiliate link"
+            subId={mobileStickyAffiliateSubId}
+            to={affiliateRoute?.to ?? ""}
+            variant="stickyMobile"
+            wrapperClassName="w-full"
+          />
+        </div>
+      ) : null}
     </main>
   );
 }

@@ -31,7 +31,9 @@ const affiliateRouteSource = readFileSync(
 const twelveGoSource = readFileSync(join(root, "src/lib/twelveGo.ts"), "utf8");
 const requiredAffiliatePositions = [
   "guide_body",
+  "guide_short_answer",
   "guide_sidebar",
+  "guide_mobile_sticky",
   "homepage_hero",
   "homepage_airport_highlight",
   "homepage_mobile_sticky",
@@ -122,7 +124,10 @@ const requiredPositionClickTests = requiredAffiliatePositions.map((position) =>
     shortDisclosureText: "Affiliate link",
     subId: `bpb-bangkok-to-pattaya-${position}`,
     to: "pattaya",
-    variant: position === "mobile_sticky" ? "stickyMobile" : "afterSchedule",
+    variant:
+      position === "mobile_sticky" || position === "guide_mobile_sticky"
+        ? "stickyMobile"
+        : "afterSchedule",
   }),
 );
 
@@ -294,7 +299,9 @@ assert.match(
 );
 for (const position of [
   "guide_body",
+  "guide_short_answer",
   "guide_sidebar",
+  "guide_mobile_sticky",
   "homepage_hero",
   "homepage_airport_highlight",
   "homepage_mobile_sticky",
@@ -602,13 +609,19 @@ function getHrefFromAnchorTag(tag) {
 }
 
 function getAffiliatePositionFromSubId(subId) {
+  const exactPosition = requiredAffiliatePositions.find((position) =>
+    subId.endsWith(`-${position}`),
+  );
+
+  if (exactPosition) {
+    return exactPosition;
+  }
+
   if (subId.includes("-guide_")) {
     return "guide_body";
   }
 
-  return requiredAffiliatePositions.find((position) =>
-    subId.endsWith(`-${position}`),
-  );
+  return undefined;
 }
 
 function escapeRegExp(value) {
