@@ -69,13 +69,13 @@ export const schedules: Schedule[] = [
       "22:00",
     ],
     nextDeparture: "05:00",
-    lastUpdated: "2026-06-25",
+    lastUpdated: "2026-06-30",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Roong Reuang Coach",
     sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
     sourceType: "official operator website",
-    lastVerified: "2026-06-25",
+    lastVerified: "2026-06-30",
     verificationStatus: "partially verified",
     fareNote:
       "Fares published by the operator: 148 THB from Ekkamai Bus Terminal and 158 THB from Mo Chit 2 Bus Terminal.",
@@ -92,7 +92,7 @@ export const schedules: Schedule[] = [
         sourceName: "Roong Reuang Coach",
         sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
         sourceType: "official operator website",
-        lastVerified: "2026-06-25",
+        lastVerified: "2026-06-30",
         verificationStatus: "partially verified",
         fareNote: "Fare published by the operator: 148 THB per seat.",
         operatorNote:
@@ -126,7 +126,7 @@ export const schedules: Schedule[] = [
         sourceName: "Roong Reuang Coach",
         sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
         sourceType: "official operator website",
-        lastVerified: "2026-06-25",
+        lastVerified: "2026-06-30",
         verificationStatus: "partially verified",
         fareNote: "Fare published by the operator: 158 THB per seat.",
         operatorNote:
@@ -179,13 +179,13 @@ export const schedules: Schedule[] = [
       "22:00",
     ],
     nextDeparture: "14:00",
-    lastUpdated: "2026-06-25",
+    lastUpdated: "2026-06-30",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Pattaya Bus / Roong Reuang Coach",
     sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
     sourceType: "official operator website",
-    lastVerified: "2026-06-25",
+    lastVerified: "2026-06-30",
     verificationStatus: "partially verified",
     fareNote:
       "Fares published by the operator: 158 THB to Mochit and 148 THB to Ekkamai per seat.",
@@ -202,7 +202,7 @@ export const schedules: Schedule[] = [
         sourceName: "Pattaya Bus / Roong Reuang Coach",
         sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
         sourceType: "official operator website",
-        lastVerified: "2026-06-25",
+        lastVerified: "2026-06-30",
         verificationStatus: "partially verified",
         fareNote: "Fare published by the operator: 158 THB per seat.",
         operatorNote:
@@ -232,7 +232,7 @@ export const schedules: Schedule[] = [
         sourceName: "Pattaya Bus / Roong Reuang Coach",
         sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
         sourceType: "official operator website",
-        lastVerified: "2026-06-25",
+        lastVerified: "2026-06-30",
         verificationStatus: "partially verified",
         fareNote: "Fare published by the operator: 148 THB per seat.",
         operatorNote:
@@ -276,13 +276,13 @@ export const schedules: Schedule[] = [
       "18:30",
     ],
     nextDeparture: "13:30",
-    lastUpdated: "2026-06-25",
+    lastUpdated: "2026-06-30",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Airport Pattaya Bus",
     sourceUrl: "https://airportpattayabus.com/airport-pattaya/",
     sourceType: "official operator website",
-    lastVerified: "2026-06-25",
+    lastVerified: "2026-06-30",
     verificationStatus: "partially verified",
     fareNote: "Fare published by the operator: 139 THB per seat.",
     boardingNote: "Buy ticket at counter service on Level 1, Gate 8.",
@@ -308,13 +308,13 @@ export const schedules: Schedule[] = [
       "21:00",
     ],
     nextDeparture: "14:00",
-    lastUpdated: "2026-06-25",
+    lastUpdated: "2026-06-30",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Airport Pattaya Bus",
     sourceUrl: "https://airportpattayabus.com/airport-pattaya/",
     sourceType: "official operator website",
-    lastVerified: "2026-06-25",
+    lastVerified: "2026-06-30",
     verificationStatus: "partially verified",
     fareNote: "Fare published by the operator: 162 THB per seat.",
     boardingNote:
@@ -333,14 +333,14 @@ export const schedules: Schedule[] = [
     price: "155 THB per person",
     departures: ["06:30", "10:30", "13:30", "17:30"],
     nextDeparture: "10:30",
-    lastUpdated: "2026-06-25",
+    lastUpdated: "2026-06-30",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Transport Co., Ltd. / Don Mueang Airport",
     sourceUrl:
       "https://donmueang.airportthai.co.th/service/transportation/detail/1290",
     sourceType: "official airport / operator transportation page",
-    lastVerified: "2026-06-25",
+    lastVerified: "2026-06-30",
     verificationStatus: "partially verified",
     fareNote:
       "Fare published by the airport transportation page: 155 THB per person.",
@@ -360,14 +360,14 @@ export const schedules: Schedule[] = [
     price: "Around 170 THB",
     departures: ["07:00", "10:00", "14:30", "17:00"],
     nextDeparture: "10:00",
-    lastUpdated: "2026-06-25",
+    lastUpdated: "2026-06-30",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Transport Co. via secondary sources",
     sourceUrl:
       "https://thailandlife.info/travel-from-pattaya-to-don-mueang-airport/",
     sourceType: "secondary booking / travel sources",
-    lastVerified: "2026-06-25",
+    lastVerified: "2026-06-30",
     verificationStatus: "partially verified",
     fareNote: "Secondary source fare shown: around 170 THB per person.",
     boardingNote:
