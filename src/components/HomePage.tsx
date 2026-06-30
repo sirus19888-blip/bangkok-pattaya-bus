@@ -414,6 +414,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "Godziny autobusów, ceny, stacje i praktyczne wskazówki dla Bangkoku, Pattayi oraz lotnisk Suvarnabhumi i Don Mueang.",
       findRoute: "Znajdź trasę",
+      guides: "Przewodniki",
       heroEasy: "łatwo",
       heroLineOne: "Podróżuj",
       heroLineTwo: "podróżuj",
@@ -481,6 +482,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "Время автобусов, цены, станции и практические советы для Бангкока, Паттайи, аэропорта Суварнабхуми и аэропорта Дон Муанг.",
       findRoute: "Найти маршрут",
+      guides: "Путеводители",
       heroEasy: "легко",
       heroLineOne: "Путешествуйте",
       heroLineTwo: "путешествуйте",
@@ -548,6 +550,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "Buszeiten, Preise, Stationen und praktische Reisetipps für Bangkok, Pattaya, den Flughafen Suvarnabhumi und den Flughafen Don Mueang.",
       findRoute: "Route finden",
+      guides: "Reiseführer",
       heroEasy: "einfach",
       heroLineOne: "Reise",
       heroLineTwo: "reise",
@@ -615,6 +618,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "เวลาเดินรถ ราคา สถานี และคำแนะนำที่เป็นประโยชน์สำหรับกรุงเทพฯ พัทยา ท่าอากาศยานสุวรรณภูมิ และท่าอากาศยานดอนเมือง",
       findRoute: "ค้นหาเส้นทาง",
+      guides: "คู่มือ",
       heroEasy: "ง่าย",
       heroLineOne: "เดินทาง",
       heroLineTwo: "เดินทาง",
@@ -681,6 +685,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "查看曼谷、芭提雅、素万那普机场和廊曼机场的巴士时间、票价、车站和实用出行提示。",
       findRoute: "查找路线",
+      guides: "指南",
       heroEasy: "旅行",
       heroLineOne: "聪明",
       heroLineTwo: "轻松",
@@ -747,6 +752,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
       desktopIntro:
         "Horaires de bus, prix, gares et conseils pratiques pour Bangkok, Pattaya, l’aéroport Suvarnabhumi et l’aéroport Don Mueang.",
       findRoute: "Trouver une route",
+      guides: "Guides",
       heroEasy: "facile",
       heroLineOne: "Voyagez",
       heroLineTwo: "voyagez",
@@ -813,6 +819,7 @@ function getMobileHomeCopy(locale: LocaleCode) {
     desktopIntro:
       "Bus times, prices, stations, and practical travel tips for Bangkok, Pattaya, Suvarnabhumi Airport, and Don Mueang Airport.",
     findRoute: "Find your route",
+    guides: "Guides",
       heroEasy: "easy",
       heroLineOne: "Travel",
       heroLineTwo: "travel",
@@ -1174,10 +1181,12 @@ function MobileHome({
           </ul>
         </section>
 
-        <TravelGuideLinks
-          className="mx-4 rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6"
-          locale={locale}
-        />
+        <div id="travel-guides" className="scroll-mt-6">
+          <TravelGuideLinks
+            className="mx-4 rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6"
+            locale={locale}
+          />
+        </div>
 
         <section className="mx-4 rounded-[1.5rem] border border-[#e8c986] bg-[#fff8ec] p-4 shadow-sm md:mx-0 md:mt-6 md:rounded-[2rem] md:p-6">
           <div className="flex items-center gap-3">
@@ -1480,18 +1489,26 @@ function MobileBottomNav({
   const items: {
     active?: boolean;
     href: string;
-    icon: "home" | "routes" | "airport" | "contact" | "support-coffee";
+    icon:
+      | "home"
+      | "routes"
+      | "airport"
+      | "contact"
+      | "support-coffee"
+      | "tips";
     label: string;
     target?: string;
   }[] = [
     { href: "#mobile-airports", icon: "airport", label: copy.airport },
     { href: "/contact", icon: "contact", label: copy.contact },
-    {
-      href: "https://www.buymeacoffee.com/Pawel_",
-      icon: "support-coffee",
-      label: copy.buyMeCoffee,
-      target: "_blank",
-    },
+    locale === "en"
+      ? { href: "#travel-guides", icon: "tips", label: copy.guides }
+      : {
+          href: "https://www.buymeacoffee.com/Pawel_",
+          icon: "support-coffee",
+          label: copy.buyMeCoffee,
+          target: "_blank",
+        },
   ];
   const airportOptions = [
     {
@@ -1591,7 +1608,13 @@ function MobileMiniFact({
 function MobileNavIcon({
   name,
 }: {
-  name: "home" | "routes" | "airport" | "contact" | "support-coffee";
+  name:
+    | "home"
+    | "routes"
+    | "airport"
+    | "contact"
+    | "support-coffee"
+    | "tips";
 }) {
   if (name === "support-coffee") {
     return <IconAsset name={name} size="navCoffee" />;
