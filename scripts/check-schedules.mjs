@@ -1,3 +1,4 @@
+import assert from "node:assert/strict";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
@@ -41,7 +42,17 @@ const routeProfiles = {
       "express bus",
       "don mueang airport - pattaya",
     ],
-    sourceReliability: "weak-context",
+    sourceReliability: "official-window-only",
+  },
+  "pattaya-to-don-mueang-airport": {
+    allowedMinutes: ["00", "30"],
+    contextKeywords: [
+      "pattaya to don mueang airport",
+      "bus times from pattaya to don mueang airport",
+      "transport co",
+      "pattaya don mueang airport ticket",
+    ],
+    sourceReliability: "secondary-source",
   },
 };
 
@@ -63,6 +74,11 @@ const sources = [
     name: "Don Mueang Airport transportation page",
     url: "https://donmueang.airportthai.co.th/service/transportation/detail/1290",
     routeIds: ["don-mueang-airport-to-pattaya"],
+  },
+  {
+    name: "ThailandLife Pattaya to Don Mueang Airport",
+    url: "https://thailandlife.info/travel-from-pattaya-to-don-mueang-airport/",
+    routeIds: ["pattaya-to-don-mueang-airport"],
   },
 ];
 
@@ -265,9 +281,12 @@ function extractAppSchedules(source) {
     const travelTime = objectText.match(/travelTime:\s*"([^"]+)"/)?.[1] ?? "";
     const price = objectText.match(/price:\s*"([^"]+)"/)?.[1] ?? "";
     const fareNote = objectText.match(/fareNote:\s*"([^"]+)"/)?.[1] ?? "";
+    const departureWindow =
+      objectText.match(/departureWindow:\s*"([^"]+)"/)?.[1] ?? "";
 
     schedules[routeId] = {
       times: uniqueSorted(departures),
+      departureWindow,
       fareText: [price, fareNote].filter(Boolean).join(" "),
       travelTime,
     };
@@ -531,6 +550,121 @@ function compareTravelTime({
   };
 }
 
+function textHas(text, pattern) {
+  return pattern.test(text);
+}
+
+function runManualSourceAssertions({ appSchedules, source, text }) {
+  if (source.name === "Don Mueang Airport transportation page") {
+    return assertDonMueangAirportToPattaya({ appSchedules, source, text });
+  }
+
+  if (source.name === "ThailandLife Pattaya to Don Mueang Airport") {
+    return assertPattayaToDonMueangAirport({ appSchedules, source, text });
+  }
+
+  return [];
+}
+
+function assertDonMueangAirportToPattaya({ appSchedules, source, text }) {
+  const routeId = "don-mueang-airport-to-pattaya";
+  const appSchedule = appSchedules[routeId];
+
+  assert.ok(appSchedule, `${routeId} must exist in app schedules.`);
+  assert.deepEqual(
+    appSchedule.times,
+    [],
+    `${routeId} must not publish exact departures when AOT only publishes a service window.`,
+  );
+  assert.equal(
+    appSchedule.departureWindow,
+    "06:30-17:30, every ~4h",
+    `${routeId} must show the AOT service window instead of invented exact times.`,
+  );
+  assert.ok(
+    textHas(
+      text,
+      /Route 1\)\s*Don Mueang Airport\s*-\s*Pattaya\s+from\s+6\.30\s*[-\u2013]\s*17\.30\s*hrs\.\s*\(Every 4 hours\)/i,
+    ),
+    `${source.name} must confirm the DMK-Pattaya service window.`,
+  );
+  assert.ok(
+    textHas(text, /Fare:\s*DMK\s*-\s*Pattaya\s*155\s*baht/i),
+    `${source.name} must confirm the 155 baht fare.`,
+  );
+  assert.ok(
+    textHas(
+      text,
+      /International Passenger Terminal,\s*Building 1,\s*Floor 1,\s*Gate 1/i,
+    ),
+    `${source.name} must confirm Terminal 1 Gate 1 counter.`,
+  );
+  assert.ok(
+    textHas(
+      text,
+      /Domestic Passenger Terminal,\s*Building 2,\s*Floor 1\s*Gate 11/i,
+    ),
+    `${source.name} must confirm Terminal 2 Gate 11 counter.`,
+  );
+  assert.ok(
+    textHas(text, /Pick-up point:\s*Service Hall Building/i),
+    `${source.name} must confirm Service Hall Building pick-up point.`,
+  );
+
+  return [
+    {
+      routeId,
+      strength: "weaker than RRC",
+      result: "match",
+      note:
+        "AOT confirms fare, counters, pick-up point, and a 06:30-17:30 service window about every 4 hours, but does not publish exact departure times.",
+    },
+  ];
+}
+
+function assertPattayaToDonMueangAirport({ appSchedules, source, text }) {
+  const routeId = "pattaya-to-don-mueang-airport";
+  const expectedDepartures = ["07:00", "10:00", "14:30", "17:00"];
+  const appSchedule = appSchedules[routeId];
+
+  assert.ok(appSchedule, `${routeId} must exist in app schedules.`);
+  assert.deepEqual(
+    appSchedule.times,
+    expectedDepartures,
+    `${routeId} app departures must match ThailandLife's four published departures.`,
+  );
+  assert.ok(
+    appSchedule.fareText.includes("170"),
+    `${routeId} app fare text must retain 170 THB.`,
+  );
+  assert.ok(
+    textHas(text, /There are currently 4 services a day/i),
+    `${source.name} must confirm four services a day.`,
+  );
+
+  for (const departure of expectedDepartures) {
+    assert.ok(
+      text.includes(departure),
+      `${source.name} must contain departure ${departure}.`,
+    );
+  }
+
+  assert.ok(
+    textHas(text, /(?:\u0e3f\s*170|170\s*THB|170\s*baht)/i),
+    `${source.name} must confirm the 170 THB fare.`,
+  );
+
+  return [
+    {
+      routeId,
+      strength: "secondary source",
+      result: "match",
+      note:
+        "ThailandLife confirms four Pattaya-DMK departures and 170 THB; this is a weaker source class than RRC official operator pages.",
+    },
+  ];
+}
+
 async function fetchSource(source) {
   const response = await fetch(source.url, {
     headers: {
@@ -566,6 +700,16 @@ function printSourceReport(result) {
     console.log("Status: fetch error");
     console.log(`Error: ${result.error}`);
     return;
+  }
+
+  if (result.manualAssertions.length > 0) {
+    console.log("Manual source assertions:");
+    for (const assertion of result.manualAssertions) {
+      console.log(
+        `  ${assertion.routeId}: ${assertion.result} (${assertion.strength})`,
+      );
+      console.log(`    ${assertion.note}`);
+    }
   }
 
   printTimes("Raw extracted times", result.rawExtractedTimes);
@@ -624,6 +768,7 @@ async function main() {
       rawExtractedTimes: [],
       rawExtractedFares: [],
       rawExtractedTravelTimes: [],
+      manualAssertions: [],
       routes: [],
     };
 
@@ -636,11 +781,17 @@ async function main() {
       sourceReport.rawExtractedTimes = rawExtractedTimes;
       sourceReport.rawExtractedFares = rawExtractedFares;
       sourceReport.rawExtractedTravelTimes = rawExtractedTravelTimes;
+      sourceReport.manualAssertions = runManualSourceAssertions({
+        appSchedules,
+        source,
+        text,
+      });
 
       sourceReport.routes = source.routeIds.map((routeId) => {
         const routeProfile = routeProfiles[routeId];
         const currentAppSchedule = appSchedules[routeId] ?? {
           times: [],
+          departureWindow: "",
           fareText: "",
           travelTime: "",
         };
@@ -698,6 +849,7 @@ async function main() {
           filteredTimes,
           ignoredTimes,
           currentAppTimes,
+          currentAppDepartureWindow: currentAppSchedule.departureWindow,
           timeResult: timeComparison.result,
           timeConfidence: timeComparison.confidence,
           timeNote: timeComparison.note,

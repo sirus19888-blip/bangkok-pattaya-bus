@@ -192,6 +192,7 @@
     },
     "don-mueang-airport-to-pattaya": {
       "travelTime": "约 3–3.5 小时",
+      "departureWindow": "06:30-17:30，约每 4 小时",
       "price": "每人 155 泰铢",
       "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
       "fareNote": "当前路线数据中的票价：每人 155 泰铢。",

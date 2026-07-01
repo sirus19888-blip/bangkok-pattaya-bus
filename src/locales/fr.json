@@ -167,6 +167,7 @@
     "don-mueang-airport-to-pattaya": {
       "boardingNote": "La page officielle de l'aéroport indique des comptoirs au Terminal 1, bâtiment 1, étage 1, porte 1 et au Terminal 2, bâtiment 2, étage 1, porte 11. Le point de prise en charge est le Service Hall Building.",
       "travelTime": "Environ 3 à 3,5 heures",
+      "departureWindow": "06:30-17:30, toutes les ~4 h",
       "price": "155 THB par personne",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
       "fareNote": "Tarif indiqué sur la page de transport de l'aéroport : 155 THB par personne.",

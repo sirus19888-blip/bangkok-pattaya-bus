@@ -131,6 +131,10 @@ export function ScheduleList({
                 />
               ))}
             </div>
+          ) : schedule.departureWindow ? (
+            <p className="mt-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-sm font-black leading-6 text-[#13233a] sm:mt-5 sm:p-4">
+              {schedule.departureWindow}
+            </p>
           ) : (
             <p className="mt-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-sm font-black leading-6 text-[#13233a] sm:mt-5 sm:p-4">
               {labels.needsOfficialConfirmationNotice}

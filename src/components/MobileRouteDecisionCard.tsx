@@ -59,6 +59,8 @@ export function MobileRouteDecisionCard({
   const departures = schedule.departures;
   const hasDepartures = departures.length > 0;
   const hasSubRoutes = Boolean(schedule.subRoutes?.length);
+  const nextDepartureDisplay =
+    schedule.departureWindow ?? calculatedNextDeparture.time;
   const scheduleStatusLabels = getUiTranslations(locale).scheduleStatus;
   const verificationStatus = getScheduleStatusLabel(
     schedule.verificationStatus,
@@ -66,6 +68,11 @@ export function MobileRouteDecisionCard({
   );
 
   useEffect(() => {
+    if (schedule.departureWindow) {
+      setMinutesUntilDeparture(null);
+      return;
+    }
+
     function updateCountdown() {
       setMinutesUntilDeparture(
         getMinutesUntilDeparture(
@@ -79,7 +86,11 @@ export function MobileRouteDecisionCard({
     const intervalId = window.setInterval(updateCountdown, 30_000);
 
     return () => window.clearInterval(intervalId);
-  }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
+  }, [
+    calculatedNextDeparture.isTomorrow,
+    calculatedNextDeparture.time,
+    schedule.departureWindow,
+  ]);
 
   function handleShowDeparturesClick(
     event: React.MouseEvent<HTMLAnchorElement>,
@@ -120,12 +131,18 @@ export function MobileRouteDecisionCard({
         <p className="text-xs font-bold text-[#4f5d6c]">
           {labels.timeZoneNote}
         </p>
-        <p className="mt-1 text-4xl font-black leading-none text-[#13233a] md:text-5xl">
+        <p
+          className={`mt-1 font-black text-[#13233a] ${
+            schedule.departureWindow
+              ? "text-xl leading-tight md:text-2xl"
+              : "text-4xl leading-none md:text-5xl"
+          }`}
+        >
           <span data-next-bus-hero={calculatedNextDeparture.time}>
-            {calculatedNextDeparture.time}
+            {nextDepartureDisplay}
           </span>
         </p>
-        {countdownText ? (
+        {countdownText && !schedule.departureWindow ? (
           <div className="mt-2 rounded-xl border border-[#13233a]/10 bg-[#13233a] px-3 py-2 text-white shadow-sm">
             <span className="block text-[0.62rem] font-black uppercase tracking-wide text-[#f3d77b]">
               {labels.remainingTime}
@@ -139,7 +156,7 @@ export function MobileRouteDecisionCard({
             </span>
           </div>
         ) : null}
-        {calculatedNextDeparture.isTomorrow ? (
+        {calculatedNextDeparture.isTomorrow && !schedule.departureWindow ? (
           <p className="mt-2 text-sm font-black text-[#4f5d6c]">
             {labels.nextServiceTomorrow}
           </p>
@@ -233,7 +250,7 @@ export function MobileRouteDecisionCard({
           })
         ) : (
           <p className="col-span-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-sm font-black leading-5 text-[#13233a]">
-            {calculatedNextDeparture.time}
+            {nextDepartureDisplay}
           </p>
         )}
       </div>
@@ -315,7 +332,15 @@ export function DesktopRouteBookingPanel({
     minutesUntilDeparture > 0 &&
     minutesUntilDeparture <= 15;
 
+  const nextDepartureDisplay =
+    schedule.departureWindow ?? calculatedNextDeparture.time;
+
   useEffect(() => {
+    if (schedule.departureWindow) {
+      setMinutesUntilDeparture(null);
+      return;
+    }
+
     function updateCountdown() {
       setMinutesUntilDeparture(
         getMinutesUntilDeparture(
@@ -329,7 +354,11 @@ export function DesktopRouteBookingPanel({
     const intervalId = window.setInterval(updateCountdown, 30_000);
 
     return () => window.clearInterval(intervalId);
-  }, [calculatedNextDeparture.isTomorrow, calculatedNextDeparture.time]);
+  }, [
+    calculatedNextDeparture.isTomorrow,
+    calculatedNextDeparture.time,
+    schedule.departureWindow,
+  ]);
 
   return (
     <div
@@ -351,19 +380,25 @@ export function DesktopRouteBookingPanel({
             <p className="text-xs font-black uppercase tracking-wide text-[#2f6f93]">
               {labels.title.replace(":", "")}
             </p>
-            <p className="mt-1 text-5xl font-black leading-none text-[#13233a]">
+            <p
+              className={`mt-1 font-black text-[#13233a] ${
+                schedule.departureWindow
+                  ? "text-2xl leading-tight"
+                  : "text-5xl leading-none"
+              }`}
+            >
               <span data-next-bus-sidebar={calculatedNextDeparture.time}>
-                {calculatedNextDeparture.time}
+                {nextDepartureDisplay}
               </span>
             </p>
           </div>
-          {calculatedNextDeparture.isTomorrow ? (
+          {calculatedNextDeparture.isTomorrow && !schedule.departureWindow ? (
             <p className="rounded-xl bg-white px-3 py-2 text-xs font-black text-[#4f5d6c]">
               {labels.nextServiceTomorrow}
             </p>
           ) : null}
         </div>
-        {countdownText ? (
+        {countdownText && !schedule.departureWindow ? (
           <div className="mt-4 rounded-xl border border-[#13233a]/10 bg-[#13233a] px-3 py-2 text-white shadow-sm">
             <span className="block text-[0.62rem] font-black uppercase tracking-wide text-[#f3d77b]">
               {labels.remainingTime}

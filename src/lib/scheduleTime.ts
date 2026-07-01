@@ -13,6 +13,7 @@ export type NextDepartureResult = {
 export type RouteScheduleInput = Schedule | string[];
 
 const DEFAULT_TIMEZONE = "Asia/Bangkok";
+const TIME_PATTERN = /^([01]?\d|2[0-3]):([0-5]\d)$/;
 
 function createTimeFormatter(timezone: string) {
   return new Intl.DateTimeFormat("en-GB", {
@@ -24,6 +25,10 @@ function createTimeFormatter(timezone: string) {
 }
 
 export function timeToMinutes(time: string) {
+  if (!TIME_PATTERN.test(time)) {
+    return Number.NaN;
+  }
+
   const [hours, minutes] = time.split(":").map(Number);
 
   return hours * 60 + minutes;
@@ -31,7 +36,9 @@ export function timeToMinutes(time: string) {
 
 function getRouteDepartures(schedule: RouteScheduleInput) {
   if (Array.isArray(schedule)) {
-    return Array.from(new Set(schedule)).sort(
+    return Array.from(
+      new Set(schedule.filter((departure) => TIME_PATTERN.test(departure))),
+    ).sort(
       (first, second) => timeToMinutes(first) - timeToMinutes(second),
     );
   }
@@ -40,7 +47,9 @@ function getRouteDepartures(schedule: RouteScheduleInput) {
     ? schedule.subRoutes.flatMap((subRoute) => subRoute.departures)
     : schedule.departures;
 
-  return Array.from(new Set(departures)).sort(
+  return Array.from(
+    new Set(departures.filter((departure) => TIME_PATTERN.test(departure))),
+  ).sort(
     (first, second) => timeToMinutes(first) - timeToMinutes(second),
   );
 }
@@ -135,7 +144,7 @@ export function getMinutesUntilDeparture(
   now = new Date(),
   timezone = DEFAULT_TIMEZONE,
 ) {
-  if (!departure) {
+  if (!TIME_PATTERN.test(departure)) {
     return null;
   }
 

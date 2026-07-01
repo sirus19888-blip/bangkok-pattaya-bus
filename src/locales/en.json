@@ -159,6 +159,7 @@
     },
     "don-mueang-airport-to-pattaya": {
       "travelTime": "Around 3-3.5 hours",
+      "departureWindow": "06:30-17:30, every ~4h",
       "price": "155 THB per person",
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
       "boardingNote": "The official airport page lists service counters at Terminal 1, Building 1, Floor 1, Gate 1 and Terminal 2, Building 2, Floor 1, Gate 11. The pick-up point is Service Hall Building."

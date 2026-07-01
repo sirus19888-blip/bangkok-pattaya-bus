@@ -179,6 +179,7 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
   const sourceText = scheduleText as {
     boardingNote?: string;
     dataQuality?: string;
+    departureWindow?: string;
     fareNote?: string;
     operatorNote?: string;
     sourceName?: string;
@@ -330,6 +331,7 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
       : isRussian
         ? schedule.distance.replace("km", "км")
         : schedule.distance,
+    departureWindow: sourceText.departureWindow ?? schedule.departureWindow,
     travelTime: scheduleText.travelTime,
     price: getLocalizedSchedulePrice(schedule.id, t, schedule.price),
     disclaimer: scheduleText.disclaimer,

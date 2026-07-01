@@ -138,7 +138,17 @@ function extractHeroTravelTime(html) {
     };
   }
 
-  return extractSingleHourValue(visibleText(bookingPanel), "hero/sidebar");
+  return extractSingleHourValue(
+    visibleText(stripNextBusElements(bookingPanel)),
+    "hero/sidebar",
+  );
+}
+
+function stripNextBusElements(html) {
+  return html.replace(
+    /<span\b[^>]*\bdata-next-bus-(?:sidebar|hero)\b[^>]*>[\s\S]*?<\/span>/gi,
+    "",
+  );
 }
 
 function extractFaqTravelTime(html) {

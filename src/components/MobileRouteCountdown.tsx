@@ -46,9 +46,16 @@ export function MobileRouteCountdown({
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
     number | null
   >(null);
+  const nextDepartureDisplay =
+    schedule?.departureWindow ?? nextDeparture.time;
 
   useEffect(() => {
     if (!schedule) {
+      return;
+    }
+
+    if (schedule.departureWindow) {
+      setMinutesUntilDeparture(null);
       return;
     }
 
@@ -82,7 +89,7 @@ export function MobileRouteCountdown({
             {labels.nextBus}
           </span>
           <span className="mt-0.5 block text-base font-black leading-tight text-[#13233a]">
-            {nextDeparture.time}
+            {nextDepartureDisplay}
           </span>
         </span>
         <span>

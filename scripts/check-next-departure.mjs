@@ -195,6 +195,15 @@ for (const routeId of routeIds) {
       `${routeId} ${label}: hero and sidebar must share one next departure.`,
     );
 
+    if (routeSchedule.departures.length === 0) {
+      assert.deepEqual(
+        scheduleGridNextDepartures,
+        [],
+        `${routeId} ${label}: route without exact departures must not mark a next bus chip.`,
+      );
+      continue;
+    }
+
     if (nextDeparture.isTomorrow) {
       assert.deepEqual(
         scheduleGridNextDepartures,

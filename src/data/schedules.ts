@@ -34,6 +34,7 @@ export type Schedule = {
   travelTime: string;
   price: string;
   departures: string[];
+  departureWindow?: string;
   nextDeparture: string;
   lastUpdated: string;
   disclaimer: string;
@@ -331,8 +332,9 @@ export const schedules: Schedule[] = [
     distance: "155 km",
     travelTime: "Around 3-3.5 hours",
     price: "155 THB per person",
-    departures: ["06:30", "10:30", "13:30", "17:30"],
-    nextDeparture: "10:30",
+    departures: [],
+    departureWindow: "06:30-17:30, every ~4h",
+    nextDeparture: "",
     lastUpdated: "2026-07-01",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
@@ -347,8 +349,9 @@ export const schedules: Schedule[] = [
     boardingNote:
       "The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building.",
     operatorNote:
-      "Official airport information confirms the route, fare, and service window. Exact departure times should still be confirmed before travel.",
-    dataQuality: "Official airport source, manually verified",
+      "Official airport information confirms the route, fare, service counters, pick-up point, and service window from 06:30 to 17:30 about every 4 hours, but does not publish exact departure times.",
+    dataQuality:
+      "Official airport source, manually verified for fare, counters, pick-up point, and service window; exact departure times are not published by the official source.",
   },
   {
     id: "pattaya-to-don-mueang-airport",
