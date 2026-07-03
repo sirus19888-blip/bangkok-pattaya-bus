@@ -11,6 +11,7 @@ import {
 import { getScheduleByRoute } from "@/data/schedules";
 import { getSeoGuide, seoGuides } from "@/data/seoGuides";
 import { stations } from "@/data/stations";
+import { getGuideLocales, isGuideTranslated } from "@/data/translatedGuides";
 import {
   getTranslations,
   localizeRoutePage,
@@ -67,15 +68,25 @@ export async function generateMetadata({
     : undefined;
 
   if (guide) {
+    const guideCanonical = isGuideTranslated(guide.slug, locale)
+      ? routeUrl(locale, guide.slug)
+      : routeUrl("en", guide.slug);
+    const guideLanguages = {
+      "x-default": routeUrl("en", guide.slug),
+      ...Object.fromEntries(
+        getGuideLocales(guide.slug).map((guideLocale) => [
+          guideLocale,
+          routeUrl(guideLocale, guide.slug),
+        ]),
+      ),
+    };
+
     return {
       title: guide.title,
       description: guide.description,
       alternates: {
-        canonical: routeUrl("en", guide.slug),
-        languages: {
-          "x-default": routeUrl("en", guide.slug),
-          en: routeUrl("en", guide.slug),
-        },
+        canonical: guideCanonical,
+        languages: guideLanguages,
       },
       openGraph: {
         title: guide.title,

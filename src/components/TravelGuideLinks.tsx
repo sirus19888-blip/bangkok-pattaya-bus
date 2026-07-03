@@ -4,6 +4,7 @@ import {
   getHomepageSeoGuideLinks,
   getSeoGuideLinksForRoute,
 } from "@/data/seoGuideLinks";
+import { isGuideTranslated } from "@/data/translatedGuides";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
 type TravelGuideLinksProps = {
@@ -32,7 +33,6 @@ export function TravelGuideLinks({
   const heading = routeId
     ? guideLinks.routeHeading
     : guideLinks.homepageHeading;
-  const showEnglishBadge = locale !== "en";
 
   return (
     <section
@@ -52,26 +52,35 @@ export function TravelGuideLinks({
         </div>
       </div>
       <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {guides.map((guide) => (
-          <li key={guide.slug}>
-            <Link
-              className="block h-full rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 transition hover:border-[#e8b05a] hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a] focus-visible:ring-offset-2"
-              href={guide.href}
-            >
-              <span className="block text-sm font-black leading-tight text-[#13233a]">
-                {guide.title}
-              </span>
-              {showEnglishBadge ? (
-                <span className="mt-2 inline-flex rounded-full bg-[#fff8ec] px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wide text-[#8a5b12]">
-                  {guideLinks.inEnglishBadge}
+        {guides.map((guide) => {
+          const translated = isGuideTranslated(guide.slug, locale);
+          const href =
+            translated && locale !== "en"
+              ? `/${locale}/${guide.slug}`
+              : guide.href;
+          const showEnglishBadge = locale !== "en" && !translated;
+
+          return (
+            <li key={guide.slug}>
+              <Link
+                className="block h-full rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4 transition hover:border-[#e8b05a] hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a] focus-visible:ring-offset-2"
+                href={href}
+              >
+                <span className="block text-sm font-black leading-tight text-[#13233a]">
+                  {guide.title}
                 </span>
-              ) : null}
-              <span className="mt-2 block text-xs font-semibold leading-5 text-[#5f6874]">
-                {guide.description}
-              </span>
-            </Link>
-          </li>
-        ))}
+                {showEnglishBadge ? (
+                  <span className="mt-2 inline-flex rounded-full bg-[#fff8ec] px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wide text-[#8a5b12]">
+                    {guideLinks.inEnglishBadge}
+                  </span>
+                ) : null}
+                <span className="mt-2 block text-xs font-semibold leading-5 text-[#5f6874]">
+                  {guide.description}
+                </span>
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );
