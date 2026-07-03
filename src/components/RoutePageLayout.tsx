@@ -11,9 +11,6 @@ import { RouteCommercialBlocks } from "@/components/RouteCommercialBlocks";
 import { RouteJsonLd } from "@/components/RouteJsonLd";
 import { StationCard } from "@/components/StationCard";
 import { TravelerFeedback } from "@/components/TravelerFeedback";
-import {
-  getTwelveGoVariantLabel,
-} from "@/components/TwelveGoAffiliateButton";
 import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
 import {
   TravelDateField,
@@ -78,10 +75,11 @@ export function RoutePageLayout({
     uiText.report,
     routePage.title,
   );
-  const mobileAffiliateLabel = getTwelveGoVariantLabel(
-    "stickyMobile",
-    locale,
+  const bookFromLabel = uiText.affiliate.variantLabels.bookFromPrice.replace(
+    "{price}",
+    schedule.fromPrice,
   );
+  const stickyAffiliateAriaLabel = `${uiText.affiliate.variantLabels.stickyMobile}: ${bookFromLabel}`;
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] pb-40 text-[#13233a] lg:pb-0">
@@ -112,7 +110,7 @@ export function RoutePageLayout({
               data-visual-qa="route-main-content"
             >
               <MobileRouteDecisionCard
-                affiliateLabel={mobileAffiliateLabel}
+                affiliateLabel={bookFromLabel}
                 distance={schedule.distance}
                 locale={locale}
                 routeId={routePage.slug}
@@ -175,7 +173,7 @@ export function RoutePageLayout({
               data-visual-qa="affiliate-sidebar-shell"
             >
               <DesktopRouteBookingPanel
-                affiliateLabel={uiText.affiliate.variantLabels.checkAvailability}
+                affiliateLabel={bookFromLabel}
                 compareAlternativesLabel={
                   uiText.affiliate.variantLabels.compareAlternatives
                 }
@@ -196,7 +194,8 @@ export function RoutePageLayout({
           </div>
         </section>
         <MobileRouteBookingBar
-          affiliateLabel={mobileAffiliateLabel}
+          affiliateAriaLabel={stickyAffiliateAriaLabel}
+          affiliateLabel={bookFromLabel}
           locale={locale}
           routeId={routePage.slug}
         />
@@ -244,10 +243,12 @@ function MobileDetailsSection({
 }
 
 function MobileRouteBookingBar({
+  affiliateAriaLabel,
   affiliateLabel,
   locale,
   routeId,
 }: {
+  affiliateAriaLabel: string;
   affiliateLabel: string;
   locale: LocaleCode;
   routeId: RouteId;
@@ -268,6 +269,7 @@ function MobileRouteBookingBar({
         locale={locale}
       />
       <TravelDateAwareTwelveGoAffiliateButton
+        ariaLabel={affiliateAriaLabel}
         ctaPosition="mobile_sticky"
         disclosureMode="none"
         label={affiliateLabel}

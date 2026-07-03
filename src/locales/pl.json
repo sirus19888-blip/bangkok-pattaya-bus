@@ -377,6 +377,22 @@
       {
         "question": "Czy godziny autobusów Bangkok Pattaya są stałe?",
         "answer": "Godziny są oparte na opublikowanych informacjach operatora, ale mogą się zmieniać. Potwierdź rozkład przed podróżą."
+      },
+      {
+        "question": "Ile bagażu mogę zabrać do autobusu z Bangkoku do Pattai?",
+        "answer": "Standardowe autokary mają luk bagażowy pod pojazdem i większość podróżnych zabiera walizkę oraz bagaż podręczny bez dodatkowej opłaty. Wartościowe rzeczy, dokumenty i elektronikę trzymaj przy sobie w kabinie. Jeśli masz ponadwymiarowy bagaż, potwierdź to w kasie przed wejściem na pokład."
+      },
+      {
+        "question": "Czy bilet na autobus Bangkok–Pattaya mogę zapłacić kartą, czy potrzebuję gotówki?",
+        "answer": "W kasie na dworcu miej przygotowaną gotówkę w bahtach, bo akceptacja kart bywa różna w zależności od terminalu i pory dnia. Jeśli wolisz zapłacić kartą z wyprzedzeniem i zarezerwować miejsce, możesz kupić bilet online przed wyjazdem."
+      },
+      {
+        "question": "Jak dostać się do hotelu po przyjeździe na dworzec North Pattaya?",
+        "answer": "Z dworca North Pattaya większość podróżnych jedzie dalej songthaewem (współdzieloną taksówką-pickupem), taksówką, Grabem, Boltem albo transferem hotelowym. Ustal cenę przed wsiadaniem, zwłaszcza gdy songthaew jedzie jako kurs prywatny. Jeśli mieszkasz w Jomtien lub centrum Pattai, sprawdź kierunek przed wyruszeniem."
+      },
+      {
+        "question": "Co zrobić, jeśli spóźnię się na ostatni autobus do Pattai?",
+        "answer": "Po ostatnim planowym autobusie realne opcje to zwykle taksówka, prywatny transfer albo wyjazd następnego dnia rano. Jeśli masz sztywną godzinę przyjazdu lub podróżujesz nocą, porównanie prywatnego transferu z wyprzedzeniem bywa najłatwiejszym rozwiązaniem. Zawsze ustal cenę i miejsce odbioru przed wyjazdem."
       }
     ],
     "pattaya-to-bangkok": [

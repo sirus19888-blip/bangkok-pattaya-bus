@@ -33,6 +33,7 @@ export type Schedule = {
   distance: string;
   travelTime: string;
   price: string;
+  fromPrice: string;
   departures: string[];
   departureWindow?: string;
   nextDeparture: string;
@@ -51,6 +52,7 @@ export const schedules: Schedule[] = [
     distance: "150 km",
     travelTime: "Around 2-3 hours, depending on traffic",
     price: "148-158 THB per seat (depends on terminal)",
+    fromPrice: "148 THB",
     departures: [
       "05:00",
       "06:00",
@@ -160,6 +162,7 @@ export const schedules: Schedule[] = [
     distance: "150 km",
     travelTime: "Around 2-3 hours",
     price: "148-158 THB per seat",
+    fromPrice: "148 THB",
     departures: [
       "04:30",
       "05:00",
@@ -267,6 +270,7 @@ export const schedules: Schedule[] = [
     distance: "120 km",
     travelTime: "Around 2 hours",
     price: "139 THB per seat",
+    fromPrice: "139 THB",
     departures: [
       "07:30",
       "09:30",
@@ -299,6 +303,7 @@ export const schedules: Schedule[] = [
     distance: "120 km",
     travelTime: "Around 2 hours, depending on traffic",
     price: "162 THB per seat",
+    fromPrice: "162 THB",
     departures: [
       "08:00",
       "10:00",
@@ -332,6 +337,7 @@ export const schedules: Schedule[] = [
     distance: "155 km",
     travelTime: "Around 3-3.5 hours",
     price: "155 THB per person",
+    fromPrice: "155 THB",
     departures: [],
     departureWindow: "06:30-17:30, every ~4h",
     nextDeparture: "",
@@ -361,6 +367,7 @@ export const schedules: Schedule[] = [
     distance: "155 km",
     travelTime: "Around 3-3.5 hours",
     price: "Around 170 THB",
+    fromPrice: "170 THB",
     departures: ["07:00", "10:00", "14:30", "17:00"],
     nextDeparture: "10:00",
     lastUpdated: "2026-07-01",

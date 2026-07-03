@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HomePage } from "@/components/HomePage";
+import { homeSeoMetadata } from "@/data/homeSeo";
 import {
   isSupportedLocale,
   supportedLocaleCodes,
   type LocaleCode,
 } from "@/data/routes";
-import { getTranslations } from "@/lib/i18n";
 import { absoluteUrl } from "@/lib/site";
 
 type LocaleHomeProps = {
@@ -36,7 +36,7 @@ export async function generateMetadata({
     };
   }
 
-  const t = getTranslations(locale);
+  const seo = homeSeoMetadata[locale];
   const languages = Object.fromEntries(
     supportedLocaleCodes.map((localeCode) => [
       localeCode,
@@ -45,14 +45,8 @@ export async function generateMetadata({
   );
 
   return {
-    title:
-      locale === "en"
-        ? "Bangkok Pattaya Bus Guide - Bus Times, Prices & Stations"
-        : `${t.app.brandPrimary} - ${t.app.brandSecondary}`,
-    description:
-      locale === "en"
-        ? "Check Bangkok to Pattaya, Pattaya to Bangkok, and airport bus times, ticket prices, travel time, stations, and practical travel tips."
-        : t.disclaimer.text,
+    title: seo.title,
+    description: seo.description,
     alternates: {
       canonical: homeUrl(locale),
       languages: {

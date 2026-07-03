@@ -7,6 +7,7 @@ type AffiliateVariantLabels = {
   afterFaq: string;
   checkAvailability: string;
   compareAlternatives: string;
+  bookFromPrice: string;
   homepageCardCta: string;
   homepageCardAria: string;
   sidebarTitle: string;
@@ -55,6 +56,13 @@ type UiTranslations = {
     contact: string;
     privacy: string;
   };
+  guideLinks: {
+    homepageEyebrow: string;
+    homepageHeading: string;
+    routeEyebrow: string;
+    routeHeading: string;
+    inEnglishBadge: string;
+  };
   homepageRevenue: {
     title: string;
     heading: string;
@@ -90,6 +98,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         afterFaq: "Compare tickets and alternatives",
         checkAvailability: "Check availability",
         compareAlternatives: "Compare alternatives",
+        bookFromPrice: "Book from {price}",
         homepageCardCta: "Check tickets",
         homepageCardAria: "Compare tickets on 12Go",
         sidebarTitle: "Check tickets for this route",
@@ -112,15 +121,15 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       busFullTitle: "What if the bus is full?",
       busFullBody:
         "Popular departures can sell out around weekends, holidays, and late afternoon travel. If the next bus is full, ask at the counter for the following departure and compare bookable alternatives before you move to another station.",
-      busFullCta: "Compare tickets and alternatives",
+      busFullCta: "Check today's seat availability",
       afterLastTitle: "After the last bus",
       afterLastBody:
         "After the last scheduled bus, your realistic choices are usually a taxi, private transfer, or waiting until the next morning. For airport routes, avoid relying on the final bus before a flight and compare alternatives early.",
-      afterLastCta: "Check alternatives",
+      afterLastCta: "See night travel options",
       compareTitle: "Bus vs taxi vs private transfer",
       compareBody:
         "The bus is the cheapest option but the slowest. A shared van is a faster mid-price choice. A private transfer is the quickest and most comfortable - door to door with no terminal, no waiting, and room for luggage - which makes it the easiest option for early or late flights and group travel. A metered taxi works on demand but usually costs the most. Always confirm the final price, pickup point, and luggage space before you go.",
-      compareCta: "Compare route options",
+      compareCta: "Compare transfer prices",
       returnTitle: "Return route",
       returnBody:
         "Planning the way back now can save time later. Check the return route, station notes, first and last departures, and whether your destination in Bangkok is Ekkamai, Mo Chit, Suvarnabhumi, or Don Mueang.",
@@ -139,6 +148,13 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "About",
       contact: "Contact",
       privacy: "Privacy",
+    },
+    guideLinks: {
+      homepageEyebrow: "Travel guides",
+      homepageHeading: "Practical Bangkok and Pattaya guides",
+      routeEyebrow: "Popular travel guides",
+      routeHeading: "Helpful guides for this route",
+      inEnglishBadge: "In English",
     },
     homepageRevenue: {
       title: "Need a ticket today?",
@@ -173,6 +189,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         afterFaq: "Porównaj bilety i alternatywy",
         checkAvailability: "Sprawdź dostępność",
         compareAlternatives: "Porównaj alternatywy",
+        bookFromPrice: "Rezerwuj od {price}",
         homepageCardCta: "Sprawdź bilety",
         homepageCardAria: "Porównaj bilety w 12Go",
         sidebarTitle: "Sprawdź bilety na tę trasę",
@@ -195,20 +212,28 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       busFullTitle: "Co jeśli autobus jest pełny?",
       busFullBody:
         "Popularne kursy mogą się wyprzedać w weekendy, święta i późnym popołudniem. Jeśli najbliższy autobus jest pełny, zapytaj w kasie o kolejny kurs i porównaj dostępne alternatywy przed zmianą dworca.",
-      busFullCta: "Porównaj bilety i alternatywy",
+      busFullCta: "Sprawdź wolne miejsca na dziś",
       afterLastTitle: "Po ostatnim autobusie",
       afterLastBody:
         "Po ostatnim planowym autobusie realne opcje to zwykle taxi, prywatny transfer albo wyjazd następnego dnia rano. Na trasach lotniskowych nie opieraj planu na ostatnim autobusie przed lotem.",
-      afterLastCta: "Sprawdź alternatywy",
+      afterLastCta: "Zobacz nocne opcje podróży",
       compareTitle: "Autobus, taxi czy prywatny transfer",
       compareBody:
-        "Autobus jest zwykle najtańszy. Taxi i prywatny transfer kosztują więcej, ale są wygodniejsze z bagażem, przy późnym przylocie albo przy przejeździe hotel-hotel. Zawsze potwierdź cenę, opłaty drogowe i miejsce odbioru.",
-      compareCta: "Porównaj opcje trasy",
+        "Autobus jest najtańszy, ale najwolniejszy. Współdzielony bus (van) to szybszy wybór w średniej cenie. Transfer prywatny jest najszybszy i najwygodniejszy — od drzwi do drzwi, bez dworca, bez czekania i z miejscem na bagaż — co czyni go najłatwiejszą opcją przy wczesnych lub późnych lotach oraz podróży grupowej. Taksówka z licznikiem działa na żądanie, ale zwykle kosztuje najwięcej. Zawsze przed wyjazdem potwierdź cenę końcową, miejsce odbioru i miejsce na bagaż.",
+      compareCta: "Porównaj ceny transferów",
       returnTitle: "Trasa powrotna",
       returnBody:
         "Zaplanowanie powrotu z wyprzedzeniem oszczędza czas. Sprawdź trasę powrotną, stacje, pierwszy i ostatni odjazd oraz czy jedziesz do Ekkamai, Mo Chit, Suvarnabhumi czy Don Mueang.",
       returnRoutePrefix: "Zobacz",
       viewAllRoutes: "Zobacz wszystkie trasy",
+      airportTransferTitle: "Transfer prywatny lub bus — od drzwi do drzwi",
+      airportTransferBody:
+        "Pomiń terminal: prywatny samochód lub bus zawiezie Cię prosto z lotniska do hotelu w Pattayi. Najlepsze przy bagażu, późnych lotach lub podróży w grupie.",
+      airportTransferCta: "Sprawdź ceny i dostępność",
+      cityTransferTitle: "Transfer prywatny lub bus — od drzwi do drzwi",
+      cityTransferBody:
+        "Pomiń dworzec autobusowy: prywatny samochód lub bus zawiezie Cię prosto do hotelu. Najlepsze przy bagażu, w grupie lub przy sztywnym planie.",
+      cityTransferCta: "Sprawdź ceny i dostępność",
     },
     footer: {
       title: "Bangkok Pattaya Bus Guide",
@@ -216,6 +241,13 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "O stronie",
       contact: "Kontakt",
       privacy: "Prywatność",
+    },
+    guideLinks: {
+      homepageEyebrow: "Przewodniki",
+      homepageHeading: "Praktyczne przewodniki po Bangkoku i Pattayi",
+      routeEyebrow: "Popularne przewodniki",
+      routeHeading: "Pomocne przewodniki dla tej trasy",
+      inEnglishBadge: "Po angielsku",
     },
     homepageRevenue: {
       title: "Potrzebujesz biletu na dziś?",
@@ -250,6 +282,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         afterFaq: "Tickets und Alternativen vergleichen",
         checkAvailability: "Verfügbarkeit prüfen",
         compareAlternatives: "Alternativen vergleichen",
+        bookFromPrice: "Ab {price} buchen",
         homepageCardCta: "Tickets prüfen",
         homepageCardAria: "Tickets auf 12Go vergleichen",
         sidebarTitle: "Tickets für diese Route prüfen",
@@ -272,20 +305,28 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       busFullTitle: "Was, wenn der Bus voll ist?",
       busFullBody:
         "Beliebte Abfahrten können an Wochenenden, Feiertagen und am späten Nachmittag ausverkauft sein. Wenn der nächste Bus voll ist, fragen Sie am Schalter nach der nächsten Abfahrt und vergleichen Sie buchbare Alternativen.",
-      busFullCta: "Tickets und Alternativen vergleichen",
+      busFullCta: "Freie Plätze heute prüfen",
       afterLastTitle: "Nach dem letzten Bus",
       afterLastBody:
         "Nach dem letzten Linienbus bleiben meist Taxi, privater Transfer oder die Fahrt am nächsten Morgen. Bei Flughafenrouten sollten Sie nicht auf den letzten Bus vor dem Flug setzen.",
-      afterLastCta: "Alternativen prüfen",
+      afterLastCta: "Nächtliche Reiseoptionen ansehen",
       compareTitle: "Bus, Taxi oder privater Transfer",
       compareBody:
-        "Der Bus ist meist am günstigsten. Taxi und privater Transfer kosten mehr, sind aber mit Gepäck, später Ankunft oder Hotel-zu-Hotel-Fahrten einfacher. Bestätigen Sie Preis, Maut, Abholpunkt und Gepäckplatz.",
-      compareCta: "Routenoptionen vergleichen",
+        "Der Bus ist am günstigsten, aber am langsamsten. Ein geteilter Van ist eine schnellere Option zum mittleren Preis. Ein privater Transfer ist am schnellsten und bequemsten - von Tür zu Tür, ohne Terminal, ohne Warten und mit Platz für Gepäck - und damit die einfachste Wahl bei frühen oder späten Flügen und für Gruppen. Ein Taxi mit Taxameter fährt auf Abruf, kostet aber meist am meisten. Bestätigen Sie vor der Fahrt immer den Endpreis, den Abholpunkt und den Gepäckplatz.",
+      compareCta: "Transferpreise vergleichen",
       returnTitle: "Rückroute",
       returnBody:
         "Wenn Sie die Rückfahrt früh planen, sparen Sie später Zeit. Prüfen Sie Rückroute, Stationshinweise, erste und letzte Abfahrt und ob Ihr Ziel Ekkamai, Mo Chit, Suvarnabhumi oder Don Mueang ist.",
       returnRoutePrefix: "Ansehen:",
       viewAllRoutes: "Alle Routen anzeigen",
+      airportTransferTitle: "Privater Transfer oder Van - von Tür zu Tür",
+      airportTransferBody:
+        "Sparen Sie sich das Terminal: Ein privates Auto oder ein Van bringt Sie direkt vom Flughafen zu Ihrem Hotel in Pattaya. Ideal mit Gepäck, bei späten Flügen oder in der Gruppe.",
+      airportTransferCta: "Preise & Verfügbarkeit prüfen",
+      cityTransferTitle: "Privater Transfer oder Van - von Tür zu Tür",
+      cityTransferBody:
+        "Sparen Sie sich den Busbahnhof: Ein privates Auto oder ein Van bringt Sie direkt zu Ihrem Hotel. Ideal mit Gepäck, in der Gruppe oder bei festem Zeitplan.",
+      cityTransferCta: "Preise & Verfügbarkeit prüfen",
     },
     footer: {
       title: "Bangkok Pattaya Bus Guide",
@@ -293,6 +334,13 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "Über uns",
       contact: "Kontakt",
       privacy: "Datenschutz",
+    },
+    guideLinks: {
+      homepageEyebrow: "Reiseführer",
+      homepageHeading: "Praktische Guides für Bangkok und Pattaya",
+      routeEyebrow: "Beliebte Reiseführer",
+      routeHeading: "Hilfreiche Guides für diese Route",
+      inEnglishBadge: "Auf Englisch",
     },
     homepageRevenue: {
       title: "Brauchen Sie heute ein Ticket?",
@@ -328,6 +376,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         afterFaq: "Comparer les billets et alternatives",
         checkAvailability: "Vérifier la disponibilité",
         compareAlternatives: "Comparer les alternatives",
+        bookFromPrice: "Réservez à partir de {price}",
         homepageCardCta: "Vérifier les billets",
         homepageCardAria: "Comparer les billets sur 12Go",
         sidebarTitle: "Voir les billets pour cet itinéraire",
@@ -350,20 +399,28 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       busFullTitle: "Et si le bus est complet ?",
       busFullBody:
         "Les départs populaires peuvent être complets les week-ends, jours fériés et en fin d'après-midi. Si le prochain bus est complet, demandez le départ suivant au guichet et comparez les alternatives réservables.",
-      busFullCta: "Comparer les billets et alternatives",
+      busFullCta: "Voir les places pour aujourd'hui",
       afterLastTitle: "Après le dernier bus",
       afterLastBody:
         "Après le dernier bus prévu, les options réalistes sont souvent le taxi, le transfert privé ou le lendemain matin. Pour l'aéroport, évitez de compter sur le dernier bus avant un vol.",
-      afterLastCta: "Vérifier les alternatives",
+      afterLastCta: "Voir les options de nuit",
       compareTitle: "Bus, taxi ou transfert privé",
       compareBody:
-        "Le bus est souvent le moins cher. Le taxi et le transfert privé coûtent plus cher, mais sont plus simples avec des bagages, une arrivée tardive ou un trajet d'hôtel à hôtel. Confirmez le prix, les péages et le point de prise en charge.",
-      compareCta: "Comparer les options",
+        "Le bus est l'option la moins chère mais la plus lente. Un van partagé est un choix plus rapide à prix moyen. Un transfert privé est le plus rapide et le plus confortable - de porte à porte, sans terminal, sans attente et avec de la place pour les bagages - ce qui en fait l'option la plus simple pour les vols matinaux ou tardifs et les voyages en groupe. Un taxi au compteur fonctionne à la demande mais coûte généralement le plus cher. Confirmez toujours le prix final, le point de prise en charge et l'espace bagages avant de partir.",
+      compareCta: "Comparer les prix des transferts",
       returnTitle: "Trajet retour",
       returnBody:
         "Prévoir le retour à l'avance peut faire gagner du temps. Vérifiez le trajet retour, les gares, le premier et le dernier départ, et si votre destination est Ekkamai, Mo Chit, Suvarnabhumi ou Don Mueang.",
       returnRoutePrefix: "Voir",
       viewAllRoutes: "Voir toutes les routes",
+      airportTransferTitle: "Transfert privé ou van - de porte à porte",
+      airportTransferBody:
+        "Évitez le terminal : une voiture privée ou un van vous emmène directement de l'aéroport à votre hôtel à Pattaya. Idéal avec des bagages, un vol tardif ou en groupe.",
+      airportTransferCta: "Vérifier prix et disponibilité",
+      cityTransferTitle: "Transfert privé ou van - de porte à porte",
+      cityTransferBody:
+        "Évitez la gare routière : une voiture privée ou un van vous emmène directement à votre hôtel. Idéal avec des bagages, en groupe ou avec un horaire fixe.",
+      cityTransferCta: "Vérifier prix et disponibilité",
     },
     footer: {
       title: "Bangkok Pattaya Bus Guide",
@@ -371,6 +428,13 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "À propos",
       contact: "Nous contacter",
       privacy: "Confidentialité",
+    },
+    guideLinks: {
+      homepageEyebrow: "Guides de voyage",
+      homepageHeading: "Guides pratiques pour Bangkok et Pattaya",
+      routeEyebrow: "Guides populaires",
+      routeHeading: "Guides utiles pour cet itinéraire",
+      inEnglishBadge: "En anglais",
     },
     homepageRevenue: {
       title: "Besoin d'un billet aujourd'hui ?",
@@ -406,6 +470,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         afterFaq: "Сравнить билеты и альтернативы",
         checkAvailability: "Проверить наличие",
         compareAlternatives: "Сравнить альтернативы",
+        bookFromPrice: "Билеты от {price}",
         homepageCardCta: "Проверить билеты",
         homepageCardAria: "Сравнить билеты на 12Go",
         sidebarTitle: "Проверить билеты на этот маршрут",
@@ -428,20 +493,28 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       busFullTitle: "Что делать, если автобус полный?",
       busFullBody:
         "Популярные рейсы могут распродаваться в выходные, праздники и ближе к вечеру. Если ближайший автобус полный, спросите на стойке о следующем рейсе и сравните доступные альтернативы.",
-      busFullCta: "Сравнить билеты и альтернативы",
+      busFullCta: "Проверить свободные места на сегодня",
       afterLastTitle: "После последнего автобуса",
       afterLastBody:
         "После последнего автобуса обычно остаются такси, частный трансфер или поездка утром. Для маршрутов в аэропорт не планируйте поездку только на последнем автобусе перед рейсом.",
-      afterLastCta: "Проверить альтернативы",
+      afterLastCta: "Посмотреть варианты на ночь",
       compareTitle: "Автобус, такси или частный трансфер",
       compareBody:
-        "Автобус обычно самый дешёвый. Такси и частный трансфер дороже, но удобнее с багажом, при позднем прибытии или поездке от отеля до отеля. Подтвердите цену, платные дороги и место посадки.",
-      compareCta: "Сравнить варианты маршрута",
+        "Автобус — самый дешёвый вариант, но самый медленный. Совместный вэн — более быстрый выбор по средней цене. Частный трансфер — самый быстрый и комфортный: от двери до двери, без вокзала, без ожидания и с местом для багажа, что делает его самым удобным вариантом при ранних или поздних рейсах и поездках группой. Такси по счётчику доступно по запросу, но обычно обходится дороже всего. Всегда уточняйте итоговую цену, место посадки и место для багажа перед поездкой.",
+      compareCta: "Сравнить цены трансферов",
       returnTitle: "Обратный маршрут",
       returnBody:
         "Если продумать обратную дорогу заранее, потом будет проще. Проверьте маршрут обратно, станции, первый и последний рейс, а также конечную точку: Эккамай, Мо Чит, Суварнабхуми или Дон Муанг.",
       returnRoutePrefix: "Открыть",
       viewAllRoutes: "Показать все маршруты",
+      airportTransferTitle: "Частный трансфер или вэн - от двери до двери",
+      airportTransferBody:
+        "Минуя терминал: частный автомобиль или вэн довезёт вас прямо из аэропорта до отеля в Паттайе. Удобно с багажом, при поздних рейсах или поездке группой.",
+      airportTransferCta: "Проверить цены и наличие",
+      cityTransferTitle: "Частный трансфер или вэн - от двери до двери",
+      cityTransferBody:
+        "Минуя автовокзал: частный автомобиль или вэн довезёт вас прямо до отеля. Удобно с багажом, группой или при фиксированном плане.",
+      cityTransferCta: "Проверить цены и наличие",
     },
     footer: {
       title: "Гид по автобусам Бангкок Паттайя",
@@ -449,6 +522,13 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "О проекте",
       contact: "Контакты",
       privacy: "Конфиденциальность",
+    },
+    guideLinks: {
+      homepageEyebrow: "Путеводители",
+      homepageHeading: "Практичные гиды по Бангкоку и Паттайе",
+      routeEyebrow: "Популярные путеводители",
+      routeHeading: "Полезные гиды для этого маршрута",
+      inEnglishBadge: "На английском",
     },
     homepageRevenue: {
       title: "Нужен билет сегодня?",
@@ -484,6 +564,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         afterFaq: "เปรียบเทียบตั๋วและทางเลือก",
         checkAvailability: "ตรวจสอบที่นั่งว่าง",
         compareAlternatives: "เปรียบเทียบทางเลือก",
+        bookFromPrice: "จองตั๋ว เริ่ม {price}",
         homepageCardCta: "ตรวจสอบตั๋ว",
         homepageCardAria: "เปรียบเทียบตั๋วบน 12Go",
         sidebarTitle: "ตรวจสอบตั๋วสำหรับเส้นทางนี้",
@@ -506,20 +587,28 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       busFullTitle: "ถ้ารถบัสเต็มควรทำอย่างไร?",
       busFullBody:
         "เที่ยวรถยอดนิยมอาจเต็มในช่วงสุดสัปดาห์ วันหยุด และช่วงบ่ายแก่ ๆ หากรถเที่ยวถัดไปเต็ม ให้ถามเคาน์เตอร์เรื่องเที่ยวถัดไปและเปรียบเทียบทางเลือกที่จองได้ก่อนเปลี่ยนสถานี",
-      busFullCta: "เปรียบเทียบตั๋วและทางเลือก",
+      busFullCta: "ตรวจสอบที่นั่งว่างวันนี้",
       afterLastTitle: "หลังรถบัสเที่ยวสุดท้าย",
       afterLastBody:
         "หลังเที่ยวรถตามตารางเที่ยวสุดท้าย ตัวเลือกที่เป็นไปได้มักเป็นแท็กซี่ รถรับส่งส่วนตัว หรือรอเช้าวันถัดไป สำหรับเส้นทางสนามบิน อย่าพึ่งเที่ยวสุดท้ายก่อนขึ้นเครื่อง",
-      afterLastCta: "ตรวจสอบทางเลือก",
+      afterLastCta: "ดูตัวเลือกเดินทางกลางคืน",
       compareTitle: "รถบัส แท็กซี่ หรือรถรับส่งส่วนตัว",
       compareBody:
-        "รถบัสมักถูกที่สุด แท็กซี่และรถรับส่งส่วนตัวแพงกว่า แต่สะดวกกว่าเมื่อมีสัมภาระ มาถึงดึก หรือเดินทางจากโรงแรมถึงโรงแรม โปรดยืนยันราคา ค่าทางด่วน และจุดรับก่อนเดินทาง",
-      compareCta: "เปรียบเทียบตัวเลือกเส้นทาง",
+        "รถบัสถูกที่สุดแต่ช้าที่สุด รถตู้ร่วมเดินทางเป็นทางเลือกที่เร็วกว่าในราคาปานกลาง รถรับส่งส่วนตัวเร็วและสะดวกที่สุด - รับส่งถึงที่หมายโดยไม่ต้องผ่านสถานี ไม่ต้องรอ และมีที่วางสัมภาระ - จึงเป็นตัวเลือกที่ง่ายที่สุดสำหรับเที่ยวบินเช้าหรือดึกและการเดินทางเป็นกลุ่ม แท็กซี่มิเตอร์เรียกใช้ได้ตามต้องการแต่มักแพงที่สุด ควรยืนยันราคาสุดท้าย จุดรับ และพื้นที่วางสัมภาระก่อนเดินทางเสมอ",
+      compareCta: "เปรียบเทียบราคารถรับส่ง",
       returnTitle: "เส้นทางขากลับ",
       returnBody:
         "การวางแผนขากลับล่วงหน้าช่วยประหยัดเวลา ตรวจสอบเส้นทางกลับ สถานี เที่ยวแรก เที่ยวสุดท้าย และปลายทางในกรุงเทพฯ เช่น เอกมัย หมอชิต สุวรรณภูมิ หรือดอนเมือง",
       returnRoutePrefix: "ดู",
       viewAllRoutes: "ดูเส้นทางทั้งหมด",
+      airportTransferTitle: "รถรับส่งส่วนตัวหรือรถตู้ - รับส่งถึงที่หมาย",
+      airportTransferBody:
+        "ข้ามขั้นตอนที่เทอร์มินัล: รถยนต์หรือรถตู้ส่วนตัวพาคุณจากสนามบินตรงถึงโรงแรมในพัทยา เหมาะเมื่อมีสัมภาระ เที่ยวบินดึก หรือเดินทางเป็นกลุ่ม",
+      airportTransferCta: "ตรวจสอบราคาและที่ว่าง",
+      cityTransferTitle: "รถรับส่งส่วนตัวหรือรถตู้ - รับส่งถึงที่หมาย",
+      cityTransferBody:
+        "ข้ามขั้นตอนที่สถานีขนส่ง: รถยนต์หรือรถตู้ส่วนตัวพาคุณตรงถึงโรงแรม เหมาะเมื่อมีสัมภาระ เดินทางเป็นกลุ่ม หรือมีกำหนดการที่แน่นอน",
+      cityTransferCta: "ตรวจสอบราคาและที่ว่าง",
     },
     footer: {
       title: "คู่มือรถบัสกรุงเทพฯ พัทยา",
@@ -527,6 +616,13 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "เกี่ยวกับเรา",
       contact: "ติดต่อ",
       privacy: "ความเป็นส่วนตัว",
+    },
+    guideLinks: {
+      homepageEyebrow: "คู่มือท่องเที่ยว",
+      homepageHeading: "คู่มือที่ใช้ได้จริงสำหรับกรุงเทพฯ และพัทยา",
+      routeEyebrow: "คู่มือยอดนิยม",
+      routeHeading: "คู่มือที่เป็นประโยชน์สำหรับเส้นทางนี้",
+      inEnglishBadge: "ภาษาอังกฤษ",
     },
     homepageRevenue: {
       title: "ต้องการตั๋ววันนี้ไหม?",
@@ -561,6 +657,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         afterFaq: "比较车票和替代选择",
         checkAvailability: "查看可订情况",
         compareAlternatives: "比较替代选择",
+        bookFromPrice: "订票 · {price} 起",
         homepageCardCta: "查看车票",
         homepageCardAria: "在 12Go 比较车票",
         sidebarTitle: "查看此路线车票",
@@ -583,20 +680,28 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       busFullTitle: "如果巴士满座怎么办？",
       busFullBody:
         "热门班次在周末、节假日和傍晚可能会售完。如果下一班车满座，请在柜台询问后续班次，并在换车站前比较可预订的替代选择。",
-      busFullCta: "比较车票和替代选择",
+      busFullCta: "查看今日余座",
       afterLastTitle: "最后一班巴士之后",
       afterLastBody:
         "最后一班计划巴士之后，通常只能选择出租车、私人接送，或等到第二天早上。机场路线不要把行程押在航班前最后一班车上。",
-      afterLastCta: "查看替代选择",
+      afterLastCta: "查看夜间出行选择",
       compareTitle: "巴士、出租车或私人接送",
       compareBody:
-        "巴士通常最便宜。出租车和私人接送更贵，但带行李、晚到或酒店到酒店出行时更方便。出发前请确认最终价格、过路费、上车点和行李空间。",
-      compareCta: "比较路线选择",
+        "巴士最便宜但最慢。拼车面包车是价格适中、速度更快的选择。私人接送最快也最舒适——门到门、无需车站、无需等待，还有行李空间——是赶早班或晚班航班以及团体出行最省心的选择。打表出租车随叫随到，但通常最贵。出发前请务必确认最终价格、上车地点和行李空间。",
+      compareCta: "比较接送价格",
       returnTitle: "返程路线",
       returnBody:
         "提前规划返程可以节省时间。查看返程路线、车站信息、首末班车，以及在曼谷的目的地是亿甲迈、莫奇特、素万那普还是廊曼。",
       returnRoutePrefix: "查看",
       viewAllRoutes: "查看所有路线",
+      airportTransferTitle: "私人接送或面包车 - 门到门",
+      airportTransferBody:
+        "免去车站奔波：私人轿车或面包车从机场直接送您到芭提雅酒店。适合携带行李、深夜航班或团体出行。",
+      airportTransferCta: "查看价格和可订情况",
+      cityTransferTitle: "私人接送或面包车 - 门到门",
+      cityTransferBody:
+        "免去汽车站奔波：私人轿车或面包车直接送您到酒店。适合携带行李、团体出行或行程固定。",
+      cityTransferCta: "查看价格和可订情况",
     },
     footer: {
       title: "曼谷芭提雅巴士指南",
@@ -604,6 +709,13 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "关于",
       contact: "联系",
       privacy: "隐私",
+    },
+    guideLinks: {
+      homepageEyebrow: "旅行指南",
+      homepageHeading: "曼谷和芭提雅实用指南",
+      routeEyebrow: "热门指南",
+      routeHeading: "适用于此路线的实用指南",
+      inEnglishBadge: "英文",
     },
     homepageRevenue: {
       title: "今天需要车票吗？",

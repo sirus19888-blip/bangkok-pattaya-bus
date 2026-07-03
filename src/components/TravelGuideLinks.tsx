@@ -4,6 +4,7 @@ import {
   getHomepageSeoGuideLinks,
   getSeoGuideLinksForRoute,
 } from "@/data/seoGuideLinks";
+import { getUiTranslations } from "@/lib/uiTranslations";
 
 type TravelGuideLinksProps = {
   className?: string;
@@ -16,10 +17,6 @@ export function TravelGuideLinks({
   locale,
   routeId,
 }: TravelGuideLinksProps) {
-  if (locale !== "en") {
-    return null;
-  }
-
   const guides = routeId
     ? getSeoGuideLinksForRoute(routeId)
     : getHomepageSeoGuideLinks();
@@ -28,10 +25,14 @@ export function TravelGuideLinks({
     return null;
   }
 
-  const eyebrow = routeId ? "Popular travel guides" : "Travel guides";
+  const guideLinks = getUiTranslations(locale).guideLinks;
+  const eyebrow = routeId
+    ? guideLinks.routeEyebrow
+    : guideLinks.homepageEyebrow;
   const heading = routeId
-    ? "Helpful guides for this route"
-    : "Practical Bangkok and Pattaya guides";
+    ? guideLinks.routeHeading
+    : guideLinks.homepageHeading;
+  const showEnglishBadge = locale !== "en";
 
   return (
     <section
@@ -60,6 +61,11 @@ export function TravelGuideLinks({
               <span className="block text-sm font-black leading-tight text-[#13233a]">
                 {guide.title}
               </span>
+              {showEnglishBadge ? (
+                <span className="mt-2 inline-flex rounded-full bg-[#fff8ec] px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wide text-[#8a5b12]">
+                  {guideLinks.inEnglishBadge}
+                </span>
+              ) : null}
               <span className="mt-2 block text-xs font-semibold leading-5 text-[#5f6874]">
                 {guide.description}
               </span>

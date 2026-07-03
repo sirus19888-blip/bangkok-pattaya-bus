@@ -1503,12 +1503,7 @@ function MobileBottomNav({
     { href: "/contact", icon: "contact", label: copy.contact },
     locale === "en"
       ? { href: "#travel-guides", icon: "tips", label: copy.guides }
-      : {
-          href: "https://www.buymeacoffee.com/Pawel_",
-          icon: "support-coffee",
-          label: copy.buyMeCoffee,
-          target: "_blank",
-        },
+      : { href: "#popular-routes", icon: "routes", label: copy.routes },
   ];
   const airportOptions = [
     {

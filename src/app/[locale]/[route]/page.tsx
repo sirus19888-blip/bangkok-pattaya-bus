@@ -67,21 +67,14 @@ export async function generateMetadata({
     : undefined;
 
   if (guide) {
-    const guideLanguages = Object.fromEntries(
-      supportedLocaleCodes.map((localeCode) => [
-        localeCode,
-        routeUrl(localeCode, guide.slug),
-      ]),
-    );
-
     return {
       title: guide.title,
       description: guide.description,
       alternates: {
-        canonical: routeUrl(locale, guide.slug),
+        canonical: routeUrl("en", guide.slug),
         languages: {
           "x-default": routeUrl("en", guide.slug),
-          ...guideLanguages,
+          en: routeUrl("en", guide.slug),
         },
       },
       openGraph: {

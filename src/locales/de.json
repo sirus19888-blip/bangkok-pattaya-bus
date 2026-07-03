@@ -395,6 +395,22 @@
       {
         "question": "Können sich Buszeiten Bangkok — Pattaya ändern?",
         "answer": "Ja. Die Zeiten basieren auf Betreiberinformationen, können sich aber ändern. Bestätige den Fahrplan vor der Reise."
+      },
+      {
+        "question": "Wie viel Gepäck darf ich im Bus von Bangkok nach Pattaya mitnehmen?",
+        "answer": "Reisebusse haben einen Gepäckraum unter dem Fahrzeug, und die meisten Reisenden nehmen einen Koffer plus Handgepäck ohne Aufpreis mit. Wertsachen, Dokumente und Elektronik behalten Sie im Innenraum bei sich. Bei Übergepäck bestätigen Sie dies vor dem Einsteigen am Schalter."
+      },
+      {
+        "question": "Kann ich das Busticket Bangkok–Pattaya mit Karte zahlen oder brauche ich Bargeld?",
+        "answer": "Halten Sie am Schalter Bargeld in Thai Baht bereit, da die Kartenakzeptanz je nach Terminal und Tageszeit unterschiedlich sein kann. Wenn Sie lieber im Voraus mit Karte zahlen und einen Sitzplatz sichern möchten, können Sie vorab online buchen."
+      },
+      {
+        "question": "Wie komme ich nach der Ankunft am Busbahnhof Nord-Pattaya zu meinem Hotel?",
+        "answer": "Vom Busbahnhof Nord-Pattaya fahren die meisten Reisenden mit dem Songthaew (geteiltes Pick-up-Taxi), Taxi, Grab, Bolt oder einem Hoteltransfer weiter. Vereinbaren Sie den Preis vor dem Einsteigen, besonders wenn ein Songthaew als Privatfahrt genutzt wird. Wenn Sie in Jomtien oder im Zentrum von Pattaya wohnen, prüfen Sie die Richtung vor der Abfahrt."
+      },
+      {
+        "question": "Welche Möglichkeiten habe ich, wenn ich den letzten Bus nach Pattaya verpasse?",
+        "answer": "Nach dem letzten planmäßigen Bus bleiben meist ein Taxi, ein privater Transfer oder die Fahrt am nächsten Morgen. Bei fester Ankunftszeit oder Nachtreise ist der Vorabvergleich eines privaten Transfers oft die einfachste Wahl. Vereinbaren Sie immer Preis und Abholpunkt, bevor Sie losfahren."
       }
     ],
     "pattaya-to-bangkok": [
