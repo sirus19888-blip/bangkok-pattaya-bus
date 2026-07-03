@@ -63,6 +63,23 @@ type UiTranslations = {
     routeHeading: string;
     inEnglishBadge: string;
   };
+  guidePage: {
+    eyebrow: string;
+    lastUpdated: string;
+    shortAnswer: string;
+    quickFacts: string;
+    relatedRoute: string;
+    relatedRouteBody: string;
+    usefulLinks: string;
+    faq: string;
+    sourcesTitle: string;
+    sourcesBody: string;
+    bookingOptions: string;
+    bookingHeading: string;
+    bookingBody: string;
+    breadcrumbHome: string;
+    breadcrumbRoutes: string;
+  };
   homepageRevenue: {
     title: string;
     heading: string;
@@ -155,6 +172,23 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       routeEyebrow: "Popular travel guides",
       routeHeading: "Helpful guides for this route",
       inEnglishBadge: "In English",
+    },
+    guidePage: {
+      eyebrow: "Practical travel guide",
+      lastUpdated: "Last updated:",
+      shortAnswer: "Short answer",
+      quickFacts: "Quick facts",
+      relatedRoute: "Related route:",
+      relatedRouteBody: "Use the route page for current departure times, station details, fare notes and source status before you travel.",
+      usefulLinks: "Useful links",
+      faq: "FAQ",
+      sourcesTitle: "Sources and last checked",
+      sourcesBody: "Last checked: {date}. Always confirm at the station or with the operator before travel.",
+      bookingOptions: "Booking options",
+      bookingHeading: "Compare tickets and alternatives",
+      bookingBody: "Timetable information stays independent. Booking links help you compare live seats and available alternatives before going to the station.",
+      breadcrumbHome: "Home",
+      breadcrumbRoutes: "Routes",
     },
     homepageRevenue: {
       title: "Need a ticket today?",
@@ -249,6 +283,23 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       routeHeading: "Pomocne przewodniki dla tej trasy",
       inEnglishBadge: "Po angielsku",
     },
+    guidePage: {
+      eyebrow: "Praktyczny przewodnik",
+      lastUpdated: "Ostatnia aktualizacja:",
+      shortAnswer: "Krótka odpowiedź",
+      quickFacts: "Najważniejsze fakty",
+      relatedRoute: "Powiązana trasa:",
+      relatedRouteBody: "Skorzystaj ze strony trasy, aby przed podróżą sprawdzić aktualne godziny odjazdów, informacje o stacjach, uwagi o cenach i status źródła.",
+      usefulLinks: "Przydatne linki",
+      faq: "FAQ",
+      sourcesTitle: "Źródła i ostatnia weryfikacja",
+      sourcesBody: "Ostatnie sprawdzenie: {date}. Zawsze potwierdź na stacji lub u operatora przed podróżą.",
+      bookingOptions: "Opcje rezerwacji",
+      bookingHeading: "Porównaj bilety i alternatywy",
+      bookingBody: "Informacje o rozkładzie pozostają niezależne. Linki rezerwacyjne pomagają porównać dostępne miejsca i alternatywy przed wyjściem na stację.",
+      breadcrumbHome: "Strona główna",
+      breadcrumbRoutes: "Trasy",
+    },
     homepageRevenue: {
       title: "Potrzebujesz biletu na dziś?",
       heading: "Sprawdź przed wyjazdem",
@@ -341,6 +392,23 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       routeEyebrow: "Beliebte Reiseführer",
       routeHeading: "Hilfreiche Guides für diese Route",
       inEnglishBadge: "Auf Englisch",
+    },
+    guidePage: {
+      eyebrow: "Praktischer Reiseratgeber",
+      lastUpdated: "Zuletzt aktualisiert:",
+      shortAnswer: "Kurze Antwort",
+      quickFacts: "Kurzinfos",
+      relatedRoute: "Zugehörige Route:",
+      relatedRouteBody: "Nutzen Sie die Routenseite für aktuelle Abfahrtszeiten, Stationsdetails, Preishinweise und Quellenstatus vor der Reise.",
+      usefulLinks: "Nützliche Links",
+      faq: "FAQ",
+      sourcesTitle: "Quellen und letzte Prüfung",
+      sourcesBody: "Zuletzt geprüft: {date}. Bestätigen Sie immer am Bahnhof oder beim Betreiber vor der Reise.",
+      bookingOptions: "Buchungsoptionen",
+      bookingHeading: "Tickets und Alternativen vergleichen",
+      bookingBody: "Die Fahrplaninformationen bleiben unabhängig. Buchungslinks helfen Ihnen, verfügbare Plätze und Alternativen vor dem Weg zum Bahnhof zu vergleichen.",
+      breadcrumbHome: "Startseite",
+      breadcrumbRoutes: "Routen",
     },
     homepageRevenue: {
       title: "Brauchen Sie heute ein Ticket?",
@@ -436,6 +504,23 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       routeHeading: "Guides utiles pour cet itinéraire",
       inEnglishBadge: "En anglais",
     },
+    guidePage: {
+      eyebrow: "Guide pratique de voyage",
+      lastUpdated: "Dernière mise à jour :",
+      shortAnswer: "Réponse rapide",
+      quickFacts: "Infos clés",
+      relatedRoute: "Itinéraire associé :",
+      relatedRouteBody: "Utilisez la page de l'itinéraire pour les horaires de départ actuels, les détails des gares, les notes de tarif et le statut des sources avant de voyager.",
+      usefulLinks: "Liens utiles",
+      faq: "FAQ",
+      sourcesTitle: "Sources et dernière vérification",
+      sourcesBody: "Dernière vérification : {date}. Confirmez toujours à la gare ou auprès de l'opérateur avant de voyager.",
+      bookingOptions: "Options de réservation",
+      bookingHeading: "Comparer les billets et alternatives",
+      bookingBody: "Les informations d'horaires restent indépendantes. Les liens de réservation vous aident à comparer les places disponibles et les alternatives avant d'aller à la gare.",
+      breadcrumbHome: "Accueil",
+      breadcrumbRoutes: "Itinéraires",
+    },
     homepageRevenue: {
       title: "Besoin d'un billet aujourd'hui ?",
       heading: "Vérifiez avant de partir",
@@ -529,6 +614,23 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       routeEyebrow: "Популярные путеводители",
       routeHeading: "Полезные гиды для этого маршрута",
       inEnglishBadge: "На английском",
+    },
+    guidePage: {
+      eyebrow: "Практичный путеводитель",
+      lastUpdated: "Последнее обновление:",
+      shortAnswer: "Краткий ответ",
+      quickFacts: "Ключевые факты",
+      relatedRoute: "Связанный маршрут:",
+      relatedRouteBody: "Откройте страницу маршрута, чтобы перед поездкой узнать актуальное время отправления, детали станций, замечания о ценах и статус источника.",
+      usefulLinks: "Полезные ссылки",
+      faq: "Частые вопросы",
+      sourcesTitle: "Источники и последняя проверка",
+      sourcesBody: "Последняя проверка: {date}. Всегда уточняйте на станции или у оператора перед поездкой.",
+      bookingOptions: "Варианты бронирования",
+      bookingHeading: "Сравнить билеты и альтернативы",
+      bookingBody: "Информация о расписании остаётся независимой. Ссылки на бронирование помогают сравнить доступные места и альтернативы до поездки на вокзал.",
+      breadcrumbHome: "Главная",
+      breadcrumbRoutes: "Маршруты",
     },
     homepageRevenue: {
       title: "Нужен билет сегодня?",
@@ -624,6 +726,23 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       routeHeading: "คู่มือที่เป็นประโยชน์สำหรับเส้นทางนี้",
       inEnglishBadge: "ภาษาอังกฤษ",
     },
+    guidePage: {
+      eyebrow: "คู่มือเดินทางที่ใช้ได้จริง",
+      lastUpdated: "อัปเดตล่าสุด:",
+      shortAnswer: "คำตอบสั้น ๆ",
+      quickFacts: "ข้อมูลสำคัญ",
+      relatedRoute: "เส้นทางที่เกี่ยวข้อง:",
+      relatedRouteBody: "ใช้หน้าข้อมูลเส้นทางเพื่อดูเวลาออกเดินทางล่าสุด รายละเอียดสถานี หมายเหตุค่าโดยสาร และสถานะแหล่งข้อมูลก่อนเดินทาง",
+      usefulLinks: "ลิงก์ที่เป็นประโยชน์",
+      faq: "คำถามที่พบบ่อย",
+      sourcesTitle: "แหล่งข้อมูลและการตรวจสอบล่าสุด",
+      sourcesBody: "ตรวจสอบล่าสุด: {date} โปรดยืนยันที่สถานีหรือกับผู้ให้บริการก่อนเดินทางเสมอ",
+      bookingOptions: "ตัวเลือกการจอง",
+      bookingHeading: "เปรียบเทียบตั๋วและทางเลือก",
+      bookingBody: "ข้อมูลตารางเวลายังคงเป็นอิสระ ลิงก์จองช่วยให้คุณเปรียบเทียบที่นั่งว่างและทางเลือกก่อนไปที่สถานี",
+      breadcrumbHome: "หน้าแรก",
+      breadcrumbRoutes: "เส้นทาง",
+    },
     homepageRevenue: {
       title: "ต้องการตั๋ววันนี้ไหม?",
       heading: "ตรวจสอบก่อนออกเดินทาง",
@@ -716,6 +835,23 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       routeEyebrow: "热门指南",
       routeHeading: "适用于此路线的实用指南",
       inEnglishBadge: "英文",
+    },
+    guidePage: {
+      eyebrow: "实用旅行指南",
+      lastUpdated: "最后更新：",
+      shortAnswer: "简短回答",
+      quickFacts: "关键信息",
+      relatedRoute: "相关路线：",
+      relatedRouteBody: "出行前请使用路线页面查看最新发车时间、车站详情、票价说明和数据来源状态。",
+      usefulLinks: "实用链接",
+      faq: "常见问题",
+      sourcesTitle: "来源与最近核对",
+      sourcesBody: "最近核对：{date}。出行前请务必在车站或向运营商确认。",
+      bookingOptions: "预订选项",
+      bookingHeading: "比较车票和替代选择",
+      bookingBody: "时刻表信息保持独立。预订链接帮助你在前往车站前比较可订座位和替代选择。",
+      breadcrumbHome: "首页",
+      breadcrumbRoutes: "路线",
     },
     homepageRevenue: {
       title: "今天需要车票吗？",

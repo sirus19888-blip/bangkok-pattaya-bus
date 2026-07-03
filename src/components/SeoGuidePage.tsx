@@ -5,6 +5,7 @@ import type { LocaleCode } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 import { build12GoRouteUrl, getAffiliateRoute } from "@/lib/twelveGo";
+import { getUiTranslations } from "@/lib/uiTranslations";
 
 function guideUrl(slug: string, locale: LocaleCode) {
   return absoluteUrl(`/${locale}/${slug}`);
@@ -15,11 +16,11 @@ function localizeInternalHref(href: string, locale: LocaleCode) {
 }
 
 export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale?: LocaleCode }) {
+  const chrome = getUiTranslations(locale).guidePage;
+  const affiliateText = getUiTranslations(locale).affiliate;
   const routePage = getRoutePage(guide.routeId);
   const ctaPosition = guide.ctaPosition ?? "route_commercial_help";
   const affiliateRoute = getAffiliateRoute(guide.routeId, locale);
-  const affiliateDisclosureText =
-    "Some booking links may be affiliate links. Timetable information stays independent.";
   const affiliateHref = build12GoRouteUrl(
     guide.routeId,
     locale,
@@ -59,11 +60,11 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
       <article className="mx-auto max-w-4xl">
         <nav className="flex flex-wrap items-center gap-1 text-sm font-black text-[#0e7b6b]">
           <Link className="inline-flex min-h-11 items-center rounded-lg px-2" href="/">
-            Home
+            {chrome.breadcrumbHome}
           </Link>
           <span className="px-2 text-[#8a94a3]">/</span>
           <Link className="inline-flex min-h-11 items-center rounded-lg px-2" href={`/${locale}`}>
-            Routes
+            {chrome.breadcrumbRoutes}
           </Link>
           <span className="px-2 text-[#8a94a3]">/</span>
           <Link
@@ -76,7 +77,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
 
         <header className="mt-5 rounded-[1.75rem] border border-[#eadcc7] bg-white p-6 shadow-sm md:p-8">
           <p className="text-xs font-black uppercase tracking-[0.22em] text-[#8a5b12]">
-            Practical travel guide
+            {chrome.eyebrow}
           </p>
           <h1 className="mt-3 text-4xl font-black leading-tight md:text-5xl">
             {guide.h1}
@@ -85,27 +86,27 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             {guide.intro}
           </p>
           <p className="mt-4 text-sm font-black text-[#0e7b6b]">
-            Last updated: {guide.lastUpdated}
+            {chrome.lastUpdated} {guide.lastUpdated}
           </p>
         </header>
 
         {guide.shortAnswer ? (
           <section className="mt-6 rounded-[1.5rem] border border-[#e8b05a] bg-[#fff8ec] p-5 shadow-sm">
-            <h2 className="text-xl font-black leading-tight">Short answer</h2>
+            <h2 className="text-xl font-black leading-tight">{chrome.shortAnswer}</h2>
             <p className="mt-3 text-sm font-semibold leading-7 text-[#4f5d6c]">
               {guide.shortAnswer}
             </p>
             <AffiliateCTA
               className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl bg-[#e8b05a] px-5 text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
               ctaPosition={shortAnswerCtaPosition}
-              disclosureText={affiliateDisclosureText}
+              disclosureText={affiliateText.disclosure}
               href={shortAnswerAffiliateHref}
               label={guide.ctaLabel}
-              lang="en"
+              lang={locale}
               provider="12go"
               routeId={guide.routeId}
               from={affiliateRoute?.from ?? ""}
-              shortDisclosureText="Affiliate link"
+              shortDisclosureText={affiliateText.shortDisclosure}
               subId={shortAnswerAffiliateSubId}
               to={affiliateRoute?.to ?? ""}
               variant="afterSchedule"
@@ -114,7 +115,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
         ) : null}
 
         <section className="mt-6 rounded-[1.5rem] border border-[#c8dbe9] bg-[#eaf5fb] p-5">
-          <h2 className="text-2xl font-black">Quick facts</h2>
+          <h2 className="text-2xl font-black">{chrome.quickFacts}</h2>
           <ul className="mt-4 grid gap-3 md:grid-cols-3">
             {guide.keyPoints.map((point) => (
               <li
@@ -145,11 +146,10 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
 
             <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
               <h2 className="text-2xl font-black leading-tight">
-                Related route: {routePage.title}
+                {chrome.relatedRoute} {routePage.title}
               </h2>
               <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
-                Use the route page for current departure times, station details,
-                fare notes and source status before you travel.
+                {chrome.relatedRouteBody}
               </p>
               <Link
                 className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl bg-[#13233a] px-5 text-sm font-black text-white"
@@ -162,7 +162,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             {guide.internalLinks ? (
               <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
                 <h2 className="text-2xl font-black leading-tight">
-                  Useful links
+                  {chrome.usefulLinks}
                 </h2>
                 <ul className="mt-4 grid gap-3 md:grid-cols-3">
                   {guide.internalLinks.map((link) => (
@@ -185,7 +185,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             ) : null}
 
             <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
-              <h2 className="text-2xl font-black leading-tight">FAQ</h2>
+              <h2 className="text-2xl font-black leading-tight">{chrome.faq}</h2>
               <div className="mt-4 space-y-3">
                 {guide.faq.map((faq) => (
                   <details
@@ -205,11 +205,10 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
 
             <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
               <h2 className="text-2xl font-black leading-tight">
-                Sources and last checked
+                {chrome.sourcesTitle}
               </h2>
               <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
-                Last checked: {guide.lastUpdated}. Always confirm at the station
-                or with the operator before travel.
+                {chrome.sourcesBody.replace("{date}", guide.lastUpdated)}
               </p>
               <ul className="mt-4 space-y-3">
                 {guide.sources.map((source) => (
@@ -236,26 +235,24 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
 
           <div className="h-fit rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm lg:sticky lg:top-24">
             <p className="text-xs font-black uppercase tracking-[0.2em] text-[#8a5b12]">
-              Booking options
+              {chrome.bookingOptions}
             </p>
             <h2 className="mt-2 text-2xl font-black leading-tight">
-              Compare tickets and alternatives
+              {chrome.bookingHeading}
             </h2>
             <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
-              Timetable information stays independent. Booking links help you
-              compare live seats and available alternatives before going to the
-              station.
+              {chrome.bookingBody}
             </p>
             <AffiliateCTA
               ctaPosition={ctaPosition}
-              disclosureText={affiliateDisclosureText}
+              disclosureText={affiliateText.disclosure}
               href={affiliateHref}
               label={guide.ctaLabel}
-              lang="en"
+              lang={locale}
               provider="12go"
               routeId={guide.routeId}
               from={affiliateRoute?.from ?? ""}
-              shortDisclosureText="Affiliate link"
+              shortDisclosureText={affiliateText.shortDisclosure}
               subId={affiliateSubId}
               to={affiliateRoute?.to ?? ""}
               variant="afterSchedule"
@@ -271,14 +268,14 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
           <AffiliateCTA
             ctaPosition={mobileStickyCtaPosition}
             disclosureMode="none"
-            disclosureText={affiliateDisclosureText}
+            disclosureText={affiliateText.disclosure}
             href={mobileStickyAffiliateHref}
             label={guide.ctaLabel}
-            lang="en"
+            lang={locale}
             provider="12go"
             routeId={guide.routeId}
             from={affiliateRoute?.from ?? ""}
-            shortDisclosureText="Affiliate link"
+            shortDisclosureText={affiliateText.shortDisclosure}
             subId={mobileStickyAffiliateSubId}
             to={affiliateRoute?.to ?? ""}
             variant="stickyMobile"
@@ -300,7 +297,7 @@ function GuideJsonLd({ guide, locale }: { guide: SeoGuide; locale: LocaleCode })
         headline: guide.h1,
         description: guide.description,
         url: canonicalUrl,
-        inLanguage: "en",
+        inLanguage: locale,
         dateModified: guide.lastUpdated,
         publisher: {
           "@type": "Organization",

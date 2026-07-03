@@ -503,5 +503,36 @@
         "answer": "Diese Zeiten basieren auf zusätzlichen Buchungs- und Reisequellen. Bestätige sie beim Betreiber oder an der Station."
       }
     ]
+  },
+  "guides": {
+    "ekkamai-bus-terminal-to-pattaya-guide": {
+      "title": "Ekkamai nach Pattaya Bus: Fahrplan, Preis & Tickets (2026)",
+      "description": "Von Bangkoks Busbahnhof Ekkamai nach Pattaya mit dem Bus: Abfahrtszeiten, Tickets, 2-3 Std. Fahrzeit, Preise und schnellere private Transferoptionen.",
+      "h1": "Busbahnhof Ekkamai nach Pattaya – Ratgeber",
+      "intro": "Der Busbahnhof Ekkamai ist für viele Touristen, die rund um Sukhumvit wohnen, der bequemste Busbahnhof Bangkoks. Dieser Ratgeber erklärt, wie Sie zum Terminal kommen, wo Sie Pattaya-Tickets kaufen, wie früh Sie da sein sollten und was zu tun ist, wenn der nächste Bus voll ist.",
+      "shortAnswer": "Am einfachsten fahren Sie mit dem BTS zur Station Ekkamai, gehen etwa 5 Minuten zum Busbahnhof Ekkamai, kaufen ein Pattaya-Ticket am offiziellen Schalter und bestätigen den Bahnsteig vor dem Einsteigen. Prüfen Sie vor der Fahrt die Seite zur Route Bangkok–Pattaya für aktuelle Zeiten.",
+      "keyPoints": [
+        "Am besten für Reisende, die in der Nähe von Sukhumvit, Thong Lo, Phrom Phong, Asok oder BTS Ekkamai wohnen.",
+        "Der Bus von Ekkamai nach Pattaya ist meist eine einfache Fahrt von Bahnhof zu Bahnhof, kein Hotelabholservice.",
+        "Kommen Sie 20-30 Minuten vor Abfahrt an, damit Sie Zeit haben, ein Ticket zu kaufen und den richtigen Bahnsteig zu finden."
+      ],
+      "sections": [
+        { "title": "Wo ist der Busbahnhof Ekkamai?", "body": "Der Busbahnhof Ekkamai liegt im Osten Bangkoks, nahe der BTS-Station Ekkamai an der Sukhumvit Road. Er ist praktisch, wenn Sie in zentralen Sukhumvit-Gegenden wie Asok, Phrom Phong, Thong Lo oder Ekkamai wohnen. Das Terminal ist kleiner und übersichtlicher als Mo Chit 2, aber prüfen Sie trotzdem Schalter und Bahnsteig vor dem Einsteigen." },
+        { "title": "So kommen Sie mit dem BTS nach Ekkamai", "body": "Nehmen Sie die BTS Sukhumvit-Linie bis zur Station Ekkamai. Von dort sind es meist etwa 5 Minuten zu Fuß zum Busbahnhof. Folgen Sie den Schildern zum Busbahnhof und nutzen Sie Google Maps, wenn Sie unsicher sind, welchen Ausgang Sie nehmen sollen. Mit schwerem Gepäck kann ein Taxi oder Grab zum Terminal einfacher sein." },
+        { "title": "Wo Sie in Ekkamai Pattaya-Tickets kaufen", "body": "Kaufen Sie Pattaya-Tickets am offiziellen Busschalter im Busbahnhof Ekkamai. Bestätigen Sie vor dem Bezahlen, dass das Ticket nach Pattaya oder zum North Pattaya Bus Station gilt. Halten Sie etwas Bargeld bereit, da die Zahlungsmöglichkeiten am Schalter variieren können. Meiden Sie inoffizielle Angebote vor dem Bahnhof, wenn Preis, Fahrzeug oder Ziel unklar sind." },
+        { "title": "Buszeiten Bangkok–Pattaya", "body": "Die Seite zur Route Bangkok–Pattaya auf dieser Website zeigt aktuelle Abfahrtsinformationen, Preishinweise und den Quellenstatus. Nutzen Sie sie zur Planung und bestätigen Sie den nächsten Bus dann am Schalter, da sich die Zeiten der Betreiber ändern können." },
+        { "title": "Wie früh sollten Sie da sein", "body": "Für eine normale Fahrt kommen Sie 20-30 Minuten vor Ihrer gewünschten Abfahrt an. So haben Sie Zeit, ein Ticket zu kaufen, den Bahnsteig zu prüfen und die Toilette zu benutzen. Kommen Sie an Wochenenden, thailändischen Feiertagen oder mit Gepäck früher." },
+        { "title": "Was, wenn der Bus voll ist?", "body": "Fragen Sie am offiziellen Schalter nach dem nächsten verfügbaren Bus. Wenn Sie nicht warten können, vergleichen Sie Alternativen wie einen anderen Busbahnhof, Minivan, Taxi, Grab, Bolt, inDrive oder privaten Transfer. Nehmen Sie unklare Fahrerangebote nicht an, ohne vorher Ziel, Fahrzeug und Endpreis zu vereinbaren." },
+        { "title": "Bus, Taxi oder privater Transfer", "body": "Für Alleinreisende ist der Bus meist die günstigste Option. Taxi oder privater Transfer ist einfacher, wenn Sie großes Gepäck haben, mit der Familie reisen, Hotelabholung möchten oder zu einer bestimmten Zeit losfahren müssen. Die endgültigen App- oder Taxipreise können je nach Verkehr, Maut, Nachfrage und Abholpunkt variieren." },
+        { "title": "Ankunft in Pattaya", "body": "Viele Busse kommen am North Pattaya Bus Station an. Von dort nutzen Sie ein Songthaew, Taxi, Grab, Bolt oder einen Hoteltransfer, um Ihr Hotel zu erreichen. Bestätigen Sie Ihren Endhalt vor dem Einsteigen, besonders wenn Sie nach Jomtien oder ins Zentrum von Pattaya müssen." }
+      ],
+      "faq": [
+        { "question": "Ist der Busbahnhof Ekkamai der beste Bahnhof für Pattaya?", "answer": "Ekkamai ist meist die einfachste Wahl, wenn Sie in der Nähe von Sukhumvit oder BTS Ekkamai wohnen. Mo Chit 2 kann besser sein, wenn Sie im Norden Bangkoks übernachten." },
+        { "question": "Kann ich Pattaya-Bustickets online kaufen?", "answer": "Sie können Online-Ticket- und Transferoptionen über Buchungsplattformen vergleichen, aber viele Reisende kaufen das Ekkamai–Pattaya-Ticket weiterhin am Schalter. Bestätigen Sie immer Abfahrt und Einstiegsort." },
+        { "question": "Wie weit ist Ekkamai von der BTS-Station Ekkamai entfernt?", "answer": "Das Terminal ist meist etwa 5 Gehminuten von der BTS Ekkamai entfernt, je nach Ausgang und Gepäck." },
+        { "question": "Wie lange dauert der Bus von Ekkamai nach Pattaya?", "answer": "Die Fahrt dauert üblicherweise etwa 2-3 Stunden, je nach Verkehr und Endhalt in Pattaya. Planen Sie an Wochenenden und Feiertagen mehr Zeit ein." },
+        { "question": "Was soll ich tun, wenn der Bus voll ist?", "answer": "Fragen Sie am offiziellen Schalter nach der nächsten Abfahrt. Wenn Sie nicht warten können, vergleichen Sie einen anderen Bus, Minivan, ein Taxi oder einen privaten Transfer, bevor Sie das Terminal verlassen." }
+      ]
+    }
   }
 }
