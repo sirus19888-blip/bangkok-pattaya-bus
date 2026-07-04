@@ -411,6 +411,22 @@
       {
         "question": "Czy godziny autobusów Pattaya Bangkok mogą się zmienić?",
         "answer": "Tak. Godziny są oparte na opublikowanych informacjach, ale mogą się zmieniać. Potwierdź rozkład przed podróżą."
+      },
+      {
+        "question": "Ile bagażu mogę zabrać do autobusu z Pattaya do Bangkoku?",
+        "answer": "Standardowe autokary mają miejsce na bagaż w luku pod podłogą, a większość podróżnych zabiera walizkę oraz bagaż podręczny bez dodatkowej opłaty. Rzeczy wartościowe, dokumenty i elektronikę trzymaj przy sobie w kabinie. Jeśli podróżujesz z nietypowo dużym bagażem, potwierdź to w kasie przed wejściem do autobusu."
+      },
+      {
+        "question": "Czy za bilet na autobus z Pattaya do Bangkoku mogę zapłacić kartą, czy potrzebuję gotówki?",
+        "answer": "W kasie na dworcu autobusowym w Pattaya miej przygotowaną gotówkę w tajskich bahtach (THB), ponieważ możliwość płatności kartą bywa różna w zależności od terminalu i pory dnia. Jeśli wolisz zapłacić kartą z wyprzedzeniem i zarezerwować miejsce, możesz kupić bilet online jeszcze przed podróżą."
+      },
+      {
+        "question": "Jak dostanę się do hotelu po tym, jak autobus dojedzie na Ekkamai lub Mo Chit?",
+        "answer": "Zależy to od tego, z którego terminalu w Bangkoku korzysta Twój autobus. Z Ekkamai stacja BTS Ekkamai jest oddalona o około 5 minut spacerem, więc linia BTS Sukhumvit ułatwia dojazd do centralnego Sukhumvit; Mo Chit 2 leży w północnej części Bangkoku, w pobliżu BTS Mo Chit i MRT Chatuchak. Z każdego z tych terminali możesz też pojechać dalej prosto do hotelu taksówką, Grab lub Bolt, zwłaszcza z bagażem. Ustal cenę przed wsiadaniem, bo stawki w aplikacjach zmieniają się w zależności od natężenia ruchu i popytu."
+      },
+      {
+        "question": "Jakie mam opcje, jeśli spóźnię się na ostatni autobus z Pattaya do Bangkoku?",
+        "answer": "Po odjeździe ostatniego planowego autobusu realnymi opcjami są zwykle taksówka, prywatny transfer albo poczekanie do następnego ranka. Pamiętaj, że godzina ostatniego odjazdu różni się w zależności od terminalu — autobusy na Mo Chit kończą kursy wcześniej niż autobusy na Ekkamai; potwierdź ostateczne godziny w kasie, zanim na nich polegasz. Jeśli podróżujesz późno lub masz ustaloną godzinę przyjazdu do Bangkoku, najłatwiej zwykle porównać z wyprzedzeniem oferty prywatnego transferu. Zawsze ustal cenę i miejsce odbioru, zanim wyruszysz."
       }
     ],
     "suvarnabhumi-airport-to-pattaya": [
@@ -429,6 +445,22 @@
       {
         "question": "Czy ten autobus lotniskowy jedzie do Jomtien?",
         "answer": "Dane tej trasy dotyczą Pattaya Bus Station. Jeśli jedziesz do Jomtien, potwierdź osobne połączenie do Jomtien u operatora przed zakupem biletu."
+      },
+      {
+        "question": "Czy mogę zabrać walizki do autobusu z lotniska Suvarnabhumi do Pattaya?",
+        "answer": "Standardowe autokary mają luk bagażowy pod podłogą, więc większość przylatujących podróżnych może zabrać walizkę i bagaż podręczny bez dodatkowej opłaty. Paszport, cenne rzeczy i elektronikę trzymaj przy sobie w kabinie, a nie w luku bagażowym. Jeśli masz bagaż ponadwymiarowy, przed wejściem do autobusu potwierdź to przy stanowisku na poziomie 1 przy Gate 8."
+      },
+      {
+        "question": "Czy za autobus z Suvarnabhumi do Pattaya mogę zapłacić kartą, czy po wylądowaniu potrzebuję gotówki?",
+        "answer": "Przy stanowisku na lotnisku na poziomie 1 przy Gate 8 miej gotówkę w tajskich bahtach na bilet za 139 THB, bo akceptacja kart bywa różna. Jeśli wolisz nie szukać bankomatu zaraz po wylądowaniu, możesz zarezerwować online z wyprzedzeniem, aby zapłacić kartą i zapewnić sobie miejsce."
+      },
+      {
+        "question": "Co, jeśli mój lot się opóźni i spóźnię się na autobus, którym planowałem jechać?",
+        "answer": "Autobusy do Pattaya kursują mniej więcej co dwie godziny, od około 07:30 do 18:30, więc jeśli spóźnisz się na planowany kurs, zwykle złapiesz późniejszy tego samego dnia. Po przyjeździe sprawdź aktualne godziny przy stanowisku, bo rozkład może się zmieniać. Jeśli wylądujesz po ostatnim autobusie, porównaj taksówkę, Grab albo prywatny transfer i ustal cenę oraz miejsce odbioru, zanim ruszysz."
+      },
+      {
+        "question": "Jak dostać się do hotelu, gdy autobus z lotniska wysadzi mnie na North Pattaya Bus Station?",
+        "answer": "Autobus przyjeżdża na North Pattaya Bus Station, skąd większość podróżnych jedzie dalej songthaewem (współdzielonym pickupem), taksówką, Grabem, Boltem albo transferem hotelowym. Ustal cenę przed wsiadaniem, zwłaszcza gdy songthaew jedzie jako kurs prywatny. Jeśli mieszkasz w Jomtien lub w centrum Pattaya, sprawdź kierunek, zanim ruszysz."
       }
     ],
     "pattaya-to-suvarnabhumi-airport": [
@@ -447,6 +479,22 @@
       {
         "question": "Czy godziny autobusów są potwierdzone?",
         "answer": "Godziny są oparte na informacjach operatora, ale mogą się zmieniać. Potwierdź rozkład na stacji lub u operatora przed podróżą."
+      },
+      {
+        "question": "Ile bagażu mogę zabrać do autobusu z Pattayi na lotnisko Suvarnabhumi?",
+        "answer": "Standardowe autokary mają luk bagażowy pod pojazdem i większość podróżnych zabiera walizkę oraz bagaż podręczny bez dodatkowej opłaty. Paszport, dokumenty, kosztowności i elektronikę trzymaj przy sobie w kabinie. Jeśli masz rzeczy ponadgabarytowe, potwierdź to przy stanowisku przed wejściem do autobusu."
+      },
+      {
+        "question": "Czy za autobus z Pattayi na lotnisko Suvarnabhumi mogę zapłacić kartą, czy potrzebuję gotówki?",
+        "answer": "Bilet kosztuje 162 THB za miejsce, a przy stanowisku na stacji najbezpieczniej mieć przygotowaną gotówkę w tajskich bahtach, ponieważ akceptacja kart bywa różna zależnie od stanowiska i pory dnia. Jeśli wolisz zapłacić kartą i zapewnić sobie miejsce z góry, możesz zarezerwować bilet online przed wyjazdem."
+      },
+      {
+        "question": "Który autobus z Pattayi na lotnisko Suvarnabhumi wybrać, żeby spokojnie zdążyć na samolot?",
+        "answer": "Zaplanuj około 2 godzin na sam przejazd, a potem dolicz czas na korki oraz odprawę, kontrolę bezpieczeństwa i kontrolę paszportową na lotnisku, więc celuj w przyjazd około 3 godziny przed lotem międzynarodowym. Ponieważ jedziesz na lotnisko, wybierz odjazd kilka godzin wcześniejszy niż absolutne minimum, a nie ten najbliższy godzinie wylotu. Autobusy kursują mniej więcej od 08:00 do 21:00, ale zanim zdasz się na konkretny kurs, potwierdź aktualne godziny u przewoźnika."
+      },
+      {
+        "question": "Co zrobić, jeśli spóźnię się na ostatni autobus z Pattayi na lotnisko Suvarnabhumi przed lotem?",
+        "answer": "Ponieważ jedziesz na lotnisko, nie licz na ostatni autobus dnia, który odjeżdża około 21:00. Jeśli go przegapisz, realne opcje to taksówka z taksometrem albo wcześniej zamówiony prywatny transfer prosto na Suvarnabhumi; cenę i miejsce odbioru ustal przed wejściem do samochodu. Porównanie prywatnego transferu z wyprzedzeniem to często najprostszy sposób, żeby zabezpieczyć stałą godzinę lotu."
       }
     ],
     "don-mueang-airport-to-pattaya": [
@@ -465,6 +513,22 @@
       {
         "question": "Czy godziny autobusów są potwierdzone?",
         "answer": "Godziny są oparte na oficjalnych informacjach transportowych lotniska, ale mogą się zmienić. Potwierdź przed podróżą."
+      },
+      {
+        "question": "Ile bagażu mogę zabrać do autobusu z lotniska Don Mueang do Pattayi?",
+        "answer": "Standardowe autokary mają luk bagażowy pod podłogą, a większość podróżnych zabiera walizkę oraz bagaż podręczny bez dodatkowej opłaty. Rzeczy wartościowe, dokumenty i elektronikę trzymaj przy sobie w kabinie. Jeśli podróżujesz z ponadwymiarowym bagażem lub dodatkowymi torbami, przed wejściem na pokład potwierdź aktualne zasady przewozu bagażu w kasie obsługi."
+      },
+      {
+        "question": "Czy za autobus z Don Mueang do Pattayi mogę zapłacić kartą, czy potrzebuję gotówki?",
+        "answer": "Przygotuj gotówkę w tajskich bahtach na opłatę 155 THB w kasie obsługi na lotnisku, ponieważ akceptacja kart bywa różna w zależności od kasy i pory dnia. Jeśli wolisz zapłacić kartą, przed ustawieniem się w kolejce zapytaj personel kasy, czy jest akceptowana, a gotówkę zachowaj na wszelki wypadek jako zapas."
+      },
+      {
+        "question": "Co, jeśli dotrę do Don Mueang poza godzinami kursowania autobusów lub między odjazdami?",
+        "answer": "Oficjalna strona lotniska podaje, że autobusy kursują mniej więcej co cztery godziny w przedziale od około 06:30 do 17:30, ale nie publikuje dokładnych godzin odjazdów, dlatego po przyjeździe zawsze potwierdzaj najbliższy odjazd w kasie. Jeśli lądujesz późnym wieczorem, bardzo wcześnie rano lub czeka Cię długie oczekiwanie między kursami, praktyczną alternatywą jest taksówka z licznikiem, Grab lub wcześniej zarezerwowany prywatny transfer do Pattayi. Ustal cenę i miejsce odbioru przed wyruszeniem, a przy nocnym przylocie najłatwiej często porównać prywatny transfer z wyprzedzeniem."
+      },
+      {
+        "question": "Jak dostanę się do hotelu po przyjeździe do Pattayi?",
+        "answer": "Gdy autobus wysadzi Cię w Pattayi, większość podróżnych kontynuuje podróż songthaewem (wspólną półciężarówką), taksówką, Grabem, Boltem lub hotelowym transferem. Ustal cenę przed wsiadaniem, zwłaszcza jeśli korzystasz z songthaewa jako przejazdu prywatnego. Najpierw sprawdź miejsce wysadzenia i kierunek, szczególnie jeśli zatrzymujesz się w Jomtien lub w centrum Pattayi."
       }
     ],
     "pattaya-to-don-mueang-airport": [
@@ -483,6 +547,22 @@
       {
         "question": "Czy godziny autobusów są potwierdzone?",
         "answer": "Te godziny są oparte na dodatkowych źródłach rezerwacyjnych i turystycznych. Potwierdź je u operatora lub na stacji przed podróżą."
+      },
+      {
+        "question": "Ile bagażu mogę zabrać do autobusu z Pattaya na lotnisko Don Mueang?",
+        "answer": "Standardowe autokary mają miejsce na bagaż pod pojazdem, więc większość podróżnych zabiera walizkę oraz bagaż podręczny bez dodatkowej opłaty. Paszport, kosztowności i elektronikę trzymaj przy sobie w kabinie. Ponieważ szczegóły tej trasy pochodzą ze źródeł wtórnych, a nie od przewoźnika, przed wejściem na pokład potwierdź w kasie zasady dotyczące bagażu ponadgabarytowego."
+      },
+      {
+        "question": "Czy za bilet na autobus z Pattaya do Don Mueang mogę zapłacić kartą, czy potrzebuję gotówki?",
+        "answer": "Miej przygotowaną gotówkę w tajskich bahtach do zapłaty w kasie, ponieważ możliwość płatności kartą bywa różna w zależności od stacji i pory dnia. Cena około 170 THB pochodzi ze źródeł wtórnych, więc przed zapłatą potwierdź aktualną kwotę u przewoźnika lub na stacji. Jeśli wolisz zapłacić kartą i zarezerwować miejsce, możesz też kupić bilet online przed podróżą."
+      },
+      {
+        "question": "Który autobus z Pattaya do Don Mueang wybrać, aby zdążyć na samolot?",
+        "answer": "Przy zaledwie około czterech kursach dziennie (źródła wtórne podają 07:00, 10:00, 14:30 i 17:00) oraz podróży trwającej 3–3,5 godziny do Don Mueang, dalej położonego lotniska Bangkoku, licz czas wstecz od godziny lotu i wybierz wcześniejszy autobus z dużym zapasem. Zakładaj pełne 3,5 godziny plus korki, a następnie dolicz czas na odprawę, nadanie bagażu i kontrolę bezpieczeństwa. Nie polegaj na ostatnim autobusie przed lotem i potwierdź godziny odjazdów przed podróżą, ponieważ nie są one potwierdzone przez przewoźnika."
+      },
+      {
+        "question": "Co zrobić, jeśli spóźnię się na ostatni autobus z Pattaya przed lotem z Don Mueang?",
+        "answer": "Jeśli spóźnisz się na ostatni autobus, a mimo to musisz zdążyć na samolot, realnymi opcjami są taksówka z licznikiem lub wcześniej zamówiony prywatny transfer prosto do Don Mueang; ustal cenę i trasę przed wyruszeniem. Ponieważ dziennie jest tylko około czterech kursów, a godziny pochodzą ze źródeł wtórnych, nie licz na ostatni autobus przed lotem. Wcześniejsze porównanie prywatnych transferów to często najprostszy sposób, aby uniknąć nerwów w ostatniej chwili."
       }
     ]
   }
