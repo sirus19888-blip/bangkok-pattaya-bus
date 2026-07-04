@@ -3,8 +3,10 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
+import { HotelAffiliateInline } from "@/components/HotelAffiliateInline";
 import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
 import { TravelDateField } from "@/components/TravelDateContext";
+import { type HotelCity } from "@/data/hotelAffiliate";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
@@ -306,6 +308,7 @@ export function DesktopRouteBookingPanel({
   affiliateLabel,
   compareAlternativesLabel,
   distance,
+  hotelCity,
   locale,
   reportHref,
   reportLabel,
@@ -318,6 +321,7 @@ export function DesktopRouteBookingPanel({
   labels,
 }: MobileRouteDecisionCardProps & {
   compareAlternativesLabel: string;
+  hotelCity?: HotelCity;
   reportHref: string;
   reportLabel: string;
   sidebarTitle: string;
@@ -454,6 +458,21 @@ export function DesktopRouteBookingPanel({
           {schedule.sourceName}
         </p>
       </div>
+
+      {hotelCity ? (
+        <div className="mt-4 rounded-xl border border-[#e8b05a]/60 bg-[#fff8ec] p-3">
+          <p className="text-xs font-black uppercase tracking-wide text-[#8a5b12]">
+            {getUiTranslations(locale).hotel.eyebrow}
+          </p>
+          <HotelAffiliateInline
+            city={hotelCity}
+            locale={locale}
+            routeId={routeId}
+            ctaPosition="route_hotel_sidebar"
+            className="mt-2 flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#e8b05a] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
+          />
+        </div>
+      ) : null}
 
       <a
         href={reportHref}

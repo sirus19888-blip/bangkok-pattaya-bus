@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { AffiliateCTA } from "@/components/AffiliateCTA";
+import { HotelAffiliateInline } from "@/components/HotelAffiliateInline";
+import { routeHotelCity } from "@/data/hotelAffiliate";
 import { getRoutePage } from "@/data/routes";
 import type { LocaleCode } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
@@ -19,6 +21,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
   const chrome = getUiTranslations(locale).guidePage;
   const affiliateText = getUiTranslations(locale).affiliate;
   const routePage = getRoutePage(guide.routeId);
+  const hotelCity = routeHotelCity[guide.routeId];
   const ctaPosition = guide.ctaPosition ?? "route_commercial_help";
   const affiliateRoute = getAffiliateRoute(guide.routeId, locale);
   const affiliateHref = build12GoRouteUrl(
@@ -127,6 +130,16 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             ))}
           </ul>
         </section>
+
+        {hotelCity ? (
+          <HotelAffiliateInline
+            city={hotelCity}
+            locale={locale}
+            routeId={guide.routeId}
+            ctaPosition="guide_hotel_inline"
+            className="mt-6 flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6] lg:hidden"
+          />
+        ) : null}
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
           <div className="space-y-6">
@@ -257,6 +270,20 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
               to={affiliateRoute?.to ?? ""}
               variant="afterSchedule"
             />
+            {hotelCity ? (
+              <div className="mt-4 border-t border-[#eadcc7] pt-4">
+                <p className="text-xs font-black uppercase tracking-[0.2em] text-[#8a5b12]">
+                  {getUiTranslations(locale).hotel.eyebrow}
+                </p>
+                <HotelAffiliateInline
+                  city={hotelCity}
+                  locale={locale}
+                  routeId={guide.routeId}
+                  ctaPosition="guide_hotel_sidebar"
+                  className="mt-2 flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#e8b05a] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
+                />
+              </div>
+            ) : null}
           </div>
         </div>
       </article>

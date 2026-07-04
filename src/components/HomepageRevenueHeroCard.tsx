@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { HotelAffiliateInline } from "@/components/HotelAffiliateInline";
 import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
 import { TravelDateField } from "@/components/TravelDateContext";
 import type { LocaleCode } from "@/data/routes";
@@ -37,6 +38,13 @@ export function HomepageRevenueHeroCard({ locale }: { locale: LocaleCode }) {
       >
         {uiText.secondaryCta}
       </Link>
+      <HotelAffiliateInline
+        city="pattaya"
+        locale={locale}
+        routeId="bangkok-to-pattaya"
+        ctaPosition="homepage_hotel"
+        className="mt-3 flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6]"
+      />
     </div>
   );
 }

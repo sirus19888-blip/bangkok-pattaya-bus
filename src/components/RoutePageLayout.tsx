@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { AdSlot } from "@/components/AdSlot";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
+import { HotelAffiliateInline } from "@/components/HotelAffiliateInline";
 import {
   DesktopRouteBookingPanel,
   MobileRouteDecisionCard,
@@ -17,6 +18,7 @@ import {
   TravelDateProvider,
 } from "@/components/TravelDateContext";
 import { TravelGuideLinks } from "@/components/TravelGuideLinks";
+import { routeHotelCity } from "@/data/hotelAffiliate";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
@@ -46,6 +48,7 @@ export function RoutePageLayout({
 }: RoutePageLayoutProps) {
   const uiText = getUiTranslations(locale);
   const localizedFaqs = getLocalizedFaqs(t, routePage.slug);
+  const hotelCity = routeHotelCity[routePage.slug];
   const stationPhotoGroups = getStationPhotoGroupsForRoute(
     routePage.slug,
     locale,
@@ -122,6 +125,16 @@ export function RoutePageLayout({
                 scheduleLabels={t.schedule}
               />
 
+              {hotelCity ? (
+                <HotelAffiliateInline
+                  city={hotelCity}
+                  locale={locale}
+                  routeId={routePage.slug}
+                  ctaPosition="route_hotel_strip"
+                  className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6] lg:hidden"
+                />
+              ) : null}
+
               <AdSlot id={AD_SLOT_IDS.afterSchedule} />
 
               <RouteCommercialBlocks
@@ -178,6 +191,7 @@ export function RoutePageLayout({
                   uiText.affiliate.variantLabels.compareAlternatives
                 }
                 distance={schedule.distance}
+                hotelCity={hotelCity}
                 locale={locale}
                 reportHref={reportHref}
                 reportLabel={uiText.report.label}

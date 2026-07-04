@@ -21,7 +21,7 @@ export function HotelAffiliateCard({
   const href = buildAgodaUrl(city, locale);
 
   return (
-    <article className="rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4">
+    <article className="rounded-2xl border border-[#e8b05a]/70 bg-[#fff8ec] p-4">
       <p className="text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#0e7b6b]">
         {text.eyebrow}
       </p>
@@ -46,7 +46,7 @@ export function HotelAffiliateCard({
             to: city,
           })
         }
-        className="mt-4 flex min-h-11 items-center justify-center rounded-xl border border-[#e8b05a] bg-white px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#fff8ec]"
+        className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#e8b05a] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
       >
         {text.cta.replace("{city}", cityName)}
       </a>

@@ -61,6 +61,7 @@ type UiTranslations = {
     title: string;
     body: string;
     cta: string;
+    inlineCta: string;
     disclosure: string;
     cityNames: { pattaya: string; bangkok: string };
   };
@@ -179,6 +180,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       title: "Hotels in {city}",
       body: "Compare hotels, guesthouses and resorts — from beachfront stays to budget rooms in the center. Many offer free cancellation, so you can plan your room alongside your bus.",
       cta: "See {city} hotels on Agoda",
+      inlineCta: "Hotels in {city} — compare",
       disclosure: "Hotel booking links may be affiliate links. Route and timetable information stays independent.",
       cityNames: { pattaya: "Pattaya", bangkok: "Bangkok" },
     },
@@ -297,6 +299,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       title: "Hotele: {city}",
       body: "Porównaj hotele, pensjonaty i resorty — od noclegów przy plaży po tańsze pokoje w centrum. Wiele ofert z darmową anulacją, więc zaplanujesz nocleg razem z autobusem.",
       cta: "Zobacz hotele w Agoda: {city}",
+      inlineCta: "Hotele: {city} — porównaj",
       disclosure: "Linki do rezerwacji hoteli mogą być afiliacyjne. Informacje o trasach i rozkładach pozostają niezależne.",
       cityNames: { pattaya: "Pattaya", bangkok: "Bangkok" },
     },
@@ -415,6 +418,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       title: "Hotels in {city}",
       body: "Vergleichen Sie Hotels, Gästehäuser und Resorts — von Strandunterkünften bis zu günstigen Zimmern im Zentrum. Viele mit kostenloser Stornierung, passend zu Ihrer Busfahrt planbar.",
       cta: "{city}-Hotels auf Agoda ansehen",
+      inlineCta: "Hotels in {city} vergleichen",
       disclosure: "Hotel-Buchungslinks können Affiliate-Links sein. Routen- und Fahrplaninformationen bleiben unabhängig.",
       cityNames: { pattaya: "Pattaya", bangkok: "Bangkok" },
     },
@@ -534,6 +538,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       title: "Hôtels à {city}",
       body: "Comparez hôtels, maisons d'hôtes et resorts — du bord de mer aux chambres économiques du centre. Beaucoup avec annulation gratuite, à planifier en même temps que votre bus.",
       cta: "Voir les hôtels à {city} sur Agoda",
+      inlineCta: "Hôtels à {city} — comparer",
       disclosure: "Les liens de réservation d'hôtel peuvent être des liens affiliés. Les informations d'itinéraire et d'horaires restent indépendantes.",
       cityNames: { pattaya: "Pattaya", bangkok: "Bangkok" },
     },
@@ -653,6 +658,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       title: "Отели: {city}",
       body: "Сравните отели, гостевые дома и курорты — от жилья у пляжа до бюджетных номеров в центре. У многих бесплатная отмена — спланируйте ночлег вместе с автобусом.",
       cta: "Смотреть отели на Agoda: {city}",
+      inlineCta: "Отели: {city} — сравнить",
       disclosure: "Ссылки на бронирование отелей могут быть партнёрскими. Информация о маршрутах и расписании остаётся независимой.",
       cityNames: { pattaya: "Паттайя", bangkok: "Бангкок" },
     },
@@ -772,6 +778,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       title: "โรงแรมใน{city}",
       body: "เปรียบเทียบโรงแรม เกสต์เฮาส์ และรีสอร์ต ตั้งแต่ที่พักริมหาดไปจนถึงห้องราคาประหยัดในเมือง หลายที่ยกเลิกฟรี วางแผนที่พักพร้อมกับรถบัสได้เลย",
       cta: "ดูโรงแรมใน{city}บน Agoda",
+      inlineCta: "โรงแรมใน{city} — เปรียบเทียบ",
       disclosure: "ลิงก์จองโรงแรมอาจเป็นลิงก์พันธมิตร ข้อมูลเส้นทางและตารางเวลายังคงเป็นอิสระ",
       cityNames: { pattaya: "พัทยา", bangkok: "กรุงเทพฯ" },
     },
@@ -890,6 +897,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       title: "{city}酒店",
       body: "比较酒店、旅馆和度假村——从海边住宿到市中心经济房型。许多可免费取消，方便与巴士行程一起安排。",
       cta: "在 Agoda 查看{city}酒店",
+      inlineCta: "比较{city}酒店",
       disclosure: "酒店预订链接可能是联盟链接。路线和时刻表信息保持独立。",
       cityNames: { pattaya: "芭提雅", bangkok: "曼谷" },
     },
