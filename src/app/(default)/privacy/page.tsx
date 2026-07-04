@@ -32,7 +32,7 @@ export default function PrivacyPage() {
         },
         {
           title: "Affiliate links",
-          body: "Some links to booking platforms or support services may be affiliate links. If you click an affiliate link and later buy a ticket or service, the site may earn a commission. This does not affect the timetable information, prices shown from operator sources, or editorial recommendations.",
+          body: "Some links to booking platforms or support services are affiliate links, including partners such as 12Go (transport) and Agoda (hotels). When you click an affiliate link, that partner may set cookies for marketing purposes and to track the click for commission attribution, so the site may earn a commission if you later book. This does not affect the timetable information, prices shown from operator sources, or editorial recommendations.",
         },
         {
           title: "Advertising",
@@ -44,7 +44,7 @@ export default function PrivacyPage() {
         },
         {
           title: "Third-party providers",
-          body: "The site may link to or use services from third-party providers such as 12Go, Buy Me a Coffee, Google Maps, OpenStreetMap, Wikimedia Commons, analytics providers, hosting providers, and future advertising partners. These providers may process data under their own privacy policies.",
+          body: "The site may link to or use services from third-party providers such as 12Go, Agoda, Buy Me a Coffee, Google Maps, OpenStreetMap, Wikimedia Commons, analytics providers, hosting providers, and future advertising partners. These providers may process data under their own privacy policies.",
         },
         {
           title: "Maps and embedded content",

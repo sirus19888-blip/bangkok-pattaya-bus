@@ -1,8 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { buildAgodaBadgeUrl } from "@/data/hotelAffiliate";
 import { isSupportedLocale, type LocaleCode } from "@/data/routes";
+import { trackAffiliateClick } from "@/lib/analytics";
 import {
   ANALYTICS_CONSENT_OPEN_EVENT,
   getAnalyticsConsentCopy,
@@ -19,6 +22,7 @@ export function SiteFooter() {
   const locale = getLocaleFromPath(pathname);
   const text = getUiTranslations(locale).footer;
   const consentText = getAnalyticsConsentCopy(locale);
+  const agodaBadgeHref = buildAgodaBadgeUrl(locale);
 
   return (
     <footer className="border-t border-[#eadcc7] bg-[#f7f0e3]">
@@ -53,6 +57,32 @@ export function SiteFooter() {
             {consentText.settings}
           </button>
         </nav>
+        <a
+          href={agodaBadgeHref}
+          target="_blank"
+          rel="sponsored nofollow noopener noreferrer"
+          aria-label="Agoda Verified Affiliate"
+          onClick={() =>
+            trackAffiliateClick({
+              cta_position: "footer_badge",
+              from: "footer",
+              href: agodaBadgeHref,
+              lang: locale,
+              provider: "agoda",
+              route_id: "footer",
+              to: "agoda",
+            })
+          }
+          className="shrink-0"
+        >
+          <Image
+            src="/images/partners/agoda-verified-affiliate.png"
+            alt="Agoda Verified Affiliate"
+            width={90}
+            height={40}
+            className="h-10 w-auto"
+          />
+        </a>
       </div>
     </footer>
   );

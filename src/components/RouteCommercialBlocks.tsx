@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { HotelAffiliateCard } from "@/components/HotelAffiliateCard";
 import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
+import { routeHotelCity } from "@/data/hotelAffiliate";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
@@ -35,6 +37,7 @@ export function RouteCommercialBlocks({
   const returnRouteId = returnRoutes[currentRoute];
   const returnRoute = routePages.find((route) => route.slug === returnRouteId);
   const isAirport = airportRoutes.includes(currentRoute);
+  const hotelCity = routeHotelCity[currentRoute];
 
   return (
     <section
@@ -168,6 +171,15 @@ export function RouteCommercialBlocks({
           </Link>
         )}
       </CommercialInfoCard>
+
+      {hotelCity ? (
+        <HotelAffiliateCard
+          city={hotelCity}
+          locale={locale}
+          routeId={currentRoute}
+          ctaPosition="route_hotel"
+        />
+      ) : null}
     </section>
   );
 }
