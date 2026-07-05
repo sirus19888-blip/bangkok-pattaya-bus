@@ -12,6 +12,7 @@ type HeaderProps = {
   routeSlug?: RouteId;
   showDesktopRouteIcons?: boolean;
   showDesktopHomeIcons?: boolean;
+  compact?: boolean;
 };
 
 export function Header({
@@ -20,6 +21,7 @@ export function Header({
   routeSlug,
   showDesktopRouteIcons = false,
   showDesktopHomeIcons = false,
+  compact = false,
 }: HeaderProps) {
   const hasDesktopFeatureBackground =
     showDesktopHomeIcons || showDesktopRouteIcons;
@@ -57,17 +59,19 @@ export function Header({
       </Link>
 
       <div className="relative z-10 ml-auto flex min-w-0 flex-wrap items-center justify-end gap-2">
-        <HeaderTravelInfo
-          locale={currentLocale}
-          routeSlug={routeSlug ?? "bangkok-to-pattaya"}
-          variant={
-            showDesktopHomeIcons
-              ? "desktopHome"
-              : showDesktopRouteIcons
-                ? "routeDesktop"
-                : "default"
-          }
-        />
+        {compact ? null : (
+          <HeaderTravelInfo
+            locale={currentLocale}
+            routeSlug={routeSlug ?? "bangkok-to-pattaya"}
+            variant={
+              showDesktopHomeIcons
+                ? "desktopHome"
+                : showDesktopRouteIcons
+                  ? "routeDesktop"
+                  : "default"
+            }
+          />
+        )}
         <LanguageSwitcher
           label={labels.chooseLanguage}
           currentLocale={currentLocale}

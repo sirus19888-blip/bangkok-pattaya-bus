@@ -70,6 +70,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
         <Header
           labels={{ ...t.app, chooseLanguage: t.navigation.chooseLanguage }}
           currentLocale={locale}
+          compact
         />
       </div>
 

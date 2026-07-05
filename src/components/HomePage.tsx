@@ -164,7 +164,7 @@ const germanMobileRouteMeta: Record<RouteId, { badge: string; note: string }> =
   };
 
 const mobileRouteImages: Record<RouteId, string> = {
-  "bangkok-to-pattaya": "/images/hero/mobile-home-bus-guide.png",
+  "bangkok-to-pattaya": "/images/stations/ekkamai/ekkamai-entrance.jpg",
   "pattaya-to-bangkok": "/images/stations/pattaya-north/pattaya-station.jpg",
   "suvarnabhumi-airport-to-pattaya":
     "/images/stations/suvarnabhumi/suvarnabhumi-bus-terminal.jpg",
@@ -936,18 +936,24 @@ function MobileHome({
 
           <div className="relative px-4 pb-4 pt-3 md:px-8 md:pb-8 md:pt-6">
             <div className="absolute inset-x-4 bottom-0 top-4 overflow-hidden rounded-[2rem] md:inset-x-8 md:rounded-[2.25rem]">
-              <Image
-                alt=""
+              <svg
                 aria-hidden="true"
-                className="h-full w-full object-cover opacity-55"
-                fetchPriority="high"
-                fill
-                loading="eager"
-                preload
-                sizes="(min-width: 1280px) 1216px, (min-width: 768px) calc(100vw - 4rem), (min-width: 390px) 358px, calc(100vw - 2rem)"
-                src="/images/hero/mobile-home-bus-guide.png" quality={40}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0e1e2e]/80 via-[#0e1e2e]/88 to-[#0e1e2e]" />
+                className="absolute inset-0 h-full w-full"
+                viewBox="0 0 800 420"
+                fill="none"
+                preserveAspectRatio="xMidYMax slice"
+              >
+                <path
+                  d="M60 380 C 240 342, 330 226, 470 188 S 686 122, 734 98"
+                  stroke="#2c4d74"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeDasharray="1 15"
+                />
+                <circle cx="60" cy="380" r="7" fill="#2c4d74" />
+                <circle cx="734" cy="98" r="17" stroke="#e8b05a" strokeOpacity="0.45" strokeWidth="2" />
+                <circle cx="734" cy="98" r="6.5" fill="#e8b05a" fillOpacity="0.8" />
+              </svg>
             </div>
             <div className="relative pb-2 pt-4 md:min-h-[390px] md:pb-0 md:pt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-10">
               <div className="min-w-0">
@@ -1026,8 +1032,8 @@ function MobileHome({
                       schedule={featuredSchedule}
                     />
                     <p className="mt-2 text-[0.65rem] font-bold leading-4 text-[#4f5d6c]">
-                      {t.schedule.source}: {featuredSchedule.sourceName} ·{" "}
-                      {t.schedule.lastVerified}: {featuredSchedule.lastVerified}
+                      {t.schedule.source.replace(/\s*:+$/, "")}: {featuredSchedule.sourceName} ·{" "}
+                      {t.schedule.lastVerified.replace(/\s*:+$/, "")}: {featuredSchedule.lastVerified}
                     </p>
                   </div>
                 ) : null}
