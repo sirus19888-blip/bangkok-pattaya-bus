@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { buildAgodaUrl, type HotelCity } from "@/data/hotelAffiliate";
 import type { LocaleCode } from "@/data/routes";
 import { trackAffiliateClick } from "@/lib/analytics";
@@ -44,7 +45,14 @@ export function HotelAffiliateInline({
         "flex min-h-11 items-center justify-center gap-2 rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6]"
       }
     >
-      <span aria-hidden="true">🏨</span>
+      <Image
+        alt=""
+        aria-hidden="true"
+        className="h-5 w-auto object-contain"
+        height={20}
+        src="/images/partners/agoda-icon.png"
+        width={39}
+      />
       <span>{label}</span>
       <span aria-hidden="true">→</span>
     </a>

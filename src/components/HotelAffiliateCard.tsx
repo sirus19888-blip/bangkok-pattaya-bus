@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { buildAgodaUrl, type HotelCity } from "@/data/hotelAffiliate";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import { trackAffiliateClick } from "@/lib/analytics";
@@ -48,6 +49,14 @@ export function HotelAffiliateCard({
         }
         className="mt-4 flex min-h-11 items-center justify-center rounded-xl bg-[#e8b05a] px-4 text-center text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
       >
+        <Image
+          alt=""
+          aria-hidden="true"
+          className="mr-2 h-5 w-auto object-contain"
+          height={20}
+          src="/images/partners/agoda-icon.png"
+          width={39}
+        />
         {text.cta.replace("{city}", cityName)}
       </a>
       <p className="mt-2 text-xs font-semibold leading-5 text-[#5f6874]">
