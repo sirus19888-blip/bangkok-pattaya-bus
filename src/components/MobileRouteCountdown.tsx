@@ -6,6 +6,7 @@ import { useNextDeparture } from "@/hooks/useNextDeparture";
 import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
 
 type MobileRouteCountdownProps = {
+  className?: string;
   labels?: {
     check: string;
     hoursShort: string;
@@ -27,6 +28,7 @@ const defaultLabels = {
 };
 
 export function MobileRouteCountdown({
+  className = "mt-3",
   labels = defaultLabels,
   schedule,
 }: MobileRouteCountdownProps) {
@@ -75,6 +77,21 @@ export function MobileRouteCountdown({
     return null;
   }
 
+  if (schedule.departureWindow) {
+    return (
+      <div className={`${className} rounded-2xl border border-[#c8dbe9] bg-[#eaf5fb] p-2`}>
+        <span>
+          <span className="block text-[0.65rem] font-black uppercase tracking-wide text-[#4f5d6c]">
+            {labels.nextBus}
+          </span>
+          <span className="mt-0.5 block break-words text-sm font-black leading-snug text-[#13233a]">
+            {schedule.departureWindow}
+          </span>
+        </span>
+      </div>
+    );
+  }
+
   const countdown = formatCountdown(minutesUntilDeparture, labels);
   const isUrgent =
     minutesUntilDeparture !== null &&
@@ -82,7 +99,7 @@ export function MobileRouteCountdown({
     minutesUntilDeparture <= 15;
 
   return (
-    <div className="mt-3 rounded-2xl border border-[#c8dbe9] bg-[#eaf5fb] p-2">
+    <div className={`${className} rounded-2xl border border-[#c8dbe9] bg-[#eaf5fb] p-2`}>
       <div className="grid grid-cols-2 gap-2">
         <span>
           <span className="block text-[0.65rem] font-black uppercase tracking-wide text-[#4f5d6c]">

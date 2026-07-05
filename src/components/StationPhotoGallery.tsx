@@ -128,7 +128,7 @@ export function StationPhotoGallery({
                   >
                     <button
                       type="button"
-                      className="relative block aspect-[4/3] w-full overflow-hidden rounded-xl text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 lg:rounded-lg"
+                      className="relative block aspect-[4/3] w-full overflow-hidden rounded-xl bg-[#e3d5bd] text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 lg:rounded-lg"
                       onClick={() => setActivePhoto(photo)}
                       aria-label={`${openPhotoLabel}: ${cleanAlt}`}
                     >

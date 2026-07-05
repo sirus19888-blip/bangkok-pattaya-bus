@@ -499,6 +499,8 @@ type SeoGuideText = {
   h1?: string;
   intro?: string;
   shortAnswer?: string;
+  ctaLabel?: string;
+  routeLinkLabel?: string;
   keyPoints?: string[];
   sections?: { title?: string; body?: string }[];
   faq?: { question?: string; answer?: string }[];
@@ -520,6 +522,8 @@ export function localizeSeoGuide(guide: SeoGuide, t: Translations): SeoGuide {
     h1: guideText.h1 ?? guide.h1,
     intro: guideText.intro ?? guide.intro,
     shortAnswer: guideText.shortAnswer ?? guide.shortAnswer,
+    ctaLabel: guideText.ctaLabel ?? guide.ctaLabel,
+    routeLinkLabel: guideText.routeLinkLabel ?? guide.routeLinkLabel,
     keyPoints: guideText.keyPoints ?? guide.keyPoints,
     sections: guide.sections.map((section, index) => ({
       ...section,

@@ -59,7 +59,7 @@ const variantClasses: Record<AffiliateCTAVariant, string> = {
 };
 
 const buttonClasses: Record<AffiliateCTAVariant, string> = {
-  top: "min-h-12 rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-5 text-sm text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6]",
+  top: "min-h-12 rounded-xl bg-[#e8b05a] px-5 text-sm text-[#13233a] shadow-sm transition hover:bg-[#dca23f]",
   afterSchedule:
     "min-h-12 rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-5 text-sm text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6]",
   stickyMobile:

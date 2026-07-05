@@ -954,7 +954,11 @@ function MobileHome({
                 <span className="inline-flex rounded-full bg-[#0e1e2e]/90 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.16em] text-[#f3d77b] ring-1 ring-white/20">
                   {copy.mobileHeroKicker}
                 </span>
-                <p className="mt-3 max-w-[16rem] text-[2.18rem] font-black leading-[0.95] tracking-tight md:max-w-3xl md:text-5xl lg:text-6xl">
+                <p className="mt-2 text-sm font-black tracking-tight text-[#f3d77b] md:hidden">
+                  {copy.heroLineOne} <span className="italic">{copy.heroSmart}</span>{" "}
+                  {copy.heroLineTwo} <span className="italic">{copy.heroEasy}</span>
+                </p>
+                <p className="mt-3 hidden max-w-3xl text-5xl font-black leading-[0.95] tracking-tight md:block lg:text-6xl">
                   {copy.heroLineOne}{" "}
                   <span className="italic text-[#f3d77b]">
                     {copy.heroSmart}
@@ -965,7 +969,7 @@ function MobileHome({
                     {copy.heroEasy}
                   </span>
                 </p>
-                <h1 className="mt-3 max-w-[18rem] text-[1.72rem] font-black leading-[1.02] tracking-tight text-white md:max-w-3xl md:text-4xl lg:text-5xl">
+                <h1 className="mt-2 max-w-[18rem] text-2xl font-black leading-[1.02] tracking-tight text-white md:mt-3 md:max-w-3xl md:text-4xl lg:text-5xl">
                   {copy.homepageH1}
                 </h1>
                 <p className="mt-2 max-w-[17.5rem] text-[0.84rem] font-semibold leading-5 text-[#e8edf5] md:max-w-xl md:text-base md:leading-7">
@@ -1367,7 +1371,7 @@ function MobileRouteCard({
 
   return (
     <article
-      className="flex w-[172px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm sm:w-auto sm:min-w-0"
+      className="flex w-[240px] flex-none snap-start flex-col overflow-hidden rounded-[1.35rem] border border-[#eadcc7] bg-white shadow-sm sm:w-auto sm:min-w-0"
       data-visual-qa="homepage-route-card"
     >
       <Link
@@ -1379,7 +1383,7 @@ function MobileRouteCard({
           aria-hidden="true"
           className="h-full w-full object-cover"
           fill
-          sizes="(min-width: 1280px) 190px, (min-width: 768px) 33vw, 172px"
+          sizes="(min-width: 1280px) 190px, (min-width: 768px) 33vw, 240px"
           src={routeImage}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-[#0e1e2e]/30 to-[#0e1e2e]/85" />
@@ -1408,28 +1412,34 @@ function MobileRouteCard({
           value={schedule ? getHomepageSchedulePrice(schedule) : undefined}
         />
       </div>
-      <MobileRouteCountdown labels={countdownLabels} schedule={schedule} />
-      {hasTickets ? (
-        <TravelDateAwareTwelveGoAffiliateButton
-          ariaLabel={affiliateText.homepageCardAria}
-          className="mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-3 text-center text-xs font-black text-white shadow-sm transition hover:bg-[#1d3455]"
-          ctaPosition="homepage_route_card"
-          disclosureMode="none"
-          label={affiliateText.homepageCardCta}
-          locale={locale}
-          routeId={routePage.slug}
-        />
-      ) : null}
-      <Link
-        href={`/${locale}/${routePage.slug}`}
-        className={
-          hasTickets
-            ? "mt-2 flex min-h-11 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-3 text-center text-xs font-black text-[#13233a] transition hover:bg-[#fffaf2]"
-            : "mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-3 text-center text-xs font-black text-white shadow-sm transition hover:bg-[#1d3455]"
-        }
-      >
-        {copy.viewRoute}
-      </Link>
+        <div className="mt-auto pt-3">
+          <MobileRouteCountdown
+            className="mt-0"
+            labels={countdownLabels}
+            schedule={schedule}
+          />
+          {hasTickets ? (
+            <TravelDateAwareTwelveGoAffiliateButton
+              ariaLabel={affiliateText.homepageCardAria}
+              className="mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-3 text-center text-xs font-black text-white shadow-sm transition hover:bg-[#1d3455]"
+              ctaPosition="homepage_route_card"
+              disclosureMode="none"
+              label={affiliateText.homepageCardCta}
+              locale={locale}
+              routeId={routePage.slug}
+            />
+          ) : null}
+          <Link
+            href={`/${locale}/${routePage.slug}`}
+            className={
+              hasTickets
+                ? "mt-2 flex min-h-11 items-center justify-center rounded-xl border border-[#d8c8b4] bg-white px-3 text-center text-xs font-black text-[#13233a] transition hover:bg-[#fffaf2]"
+                : "mt-3 flex min-h-11 items-center justify-center rounded-xl bg-[#13233a] px-3 text-center text-xs font-black text-white shadow-sm transition hover:bg-[#1d3455]"
+            }
+          >
+            {copy.viewRoute}
+          </Link>
+        </div>
       </div>
     </article>
   );

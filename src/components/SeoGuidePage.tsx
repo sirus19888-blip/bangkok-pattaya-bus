@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { AffiliateCTA } from "@/components/AffiliateCTA";
+import { Header } from "@/components/Header";
 import { HotelAffiliateInline } from "@/components/HotelAffiliateInline";
 import { routeHotelCity } from "@/data/hotelAffiliate";
 import { getRoutePage } from "@/data/routes";
 import type { LocaleCode } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
+import { getTranslations } from "@/lib/i18n";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 import { build12GoRouteUrl, getAffiliateRoute } from "@/lib/twelveGo";
 import { getUiTranslations } from "@/lib/uiTranslations";
@@ -18,6 +20,7 @@ function localizeInternalHref(href: string, locale: LocaleCode) {
 }
 
 export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale?: LocaleCode }) {
+  const t = getTranslations(locale);
   const chrome = getUiTranslations(locale).guidePage;
   const affiliateText = getUiTranslations(locale).affiliate;
   const routePage = getRoutePage(guide.routeId);
@@ -56,9 +59,19 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
     return null;
   }
 
+  const localizedRouteTitle =
+    t.routePages[guide.routeId]?.title ?? routePage.title;
+
   return (
     <main className="min-h-screen bg-[#f7f0e3] px-4 py-8 pb-40 text-[#13233a] lg:pb-0">
       <GuideJsonLd guide={guide} locale={locale} />
+
+      <div className="mx-auto max-w-4xl pb-4">
+        <Header
+          labels={{ ...t.app, chooseLanguage: t.navigation.chooseLanguage }}
+          currentLocale={locale}
+        />
+      </div>
 
       <article className="mx-auto max-w-4xl">
         <nav className="flex flex-wrap items-center gap-1 text-sm font-black text-[#0e7b6b]">
@@ -74,7 +87,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             className="inline-flex min-h-11 items-center rounded-lg px-2"
             href={`/${locale}/${routePage.slug}`}
           >
-            {routePage.title}
+            {localizedRouteTitle}
           </Link>
         </nav>
 
@@ -159,7 +172,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
 
             <section className="rounded-[1.5rem] border border-[#eadcc7] bg-white p-5 shadow-sm md:p-6">
               <h2 className="text-2xl font-black leading-tight">
-                {chrome.relatedRoute} {routePage.title}
+                {chrome.relatedRoute} {localizedRouteTitle}
               </h2>
               <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
                 {chrome.relatedRouteBody}
