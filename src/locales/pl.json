@@ -187,10 +187,10 @@
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Około 3-3,5 godziny",
-      "price": "Około 170 THB",
+      "price": "167-183 THB za osobę",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
       "boardingNote": "Źródła dodatkowe wskazują Pattaya Sukhumvit Road Bus Station. Przed podróżą potwierdź dokładne miejsce odjazdu w Pattayi.",
-      "fareNote": "Źródła dodatkowe pokazują cenę około 170 THB za osobę.",
+      "fareNote": "Źródła dodatkowe pokazują ceny online 167-183 THB za osobę.",
       "operatorNote": "Rozkład opiera się na dodatkowych źródłach rezerwacyjnych i podróżniczych. Potwierdź u operatora lub na stacji.",
       "sourceType": "dodatkowe źródła rezerwacyjne / podróżnicze",
       "dataQuality": "Źródła dodatkowe, wymagają potwierdzenia u operatora"
@@ -554,15 +554,15 @@
       },
       {
         "question": "Czy za bilet na autobus z Pattaya do Don Mueang mogę zapłacić kartą, czy potrzebuję gotówki?",
-        "answer": "Miej przygotowaną gotówkę w tajskich bahtach do zapłaty w kasie, ponieważ możliwość płatności kartą bywa różna w zależności od stacji i pory dnia. Cena około 170 THB pochodzi ze źródeł wtórnych, więc przed zapłatą potwierdź aktualną kwotę u przewoźnika lub na stacji. Jeśli wolisz zapłacić kartą i zarezerwować miejsce, możesz też kupić bilet online przed podróżą."
+        "answer": "Miej przygotowaną gotówkę w tajskich bahtach do zapłaty w kasie, ponieważ możliwość płatności kartą bywa różna w zależności od stacji i pory dnia. Cena 167-183 THB pochodzi ze źródeł wtórnych, więc przed zapłatą potwierdź aktualną kwotę u przewoźnika lub na stacji. Jeśli wolisz zapłacić kartą i zarezerwować miejsce, możesz też kupić bilet online przed podróżą."
       },
       {
         "question": "Który autobus z Pattaya do Don Mueang wybrać, aby zdążyć na samolot?",
-        "answer": "Przy zaledwie około czterech kursach dziennie (źródła wtórne podają 07:00, 10:00, 14:30 i 17:00) oraz podróży trwającej 3–3,5 godziny do Don Mueang, dalej położonego lotniska Bangkoku, licz czas wstecz od godziny lotu i wybierz wcześniejszy autobus z dużym zapasem. Zakładaj pełne 3,5 godziny plus korki, a następnie dolicz czas na odprawę, nadanie bagażu i kontrolę bezpieczeństwa. Nie polegaj na ostatnim autobusie przed lotem i potwierdź godziny odjazdów przed podróżą, ponieważ nie są one potwierdzone przez przewoźnika."
+        "answer": "Przy około sześciu kursach dziennie (źródła wtórne podają 07:00, 10:00, 12:00, 14:30, 16:00 i 17:00) oraz podróży trwającej 3–3,5 godziny do Don Mueang, dalej położonego lotniska Bangkoku, licz czas wstecz od godziny lotu i wybierz wcześniejszy autobus z dużym zapasem. Zakładaj pełne 3,5 godziny plus korki, a następnie dolicz czas na odprawę, nadanie bagażu i kontrolę bezpieczeństwa. Nie polegaj na ostatnim autobusie przed lotem i potwierdź godziny odjazdów przed podróżą, ponieważ nie są one potwierdzone przez przewoźnika."
       },
       {
         "question": "Co zrobić, jeśli spóźnię się na ostatni autobus z Pattaya przed lotem z Don Mueang?",
-        "answer": "Jeśli spóźnisz się na ostatni autobus, a mimo to musisz zdążyć na samolot, realnymi opcjami są taksówka z licznikiem lub wcześniej zamówiony prywatny transfer prosto do Don Mueang; ustal cenę i trasę przed wyruszeniem. Ponieważ dziennie jest tylko około czterech kursów, a godziny pochodzą ze źródeł wtórnych, nie licz na ostatni autobus przed lotem. Wcześniejsze porównanie prywatnych transferów to często najprostszy sposób, aby uniknąć nerwów w ostatniej chwili."
+        "answer": "Jeśli spóźnisz się na ostatni autobus, a mimo to musisz zdążyć na samolot, realnymi opcjami są taksówka z licznikiem lub wcześniej zamówiony prywatny transfer prosto do Don Mueang; ustal cenę i trasę przed wyruszeniem. Ponieważ dziennie jest około sześciu kursów, a godziny pochodzą ze źródeł wtórnych, nie licz na ostatni autobus przed lotem. Wcześniejsze porównanie prywatnych transferów to często najprostszy sposób, aby uniknąć nerwów w ostatniej chwili."
       }
     ]
   }

@@ -624,22 +624,29 @@ function assertDonMueangAirportToPattaya({ appSchedules, source, text }) {
 
 function assertPattayaToDonMueangAirport({ appSchedules, source, text }) {
   const routeId = "pattaya-to-don-mueang-airport";
-  const expectedDepartures = ["07:00", "10:00", "14:30", "17:00"];
+  const expectedDepartures = [
+    "07:00",
+    "10:00",
+    "12:00",
+    "14:30",
+    "16:00",
+    "17:00",
+  ];
   const appSchedule = appSchedules[routeId];
 
   assert.ok(appSchedule, `${routeId} must exist in app schedules.`);
   assert.deepEqual(
     appSchedule.times,
     expectedDepartures,
-    `${routeId} app departures must match ThailandLife's four published departures.`,
+    `${routeId} app departures must match ThailandLife's six published departures.`,
   );
   assert.ok(
-    appSchedule.fareText.includes("170"),
-    `${routeId} app fare text must retain 170 THB.`,
+    appSchedule.fareText.includes("167"),
+    `${routeId} app fare text must retain 167-183 THB.`,
   );
   assert.ok(
-    textHas(text, /There are currently 4 services a day/i),
-    `${source.name} must confirm four services a day.`,
+    textHas(text, /There are currently 6 services a day/i),
+    `${source.name} must confirm six services a day.`,
   );
 
   for (const departure of expectedDepartures) {
@@ -650,8 +657,8 @@ function assertPattayaToDonMueangAirport({ appSchedules, source, text }) {
   }
 
   assert.ok(
-    textHas(text, /(?:\u0e3f\s*170|170\s*THB|170\s*baht)/i),
-    `${source.name} must confirm the 170 THB fare.`,
+    textHas(text, /(?:\u0e3f\s*183|183\s*THB|183\s*baht)/i),
+    `${source.name} must confirm the 183 THB ThailandLife fare.`,
   );
 
   return [
@@ -660,7 +667,7 @@ function assertPattayaToDonMueangAirport({ appSchedules, source, text }) {
       strength: "secondary source",
       result: "match",
       note:
-        "ThailandLife confirms four Pattaya-DMK departures and 170 THB; this is a weaker source class than RRC official operator pages.",
+        "ThailandLife confirms six Pattaya-DMK departures and 183 THB; app stores the 167-183 THB secondary-source range. This is a weaker source class than RRC official operator pages.",
     },
   ];
 }

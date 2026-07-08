@@ -204,9 +204,9 @@
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "etwa 3–3,5 Stunden",
-      "price": "etwa 170 Baht",
+      "price": "167-183 Baht",
       "disclaimer": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
-      "fareNote": "Richtpreis aus zusätzlichen Quellen: etwa 170 Baht.",
+      "fareNote": "Online-Preise laut zusätzlichen Quellen: 167-183 Baht.",
       "boardingNote": "Zusätzliche Quellen nennen den Busbahnhof an der Sukhumvit Road in Pattaya. Bestätige den genauen Einstieg vor der Reise.",
       "operatorNote": "Der Fahrplan basiert auf zusätzlichen Buchungs- und Reisequellen. Bitte beim Betreiber oder an der Station bestätigen.",
       "sourceName": "Transport Co. über zusätzliche Quellen",
@@ -572,15 +572,15 @@
       },
       {
         "question": "Kann ich das Busticket von Pattaya nach Don Mueang mit Karte bezahlen oder brauche ich Bargeld?",
-        "answer": "Halten Sie thailändische Baht in bar für den Schalter bereit, da die Kartenakzeptanz je nach Station und Tageszeit unterschiedlich sein kann. Der Fahrpreis von rund 170 THB stammt aus Sekundärquellen, bestätigen Sie den aktuellen Preis daher vor der Zahlung beim Betreiber oder an der Station. Wenn Sie lieber mit Karte zahlen und sich einen Sitzplatz sichern möchten, können Sie auch vor der Reise online buchen."
+        "answer": "Halten Sie thailändische Baht in bar für den Schalter bereit, da die Kartenakzeptanz je nach Station und Tageszeit unterschiedlich sein kann. Der Fahrpreis von 167-183 THB stammt aus Sekundärquellen, bestätigen Sie den aktuellen Preis daher vor der Zahlung beim Betreiber oder an der Station. Wenn Sie lieber mit Karte zahlen und sich einen Sitzplatz sichern möchten, können Sie auch vor der Reise online buchen."
       },
       {
         "question": "Welchen Bus von Pattaya nach Don Mueang sollte ich nehmen, um meinen Flug rechtzeitig zu erreichen?",
-        "answer": "Bei nur etwa vier Abfahrten pro Tag (Sekundärquellen nennen 07:00, 10:00, 14:30 und 17:00) und einer Fahrt von 3–3,5 Stunden nach Don Mueang, dem weiter entfernten Flughafen Bangkoks, rechnen Sie von Ihrem Flug rückwärts und wählen Sie einen früheren Bus mit großem Puffer. Planen Sie die vollen 3,5 Stunden plus Verkehr ein und rechnen Sie dann Zeit für Check-in, Gepäckabgabe und Sicherheitskontrolle hinzu. Verlassen Sie sich nicht auf den letzten Bus vor Ihrem Flug und bestätigen Sie die Abfahrtszeiten vor der Reise, da sie nicht vom Betreiber bestätigt sind."
+        "answer": "Bei etwa sechs Abfahrten pro Tag (Sekundärquellen nennen 07:00, 10:00, 12:00, 14:30, 16:00 und 17:00) und einer Fahrt von 3–3,5 Stunden nach Don Mueang, dem weiter entfernten Flughafen Bangkoks, rechnen Sie von Ihrem Flug rückwärts und wählen Sie einen früheren Bus mit großem Puffer. Planen Sie die vollen 3,5 Stunden plus Verkehr ein und rechnen Sie dann Zeit für Check-in, Gepäckabgabe und Sicherheitskontrolle hinzu. Verlassen Sie sich nicht auf den letzten Bus vor Ihrem Flug und bestätigen Sie die Abfahrtszeiten vor der Reise, da sie nicht vom Betreiber bestätigt sind."
       },
       {
         "question": "Was soll ich tun, wenn ich den letzten Bus von Pattaya vor meinem Flug ab Don Mueang verpasse?",
-        "answer": "Wenn Sie den letzten Bus verpassen und trotzdem einen Flug erreichen müssen, sind die realistischen Optionen ein Taxi mit Taxameter oder ein vorab gebuchter privater Transfer direkt nach Don Mueang; vereinbaren Sie Preis und Route, bevor Sie losfahren. Da es nur etwa vier Abfahrten pro Tag gibt und die Zeiten aus Sekundärquellen stammen, verlassen Sie sich nicht auf den letzten Bus vor einem Flug. Einen privaten Transfer im Voraus zu vergleichen ist oft der einfachste Weg, um Stress in letzter Minute zu vermeiden."
+        "answer": "Wenn Sie den letzten Bus verpassen und trotzdem einen Flug erreichen müssen, sind die realistischen Optionen ein Taxi mit Taxameter oder ein vorab gebuchter privater Transfer direkt nach Don Mueang; vereinbaren Sie Preis und Route, bevor Sie losfahren. Da es etwa sechs Abfahrten pro Tag gibt und die Zeiten aus Sekundärquellen stammen, verlassen Sie sich nicht auf den letzten Bus vor einem Flug. Einen privaten Transfer im Voraus zu vergleichen ist oft der einfachste Weg, um Stress in letzter Minute zu vermeiden."
       }
     ]
   },

@@ -366,9 +366,9 @@ export const schedules: Schedule[] = [
     direction: "pattaya-to-don-mueang-airport",
     distance: "155 km",
     travelTime: "Around 3-3.5 hours",
-    price: "Around 170 THB",
-    fromPrice: "170 THB",
-    departures: ["07:00", "10:00", "14:30", "17:00"],
+    price: "167-183 THB per person",
+    fromPrice: "167 THB",
+    departures: ["07:00", "10:00", "12:00", "14:30", "16:00", "17:00"],
     nextDeparture: "10:00",
     lastUpdated: "2026-07-08",
     disclaimer:
@@ -379,7 +379,7 @@ export const schedules: Schedule[] = [
     sourceType: "secondary booking / travel sources",
     lastVerified: "2026-07-08",
     verificationStatus: "partially verified",
-    fareNote: "Secondary source fare shown: around 170 THB per person.",
+    fareNote: "Secondary sources show online fares of 167-183 THB per person.",
     boardingNote:
       "Secondary sources point to Pattaya Sukhumvit Road Bus Station. Confirm the exact Pattaya boarding point before travel.",
     operatorNote:

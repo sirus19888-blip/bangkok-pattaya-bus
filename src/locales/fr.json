@@ -187,10 +187,10 @@
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Environ 3 à 3,5 heures",
-      "price": "Environ 170 THB",
+      "price": "167-183 THB",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
       "boardingNote": "Des sources secondaires indiquent Pattaya Sukhumvit Road Bus Station. Confirmez le point d'embarquement exact à Pattaya avant le départ.",
-      "fareNote": "Des sources secondaires indiquent un tarif d'environ 170 THB par personne.",
+      "fareNote": "Des sources secondaires indiquent des tarifs en ligne de 167 à 183 THB par personne.",
       "operatorNote": "Les horaires sont basés sur des sources secondaires de réservation et de voyage. Confirmez auprès de l'opérateur ou à la station.",
       "sourceType": "sources secondaires de réservation / voyage",
       "dataQuality": "Sources secondaires, confirmation officielle nécessaire"
@@ -534,7 +534,7 @@
       },
       {
         "question": "Combien coûte le billet ?",
-        "answer": "Le prix indiqué est d'environ 170 THB. Confirmez le tarif et le point de départ avant le voyage."
+        "answer": "Le prix indiqué est de 167 à 183 THB. Confirmez le tarif et le point de départ avant le voyage."
       },
       {
         "question": "Comment rejoindre mon vol ? Don Mueang ?",
@@ -546,15 +546,15 @@
       },
       {
         "question": "Puis-je payer le billet de bus de Pattaya à Don Mueang par carte, ou ai-je besoin d'espèces ?",
-        "answer": "Gardez des bahts thaïlandais en espèces pour le guichet, car l'acceptation des cartes peut varier selon la station et l'heure de la journée. Le tarif d'environ 170 THB provient de sources secondaires, alors confirmez le prix actuel auprès de l'opérateur ou de la station avant de payer. Si vous préférez payer par carte et garantir une place, vous pouvez aussi réserver en ligne avant de partir."
+        "answer": "Gardez des bahts thaïlandais en espèces pour le guichet, car l'acceptation des cartes peut varier selon la station et l'heure de la journée. Le tarif de 167 à 183 THB provient de sources secondaires, alors confirmez le prix actuel auprès de l'opérateur ou de la station avant de payer. Si vous préférez payer par carte et garantir une place, vous pouvez aussi réserver en ligne avant de partir."
       },
       {
         "question": "Quel bus de Pattaya à Don Mueang dois-je prendre pour ne pas rater mon vol ?",
-        "answer": "Avec seulement environ quatre départs par jour (les sources secondaires indiquent 07h00, 10h00, 14h30 et 17h00) et un trajet de 3 à 3,5 heures jusqu'à Don Mueang, l'aéroport de Bangkok le plus éloigné, partez de l'heure de votre vol et calculez à rebours pour choisir un bus plus tôt avec une large marge. Comptez les 3,5 heures complètes plus le trafic, puis ajoutez du temps pour l'enregistrement, le dépôt des bagages et la sécurité. Ne comptez pas sur le dernier bus avant votre vol et confirmez les horaires de départ avant de voyager, car ils ne sont pas confirmés par l'opérateur."
+        "answer": "Avec environ six départs par jour (les sources secondaires indiquent 07h00, 10h00, 12h00, 14h30, 16h00 et 17h00) et un trajet de 3 à 3,5 heures jusqu'à Don Mueang, l'aéroport de Bangkok le plus éloigné, partez de l'heure de votre vol et calculez à rebours pour choisir un bus plus tôt avec une large marge. Comptez les 3,5 heures complètes plus le trafic, puis ajoutez du temps pour l'enregistrement, le dépôt des bagages et la sécurité. Ne comptez pas sur le dernier bus avant votre vol et confirmez les horaires de départ avant de voyager, car ils ne sont pas confirmés par l'opérateur."
       },
       {
         "question": "Que faire si je rate le dernier bus au départ de Pattaya avant mon vol depuis Don Mueang ?",
-        "answer": "Si vous ratez le dernier bus tout en devant attraper un vol, les options réalistes sont un taxi au compteur ou un transfert privé réservé à l'avance directement jusqu'à Don Mueang ; convenez du prix et de l'itinéraire avant de partir. Comme il n'y a qu'environ quatre départs par jour et que les horaires proviennent de sources secondaires, ne comptez pas sur le dernier bus avant un vol. Comparer un transfert privé à l'avance est souvent le moyen le plus simple d'éviter la précipitation de dernière minute."
+        "answer": "Si vous ratez le dernier bus tout en devant attraper un vol, les options réalistes sont un taxi au compteur ou un transfert privé réservé à l'avance directement jusqu'à Don Mueang ; convenez du prix et de l'itinéraire avant de partir. Comme il n'y a qu'environ six départs par jour et que les horaires proviennent de sources secondaires, ne comptez pas sur le dernier bus avant un vol. Comparer un transfert privé à l'avance est souvent le moyen le plus simple d'éviter la précipitation de dernière minute."
       }
     ]
   }
