@@ -6,6 +6,7 @@ import { HomepageRevenueHeroCard } from "@/components/HomepageRevenueHeroCard";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { MobileDestinationWeather } from "@/components/MobileDestinationWeather";
 import { MobileRouteCountdown } from "@/components/MobileRouteCountdown";
+import { MoreThailandRoutes } from "@/components/MoreThailandRoutes";
 import { RouteSearch } from "@/components/RouteSearch";
 import { TravelDateAwareTwelveGoAffiliateButton } from "@/components/TravelDateAwareTwelveGoAffiliateButton";
 import {
@@ -1190,6 +1191,8 @@ function MobileHome({
             })}
           </ul>
         </section>
+
+        <MoreThailandRoutes className="mx-4 mt-2 md:mx-0 md:mt-6" />
 
         <div id="travel-guides" className="scroll-mt-6">
           <TravelGuideLinks

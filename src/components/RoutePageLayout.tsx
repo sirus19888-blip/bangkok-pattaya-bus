@@ -3,6 +3,7 @@ import { AdSlot } from "@/components/AdSlot";
 import { FAQ } from "@/components/FAQ";
 import { Header } from "@/components/Header";
 import { HotelAffiliateInline } from "@/components/HotelAffiliateInline";
+import { MoreThailandRoutes } from "@/components/MoreThailandRoutes";
 import {
   DesktopRouteBookingPanel,
   MobileRouteDecisionCard,
@@ -175,6 +176,8 @@ export function RoutePageLayout({
                   routePages={localizedRoutePages}
                 />
               </div>
+
+              <MoreThailandRoutes />
 
               <div className="lg:hidden">
                 <TravelerFeedback locale={locale} routeTitle={routePage.title} />
