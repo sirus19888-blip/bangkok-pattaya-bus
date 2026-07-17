@@ -84,7 +84,14 @@ export function getTranslations(locale: LocaleCode): Translations {
     ),
     faqItems: dictionary.faqItems ?? en.faqItems,
     routeFaqItems: mergeArrayRecord(en.routeFaqItems, dictionary.routeFaqItems),
-    guides: mergeTextRecord(en.guides, dictionary.guides),
+    guides: {
+      ...mergeTextRecord(en.guides, dictionary.guides),
+      ...Object.fromEntries(
+        Object.entries(dictionary.guides ?? {}).filter(
+          ([key]) => !(key in en.guides),
+        ),
+      ),
+    } as Translations["guides"],
   };
 }
 

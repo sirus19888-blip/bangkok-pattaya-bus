@@ -367,9 +367,9 @@ assert(
   "sitemap.ts must use the shared www production URL helper.",
 );
 assert(
-  sitemapFile.includes('from "@/data/seoGuides"') &&
-    sitemapFile.includes("/en/${guide.slug}"),
-  "sitemap.ts must include English SEO guides.",
+  sitemapFile.includes('from "@/data/translatedGuides"') &&
+    sitemapFile.includes("/${locale}/${guide.slug}"),
+  "sitemap.ts must emit guides for every translated locale.",
 );
 assert(
   !sitemapFile.includes('from "@/data/seoRoutes"') &&
