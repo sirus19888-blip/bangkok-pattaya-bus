@@ -1265,6 +1265,115 @@ export const seoGuides: SeoGuide[] = [
       },
     ],
   },
+  {
+    slug: "hotels-near-pattaya-bus-station",
+    title: "Hotels near Pattaya Bus Station: Where to Stay (North Pattaya)",
+    description:
+      "Best areas to stay near North Pattaya Bus Station: closest zones, late-arrival and early-departure tips, and how to pick a hotel by walking distance.",
+    h1: "Hotels near Pattaya Bus Station: Where to Stay",
+    intro:
+      "Most buses from Bangkok arrive at North Pattaya Bus Station. If you arrive late, leave early, or simply want a short transfer, staying nearby saves time and stress. This guide compares the areas around the station and shows how to pick a hotel that fits a bus-based trip.",
+    shortAnswer:
+      "Stay in the North Pattaya area if you want the shortest ride to the bus station. Naklua and Wong Amat are quieter beach-side options a few minutes away, while Central Pattaya has the most shopping and nightlife within a short songthaew or Grab ride.",
+    routeId: "bangkok-to-pattaya",
+    routeLinkLabel: "Open Bangkok to Pattaya Bus",
+    ctaLabel: "Check Bangkok → Pattaya tickets",
+    ctaPosition: "guide_body",
+    ctaSubId: "bpb-bangkok-to-pattaya-guide_hotels_station",
+    lastUpdated: "2026-07-17",
+    keyPoints: [
+      "North Pattaya is the most convenient area for early buses and late arrivals.",
+      "Use the map view when booking and check the distance to North Pattaya Bus Station.",
+      "Central Pattaya is still fine with a morning bus if you leave a 20-30 minute buffer.",
+    ],
+    sections: [
+      {
+        title: "Where do buses from Bangkok arrive?",
+        body: "Most services from Ekkamai and Mo Chit arrive at North Pattaya Bus Station, near the northern end of the city. Some routes and operators use other stops, so confirm the arrival point on the route page before you choose a hotel area.",
+      },
+      {
+        title: "Why stay near the bus station",
+        body: "A hotel close to the station makes a bus-based trip easier: you avoid a long transfer after arrival, and on departure day you are minutes from boarding instead of crossing the whole city in traffic. It is the safest setup for early-morning buses and for late-evening arrivals.",
+      },
+      {
+        title: "North Pattaya: closest to the station",
+        body: "The area around North Pattaya Road gives you the shortest ride to the bus station, with plenty of local restaurants and convenience stores. It is generally calmer than the center. Good choice for a first or last night when your priority is the bus, not the nightlife.",
+      },
+      {
+        title: "Naklua and Wong Amat: quiet beach side",
+        body: "North of the station, Naklua and Wong Amat offer a more relaxed, beach-oriented stay a short Grab or songthaew ride away. Pick this zone if you want quieter evenings and beach time but still an easy connection to the station.",
+      },
+      {
+        title: "Central Pattaya and Second Road: shopping and nightlife",
+        body: "Central Pattaya has the biggest choice of hotels, malls and nightlife. The trade-off is a 10-20 minute ride to the bus station depending on traffic. It works well with a mid-morning bus; for the earliest departures, add extra buffer or stay closer to the station.",
+      },
+      {
+        title: "How to pick the hotel: use the map, not just the price",
+        body: "When comparing hotels for your dates, switch to the map view and check the real distance to North Pattaya Bus Station. For late arrivals, look for a 24-hour front desk. For early buses, confirm that breakfast or checkout works at your departure time, and pack the evening before.",
+      },
+      {
+        title: "Getting between the station and your hotel",
+        body: "Songthaews run along the main roads and are the cheapest option, Grab and Bolt work well with luggage, and taxis are available at the station - agree on the destination and price before you get in. Most rides within North and Central Pattaya take only a few minutes outside rush hour.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Bangkok to Pattaya Bus",
+        href: "/en/bangkok-to-pattaya",
+        description:
+          "Current timetable, fares and arrival details for the main route into Pattaya.",
+      },
+      {
+        label: "Pattaya Bus Station to Jomtien",
+        href: "/en/pattaya-bus-station-to-jomtien",
+        description: "Onward travel from North Pattaya Bus Station to Jomtien.",
+      },
+      {
+        label: "Jomtien Bus Station (Thappraya Road)",
+        href: "/en/jomtien-bus-station",
+        description:
+          "Airport bus boarding point on the Jomtien side, with nearby stay tips.",
+      },
+    ],
+    faq: [
+      {
+        question:
+          "Are there hotels within walking distance of North Pattaya Bus Station?",
+        answer:
+          "Yes - the North Pattaya area has options a short walk or a few minutes' ride away. Use the map view when booking and check the distance to the station for your exact pick.",
+      },
+      {
+        question: "Is North Pattaya a good base for the whole trip?",
+        answer:
+          "It is calmer than the center and great for bus connections. If you want nightlife and shopping at your doorstep, Central Pattaya may suit you better, at the cost of a longer ride to the station.",
+      },
+      {
+        question: "How far is Central Pattaya from the bus station?",
+        answer:
+          "Usually a 10-20 minute ride depending on traffic. With an early-morning bus, leave extra buffer or choose a hotel closer to the station.",
+      },
+      {
+        question: "I arrive late in the evening - what should I check?",
+        answer:
+          "Pick a hotel with a 24-hour front desk, and use Grab, Bolt or a taxi from the station. Agree the destination and price before the ride if you take a taxi.",
+      },
+      {
+        question: "Should I book ahead or find a hotel after arrival?",
+        answer:
+          "For high season, weekends and Thai holidays, book ahead for your dates. In quiet periods walk-ins are possible, but arriving with a booking is easier after a long bus ride.",
+      },
+    ],
+    sources: [
+      {
+        label: "Bangkok to Pattaya route page",
+        url: "/en/bangkok-to-pattaya",
+      },
+      {
+        label: "Pattaya Bus / Roong Reuang Coach",
+        url: "https://pattayabus.com/",
+      },
+    ],
+  },
 ];
 
 export function getSeoGuide(slug: string) {

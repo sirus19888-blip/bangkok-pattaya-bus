@@ -66,6 +66,13 @@ export const seoGuideLinks: SeoGuideLink[] = [
   },
   {
     description:
+      "Compare the areas around North Pattaya Bus Station and pick a hotel that fits your bus times.",
+    href: "/en/hotels-near-pattaya-bus-station",
+    slug: "hotels-near-pattaya-bus-station",
+    title: "Hotels near Pattaya Bus Station",
+  },
+  {
+    description:
       "Take the direct Transport Co. bus from Don Mueang Airport to Pattaya - operator, fare, where to find the counter and travel tips.",
     href: "/en/don-mueang-airport-to-pattaya-bus",
     slug: "don-mueang-airport-to-pattaya-bus",

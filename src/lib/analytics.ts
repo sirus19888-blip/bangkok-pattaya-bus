@@ -88,6 +88,8 @@ export function trackAffiliateClick(params: AffiliateClickEvent) {
     return;
   }
 
+  sendServerClickBeacon(params);
+
   if (typeof window.gtag !== "function") {
     return;
   }
@@ -100,4 +102,28 @@ export function trackAffiliateClick(params: AffiliateClickEvent) {
     send_to: "G-0DYTH1TLGB",
     ...params,
   });
+}
+
+function sendServerClickBeacon(params: AffiliateClickEvent) {
+  try {
+    const payload = JSON.stringify({
+      provider: params.provider,
+      cta_position: params.cta_position,
+      route_id: params.route_id,
+      lang: params.lang,
+      to: params.to,
+    });
+
+    if (typeof navigator !== "undefined" && "sendBeacon" in navigator) {
+      navigator.sendBeacon(
+        "/api/click",
+        new Blob([payload], { type: "application/json" }),
+      );
+      return;
+    }
+
+    void fetch("/api/click", { method: "POST", body: payload, keepalive: true });
+  } catch {
+    // Measurement must never block an affiliate click.
+  }
 }
