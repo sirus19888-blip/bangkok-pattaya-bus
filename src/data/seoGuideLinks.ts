@@ -59,6 +59,13 @@ export const seoGuideLinks: SeoGuideLink[] = [
   },
   {
     description:
+      "Find the Thappraya Road airport bus stop, tickets, songthaew access and nearby hotels.",
+    href: "/en/jomtien-bus-station",
+    slug: "jomtien-bus-station",
+    title: "Jomtien Bus Station (Thappraya Road) guide",
+  },
+  {
+    description:
       "Take the direct Transport Co. bus from Don Mueang Airport to Pattaya - operator, fare, where to find the counter and travel tips.",
     href: "/en/don-mueang-airport-to-pattaya-bus",
     slug: "don-mueang-airport-to-pattaya-bus",

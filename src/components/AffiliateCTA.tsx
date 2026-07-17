@@ -22,6 +22,7 @@ export type AffiliateCTAPosition =
   | "route_top"
   | "desktop_sidebar"
   | "route_after_schedule"
+  | "route_charter_gap"
   | "route_commercial_help"
   | "route_help_online_vs_station"
   | "route_help_bus_full"

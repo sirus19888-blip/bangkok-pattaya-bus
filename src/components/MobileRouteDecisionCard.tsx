@@ -36,6 +36,7 @@ type MobileRouteDecisionCardProps = {
 export function MobileRouteDecisionCard({
   locale,
   distance,
+  routeId,
   routeTitle,
   schedule,
   scheduleLabels,
@@ -64,6 +65,11 @@ export function MobileRouteDecisionCard({
   const nextDepartureDisplay =
     schedule.departureWindow ?? calculatedNextDeparture.time;
   const scheduleStatusLabels = getUiTranslations(locale).scheduleStatus;
+  const commercialText = getUiTranslations(locale).commercial;
+  const showCharterGap =
+    !schedule.departureWindow &&
+    (calculatedNextDeparture.isTomorrow ||
+      (minutesUntilDeparture !== null && minutesUntilDeparture > 120));
   const verificationStatus = getScheduleStatusLabel(
     schedule.verificationStatus,
     scheduleStatusLabels,
@@ -167,6 +173,27 @@ export function MobileRouteDecisionCard({
           <p className="mt-2 rounded-xl border border-[#c8dbe9] bg-white px-3 py-1.5 text-xs font-black leading-5 text-[#13233a]">
             {nextSubRouteText}
           </p>
+        ) : null}
+        {showCharterGap &&
+        commercialText.charterGapTitle &&
+        commercialText.charterGapBody &&
+        commercialText.charterGapCta ? (
+          <article className="mt-3 rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4">
+            <h2 className="text-base font-black leading-tight text-[#13233a]">
+              {commercialText.charterGapTitle}
+            </h2>
+            <p className="mt-2 text-sm font-semibold leading-6 text-[#4f5d6c]">
+              {commercialText.charterGapBody}
+            </p>
+            <TravelDateAwareTwelveGoAffiliateButton
+              ctaPosition="route_charter_gap"
+              disclosureMode="short"
+              label={commercialText.charterGapCta}
+              locale={locale}
+              routeId={routeId}
+              variant="afterSchedule"
+            />
+          </article>
         ) : null}
       </div>
 

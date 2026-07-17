@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTravelDateValue } from "@/components/TravelDateContext";
 import { buildAgodaUrl, type HotelCity } from "@/data/hotelAffiliate";
 import type { LocaleCode, RouteId } from "@/data/routes";
 import { trackAffiliateClick } from "@/lib/analytics";
@@ -17,9 +18,10 @@ export function HotelAffiliateCard({
   routeId: RouteId;
   ctaPosition?: string;
 }) {
+  const travelDate = useTravelDateValue();
   const text = getUiTranslations(locale).hotel;
   const cityName = text.cityNames[city];
-  const href = buildAgodaUrl(city, locale);
+  const href = buildAgodaUrl(city, locale, travelDate || undefined);
 
   return (
     <article className="rounded-2xl border border-[#e8b05a]/70 bg-[#fff8ec] p-4">

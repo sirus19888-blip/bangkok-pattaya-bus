@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTravelDateValue } from "@/components/TravelDateContext";
 import { buildAgodaUrl, type HotelCity } from "@/data/hotelAffiliate";
 import type { LocaleCode } from "@/data/routes";
 import { trackAffiliateClick } from "@/lib/analytics";
@@ -19,9 +20,10 @@ export function HotelAffiliateInline({
   ctaPosition: string;
   className?: string;
 }) {
+  const travelDate = useTravelDateValue();
   const text = getUiTranslations(locale).hotel;
   const label = text.inlineCta.replace("{city}", text.cityNames[city]);
-  const href = buildAgodaUrl(city, locale);
+  const href = buildAgodaUrl(city, locale, travelDate || undefined);
 
   return (
     <a

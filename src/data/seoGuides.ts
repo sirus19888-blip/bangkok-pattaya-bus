@@ -1152,6 +1152,119 @@ export const seoGuides: SeoGuide[] = [
       },
     ],
   },
+  {
+    slug: "jomtien-bus-station",
+    title: "Jomtien Bus Station (Thappraya Road): Airport Bus & Guide",
+    description:
+      "Where is Jomtien Bus Station on Thappraya Road, how the airport bus to Suvarnabhumi works, tickets, songthaew connections and nearby hotels.",
+    h1: "Jomtien Bus Station (Thappraya Road) Guide",
+    intro:
+      "Jomtien Bus Station on Thappraya Road is the departure point many travelers use for the airport bus from the Jomtien side of Pattaya to Suvarnabhumi. This guide explains where the station is, how boarding works, how to reach it by songthaew or taxi, and where to stay nearby before an early flight.",
+    shortAnswer:
+      "Jomtien Bus Station is on Thappraya Road, between Pattaya and Jomtien Beach. Airport buses toward Suvarnabhumi board here - check the Pattaya to Suvarnabhumi Airport route page for current departure times and fares before you go.",
+    routeId: "pattaya-to-suvarnabhumi-airport",
+    routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport Bus",
+    ctaLabel: "Check Jomtien → Suvarnabhumi tickets",
+    ctaPosition: "guide_body",
+    ctaSubId: "bpb-pattaya-to-suvarnabhumi-airport-guide_jomtien_station",
+    lastUpdated: "2026-07-17",
+    keyPoints: [
+      "Best boarding point if you stay in Jomtien, on Thappraya Road or in south Pattaya.",
+      "The ticket office is sometimes listed as the \"Thappraya bus office\" - it is the same place.",
+      "Arrive early for airport departures and keep a time buffer before international flights.",
+    ],
+    sections: [
+      {
+        title: "Where is Jomtien Bus Station?",
+        body: "The station is on Thappraya Road, the road that links south Pattaya with Jomtien Beach. Many maps and reviews call it the Thappraya Road bus office or Jomtien airport bus stop - these names refer to the same boarding point. Check the exact pin and entrance photos on the route page before your first visit.",
+      },
+      {
+        title: "Airport bus to Suvarnabhumi",
+        body: "Buses from the Jomtien area toward Suvarnabhumi Airport board at this station. Departure times and fares change, so treat this guide as orientation and check the Pattaya to Suvarnabhumi Airport route page on this site for the current timetable, fare notes and source status.",
+      },
+      {
+        title: "Where to buy tickets",
+        body: "Buy at the station counter or compare online options in advance. For early-morning airport departures many travelers prefer booking a seat online the day before, then arriving with the confirmation ready. Keep small cash for the counter and confirm the destination before paying.",
+      },
+      {
+        title: "How to get to the station",
+        body: "From Jomtien Beach Road, a songthaew or short taxi ride brings you to Thappraya Road. From central Pattaya, taxi, Grab or Bolt is the simplest option with luggage. Agree the destination clearly: \"Jomtien Bus Station, Thappraya Road\" or show the map pin.",
+      },
+      {
+        title: "How early to arrive",
+        body: "For airport buses, be at the station at least 20-30 minutes before departure. Add more buffer on weekends and holidays. For international flights, plan to reach Suvarnabhumi about 3 hours before departure time, so pick a bus that lands you there with margin.",
+      },
+      {
+        title: "Staying near the station before an early flight",
+        body: "If your flight forces a very early start, staying within a short ride of Thappraya Road makes the morning easier. Jomtien and south Pattaya have many hotels in all price ranges - compare options for your dates and pick something close to the station side of Jomtien.",
+      },
+      {
+        title: "If the bus is full or times do not fit",
+        body: "Ask the counter about the next departure. If the schedule does not work, compare a private transfer or taxi to the airport - for 3-4 people traveling together the per-person cost gets closer to bus tickets, and pickup can be from your hotel.",
+      },
+      {
+        title: "Arriving from the airport to Jomtien",
+        body: "In the opposite direction, some airport buses from Suvarnabhumi drop passengers on the Jomtien side - check the Suvarnabhumi Airport to Pattaya route page for current stops. From the drop-off point, songthaews and taxis cover the last stretch to Jomtien Beach hotels.",
+      },
+    ],
+    internalLinks: [
+      {
+        label: "Pattaya to Suvarnabhumi Airport Bus",
+        href: "/en/pattaya-to-suvarnabhumi-airport",
+        description:
+          "Current departure times, fares and boarding details for the airport bus.",
+      },
+      {
+        label: "Suvarnabhumi Airport to Pattaya Bus",
+        href: "/en/suvarnabhumi-airport-to-pattaya",
+        description:
+          "Arrival direction: times, fares and where the bus stops in Pattaya.",
+      },
+      {
+        label: "Pattaya Bus Station to Jomtien",
+        href: "/en/pattaya-bus-station-to-jomtien",
+        description:
+          "How to get between North Pattaya Bus Station and Jomtien after arrival.",
+      },
+    ],
+    faq: [
+      {
+        question: "Where exactly is Jomtien Bus Station?",
+        answer:
+          "On Thappraya Road, between south Pattaya and Jomtien Beach. It is often called the Thappraya bus office - the same boarding point for airport buses.",
+      },
+      {
+        question: "Is the Thappraya bus office the same as Jomtien Bus Station?",
+        answer:
+          "Yes. Reviews and maps use both names for the airport bus boarding point on Thappraya Road.",
+      },
+      {
+        question: "Which airport can I reach from Jomtien Bus Station?",
+        answer:
+          "Buses from this station head toward Suvarnabhumi Airport. For Don Mueang, check the Pattaya to Don Mueang route page for the correct departure point.",
+      },
+      {
+        question: "How do I get from Jomtien Beach to the station?",
+        answer:
+          "A songthaew along the Jomtien routes or a short taxi, Grab or Bolt ride to Thappraya Road. With luggage, a taxi is usually easier.",
+      },
+      {
+        question: "What time is the bus from Jomtien to Suvarnabhumi?",
+        answer:
+          "Times change, so always check the Pattaya to Suvarnabhumi Airport route page on this site for the current timetable, then confirm at the counter.",
+      },
+    ],
+    sources: [
+      {
+        label: "Pattaya to Suvarnabhumi Airport route page",
+        url: "/en/pattaya-to-suvarnabhumi-airport",
+      },
+      {
+        label: "Pattaya Bus / Roong Reuang Coach",
+        url: "https://pattayabus.com/",
+      },
+    ],
+  },
 ];
 
 export function getSeoGuide(slug: string) {

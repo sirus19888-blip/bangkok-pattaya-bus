@@ -18,6 +18,11 @@ export const routeHotelCity: Partial<Record<RouteId, HotelCity>> = {
   "pattaya-to-bangkok": "bangkok",
 };
 
+// Przewodniki bez miasta z routeHotelCity, ktore maja dostac hotel CTA (slug -> miasto).
+export const guideHotelCity: Record<string, HotelCity> = {
+  "jomtien-bus-station": "pattaya",
+};
+
 // Kod języka Agoda per locale (fallback en-us).
 const agodaHl: Record<LocaleCode, string> = {
   en: "en-us",
@@ -29,10 +34,25 @@ const agodaHl: Record<LocaleCode, string> = {
   zh: "zh-cn",
 };
 
-export function buildAgodaUrl(city: HotelCity, locale: LocaleCode) {
+export function buildAgodaUrl(
+  city: HotelCity,
+  locale: LocaleCode,
+  travelDate?: string,
+) {
   const cid = process.env.NEXT_PUBLIC_AGODA_CID || fallbackAgodaCid;
   const hl = agodaHl[locale] ?? "en-us";
-  return `https://www.agoda.com/partners/partnersearch.aspx?pcs=1&cid=${cid}&hl=${hl}&city=${agodaCityId[city]}`;
+  const url = `https://www.agoda.com/partners/partnersearch.aspx?pcs=1&cid=${cid}&hl=${hl}&city=${agodaCityId[city]}`;
+
+  if (!travelDate || !/^\d{4}-\d{2}-\d{2}$/.test(travelDate)) {
+    return url;
+  }
+
+  const [year, month, day] = travelDate.split("-").map(Number);
+  const checkout = new Date(Date.UTC(year, month - 1, day + 2))
+    .toISOString()
+    .slice(0, 10);
+
+  return `${url}&checkin=${travelDate}&checkout=${checkout}`;
 }
 
 export function buildAgodaBadgeUrl(locale: LocaleCode) {

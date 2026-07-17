@@ -2,7 +2,7 @@ import Link from "next/link";
 import { AffiliateCTA } from "@/components/AffiliateCTA";
 import { Header } from "@/components/Header";
 import { HotelAffiliateInline } from "@/components/HotelAffiliateInline";
-import { routeHotelCity } from "@/data/hotelAffiliate";
+import { guideHotelCity, routeHotelCity } from "@/data/hotelAffiliate";
 import { getRoutePage } from "@/data/routes";
 import type { LocaleCode } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
@@ -24,7 +24,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
   const chrome = getUiTranslations(locale).guidePage;
   const affiliateText = getUiTranslations(locale).affiliate;
   const routePage = getRoutePage(guide.routeId);
-  const hotelCity = routeHotelCity[guide.routeId];
+  const hotelCity = routeHotelCity[guide.routeId] ?? guideHotelCity[guide.slug];
   const ctaPosition = guide.ctaPosition ?? "route_commercial_help";
   const affiliateRoute = getAffiliateRoute(guide.routeId, locale);
   const affiliateHref = build12GoRouteUrl(
