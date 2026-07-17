@@ -50,7 +50,7 @@ export async function generateMetadata({
     alternates: {
       canonical: homeUrl(locale),
       languages: {
-        "x-default": absoluteUrl("/"),
+        "x-default": absoluteUrl("/en"),
         ...languages,
       },
     },

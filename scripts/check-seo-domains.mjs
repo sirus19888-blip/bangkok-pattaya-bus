@@ -242,7 +242,7 @@ function extractHreflangs(head) {
 
 function expectedHomeHreflangs() {
   return new Map([
-    ["x-default", absolute("/")],
+    ["x-default", absolute("/en")],
     ...locales.map((locale) => [locale, absolute(`/${locale}`)]),
   ]);
 }
@@ -261,6 +261,17 @@ function assertCanonicalSelf(path, expectedUrl) {
   assert(
     sameUrl(canonical, expectedUrl),
     `${path} canonical must be self URL ${expectedUrl}, got ${canonical}.`,
+  );
+  assertNoBannedDomains(canonical, `${path} canonical`);
+}
+
+function assertCanonical(path, expectedUrl) {
+  const { canonical } = readSeoForPath(path);
+
+  assert(canonical, `${path} is missing canonical URL.`);
+  assert(
+    sameUrl(canonical, expectedUrl),
+    `${path} canonical must be ${expectedUrl}, got ${canonical}.`,
   );
   assertNoBannedDomains(canonical, `${path} canonical`);
 }
@@ -303,7 +314,8 @@ function assertHreflangReciprocal(pagePaths) {
       path,
       {
         ...readSeoForPath(path),
-        expectedUrl: absolute(path),
+        // The root homepage is a working alias whose canonical URL is /en.
+        expectedUrl: path === "/" ? absolute("/en") : absolute(path),
       },
     ]),
   );
@@ -379,8 +391,8 @@ assert(
   "Localized homepage canonical must be generated from the localized home URL.",
 );
 assert(
-  rootHomeFile.includes("canonical: absoluteUrl(\"/\")"),
-  "Root homepage canonical must be generated from the shared site URL.",
+  rootHomeFile.includes("canonical: absoluteUrl(\"/en\")"),
+  "Root homepage canonical must point to the localized English homepage.",
 );
 
 for (const sourceRoot of sourceRoots) {
@@ -402,7 +414,7 @@ const routePagePaths = routeSlugs.flatMap((slug) =>
 );
 
 assertHtmlLang("/", "en");
-assertCanonicalSelf("/", absolute("/"));
+assertCanonical("/", absolute("/en"));
 assertHreflangs("/", expectedHomeHreflangs());
 assertHomepageStructuredData("/");
 assertHomepageStructuredData("/pl");
@@ -462,7 +474,6 @@ for (const url of sitemapUrls) {
 }
 
 const requiredSitemapUrls = [
-  absolute("/"),
   ...locales.map((locale) => absolute(`/${locale}`)),
   ...routeSlugs.flatMap((slug) =>
     locales.map((locale) => absolute(`/${locale}/${slug}`)),
@@ -476,6 +487,11 @@ for (const requiredUrl of requiredSitemapUrls) {
     `sitemap.xml is missing ${requiredUrl}.`,
   );
 }
+
+assert(
+  !sitemapUrls.some((url) => sameUrl(url, absolute("/"))),
+  "sitemap.xml must not contain the non-canonical root homepage URL.",
+);
 
 for (const url of sitemapUrls) {
   const pathname = new URL(url).pathname;

@@ -103,32 +103,9 @@ export function StationMiniMap({
         : station.mapLabel,
   );
   const [isMapOpen, setIsMapOpen] = useState(false);
-  const [shouldLoadMap, setShouldLoadMap] = useState(false);
   const openMapLabel = repairMojibake(getOpenMapLabel(locale));
   const closeMapLabel = repairMojibake(getCloseMapLabel(locale));
   const mapUrl = getOpenStreetMapEmbedUrl(station);
-
-  useEffect(() => {
-    const element = document.getElementById(`station-map-${station.id}`);
-
-    if (!element || !("IntersectionObserver" in window)) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setShouldLoadMap(true);
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "220px" },
-    );
-
-    observer.observe(element);
-
-    return () => observer.disconnect();
-  }, [station.id]);
 
   return (
     <div
@@ -149,30 +126,17 @@ export function StationMiniMap({
       <button
         type="button"
         className="relative block h-[180px] w-full overflow-hidden bg-white text-left focus:outline-none focus:ring-2 focus:ring-[#13233a] focus:ring-offset-2 sm:h-[220px] lg:h-[210px] xl:h-[220px]"
-        onClick={() => {
-          setShouldLoadMap(true);
-          setIsMapOpen(true);
-        }}
+        onClick={() => setIsMapOpen(true)}
         aria-label={`${openMapLabel}: ${mapLabel}`}
       >
-        {shouldLoadMap ? (
-          <iframe
-            src={mapUrl}
-            title={`${repairMojibake(labels.title)}: ${mapLabel}`}
-            className="pointer-events-none h-full w-full border-0"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        ) : (
-          <span
-            aria-hidden="true"
-            className="flex h-full w-full items-center justify-center bg-[#eaf5fb] px-4 text-center"
-          >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm">
-              <span className="block h-4 w-4 rounded-full border-2 border-[#13233a] bg-[#e8b05a]" />
-            </span>
+        <span
+          aria-hidden="true"
+          className="flex h-full w-full items-center justify-center bg-[#eaf5fb] px-4 text-center"
+        >
+          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm">
+            <span className="block h-4 w-4 rounded-full border-2 border-[#13233a] bg-[#e8b05a]" />
           </span>
-        )}
+        </span>
         <span className="absolute bottom-2 right-2 rounded-full bg-[#13233a] px-3 py-1 text-xs font-black text-white shadow-sm">
           {openMapLabel}
         </span>

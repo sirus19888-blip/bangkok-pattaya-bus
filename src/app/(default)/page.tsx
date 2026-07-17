@@ -8,16 +8,15 @@ const pageDescription =
   "Check Bangkok to Pattaya, Pattaya to Bangkok, and Suvarnabhumi Airport to Pattaya bus times, ticket prices, travel time, stations, and practical travel tips.";
 const openGraphDescription =
   "Check Bangkok to Pattaya, Pattaya to Bangkok, and Suvarnabhumi Airport to Pattaya bus times, prices, stations, and tips.";
-const pageUrl = absoluteUrl("/");
 const openGraphImageUrl = absoluteUrl("/images/hero/home-og-bus-guide.jpg");
 
 export const metadata: Metadata = {
   title: pageTitle,
   description: pageDescription,
   alternates: {
-    canonical: absoluteUrl("/"),
+    canonical: absoluteUrl("/en"),
     languages: {
-      "x-default": pageUrl,
+      "x-default": absoluteUrl("/en"),
       ...Object.fromEntries(
         supportedLocaleCodes.map((locale) => [
           locale,
@@ -29,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: pageTitle,
     description: openGraphDescription,
-    url: pageUrl,
+    url: absoluteUrl("/en"),
     siteName: "Bangkok Pattaya Bus",
     images: [
       {

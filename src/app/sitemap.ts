@@ -9,12 +9,6 @@ const staticLastModified = new Date("2026-07-13T00:00:00.000Z");
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: absoluteUrl("/"),
-      lastModified: staticLastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
       url: absoluteUrl("/about"),
       lastModified: staticLastModified,
       changeFrequency: "monthly",
@@ -39,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl(`/${locale}`),
       lastModified: staticLastModified,
       changeFrequency: "weekly",
-      priority: locale === "en" ? 0.9 : 0.8,
+      priority: locale === "en" ? 1 : 0.8,
     }),
   );
 
