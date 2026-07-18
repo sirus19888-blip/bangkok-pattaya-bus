@@ -1509,7 +1509,6 @@ function MobileBottomNav({
     active?: boolean;
     href: string;
     icon:
-      | "home"
       | "routes"
       | "airport"
       | "contact"
@@ -1623,7 +1622,6 @@ function MobileNavIcon({
   name,
 }: {
   name:
-    | "home"
     | "routes"
     | "airport"
     | "contact"

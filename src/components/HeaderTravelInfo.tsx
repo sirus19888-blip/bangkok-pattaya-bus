@@ -591,7 +591,7 @@ export function HeaderTravelInfo({
               className="absolute inset-0 -z-10 h-full w-full object-cover object-left"
               fill
               sizes="70px"
-              src="/images/weather/mobile-destination-weather.png"
+              src="/images/weather/mobile-destination-weather.jpg"
             />
             <span className="absolute inset-0 -z-10 bg-gradient-to-br from-[#052032]/10 via-[#052032]/25 to-[#052032]/75" />
             <span className="text-[1rem] leading-none tracking-[-0.06em]">
@@ -613,7 +613,7 @@ export function HeaderTravelInfo({
                 className="h-full w-full object-cover object-left opacity-80"
                 fill
                 sizes="280px"
-                src="/images/weather/mobile-destination-weather.png"
+                src="/images/weather/mobile-destination-weather.jpg"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-[#052032]/15 via-[#052032]/45 to-[#052032]/85" />
             </div>

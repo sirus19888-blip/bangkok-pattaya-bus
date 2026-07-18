@@ -19,6 +19,8 @@ function homeUrl(locale: string) {
   return absoluteUrl(`/${locale}`);
 }
 
+const openGraphImageUrl = absoluteUrl("/images/hero/home-og-bus-guide.jpg");
+
 export function generateStaticParams() {
   return supportedLocaleCodes.map((locale) => ({
     locale,
@@ -53,6 +55,27 @@ export async function generateMetadata({
         "x-default": absoluteUrl("/en"),
         ...languages,
       },
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: homeUrl(locale),
+      siteName: "Bangkok Pattaya Bus",
+      images: [
+        {
+          url: openGraphImageUrl,
+          width: 1200,
+          height: 630,
+          alt: seo.title,
+        },
+      ],
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+      images: [openGraphImageUrl],
     },
   };
 }
