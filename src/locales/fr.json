@@ -156,9 +156,9 @@
     },
     "suvarnabhumi-airport-to-pattaya": {
       "travelTime": "Environ 2 heures",
-      "price": "139 THB par siège",
+      "price": "130 THB par siège",
       "disclaimer": "Les horaires peuvent changer. Veuillez confirmer à la station ou auprès de l'opérateur avant le voyage.",
-      "fareNote": "Tarif publié par l'opérateur : 139 THB par siège.",
+      "fareNote": "Tarif publié par l'opérateur : 130 THB par siège.",
       "operatorNote": "Cet horaire concerne le service de Suvarnabhumi Airport à Pattaya Bus Station. Les horaires peuvent changer, confirmez avant le voyage.",
       "sourceType": "site officiel de l'opérateur",
       "dataQuality": "Source officielle, vérifiée manuellement",
@@ -177,10 +177,10 @@
     },
     "pattaya-to-suvarnabhumi-airport": {
       "travelTime": "Environ 2 heures, selon la circulation",
-      "price": "162 THB par siège",
+      "price": "130 THB par siège",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
       "boardingNote": "Selon l'opérateur, les billets sont disponibles au comptoir de service de la gare routière de Jomtien.",
-      "fareNote": "Tarif publié par l'opérateur : 162 THB par siège.",
+      "fareNote": "Tarif publié par l'opérateur : 130 THB par siège.",
       "operatorNote": "Les horaires de bus peuvent changer. Confirmez à la station ou auprès de l'opérateur avant le voyage.",
       "sourceType": "site officiel de l'opérateur",
       "dataQuality": "Source officielle, vérifiée manuellement"
@@ -444,7 +444,7 @@
       },
       {
         "question": "Puis-je payer le bus de Suvarnabhumi à Pattaya par carte, ou dois-je avoir des espèces après l'atterrissage ?",
-        "answer": "Au comptoir de l'aéroport situé au niveau 1, près de la porte 8, prévoyez le tarif de 139 THB en espèces (bahts thaïlandais), car le paiement par carte n'est pas toujours accepté. Si vous préférez ne pas chercher un distributeur juste après l'atterrissage, vous pouvez réserver en ligne à l'avance pour payer par carte et garantir votre place."
+        "answer": "Au comptoir de l'aéroport situé au niveau 1, près de la porte 8, prévoyez le tarif de 130 THB en espèces (bahts thaïlandais), car le paiement par carte n'est pas toujours accepté. Si vous préférez ne pas chercher un distributeur juste après l'atterrissage, vous pouvez réserver en ligne à l'avance pour payer par carte et garantir votre place."
       },
       {
         "question": "Que faire si mon vol est retardé et que je rate le bus aéroport que je voulais prendre ?",
@@ -500,7 +500,7 @@
       },
       {
         "question": "Combien coûte le billet ?",
-        "answer": "Le prix indiqué est d'environ 162 THB par siège. Confirmez le tarif auprès de l'opérateur avant le voyage."
+        "answer": "Le prix indiqué est d'environ 130 THB par siège. Confirmez le tarif auprès de l'opérateur avant le voyage."
       },
       {
         "question": "Combien de temps avant le vol faut-il partir ?",
@@ -512,7 +512,7 @@
       },
       {
         "question": "Puis-je payer le bus de Pattaya vers l'aéroport Suvarnabhumi par carte, ou faut-il payer en espèces ?",
-        "answer": "Le billet coûte 162 THB par place, et au comptoir de la station, le plus sûr est d'avoir des bahts thaïlandais en espèces, car l'acceptation des cartes peut varier selon le comptoir et l'heure de la journée. Si vous préférez payer par carte et réserver une place à l'avance, vous pouvez le faire en ligne avant de partir."
+        "answer": "Le billet coûte 130 THB par place, et au comptoir de la station, le plus sûr est d'avoir des bahts thaïlandais en espèces, car l'acceptation des cartes peut varier selon le comptoir et l'heure de la journée. Si vous préférez payer par carte et réserver une place à l'avance, vous pouvez le faire en ligne avant de partir."
       },
       {
         "question": "Quel bus de Pattaya vers l'aéroport Suvarnabhumi choisir pour ne pas rater mon vol ?",

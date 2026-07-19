@@ -271,13 +271,13 @@ for (const path of expectedEnglishRoutes) {
     if (path === "/en/pattaya-to-suvarnabhumi-airport") {
       assert.ok(
         html.includes(
-          "<title>Pattaya to Suvarnabhumi Airport Bus 2026: Timetable &amp; ฿162</title>",
+          "<title>Pattaya to Suvarnabhumi Airport Bus 2026: Timetable &amp; ฿130</title>",
         ),
         `${path} must render the targeted SEO title.`,
       );
       assert.ok(
         html.includes(
-          'name="description" content="Pattaya to Suvarnabhumi Airport bus timetable from the Jomtien boarding point on Thappraya Road. Fares from ฿162, travel time about 2 hours, tickets."',
+          'name="description" content="Pattaya to Suvarnabhumi Airport bus timetable, fares from ฿130, travel time about 2 hours. Boards at Pattaya Bus Station; an hourly Jomtien service runs too."',
         ),
         `${path} must render the targeted SEO meta description.`,
       );

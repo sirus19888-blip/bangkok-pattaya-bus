@@ -156,9 +156,9 @@
     },
     "suvarnabhumi-airport-to-pattaya": {
       "travelTime": "Około 2 godziny",
-      "price": "139 THB za miejsce",
+      "price": "130 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
-      "fareNote": "Cena opublikowana przez operatora: 139 THB za miejsce.",
+      "fareNote": "Cena opublikowana przez operatora: 130 THB za miejsce.",
       "operatorNote": "To rozkład dla połączenia z lotniska Suvarnabhumi do Pattaya Bus Station. Godziny mogą się zmienić, potwierdź przed podróżą.",
       "sourceType": "oficjalna strona operatora",
       "dataQuality": "Oficjalne źródło, sprawdzone ręcznie",
@@ -166,10 +166,10 @@
     },
     "pattaya-to-suvarnabhumi-airport": {
       "travelTime": "Około 2 godziny, zależnie od ruchu",
-      "price": "162 THB za miejsce",
+      "price": "130 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
       "boardingNote": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien.",
-      "fareNote": "Cena opublikowana przez operatora: 162 THB za miejsce.",
+      "fareNote": "Cena opublikowana przez operatora: 130 THB za miejsce.",
       "operatorNote": "Godziny autobusów mogą się zmienić. Potwierdź na stacji lub u operatora przed podróżą.",
       "sourceType": "oficjalna strona operatora",
       "dataQuality": "Oficjalne źródło, sprawdzone ręcznie"
@@ -452,7 +452,7 @@
       },
       {
         "question": "Czy za autobus z Suvarnabhumi do Pattaya mogę zapłacić kartą, czy po wylądowaniu potrzebuję gotówki?",
-        "answer": "Przy stanowisku na lotnisku na poziomie 1 przy Gate 8 miej gotówkę w tajskich bahtach na bilet za 139 THB, bo akceptacja kart bywa różna. Jeśli wolisz nie szukać bankomatu zaraz po wylądowaniu, możesz zarezerwować online z wyprzedzeniem, aby zapłacić kartą i zapewnić sobie miejsce."
+        "answer": "Przy stanowisku na lotnisku na poziomie 1 przy Gate 8 miej gotówkę w tajskich bahtach na bilet za 130 THB, bo akceptacja kart bywa różna. Jeśli wolisz nie szukać bankomatu zaraz po wylądowaniu, możesz zarezerwować online z wyprzedzeniem, aby zapłacić kartą i zapewnić sobie miejsce."
       },
       {
         "question": "Co, jeśli mój lot się opóźni i spóźnię się na autobus, którym planowałem jechać?",
@@ -486,7 +486,7 @@
       },
       {
         "question": "Czy za autobus z Pattayi na lotnisko Suvarnabhumi mogę zapłacić kartą, czy potrzebuję gotówki?",
-        "answer": "Bilet kosztuje 162 THB za miejsce, a przy stanowisku na stacji najbezpieczniej mieć przygotowaną gotówkę w tajskich bahtach, ponieważ akceptacja kart bywa różna zależnie od stanowiska i pory dnia. Jeśli wolisz zapłacić kartą i zapewnić sobie miejsce z góry, możesz zarezerwować bilet online przed wyjazdem."
+        "answer": "Bilet kosztuje 130 THB za miejsce, a przy stanowisku na stacji najbezpieczniej mieć przygotowaną gotówkę w tajskich bahtach, ponieważ akceptacja kart bywa różna zależnie od stanowiska i pory dnia. Jeśli wolisz zapłacić kartą i zapewnić sobie miejsce z góry, możesz zarezerwować bilet online przed wyjazdem."
       },
       {
         "question": "Który autobus z Pattayi na lotnisko Suvarnabhumi wybrać, żeby spokojnie zdążyć na samolot?",
