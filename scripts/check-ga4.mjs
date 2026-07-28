@@ -92,6 +92,18 @@ assert.ok(
   ) && analyticsConsentComponentSource.includes('analytics_storage: "granted"'),
   "GA4 must update analytics_storage to granted only after consent.",
 );
+// Blokujacy baner zgody tylko w EOG/UK/CH; poza tymi regionami analityka
+// startuje od razu, a wybor pozostaje dostepny w stopce.
+assert.match(
+  analyticsConsentComponentSource,
+  /requiresPriorConsent\(\)/,
+  "Analytics consent component must gate the blocking prompt by region.",
+);
+assert.match(
+  analyticsConsentSource,
+  /export function requiresPriorConsent\(\)/,
+  "Consent helper must expose the region check.",
+);
 assert.ok(
   analyticsConsentComponentSource.includes(
     'window.gtag("consent", "update", deniedConsent)',
@@ -194,7 +206,6 @@ assert.doesNotThrow(
   () => analyticsModuleWithoutGtag.trackAffiliateClick(affiliatePayload),
   "trackAffiliateClick must not throw when window.gtag is unavailable.",
 );
-
 const builtHomePath = join(root, ".next/server/app/index.html");
 
 if (existsSync(builtHomePath)) {
@@ -234,8 +245,11 @@ function loadAnalyticsModuleForTest(windowValue) {
     require: (request) => {
       if (request === "@/lib/analyticsConsent") {
         return {
+          ANALYTICS_CONSENT_DENIED: "denied",
           ANALYTICS_CONSENT_GRANTED: "granted",
           ANALYTICS_CONSENT_STORAGE_KEY: "bpb:analytics-consent",
+          // Testy symuluja region EOG - brak decyzji oznacza brak pomiaru.
+          requiresPriorConsent: () => true,
         };
       }
 

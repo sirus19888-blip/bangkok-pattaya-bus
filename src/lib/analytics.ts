@@ -1,6 +1,8 @@
 import {
+  ANALYTICS_CONSENT_DENIED,
   ANALYTICS_CONSENT_GRANTED,
   ANALYTICS_CONSENT_STORAGE_KEY,
+  requiresPriorConsent,
 } from "@/lib/analyticsConsent";
 
 export type AnalyticsEventParameters = Record<
@@ -52,13 +54,22 @@ export function hasAnalyticsConsentGranted() {
   }
 
   try {
-    return (
-      window.localStorage.getItem(ANALYTICS_CONSENT_STORAGE_KEY) ===
-      ANALYTICS_CONSENT_GRANTED
-    );
+    const stored = window.localStorage.getItem(ANALYTICS_CONSENT_STORAGE_KEY);
+
+    if (stored === ANALYTICS_CONSENT_GRANTED) {
+      return true;
+    }
+
+    if (stored === ANALYTICS_CONSENT_DENIED) {
+      return false;
+    }
   } catch {
     return false;
   }
+
+  // Brak zapisanej decyzji: poza EOG/UK/CH dziala zgoda dorozumiana,
+  // w EOG/UK/CH wymagamy jawnego wyboru z banera.
+  return !requiresPriorConsent();
 }
 
 export function trackEvent(

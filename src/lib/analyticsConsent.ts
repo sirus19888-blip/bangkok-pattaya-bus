@@ -81,6 +81,84 @@ export function getAnalyticsConsentCopy(locale: string): AnalyticsConsentCopy {
   return isSupportedLocale(locale) ? consentCopy[locale] : consentCopy.en;
 }
 
+// Strefy czasowe EOG + Wielka Brytania + Szwajcaria. Tylko w tych regionach
+// pokazujemy blokujacy prompt przed zaladowaniem analityki; poza nimi dzialamy
+// na Consent Mode v2 z domyslnie przyznanym analytics_storage.
+// Detekcja po strefie czasowej (nie po naglowku IP), zeby strony pozostaly
+// w pelni statyczne - headers() wymusiloby renderowanie dynamiczne dla 151 stron.
+const PRIOR_CONSENT_TIME_ZONES = new Set([
+  // EU 27
+  "Europe/Vienna",
+  "Europe/Brussels",
+  "Europe/Sofia",
+  "Europe/Zagreb",
+  "Asia/Nicosia",
+  "Europe/Nicosia",
+  "Europe/Prague",
+  "Europe/Copenhagen",
+  "Europe/Tallinn",
+  "Europe/Helsinki",
+  "Europe/Paris",
+  "Europe/Berlin",
+  "Europe/Busingen",
+  "Europe/Athens",
+  "Europe/Budapest",
+  "Europe/Dublin",
+  "Europe/Rome",
+  "Europe/Riga",
+  "Europe/Vilnius",
+  "Europe/Luxembourg",
+  "Europe/Malta",
+  "Europe/Amsterdam",
+  "Europe/Warsaw",
+  "Europe/Lisbon",
+  "Atlantic/Azores",
+  "Atlantic/Madeira",
+  "Europe/Bucharest",
+  "Europe/Bratislava",
+  "Europe/Ljubljana",
+  "Europe/Madrid",
+  "Africa/Ceuta",
+  "Atlantic/Canary",
+  "Europe/Stockholm",
+  // Regiony najbardziej oddalone UE
+  "America/Cayenne",
+  "America/Guadeloupe",
+  "America/Martinique",
+  "Indian/Mayotte",
+  "Indian/Reunion",
+  // EOG poza UE
+  "Atlantic/Reykjavik",
+  "Europe/Vaduz",
+  "Europe/Oslo",
+  // Wielka Brytania i Szwajcaria
+  "Europe/London",
+  "Europe/Belfast",
+  "Europe/Zurich",
+]);
+
+/**
+ * Czy przegladarka wyglada na region, ktory wymaga zgody PRZED uruchomieniem
+ * analityki. Przy braku pewnosci zwraca true (bezpieczniejszy wariant).
+ */
+export function requiresPriorConsent(): boolean {
+  if (typeof window === "undefined") {
+    return true;
+  }
+
+  try {
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    if (!timeZone) {
+      return true;
+    }
+
+    return PRIOR_CONSENT_TIME_ZONES.has(timeZone);
+  } catch {
+    return true;
+  }
+}
+
 export function readAnalyticsConsent(): AnalyticsConsentState | null {
   if (typeof window === "undefined") {
     return null;

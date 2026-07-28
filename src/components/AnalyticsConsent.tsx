@@ -9,6 +9,7 @@ import {
   type AnalyticsConsentState,
   getAnalyticsConsentCopy,
   readAnalyticsConsent,
+  requiresPriorConsent,
   writeAnalyticsConsent,
 } from "@/lib/analyticsConsent";
 import { GA_ID } from "@/lib/analytics";
@@ -107,15 +108,26 @@ export function AnalyticsConsent({ lang }: AnalyticsConsentProps) {
   useEffect(() => {
     const storedConsent = readAnalyticsConsent();
     setConsent(storedConsent);
-    setIsOpen(storedConsent === null);
 
     if (storedConsent === ANALYTICS_CONSENT_GRANTED) {
       loadGoogleAnalytics();
+      return;
     }
 
     if (storedConsent === ANALYTICS_CONSENT_DENIED) {
       denyGoogleAnalytics();
+      return;
     }
+
+    // Brak zapisanej decyzji: blokujacy baner pokazujemy tylko w EOG/UK/CH.
+    // Poza tymi regionami analityka startuje od razu (zgoda dorozumiana),
+    // a wybor pozostaje dostepny w stopce pod "Cookie settings".
+    if (requiresPriorConsent()) {
+      setIsOpen(true);
+      return;
+    }
+
+    loadGoogleAnalytics();
   }, []);
 
   useEffect(() => {
