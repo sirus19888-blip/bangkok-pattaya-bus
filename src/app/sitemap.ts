@@ -5,7 +5,7 @@ import { seoGuides } from "@/data/seoGuides";
 import { getGuideLocales } from "@/data/translatedGuides";
 import { absoluteUrl } from "@/lib/site";
 
-const staticLastModified = new Date("2026-07-24T00:00:00.000Z");
+const staticLastModified = new Date("2026-07-31T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
