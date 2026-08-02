@@ -51,7 +51,7 @@ const germanStationAccessGuides: Record<RouteId, PlainStationAccessGuide> = {
       "Busschalter: Aktuelle Routendaten nennen Ebene 1 nahe Gate 8. Folge den Schildern und bestätige es am Schalter.",
       "Airport Rail Link: Für diesen Bus nicht nötig, aber hilfreich, wenn du nach Bangkok fährst. Die Fahrt kostet meist 15–45 Baht je nach Entfernung.",
       "Taxi oder Grab: Nützlich, wenn du den Bus verpasst oder spät reist. Der Preis hängt von Verkehr, Maut und Nachfrage ab.",
-      "Tipp: Der späte Bus um 22:00 kann zum Busbahnhof Nord-Pattaya fahren, nicht nach Jomtien. Bestätige das Ziel vor dem Ticketkauf."
+      "Tipp: Dieser Hinweis betrifft die separate stündliche Verbindung Suvarnabhumi–Jomtien für 151 THB, nicht den auf dieser Seite beschriebenen Bus für 130 THB. Deren Abfahrt um 22:00 endet am Busbahnhof Pattaya und hält nicht in Jomtien. Beide Verbindungen fahren im selben Bereich bei Gate 8 ab; bestätige daher die Route am Schalter."
     ],
     note: germanTransportPriceNote
   },
@@ -201,10 +201,10 @@ export const stationAccessGuides: Record<RouteId, StationAccessGuide> = {
         th: "แท็กซี่หรือ Grab: เหมาะถ้าพลาดรถหรือเดินทางดึก ราคาเปลี่ยนตามรถติด ค่าทางด่วน และความต้องการ",
       },
       {
-        en: "Tip: The late 22:00 bus may go to North Pattaya Bus Station rather than Jomtien. Confirm before buying the ticket.",
-        pl: "Wskazówka: Późny autobus o 22:00 może jechać do North Pattaya Bus Station, a nie do Jomtien. Potwierdź przed zakupem biletu.",
-        ru: "Совет: поздний автобус в 22:00 может идти до автовокзала Северной Паттайи, а не до Джомтьена. Подтвердите перед покупкой билета.",
-        th: "คำแนะนำ: รถเที่ยว 22:00 อาจไปสถานีขนส่งพัทยาเหนือ ไม่ใช่จอมเทียน โปรดยืนยันก่อนซื้อตั๋ว",
+        en: "Tip: This note concerns the separate hourly Suvarnabhumi-Jomtien service at 151 THB, not the 130 THB bus described on this page. Its 22:00 departure terminates at Pattaya Bus Station and does not stop at Jomtien. Both services leave from the same Gate 8 area, so confirm your route at the counter.",
+        pl: "Wskazówka: Ta uwaga dotyczy osobnej, kursującej co godzinę linii Suvarnabhumi–Jomtien za 151 THB, a nie opisanego na tej stronie autobusu za 130 THB. Jej kurs o 22:00 kończy bieg na dworcu w Pattayi i nie zatrzymuje się w Jomtien. Obie linie odjeżdżają z tego samego stanowiska przy Gate 8, więc potwierdź kierunek przy kasie.",
+        ru: "Совет: это примечание относится к отдельному ежечасному маршруту Суварнабхуми — Джомтьен за 151 бат, а не к автобусу за 130 бат, описанному на этой странице. Его рейс в 22:00 заканчивается на автовокзале Паттайи и не заезжает в Джомтьен. Оба маршрута отправляются из одной зоны у выхода 8, поэтому уточните направление в кассе.",
+        th: "คำแนะนำ: ข้อความนี้ใช้กับบริการสุวรรณภูมิ–จอมเทียนแยกต่างหากที่ออกทุกชั่วโมง ราคา 151 บาท ไม่ใช่รถราคา 130 บาทที่อธิบายในหน้านี้ เที่ยวเวลา 22:00 สิ้นสุดที่สถานีขนส่งพัทยาและไม่จอดที่สถานีขนส่งจอมเทียน รถทั้งสองบริการออกจากบริเวณเดียวกันใกล้ประตู 8 ดังนั้นโปรดยืนยันเส้นทางที่เคาน์เตอร์",
       },
     ],
     note: transportPriceNote,

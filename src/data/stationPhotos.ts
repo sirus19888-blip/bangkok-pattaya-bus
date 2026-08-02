@@ -500,7 +500,7 @@ const routeStationPhotoOrder: Record<RouteId, StationPhotoStationId[]> = {
     "north-pattaya",
   ],
   "pattaya-to-suvarnabhumi-airport": [
-    "jomtien-bus-area",
+    "north-pattaya",
     "suvarnabhumi-airport",
   ],
   "don-mueang-airport-to-pattaya": [

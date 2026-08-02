@@ -112,13 +112,13 @@ export const stations: Station[] = [
     name: "Pattaya Sukhumvit Road Bus Station",
     bestFor: "Pattaya to Don Mueang Airport",
     tip: "confirm the exact Pattaya boarding point before travel",
-    latitude: 12.9527,
-    longitude: 100.903,
+    latitude: 12.9328,
+    longitude: 100.8981,
     mapLabel: "Pattaya Sukhumvit Road Bus Station",
     googleMapsUrl:
       "https://www.google.com/maps/search/?api=1&query=Pattaya%20Sukhumvit%20Road%20Bus%20Station",
     openStreetMapUrl:
-      "https://www.openstreetmap.org/?mlat=12.9527&mlon=100.9030#map=17/12.9527/100.9030",
+      "https://www.openstreetmap.org/?mlat=12.9328&mlon=100.8981#map=17/12.9328/100.8981",
     walkingNote: {
       en: "Confirm the exact Pattaya boarding point before travel.",
       pl: "Przed podróżą potwierdź dokładne miejsce odjazdu w Pattayi.",
