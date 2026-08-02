@@ -217,7 +217,7 @@ for (const path of expectedEnglishRoutes) {
       );
       assert.ok(
         html.includes(
-          'name="description" content="Full Bangkok to Pattaya bus timetable from Ekkamai and Mo Chit, fares from ฿148, travel time about 2 hours, tickets and station tips."',
+          'name="description" content="Full Bangkok to Pattaya bus timetable from Ekkamai and Mo Chit, fares from ฿148, travel time around 2-3 hours, tickets and station tips."',
         ),
         `${path} must render the targeted SEO meta description.`,
       );
@@ -237,7 +237,7 @@ for (const path of expectedEnglishRoutes) {
       );
       assert.ok(
         html.includes(
-          'name="description" content="Full Pattaya to Bangkok bus timetable with Ekkamai and Mo Chit arrivals, fares from ฿148, travel time about 2 hours, tickets and boarding tips."',
+          'name="description" content="Full Pattaya to Bangkok bus timetable with Ekkamai and Mo Chit arrivals, fares from ฿148, travel time around 2-3 hours, tickets and boarding tips."',
         ),
         `${path} must render the targeted SEO meta description.`,
       );
