@@ -44,6 +44,8 @@ export type Schedule = {
 } & ScheduleSource;
 
 export const schedules: Schedule[] = [
+  // Parent departures intentionally mirror the Ekkamai subroute: verify-schedules.mjs reads
+  // this first duplicated ID, while the UI renders the subroutes instead.
   {
     id: "bangkok-ekkamai-to-pattaya",
     from: "Bangkok Ekkamai",

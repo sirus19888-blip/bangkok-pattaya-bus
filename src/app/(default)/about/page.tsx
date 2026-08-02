@@ -16,7 +16,7 @@ export default function AboutPage() {
     <TrustPage
       eyebrow="About"
       title="About Bangkok Pattaya Bus Guide"
-      intro="Bangkok Pattaya Bus Guide is an independent travel guide that helps visitors quickly check bus times, prices, stations, and practical notes for travel between Bangkok, Pattaya, and Suvarnabhumi Airport."
+      intro="Bangkok Pattaya Bus Guide is an independent travel guide that helps visitors quickly check bus times, prices, stations, and practical notes for travel between Bangkok, Pattaya, Suvarnabhumi Airport, and Don Mueang Airport."
       sections={[
         {
           title: "Who runs this site",

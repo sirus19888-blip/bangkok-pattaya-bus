@@ -52,14 +52,14 @@ export const routes: Route[] = [
     label: "Bangkok to Pattaya",
     shortLabel: "BKK -> Pattaya",
     distance: "150 km",
-    duration: "2h 30m to 3h",
+    duration: "2h to 3h",
   },
   {
     id: "pattaya-to-bangkok",
     label: "Pattaya to Bangkok",
     shortLabel: "Pattaya -> BKK",
     distance: "150 km",
-    duration: "2h 30m to 3h",
+    duration: "2h to 3h",
   },
   {
     id: "suvarnabhumi-airport-to-pattaya",

@@ -679,7 +679,7 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "There is now a direct bus from Don Mueang Airport (DMK) to Pattaya, run by the government operator Transport Co. (also known as the 999 bus). This is a big improvement over the older route, where travelers had to transfer through Mo Chit bus terminal in Bangkok first. This guide explains where to find the bus after landing, how much it costs, how long it takes, and what to do if you arrive late.",
     shortAnswer:
-      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The direct bus costs around 155 THB and the trip usually takes about 2.5 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
+      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The direct bus costs around 155 THB and the trip usually takes about 3 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
     routeId: "don-mueang-airport-to-pattaya",
     routeLinkLabel: "Open Don Mueang Airport to Pattaya bus times",
     ctaLabel: "Check Don Mueang to Pattaya tickets",
@@ -687,7 +687,7 @@ export const seoGuides: SeoGuide[] = [
     keyPoints: [
       "The bus is a direct service to Pattaya - you do not need to transfer through Mo Chit or central Bangkok.",
       "It is operated by Transport Co. (the government 999 bus), with ticket counters on Floor 1 at Don Mueang.",
-      "The fare is around 155 THB and the bus is an air-conditioned coach; the trip usually takes about 2.5 to 3.5 hours depending on traffic.",
+      "The fare is around 155 THB and the bus is an air-conditioned coach; the trip usually takes about 3 to 3.5 hours depending on traffic.",
     ],
     sections: [
       {
@@ -704,7 +704,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "How long the journey takes",
-        body: "The bus usually takes around 2.5 to 3.5 hours, depending on traffic and the time of day. The official schedule lists about two and a half hours, but Bangkok and motorway traffic - especially on Friday evenings, weekends and holidays - can add time. If you have an onward plan in Pattaya, leave a comfortable buffer.",
+        body: "The bus usually takes around 3 to 3.5 hours, depending on traffic and the time of day. Bangkok and motorway traffic - especially on Friday evenings, weekends and holidays - can add time. If you have an onward plan in Pattaya, leave a comfortable buffer.",
       },
       {
         title: "Departure times and how often the bus runs",
@@ -762,7 +762,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How long does the bus take to Pattaya?",
         answer:
-          "Usually around 2.5 to 3.5 hours, depending on traffic. The official schedule lists about two and a half hours, but allow extra time on busy days.",
+          "Usually around 3 to 3.5 hours, depending on traffic. Allow extra time on busy days.",
       },
       {
         question: "Where does the bus stop in Pattaya?",
