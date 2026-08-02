@@ -105,7 +105,7 @@
     "pattaya-to-suvarnabhumi-airport": {
       "label": "Pattaya na lotnisko Suvarnabhumi",
       "title": "Autobus z Pattayi na lotnisko Suvarnabhumi",
-      "intro": "Sprawdź godziny autobusów z Pattayi/Jomtien na lotnisko Suvarnabhumi, cenę biletu, czas podróży, miejsce odjazdu i wskazówki przed lotem.",
+      "intro": "Sprawdź godziny autobusów z Pattayi na lotnisko Suvarnabhumi, cenę biletu, czas podróży, miejsce odjazdu i wskazówki przed lotem.",
       "relatedDescription": "Sprawdź autobus z Pattayi na lotnisko Suvarnabhumi: godziny, cenę i miejsce odjazdu.",
       "metadataTitle": "Autobus z Pattayi na lotnisko Suvarnabhumi – rozkład i cena",
       "metadataDescription": "Sprawdź autobus z Pattayi/Jomtien na lotnisko Suvarnabhumi, godziny odjazdów, cenę biletu, czas podróży i miejsce odjazdu."
@@ -168,7 +168,7 @@
       "travelTime": "Około 2 godziny, zależnie od ruchu",
       "price": "130 THB za miejsce",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
-      "boardingNote": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien.",
+      "boardingNote": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu autobusowym w Pattayi. Godzinna linia do Jomtien za 151 THB jest osobną usługą; potwierdź ją u operatora przed zakupem.",
       "fareNote": "Cena opublikowana przez operatora: 130 THB za miejsce.",
       "operatorNote": "Godziny autobusów mogą się zmienić. Potwierdź na stacji lub u operatora przed podróżą.",
       "sourceType": "oficjalna strona operatora",
@@ -470,7 +470,7 @@
       },
       {
         "question": "Gdzie w Pattayi wsiąść do autobusu na lotnisko?",
-        "answer": "Według informacji operatora bilety można kupić przy stanowisku obsługi na dworcu Jomtien. Przed podróżą potwierdź dokładne miejsce odjazdu."
+        "answer": "Bilety kupisz przy stanowisku obsługi na dworcu autobusowym w Pattayi. Godzinna linia do Jomtien za 151 THB jest osobną usługą; potwierdź ją u operatora przed zakupem."
       },
       {
         "question": "Czy trzeba zostawić zapas czasu przed lotem?",

@@ -105,7 +105,7 @@
     "pattaya-to-suvarnabhumi-airport": {
       "label": "Pattaya vers l'aéroport Suvarnabhumi",
       "title": "Bus de Pattaya vers l'aéroport Suvarnabhumi",
-      "intro": "Consultez les horaires de bus de Pattaya/Jomtien vers l'aéroport Suvarnabhumi, le prix du billet, la durée du trajet, le lieu d'embarquement et les conseils avant le vol.",
+      "intro": "Consultez les horaires de bus de Pattaya vers l'aéroport Suvarnabhumi, le prix du billet, la durée du trajet, le lieu d'embarquement et les conseils avant le vol.",
       "relatedDescription": "Consultez le bus de Pattaya vers Suvarnabhumi : horaires, prix et embarquement.",
       "metadataTitle": "Bus de Pattaya vers l'aéroport Suvarnabhumi | Horaires, prix et embarquement",
       "metadataDescription": "Consultez les bus de Pattaya/Jomtien vers l'aéroport Suvarnabhumi avec les départs, le prix du billet, la durée du trajet et le lieu d'embarquement."
@@ -179,7 +179,7 @@
       "travelTime": "Environ 2 heures, selon la circulation",
       "price": "130 THB par siège",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
-      "boardingNote": "Selon l'opérateur, les billets sont disponibles au comptoir de service de la gare routière de Jomtien.",
+      "boardingNote": "Selon l'opérateur, les billets sont disponibles au comptoir de la gare routière de Pattaya. Le service horaire vers Jomtien à 151 THB est distinct ; confirmez-le auprès de l'opérateur avant l'achat.",
       "fareNote": "Tarif publié par l'opérateur : 130 THB par siège.",
       "operatorNote": "Les horaires de bus peuvent changer. Confirmez à la station ou auprès de l'opérateur avant le voyage.",
       "sourceType": "site officiel de l'opérateur",
@@ -492,7 +492,7 @@
     "pattaya-to-suvarnabhumi-airport": [
       {
         "question": "Où prendre le bus de Pattaya vers Suvarnabhumi ?",
-        "answer": "Selon l'opérateur, les billets sont disponibles au comptoir de service de la gare routière de Jomtien. Confirmez le point d'embarquement exact avant le voyage."
+        "answer": "Achetez les billets au comptoir de la gare routière de Pattaya. Le service horaire vers Jomtien à 151 THB est distinct ; confirmez-le auprès de l'opérateur avant l'achat."
       },
       {
         "question": "Combien de temps dure le trajet ?",

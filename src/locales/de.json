@@ -184,7 +184,7 @@
       "price": "130 Baht pro Sitz",
       "disclaimer": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
       "fareNote": "Vom Betreiber veröffentlichter Preis: 130 Baht pro Sitz.",
-      "boardingNote": "Der Betreiber zeigt Tickets als am Serviceschalter am Busbahnhof Jomtien verfügbar.",
+      "boardingNote": "Der Betreiber zeigt Tickets als am Serviceschalter am Busbahnhof Pattaya verfügbar. Die stündliche Verbindung nach Jomtien für 151 THB ist separat; bestätige sie vor dem Kauf beim Betreiber.",
       "operatorNote": "Abfahrtszeiten können sich ändern. Bitte vor der Reise am Bahnhof oder beim Betreiber bestätigen.",
       "sourceName": "Airport Pattaya Bus",
       "sourceType": "offizielle Betreiberwebsite",
@@ -488,7 +488,7 @@
       },
       {
         "question": "Wo steige ich in Pattaya in den Flughafenbus ein?",
-        "answer": "Der Betreiber nennt Tickets am Serviceschalter am Busbahnhof Jomtien. Bestätige den genauen Einstieg vor der Fahrt."
+        "answer": "Kaufe Tickets am Serviceschalter am Busbahnhof Pattaya. Die stündliche Verbindung nach Jomtien für 151 THB ist separat; bestätige sie vor dem Kauf beim Betreiber."
       },
       {
         "question": "Sollte ich vor dem Flug mehr Zeit einplanen?",

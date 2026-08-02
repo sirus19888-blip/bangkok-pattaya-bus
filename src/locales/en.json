@@ -105,7 +105,7 @@
     "pattaya-to-suvarnabhumi-airport": {
       "label": "Pattaya to Suvarnabhumi Airport",
       "title": "Pattaya to Suvarnabhumi Airport Bus",
-      "intro": "Check bus times from Pattaya/Jomtien to Suvarnabhumi Airport, including ticket price, travel time, boarding information, and tips before your flight.",
+      "intro": "Check bus times from Pattaya to Suvarnabhumi Airport, including ticket price, travel time, boarding information, and tips before your flight.",
       "relatedDescription": "Check Pattaya to Suvarnabhumi Airport bus times, price, and boarding tips.",
       "metadataTitle": "Pattaya to Suvarnabhumi Airport Bus 2026: Timetable & ฿130",
       "metadataDescription": "Pattaya to Suvarnabhumi Airport bus timetable, fares from ฿130, travel time about 2 hours. Boards at Pattaya Bus Station; an hourly Jomtien service runs too."
@@ -155,7 +155,7 @@
       "travelTime": "Around 2 hours, depending on traffic",
       "price": "130 THB per seat",
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
-      "boardingNote": "Tickets are shown by the operator as available at the counter service at Jomtien bus station."
+      "boardingNote": "Tickets are shown by the operator as available at the counter service at Pattaya Bus Station. The hourly Jomtien service at 151 THB is separate; confirm it with the operator before buying."
     },
     "don-mueang-airport-to-pattaya": {
       "travelTime": "Around 3-3.5 hours",
@@ -445,7 +445,7 @@
       },
       {
         "question": "Where do I board the airport bus in Pattaya?",
-        "answer": "The operator shows tickets as available at the counter service at Jomtien bus station. Confirm the exact boarding point before travel."
+        "answer": "Buy tickets at the counter service at Pattaya Bus Station. The hourly Jomtien service at 151 THB is separate; confirm it with the operator before buying."
       },
       {
         "question": "Should I leave extra time before my flight?",
