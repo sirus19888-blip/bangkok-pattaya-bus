@@ -1,13 +1,13 @@
 # Bangkok Pattaya Bus Guide
 
-> Independent guide to bus travel between Bangkok and Pattaya, Thailand: timetables, fares in THB, station guides and practical boarding tips. Every schedule page names its source and shows a "last checked" date. Canonical content is English under /en/; translations exist under /th/, /zh/, /ru/, /de/, /fr/ and /pl/.
+> Independent guide to bus travel between Bangkok and Pattaya, Thailand: timetables, fares in THB, station guides and practical boarding tips. The guide also covers private transfers and vans as alternatives when a bus is not the best fit. Every schedule page names its source and shows a "last checked" date. Canonical content is English under /en/; translations exist under /th/, /zh/, /ru/, /de/, /fr/ and /pl/.
 
 ## Routes (current timetables, fares and boarding details)
 
 - [Bangkok to Pattaya bus](https://www.bangkokpattayabus.com/en/bangkok-to-pattaya): departures from Ekkamai and Mo Chit 2 terminals
 - [Pattaya to Bangkok bus](https://www.bangkokpattayabus.com/en/pattaya-to-bangkok): return direction with Ekkamai and Mo Chit arrivals
 - [Suvarnabhumi Airport to Pattaya bus](https://www.bangkokpattayabus.com/en/suvarnabhumi-airport-to-pattaya): direct airport bus, boarding at Level 1 Gate 8
-- [Pattaya to Suvarnabhumi Airport bus](https://www.bangkokpattayabus.com/en/pattaya-to-suvarnabhumi-airport): boards at the Jomtien / Thappraya Road station
+- [Pattaya to Suvarnabhumi Airport bus](https://www.bangkokpattayabus.com/en/pattaya-to-suvarnabhumi-airport): boards at North Pattaya Bus Station; a separate service connects Suvarnabhumi and Jomtien
 - [Don Mueang Airport to Pattaya bus](https://www.bangkokpattayabus.com/en/don-mueang-airport-to-pattaya): airport bus with an interval-based schedule
 - [Pattaya to Don Mueang Airport bus](https://www.bangkokpattayabus.com/en/pattaya-to-don-mueang-airport): fixed daily departures from Pattaya Bus Terminal
 
@@ -22,6 +22,10 @@
 - [Bangkok to Pattaya bus vs taxi](https://www.bangkokpattayabus.com/en/bangkok-to-pattaya-bus-vs-taxi): cost and comfort comparison
 - [Bangkok to Pattaya after midnight](https://www.bangkokpattayabus.com/en/bangkok-to-pattaya-after-midnight): late-night options
 - [Pattaya to Bangkok before a flight](https://www.bangkokpattayabus.com/en/pattaya-to-bangkok-before-flight): time-buffer planning
+- [Don Mueang Airport to Pattaya bus guide](https://www.bangkokpattayabus.com/en/don-mueang-airport-to-pattaya-bus): arrival-terminal guidance, direct-bus planning and transfer alternatives
+- [Pattaya to Don Mueang Airport bus guide](https://www.bangkokpattayabus.com/en/pattaya-to-don-mueang-airport-bus): boarding-point guidance, flight buffers and direct-service planning
+- [Pattaya to Suvarnabhumi Airport before a flight](https://www.bangkokpattayabus.com/en/pattaya-to-suvarnabhumi-airport-before-flight): North Pattaya boarding, airport arrival and flight-buffer planning
+- [Pattaya to Bangkok: which terminal?](https://www.bangkokpattayabus.com/en/pattaya-to-bangkok-which-terminal): choosing Ekkamai or Mo Chit for your Bangkok destination
 
 ## About
 
