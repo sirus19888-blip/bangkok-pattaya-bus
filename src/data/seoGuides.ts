@@ -273,7 +273,7 @@ export const seoGuides: SeoGuide[] = [
     ctaLabel: "Check Pattaya → Suvarnabhumi Airport tickets",
     ctaPosition: "guide_body",
     ctaSubId: "bpb-pattaya-to-suvarnabhumi-guide_jomtien",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-03",
     keyPoints: [
       "North Pattaya Bus Station and the Jomtien / Thappraya airport bus area are different places.",
       "Taxi, Grab or Bolt is usually easiest with luggage or after a long bus ride.",
@@ -344,7 +344,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "Can I take the Suvarnabhumi airport bus from North Pattaya Bus Station?",
         answer:
-          "Do not assume that. Current Pattaya airport bus information is connected with the Jomtien bus area, so confirm the counter and boarding point before going.",
+          "Yes. The 130 THB Pattaya to Suvarnabhumi service departs from North Pattaya Bus Station. The hourly Jomtien service costs 151 THB and is a separate route.",
       },
       {
         question: "What is easiest with luggage?",
@@ -496,10 +496,12 @@ export const seoGuides: SeoGuide[] = [
     h1: "Bangkok to Pattaya Bus vs Taxi",
     intro:
       "The bus is usually the cheapest way from Bangkok to Pattaya, while taxi or private transfer is easier door-to-door. This guide helps tourists choose based on budget, luggage, time and comfort.",
+    shortAnswer:
+      "The bus is the cheapest choice, with fares of 148 THB from Ekkamai or 158 THB from Mo Chit 2. Choose a private transfer instead when you have heavy luggage, travel with a group or children, or want direct hotel drop-off.",
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Open Bangkok to Pattaya bus times",
     ctaLabel: "Check prices & availability",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-03",
     keyPoints: [
       "Bus from Ekkamai is usually the lowest-cost option for solo travelers.",
       "Taxi or private transfer is easier with luggage, family travel or hotel pickup.",
@@ -555,10 +557,12 @@ export const seoGuides: SeoGuide[] = [
     h1: "Bangkok to Pattaya After Midnight",
     intro:
       "Scheduled buses are not always useful late at night. If you need to travel from Bangkok to Pattaya after midnight, compare the next morning bus with taxi or private transfer options and avoid unclear driver offers.",
+    shortAnswer:
+      "After 22:00, there are no scheduled Ekkamai buses to Pattaya; the last departure is at 22:00. Choose a private transfer if you must leave immediately, or wait for the first morning bus at 05:00.",
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Check the next Bangkok to Pattaya bus",
     ctaLabel: "Check late-night alternatives",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-03",
     keyPoints: [
       "If the last bus has passed, the next scheduled bus may be the following morning.",
       "Late-night taxi or private transfer can be convenient but should have a clear price.",
@@ -614,10 +618,12 @@ export const seoGuides: SeoGuide[] = [
     h1: "Pattaya to Bangkok Before a Flight",
     intro:
       "If you are leaving Pattaya before a flight, plan more time than a normal city transfer. Traffic, station time, check-in, baggage and airport security can all add delays.",
+    shortAnswer:
+      "For a flight from Suvarnabhumi, use the direct Pattaya-to-airport bus instead of traveling through Bangkok; it takes about 2 hours and runs from 08:00 to 21:00. Build in a generous buffer for traffic and airport procedures.",
     routeId: "pattaya-to-bangkok",
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Compare tickets and airport alternatives",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-03",
     keyPoints: [
       "Do not rely on the last possible bus before your flight.",
       "Confirm whether your Bangkok destination is Ekkamai, Mo Chit, Suvarnabhumi or Don Mueang.",
@@ -800,11 +806,11 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "There is a direct bus from Pattaya to Don Mueang Airport (DMK), run by the government operator Transport Co. (the 999 bus). It is the cheapest and simplest way to reach DMK for a flight without changing buses in Bangkok. Because you are traveling to catch a flight, the most important thing is leaving enough time for traffic and check-in. This guide explains where the bus departs, how long it takes, and how much buffer to plan.",
     shortAnswer:
-      "The direct Pattaya to Don Mueang bus departs from a Transport Co. stop on Sukhumvit Road, with secondary sources showing online fares of 167-183 THB per person. Plan for roughly 2.5 to 3.5 hours of travel, then add time for check-in and security - do not take the last possible bus before an early flight. Check the Pattaya to Don Mueang route page for current departure times.",
+      "The direct Pattaya to Don Mueang bus departs from a Transport Co. stop on Sukhumvit Road, with secondary sources showing online fares of 167-183 THB per person. Plan for roughly 3 to 3.5 hours of travel, then add time for check-in and security - do not take the last possible bus before an early flight. Check the Pattaya to Don Mueang route page for current departure times.",
     routeId: "pattaya-to-don-mueang-airport",
     routeLinkLabel: "Open Pattaya to Don Mueang Airport bus times",
     ctaLabel: "Check Pattaya to Don Mueang tickets",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-03",
     keyPoints: [
       "The bus goes direct to Don Mueang - you do not need to change buses in Bangkok.",
       "It departs from a Transport Co. stop on Sukhumvit Road in Pattaya, with secondary sources showing online fares of 167-183 THB per person.",
@@ -825,7 +831,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "How long the journey takes - and your flight buffer",
-        body: "Plan for around 2.5 to 3.5 hours of travel, depending on traffic. The official schedule lists about two and a half hours, but the road into Bangkok can be slow, especially on Friday evenings, weekends and holidays. On top of the travel time, add time for check-in, baggage drop and security at Don Mueang. For an early or international flight, leave a generous buffer and avoid the last possible departure.",
+        body: "The bus ride takes around 3 to 3.5 hours, depending on traffic. The road into Bangkok can be slow, especially on Friday evenings, weekends and holidays. On top of the travel time, add time for check-in, baggage drop and security at Don Mueang. For an early or international flight, leave a generous buffer and avoid the last possible departure.",
       },
       {
         title: "Departure times and how often the bus runs",
@@ -883,12 +889,12 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How much time should I leave before my flight?",
         answer:
-          "Plan around 2.5 to 3.5 hours of travel, then add check-in and security time. For early or international flights, leave a generous buffer and avoid the last bus.",
+          "The bus ride takes around 3 to 3.5 hours. Add check-in and security time on top of that; for early or international flights, leave a generous buffer and avoid the last bus.",
       },
       {
         question: "How long does the bus take to Don Mueang?",
         answer:
-          "Usually around 2.5 to 3.5 hours, depending on traffic. The official schedule lists about two and a half hours, but allow extra on busy days.",
+          "Usually around 3 to 3.5 hours, depending on traffic. Allow extra time on busy days.",
       },
       {
         question: "Can I take the bus for an early morning flight?",
@@ -921,24 +927,24 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "Taking the bus from Pattaya to Suvarnabhumi Airport (BKK) is the cheapest way to reach your flight, and it drops you right at the departure terminal. Because you are traveling to catch a flight, timing matters more than anything else - traffic, check-in and security all eat into your buffer. This guide explains where the bus departs in Pattaya, how long it takes, how much time to leave, and when a taxi or private transfer is the safer choice.",
     shortAnswer:
-      "The Pattaya to Suvarnabhumi bus departs from the Pattaya / Jomtien bus area and drops you at the airport departure terminal. Plan for around 2 to 2.5 hours of travel, then add check-in and security time - leave a generous buffer and do not rely on the last bus before an early or international flight. Check the Pattaya to Suvarnabhumi route page for current departure times.",
+      "The 130 THB Pattaya to Suvarnabhumi bus departs from North Pattaya Bus Station and drops you at the airport departure terminal. Plan for around 2 hours of travel, then add check-in and security time - leave a generous buffer and do not rely on the last bus before an early or international flight. Check the Pattaya to Suvarnabhumi route page for current departure times.",
     routeId: "pattaya-to-suvarnabhumi-airport",
     routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
     ctaLabel: "Check prices & availability",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-03",
     keyPoints: [
       "The bus drops you directly at the Suvarnabhumi departure terminal, where you check in - no airport transfer needed.",
-      "Plan around 2 to 2.5 hours of travel, then add time for check-in and security - leave a generous buffer.",
+      "The bus ride takes around 2 hours; add time to reach the station, check in and clear security, and leave a generous buffer.",
       "Do not build a tight flight plan around the last bus of the day - if the timing is tight, take a taxi or private transfer instead.",
     ],
     sections: [
       {
         title: "Where the bus departs in Pattaya",
-        body: "The airport bus leaves from the Pattaya / Jomtien bus area, on the Jomtien and Thappraya side of Pattaya. Check exactly where your operator departs before your travel day, because some services leave from the Jomtien area and others from the North Pattaya terminal. If your hotel is on Beach Road, in Naklua or central Pattaya, allow time to reach the departure point first by songthaew, taxi or app ride.",
+        body: "The 130 THB airport bus leaves from North Pattaya Bus Station. A separate hourly service costs 151 THB and leaves from Jomtien, so confirm which service you are booking. If your hotel is on Beach Road, in Naklua or central Pattaya, allow time to reach the departure point first by songthaew, taxi or app ride.",
       },
       {
         title: "How much time to leave before your flight",
-        body: "This is the most important part of the trip. Plan around 2 to 2.5 hours of travel, but that is only the bus ride. On top of it, add time to reach the departure point in Pattaya, possible traffic near Bangkok, and check-in, baggage drop and security at the airport. A common guideline is to allow at least two hours of buffer beyond the expected travel time for an international flight. If your schedule is tight, do not take the bus.",
+        body: "This is the most important part of the trip. The bus ride takes around 2 hours, but your door-to-door plan must be longer. Add time to reach the departure point in Pattaya, possible traffic near Bangkok, and check-in, baggage drop and security at the airport. A common guideline is to allow at least two hours of buffer beyond the expected travel time for an international flight. If your schedule is tight, do not take the bus.",
       },
       {
         title: "Where the bus drops you at the airport",
@@ -950,7 +956,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "How long the journey takes",
-        body: "Plan for around 2 to 2.5 hours. The road from Pattaya to Suvarnabhumi is mostly motorway and usually predictable, but Friday evenings, weekends and Thai holidays can add time because the same road carries a lot of airport traffic. The bus runs direct with no comfort stop, so use the restroom before boarding.",
+        body: "The bus ride takes around 2 hours. The road from Pattaya to Suvarnabhumi is mostly motorway and usually predictable, but Friday evenings, weekends and Thai holidays can add time because the same road carries a lot of airport traffic. The bus runs direct with no comfort stop, so use the restroom before boarding.",
       },
       {
         title: "Booking: online or at the counter",
@@ -989,12 +995,12 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "Where does the Pattaya to Suvarnabhumi Airport bus leave from?",
         answer:
-          "From the Pattaya / Jomtien bus area on the Thappraya side of Pattaya. Some services leave from Jomtien and others from the North Pattaya terminal, so confirm your operator's departure point before travel.",
+          "The 130 THB Pattaya to Suvarnabhumi service leaves from North Pattaya Bus Station. A separate hourly service leaves from Jomtien and costs 151 THB, so confirm which service you are booking.",
       },
       {
         question: "How much time should I leave before my flight?",
         answer:
-          "Plan around 2 to 2.5 hours of travel, then add check-in and security time. For international flights, leave a generous buffer and avoid the last bus of the day.",
+          "The bus ride takes around 2 hours. Add time to reach the station, check in and clear security; for international flights, leave a generous buffer and avoid the last bus of the day.",
       },
       {
         question: "Where does the bus drop me at the airport?",
@@ -1045,7 +1051,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "pattaya-to-bangkok",
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Check prices & availability",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-03",
     keyPoints: [
       "Ekkamai is the only major Bangkok bus terminal within walking distance of a BTS station, ideal for Sukhumvit destinations.",
       "Mo Chit serves northern Bangkok and is better if you are heading that way or continuing by taxi - the BTS is about 2 km from the terminal.",
@@ -1074,7 +1080,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "Travel time and fares",
-        body: "The journey usually takes around 2.5 to 3 hours depending on traffic, especially near Bangkok. Fares are modest - typically in the range of about 150 THB per seat, though exact prices vary by operator and can change. Both Ekkamai and Mo Chit services are similar in price and time, so the fare is rarely the deciding factor - your Bangkok destination matters more. Check the route page for current departure times and fare notes before you travel.",
+        body: "The journey usually takes around 2 to 3 hours depending on traffic, especially near Bangkok. Fares are modest - typically in the range of about 150 THB per seat, though exact prices vary by operator and can change. Both Ekkamai and Mo Chit services are similar in price and time, so the fare is rarely the deciding factor - your Bangkok destination matters more. Check the route page for current departure times and fare notes before you travel.",
       },
       {
         title: "Luggage and tickets",

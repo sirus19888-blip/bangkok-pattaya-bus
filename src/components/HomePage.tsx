@@ -68,7 +68,7 @@ const mobileRouteMeta: Record<
   },
   "pattaya-to-suvarnabhumi-airport": {
     badge: "Before flight",
-    note: "From Jomtien bus area",
+    note: "From Pattaya Bus Station",
   },
   "don-mueang-airport-to-pattaya": {
     badge: "Airport route",
