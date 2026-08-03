@@ -99,6 +99,13 @@ export const seoGuideLinks: SeoGuideLink[] = [
     slug: "pattaya-to-bangkok-which-terminal",
     title: "Pattaya to Bangkok: which terminal guide",
   },
+  {
+    description:
+      "Compare North Pattaya Bus Station and Jomtien Bus Station for the trip to Suvarnabhumi Airport.",
+    href: "/en/pattaya-to-suvarnabhumi-which-station",
+    slug: "pattaya-to-suvarnabhumi-which-station",
+    title: "Pattaya to Suvarnabhumi: which station guide",
+  },
 ];
 
 const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
@@ -114,7 +121,11 @@ const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
   "suvarnabhumi-airport-to-pattaya": [
     "suvarnabhumi-airport-gate-8-pattaya-bus",
   ],
-  "pattaya-to-suvarnabhumi-airport": ["pattaya-bus-station-to-jomtien", "pattaya-to-suvarnabhumi-airport-before-flight"],
+  "pattaya-to-suvarnabhumi-airport": [
+    "pattaya-bus-station-to-jomtien",
+    "pattaya-to-suvarnabhumi-airport-before-flight",
+    "pattaya-to-suvarnabhumi-which-station",
+  ],
 };
 
 export function getHomepageSeoGuideLinks() {

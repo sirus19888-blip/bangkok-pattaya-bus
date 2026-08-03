@@ -1380,6 +1380,110 @@ export const seoGuides: SeoGuide[] = [
       },
     ],
   },
+  {
+    slug: "pattaya-to-suvarnabhumi-which-station",
+    title: "Pattaya to Suvarnabhumi: North Pattaya vs Jomtien Bus",
+    description:
+      "Compare North Pattaya and Jomtien buses to Suvarnabhumi Airport: boarding stations, fares, departure windows, travel time and which service fits your hotel.",
+    h1: "Pattaya to Suvarnabhumi: North Pattaya or Jomtien?",
+    intro:
+      "Travelers in Pattaya can reach Suvarnabhumi Airport on two separate Roong Reuang Coach services: one from North Pattaya Bus Station and one from Jomtien Bus Station on Thappraya Road. They have different fares and departure patterns, so the best choice depends on where you are staying and when you need to leave. This guide compares them in one place.",
+    shortAnswer:
+      "Choose North Pattaya Bus Station for the 130 THB service with seven departures from 08:00 to 21:00. Choose Jomtien Bus Station if you stay in Jomtien, Pratumnak or south Pattaya and want the hourly 151 THB service from 06:00 to 22:00. Both take around 2 hours.",
+    routeId: "pattaya-to-suvarnabhumi-airport",
+    routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
+    ctaLabel: "Check Pattaya → Suvarnabhumi tickets",
+    lastUpdated: "2026-08-03",
+    keyPoints: [
+      "North Pattaya Bus Station has seven departures at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00, with a fare of 130 THB per seat.",
+      "Jomtien Bus Station has 17 hourly departures from 06:00 to 22:00, with a fare of 151 THB per seat.",
+      "For the reverse trip from Suvarnabhumi, the 22:00 departure ends at Pattaya Bus Station and does not continue to Jomtien.",
+    ],
+    sections: [
+      {
+        title: "North Pattaya and Jomtien at a glance",
+        body: "Roong Reuang Coach operates both services, and both take around 2 hours to reach Suvarnabhumi Airport. The North Pattaya service leaves from North Pattaya Bus Station and costs 130 THB per seat. The Jomtien service leaves from Jomtien Bus Station on Thappraya Road and costs 151 THB per seat. These are separate products with different departure patterns, not two stops on one route.",
+      },
+      {
+        title: "Choose North Pattaya Bus Station if it is closer",
+        body: "North Pattaya Bus Station is the practical choice when you are staying in North Pattaya or Naklua, or when one of its seven departures fits your flight plan. This is the 130 THB service listed on the main Pattaya to Suvarnabhumi route page. Check the distance from your hotel before choosing, because reaching the station is part of your total travel time.",
+      },
+      {
+        title: "Choose Jomtien Bus Station if you are staying south",
+        body: "Jomtien Bus Station on Thappraya Road is usually the more convenient choice from Jomtien, Pratumnak and south Pattaya. Its 17 hourly departures from 06:00 to 22:00 also provide more departure choices. The station is farther from Naklua and North Pattaya, so compare the transfer from your hotel before deciding.",
+      },
+      {
+        title: "How to reach North Pattaya Bus Station",
+        body: "Open North Pattaya Bus Station in a map app from your hotel and leave enough time to reach it before departure. A songthaew can cost around 15-20 THB, Grab or Bolt around 80-180 THB, and a taxi around 120-350 THB, depending on where you start and current conditions. With luggage or a tight departure, a direct ride is usually simpler.",
+      },
+      {
+        title: "How to reach Jomtien Bus Station",
+        body: "Jomtien Bus Station is on Thappraya Road and is close to many hotels in Jomtien, Pratumnak and south Pattaya. From Naklua or North Pattaya, allow substantially more time to cross the city. Use a map app to compare the journey from your hotel, but confirm the cost directly because local transport prices vary.",
+      },
+      {
+        title: "Departure times, fares and travel time",
+        body: "The North Pattaya service costs 130 THB per seat and departs at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00. The Jomtien service costs 151 THB per seat and departs hourly from 06:00 to 22:00. Both services take around 2 hours, so station access and the departure that fits your flight are usually more important than journey time.",
+      },
+      {
+        title: "Important: the 22:00 airport bus does not reach Jomtien",
+        body: "The operator warns that the 22:00 departure from Suvarnabhumi Airport ends at Pattaya Bus Station and does not continue to Jomtien. This matters on the reverse trip after a late arrival: if your hotel is in Jomtien, you will need to arrange onward transport from Pattaya Bus Station instead of expecting the bus to reach Jomtien.",
+      },
+      {
+        title: "Both airport services use Level 1, Gate 8",
+        body: "For the return direction from Suvarnabhumi Airport, both the Pattaya and Jomtien services board at Level 1, Gate 8. Confirm the destination when buying your ticket because the two services have different endpoints, and remember that the 22:00 departure does not continue to Jomtien.",
+      },
+      {
+        title: "Which Pattaya station should you choose?",
+        body: "Choose the station that gives you the safest combination of hotel access and departure time. North Pattaya is usually better from the north side of the city, while Jomtien is usually better from Jomtien, Pratumnak and south Pattaya. Check the route page for the main North Pattaya service, then compare the separate Jomtien option before booking.",
+      },
+    ],
+    faq: [
+      {
+        question: "Which station is better for Suvarnabhumi Airport: North Pattaya or Jomtien?",
+        answer:
+          "Choose North Pattaya Bus Station if you are staying in North Pattaya or Naklua and one of its seven departures fits. Choose Jomtien Bus Station if you are staying in Jomtien, Pratumnak or south Pattaya, or if its hourly departures suit your flight better.",
+      },
+      {
+        question: "Are the North Pattaya and Jomtien airport buses the same service?",
+        answer:
+          "No. They are separate Roong Reuang Coach services with different boarding stations, fares and departure patterns, although both travel to Suvarnabhumi Airport.",
+      },
+      {
+        question: "How long do the buses from Pattaya to Suvarnabhumi take?",
+        answer:
+          "Both the North Pattaya and Jomtien services take around 2 hours. Add enough time to reach the station and complete airport procedures before your flight.",
+      },
+      {
+        question: "How often do the two Suvarnabhumi buses leave Pattaya?",
+        answer:
+          "North Pattaya has seven departures at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00. Jomtien has 17 hourly departures from 06:00 to 22:00.",
+      },
+      {
+        question: "Where do the Pattaya and Jomtien buses board at Suvarnabhumi Airport?",
+        answer:
+          "For the return trip from Suvarnabhumi, both services board at Level 1, Gate 8. Confirm whether your ticket is for Pattaya Bus Station or Jomtien.",
+      },
+      {
+        question: "Does the 22:00 bus from Suvarnabhumi Airport go to Jomtien?",
+        answer:
+          "No. The operator states that the 22:00 departure ends at Pattaya Bus Station and does not continue to Jomtien.",
+      },
+    ],
+    sources: [
+      {
+        label: "Pattaya to Suvarnabhumi Airport route page",
+        url: "/en/pattaya-to-suvarnabhumi-airport",
+      },
+      {
+        label: "Roong Reuang Coach - Pattaya Bus Station service",
+        url: "https://airportpattayabus.com/airport-pattaya/",
+      },
+      {
+        label: "Roong Reuang Coach - Jomtien service",
+        url: "https://airportpattayabus.com/airport-jomtien/",
+      },
+    ],
+  },
 ];
 
 export function getSeoGuide(slug: string) {
