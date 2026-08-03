@@ -536,7 +536,10 @@ function getStationTip(
     return repairMojibakeList(suvarnabhumiArrivalBusTips[locale]).join(" ");
   }
 
-  if (stationId === "north-pattaya" && routeId === "pattaya-to-bangkok") {
+  if (
+    stationId === "north-pattaya" &&
+    (routeId === "pattaya-to-bangkok" || routeId === "pattaya-to-suvarnabhumi-airport")
+  ) {
     return repairMojibakeList(northPattayaDepartureTips[locale]).join(" ");
   }
 
@@ -573,7 +576,10 @@ function getMobileTipPoints(
     return repairMojibakeList(suvarnabhumiArrivalBusTips[locale]);
   }
 
-  if (stationId === "north-pattaya" && routeId === "pattaya-to-bangkok") {
+  if (
+    stationId === "north-pattaya" &&
+    (routeId === "pattaya-to-bangkok" || routeId === "pattaya-to-suvarnabhumi-airport")
+  ) {
     return repairMojibakeList(northPattayaDepartureTips[locale]);
   }
 
