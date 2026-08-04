@@ -170,7 +170,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       cityTransferTitle: "Private transfer or van - door to door",
       cityTransferBody: "Skip the bus terminal: a private car or van takes you straight to your hotel. Best with luggage, groups, or a fixed schedule.",
       cityTransferCta: "Check prices & availability",
-      charterGapTitle: "Long wait for the next bus?",
+      charterGapTitle: "Traveling with luggage or a group?",
       charterGapBody:
         "A private car or van leaves when you want and takes you door to door. For 3-4 people the per-person cost gets close to bus tickets.",
       charterGapCta: "Compare private transfers",
@@ -293,7 +293,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       cityTransferBody:
         "Pomiń dworzec autobusowy: prywatny samochód lub bus zawiezie Cię prosto do hotelu. Najlepsze przy bagażu, w grupie lub przy sztywnym planie.",
       cityTransferCta: "Sprawdź ceny i dostępność",
-      charterGapTitle: "Do najbliższego busa jeszcze daleko?",
+      charterGapTitle: "Podróżujesz z bagażem lub w grupie?",
       charterGapBody:
         "Prywatny samochód lub van wyjeżdża, kiedy chcesz, i wiezie od drzwi do drzwi. Przy 3-4 osobach cena na osobę zbliża się do ceny biletów.",
       charterGapCta: "Porównaj transfery prywatne",
@@ -416,7 +416,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       cityTransferBody:
         "Sparen Sie sich den Busbahnhof: Ein privates Auto oder ein Van bringt Sie direkt zu Ihrem Hotel. Ideal mit Gepäck, in der Gruppe oder bei festem Zeitplan.",
       cityTransferCta: "Preise & Verfügbarkeit prüfen",
-      charterGapTitle: "Noch lange bis zum nächsten Bus?",
+      charterGapTitle: "Mit Gepäck oder in der Gruppe unterwegs?",
       charterGapBody:
         "Ein privater Wagen oder Van fährt, wann Sie wollen - von Tür zu Tür. Bei 3-4 Personen liegt der Preis pro Person nahe am Busticket.",
       charterGapCta: "Private Transfers vergleichen",
@@ -540,7 +540,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       cityTransferBody:
         "Évitez la gare routière : une voiture privée ou un van vous emmène directement à votre hôtel. Idéal avec des bagages, en groupe ou avec un horaire fixe.",
       cityTransferCta: "Vérifier prix et disponibilité",
-      charterGapTitle: "Le prochain bus se fait attendre ?",
+      charterGapTitle: "Vous voyagez avec des bagages ou en groupe ?",
       charterGapBody:
         "Une voiture ou un van privé part quand vous voulez et vous emmène porte à porte. À 3-4 personnes, le prix par personne se rapproche du billet de bus.",
       charterGapCta: "Comparer les transferts privés",
@@ -664,7 +664,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       cityTransferBody:
         "Минуя автовокзал: частный автомобиль или вэн довезёт вас прямо до отеля. Удобно с багажом, группой или при фиксированном плане.",
       cityTransferCta: "Проверить цены и наличие",
-      charterGapTitle: "До ближайшего автобуса ещё далеко?",
+      charterGapTitle: "Путешествуете с багажом или группой?",
       charterGapBody:
         "Частная машина или минивэн выезжает, когда удобно вам, и везёт от двери до двери. На 3-4 человек цена с человека близка к цене билетов.",
       charterGapCta: "Сравнить частные трансферы",
@@ -788,7 +788,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       cityTransferBody:
         "ข้ามขั้นตอนที่สถานีขนส่ง: รถยนต์หรือรถตู้ส่วนตัวพาคุณตรงถึงโรงแรม เหมาะเมื่อมีสัมภาระ เดินทางเป็นกลุ่ม หรือมีกำหนดการที่แน่นอน",
       cityTransferCta: "ตรวจสอบราคาและที่ว่าง",
-      charterGapTitle: "รถบัสเที่ยวถัดไปยังอีกนาน?",
+      charterGapTitle: "เดินทางพร้อมสัมภาระหรือเป็นกลุ่ม?",
       charterGapBody:
         "รถยนต์หรือรถตู้ส่วนตัวออกเดินทางได้ตามเวลาที่คุณต้องการ ส่งถึงที่พัก เดินทาง 3-4 คน ราคาต่อคนใกล้เคียงตั๋วรถบัส",
       charterGapCta: "เปรียบเทียบรถรับส่งส่วนตัว",
@@ -911,7 +911,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       cityTransferBody:
         "免去汽车站奔波：私人轿车或面包车直接送您到酒店。适合携带行李、团体出行或行程固定。",
       cityTransferCta: "查看价格和可订情况",
-      charterGapTitle: "下一班巴士还要等很久？",
+      charterGapTitle: "携带行李或结伴出行？",
       charterGapBody:
         "包车或私人面包车随时出发，门到门直达。3-4人同行时，人均价格接近巴士票价。",
       charterGapCta: "比较包车服务",

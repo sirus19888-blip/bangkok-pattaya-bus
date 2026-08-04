@@ -66,10 +66,6 @@ export function MobileRouteDecisionCard({
     schedule.departureWindow ?? calculatedNextDeparture.time;
   const scheduleStatusLabels = getUiTranslations(locale).scheduleStatus;
   const commercialText = getUiTranslations(locale).commercial;
-  const showCharterGap =
-    !schedule.departureWindow &&
-    (calculatedNextDeparture.isTomorrow ||
-      (minutesUntilDeparture !== null && minutesUntilDeparture > 120));
   const verificationStatus = getScheduleStatusLabel(
     schedule.verificationStatus,
     scheduleStatusLabels,
@@ -174,8 +170,7 @@ export function MobileRouteDecisionCard({
             {nextSubRouteText}
           </p>
         ) : null}
-        {showCharterGap &&
-        commercialText.charterGapTitle &&
+        {commercialText.charterGapTitle &&
         commercialText.charterGapBody &&
         commercialText.charterGapCta ? (
           <article className="mt-3 rounded-2xl border border-[#eadcc7] bg-[#fffaf2] p-4">
