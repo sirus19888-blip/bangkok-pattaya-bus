@@ -653,7 +653,7 @@ assert.ok(
   "Route pages must use a two-column desktop grid.",
 );
 assert.ok(
-  routeLayoutSource.includes("lg:sticky lg:top-24"),
+  routeLayoutSource.includes("lg:sticky lg:top-6"),
   "Route pages must keep a sticky desktop booking panel below the header.",
 );
 assert.ok(

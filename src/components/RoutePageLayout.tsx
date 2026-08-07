@@ -185,7 +185,7 @@ export function RoutePageLayout({
             </div>
 
             <div
-              className="hidden lg:sticky lg:top-24 lg:block"
+              className="hidden lg:sticky lg:top-6 lg:block"
               data-visual-qa="affiliate-sidebar-shell"
             >
               <DesktopRouteBookingPanel

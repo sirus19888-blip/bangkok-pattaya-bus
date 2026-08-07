@@ -150,9 +150,10 @@ async function runRouteDesktopChecks(browser) {
     "sticky",
     "Desktop AffiliateSidebar shell must be sticky.",
   );
-  assert.ok(
-    Number.parseFloat(await cssValue(sidebarShell, "top")) >= 90,
-    "Desktop AffiliateSidebar must use a top offset near top-24.",
+  assert.equal(
+    Number.parseFloat(await cssValue(sidebarShell, "top")),
+    24,
+    "Desktop AffiliateSidebar must use the top-6 offset.",
   );
 
   const mainBox = await mainContent.boundingBox();

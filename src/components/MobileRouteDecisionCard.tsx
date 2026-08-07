@@ -440,15 +440,6 @@ export function DesktopRouteBookingPanel({
         ) : null}
       </div>
 
-      <div className="mt-4 grid gap-3">
-        <TravelTimeDistanceFact
-          distance={distance}
-          label={labels.travelTime}
-          travelTime={schedule.travelTime}
-        />
-        <DecisionFact label={labels.ticketPrice} value={schedule.price} />
-      </div>
-
       <TravelDateField locale={locale} />
       <TravelDateAwareTwelveGoAffiliateButton
         ctaPosition="desktop_sidebar"
@@ -465,6 +456,15 @@ export function DesktopRouteBookingPanel({
         routeId={routeId}
         variant="afterSchedule"
       />
+
+      <div className="mt-4 grid gap-3">
+        <TravelTimeDistanceFact
+          distance={distance}
+          label={labels.travelTime}
+          travelTime={schedule.travelTime}
+        />
+        <DecisionFact label={labels.ticketPrice} value={schedule.price} />
+      </div>
 
       <div className="mt-4 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-xs font-semibold leading-5 text-[#4f5d6c]">
         <p>
