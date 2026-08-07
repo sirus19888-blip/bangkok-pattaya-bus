@@ -235,7 +235,10 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
                 {chrome.sourcesTitle}
               </h2>
               <p className="mt-3 text-sm font-semibold leading-6 text-[#4f5d6c]">
-                {chrome.sourcesBody.replace("{date}", guide.lastUpdated)}
+                {chrome.sourcesBody.replace(
+                  "{date}",
+                  guide.lastVerified ?? guide.lastUpdated,
+                )}
               </p>
               <ul className="mt-4 space-y-3">
                 {guide.sources.map((source) => (
