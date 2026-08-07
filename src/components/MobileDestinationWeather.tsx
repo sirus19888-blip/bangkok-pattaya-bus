@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { LocaleCode, RouteId } from "@/data/routes";
 
@@ -328,24 +327,6 @@ export function MobileDestinationWeather({
             </div>
           </div>
         </div>
-
-        <Link
-          aria-label="Postaw mi kawę"
-          className="flex h-[3.25rem] w-[3.25rem] shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/20 bg-[#fffaf2] p-1.5 shadow-lg shadow-black/15 ring-1 ring-white/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-[#e8b05a]/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#e8b05a]"
-          href="https://www.buymeacoffee.com/Pawel_"
-          rel="noopener noreferrer"
-          target="_blank"
-          title="Postaw mi kawę"
-        >
-          <Image
-            alt=""
-            aria-hidden="true"
-            className="h-full w-full rounded-xl object-contain"
-            height={40}
-            src="/images/icons/icon-support-coffee.png"
-            width={40}
-          />
-        </Link>
       </div>
     </div>
   );

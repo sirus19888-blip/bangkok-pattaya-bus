@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import type { LocaleCode, RouteId } from "@/data/routes";
 
@@ -132,7 +131,6 @@ const localizedLocationLabels: Partial<
 function getHeaderTravelLabels(locale?: LocaleCode) {
   if (locale === "ru") {
     return {
-      buyMeCoffee: "Купить кофе",
       currencyAria: "Курсы валют",
       currencyButton: "Курс",
       estimated: "Оценка",
@@ -145,7 +143,6 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
 
   if (locale === "pl") {
     return {
-      buyMeCoffee: "Postaw kawę",
       currencyAria: "Kursy walut",
       currencyButton: "Waluty",
       estimated: "Szac.",
@@ -158,7 +155,6 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
 
   if (locale === "de") {
     return {
-      buyMeCoffee: "Kaffee spendieren",
       currencyAria: "Wechselkurse",
       currencyButton: "Kurse",
       estimated: "Geschätzt",
@@ -171,7 +167,6 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
 
   if (locale === "th") {
     return {
-      buyMeCoffee: "เลี้ยงกาแฟ",
       currencyAria: "อัตราแลกเปลี่ยน",
       currencyButton: "ค่าเงิน",
       estimated: "ประมาณ",
@@ -184,7 +179,6 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
 
   if (locale === "zh") {
     return {
-      buyMeCoffee: "请我喝咖啡",
       currencyAria: "汇率",
       currencyButton: "汇率",
       estimated: "估算",
@@ -197,7 +191,6 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
 
   if (locale === "fr") {
     return {
-      buyMeCoffee: "M'offrir un café",
       currencyAria: "Taux de change",
       currencyButton: "Taux",
       estimated: "Estimé",
@@ -209,7 +202,6 @@ function getHeaderTravelLabels(locale?: LocaleCode) {
   }
 
   return {
-    buyMeCoffee: "Buy me coffee",
     currencyAria: "Currency rates",
     currencyButton: "FX",
     estimated: "Est.",
@@ -482,24 +474,6 @@ export function HeaderTravelInfo({
             {weather.source === "live" ? labels.live : labels.estimated}
           </span>
         </div>
-
-        <Link
-          aria-label={labels.buyMeCoffee}
-          className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-          href="https://www.buymeacoffee.com/Pawel_"
-          rel="noopener noreferrer"
-          target="_blank"
-          title={labels.buyMeCoffee}
-        >
-          <Image
-            alt=""
-            aria-hidden="true"
-            className="h-full w-full object-cover"
-            height={56}
-            src="/images/icons/icon-support-coffee.png"
-            width={56}
-          />
-        </Link>
       </div>
     );
   }
@@ -535,24 +509,6 @@ export function HeaderTravelInfo({
               {weather.source === "live" ? labels.live : labels.estimated}
             </span>
           </div>
-
-          <Link
-            aria-label={labels.buyMeCoffee}
-            className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-            href="https://www.buymeacoffee.com/Pawel_"
-            rel="noopener noreferrer"
-            target="_blank"
-            title={labels.buyMeCoffee}
-          >
-            <Image
-              alt=""
-              aria-hidden="true"
-              className="h-full w-full object-cover"
-              height={56}
-              src="/images/icons/icon-support-coffee.png"
-              width={56}
-            />
-          </Link>
         </div>
       ) : null}
       <div
@@ -667,24 +623,6 @@ export function HeaderTravelInfo({
           </span>
         </div>
       )}
-
-      <Link
-        aria-label={labels.buyMeCoffee}
-        className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-[#d8c8b4] bg-[#fffaf2] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:hidden"
-        href="https://www.buymeacoffee.com/Pawel_"
-        rel="noopener noreferrer"
-        target="_blank"
-        title={labels.buyMeCoffee}
-      >
-        <Image
-          alt=""
-          aria-hidden="true"
-          className="h-full w-full object-cover"
-          height={40}
-          src="/images/icons/icon-support-coffee.png"
-          width={40}
-        />
-      </Link>
 
       {variant !== "routeDesktop" ? (
       <div className="relative">

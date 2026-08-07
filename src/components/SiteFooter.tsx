@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { buildAgodaBadgeUrl } from "@/data/hotelAffiliate";
 import { isSupportedLocale, type LocaleCode } from "@/data/routes";
-import { trackAffiliateClick } from "@/lib/analytics";
+import { trackAffiliateClick, trackEvent } from "@/lib/analytics";
 import {
   ANALYTICS_CONSENT_OPEN_EVENT,
   getAnalyticsConsentCopy,
@@ -56,6 +56,15 @@ export function SiteFooter() {
           >
             {consentText.settings}
           </button>
+          <a
+            href="https://www.buymeacoffee.com/Pawel_"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center rounded-lg px-2 text-[#13233a] underline-offset-4 hover:underline"
+            onClick={() => trackEvent("support_click", { lang: locale })}
+          >
+            {text.support}
+          </a>
         </nav>
         <a
           href={agodaBadgeHref}

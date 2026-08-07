@@ -58,6 +58,7 @@ type UiTranslations = {
     about: string;
     contact: string;
     privacy: string;
+    support: string;
   };
   hotel: {
     eyebrow: string;
@@ -181,6 +182,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "About",
       contact: "Contact",
       privacy: "Privacy",
+      support: "Buy me a coffee",
     },
     hotel: {
       eyebrow: "Where to stay",
@@ -304,6 +306,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "O stronie",
       contact: "Kontakt",
       privacy: "Prywatność",
+      support: "Postaw kawę",
     },
     hotel: {
       eyebrow: "Nocleg",
@@ -427,6 +430,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "Über uns",
       contact: "Kontakt",
       privacy: "Datenschutz",
+      support: "Unterstütze das Projekt",
     },
     hotel: {
       eyebrow: "Übernachten",
@@ -551,6 +555,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "À propos",
       contact: "Nous contacter",
       privacy: "Confidentialité",
+      support: "M'offrir un café",
     },
     hotel: {
       eyebrow: "Où dormir",
@@ -675,6 +680,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "О проекте",
       contact: "Контакты",
       privacy: "Конфиденциальность",
+      support: "Поддержать проект",
     },
     hotel: {
       eyebrow: "Где остановиться",
@@ -799,6 +805,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "เกี่ยวกับเรา",
       contact: "ติดต่อ",
       privacy: "ความเป็นส่วนตัว",
+      support: "สนับสนุนด้วยกาแฟหนึ่งแก้ว",
     },
     hotel: {
       eyebrow: "ที่พัก",
@@ -922,6 +929,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
       about: "关于",
       contact: "联系",
       privacy: "隐私",
+      support: "请我喝杯咖啡",
     },
     hotel: {
       eyebrow: "住宿",
