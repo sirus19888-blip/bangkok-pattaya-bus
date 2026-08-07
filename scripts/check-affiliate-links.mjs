@@ -46,6 +46,7 @@ const requiredAffiliatePositions = [
   "route_help_vs_taxi",
   "route_airport_transfer",
   "route_city_transfer",
+  "route_charter_gap",
   "desktop_sidebar",
   "mobile_sticky",
 ];
