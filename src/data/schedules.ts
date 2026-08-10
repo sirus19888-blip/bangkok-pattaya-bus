@@ -159,7 +159,7 @@ export const schedules: Schedule[] = [
   {
     id: "pattaya-to-bangkok-ekkamai",
     from: "Pattaya Bus Station",
-    to: "Bangkok Mochit / Ekkamai",
+    to: "Bangkok Mo Chit / Ekkamai",
     direction: "pattaya-to-bangkok",
     distance: "150 km",
     travelTime: "Around 2-3 hours",
@@ -194,16 +194,16 @@ export const schedules: Schedule[] = [
     lastVerified: "2026-08-07",
     verificationStatus: "partially verified",
     fareNote:
-      "Fares published by the operator: 158 THB to Mochit and 148 THB to Ekkamai per seat.",
+      "Fares published by the operator: 158 THB to Mo Chit and 148 THB to Ekkamai per seat.",
     operatorNote:
       "Bus times may change. Confirm at the station or with the operator before travel.",
     dataQuality: "Official source, manually verified",
     subRoutes: [
       {
         id: "pattaya-to-mochit",
-        label: "Pattaya to Mochit",
+        label: "Pattaya to Mo Chit",
         from: "Pattaya Bus Station",
-        to: "Bangkok Mochit",
+        to: "Bangkok Mo Chit",
         price: "158 THB per seat",
         sourceName: "Pattaya Bus / Roong Reuang Coach",
         sourceUrl: "https://airportpattayabus.com/bangkok-terminal-pattaya/",
