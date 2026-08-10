@@ -49,11 +49,20 @@ export function MobileRouteDecisionCard({
     number | null
   >(null);
   const hasMultipleNextSubRoutes = calculatedNextDeparture.subRoutes.length > 1;
-  const nextSubRouteText = hasMultipleNextSubRoutes
-    ? `${labels.availableTo} ${calculatedNextDeparture.subRoutes
-        .map((subRoute) => subRoute.to.replace(/^Bangkok\s+/i, ""))
-        .join(" / ")}`
-    : calculatedNextDeparture.subRoutes[0]?.label;
+  const nextSubRouteDestinations = [
+    ...new Set(
+      calculatedNextDeparture.subRoutes.map((subRoute) =>
+        subRoute.to.replace(/^Bangkok\s+/i, ""),
+      ),
+    ),
+  ];
+  const nextSubRouteText = !hasMultipleNextSubRoutes
+    ? calculatedNextDeparture.subRoutes[0]?.label
+    : nextSubRouteDestinations.length > 1
+      ? `${labels.availableTo} ${nextSubRouteDestinations.join(" / ")}`
+      : calculatedNextDeparture.subRoutes
+          .map((subRoute) => subRoute.label)
+          .join(" / ");
   const countdownText = formatCountdown(minutesUntilDeparture, labels);
   const isUrgentCountdown =
     minutesUntilDeparture !== null &&
