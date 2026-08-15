@@ -18,6 +18,7 @@ export type SeoGuide = {
   h1: string;
   intro: string;
   shortAnswer?: string;
+  shortAnswerHotelCity?: "pattaya" | "bangkok";
   routeId: RouteId;
   routeLinkLabel: string;
   ctaLabel: string;
@@ -1294,6 +1295,7 @@ export const seoGuides: SeoGuide[] = [
       "Most buses from Bangkok arrive at North Pattaya Bus Station. If you arrive late, leave early, or simply want a short transfer, staying nearby saves time and stress. This guide compares the areas around the station and shows how to pick a hotel that fits a bus-based trip.",
     shortAnswer:
       "Stay in the North Pattaya area if you want the shortest ride to the bus station. Naklua and Wong Amat are quieter beach-side options a few minutes away, while Central Pattaya has the most shopping and nightlife within a short songthaew or Grab ride.",
+    shortAnswerHotelCity: "pattaya",
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Open Bangkok to Pattaya Bus",
     ctaLabel: "Check Bangkok → Pattaya tickets",

@@ -113,21 +113,36 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             <p className="mt-3 text-sm font-semibold leading-7 text-[#4f5d6c]">
               {guide.shortAnswer}
             </p>
-            <AffiliateCTA
-              className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl bg-[#e8b05a] px-5 text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
-              ctaPosition={shortAnswerCtaPosition}
-              disclosureText={affiliateText.disclosure}
-              href={shortAnswerAffiliateHref}
-              label={guide.ctaLabel}
-              lang={locale}
-              provider="12go"
-              routeId={guide.routeId}
-              from={affiliateRoute?.from ?? ""}
-              shortDisclosureText={affiliateText.shortDisclosure}
-              subId={shortAnswerAffiliateSubId}
-              to={affiliateRoute?.to ?? ""}
-              variant="afterSchedule"
-            />
+            {guide.shortAnswerHotelCity ? (
+              <>
+                <HotelAffiliateInline
+                  city={guide.shortAnswerHotelCity}
+                  locale={locale}
+                  routeId={guide.routeId}
+                  ctaPosition="guide_hotel_short_answer"
+                  className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl bg-[#e8b05a] px-5 text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
+                />
+                <p className="mt-2 text-xs font-semibold text-[#4f5d6c]">
+                  {getUiTranslations(locale).hotel.disclosure}
+                </p>
+              </>
+            ) : (
+              <AffiliateCTA
+                className="mt-4 flex min-h-12 w-full items-center justify-center rounded-xl bg-[#e8b05a] px-5 text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#dca23f]"
+                ctaPosition={shortAnswerCtaPosition}
+                disclosureText={affiliateText.disclosure}
+                href={shortAnswerAffiliateHref}
+                label={guide.ctaLabel}
+                lang={locale}
+                provider="12go"
+                routeId={guide.routeId}
+                from={affiliateRoute?.from ?? ""}
+                shortDisclosureText={affiliateText.shortDisclosure}
+                subId={shortAnswerAffiliateSubId}
+                to={affiliateRoute?.to ?? ""}
+                variant="afterSchedule"
+              />
+            )}
           </section>
         ) : null}
 
