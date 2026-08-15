@@ -12,7 +12,7 @@ export const homeSeoMetadata: Record<
   pl: {
     title: "Autobus Bangkok–Pattaya: rozkład, ceny biletów i dworce",
     description:
-      "Sprawdź rozkłady autobusów Bangkok–Pattaya oraz z lotnisk Suvarnabhumi i Don Mueang: godziny odjazdów, ceny biletów, czas podróży, dworce i praktyczne wskazówki dla turystów.",
+      "Rozkłady autobusów Bangkok–Pattaya oraz z lotnisk Suvarnabhumi i Don Mueang: godziny odjazdów, ceny biletów, czas podróży, dworce i praktyczne wskazówki.",
   },
   de: {
     title: "Bus Bangkok–Pattaya: Fahrplan, Ticketpreise & Stationen",
@@ -22,12 +22,12 @@ export const homeSeoMetadata: Record<
   fr: {
     title: "Bus Bangkok–Pattaya : horaires, prix des billets et gares",
     description:
-      "Consultez les horaires des bus Bangkok–Pattaya et depuis les aéroports Suvarnabhumi et Don Mueang : départs, prix des billets, durée du trajet, gares et conseils pratiques.",
+      "Horaires des bus Bangkok–Pattaya et des aéroports Suvarnabhumi et Don Mueang : départs, prix des billets, durée du trajet, gares et conseils pratiques.",
   },
   ru: {
     title: "Автобус Бангкок–Паттайя: расписание, цены и станции",
     description:
-      "Расписание автобусов Бангкок–Паттайя и из аэропортов Суварнабхуми и Дон Муанг: время отправления, цены на билеты, время в пути, станции и практические советы для туристов.",
+      "Расписание автобусов Бангкок–Паттайя и из аэропортов Суварнабхуми и Дон Муанг: отправления, цены, время в пути, станции и советы туристам.",
   },
   th: {
     title: "รถบัสกรุงเทพฯ–พัทยา: ตารางเวลา ราคาตั๋ว และสถานี",

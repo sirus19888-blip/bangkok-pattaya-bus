@@ -1448,10 +1448,6 @@ function MobileRouteCard({
 }
 
 function getHomepageSchedulePrice(schedule: Schedule) {
-  if (schedule.direction === "bangkok-to-pattaya") {
-    return schedule.subRoutes?.[0]?.price ?? schedule.price;
-  }
-
   return schedule.price;
 }
 
