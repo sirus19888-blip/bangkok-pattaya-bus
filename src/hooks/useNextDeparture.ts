@@ -6,10 +6,10 @@ import { getNextDeparture, type NextDepartureResult } from "@/lib/scheduleTime";
 
 export function useNextDeparture(
   schedule: Schedule,
-  initialNextDeparture: string,
+  _initialNextDeparture: string,
 ): NextDepartureResult {
   const [nextDeparture, setNextDeparture] = useState<NextDepartureResult>(() =>
-    getStableInitialNextDeparture(schedule, initialNextDeparture),
+    getStableInitialNextDeparture(),
   );
 
   useEffect(() => {
@@ -23,31 +23,13 @@ export function useNextDeparture(
     return () => window.clearInterval(intervalId);
   }, [schedule]);
 
-  return nextDeparture.time
-    ? nextDeparture
-    : {
-        time: initialNextDeparture,
-        isTomorrow: false,
-        subRoutes: [],
-      };
+  return nextDeparture;
 }
 
-function getStableInitialNextDeparture(
-  schedule: Schedule,
-  initialNextDeparture: string,
-): NextDepartureResult {
-  const time = initialNextDeparture || schedule.nextDeparture || "";
-
+function getStableInitialNextDeparture(): NextDepartureResult {
   return {
-    time,
+    time: "",
     isTomorrow: false,
-    subRoutes:
-      schedule.subRoutes
-        ?.filter((subRoute) => subRoute.departures.includes(time))
-        .map((subRoute) => ({
-          id: subRoute.id,
-          label: subRoute.label,
-          to: subRoute.to,
-        })) ?? [],
+    subRoutes: [],
   };
 }

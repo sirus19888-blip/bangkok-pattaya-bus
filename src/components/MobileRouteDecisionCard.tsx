@@ -152,7 +152,7 @@ export function MobileRouteDecisionCard({
           }`}
         >
           <span data-next-bus-hero={calculatedNextDeparture.time}>
-            {nextDepartureDisplay}
+            {nextDepartureDisplay || "\u00a0"}
           </span>
         </p>
         {countdownText && !schedule.departureWindow ? (
@@ -283,7 +283,7 @@ export function MobileRouteDecisionCard({
           })
         ) : (
           <p className="col-span-3 rounded-xl border border-[#eadcc7] bg-[#fffaf2] p-3 text-sm font-black leading-5 text-[#13233a]">
-            {nextDepartureDisplay}
+            {nextDepartureDisplay || "\u00a0"}
           </p>
         )}
       </div>
@@ -423,7 +423,7 @@ export function DesktopRouteBookingPanel({
               }`}
             >
               <span data-next-bus-sidebar={calculatedNextDeparture.time}>
-                {nextDepartureDisplay}
+                {nextDepartureDisplay || "\u00a0"}
               </span>
             </p>
           </div>
