@@ -343,7 +343,7 @@ export const schedules: Schedule[] = [
     departures: [],
     departureWindow: "06:30-17:30, every ~4h",
     nextDeparture: "",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-18",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Transport Co., Ltd. / Don Mueang Airport",
@@ -355,7 +355,7 @@ export const schedules: Schedule[] = [
     fareNote:
       "Fare published by the airport transportation page: 155 THB per person.",
     boardingNote:
-      "The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building.",
+      "The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building. The Terminal 1 Service Hall counter is closed on Tuesdays; use the Terminal 2 Gate 11 counter or confirm the current boarding point on arrival.",
     operatorNote:
       "Official airport information confirms the route, fare, service counters, pick-up point, and service window from 06:30 to 17:30 about every 4 hours, but does not publish exact departure times.",
     dataQuality:

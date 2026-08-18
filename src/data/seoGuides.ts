@@ -694,11 +694,11 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "There is now a direct bus from Don Mueang Airport (DMK) to Pattaya, run by the government operator Transport Co. (also known as the 999 bus). This is a big improvement over the older route, where travelers had to transfer through Mo Chit bus terminal in Bangkok first. This guide explains where to find the bus after landing, how much it costs, how long it takes, and what to do if you arrive late.",
     shortAnswer:
-      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The direct bus costs around 155 THB and the trip usually takes about 3 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
+      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The Terminal 1 Service Hall counter is closed on Tuesdays; use the Terminal 2 Gate 11 counter or confirm the current boarding point on arrival. The direct bus costs around 155 THB and the trip usually takes about 3 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
     routeId: "don-mueang-airport-to-pattaya",
     routeLinkLabel: "Open Don Mueang Airport to Pattaya bus times",
     ctaLabel: "Check Don Mueang to Pattaya tickets",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-18",
     lastVerified: "2026-08-15",
     keyPoints: [
       "The bus is a direct service to Pattaya - you do not need to transfer through Mo Chit or central Bangkok.",
@@ -708,7 +708,7 @@ export const seoGuides: SeoGuide[] = [
     sections: [
       {
         title: "Finding the bus after you land at Don Mueang",
-        body: "After you leave the aircraft, follow the Arrivals signs. If you arrived on an international flight, clear immigration first, then collect your baggage and go out to the public arrivals area on Floor 1. Look for the Transport Co. / 999 bus counter or service hall for the Pattaya service. Tickets are sold on Floor 1, and counters are linked to the International Terminal (Building 1) and Domestic Terminal (Building 2). Always confirm the signs at the airport, because counter locations can change.",
+        body: "After you leave the aircraft, follow the Arrivals signs. If you arrived on an international flight, clear immigration first, then collect your baggage and go out to the public arrivals area on Floor 1. Look for the Transport Co. / 999 bus counter or service hall for the Pattaya service. Tickets are sold on Floor 1, and counters are linked to the International Terminal (Building 1) and Domestic Terminal (Building 2). The Terminal 1 Service Hall counter is closed on Tuesdays; use the Terminal 2 Gate 11 counter or confirm the current boarding point on arrival. Always confirm the signs at the airport, because counter locations can change.",
       },
       {
         title: "Why the direct bus is easier than the old route",
