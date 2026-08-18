@@ -627,11 +627,11 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "If you are leaving Pattaya before a flight, plan more time than a normal city transfer. Traffic, station time, check-in, baggage and airport security can all add delays.",
     shortAnswer:
-      "For a flight from Suvarnabhumi, use the direct Pattaya-to-airport bus instead of traveling through Bangkok; it takes about 2 hours and runs from 07:30 to 18:30. Build in a generous buffer for traffic and airport procedures.",
+      "For a flight from Suvarnabhumi, use the direct Pattaya-to-airport bus instead of traveling through Bangkok; it takes about 2 hours and runs from 08:00 to 21:00. Build in a generous buffer for traffic and airport procedures.",
     routeId: "pattaya-to-bangkok",
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Compare tickets and airport alternatives",
-    lastUpdated: "2026-08-18",
+    lastUpdated: "2026-08-03",
     lastVerified: "2026-08-15",
     keyPoints: [
       "Do not rely on the last possible bus before your flight.",
@@ -1405,14 +1405,14 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "Travelers in Pattaya can reach Suvarnabhumi Airport on two separate Roong Reuang Coach services: one from North Pattaya Bus Station and one from Jomtien Bus Station on Thappraya Road. They have different fares and departure patterns, so the best choice depends on where you are staying and when you need to leave. This guide compares them in one place.",
     shortAnswer:
-      "Choose North Pattaya Bus Station for the 130 THB service with seven departures from 07:30 to 18:30. Choose Jomtien Bus Station if you stay in Jomtien, Pratumnak or south Pattaya and want the hourly 151 THB service from 06:00 to 22:00. Both take around 2 hours.",
+      "Choose North Pattaya Bus Station for the 130 THB service with seven departures from 08:00 to 21:00. Choose Jomtien Bus Station if you stay in Jomtien, Pratumnak or south Pattaya and want the hourly 151 THB service from 06:00 to 22:00. Both take around 2 hours.",
     routeId: "pattaya-to-suvarnabhumi-airport",
     routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
     ctaLabel: "Check Pattaya → Suvarnabhumi tickets",
-    lastUpdated: "2026-08-18",
+    lastUpdated: "2026-08-03",
     lastVerified: "2026-08-15",
     keyPoints: [
-      "North Pattaya Bus Station has seven departures at 07:30, 09:30, 11:30, 13:30, 15:30, 17:30 and 18:30, with a fare of 130 THB per seat.",
+      "North Pattaya Bus Station has seven departures at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00, with a fare of 130 THB per seat.",
       "Jomtien Bus Station has 17 hourly departures from 06:00 to 22:00, with a fare of 151 THB per seat.",
       "For the reverse trip from Suvarnabhumi, the 22:00 departure ends at Pattaya Bus Station and does not continue to Jomtien.",
     ],
@@ -1439,7 +1439,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "Departure times, fares and travel time",
-        body: "The North Pattaya service costs 130 THB per seat and departs at 07:30, 09:30, 11:30, 13:30, 15:30, 17:30 and 18:30. The Jomtien service costs 151 THB per seat and departs hourly from 06:00 to 22:00. Both services take around 2 hours, so station access and the departure that fits your flight are usually more important than journey time.",
+        body: "The North Pattaya service costs 130 THB per seat and departs at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00. The Jomtien service costs 151 THB per seat and departs hourly from 06:00 to 22:00. Both services take around 2 hours, so station access and the departure that fits your flight are usually more important than journey time.",
       },
       {
         title: "Important: the 22:00 airport bus does not reach Jomtien",
@@ -1473,7 +1473,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How often do the two Suvarnabhumi buses leave Pattaya?",
         answer:
-          "North Pattaya has seven departures at 07:30, 09:30, 11:30, 13:30, 15:30, 17:30 and 18:30. Jomtien has 17 hourly departures from 06:00 to 22:00.",
+          "North Pattaya has seven departures at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00. Jomtien has 17 hourly departures from 06:00 to 22:00.",
       },
       {
         question: "Where do the Pattaya and Jomtien buses board at Suvarnabhumi Airport?",

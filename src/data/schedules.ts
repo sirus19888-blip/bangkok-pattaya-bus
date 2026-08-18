@@ -316,7 +316,7 @@ export const schedules: Schedule[] = [
       "21:00",
     ],
     nextDeparture: "14:00",
-    lastUpdated: "2026-08-18",
+    lastUpdated: "2026-08-02",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
     sourceName: "Airport Pattaya Bus",
