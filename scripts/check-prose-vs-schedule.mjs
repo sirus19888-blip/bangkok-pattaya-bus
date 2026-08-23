@@ -7,27 +7,35 @@ const root = cwd();
 const readSource = (path) => readFileSync(path, "utf8").replace(/\r\n/g, "\n");
 const schedulePath = join(root, "src/data/schedules.ts");
 const guidePath = join(root, "src/data/seoGuides.ts");
+const registryPath = join(root, "src/data/translatedGuides.ts");
 const localesDir = join(root, "src/locales");
 const locales = ["en", "th", "zh", "ru", "de", "fr", "pl"];
 const RANGE =
-  /(\d{1,2})[:h](\d{2})\s*(?:to|do|bis|à|a|до|ถึง|至|-|–|—)\s*(\d{1,2})[:h](\d{2})/giu;
+  /(\d{1,2})[:\uFF1Ah](\d{2})\s*(?:to|do|bis|à|a|до|ถึง|至|\u5230|\u81f3|-|~|\uFF5E|–|—)\s*(\d{1,2})[:\uFF1Ah](\d{2})/giu;
 const proseRouteOverrides = {
   "pattaya-to-bangkok-before-flight": "pattaya-to-suvarnabhumi-airport",
 };
 
 assert.ok(existsSync(schedulePath), `Missing ${schedulePath}`);
 assert.ok(existsSync(guidePath), `Missing ${guidePath}`);
+assert.ok(existsSync(registryPath), `Missing ${registryPath}`);
 
 const scheduleSource = readSource(schedulePath);
 const guideSource = readSource(guidePath);
+const registrySource = readSource(registryPath);
 const schedules = extractSchedules(scheduleSource);
 assert.ok(schedules.size > 0, "Parser found no schedules - source format changed?");
 assert.equal(schedules.size, 6, `Expected 6 routes, found ${schedules.size}`);
-console.log(`Parsed schedules: ${schedules.size} routes; guides: 14.`);
+
 const mismatches = [];
+const guideRoutes = extractGuideRoutes(guideSource);
+const expectedGuideTranslations = countRegisteredGuideTranslations(registrySource);
 
 scanGuides(guideSource, schedules, mismatches);
 scanLocaleFaqs(schedules, mismatches);
+const scannedGuideTranslations = scanLocaleGuides(schedules, guideRoutes, mismatches);
+console.log(`Parsed schedules: ${schedules.size} routes; guides: 14; guide translations: ${scannedGuideTranslations}.`);
+assert.equal(scannedGuideTranslations, expectedGuideTranslations, `Expected ${expectedGuideTranslations} guide translations, scanned ${scannedGuideTranslations}`);
 
 if (mismatches.length > 0) {
   console.error("Prose vs schedule mismatches detected:");
@@ -94,6 +102,48 @@ function scanGuides(source, schedules, mismatches) {
   }
 }
 
+function extractGuideRoutes(source) {
+  const routes = new Map();
+  const starts = [...source.matchAll(/^\s*\{\n\s+slug:/gm)].map((match) => match.index);
+  for (let index = 0; index < starts.length; index += 1) {
+    const block = source.slice(starts[index], starts[index + 1] ?? source.length);
+    const slug = block.match(/slug:\s*"([^"]+)"/)?.[1];
+    const route = block.match(/routeId:\s*"([^"]+)"/)?.[1];
+    if (slug && route) routes.set(slug, proseRouteOverrides[slug] ?? route);
+  }
+  return routes;
+}
+
+function countRegisteredGuideTranslations(source) {
+  let count = 0;
+  for (const match of source.matchAll(/"[^"]+"\s*:\s*\[([^\]]*)\]/g)) {
+    count += [...match[1].matchAll(/"[^"]+"/g)].length;
+  }
+  return count;
+}
+
+function scanLocaleGuides(schedules, guideRoutes, mismatches) {
+  let scanned = 0;
+  for (const locale of locales) {
+    if (locale === "en") continue;
+    const dictionary = JSON.parse(readFileSync(join(localesDir, `${locale}.json`), "utf8"));
+    for (const [slug, guide] of Object.entries(dictionary.guides ?? {})) {
+      const route = guideRoutes.get(slug);
+      if (!route || !guide || typeof guide !== "object") continue;
+      scanned += 1;
+      for (const text of [guide.shortAnswer, guide.intro]) {
+        if (typeof text === "string") checkTextRanges(text, schedules, route, `guide ${locale} ${slug}`, mismatches);
+      }
+      for (const section of guide.sections ?? []) {
+        if (typeof section?.body === "string") checkTextRanges(section.body, schedules, route, `guide ${locale} ${slug} section`, mismatches);
+      }
+      for (const item of guide.faq ?? []) {
+        if (typeof item?.answer === "string") checkTextRanges(item.answer, schedules, route, `guide ${locale} ${slug} FAQ`, mismatches);
+      }
+    }
+  }
+  return scanned;
+}
 function scanLocaleFaqs(schedules, mismatches) {
   for (const locale of locales) {
     const localePath = join(localesDir, `${locale}.json`);
@@ -129,6 +179,12 @@ function checkTextRanges(text, schedules, route, source, mismatches) {
   }
 
   if (schedule.count === 0) {
+    for (const match of text.matchAll(RANGE)) {
+      const start = `${match[1].padStart(2, "0")}:${match[2]}`;
+      const end = `${match[3].padStart(2, "0")}:${match[4]}`;
+      if ((start === "06:00" && end === "22:00") || (start === "06:30" && end === "17:30")) continue;
+      mismatches.push({ source, route, range: `${start}-${end}`, expected: schedule.departureWindow || "no fixed departure times" });
+    }
     return;
   }
   for (const match of text.matchAll(RANGE)) {
