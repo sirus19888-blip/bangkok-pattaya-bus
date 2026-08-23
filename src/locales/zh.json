@@ -1153,6 +1153,130 @@
           "answer": "请仔细核对机票。Suvarnabhumi 和 Don Mueang 是两个不同的机场，出行安排也不相同。"
         }
       ]
+    },
+    "mo-chit-bus-terminal-to-pattaya": {
+      "title": "Mo Chit 巴士总站到 Pattaya：班次、购票与实用提示",
+      "description": "从曼谷 Mo Chit 巴士总站前往 Pattaya 的指南：购票提示、车程时间、车站须知与替代方案。",
+      "h1": "Mo Chit 巴士总站到 Pattaya 指南",
+      "intro": "Mo Chit 巴士总站，常被称为 Mo Chit 2，是曼谷主要的长途巴士总站之一。本指南说明什么情况下适合从这里前往 Pattaya、它与 Ekkamai 的差别、在哪里购票，以及如何规划从 Pattaya 返回 Mo Chit 的行程。",
+      "shortAnswer": "如果你住在曼谷北部或 Chatuchak 附近，选择 Mo Chit 巴士总站前往 Pattaya 较为方便。如果住在 Sukhumvit 一带，通常 Ekkamai 更简单。请在官方售票柜台购票，确认班车开往 Pattaya 还是 North Pattaya Bus Station，出发前再查看曼谷到 Pattaya 的路线页面。",
+      "ctaLabel": "查询曼谷到 Pattaya 车票",
+      "routeLinkLabel": "查看曼谷到 Pattaya 巴士时刻",
+      "keyPoints": [
+        "最适合从曼谷北部、Chatuchak 或靠近 Mo Chit 2 的区域出发的旅客。",
+        "Mo Chit 2 与 BTS Mo Chit 不是同一个地方，请预留前往总站的时间。",
+        "付款前确认前往 Pattaya 的目的地和柜台，尤其是需要到 North Pattaya Bus Station 时。"
+      ],
+      "sections": [
+        {
+          "title": "Mo Chit 巴士总站在哪里？",
+          "body": "Mo Chit 巴士总站又称 Mo Chit 2，位于曼谷北部，是主要的长途巴士总站。如果你从 Chatuchak、Ari、曼谷北部或附近打车出发，这里比较方便。它与 BTS Mo Chit 并非同一地点，请留出前往实际总站的时间。"
+        },
+        {
+          "title": "去 Pattaya 该选 Mo Chit 还是 Ekkamai？",
+          "body": "如果你住在 Sukhumvit 一带，Ekkamai 通常更方便，因为紧邻 BTS Ekkamai，站内布局也更简单。如果你的酒店在曼谷北部，或下一班合适的 Pattaya 班车从 Mo Chit 发出，选择 Mo Chit 更合理。请选择上车前换乘时间最短的车站。"
+        },
+        {
+          "title": "在哪里购票",
+          "body": "请使用 Mo Chit 巴士总站内的官方售票柜台，付款前确认车票前往 Pattaya。询问上车月台或站台编号，随身准备小额现金，并避免总站外来路不明的司机报价。"
+        },
+        {
+          "title": "车程与票价说明",
+          "body": "曼谷到 Pattaya 通常需要约 2 至 3 小时，但曼谷的交通状况会影响实际时间。票价可能因车站、运营商和路线而不同，请以路线页面作为当前规划参考，并在上车前于柜台确认最终价格。"
+        },
+        {
+          "title": "如果班车满了怎么办？",
+          "body": "请先向官方柜台询问下一班前往 Pattaya 的车次。如果等待时间过长，可以比较 Ekkamai、其他巴士、小巴、出租车、Grab、Bolt、inDrive 或私人接送。除非车辆、目的地和最终价格都已明确，否则不要跟随司机离开。"
+        },
+        {
+          "title": "从 Pattaya 返回 Mo Chit",
+          "body": "购买回程票前，请先确认车票是前往 Ekkamai、Mo Chit 2 还是曼谷的其他站点。Pattaya 到曼谷的路线页面最适合用来比较回程选项，避免选错在曼谷的到达车站。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "去 Pattaya 从 Mo Chit 巴士总站出发合适吗？",
+          "answer": "合适，尤其是住在曼谷北部或 Chatuchak 附近时。如果你在 Sukhumvit 一带，Ekkamai 通常更方便。"
+        },
+        {
+          "question": "Mo Chit 2 和 BTS Mo Chit 是同一个地方吗？",
+          "answer": "不是。BTS Mo Chit 是轻轨车站，Mo Chit 2 是长途巴士总站。请预留额外时间前往实际总站。"
+        },
+        {
+          "question": "从 Mo Chit 到 Pattaya 要多久？",
+          "answer": "通常约 2 至 3 小时，取决于路况和在 Pattaya 的下车点。周末和假日请多留时间。"
+        },
+        {
+          "question": "可以在网上购买 Mo Chit 到 Pattaya 的车票吗？",
+          "answer": "可以在线比较车票和接送选项，但许多旅客仍在官方柜台购买巴士车票。出行前请确认运营商、时间和目的地。"
+        },
+        {
+          "question": "可以从 Pattaya 返回 Mo Chit 吗？",
+          "answer": "部分 Pattaya 到曼谷的班车可能开往 Mo Chit，但购票前应确认在曼谷的到达车站。"
+        }
+      ]
+    },
+    "pattaya-bus-station-to-jomtien": {
+      "title": "Pattaya 巴士站到 Jomtien：出租车、Songthaew 与接送指南",
+      "description": "从 North Pattaya Bus Station 前往 Jomtien 的实用指南：出租车、Songthaew、Grab/Bolt、所需时间与机场巴士衔接提示。",
+      "h1": "Pattaya 巴士站到 Jomtien 指南",
+      "intro": "North Pattaya Bus Station 是从曼谷抵达的巴士常用站点，但它并不在 Jomtien。本指南说明从 Pattaya 巴士站继续前往 Jomtien 的最简单方式，包括出租车、Grab 或 Bolt、Songthaew，以及 Jomtien / Thappraya 机场巴士区域。",
+      "shortAnswer": "对大多数旅客来说，从 North Pattaya Bus Station 前往 Jomtien 最方便的方式是出租车、Grab 或 Bolt，携带行李时尤其如此。Songthaew 更便宜，但对初次到访的人来说路线不够直观。如果你要搭乘前往 Suvarnabhumi 的机场巴士，请事先确认 Jomtien / Thappraya 的上车地点。",
+      "ctaLabel": "查询 Pattaya 到 Suvarnabhumi 机场车票",
+      "routeLinkLabel": "查看 Pattaya 到 Suvarnabhumi 机场巴士时刻",
+      "keyPoints": [
+        "North Pattaya Bus Station 与 Jomtien / Thappraya 机场巴士区域是两个不同的地点。",
+        "携带行李或长途巴士抵达后，出租车、Grab 或 Bolt 通常最省事。",
+        "Songthaew 更便宜，但上车前请先问清方向，并多留一些时间。"
+      ],
+      "sections": [
+        {
+          "title": "巴士在 Pattaya 的哪里到站？",
+          "body": "许多曼谷到 Pattaya 的巴士停靠 North Pattaya Bus Station。这个到达点对 Pattaya 市区很实用，但位于市中心以北，与 Jomtien 或 Thappraya 机场巴士办公室并不相同。离站前请先确认酒店所在区域，再选择方向正确的本地交通。"
+        },
+        {
+          "title": "North Pattaya Bus Station 离 Jomtien 有多远？",
+          "body": "Jomtien 在 Pattaya 市中心以南，因此这段路通常不适合步行。所需时间取决于路况、酒店位置和穿越 Pattaya 的路线。乘出租车或网约车大约需要 20 至 45 分钟，若换乘 Songthaew 则更久。"
+        },
+        {
+          "title": "出租车、Grab/Bolt 还是 Songthaew？",
+          "body": "如果你带着行李、夜间抵达或想直接到酒店，出租车、Grab 或 Bolt 最为简单。价格会随路况、需求和上车地点变化，预订前请先查看软件报价。Songthaew 更便宜，但路线未必直观，可能需要换车。"
+        },
+        {
+          "title": "如何前往 Jomtien / Thappraya 机场巴士区域",
+          "body": "如果你要从 Jomtien / Thappraya 一带换乘前往 Suvarnabhumi 的机场巴士，请不要默认它从 North Pattaya Bus Station 发车。请先确认机场巴士柜台或 Thappraya 办公室的位置，预留缓冲时间；带行李或有航班衔接时，建议直接乘出租车或网约车。"
+        },
+        {
+          "title": "行李怎么处理",
+          "body": "带行李箱时，直接乘出租车、Grab 或 Bolt 通常更值得考虑，可以省去在 Songthaew 之间搬运行李。贵重物品请随身携带，装载行李前确认目的地；如果抵达 Jomtien 后还需购买机场巴士车票，请多留时间。"
+        },
+        {
+          "title": "相关路线",
+          "body": "规划抵达 North Pattaya Bus Station 时，请参考曼谷到 Pattaya 的路线页面。返回曼谷请使用 Pattaya 到曼谷的路线页面；若从 Jomtien 或 Thappraya 前往机场，请使用 Pattaya 到 Suvarnabhumi 机场的路线页面。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "North Pattaya Bus Station 和 Jomtien Bus Station 是同一个吗？",
+          "answer": "不是。North Pattaya Bus Station 位于 Pattaya 北部，而 Jomtien 巴士站或 Thappraya 机场巴士区域在更南边。出行前请确认机场巴士的确切上车地点。"
+        },
+        {
+          "question": "怎么从 Pattaya 巴士站到 Jomtien？",
+          "answer": "最简单的方式通常是出租车、Grab 或 Bolt。合乘的 Songthaew 更便宜，但初次到 Pattaya 时路线可能让人困惑。"
+        },
+        {
+          "question": "从 North Pattaya Bus Station 到 Jomtien 要多久？",
+          "answer": "乘出租车或网约车大约 20 至 45 分钟，取决于路况和你在 Jomtien 的具体目的地。合乘交通会更久。"
+        },
+        {
+          "question": "可以从 North Pattaya Bus Station 搭乘 Suvarnabhumi 机场巴士吗？",
+          "answer": "可以。130 THB 的 Pattaya 到 Suvarnabhumi 班车从 North Pattaya Bus Station 发车。每小时一班的 Jomtien 线票价为 151 THB，属于另一条独立路线。"
+        },
+        {
+          "question": "带行李时哪种方式最方便？",
+          "answer": "出租车、Grab、Bolt 或事先安排好的接送通常最方便，可以避免换车或提着行李步行。"
+        }
+      ]
     }
   }
 }
