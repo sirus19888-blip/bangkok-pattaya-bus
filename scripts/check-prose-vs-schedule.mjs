@@ -4,6 +4,7 @@ import { cwd } from "node:process";
 import assert from "node:assert/strict";
 
 const root = cwd();
+const readSource = (path) => readFileSync(path, "utf8").replace(/\r\n/g, "\n");
 const schedulePath = join(root, "src/data/schedules.ts");
 const guidePath = join(root, "src/data/seoGuides.ts");
 const localesDir = join(root, "src/locales");
@@ -17,9 +18,12 @@ const proseRouteOverrides = {
 assert.ok(existsSync(schedulePath), `Missing ${schedulePath}`);
 assert.ok(existsSync(guidePath), `Missing ${guidePath}`);
 
-const scheduleSource = readFileSync(schedulePath, "utf8");
-const guideSource = readFileSync(guidePath, "utf8");
+const scheduleSource = readSource(schedulePath);
+const guideSource = readSource(guidePath);
 const schedules = extractSchedules(scheduleSource);
+assert.ok(schedules.size > 0, "Parser found no schedules - source format changed?");
+assert.equal(schedules.size, 6, `Expected 6 routes, found ${schedules.size}`);
+console.log(`Parsed schedules: ${schedules.size} routes; guides: 14.`);
 const mismatches = [];
 
 scanGuides(guideSource, schedules, mismatches);
@@ -54,17 +58,8 @@ function extractSchedules(source) {
     const departuresMatch = segment.match(
       /departures:\s*\[([\s\S]*?)\]/,
     );
-    if (!departuresMatch) {
-      continue;
-    }
+    const departures = departuresMatch ? [...departuresMatch[1].matchAll(/"(\d{2}\:\d{2})"/g)].map((departure) => departure[1]) : [];
 
-    const departures = [...departuresMatch[1].matchAll(/"(\d{2}:\d{2})"/g)].map(
-      (departure) => departure[1],
-    );
-
-    if (departures.length === 0) {
-      continue;
-    }
 
     result.set(direction, {
       first: departures[0],
@@ -77,10 +72,12 @@ function extractSchedules(source) {
 }
 
 function scanGuides(source, schedules, mismatches) {
-  const guideStarts = [...source.matchAll(/^  \{\n    slug:/gm)].map(
+  const guideStarts = [...source.matchAll(/^\s*\{\n\s+slug:/gm)].map(
     (match) => match.index,
   );
 
+  assert.ok(guideStarts.length > 0, "Parser found no guides - source format changed?");
+  assert.equal(guideStarts.length, 14, `Expected 14 guides, found ${guideStarts.length}`);
   for (let index = 0; index < guideStarts.length; index += 1) {
     const start = guideStarts[index];
     const end = guideStarts[index + 1] ?? source.length;
@@ -131,6 +128,9 @@ function checkTextRanges(text, schedules, route, source, mismatches) {
     return;
   }
 
+  if (schedule.count === 0) {
+    return;
+  }
   for (const match of text.matchAll(RANGE)) {
     const start = `${match[1].padStart(2, "0")}:${match[2]}`;
     const end = `${match[3].padStart(2, "0")}:${match[4]}`;

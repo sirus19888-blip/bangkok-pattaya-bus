@@ -5,6 +5,7 @@ import process from "node:process";
 
 const CHECKED_AT = new Date().toISOString();
 const SCHEDULES_PATH = path.join(process.cwd(), "src", "data", "schedules.ts");
+const readSource = async (filePath) => (await readFile(filePath, "utf8")).replace(/\r\n/g, "\n");
 const REPORT_PATH = path.join(
   process.cwd(),
   "reports",
@@ -754,8 +755,11 @@ function printSourceReport(result) {
 }
 
 async function main() {
-  const scheduleSource = await readFile(SCHEDULES_PATH, "utf8");
+  const scheduleSource = await readSource(SCHEDULES_PATH);
   const appSchedules = extractAppSchedules(scheduleSource);
+  const routeCount = Object.keys(appSchedules).length;
+  assert.ok(routeCount > 0, "Parser found no schedules - source format changed?");
+  assert.equal(routeCount, 6, `Expected 6 routes, found ${routeCount}`);
   const report = {
     checkedAt: CHECKED_AT,
     purpose:
