@@ -585,8 +585,8 @@
   },
   "guides": {
     "ekkamai-bus-terminal-to-pattaya-guide": {
-      "ctaLabel": "\u67e5\u770b\u66fc\u8c37 \u2192 \u82ad\u63d0\u96c5\u8f66\u7968",
-      "routeLinkLabel": "\u6253\u5f00\u66fc\u8c37\u2014\u82ad\u63d0\u96c5\u5df4\u58eb\u9875\u9762",
+      "ctaLabel": "查看曼谷 → 芭提雅车票",
+      "routeLinkLabel": "打开曼谷—芭提雅巴士页面",
       "title": "Ekkamai 巴士总站到芭提雅巴士指南",
       "description": "从曼谷 Ekkamai 巴士总站乘坐巴士前往芭提雅的实用指南，包括车站提示、车票、行程时间和替代方案。",
       "h1": "Ekkamai 巴士总站到芭提雅指南",
@@ -651,6 +651,80 @@
         {
           "title": "抵达芭提雅",
           "body": "许多巴士抵达 North Pattaya Bus Station。从那里，你可以乘坐双条车（songthaew）、出租车、Grab、Bolt 或酒店接送前往酒店。上车前请确认你的最终下车站点，尤其是当你要前往 Jomtien 或芭提雅市中心时。"
+        }
+      ]
+    },
+    "don-mueang-airport-to-pattaya-bus": {
+      "title": "Don Mueang 到 Pattaya 巴士：时刻、票价与乘车指南",
+      "description": "从 Don Mueang 机场乘直达巴士前往 Pattaya：了解 155 THB 票价、06:30-17:30 的班次窗口、乘车地点及抵达后的交通。",
+      "h1": "Don Mueang 机场到 Pattaya 巴士指南",
+      "intro": "如果你从 Don Mueang 抵达并前往 Pattaya，直达巴士通常比先进入 Bangkok 再换乘更简单。本指南说明如何找到柜台、确认乘车地点、准备 155 THB 车票，并在抵达 North Pattaya Bus Station 后继续前往酒店。",
+      "shortAnswer": "抵达 Don Mueang 后，前往 Terminal 1 的 Service Hall 柜台确认当天的 Pattaya 巴士。Terminal 1 的 Service Hall 柜台周二关闭；当天请使用 Terminal 2 的 Gate 11 柜台，或到达后确认当前乘车地点。票价为每人 155 THB，服务时间窗口约为 06:30-17:30、每约 4 小时一班。巴士抵达 North Pattaya Bus Station 后，再乘 Songthaew、出租车、Grab、Bolt 或酒店接送。",
+      "ctaLabel": "查看 Don Mueang 到 Pattaya 车票",
+      "routeLinkLabel": "打开 Don Mueang 到 Pattaya 路线",
+      "keyPoints": [
+        "直达巴士可避免先进入 Bangkok 再转车，适合带行李的旅客。",
+        "票价为每人 155 THB；服务时间窗口约为 06:30-17:30、每约 4 小时一班，不要把它当作固定逐班时刻表。",
+        "Pattaya 的下车点是 North Pattaya Bus Station；最后一段前往酒店的交通需要另外安排。"
+      ],
+      "sections": [
+        {
+          "title": "抵达 Don Mueang 后如何找到巴士",
+          "body": "到达后先确认自己所在的航站楼。前往机场的 Service Hall，并寻找前往 Pattaya 的官方柜台。机场较大，跟随交通指示牌；如果找不到柜台，请向工作人员确认当前乘车地点。不要仅凭网上旧照片判断柜台位置。"
+        },
+        {
+          "title": "为什么直达巴士比旧路线更方便",
+          "body": "直达巴士不需要先前往 Bangkok 市区再转车，行李较多时尤其省事。你仍需确认当天的柜台、乘车地点和终点，因为机场服务可能调整。若直达服务不适合你的抵达时间，可比较出租车、Grab、Bolt 或私人接送。"
+        },
+        {
+          "title": "巴士票价是多少",
+          "body": "当前列出的票价是每人 155 THB。付款前确认目的地是 Pattaya，并询问是否需要在柜台领取纸质车票。不要把其他机场交通或应用程序价格误当作这条直达巴士的票价。"
+        },
+        {
+          "title": "旅程需要多长时间",
+          "body": "路线资料显示全程约 3-3.5 小时，但实际时间会受 Bangkok 和 Pattaya 之间的交通影响。把它当作规划范围，而不是保证的抵达时间；如果要赶航班或重要预约，请预留额外时间。"
+        },
+        {
+          "title": "发车时间及班次频率",
+          "body": "这条路线没有固定的逐班 departures 表。服务时间窗口约为 06:30-17:30、每约 4 小时一班。到达机场后请在柜台确认当天下一班，不要自行推算具体发车分钟。"
+        },
+        {
+          "title": "巴士在 Pattaya 哪里下车",
+          "body": "巴士前往 North Pattaya Bus Station，靠近 North Pattaya Road 和 Sukhumvit。上车前确认终点；如果你的酒店在 Jomtien、Pattaya 市中心或其他区域，下车后还需要安排 Songthaew、出租车、Grab、Bolt 或酒店接送。"
+        },
+        {
+          "title": "什么时候出租车或私人接送更合适",
+          "body": "如果你深夜抵达、携带大量行李、与家人同行，或必须在指定时间到达，出租车或私人接送可能更合适。出发前确认目的地、车辆和总价；不要接受没有明确价格的陌生司机邀请。"
+        },
+        {
+          "title": "如果抵达晚了或错过最后一班巴士",
+          "body": "先向官方柜台确认当天是否还有服务。若没有合适班次，比较出租车、Grab、Bolt、inDrive 或私人接送，并在出发前确认总价和 Pattaya 的最终下车点。不要为了赶车而把机场柜台信息当作固定时刻表。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Don Mueang 到 Pattaya 有直达巴士吗？",
+          "answer": "有直达服务，但它按服务时间窗口运行，不是每天公布固定的逐班时刻。到达后在官方柜台确认下一班。"
+        },
+        {
+          "question": "Don Mueang 到 Pattaya 的票价是多少？",
+          "answer": "列出的票价是每人 155 THB。付款前确认目的地和当天柜台信息。"
+        },
+        {
+          "question": "Don Mueang 到 Pattaya 的巴士运行到几点？",
+          "answer": "服务时间窗口约为 06:30-17:30、每约 4 小时一班。请在机场柜台确认实际下一班。"
+        },
+        {
+          "question": "这趟巴士需要多长时间？",
+          "answer": "通常约 3-3.5 小时，具体取决于交通和 Pattaya 的最终下车安排。"
+        },
+        {
+          "question": "巴士在 Pattaya 哪里停？",
+          "answer": "通常停在 North Pattaya Bus Station。前往 Jomtien 或酒店还需要另一段交通。"
+        },
+        {
+          "question": "周二 Don Mueang 的巴士还运行吗？",
+          "answer": "周二关闭的是 Terminal 1 的 Service Hall 柜台，不是巴士服务本身。请使用 Terminal 2 的 Gate 11 柜台，或到达后确认当前乘车地点。"
         }
       ]
     }

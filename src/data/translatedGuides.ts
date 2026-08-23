@@ -7,6 +7,7 @@ import type { LocaleCode } from "@/data/routes";
 export const translatedGuideLocales: Record<string, LocaleCode[]> = {
   "ekkamai-bus-terminal-to-pattaya-guide": ["zh", "ru", "de"],
   "jomtien-bus-station": ["ru"],
+  "don-mueang-airport-to-pattaya-bus": ["zh"],
 };
 
 export function isGuideTranslated(slug: string, locale: LocaleCode): boolean {
