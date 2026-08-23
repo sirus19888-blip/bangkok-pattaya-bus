@@ -12,6 +12,9 @@ export const translatedGuideLocales: Record<string, LocaleCode[]> = {
   "pattaya-to-suvarnabhumi-airport-before-flight": ["zh"],
   "suvarnabhumi-airport-gate-8-pattaya-bus": ["zh"],
   "pattaya-to-suvarnabhumi-which-station": ["zh"],
+  "bangkok-to-pattaya-bus-vs-taxi": ["zh"],
+  "bangkok-to-pattaya-after-midnight": ["zh"],
+  "pattaya-to-bangkok-before-flight": ["zh"],
 };
 
 export function isGuideTranslated(slug: string, locale: LocaleCode): boolean {
