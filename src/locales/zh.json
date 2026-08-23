@@ -1277,6 +1277,216 @@
           "answer": "出租车、Grab、Bolt 或事先安排好的接送通常最方便，可以避免换车或提着行李步行。"
         }
       ]
+    },
+    "pattaya-to-bangkok-which-terminal": {
+      "title": "Pattaya 到曼谷：该选哪个总站？Ekkamai 还是 Mo Chit",
+      "description": "从 Pattaya 乘巴士回曼谷时如何在 Ekkamai 与 Mo Chit 之间选择：哪个总站更贴近你的目的地、如何换乘 BTS 或出租车、票价与行李提示。",
+      "h1": "Pattaya 到曼谷：Ekkamai 还是 Mo Chit？",
+      "intro": "从 Pattaya 开往曼谷的巴士会停靠两大总站之一 —— Ekkamai 或 Mo Chit，选对总站会让后续行程轻松许多。最合适的选择取决于你在曼谷的目的地，以及打算如何继续前往。本指南说明两个总站的差别、从各自出发如何抵达最终目的地，以及票价、行李和从 Pattaya 出发的实用提示。",
+      "shortAnswer": "多数 Pattaya 到曼谷的巴士停靠 Ekkamai（曼谷东部，位于 BTS Sukhumvit 线上）或 Mo Chit（曼谷北部，靠近 Chatuchak）。如果你要去 Asok、Thong Lo、Phrom Phong 等 Sukhumvit 一带，请选 Ekkamai，因为可直接换乘 BTS。如果要去曼谷北部，或打算继续乘出租车，请选 Mo Chit。出发前请查看 Pattaya 到曼谷路线页面的当前班次。",
+      "ctaLabel": "查询价格与空位",
+      "routeLinkLabel": "查看 Pattaya 到曼谷巴士时刻",
+      "keyPoints": [
+        "Ekkamai 是曼谷唯一步行即可抵达 BTS 车站的主要巴士总站，最适合前往 Sukhumvit 一带。",
+        "Mo Chit 服务曼谷北部，若你前往该方向或继续乘出租车更合适 —— BTS 距总站约 2 公里。",
+        "巴士从 North Pattaya Bus Terminal 发车，距 Pattaya 市中心约 3 公里，请预留乘出租车或 Songthaew 前往的时间。"
+      ],
+      "sections": [
+        {
+          "title": "两个曼谷总站速览",
+          "body": "主要长途运营商的 Pattaya 到曼谷巴士会停靠两个总站之一。Ekkamai（东部巴士总站）位于曼谷东部的 Sukhumvit 路上，紧邻 Ekkamai BTS 车站。Mo Chit（北部巴士总站，有时称为 Mo Chit 2 或 Chatuchak 长途车站）位于曼谷北部，靠近 Chatuchak 公园。两个总站由相同的 Pattaya 班车服务，所以选择主要取决于你想在曼谷的哪里下车。"
+        },
+        {
+          "title": "去 Sukhumvit 就选 Ekkamai",
+          "body": "对多数旅客而言 Ekkamai 最方便，因为它是曼谷唯一步行即可轻松抵达 BTS 车站的主要巴士总站。从 Ekkamai BTS 可以快速前往 Asok、Nana、Phrom Phong 和 Thong Lo 等 Sukhumvit 区域，并接入更大的 BTS 与 MRT 网络。如果你的酒店在 Sukhumvit 沿线，或希望后续行程最简单，通常选 Ekkamai 更好。"
+        },
+        {
+          "title": "去北部或想打车就选 Mo Chit",
+          "body": "如果你住在曼谷北部、Chatuchak 附近，或位于河畔、Khao San 等不在 BTS 网络上的区域，Mo Chit 更合适。不便之处在于总站并不紧邻轨道交通 —— BTS Mo Chit 和 MRT Chatuchak Park 距离约 2 公里，需要搭乘短程出租车、Grab 或摩托车出租车前往。如果你本来就打算全程打车，Mo Chit 与 Ekkamai 同样方便。"
+        },
+        {
+          "title": "从各总站如何继续行程",
+          "body": "从 Ekkamai 步行至 Ekkamai BTS 换乘 Sukhumvit 线，简单且不受堵车影响。从 Mo Chit 可直接乘出租车或 Grab 前往目的地，或短程前往 BTS Mo Chit、MRT Chatuchak Park 再换乘轨道。作为粗略参考，从总站一带前往 Sukhumvit 中心或 Siam 的出租车价格会随路况和需求大幅波动，请使用计价器或事先谈好价格。考虑到曼谷的交通，前往 Sukhumvit、Siam 和 Silom 时，BTS 或 MRT 通常比出租车更快。"
+        },
+        {
+          "title": "巴士在 Pattaya 从哪里发车",
+          "body": "多数 Pattaya 到曼谷的巴士从 North Pattaya Road 上的 North Pattaya Bus Terminal 发车，距 Pattaya 市中心约 3 公里。从大多数酒店步行前往并不轻松，建议乘出租车、Grab 或 Songthaew。如果你住在 Jomtien、Pratumnak 或 Naklua，请多留时间。出发前先在地图软件中打开总站位置，以便估算换乘所需时间。"
+        },
+        {
+          "title": "车程与票价",
+          "body": "行程通常需要约 2 至 3 小时，取决于路况，接近曼谷时尤其明显。票价不高 —— 每座大约 150 THB，具体价格因运营商而异，也可能变动。Ekkamai 与 Mo Chit 两条线在价格和时间上相近，因此票价很少是决定因素，你在曼谷的目的地更重要。出行前请查看路线页面的当前班次和票价说明。"
+        },
+        {
+          "title": "行李与购票",
+          "body": "通常可以当天在 North Pattaya 总站柜台购票，周末和假日繁忙时也可提前在线预订。标准行李额度一般为一件大行李加一件随身行李，额外行李需另付少量费用（约 20 THB）。请在发车前 20 至 30 分钟抵达，以便购票并找到正确的月台。"
+        },
+        {
+          "title": "到底该选哪个总站？",
+          "body": "简单来说：前往 Sukhumvit 及 BTS 方便抵达的区域选 Ekkamai，前往曼谷北部或打算继续打车则选 Mo Chit。如果拿不定主意，对多数游客来说 Ekkamai 是更稳妥的默认选择，因为可直接换乘 BTS。无论选哪个，购票时都请确认到达总站，因为部分班次只开往其中一个。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Pattaya 到曼谷，Ekkamai 和 Mo Chit 哪个更好？",
+          "answer": "前往 Sukhumvit 一带选 Ekkamai，因为可直接换乘 BTS。前往曼谷北部或继续打车则选 Mo Chit。对多数游客来说，Ekkamai 是更省事的默认选择。"
+        },
+        {
+          "question": "Ekkamai 总站离 BTS 近吗？",
+          "answer": "近。Ekkamai 是曼谷唯一步行即可轻松抵达 BTS 车站的主要巴士总站（Sukhumvit 线的 Ekkamai 站）。"
+        },
+        {
+          "question": "Mo Chit 总站离 BTS 有多远？",
+          "answer": "约 2 公里。从 Mo Chit 巴士总站到 BTS Mo Chit 或 MRT Chatuchak Park，需要一段短程出租车、Grab 或摩托车出租车。"
+        },
+        {
+          "question": "巴士在 Pattaya 从哪里发车？",
+          "answer": "从 North Pattaya Road 上的 North Pattaya Bus Terminal 发车，距 Pattaya 市中心约 3 公里。可乘出租车、Grab 或 Songthaew 前往。"
+        },
+        {
+          "question": "Pattaya 到曼谷的巴士票价是多少？",
+          "answer": "每座通常约 150 THB，价格因运营商而异，也可能变动。请查看路线页面或在柜台确认当前票价。"
+        },
+        {
+          "question": "可以选择巴士开往哪个总站吗？",
+          "answer": "通常可以 —— 不同班次分别开往 Ekkamai 或 Mo Chit。购票时请确认到达总站。"
+        }
+      ]
+    },
+    "jomtien-bus-station": {
+      "title": "Jomtien 巴士站（Thappraya 路）：机场巴士与实用指南",
+      "description": "Jomtien 巴士站在 Thappraya 路的哪里、前往 Suvarnabhumi 的机场巴士如何运作、购票方式、Songthaew 衔接与附近住宿。",
+      "h1": "Jomtien 巴士站（Thappraya 路）指南",
+      "intro": "位于 Thappraya 路的 Jomtien 巴士站，是许多旅客从 Pattaya 的 Jomtien 一侧前往 Suvarnabhumi 机场巴士的出发点。本指南说明车站位置、上车方式、如何乘 Songthaew 或出租车抵达，以及早班航班前住在附近的选择。",
+      "shortAnswer": "Jomtien 巴士站位于 Thappraya 路，介于 Pattaya 与 Jomtien 海滩之间。前往 Suvarnabhumi 的机场巴士在此上车 —— 出发前请查看 Pattaya 到 Suvarnabhumi 机场路线页面的当前班次与票价。",
+      "ctaLabel": "查询 Jomtien 到 Suvarnabhumi 车票",
+      "routeLinkLabel": "查看 Pattaya 到 Suvarnabhumi 机场巴士",
+      "keyPoints": [
+        "如果你住在 Jomtien、Thappraya 路一带或 Pattaya 南部，这里是最合适的上车点。",
+        "售票处有时被标注为「Thappraya 巴士办公室」—— 指的是同一个地方。",
+        "搭乘机场巴士请提早抵达，国际航班前务必留出充足的缓冲时间。"
+      ],
+      "sections": [
+        {
+          "title": "Jomtien 巴士站在哪里？",
+          "body": "车站位于 Thappraya 路上，这条路连接 Pattaya 南部与 Jomtien 海滩。许多地图和评论称之为 Thappraya 路巴士办公室或 Jomtien 机场巴士站 —— 这些名称指的是同一个上车点。首次前往前，请在路线页面查看确切定位和入口照片。"
+        },
+        {
+          "title": "前往 Suvarnabhumi 的机场巴士",
+          "body": "从 Jomtien 一带开往 Suvarnabhumi 机场的巴士在本站上车。发车时间和票价会变动，因此本指南仅供定位参考，当前时刻表、票价说明和数据来源状态请查看本站的 Pattaya 到 Suvarnabhumi 机场路线页面。"
+        },
+        {
+          "title": "在哪里购票",
+          "body": "可在车站柜台购买，或提前在线比较各种选项。对于清晨的机场班次，许多旅客倾向于前一天在线订座，抵达时出示确认信息。柜台购票请备好小额现金，付款前确认目的地。"
+        },
+        {
+          "title": "如何抵达车站",
+          "body": "从 Jomtien 海滩路出发，乘 Songthaew 或短程出租车即可抵达 Thappraya 路。从 Pattaya 市中心出发，携带行李时以出租车、Grab 或 Bolt 最为简单。请清楚说明目的地：「Jomtien Bus Station, Thappraya Road」，或直接出示地图定位。"
+        },
+        {
+          "title": "该提前多久抵达",
+          "body": "搭乘机场巴士请至少提前 20 至 30 分钟到站，周末和假日再多留一些时间。乘坐国际航班时，建议在起飞前约 3 小时抵达 Suvarnabhumi，因此请选择能留出余量的班次。"
+        },
+        {
+          "title": "早班航班前住在车站附近",
+          "body": "如果航班时间很早，住在距 Thappraya 路不远的地方会让清晨出发轻松许多。Jomtien 与 Pattaya 南部有各种价位的酒店 —— 请按你的日期比较选项，优先考虑靠近车站一侧的位置。"
+        },
+        {
+          "title": "如果班车满了或时间不合适",
+          "body": "请向柜台询问下一班车。如果时刻表不合适，可以比较前往机场的私人接送或出租车 —— 3 至 4 人同行时，人均费用会接近巴士票价，而且可以从酒店直接接人。"
+        },
+        {
+          "title": "从机场返回 Jomtien",
+          "body": "反方向而言，部分从 Suvarnabhumi 出发的机场巴士会在 Jomtien 一侧放客 —— 当前停靠点请查看 Suvarnabhumi 机场到 Pattaya 的路线页面。从下车点到 Jomtien 海滩的酒店，可乘 Songthaew 或出租车完成最后一段。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Jomtien 巴士站具体在哪里？",
+          "answer": "在 Thappraya 路上，介于 Pattaya 南部与 Jomtien 海滩之间。它常被称为 Thappraya 巴士办公室 —— 是同一个机场巴士上车点。"
+        },
+        {
+          "question": "Thappraya 巴士办公室和 Jomtien 巴士站是同一个吗？",
+          "answer": "是的。评论和地图对 Thappraya 路上的这个机场巴士上车点使用两种名称。"
+        },
+        {
+          "question": "从 Jomtien 巴士站可以到哪个机场？",
+          "answer": "本站的巴士开往 Suvarnabhumi 机场。若要前往 Don Mueang，请查看 Pattaya 到 Don Mueang 的路线页面确认正确的出发点。"
+        },
+        {
+          "question": "从 Jomtien 海滩怎么去车站？",
+          "answer": "可乘 Jomtien 沿线的 Songthaew，或短程出租车、Grab、Bolt 前往 Thappraya 路。携带行李时通常打车更方便。"
+        },
+        {
+          "question": "Jomtien 到 Suvarnabhumi 的巴士几点发车？",
+          "answer": "时间会变动，请务必查看本站 Pattaya 到 Suvarnabhumi 机场路线页面的当前时刻表，并在柜台确认。"
+        }
+      ]
+    },
+    "hotels-near-pattaya-bus-station": {
+      "title": "Pattaya 巴士站附近的酒店：住哪里好（North Pattaya）",
+      "description": "North Pattaya Bus Station 附近的最佳住宿区域：最近的地段、深夜抵达与清晨出发的提示，以及如何按步行距离挑选酒店。",
+      "h1": "Pattaya 巴士站附近的酒店：住哪里好",
+      "intro": "多数从曼谷开来的巴士停靠 North Pattaya Bus Station。如果你深夜抵达、清晨出发，或只是希望换乘更短，住在车站附近能省下时间与精力。本指南比较车站周边的各个区域，帮你挑选适合巴士行程的酒店。",
+      "shortAnswer": "如果希望前往巴士站的路程最短，请住在 North Pattaya 一带。Naklua 与 Wong Amat 是几分钟车程外更安静的海滨选择，而 Central Pattaya 购物和夜生活最丰富，乘 Songthaew 或 Grab 也只需一小段路。",
+      "ctaLabel": "查询曼谷到 Pattaya 车票",
+      "routeLinkLabel": "查看曼谷到 Pattaya 巴士",
+      "keyPoints": [
+        "赶早班车或深夜抵达时，North Pattaya 是最方便的区域。",
+        "预订时请切换到地图视图，确认与 North Pattaya Bus Station 的距离。",
+        "如果乘上午的班车，住 Central Pattaya 也没问题，只要预留 20 至 30 分钟缓冲。"
+      ],
+      "sections": [
+        {
+          "title": "从曼谷来的巴士在哪里到站？",
+          "body": "多数从 Ekkamai 和 Mo Chit 开出的班车停靠城市北端附近的 North Pattaya Bus Station。部分线路和运营商会使用其他站点，因此挑选住宿区域前，请先在路线页面确认到达点。"
+        },
+        {
+          "title": "为什么要住在巴士站附近",
+          "body": "住得离车站近，会让以巴士为主的行程轻松许多：抵达后不必长途换乘，出发当天也只需几分钟就能上车，而不是在堵车中穿越整座城市。对清晨的班车和深夜的抵达来说，这是最稳妥的安排。"
+        },
+        {
+          "title": "North Pattaya：离车站最近",
+          "body": "North Pattaya Road 一带前往巴士站的路程最短，周边有不少本地餐厅和便利店，整体也比市中心安静。如果你的首要考虑是巴士而非夜生活，这里很适合作为第一晚或最后一晚的落脚点。"
+        },
+        {
+          "title": "Naklua 与 Wong Amat：安静的海滨一侧",
+          "body": "位于车站以北的 Naklua 和 Wong Amat 更为悠闲、贴近海滩，乘 Grab 或 Songthaew 一小段即可抵达。如果你想要安静的夜晚和海滩时光，同时保持与车站的便利衔接，可以选择这一带。"
+        },
+        {
+          "title": "Central Pattaya 与 Second Road：购物与夜生活",
+          "body": "Central Pattaya 的酒店、商场和夜生活选择最多。代价是前往巴士站需要 10 至 20 分钟车程，视路况而定。搭乘上午稍晚的班车没有问题；若是最早的班次，请多留缓冲时间或住得离车站更近。"
+        },
+        {
+          "title": "如何挑选酒店：看地图，不只看价格",
+          "body": "按你的日期比较酒店时，请切换到地图视图，查看与 North Pattaya Bus Station 的真实距离。深夜抵达请找有 24 小时前台的酒店；赶早班车则要确认早餐或退房时间是否配合你的出发时刻，并在前一晚收拾好行李。"
+        },
+        {
+          "title": "车站与酒店之间怎么走",
+          "body": "Songthaew 沿主要道路行驶，是最便宜的方式；携带行李时 Grab 和 Bolt 更好用；车站也有出租车 —— 上车前请谈好目的地和价格。避开高峰时段，North Pattaya 与 Central Pattaya 范围内的行程通常只需几分钟。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "North Pattaya Bus Station 步行范围内有酒店吗？",
+          "answer": "有 —— North Pattaya 一带既有步行可达的选择，也有几分钟车程的酒店。预订时请使用地图视图，确认你所选酒店与车站的距离。"
+        },
+        {
+          "question": "整趟行程都住 North Pattaya 合适吗？",
+          "answer": "这里比市中心安静，衔接巴士也很方便。如果你希望夜生活和购物就在楼下，Central Pattaya 可能更合适，代价是前往车站的路程更长。"
+        },
+        {
+          "question": "Central Pattaya 离巴士站有多远？",
+          "answer": "通常 10 至 20 分钟车程，视路况而定。如果搭乘清晨的班车，请多留缓冲时间或选择离车站更近的酒店。"
+        },
+        {
+          "question": "我在深夜抵达，应该注意什么？",
+          "answer": "请选择有 24 小时前台的酒店，并从车站乘 Grab、Bolt 或出租车前往。若乘出租车，上车前先谈好目的地和价格。"
+        },
+        {
+          "question": "应该提前订房还是到了再找？",
+          "answer": "旺季、周末和泰国假日请按日期提前预订。淡季可以现场入住，但长途巴士之后带着已确认的订单会轻松得多。"
+        }
+      ]
     }
   }
 }

@@ -6,7 +6,7 @@ import type { LocaleCode } from "@/data/routes";
 // dopisz tu locale — wtedy karty i canonical/hreflang zaczną go używać.
 export const translatedGuideLocales: Record<string, LocaleCode[]> = {
   "ekkamai-bus-terminal-to-pattaya-guide": ["zh", "ru", "de"],
-  "jomtien-bus-station": ["ru"],
+  "jomtien-bus-station": ["ru", "zh"],
   "don-mueang-airport-to-pattaya-bus": ["zh"],
   "pattaya-to-don-mueang-airport-bus": ["zh"],
   "pattaya-to-suvarnabhumi-airport-before-flight": ["zh"],
@@ -17,6 +17,8 @@ export const translatedGuideLocales: Record<string, LocaleCode[]> = {
   "pattaya-to-bangkok-before-flight": ["zh"],
   "mo-chit-bus-terminal-to-pattaya": ["zh"],
   "pattaya-bus-station-to-jomtien": ["zh"],
+  "pattaya-to-bangkok-which-terminal": ["zh"],
+  "hotels-near-pattaya-bus-station": ["zh"],
 };
 
 export function isGuideTranslated(slug: string, locale: LocaleCode): boolean {
