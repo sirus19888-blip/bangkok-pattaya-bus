@@ -84,6 +84,7 @@ export function getTranslations(locale: LocaleCode): Translations {
     ),
     faqItems: dictionary.faqItems ?? en.faqItems,
     routeFaqItems: mergeArrayRecord(en.routeFaqItems, dictionary.routeFaqItems),
+    guideCards: mergeTextRecord(en.guideCards, dictionary.guideCards),
     guides: {
       ...mergeTextRecord(en.guides, dictionary.guides),
       ...Object.fromEntries(

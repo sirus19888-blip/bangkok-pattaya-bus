@@ -1488,5 +1488,63 @@
         }
       ]
     }
+  },
+  "guideCards": {
+    "ekkamai-bus-terminal-to-pattaya-guide": {
+      "title": "埃卡迈巴士总站到芭提雅指南",
+      "description": "了解总站位置、售票柜台、BTS 换乘和实用的上车提示。"
+    },
+    "mo-chit-bus-terminal-to-pattaya": {
+      "title": "莫奇巴士总站到芭提雅指南",
+      "description": "比较莫奇 2 号与埃卡迈，规划车票、车程和返程方案。"
+    },
+    "suvarnabhumi-airport-gate-8-pattaya-bus": {
+      "title": "素万那普机场 Gate 8 到芭提雅巴士",
+      "description": "搭乘机场巴士前往芭提雅前，先看 Level 1 Gate 8 指南。"
+    },
+    "bangkok-to-pattaya-bus-vs-taxi": {
+      "title": "曼谷到芭提雅：巴士还是出租车",
+      "description": "比较最便宜的巴士与出租车、私人接送等选择。"
+    },
+    "bangkok-to-pattaya-after-midnight": {
+      "title": "午夜后从曼谷到芭提雅",
+      "description": "当班车已经停运时，如何安排安全的替代方案。"
+    },
+    "pattaya-to-bangkok-before-flight": {
+      "title": "赶飞机前从芭提雅到曼谷",
+      "description": "为曼谷交通、值机、行李和安检预留充足时间。"
+    },
+    "pattaya-bus-station-to-jomtien": {
+      "title": "芭提雅巴士站到中天指南",
+      "description": "规划从芭提雅北巴士站前往中天或塔帕拉亚的本地交通。"
+    },
+    "jomtien-bus-station": {
+      "title": "中天巴士站（塔帕拉亚路）指南",
+      "description": "找到塔帕拉亚路的机场巴士站点、车票、双条车换乘和附近酒店。"
+    },
+    "hotels-near-pattaya-bus-station": {
+      "title": "芭提雅巴士站附近的酒店",
+      "description": "比较芭提雅北巴士站周边区域，挑选契合发车时间的酒店。"
+    },
+    "don-mueang-airport-to-pattaya-bus": {
+      "title": "廊曼机场到芭提雅巴士指南",
+      "description": "搭乘廊曼机场直达芭提雅的巴士 —— 运营商、票价、柜台位置与乘车提示。"
+    },
+    "pattaya-to-don-mueang-airport-bus": {
+      "title": "芭提雅到廊曼机场巴士指南",
+      "description": "航班前规划芭提雅到廊曼机场的直达巴士 —— 上车点、票价、车程与值机缓冲。"
+    },
+    "pattaya-to-suvarnabhumi-airport-before-flight": {
+      "title": "航班前从芭提雅到素万那普指南",
+      "description": "规划芭提雅到素万那普机场的巴士 —— 上车点、票价、车程、行李与缓冲时间。"
+    },
+    "pattaya-to-bangkok-which-terminal": {
+      "title": "芭提雅到曼谷：该选哪个总站",
+      "description": "在埃卡迈和莫奇之间做选择 —— 哪个总站更贴合你的目的地和后续交通。"
+    },
+    "pattaya-to-suvarnabhumi-which-station": {
+      "title": "芭提雅到素万那普：该从哪个车站出发",
+      "description": "比较芭提雅北巴士站与中天巴士站前往素万那普机场的方案。"
+    }
   }
 }

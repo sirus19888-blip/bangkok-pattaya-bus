@@ -44,6 +44,41 @@ const full = matrix.reduce((n, item) => n + item.row.slice(1).filter((x) => x ==
 console.log(`Coverage: ${full}/${guides.length * locales.length}`);
 if (warnings.length) { console.warn("Unregistered guide translations (warning):"); warnings.forEach((x) => console.warn(`- ${x}`)); }
 if (errors.length) { console.error("Guide translation errors detected:"); errors.forEach((x) => console.error(`- ${x}`)); process.exit(1); }
+// --- karty przewodnikow na stronie glownej (guideCards) ---
+// Blad z 2026-08-23: karty byly po angielsku we wszystkich 6 jezykach,
+// bo TravelGuideLinks czytal napisy wprost z seoGuideLinks.ts.
+const cardErrors = [];
+const linkSlugs = [...readSource(join(root, "src/data/seoGuideLinks.ts")).matchAll(/slug:\s*"([a-z0-9-]+)"/g)].map((m) => m[1]);
+const uniqueLinkSlugs = [...new Set(linkSlugs)];
+assert.ok(uniqueLinkSlugs.length > 0, "Parser found no seoGuideLinks slugs - format changed?");
+const enCards = dictionaries.get("en")?.guideCards ?? {};
+for (const slug of uniqueLinkSlugs) {
+  const card = enCards[slug];
+  if (!card || typeof card.title !== "string" || !card.title.trim() || typeof card.description !== "string" || !card.description.trim())
+    cardErrors.push(`en guideCards missing or empty for "${slug}"`);
+}
+for (const locale of locales) {
+  const cards = dictionaries.get(locale)?.guideCards;
+  if (!cards) continue;
+  for (const slug of Object.keys(cards)) {
+    // literowka w slugu = cicho wraca angielski, dokladnie ten blad co wyzej
+    if (!uniqueLinkSlugs.includes(slug)) cardErrors.push(`${locale} guideCards has unknown slug "${slug}"`);
+    const card = cards[slug];
+    if (typeof card?.title !== "string" || !card.title.trim()) cardErrors.push(`${locale} guideCards "${slug}" has empty title`);
+    if (typeof card?.description !== "string" || !card.description.trim()) cardErrors.push(`${locale} guideCards "${slug}" has empty description`);
+  }
+}
+// jezyk z kompletem przetlumaczonych przewodnikow musi miec tez komplet kart
+for (const locale of locales) {
+  if (locale === "en") continue;
+  const translatedAll = guides.every((g) => (registered[g.slug] ?? []).includes(locale));
+  if (!translatedAll) continue;
+  const cards = dictionaries.get(locale)?.guideCards ?? {};
+  const missing = uniqueLinkSlugs.filter((s) => !cards[s]);
+  if (missing.length) cardErrors.push(`${locale} has all guides translated but guideCards missing: ${missing.join(", ")}`);
+}
+if (cardErrors.length) { console.error("Guide card errors detected:"); cardErrors.forEach((x) => console.error(`- ${x}`)); process.exit(1); }
+console.log(`Guide cards: ${uniqueLinkSlugs.length} slugs; locales with cards: ${locales.filter((l) => dictionaries.get(l)?.guideCards).join(", ")}.`);
 console.log("Guide translation completeness checks passed.");
 
 function parseRegistry(text) {

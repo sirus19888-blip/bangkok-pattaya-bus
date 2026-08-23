@@ -5,6 +5,7 @@ import {
   getSeoGuideLinksForRoute,
 } from "@/data/seoGuideLinks";
 import { isGuideTranslated } from "@/data/translatedGuides";
+import { getTranslations } from "@/lib/i18n";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
 type TravelGuideLinksProps = {
@@ -27,6 +28,7 @@ export function TravelGuideLinks({
   }
 
   const guideLinks = getUiTranslations(locale).guideLinks;
+  const guideCards = getTranslations(locale).guideCards;
   const eyebrow = routeId
     ? guideLinks.routeEyebrow
     : guideLinks.homepageEyebrow;
@@ -59,6 +61,10 @@ export function TravelGuideLinks({
               ? `/${locale}/${guide.slug}`
               : guide.href;
           const showEnglishBadge = locale !== "en" && !translated;
+          // mergeTextRecord daje fallback do angielskiego per slug
+          const card = guideCards[guide.slug as keyof typeof guideCards];
+          const cardTitle = card?.title ?? guide.title;
+          const cardDescription = card?.description ?? guide.description;
 
           return (
             <li key={guide.slug}>
@@ -67,7 +73,7 @@ export function TravelGuideLinks({
                 href={href}
               >
                 <span className="block text-sm font-black leading-tight text-[#13233a]">
-                  {guide.title}
+                  {cardTitle}
                 </span>
                 {showEnglishBadge ? (
                   <span className="mt-2 inline-flex rounded-full bg-[#fff8ec] px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wide text-[#8a5b12]">
@@ -75,7 +81,7 @@ export function TravelGuideLinks({
                   </span>
                 ) : null}
                 <span className="mt-2 block text-xs font-semibold leading-5 text-[#5f6874]">
-                  {guide.description}
+                  {cardDescription}
                 </span>
               </Link>
             </li>

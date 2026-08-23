@@ -539,12 +539,69 @@
         "answer": "If you miss the last bus and still need to make a flight, the realistic options are a metered taxi or a pre-booked private transfer straight to Don Mueang; agree on the price and route before you set off. Since there are about six departures a day and the times come from secondary sources, do not count on the final bus before a flight. Comparing a private transfer in advance is often the easiest way to avoid a last-minute scramble."
       }
     ]
-  }
-,
+  },
   "guides": {
     "ekkamai-bus-terminal-to-pattaya-guide": {
       "title": "Ekkamai to Pattaya Bus: Schedule, Fare & Tickets (2026)",
       "intro": "Ekkamai Bus Terminal is the most convenient Bangkok bus station for many tourists staying around Sukhumvit. This guide explains how to reach the terminal, where to buy Pattaya tickets, how early to arrive, and what to do if the next bus is full."
+    }
+  },
+  "guideCards": {
+    "ekkamai-bus-terminal-to-pattaya-guide": {
+      "title": "Ekkamai Bus Terminal to Pattaya guide",
+      "description": "Find the terminal, ticket counters, BTS access and practical boarding tips."
+    },
+    "mo-chit-bus-terminal-to-pattaya": {
+      "title": "Mo Chit Bus Terminal to Pattaya guide",
+      "description": "Compare Mo Chit 2 with Ekkamai and plan tickets, travel time and return options."
+    },
+    "suvarnabhumi-airport-gate-8-pattaya-bus": {
+      "title": "Suvarnabhumi Airport Gate 8 to Pattaya bus",
+      "description": "Use the Level 1 Gate 8 guide before taking the airport bus to Pattaya."
+    },
+    "bangkok-to-pattaya-bus-vs-taxi": {
+      "title": "Bangkok to Pattaya bus vs taxi",
+      "description": "Compare the cheapest bus with taxi and private transfer options."
+    },
+    "bangkok-to-pattaya-after-midnight": {
+      "title": "Bangkok to Pattaya after midnight",
+      "description": "Plan safe alternatives when scheduled buses are no longer useful."
+    },
+    "pattaya-to-bangkok-before-flight": {
+      "title": "Pattaya to Bangkok before a flight",
+      "description": "Leave enough time for Bangkok traffic, check-in, baggage and security."
+    },
+    "pattaya-bus-station-to-jomtien": {
+      "title": "Pattaya Bus Station to Jomtien guide",
+      "description": "Plan the local transfer from North Pattaya Bus Station to Jomtien or Thappraya."
+    },
+    "jomtien-bus-station": {
+      "title": "Jomtien Bus Station (Thappraya Road) guide",
+      "description": "Find the Thappraya Road airport bus stop, tickets, songthaew access and nearby hotels."
+    },
+    "hotels-near-pattaya-bus-station": {
+      "title": "Hotels near Pattaya Bus Station",
+      "description": "Compare the areas around North Pattaya Bus Station and pick a hotel that fits your bus times."
+    },
+    "don-mueang-airport-to-pattaya-bus": {
+      "title": "Don Mueang Airport to Pattaya bus guide",
+      "description": "Take the direct Transport Co. bus from Don Mueang Airport to Pattaya - operator, fare, where to find the counter and travel tips."
+    },
+    "pattaya-to-don-mueang-airport-bus": {
+      "title": "Pattaya to Don Mueang Airport bus guide",
+      "description": "Plan the direct Pattaya to Don Mueang Airport bus before a flight - departure point, fare, travel time and check-in buffer."
+    },
+    "pattaya-to-suvarnabhumi-airport-before-flight": {
+      "title": "Pattaya to Suvarnabhumi before a flight guide",
+      "description": "Plan the bus from Pattaya to Suvarnabhumi Airport before a flight - departure point, fare, travel time, baggage and how much buffer to leave."
+    },
+    "pattaya-to-bangkok-which-terminal": {
+      "title": "Pattaya to Bangkok: which terminal guide",
+      "description": "Choosing between Ekkamai and Mo Chit for the bus from Pattaya to Bangkok - which terminal fits your destination and onward transport."
+    },
+    "pattaya-to-suvarnabhumi-which-station": {
+      "title": "Pattaya to Suvarnabhumi: which station guide",
+      "description": "Compare North Pattaya Bus Station and Jomtien Bus Station for the trip to Suvarnabhumi Airport."
     }
   }
 }
