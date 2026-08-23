@@ -727,6 +727,308 @@
           "answer": "周二关闭的是 Terminal 1 的 Service Hall 柜台，不是巴士服务本身。请使用 Terminal 2 的 Gate 11 柜台，或到达后确认当前乘车地点。"
         }
       ]
+    },
+
+    "pattaya-to-don-mueang-airport-bus": {
+      "title": "Pattaya 到 Don Mueang 机场巴士：时刻、票价与航班规划",
+      "description": "Pattaya 到 Don Mueang Airport：167-183 THB、07:00 至 17:00 六班车和约 3-3.5 小时车程。",
+      "h1": "Pattaya 到 Don Mueang Airport 巴士指南",
+      "intro": "当前路线资料列出 07:00、10:00、12:00、14:30、16:00、17:00 六班，票价约 167-183 THB，车程约 3-3.5 小时。资料来自二手来源，出发前请确认。",
+      "shortAnswer": "前往 Pattaya Sukhumvit Road Bus Station，确认 Don Mueang Airport 班次。时间为 07:00、10:00、12:00、14:30、16:00、17:00，票价约 167-183 THB；请为堵车和机场流程留缓冲。",
+      "ctaLabel": "查看 Pattaya 到 Don Mueang 车票",
+      "routeLinkLabel": "打开 Pattaya 到 Don Mueang 路线",
+      "keyPoints": [
+        "六班：07:00、10:00、12:00、14:30、16:00、17:00。",
+        "二手来源票价约 167-183 THB。",
+        "车程约 3-3.5 小时，需要航班缓冲。"
+      ],
+      "sections": [
+        {
+          "title": "车站和柜台",
+          "body": "Pattaya Sukhumvit Road Bus Station 前往 Don Mueang Airport。 车站和柜台：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "票价与付款",
+          "body": "Pattaya Sukhumvit Road Bus Station 前往 Don Mueang Airport。 票价与付款：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "车程与缓冲",
+          "body": "Pattaya Sukhumvit Road Bus Station 前往 Don Mueang Airport。 车程与缓冲：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "行李安排",
+          "body": "Pattaya Sukhumvit Road Bus Station 前往 Don Mueang Airport。 行李安排：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "航班时间规划",
+          "body": "Pattaya Sukhumvit Road Bus Station 前往 Don Mueang Airport。 航班时间规划：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "抵达后的交通",
+          "body": "Pattaya Sukhumvit Road Bus Station 前往 Don Mueang Airport。 抵达后的交通：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "最新资料",
+          "body": "Pattaya Sukhumvit Road Bus Station 前往 Don Mueang Airport。 最新资料：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "延误与替代方案",
+          "body": "Pattaya Sukhumvit Road Bus Station 前往 Don Mueang Airport。 延误与替代方案：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "票价是多少？",
+          "answer": "二手来源显示每人约 167-183 THB。出发前确认当天票价和付款规则。"
+        },
+        {
+          "question": "有哪些班次？",
+          "answer": "二手来源显示每人约 167-183 THB。班次可能调整，请向柜台确认下一班。"
+        },
+        {
+          "question": "需要多久？",
+          "answer": "资料中的车程只是规划参考，实际时间取决于交通。"
+        },
+        {
+          "question": "需要预订吗？",
+          "answer": "到站后询问是否需要预订、取票或排队。"
+        },
+        {
+          "question": "行李怎么办？",
+          "answer": "按工作人员指引放置大件行李，贵重物品随身携带。"
+        },
+        {
+          "question": "错过班次怎么办？",
+          "answer": "询问下一班；若不合适，比较出租车、Grab、Bolt 或私人接送。"
+        }
+      ]
+    },
+    "pattaya-to-suvarnabhumi-airport-before-flight": {
+      "title": "Pattaya 到 Suvarnabhumi Airport：航班前巴士时刻与建议",
+      "description": "Pattaya 到 Suvarnabhumi Airport：North Pattaya Bus Station、130 THB 和 08:00 至 21:00 七班车。",
+      "h1": "Pattaya 到 Suvarnabhumi Airport 航班前巴士指南",
+      "intro": "当前路线票价每座 130 THB，发车时间为 08:00、10:00、12:00、14:00、16:00、18:00、21:00，车程约 2 小时但受交通影响。",
+      "shortAnswer": "从 North Pattaya Bus Station 乘车，当前班次 08:00、10:00、12:00、14:00、16:00、18:00、21:00，票价 130 THB。航班前请预留堵车、值机、行李和安检时间。",
+      "ctaLabel": "查看 Pattaya 到 Suvarnabhumi 车票",
+      "routeLinkLabel": "打开 Pattaya 到 Suvarnabhumi 路线",
+      "keyPoints": [
+        "上车点是 North Pattaya Bus Station。",
+        "票价每座 130 THB，七班覆盖 08:00 至 21:00。",
+        "约 2 小时只是规划参考。"
+      ],
+      "sections": [
+        {
+          "title": "车站和柜台",
+          "body": "North Pattaya Bus Station 前往 Suvarnabhumi Airport。 车站和柜台：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "票价与付款",
+          "body": "North Pattaya Bus Station 前往 Suvarnabhumi Airport。 票价与付款：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "车程与缓冲",
+          "body": "North Pattaya Bus Station 前往 Suvarnabhumi Airport。 车程与缓冲：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "行李安排",
+          "body": "North Pattaya Bus Station 前往 Suvarnabhumi Airport。 行李安排：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "航班时间规划",
+          "body": "North Pattaya Bus Station 前往 Suvarnabhumi Airport。 航班时间规划：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "抵达后的交通",
+          "body": "North Pattaya Bus Station 前往 Suvarnabhumi Airport。 抵达后的交通：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "最新资料",
+          "body": "North Pattaya Bus Station 前往 Suvarnabhumi Airport。 最新资料：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "延误与替代方案",
+          "body": "North Pattaya Bus Station 前往 Suvarnabhumi Airport。 延误与替代方案：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "票价是多少？",
+          "answer": "当前固定路线票价为每座 130 THB。出发前确认当天票价和付款规则。"
+        },
+        {
+          "question": "有哪些班次？",
+          "answer": "当前固定路线票价为每座 130 THB。班次可能调整，请向柜台确认下一班。"
+        },
+        {
+          "question": "需要多久？",
+          "answer": "资料中的车程只是规划参考，实际时间取决于交通。"
+        },
+        {
+          "question": "需要预订吗？",
+          "answer": "到站后询问是否需要预订、取票或排队。"
+        },
+        {
+          "question": "行李怎么办？",
+          "answer": "按工作人员指引放置大件行李，贵重物品随身携带。"
+        },
+        {
+          "question": "错过班次怎么办？",
+          "answer": "询问下一班；若不合适，比较出租车、Grab、Bolt 或私人接送。"
+        }
+      ]
+    },
+    "suvarnabhumi-airport-gate-8-pattaya-bus": {
+      "title": "Suvarnabhumi Airport Gate 8 到 Pattaya：巴士、票价与步骤",
+      "description": "Suvarnabhumi Airport Level 1 Gate 8 到 Pattaya：130 THB、07:30 至 18:30 七班车和抵达后的交通。",
+      "h1": "Suvarnabhumi Airport Gate 8 到 Pattaya 巴士指南",
+      "intro": "当前票价每座 130 THB，发车时间为 07:30、09:30、11:30、13:30、15:30、17:30、18:30，车程约 2 小时。到达机场后确认柜台和站台。",
+      "shortAnswer": "前往 Level 1 Gate 8 附近确认 Pattaya 柜台。班次为 07:30、09:30、11:30、13:30、15:30、17:30、18:30，票价 130 THB，通常在 Pattaya Bus Station 下车。",
+      "ctaLabel": "查看 Suvarnabhumi 到 Pattaya 车票",
+      "routeLinkLabel": "打开 Suvarnabhumi 到 Pattaya 路线",
+      "keyPoints": [
+        "在 Level 1 Gate 8 附近确认柜台。",
+        "票价每座 130 THB，七班覆盖 07:30 至 18:30。",
+        "Pattaya Bus Station 后需另行安排酒店交通。"
+      ],
+      "sections": [
+        {
+          "title": "车站和柜台",
+          "body": "Suvarnabhumi Airport Level 1 Gate 8 前往 Pattaya。 车站和柜台：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "票价与付款",
+          "body": "Suvarnabhumi Airport Level 1 Gate 8 前往 Pattaya。 票价与付款：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "车程与缓冲",
+          "body": "Suvarnabhumi Airport Level 1 Gate 8 前往 Pattaya。 车程与缓冲：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "行李安排",
+          "body": "Suvarnabhumi Airport Level 1 Gate 8 前往 Pattaya。 行李安排：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "航班时间规划",
+          "body": "Suvarnabhumi Airport Level 1 Gate 8 前往 Pattaya。 航班时间规划：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "抵达后的交通",
+          "body": "Suvarnabhumi Airport Level 1 Gate 8 前往 Pattaya。 抵达后的交通：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "最新资料",
+          "body": "Suvarnabhumi Airport Level 1 Gate 8 前往 Pattaya。 最新资料：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "延误与替代方案",
+          "body": "Suvarnabhumi Airport Level 1 Gate 8 前往 Pattaya。 延误与替代方案：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "票价是多少？",
+          "answer": "当前路线资料显示每座 130 THB。出发前确认当天票价和付款规则。"
+        },
+        {
+          "question": "有哪些班次？",
+          "answer": "当前路线资料显示每座 130 THB。班次可能调整，请向柜台确认下一班。"
+        },
+        {
+          "question": "需要多久？",
+          "answer": "资料中的车程只是规划参考，实际时间取决于交通。"
+        },
+        {
+          "question": "需要预订吗？",
+          "answer": "到站后询问是否需要预订、取票或排队。"
+        },
+        {
+          "question": "行李怎么办？",
+          "answer": "按工作人员指引放置大件行李，贵重物品随身携带。"
+        },
+        {
+          "question": "错过班次怎么办？",
+          "answer": "询问下一班；若不合适，比较出租车、Grab、Bolt 或私人接送。"
+        }
+      ]
+    },
+    "pattaya-to-suvarnabhumi-which-station": {
+      "title": "Pattaya 到 Suvarnabhumi：North Pattaya 与 Jomtien 巴士比较",
+      "description": "比较 North Pattaya Bus Station 和 Jomtien Bus Station 前往 Suvarnabhumi Airport 的票价、班次和酒店位置。",
+      "h1": "Pattaya 到 Suvarnabhumi：North Pattaya 还是 Jomtien？",
+      "intro": "North Pattaya 服务每座 130 THB，固定班次覆盖 08:00 至 21:00；Jomtien 服务约 151 THB，约每小时运行 06:00 至 22:00。车站选择取决于酒店位置和航班缓冲。",
+      "shortAnswer": "North Pattaya 班次为 08:00、10:00、12:00、14:00、16:00、18:00、21:00，票价 130 THB；Jomtien 约 151 THB、06:00 至 22:00。按酒店位置选择并确认当天运营。",
+      "ctaLabel": "比较 Pattaya 到 Suvarnabhumi 车票",
+      "routeLinkLabel": "打开 Pattaya 到 Suvarnabhumi 路线",
+      "keyPoints": [
+        "North Pattaya：130 THB，08:00 至 21:00 固定班次。",
+        "Jomtien：约 151 THB，约每小时 06:00 至 22:00。",
+        "两项服务不同，不要混淆车站和时刻。"
+      ],
+      "sections": [
+        {
+          "title": "车站和柜台",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 车站和柜台：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "票价与付款",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 票价与付款：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "车程与缓冲",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 车程与缓冲：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "行李安排",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 行李安排：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "航班时间规划",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 航班时间规划：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "抵达后的交通",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 抵达后的交通：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "最新资料",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 最新资料：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "延误与替代方案",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 延误与替代方案：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        },
+        {
+          "title": "两项服务的区别",
+          "body": "Pattaya 前往 Suvarnabhumi Airport。North Pattaya 固定路线与 Jomtien 服务必须分别确认。 两项服务的区别：请在出发日确认当天信息、票价和站台。道路交通可能改变实际时间，务必为行李、值机和步行预留缓冲。"
+        }
+      ],
+      "faq": [
+        {
+          "question": "票价是多少？",
+          "answer": "North Pattaya 固定路线为每座 130 THB；Jomtien 服务约 151 THB。出发前确认当天票价和付款规则。"
+        },
+        {
+          "question": "有哪些班次？",
+          "answer": "North Pattaya 固定路线为每座 130 THB；Jomtien 服务约 151 THB。班次可能调整，请向柜台确认下一班。"
+        },
+        {
+          "question": "需要多久？",
+          "answer": "资料中的车程只是规划参考，实际时间取决于交通。"
+        },
+        {
+          "question": "需要预订吗？",
+          "answer": "到站后询问是否需要预订、取票或排队。"
+        },
+        {
+          "question": "行李怎么办？",
+          "answer": "按工作人员指引放置大件行李，贵重物品随身携带。"
+        },
+        {
+          "question": "错过班次怎么办？",
+          "answer": "询问下一班；若不合适，比较出租车、Grab、Bolt 或私人接送。"
+        }
+      ]
     }
+
   }
 }
