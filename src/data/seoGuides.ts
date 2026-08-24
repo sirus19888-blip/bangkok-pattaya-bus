@@ -398,7 +398,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "suvarnabhumi-airport-to-pattaya",
     routeLinkLabel: "Open Suvarnabhumi Airport to Pattaya bus times",
     ctaLabel: "Compare airport to Pattaya tickets",
-    lastUpdated: "2026-08-02",
+    lastUpdated: "2026-08-24",
     lastVerified: "2026-08-23",
     keyPoints: [
       "The bus counters are on Level 1 (Arrivals) near Gate 8 - look for the Pattaya / Hua Hin service desk.",
@@ -524,7 +524,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Open Bangkok to Pattaya bus times",
     ctaLabel: "Check prices & availability",
-    lastUpdated: "2026-08-03",
+    lastUpdated: "2026-08-24",
     lastVerified: "2026-08-23",
     keyPoints: [
       "Bus from Ekkamai is usually the lowest-cost option for solo travelers.",
@@ -591,7 +591,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Check the next Bangkok to Pattaya bus",
     ctaLabel: "Check late-night alternatives",
-    lastUpdated: "2026-08-03",
+    lastUpdated: "2026-08-24",
     lastVerified: "2026-08-23",
     keyPoints: [
       "If the last bus has passed, the next scheduled bus may be the following morning.",
@@ -658,7 +658,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "pattaya-to-bangkok",
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Compare tickets and airport alternatives",
-    lastUpdated: "2026-08-03",
+    lastUpdated: "2026-08-24",
     lastVerified: "2026-08-23",
     keyPoints: [
       "Do not rely on the last possible bus before your flight.",
@@ -730,7 +730,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "don-mueang-airport-to-pattaya",
     routeLinkLabel: "Open Don Mueang Airport to Pattaya bus times",
     ctaLabel: "Check Don Mueang to Pattaya tickets",
-    lastUpdated: "2026-08-18",
+    lastUpdated: "2026-08-24",
     lastVerified: "2026-08-23",
     keyPoints: [
       "The bus is a direct service to Pattaya - you do not need to transfer through Mo Chit or central Bangkok.",
