@@ -185,7 +185,9 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             <AffiliateCTA
               className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-5 text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6]"
               ctaPosition={transferCtaPosition}
-              disclosureText={affiliateText.disclosure}
+              // Bez wlasnego ujawnienia: strona podaje je juz dwa razy, w tym wyzej.
+              // Trzecie powtorzenie tego samego zdania to szum, nie dodatkowa rzetelnosc.
+              disclosureMode="none"
               href={transferAffiliateHref}
               label={guide.transferNote.ctaLabel}
               lang={locale}
