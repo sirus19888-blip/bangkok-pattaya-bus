@@ -259,21 +259,27 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
               </p>
               <ul className="mt-4 space-y-3">
                 {guide.sources.map((source) => (
-                  <li key={source.url}>
-                    <a
-                      className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm font-black text-[#0e7b6b] underline-offset-4 hover:underline"
-                      href={localizeInternalHref(source.url, locale)}
-                      rel={
-                        source.url.startsWith("http")
-                          ? "noopener noreferrer"
-                          : undefined
-                      }
-                      target={
-                        source.url.startsWith("http") ? "_blank" : undefined
-                      }
-                    >
-                      {source.label}
-                    </a>
+                  <li key={source.url ?? source.label}>
+                    {source.url ? (
+                      <a
+                        className="inline-flex min-h-11 items-center rounded-lg px-2 text-sm font-black text-[#0e7b6b] underline-offset-4 hover:underline"
+                        href={localizeInternalHref(source.url, locale)}
+                        rel={
+                          source.url.startsWith("http")
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        target={
+                          source.url.startsWith("http") ? "_blank" : undefined
+                        }
+                      >
+                        {source.label}
+                      </a>
+                    ) : (
+                      <span className="inline-flex min-h-11 items-center px-2 text-sm font-black text-[#4f5d6c]">
+                        {source.label}
+                      </span>
+                    )}
                   </li>
                 ))}
               </ul>

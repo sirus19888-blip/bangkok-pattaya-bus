@@ -3,7 +3,9 @@ import type { AffiliateCTAPosition } from "@/components/AffiliateCTA";
 
 export type SeoGuideSource = {
   label: string;
-  url: string;
+  // Bez url zrodlo renderuje sie jako sam tekst - atrybucja zostaje widoczna,
+  // ale nie wysylamy odwiedzajacego ani mocy linkow na zewnatrz.
+  url?: string;
 };
 
 export type SeoGuideFaq = {
@@ -1615,11 +1617,9 @@ export const seoGuides: SeoGuide[] = [
     sources: [
       {
         label: "DJ Mag - Tomorrowland Thailand 2026 tickets sell out under an hour",
-        url: "https://djmag.com/news/tomorrowland-thailand-2026-tickets-sell-out-under-hour",
       },
       {
         label: "Wise - Tomorrowland Thailand travel guide",
-        url: "https://wise.com/sg/blog/tomorrowland-thailand",
       },
     ],
   },
