@@ -2,7 +2,10 @@ import type { MetadataRoute } from "next";
 import { routePages, supportedLocaleCodes } from "@/data/routes";
 import { getScheduleByRoute } from "@/data/schedules";
 import { seoGuides } from "@/data/seoGuides";
-import { getGuideLocales } from "@/data/translatedGuides";
+import {
+  getGuideLocales,
+  getGuideModifiedDate,
+} from "@/data/translatedGuides";
 import { absoluteUrl } from "@/lib/site";
 
 const staticLastModified = new Date("2026-08-02T00:00:00.000Z");
@@ -57,7 +60,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const seoGuideUrls: MetadataRoute.Sitemap = seoGuides.flatMap((guide) =>
     getGuideLocales(guide.slug).map((locale) => ({
       url: absoluteUrl(`/${locale}/${guide.slug}`),
-      lastModified: new Date(`${guide.lastUpdated}T00:00:00.000Z`),
+      // data liczona per język - dopiero tutaj wiadomo, o którą wersję chodzi
+      lastModified: new Date(
+        `${getGuideModifiedDate(guide.slug, locale, guide.lastUpdated)}T00:00:00.000Z`,
+      ),
       changeFrequency: "monthly" as const,
       priority: locale === "en" ? 0.7 : 0.6,
     })),

@@ -79,6 +79,42 @@ for (const locale of locales) {
 }
 if (cardErrors.length) { console.error("Guide card errors detected:"); cardErrors.forEach((x) => console.error(`- ${x}`)); process.exit(1); }
 console.log(`Guide cards: ${uniqueLinkSlugs.length} slugs; locales with cards: ${locales.filter((l) => dictionaries.get(l)?.guideCards).join(", ")}.`);
+// --- daty modyfikacji tlumaczen (guideTranslationUpdatedAt) ---
+// Blad z 2026-08-24: /zh/ podawalo Google dateModified wersji angielskiej, wiec
+// w wynikach stala data sprzed trzech tygodni przy stronie przepisanej dzien wczesniej.
+const dateErrors = [];
+const registrySource = readSource(registryPath);
+const updatedAtBody = registrySource.match(/guideTranslationUpdatedAt[^=]*=\s*\{([\s\S]*?)\n\};/)?.[1] ?? "";
+assert.ok(updatedAtBody.trim().length > 0, "Parser found no guideTranslationUpdatedAt - format changed?");
+const updatedAt = Object.fromEntries(
+  [...updatedAtBody.matchAll(/"([a-z0-9-]+)":\s*\{([^}]*)\}/g)].map((m) => [
+    m[1],
+    Object.fromEntries([...m[2].matchAll(/(\w+):\s*"([^"]+)"/g)].map((x) => [x[1], x[2]])),
+  ]),
+);
+const ISO = /^\d{4}-\d{2}-\d{2}$/;
+const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Bangkok" }).format(new Date());
+// kazda zarejestrowana para (slug, locale) musi miec date
+for (const [slug, locs] of Object.entries(registered)) {
+  for (const locale of locs) {
+    const d = updatedAt[slug]?.[locale];
+    if (!d) dateErrors.push(`guideTranslationUpdatedAt missing date for "${slug}" / ${locale}`);
+  }
+}
+for (const [slug, entry] of Object.entries(updatedAt)) {
+  if (!guides.some((g) => g.slug === slug)) dateErrors.push(`guideTranslationUpdatedAt has unknown slug "${slug}"`);
+  for (const [locale, d] of Object.entries(entry)) {
+    if (!locales.includes(locale)) dateErrors.push(`guideTranslationUpdatedAt "${slug}" has unknown locale "${locale}"`);
+    if (locale === "en") dateErrors.push(`guideTranslationUpdatedAt "${slug}" must not set "en" - en uses the source date`);
+    if (!ISO.test(d)) dateErrors.push(`guideTranslationUpdatedAt "${slug}"/${locale} has malformed date "${d}"`);
+    else if (d > today) dateErrors.push(`guideTranslationUpdatedAt "${slug}"/${locale} is in the future ("${d}" > "${today}")`);
+    // data bez rejestracji w translatedGuideLocales = martwy wpis
+    if (!(registered[slug] ?? []).includes(locale)) dateErrors.push(`guideTranslationUpdatedAt "${slug}"/${locale} is not registered in translatedGuideLocales`);
+  }
+}
+if (dateErrors.length) { console.error("Guide translation date errors detected:"); dateErrors.forEach((x) => console.error(`- ${x}`)); process.exit(1); }
+const datePairs = Object.values(updatedAt).reduce((n, e) => n + Object.keys(e).length, 0);
+console.log(`Guide translation dates: ${datePairs} pary (slug, locale); najnowsza ${Object.values(updatedAt).flatMap((e) => Object.values(e)).sort().at(-1)}.`);
 console.log("Guide translation completeness checks passed.");
 
 function parseRegistry(text) {

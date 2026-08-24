@@ -6,6 +6,7 @@ import { guideHotelCity, routeHotelCity } from "@/data/hotelAffiliate";
 import { getRoutePage } from "@/data/routes";
 import type { LocaleCode } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
+import { getGuideModifiedDate } from "@/data/translatedGuides";
 import { getTranslations } from "@/lib/i18n";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 import { build12GoRouteUrl, getAffiliateRoute } from "@/lib/twelveGo";
@@ -103,7 +104,8 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             {guide.intro}
           </p>
           <p className="mt-4 text-sm font-black text-[#0e7b6b]">
-            {chrome.lastUpdated} {guide.lastUpdated}
+            {chrome.lastUpdated}{" "}
+            {getGuideModifiedDate(guide.slug, locale, guide.lastUpdated)}
           </p>
         </header>
 
@@ -357,7 +359,11 @@ function GuideJsonLd({ guide, locale }: { guide: SeoGuide; locale: LocaleCode })
         description: guide.description,
         url: canonicalUrl,
         inLanguage: locale,
-        dateModified: guide.lastUpdated,
+        dateModified: getGuideModifiedDate(
+          guide.slug,
+          locale,
+          guide.lastUpdated,
+        ),
         publisher: {
           "@type": "Organization",
           name: SITE_NAME,
