@@ -36,7 +36,7 @@ const expectedGuideTranslations = countRegisteredGuideTranslations(registrySourc
 scanGuides(guideSource, schedules, mismatches);
 scanLocaleFaqs(schedules, mismatches);
 const scannedGuideTranslations = scanLocaleGuides(schedules, guideRoutes, mismatches);
-console.log(`Parsed schedules: ${schedules.size} routes; guides: 14; guide translations: ${scannedGuideTranslations}; time mentions checked: ${timeMentions.checked}.`);
+console.log(`Parsed schedules: ${schedules.size} routes; guides: 15; guide translations: ${scannedGuideTranslations}; time mentions checked: ${timeMentions.checked}.`);
 assert.equal(scannedGuideTranslations, expectedGuideTranslations, `Expected ${expectedGuideTranslations} guide translations, scanned ${scannedGuideTranslations}`);
 
 if (mismatches.length > 0) {
@@ -88,7 +88,7 @@ function scanGuides(source, schedules, mismatches) {
   );
 
   assert.ok(guideStarts.length > 0, "Parser found no guides - source format changed?");
-  assert.equal(guideStarts.length, 14, `Expected 14 guides, found ${guideStarts.length}`);
+  assert.equal(guideStarts.length, 15, `Expected 15 guides, found ${guideStarts.length}`);
   for (let index = 0; index < guideStarts.length; index += 1) {
     const start = guideStarts[index];
     const end = guideStarts[index + 1] ?? source.length;

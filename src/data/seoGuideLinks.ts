@@ -106,20 +106,31 @@ export const seoGuideLinks: SeoGuideLink[] = [
     slug: "pattaya-to-suvarnabhumi-which-station",
     title: "Pattaya to Suvarnabhumi: which station guide",
   },
-];
+  {
+    description:
+      "Plan airport travel, a Pattaya hotel and the separate final transfer to Wisdom Valley.",
+    href: "/en/tomorrowland-thailand-bangkok-to-pattaya",
+    slug: "tomorrowland-thailand-bangkok-to-pattaya",
+    title: "Tomorrowland Thailand 2026 travel and hotels",
+  },];
 
 const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
-  "don-mueang-airport-to-pattaya": ["don-mueang-airport-to-pattaya-bus"],
+  "don-mueang-airport-to-pattaya": [
+    "don-mueang-airport-to-pattaya-bus",
+    "tomorrowland-thailand-bangkok-to-pattaya",
+  ],
   "pattaya-to-don-mueang-airport": ["pattaya-to-don-mueang-airport-bus"],
   "bangkok-to-pattaya": [
     "ekkamai-bus-terminal-to-pattaya-guide",
     "mo-chit-bus-terminal-to-pattaya",
     "bangkok-to-pattaya-bus-vs-taxi",
     "bangkok-to-pattaya-after-midnight",
+    "tomorrowland-thailand-bangkok-to-pattaya",
   ],
   "pattaya-to-bangkok": ["pattaya-to-bangkok-before-flight", "pattaya-to-bangkok-which-terminal"],
   "suvarnabhumi-airport-to-pattaya": [
     "suvarnabhumi-airport-gate-8-pattaya-bus",
+    "tomorrowland-thailand-bangkok-to-pattaya",
   ],
   "pattaya-to-suvarnabhumi-airport": [
     "pattaya-bus-station-to-jomtien",
