@@ -22,6 +22,15 @@ export const seoGuideLinks: SeoGuideLink[] = [
     slug: "mo-chit-bus-terminal-to-pattaya",
     title: "Mo Chit Bus Terminal to Pattaya guide",
   },
+  // Pozycja 3 celowo: strona z terminem (festiwal 11-13.12.2026), widoczna bez
+  // scrollowania, ale nie wypiera dwoch kart rdzenia trasy. Po grudniu przesunac w dol.
+  {
+    description:
+      "Plan airport travel, a Pattaya hotel and the separate final transfer to Wisdom Valley.",
+    href: "/en/tomorrowland-thailand-bangkok-to-pattaya",
+    slug: "tomorrowland-thailand-bangkok-to-pattaya",
+    title: "Tomorrowland Thailand 2026 travel and hotels",
+  },
   {
     description:
       "Use the Level 1 Gate 8 guide before taking the airport bus to Pattaya.",
@@ -106,13 +115,7 @@ export const seoGuideLinks: SeoGuideLink[] = [
     slug: "pattaya-to-suvarnabhumi-which-station",
     title: "Pattaya to Suvarnabhumi: which station guide",
   },
-  {
-    description:
-      "Plan airport travel, a Pattaya hotel and the separate final transfer to Wisdom Valley.",
-    href: "/en/tomorrowland-thailand-bangkok-to-pattaya",
-    slug: "tomorrowland-thailand-bangkok-to-pattaya",
-    title: "Tomorrowland Thailand 2026 travel and hotels",
-  },];
+];
 
 const routeGuideSlugs: Partial<Record<RouteId, string[]>> = {
   "don-mueang-airport-to-pattaya": [
