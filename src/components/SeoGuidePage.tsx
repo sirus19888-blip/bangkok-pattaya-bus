@@ -46,6 +46,16 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
   const shortAnswerAffiliateSubId = affiliateRoute
     ? `${affiliateRoute.subId}-${shortAnswerCtaPosition}`
     : undefined;
+  // Osobny sub_id, zeby rezerwacje z tego bloku dalo sie odroznic w raporcie 12Go.
+  const transferCtaPosition = "guide_transfer";
+  const transferAffiliateHref = build12GoRouteUrl(
+    guide.routeId,
+    locale,
+    transferCtaPosition,
+  );
+  const transferAffiliateSubId = affiliateRoute
+    ? `${affiliateRoute.subId}-${transferCtaPosition}`
+    : undefined;
   const mobileStickyCtaPosition = "guide_mobile_sticky";
   const mobileStickyAffiliateHref = build12GoRouteUrl(
     guide.routeId,
@@ -161,6 +171,34 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
             ))}
           </ul>
         </section>
+
+        {/* Blok transferowy renderuje sie tylko wtedy, gdy istnieje w jezyku strony -
+            localizeSeoGuide zwraca undefined zamiast angielskiego fallbacku. */}
+        {guide.transferNote ? (
+          <section className="mt-6 rounded-[1.5rem] border border-[#d8cbb4] bg-white p-5 shadow-sm">
+            <h2 className="text-xl font-black leading-tight">
+              {guide.transferNote.title}
+            </h2>
+            <p className="mt-3 text-sm font-semibold leading-7 text-[#4f5d6c]">
+              {guide.transferNote.body}
+            </p>
+            <AffiliateCTA
+              className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl border border-[#e8b05a] bg-[#fff8ec] px-5 text-sm font-black text-[#13233a] shadow-sm transition hover:bg-[#f8e7c6]"
+              ctaPosition={transferCtaPosition}
+              disclosureText={affiliateText.disclosure}
+              href={transferAffiliateHref}
+              label={guide.transferNote.ctaLabel}
+              lang={locale}
+              provider="12go"
+              routeId={guide.routeId}
+              from={affiliateRoute?.from ?? ""}
+              shortDisclosureText={affiliateText.shortDisclosure}
+              subId={transferAffiliateSubId}
+              to={affiliateRoute?.to ?? ""}
+              variant="afterFaq"
+            />
+          </section>
+        ) : null}
 
         {hotelCity ? (
           <HotelAffiliateInline

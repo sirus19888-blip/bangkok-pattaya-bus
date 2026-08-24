@@ -115,6 +115,38 @@ for (const [slug, entry] of Object.entries(updatedAt)) {
 if (dateErrors.length) { console.error("Guide translation date errors detected:"); dateErrors.forEach((x) => console.error(`- ${x}`)); process.exit(1); }
 const datePairs = Object.values(updatedAt).reduce((n, e) => n + Object.keys(e).length, 0);
 console.log(`Guide translation dates: ${datePairs} pary (slug, locale); najnowsza ${Object.values(updatedAt).flatMap((e) => Object.values(e)).sort().at(-1)}.`);
+// --- blok transferowy (transferNote) ---
+// Blok NIE ma fallbacku do angielskiego: gdy brak tlumaczenia, nie renderuje sie wcale.
+// Dlatego jezyk z pelnym tlumaczeniem przewodnika musi miec tez przetlumaczony blok,
+// inaczej cicho znika z testu zamiast pokazac sie po angielsku.
+const noteErrors = [];
+const sourceText = readSource(sourcePath);
+const slugStarts = [...sourceText.matchAll(/^\s+slug: "([a-z0-9-]+)"/gm)];
+const guidesWithNote = new Set();
+slugStarts.forEach((m, idx) => {
+  // granica TEGO wpisu, nie staly wycinek - staly wycinek wchodzi w nastepny przewodnik
+  const end = slugStarts[idx + 1]?.index ?? sourceText.length;
+  if (sourceText.slice(m.index, end).includes("transferNote:")) guidesWithNote.add(m[1]);
+});
+assert.ok(guidesWithNote.size > 0, "Parser found no transferNote - format changed?");
+for (const slug of guidesWithNote) {
+  for (const locale of registered[slug] ?? []) {
+    const note = dictionaries.get(locale)?.guides?.[slug]?.transferNote;
+    const ok = note && ["title", "body", "ctaLabel"].every((k) => typeof note[k] === "string" && note[k].trim());
+    if (!ok) noteErrors.push(`${locale} transferNote missing or incomplete for "${slug}" (guide is fully translated, so the block would silently disappear)`);
+  }
+}
+// blok w jezyku, ktory nie ma tlumaczenia przewodnika = martwy wpis, nigdy sie nie pokaze
+for (const locale of locales) {
+  if (locale === "en") continue;
+  for (const [slug, content] of Object.entries(dictionaries.get(locale)?.guides ?? {})) {
+    if (!content?.transferNote) continue;
+    if (!guidesWithNote.has(slug)) noteErrors.push(`${locale} has transferNote for "${slug}" but the English guide has none`);
+    else if (!(registered[slug] ?? []).includes(locale)) noteErrors.push(`${locale} transferNote for "${slug}" is dead - guide not registered for this locale`);
+  }
+}
+if (noteErrors.length) { console.error("Transfer note errors detected:"); noteErrors.forEach((x) => console.error(`- ${x}`)); process.exit(1); }
+console.log(`Transfer notes: ${guidesWithNote.size} guides (en); translated: ${locales.filter((l) => l !== "en" && Object.values(dictionaries.get(l)?.guides ?? {}).some((g) => g?.transferNote)).join(", ") || "brak"}.`);
 console.log("Guide translation completeness checks passed.");
 
 function parseRegistry(text) {

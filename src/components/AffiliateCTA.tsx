@@ -16,6 +16,7 @@ export type AffiliateCTAPosition =
   | "homepage_mobile_sticky"
   | "homepage_route_card"
   | "guide_body"
+  | "guide_transfer"
   | "guide_short_answer"
   | "guide_sidebar"
   | "guide_mobile_sticky"

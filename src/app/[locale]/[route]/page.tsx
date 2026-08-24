@@ -64,7 +64,7 @@ export async function generateMetadata({
 
   const baseGuide = getSeoGuide(slug);
   const guide = baseGuide
-    ? localizeSeoGuide(baseGuide, getTranslations(locale))
+    ? localizeSeoGuide(baseGuide, getTranslations(locale), locale)
     : undefined;
 
   if (guide) {
@@ -173,7 +173,11 @@ export default async function Page({ params }: RoutePageProps) {
 
   if (baseGuide) {
     const guideTranslations = getTranslations(locale);
-    const localizedGuide = localizeSeoGuide(baseGuide, guideTranslations);
+    const localizedGuide = localizeSeoGuide(
+      baseGuide,
+      guideTranslations,
+      locale,
+    );
     return <SeoGuidePage guide={localizedGuide} locale={locale} />;
   }
 

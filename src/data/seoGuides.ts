@@ -13,6 +13,15 @@ export type SeoGuideFaq = {
   answer: string;
 };
 
+// Blok o prywatnym transferze. Renderowany TYLKO tam, gdzie istnieje treść w jezyku
+// strony - inaczej chinski czytelnik dostalby angielski blok w srodku chinskiej strony.
+// Ma zaczynac od wady (cena), nie od zachety: wiarygodnosc jest tu jedyna przewaga.
+export type SeoGuideTransferNote = {
+  title: string;
+  body: string;
+  ctaLabel: string;
+};
+
 export type SeoGuide = {
   slug: string;
   title: string;
@@ -29,6 +38,7 @@ export type SeoGuide = {
   lastUpdated: string;
   lastVerified?: string;
   keyPoints: string[];
+  transferNote?: SeoGuideTransferNote;
   sections: {
     title: string;
     body: string;
@@ -395,6 +405,11 @@ export const seoGuides: SeoGuide[] = [
       "Several operators run this route, including Roong Reuang Coach, the 999 / Transport Co. bus, Bell Travel and Mekong Transfer, so fares and timings vary a little.",
       "The journey usually takes around 2 hours, sometimes longer on Friday evenings, weekends and holidays.",
     ],
+    transferNote: {
+      title: "When to skip the airport bus",
+      body: "The airport bus is the cheapest way to reach Pattaya and works well with hand luggage and a flexible arrival. A private transfer costs considerably more, but it starts at the terminal exit, waits if your flight is late and drops you at the hotel door - which matters most with children, several suitcases or a late-night landing.",
+      ctaLabel: "Compare airport transfer prices",
+    },
     sections: [
       {
         title: "Where to find the Pattaya bus at Suvarnabhumi",
@@ -516,6 +531,11 @@ export const seoGuides: SeoGuide[] = [
       "Taxi or private transfer is easier with luggage, family travel or hotel pickup.",
       "App and taxi prices can change with traffic, tolls, demand and pickup point.",
     ],
+    transferNote: {
+      title: "When a private transfer beats the bus",
+      body: "A private transfer costs several times a bus ticket, which is why the bus wins for most solo travelers on a flexible schedule. The transfer becomes better value with three or more people sharing the fare, with heavy luggage, or when your hotel is far from the bus station and you would need another ride anyway.",
+      ctaLabel: "Compare transfer prices",
+    },
     sections: [
       {
         title: "Choose the bus if price matters",
@@ -578,6 +598,11 @@ export const seoGuides: SeoGuide[] = [
       "Late-night taxi or private transfer can be convenient but should have a clear price.",
       "Avoid unofficial offers where the car, driver or final fare is unclear.",
     ],
+    transferNote: {
+      title: "When a private transfer is worth the extra cost",
+      body: "A private transfer costs several times more than a bus ticket, so it is not the default choice. After the last evening bus it often becomes the only practical one: it leaves when you do, goes to the hotel door and does not depend on a timetable. If your arrival is flexible, waiting for the first morning bus is still cheaper and simpler.",
+      ctaLabel: "Compare night transfer prices",
+    },
     sections: [
       {
         title: "Check tomorrow's first bus",
@@ -640,6 +665,11 @@ export const seoGuides: SeoGuide[] = [
       "Confirm whether your Bangkok destination is Ekkamai, Mo Chit, Suvarnabhumi or Don Mueang.",
       "Taxi or private transfer is often safer for early flights or tight connections.",
     ],
+    transferNote: {
+      title: "When a transfer protects your flight",
+      body: "A bus ticket costs a fraction of a private transfer and is fine when you have a wide margin before check-in. If your connection is tight, a transfer leaves on your schedule rather than the timetable, goes straight to the terminal and removes the leg between the bus stop and the airport - the part hardest to plan around traffic.",
+      ctaLabel: "Compare airport transfer prices",
+    },
     sections: [
       {
         title: "Use a generous time buffer",
@@ -707,6 +737,11 @@ export const seoGuides: SeoGuide[] = [
       "It is operated by Transport Co. (the government 999 bus), with ticket counters on Floor 1 at Don Mueang.",
       "The fare is around 155 THB and the bus is an air-conditioned coach; the trip usually takes about 3 to 3.5 hours depending on traffic.",
     ],
+    transferNote: {
+      title: "When to skip the airport bus",
+      body: "This route runs on a service window rather than a published timetable, so the wait can be long. The bus stays much cheaper, but a private transfer removes the waiting entirely, goes door to door and is easier to justify with a group, heavy bags or an arrival outside the service window.",
+      ctaLabel: "Compare airport transfer prices",
+    },
     sections: [
       {
         title: "Finding the bus after you land at Don Mueang",
@@ -1526,6 +1561,11 @@ export const seoGuides: SeoGuide[] = [
       "There is no DreamVille camping for the Thailand edition; independent visitors should arrange accommodation themselves.",
       "Hotel packages included a hotel-to-site shuttle, but non-package shuttle details have not yet been announced.",
     ],
+    transferNote: {
+      title: "When a private transfer makes sense for the festival",
+      body: "A bus to Pattaya is the cheapest way in and works well if you arrive with time to spare. A private transfer costs several times more, but it splits well across a group, carries luggage without trouble and does not depend on a timetable - which matters on festival days and for a return that can finish around dawn.",
+      ctaLabel: "Compare private transfer prices",
+    },
     sections: [
       {
         title: "Where the festival site is, and why Pattaya is the sensible base",

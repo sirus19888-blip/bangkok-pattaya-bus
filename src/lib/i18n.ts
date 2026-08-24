@@ -512,19 +512,50 @@ type SeoGuideText = {
   keyPoints?: string[];
   sections?: { title?: string; body?: string }[];
   faq?: { question?: string; answer?: string }[];
+  transferNote?: { title?: string; body?: string; ctaLabel?: string };
 };
 
-export function localizeSeoGuide(guide: SeoGuide, t: Translations): SeoGuide {
+// Blok transferowy NIE ma fallbacku do angielskiego. Gdy brak tlumaczenia w danym
+// jezyku, zwracamy undefined i strona go nie renderuje. Powod: 2026-08-24 angielska
+// karta trafila na 3. pozycje chinskiej strony glownej i wygladalo to jak brak
+// tlumaczenia. Lepiej nie pokazac bloku, niz pokazac go w obcym jezyku.
+function localizeTransferNote(
+  guide: SeoGuide,
+  guideText: SeoGuideText | undefined,
+  isEnglish: boolean,
+): SeoGuide["transferNote"] {
+  if (!guide.transferNote) {
+    return undefined;
+  }
+  if (isEnglish) {
+    return guide.transferNote;
+  }
+  const t = guideText?.transferNote;
+  if (!t?.title?.trim() || !t?.body?.trim() || !t?.ctaLabel?.trim()) {
+    return undefined;
+  }
+  return { title: t.title, body: t.body, ctaLabel: t.ctaLabel };
+}
+
+// locale jest wymagane, nie opcjonalne: dzieki temu tsc wskaze kazde wywolanie,
+// ktore o nim zapomni, zamiast po cichu pokazac angielski blok w obcym jezyku.
+export function localizeSeoGuide(
+  guide: SeoGuide,
+  t: Translations,
+  locale: LocaleCode,
+): SeoGuide {
   const guideText = (t.guides as Record<string, SeoGuideText | undefined>)[
     guide.slug
   ];
+  const transferNote = localizeTransferNote(guide, guideText, locale === "en");
 
   if (!guideText) {
-    return guide;
+    return { ...guide, transferNote };
   }
 
   return {
     ...guide,
+    transferNote,
     title: guideText.title ?? guide.title,
     description: guideText.description ?? guide.description,
     h1: guideText.h1 ?? guide.h1,
