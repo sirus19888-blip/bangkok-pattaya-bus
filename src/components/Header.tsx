@@ -9,7 +9,11 @@ type HeaderProps = {
     chooseLanguage: string;
   };
   currentLocale: LocaleCode;
+  // Trasa, z ktorej HeaderTravelInfo bierze pogode i kursy. Tylko trasy.
   routeSlug?: RouteId;
+  // Slug biezacej strony dla przelacznika jezyka. Strony tras dziedzicza go
+  // z routeSlug; strony przewodnikow podaja wlasny, bo nie sa trasami.
+  pageSlug?: string;
   showDesktopRouteIcons?: boolean;
   showDesktopHomeIcons?: boolean;
   compact?: boolean;
@@ -19,6 +23,7 @@ export function Header({
   labels,
   currentLocale,
   routeSlug,
+  pageSlug,
   showDesktopRouteIcons = false,
   showDesktopHomeIcons = false,
   compact = false,
@@ -75,7 +80,7 @@ export function Header({
         <LanguageSwitcher
           label={labels.chooseLanguage}
           currentLocale={currentLocale}
-          routeSlug={routeSlug}
+          slug={pageSlug ?? routeSlug}
         />
       </div>
     </header>

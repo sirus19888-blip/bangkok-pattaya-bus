@@ -1,20 +1,23 @@
 "use client";
 
-import { supportedLocales, type LocaleCode, type RouteId } from "@/data/routes";
+import { supportedLocales, type LocaleCode } from "@/data/routes";
 
 type LanguageSwitcherProps = {
   label: string;
   currentLocale: LocaleCode;
-  routeSlug?: RouteId;
+  // Slug biezacej strony - trasy ALBO przewodnika. Celowo `string`, a nie `RouteId`:
+  // wczesniej typ dopuszczal wylacznie trasy, wiec strony przewodnikow nie mialy
+  // czego przekazac i przelacznik cofal czytelnika na strone glowna.
+  slug?: string;
 };
 
 export function LanguageSwitcher({
   label,
   currentLocale,
-  routeSlug,
+  slug,
 }: LanguageSwitcherProps) {
   function handleLanguageChange(nextLocale: LocaleCode) {
-    const nextPath = routeSlug ? `/${nextLocale}/${routeSlug}` : `/${nextLocale}`;
+    const nextPath = slug ? `/${nextLocale}/${slug}` : `/${nextLocale}`;
 
     window.location.assign(nextPath);
   }
