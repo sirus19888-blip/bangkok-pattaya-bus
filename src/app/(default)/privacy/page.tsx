@@ -28,11 +28,15 @@ export default function PrivacyPage() {
         },
         {
           title: "Analytics",
-          body: "This site uses cookie-free traffic analytics from Vercel to understand basic page usage without storing analytics cookies. Google Analytics is loaded only after you agree in the analytics consent banner; it may set _ga cookies and you can withdraw that choice later from the cookie settings link in the footer.",
+          body: "This site uses cookie-free traffic analytics from Vercel to understand basic page usage without storing analytics cookies. Google Analytics is handled differently by region, and the region is detected from your browser time zone rather than from your IP address. In the European Economic Area, the United Kingdom and Switzerland, Google Analytics is not loaded until you choose Allow analytics in the consent banner. Outside those regions it loads on your first visit under implied consent and no banner is shown. In both cases you can change or withdraw your choice at any time through the cookie settings link in the footer; choosing Reject stops Google Analytics and clears the _ga cookies this site has set.",
         },
         {
           title: "Affiliate links",
           body: "Some links to booking platforms or support services are affiliate links, including partners such as 12Go (transport) and Agoda (hotels). When you click an affiliate link, that partner may set cookies for marketing purposes and to track the click for commission attribution, so the site may earn a commission if you later book. This does not affect the timetable information, prices shown from operator sources, or editorial recommendations.",
+        },
+        {
+          title: "How affiliate clicks are counted",
+          body: "When you click a booking or hotel link, this site records the click on its own server and forwards one event to Google Analytics through the Measurement Protocol. That event contains only the partner name, the position of the link on the page, the route and the page language. It is sent with a single fixed identifier shared by every visitor, so it cannot be used to recognise you, to link your clicks together, or to build a profile. Because it does not identify anyone, this server-side count is made regardless of your analytics choice. The separate browser-side Google Analytics event described above is not sent if you have rejected analytics.",
         },
         {
           title: "Advertising",
@@ -44,7 +48,7 @@ export default function PrivacyPage() {
         },
         {
           title: "Third-party providers",
-          body: "The site may link to or use services from third-party providers such as 12Go, Agoda, Buy Me a Coffee, Google Maps, OpenStreetMap, Wikimedia Commons, analytics providers, hosting providers, and future advertising partners. These providers may process data under their own privacy policies.",
+          body: "Some pages ask third-party services for live data from your browser, which means those services receive your IP address. Destination weather comes from open-meteo.com on the homepage and on route pages. Currency rates come from open.er-api.com on route pages. Neither sets cookies for this site, and when either is unavailable the page shows saved estimates clearly labelled as such. Guide pages make neither request. If you use the Was this guide helpful button, your message is delivered through formsubmit.co. Station maps are embedded from OpenStreetMap and load only after you open a map. The site is hosted by Vercel and also links out to 12Go, Agoda, Buy Me a Coffee, Google Maps, Wikimedia Commons and Thailand Transfer Guide. These providers process data under their own privacy policies.",
         },
         {
           title: "Maps and embedded content",
@@ -61,6 +65,10 @@ export default function PrivacyPage() {
         {
           title: "Contact",
           body: "For privacy questions, correction requests, outdated schedule reports, or operator updates, contact bangkokpattayabus@gmail.com. Please do not use this email for urgent travel support; confirm urgent travel details directly with the bus station or operator.",
+        },
+        {
+          title: "Last updated",
+          body: "This privacy policy was last reviewed on 29 August 2026. The review checked each statement here against how the site actually behaves, including when Google Analytics loads, how affiliate clicks are counted, and which third-party services the browser contacts.",
         },
       ]}
     />
