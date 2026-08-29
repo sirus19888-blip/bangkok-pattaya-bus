@@ -1185,7 +1185,10 @@ function MobileHome({
           </ul>
         </section>
 
-        <MoreThailandRoutes className="mx-4 mt-2 md:mx-0 md:mt-6" />
+        <MoreThailandRoutes
+          className="mx-4 mt-2 md:mx-0 md:mt-6"
+          locale={locale}
+        />
 
         <div id="travel-guides" className="scroll-mt-6">
           <TravelGuideLinks

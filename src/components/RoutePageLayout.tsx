@@ -177,7 +177,7 @@ export function RoutePageLayout({
                 />
               </div>
 
-              <MoreThailandRoutes />
+              <MoreThailandRoutes locale={locale} routeId={routePage.slug} />
 
               <div className="lg:hidden">
                 <TravelerFeedback locale={locale} routeTitle={routePage.title} />

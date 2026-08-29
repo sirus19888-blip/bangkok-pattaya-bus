@@ -1,33 +1,52 @@
+import { CrossSiteLink } from "@/components/CrossSiteLink";
+import type { LocaleCode, RouteId } from "@/data/routes";
+
 const thailandTransferGuideRoutes = [
   {
     href: "https://thailandtransferguide.com/routes/suvarnabhumi-airport-to-koh-chang",
-    label: "Bangkok \u2192 Koh Chang (bus + ferry)",
+    id: "suvarnabhumi-airport-to-koh-chang",
+    label: "Bangkok → Koh Chang (bus + ferry)",
   },
   {
     href: "https://thailandtransferguide.com/routes/koh-chang-to-bangkok",
-    label: "Koh Chang \u2192 Bangkok",
+    id: "koh-chang-to-bangkok",
+    label: "Koh Chang → Bangkok",
   },
   {
     href: "https://thailandtransferguide.com/routes/bangkok-to-hua-hin",
-    label: "Bangkok \u2192 Hua Hin (van, bus, train)",
+    id: "bangkok-to-hua-hin",
+    label: "Bangkok → Hua Hin (van, bus, train)",
   },
   {
     href: "https://thailandtransferguide.com/routes/bangkok-to-chiang-mai",
-    label: "Bangkok \u2192 Chiang Mai (train, bus, flight)",
+    id: "bangkok-to-chiang-mai",
+    label: "Bangkok → Chiang Mai (train, bus, flight)",
   },
   {
     href: "https://thailandtransferguide.com/routes/phuket-airport-to-patong-beach",
-    label: "Phuket Airport \u2192 Patong Beach",
+    id: "phuket-airport-to-patong-beach",
+    label: "Phuket Airport → Patong Beach",
   },
   {
     href: "https://thailandtransferguide.com/routes/krabi-airport-to-ao-nang",
-    label: "Krabi Airport \u2192 Ao Nang",
+    id: "krabi-airport-to-ao-nang",
+    label: "Krabi Airport → Ao Nang",
   },
 ] as const;
 
 const allThailandRoutesHref = "https://thailandtransferguide.com";
 
-export function MoreThailandRoutes({ className = "" }: { className?: string }) {
+type MoreThailandRoutesProps = {
+  className?: string;
+  locale: LocaleCode;
+  routeId?: RouteId;
+};
+
+export function MoreThailandRoutes({
+  className = "",
+  locale,
+  routeId,
+}: MoreThailandRoutesProps) {
   const rootClassName = [
     "rounded-[1.5rem] border border-[#eadcc7] bg-white p-4 shadow-sm md:rounded-[2rem] md:p-6",
     className,
@@ -54,24 +73,30 @@ export function MoreThailandRoutes({ className = "" }: { className?: string }) {
             route guides with live prices, plus hotels and eSIM.
           </p>
         </div>
-        <a
+        <CrossSiteLink
           className="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#d8c8b4] bg-[#fffaf2] px-4 text-center text-sm font-black text-[#13233a] transition hover:border-[#e8b05a] hover:bg-[#fff8ec]"
           href={allThailandRoutesHref}
+          lang={locale}
+          routeId={routeId}
+          to="ttg-home"
         >
-          All Thailand routes, hotels &amp; eSIM {"\u2192"} Thailand Transfer
+          All Thailand routes, hotels &amp; eSIM {"→"} Thailand Transfer
           Guide
-        </a>
+        </CrossSiteLink>
       </div>
 
       <ul className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {thailandTransferGuideRoutes.map((route) => (
           <li key={route.href} className="min-w-0">
-            <a
+            <CrossSiteLink
               className="block min-h-16 rounded-2xl border border-[#eadcc7] bg-[#fffaf2] px-4 py-3 text-sm font-black leading-5 text-[#13233a] transition hover:-translate-y-0.5 hover:border-[#e8b05a] hover:bg-white hover:text-[#0e7b6b] hover:shadow-md"
               href={route.href}
+              lang={locale}
+              routeId={routeId}
+              to={route.id}
             >
               {route.label}
-            </a>
+            </CrossSiteLink>
           </li>
         ))}
       </ul>
