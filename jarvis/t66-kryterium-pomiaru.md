@@ -214,6 +214,46 @@ samego widoku i tak samo zaokrągloną, żeby błąd znosił się po obu stronac
 Wskaźnik strażniczy sprawdzać co tydzień — to jedyny, który uzasadnia cofnięcie
 zmiany przed końcem okna.
 
+## 4b. WDROŻENIE — start zegara
+
+**T65a jest na produkcji.**
+
+```
+moment wdrozenia   2026-08-30  15:17:01 UTC
+                   2026-08-30  22:17:01 Asia/Bangkok
+                   2026-08-30  17:17:01 Europe/Warsaw
+
+commit             1a244c9 (main)
+wdrozenie Vercel   bangkok-pattaya-nu70kbbi3, build 24 s, Ready
+```
+
+Okno „przed": 1 maja – 30 sierpnia 2026 (dane w `reports/baseline-2026-08-30/`).
+Okno „po": od 31 sierpnia 2026. Rezerwacje z 30 sierpnia **odrzucić** przy odczycie,
+bo dzień jest podzielony wdrożeniem.
+
+Potwierdzone na żywej domenie bezpośrednio po wdrożeniu:
+
+- filtr `vehclasses_tab=charter` obecny dokładnie na pozycjach objętych i na żadnej innej
+  (strona trasy EN 9/9 zgodnych, przewodnik EN 4/4, strona trasy ZH 7/7)
+- afiliacja przeżywa obok filtra: `z=15791301`, `sub_id=bpb-bangkok-to-pattaya-route_charter_gap`
+- kafelek najbliższego odjazdu ma godzinę w HTML (`05:00` EN, `04:30` ZH) — T67
+- bez regresji: jeden `<h1>`, 9 linków 12Go, 7 mierzonych linków TTG
+
+### Kalendarz odczytów
+
+```
++3 dni       2026-09-02   CTR objetych pozycji - czy nic sie nie zepsulo
+co tydzien   od 2026-09-06  wskaznik strazniczy (rezerwacje/1000)
++8 tygodni   2026-10-25   pierwsza mozliwa decyzja
++12 tygodni  2026-11-22   decyzja ostateczna
+```
+
+Odczyt: `node scripts/analyze-12go-report.mjs <eksport-po> --users <GA4 za to samo okno>`.
+Eksport 12Go z **pełnymi SubID** i ze **wszystkich stron** — widok przeglądarki skraca
+identyfikatory, a raport jest stronicowany.
+
+---
+
 ## 5. Reguła decyzyjna
 
 Okno pomiaru: **8 tygodni minimum, 12 preferowane.** Nie cztery.
