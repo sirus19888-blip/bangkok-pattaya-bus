@@ -14,6 +14,7 @@ import type { Translations } from "@/lib/i18n";
 import {
   getMinutesUntilDeparture,
   isNextDepartureInTodaySchedule,
+  type NextDepartureResult,
 } from "@/lib/scheduleTime";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
@@ -24,7 +25,9 @@ type MobileRouteDecisionCardProps = {
   routeId: RouteId;
   routeTitle: string;
   schedule: Schedule;
-  nextDeparture: string;
+  // Najblizszy odjazd policzony na serwerze; ta sama wartosc trafia do HTML
+  // i do stanu poczatkowego klienta, wiec hydratacja sie nie rozjezdza.
+  initialNextDeparture: NextDepartureResult;
   sourceStatusLabel: string;
   labels: Translations["nextBus"] & {
     showAllDepartures: string;
@@ -40,11 +43,11 @@ export function MobileRouteDecisionCard({
   routeTitle,
   schedule,
   scheduleLabels,
-  nextDeparture,
+  initialNextDeparture,
   sourceStatusLabel,
   labels,
 }: MobileRouteDecisionCardProps) {
-  const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
+  const calculatedNextDeparture = useNextDeparture(schedule, initialNextDeparture);
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
     number | null
   >(null);
@@ -82,7 +85,8 @@ export function MobileRouteDecisionCard({
 
   useEffect(() => {
     if (schedule.departureWindow) {
-      setMinutesUntilDeparture(null);
+      // Stan startowy to juz null, a ta galaz konczy efekt przy kazdym przebiegu,
+      // wiec ustawianie null bylo bez skutku - i lamalo react-hooks/set-state-in-effect.
       return;
     }
 
@@ -347,7 +351,7 @@ export function DesktopRouteBookingPanel({
   sidebarTitle,
   schedule,
   scheduleLabels,
-  nextDeparture,
+  initialNextDeparture,
   sourceStatusLabel,
   labels,
 }: MobileRouteDecisionCardProps & {
@@ -357,7 +361,7 @@ export function DesktopRouteBookingPanel({
   reportLabel: string;
   sidebarTitle: string;
 }) {
-  const calculatedNextDeparture = useNextDeparture(schedule, nextDeparture);
+  const calculatedNextDeparture = useNextDeparture(schedule, initialNextDeparture);
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
     number | null
   >(null);
@@ -372,7 +376,8 @@ export function DesktopRouteBookingPanel({
 
   useEffect(() => {
     if (schedule.departureWindow) {
-      setMinutesUntilDeparture(null);
+      // Stan startowy to juz null, a ta galaz konczy efekt przy kazdym przebiegu,
+      // wiec ustawianie null bylo bez skutku - i lamalo react-hooks/set-state-in-effect.
       return;
     }
 

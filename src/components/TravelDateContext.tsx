@@ -31,18 +31,41 @@ const travelDateLabels: Record<LocaleCode, string> = {
   zh: "出行日期",
 };
 
-export function TravelDateProvider({ children }: { children: ReactNode }) {
-  const [isReady, setIsReady] = useState(false);
-  const [minTravelDate, setMinTravelDate] = useState("");
-  const [travelDate, setTravelDate] = useState("");
+export function TravelDateProvider({
+  children,
+  // Dzisiejsza data w strefie Asia/Bangkok, policzona na serwerze. Bez niej pole
+  // daty startowalo puste i wylaczone az do hydratacji, a CTA szly do 12Go bez
+  // parametru date. Musi byc ta sama wartosc, ktora wyrenderowal serwer.
+  initialDate = "",
+}: {
+  children: ReactNode;
+  initialDate?: string;
+}) {
+  const [minTravelDate, setMinTravelDate] = useState(initialDate);
+  const [travelDate, setTravelDate] = useState(initialDate);
+  // Wyprowadzone, nie trzymane w stanie: gotowosc to po prostu "mamy juz date".
+  const isReady = Boolean(minTravelDate);
 
   useEffect(() => {
     const today = getLocalDateValue();
 
+    // Serwer renderuje przez ISR, wiec jego data moze byc o dobe stara tylko
+    // wtedy, gdy strona przeszla polnoc w Bangkoku miedzy renderem a wizyta.
+    // Poza tym przypadkiem nie ruszamy stanu i nie wywolujemy ponownego renderu.
+    if (today === initialDate) {
+      return;
+    }
+
+    // Swiadomy wyjatek od react-hooks/set-state-in-effect. Zegara klienta nie
+    // wolno odczytac podczas renderu, bo pierwszy render musi zgadzac sie
+    // z serwerowym - inaczej hydratacja sie rozjedzie. Korekta moze wiec nastapic
+    // dopiero po hydratacji. Jest potrzebna, bo ISR serwuje strone z pamieci
+    // podrecznej i na rzadko odwiedzanym adresie data w HTML moze byc stara.
+    // Wywoluje sie raz i tylko wtedy, gdy data faktycznie sie rozjechala.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMinTravelDate(today);
     setTravelDate((currentTravelDate) => currentTravelDate || today);
-    setIsReady(true);
-  }, []);
+  }, [initialDate]);
 
   const value = useMemo(
     () => ({

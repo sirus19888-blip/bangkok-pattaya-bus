@@ -3,10 +3,16 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Schedule } from "@/data/schedules";
 import { useNextDeparture } from "@/hooks/useNextDeparture";
-import { getMinutesUntilDeparture } from "@/lib/scheduleTime";
+import {
+  getMinutesUntilDeparture,
+  type NextDepartureResult,
+} from "@/lib/scheduleTime";
 
 type MobileRouteCountdownProps = {
   className?: string;
+  // Najblizszy odjazd policzony na serwerze. Musi byc ta sama wartoscia,
+  // ktora wyrenderowal serwer, inaczej hydratacja sie rozjedzie.
+  initialNextDeparture?: NextDepartureResult;
   labels?: {
     check: string;
     hoursShort: string;
@@ -29,6 +35,7 @@ const defaultLabels = {
 
 export function MobileRouteCountdown({
   className = "mt-3",
+  initialNextDeparture,
   labels = defaultLabels,
   schedule,
 }: MobileRouteCountdownProps) {
@@ -43,7 +50,7 @@ export function MobileRouteCountdown({
   );
   const nextDeparture = useNextDeparture(
     fallbackSchedule as Schedule,
-    schedule?.nextDeparture ?? "",
+    initialNextDeparture,
   );
   const [minutesUntilDeparture, setMinutesUntilDeparture] = useState<
     number | null
@@ -57,7 +64,8 @@ export function MobileRouteCountdown({
     }
 
     if (schedule.departureWindow) {
-      setMinutesUntilDeparture(null);
+      // Stan startowy to juz null, a ta galaz konczy efekt przy kazdym przebiegu,
+      // wiec ustawianie null bylo bez skutku - i lamalo react-hooks/set-state-in-effect.
       return;
     }
 

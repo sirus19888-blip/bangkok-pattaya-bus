@@ -20,6 +20,8 @@ import { schedules } from "@/data/schedules";
 import type { Schedule } from "@/data/schedules";
 import { getTranslations, localizeRoutePage, localizeSchedule } from "@/lib/i18n";
 import type { Translations } from "@/lib/i18n";
+import { getLocalDateValue } from "@/lib/clientDate";
+import { getNextDeparture } from "@/lib/scheduleTime";
 import { hasTwelveGoTickets } from "@/lib/twelveGo";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
@@ -35,7 +37,7 @@ export function HomePage({ locale }: { locale: LocaleCode }) {
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
       <HomepageJsonLd locale={locale} />
-      <TravelDateProvider>
+      <TravelDateProvider initialDate={getLocalDateValue()}>
         <MobileHome
           locale={locale}
           routePagesForLocale={localizedRoutePages}
@@ -1022,6 +1024,7 @@ function MobileHome({
                       />
                     </div>
                     <MobileRouteCountdown
+                      initialNextDeparture={getNextDeparture(featuredSchedule)}
                       labels={countdownLabels}
                       schedule={featuredSchedule}
                     />
@@ -1055,6 +1058,7 @@ function MobileHome({
                       />
                     </div>
                     <MobileRouteCountdown
+                      initialNextDeparture={getNextDeparture(featuredSchedule)}
                       labels={countdownLabels}
                       schedule={featuredSchedule}
                     />
@@ -1325,6 +1329,7 @@ function MobileAirportHighlightSection({
                   />
                 </div>
                 <MobileRouteCountdown
+                  initialNextDeparture={schedule ? getNextDeparture(schedule) : undefined}
                   labels={countdownLabels}
                   schedule={schedule}
                 />
@@ -1420,6 +1425,7 @@ function MobileRouteCard({
         <div className="mt-auto pt-3">
           <MobileRouteCountdown
             className="mt-0"
+            initialNextDeparture={schedule ? getNextDeparture(schedule) : undefined}
             labels={countdownLabels}
             schedule={schedule}
           />

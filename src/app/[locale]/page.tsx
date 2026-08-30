@@ -9,6 +9,10 @@ import {
 } from "@/data/routes";
 import { absoluteUrl } from "@/lib/site";
 
+// Odliczanie i domyslna data podrozy sa liczone przy renderowaniu, wiec strona
+// nie moze byc zamrozona na czas builda. ISR co 60 s zamiast trybu dynamicznego.
+export const revalidate = 60;
+
 type LocaleHomeProps = {
   params: Promise<{
     locale: string;

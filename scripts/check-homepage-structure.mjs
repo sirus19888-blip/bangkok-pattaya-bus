@@ -205,9 +205,13 @@ assert(
   !source.includes("<TwelveGoAffiliateButton"),
   "Homepage route cards must use travel-date-aware 12Go buttons.",
 );
+// Sprawdzamy wlasnosc, nie zapis: ma byc DOKLADNIE JEDEN provider obejmujacy
+// wszystkie CTA. Wczesniej test wymagal doslownie "<TravelDateProvider>", wiec
+// dodanie propsa initialDate w T67 wywracalo go mimo zachowanej wlasnosci -
+// a jednoczesnie dwa providery obok siebie przechodzilyby bez zastrzezen.
 assert(
-  source.includes("<TravelDateProvider>"),
-  "Homepage must provide one shared travel date for every homepage 12Go CTA.",
+  (source.match(/<TravelDateProvider\b/g) ?? []).length === 1,
+  "Homepage must provide exactly one shared travel date provider for every homepage 12Go CTA.",
 );
 assert(
   count(/<TravelDateAwareTwelveGoAffiliateButton\b/g) === 4,

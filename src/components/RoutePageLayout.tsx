@@ -23,8 +23,10 @@ import { routeHotelCity } from "@/data/hotelAffiliate";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
+import type { NextDepartureResult } from "@/lib/scheduleTime";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
+import { getLocalDateValue } from "@/lib/clientDate";
 import { AD_SLOT_IDS } from "@/lib/ads";
 import { getLocalizedFaqs, type Translations } from "@/lib/i18n";
 import { hasTwelveGoTickets } from "@/lib/twelveGo";
@@ -34,7 +36,7 @@ type RoutePageLayoutProps = {
   routePage: RoutePage;
   schedule: Schedule;
   stations: Station[];
-  nextDeparture: string;
+  initialNextDeparture: NextDepartureResult;
   t: Translations;
   locale: LocaleCode;
 };
@@ -43,7 +45,7 @@ export function RoutePageLayout({
   routePage,
   schedule,
   stations,
-  nextDeparture,
+  initialNextDeparture,
   t,
   locale,
 }: RoutePageLayoutProps) {
@@ -87,7 +89,7 @@ export function RoutePageLayout({
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] pb-40 text-[#13233a] lg:pb-0">
-      <TravelDateProvider>
+      <TravelDateProvider initialDate={getLocalDateValue()}>
         <RouteJsonLd
           faqs={localizedFaqs}
           locale={locale}
@@ -120,7 +122,7 @@ export function RoutePageLayout({
                 routeId={routePage.slug}
                 routeTitle={routePage.title}
                 schedule={schedule}
-                nextDeparture={nextDeparture}
+                initialNextDeparture={initialNextDeparture}
                 sourceStatusLabel={sourceStatusLabel}
                 labels={decisionLabels}
                 scheduleLabels={t.schedule}
@@ -202,7 +204,7 @@ export function RoutePageLayout({
                 routeTitle={routePage.title}
                 sidebarTitle={uiText.affiliate.variantLabels.sidebarTitle}
                 schedule={schedule}
-                nextDeparture={nextDeparture}
+                initialNextDeparture={initialNextDeparture}
                 sourceStatusLabel={sourceStatusLabel}
                 labels={decisionLabels}
                 scheduleLabels={t.schedule}

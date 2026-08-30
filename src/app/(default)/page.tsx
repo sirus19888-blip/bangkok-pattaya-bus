@@ -3,6 +3,10 @@ import { HomePage } from "@/components/HomePage";
 import { supportedLocaleCodes } from "@/data/routes";
 import { absoluteUrl } from "@/lib/site";
 
+// Odliczanie i domyslna data podrozy sa liczone przy renderowaniu, wiec strona
+// nie moze byc zamrozona na czas builda. ISR co 60 s zamiast trybu dynamicznego.
+export const revalidate = 60;
+
 const pageTitle = "Bangkok Pattaya Bus Guide - Bus Times, Prices & Stations";
 const pageDescription =
   "Check Bangkok to Pattaya, Pattaya to Bangkok, and Suvarnabhumi Airport to Pattaya bus times, ticket prices, travel time, stations, and practical travel tips.";

@@ -19,7 +19,14 @@ import {
   localizeStations,
   localizeSeoGuide,
 } from "@/lib/i18n";
+import { getNextDeparture } from "@/lib/scheduleTime";
 import { absoluteUrl } from "@/lib/site";
+
+// Najblizszy odjazd jest liczony przy renderowaniu, wiec strona nie moze byc
+// zamrozona na czas builda. 60 s to kompromis: przy odjazdach co godzine wartosc
+// w HTML jest praktycznie zawsze aktualna, a strony zostaja statyczne (ISR),
+// zamiast przechodzic w tryb dynamiczny dla 151 adresow.
+export const revalidate = 60;
 
 type RoutePageProps = {
   params: Promise<{
@@ -196,18 +203,20 @@ export default async function Page({ params }: RoutePageProps) {
   const routeStations = routePage.stationIds
     .map((stationId) => stations.find((station) => station.id === stationId))
     .filter((station) => station !== undefined);
-  const nextDeparture = schedule.nextDeparture;
   const t = getTranslations(locale);
   const localizedRoutePage = localizeRoutePage(routePage, t);
   const localizedSchedule = localizeSchedule(schedule, t);
   const localizedStations = localizeStations(routeStations, t);
+  // Liczone z localizedSchedule, nie z surowego: subRoutes niosa etykiety zalezne
+  // od jezyka, a klient uzywa tego samego obiektu. Inne zrodlo = rozjazd hydratacji.
+  const initialNextDeparture = getNextDeparture(localizedSchedule);
 
   return (
     <RoutePageLayout
       routePage={localizedRoutePage}
       schedule={localizedSchedule}
       stations={localizedStations}
-      nextDeparture={nextDeparture}
+      initialNextDeparture={initialNextDeparture}
       t={t}
       locale={locale}
     />
