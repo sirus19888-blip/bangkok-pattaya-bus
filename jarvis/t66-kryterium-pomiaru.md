@@ -181,25 +181,38 @@ Treść bloku „krótka odpowiedź” różni się per przewodnik — na częś
 odpowiedzią jest autobus i przefiltrowanie złamałoby obietnicę. Właściwym
 rozwiązaniem byłoby sterowanie per przewodnik, nie per pozycja. Osobne zadanie.
 
-### Progi — do domknięcia
+### Progi — DOMKNIĘTE 2026-08-30
 
-Nie zamykam ich, bo brakuje jednej liczby: **aktywnych użytkowników GA4
-za 1 maja – 30 sierpnia 2026**. Mam tylko 2 700 za 1 lipca – 30 sierpnia,
-a mianownik musi obejmować to samo okno co licznik.
+GA4 dla tego samego okna (1 maja – 30 sierpnia 2026): **4 200 aktywnych użytkowników**.
 
-Po jej uzupełnieniu proponuję progi względne, nie kwotowe, bo baza okazała się
-inna niż zakładana:
+```
+prowizja / 1000 uzytkownikow :  EUR 28,72     <- miara rozstrzygajaca
+rezerwacje / 1000            :  37,4          <- miara strażnicza
+srednia prowizja             :  EUR 0,77
+```
 
-| Wynik | Warunek |
-|---|---|
-| Sukces | prowizja/1000 użytkowników **+25%** wobec bazy i rezerwacje/1000 nie niżej niż −20% |
-| Neutralny | +10% do +25% |
-| Porażka | poniżej +10% |
-| Szkodliwy | rezerwacje/1000 poniżej −30% albo CTR objętych pozycji −30% |
+| Wynik | Prowizja / 1000 | Rezerwacje / 1000 | Decyzja |
+|---|---|---|---|
+| **Sukces** | ≥ EUR 35,90 (+25%) | ≥ 29,9 (spadek ≤20%) | zostawić, rozważyć rozszerzenie |
+| **Neutralny** | EUR 31,60 – 35,90 | ≥ 29,9 | zostawić, nie inwestować dalej |
+| **Porażka** | < EUR 31,60 (+10%) | — | cofnąć parametr |
+| **Szkodliwy** | — | < 26,2 (spadek >30%) | **cofnąć natychmiast** |
 
-**Uwaga terminologiczna.** Liczę na 1000 **użytkowników**, nie sesji. W sekcjach
-powyżej napisane jest „sesje”. To ten sam wskaźnik pod inną nazwą; ważne, żeby
-„przed” i „po” używały tego samego mianownika.
+Dodatkowy wyzwalacz natychmiastowego cofnięcia: CTR pozycji objętych zmianą
+spada o ponad 30%. Etykiety przycisków się nie zmieniają, więc taki spadek
+oznaczałby usterkę, nie efekt.
+
+Dla orientacji: sukces przy niezmienionym ruchu oznacza łączną prowizję
+**≥ EUR 150,80** wobec EUR 120,64 dzisiaj.
+
+**Zastrzeżenie do precyzji.** GA4 pokazuje „4,2 tys.”, czyli wartość zaokrągloną —
+rzeczywista mieści się w 4 150–4 249, co daje niepewność około ±1,2%. Przy progach
+rzędu +25% to nie ma znaczenia, ale przy odczycie „po” warto wziąć liczbę z tego
+samego widoku i tak samo zaokrągloną, żeby błąd znosił się po obu stronach.
+
+**Okno pomiaru: 8 tygodni minimum, 12 preferowane**, licząc od wdrożenia T65a.
+Wskaźnik strażniczy sprawdzać co tydzień — to jedyny, który uzasadnia cofnięcie
+zmiany przed końcem okna.
 
 ## 5. Reguła decyzyjna
 
