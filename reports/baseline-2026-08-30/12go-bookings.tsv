@@ -1,0 +1,105 @@
+SubID	Agent fee	Seats	Travel from	Destination	Vehicle class
+bpb-pattaya-to-bangkok-desktopsidebar	EUR 0.61	1	Mochit New Van Terminal	Saharat Pattaya	van
+bpb-pattaya-to-bangkok-routehelpbusfull	EUR 1.47	2	Saharat Pattaya	Mo Chit BTS Station	van
+bpb-pattaya-to-bangkok-mobilesticky	EUR 0.90	3	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-pattaya-to-suvarnabhumi-airport-guideshortanswer	EUR 0.76	1	Jomtien Bus station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-desktopsidebar	EUR 0.58	2	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-bangkok-to-pattaya-desktopsidebar	EUR 0.58	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-pattaya-to-bangkok-desktopsidebar	EUR 0.60	2	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-guidemobilesticky	EUR 0.62	1	Ekkamai	Pattaya North Bus Station	bus
+bpb-bangkok-to-pattaya-homepagehero	EUR 0.75	1	Jomtien Bus station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-homepagehero	EUR 0.62	1	Ekkamai	Pattaya North Bus Station	bus
+bpb-bangkok-to-pattaya-homepagemobilesticky	EUR 2.02	1	Pattaya Town Transfer	Don Mueang Airport	charter
+bpb-bangkok-to-pattaya-homepagemobilesticky	EUR 0.13	1	Suvarnabhumi	Pattaya North Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-guideshortanswer	EUR 0.76	1	Jomtien Bus station	Suvarnabhumi	bus
+bpb-pattaya-to-bangkok-mobilesticky	EUR 0.63	1	Pattaya North Bus Station	Ekkamai	bus
+bpb-pattaya-to-bangkok-mobilesticky	EUR 0.63	1	Pattaya North Bus Station	Ekkamai	bus
+bpb-bangkok-to-pattaya-guideshortanswer	EUR 0.63	1	Ekkamai	Pattaya North Bus Station	bus
+bpb-bangkok-to-pattaya-guideshortanswer	EUR 1.06	1	Bluport Hua Hin	Ekkamai	bus
+bpb-pattaya-to-suvarnabhumi-airport-guideshortanswer	EUR 0.65	1	Jomtien Bus station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 0.73	1	Mochit New Van Terminal	Saharat Pattaya	van
+bpb-pattaya-to-suvarnabhumi-airport-routechartergap	EUR 0.13	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-routehelponlinevsstation	EUR 1.16	2	Ekkamai	Pattaya North Bus Station	bus
+bpb-pattaya-to-bangkok-mobilesticky	EUR 0.82	1	Pannipa Pattaya Tour Office Central Pattaya	Mo Chit BTS Station	van
+bpb-pattaya-to-don-mueang-airport-guideshortanswer	EUR 0.61	3	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-guideshortanswer	EUR 0.76	1	Jomtien Bus station	Suvarnabhumi	bus
+bpb-pattaya-to-don-mueang-airport-guideshortanswer	EUR 0.41	2	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.26	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-pattaya-to-don-mueang-airport-mobilesticky	EUR 0.61	3	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-don-mueang-airport-to-pattaya-homepageairporthighlight	EUR 0.41	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-bangkok-to-pattaya-homepagehero	EUR 0.41	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-pattaya-to-bangkok-routehelpbusfull	EUR 7.78	1	Pattaya Boonsiri Office	Bangrak Seatran Pier	van
+bpb-bangkok-to-pattaya-mobilesticky	EUR 0.63	1	Ekkamai	Pattaya North Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-routehelpvstaxi	EUR 0.30	1	Pattaya North Bus Station	Suvarnabhumi	bus
+ttg-suvarnabhumi-airport-koh-chang-general	EUR 6.22	2	Starbucks Khaosan Road	Koh Chang Hotel Transfer	van
+bpb-bangkok-to-pattaya-guidemobilesticky	EUR 1.15	2	Ekkamai	Pattaya North Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-guideshortanswer	EUR 0.26	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-suvarnabhumi-airport-to-pattaya-mobilesticky	EUR 0.80	1	Suvarnabhumi	Jomtien Bus station	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.40	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-bangkok-to-pattaya-guideshortanswer	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.89	2	Pattaya North Bus Station	Ekkamai	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 0.30	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-guideshortanswer	EUR 0.67	1	Pattaya North Bus Station	Ekkamai	bus
+bpb-bangkok-to-pattaya-guideshortanswer	EUR 0.67	1	Ekkamai	Pattaya North Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.24	1	Jomtien Bus station	Suvarnabhumi	bus
+bpb-pattaya-to-don-mueang-airport-desktopsidebar	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.26	2	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.41	2	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-routeairporttransfer	EUR 0.92	7	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-don-mueang-airport-to-pattaya-guideshortanswer	EUR 0.41	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-bangkok-to-pattaya-guideshortanswer	EUR 1.25	2	Ekkamai	Pattaya North Bus Station	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.41	2	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-pattaya-to-bangkok-mobilesticky	EUR 0.76	1	Jomtien Bus station	Suvarnabhumi	bus
+bpb-pattaya-to-don-mueang-airport-mobilesticky	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-pattaya-to-don-mueang-airport-mobilesticky	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-don-mueang-airport-to-pattaya-routecommercialhelp	EUR 0.61	3	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-pattaya-to-bangkok-mobilesticky	EUR 1.65	2	Pannipa Pattaya Tour Office Central Pattaya	Mo Chit BTS Station	van
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.41	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-suvarnabhumi-airport-to-pattaya-homepageairporthighlight	EUR 0.26	2	Suvarnabhumi	Pattaya North Bus Station	bus
+bpb-pattaya-to-bangkok-mobilesticky	EUR 0.52	2	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-pattaya-to-bangkok-mobilesticky	EUR 1.25	2	Pattaya North Bus Station	Ekkamai	bus
+bpb-suvarnabhumi-airport-to-pattaya-routeairporttransfer	EUR 1.58	2	Pattaya Transfer	Suvarnabhumi	bus
+bpb-suvarnabhumi-airport-to-pattaya-routeairporttransfer	EUR 1.58	2	Suvarnabhumi	Pattaya Transfer	bus
+bpb-don-mueang-airport-to-pattaya-desktopsidebar	EUR 0.20	1	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-pattaya-to-don-mueang-airport-mobilesticky	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.40	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-suvarnabhumi-airport-to-pattaya-mobilesticky	EUR 2.30	2	Bali Hai Pier	Naban Pier	ferry
+bpb-pattaya-to-don-mueang-airport-desktopsidebar	EUR 0.40	2	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.40	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 0.21	1	Pattaya North Bus Station	Mochit	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 0.21	1	Mochit	Pattaya North Bus Station	bus
+bpb-pattaya-to-bangkok-desktopsidebar	EUR 0.62	1	Pattaya North Bus Station	Ekkamai	bus
+bpb-pattaya-to-don-mueang-airport-routehelpbusfull	EUR 0.40	2	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-pattaya-to-don-mueang-airport-mobilesticky	EUR 0.40	2	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-suvarnabhumi-airport-to-pattaya-mobilesticky	EUR 0.30	1	Suvarnabhumi	Pattaya North Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.26	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 0.39	3	Suvarnabhumi	Pattaya North Bus Station	bus
+bpb-pattaya-to-bangkok-guideshortanswer	EUR 0.22	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 3.36	5	Pattaya North Bus Station	Ekkamai	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 6.91	1	Bangkok Town Hotel Transfer	Pattaya Town Transfer	charter
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.41	2	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-pattaya-to-don-mueang-airport-desktopsidebar	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-routehelpbusfull	EUR 0.60	2	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.13	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.60	2	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-homepagemobilesticky	EUR 0.20	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-don-mueang-airport-to-pattaya-mobilesticky	EUR 0.20	1	Don Mueang Bus Station	Pattaya Bus Terminal	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.30	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 1.26	2	Ekkamai	Pattaya North Bus Station	bus
+bpb-bangkok-to-pattaya-guidemobilesticky	EUR 3.70	5	Mochit Minibus Station	Bali Hai Pier	van
+bpb-suvarnabhumi-airport-to-pattaya-mobilesticky	EUR 0.13	1	Suvarnabhumi	Pattaya North Bus Station	bus
+bpb-bangkok-to-pattaya-homepagemobilesticky	EUR 1.36	2	Ekkamai	Pattaya North Bus Station	bus
+bpb-bangkok-to-pattaya-routecitytransfer	EUR 0.36	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-routecitytransfer	EUR 0.73	1	Ekkamai	Pattaya North Bus Station	bus
+bpb-suvarnabhumi-airport-to-pattaya-mobilesticky	EUR 0.26	2	Suvarnabhumi	Pattaya North Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.31	1	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-pattaya-to-don-mueang-airport-routehelpbusfull	EUR 0.22	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus
+bpb-suvarnabhumi-airport-to-pattaya-mobilesticky	EUR 0.32	1	Suvarnabhumi	Pattaya North Bus Station	bus
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 1.03	4	Jomtien Bus station	Suvarnabhumi	bus
+bpb-pattaya-to-bangkok-mobilesticky	EUR 0.93	2	Jomtien Bus station	Suvarnabhumi	bus
+bpb-bangkok-to-pattaya-mobilesticky	EUR 1.32	2	Mochit Minibus Station	North Pattaya	van
+bpb-pattaya-to-bangkok-mobilesticky	EUR 0.66	1	Pannipa Pattaya Tour Office Central Pattaya	Mo Chit BTS Station	van
+bpb-pattaya-to-suvarnabhumi-airport-mobilesticky	EUR 0.26	2	Pattaya North Bus Station	Suvarnabhumi	bus
+bpb-pattaya-to-don-mueang-airport-guideshortanswer	EUR 0.22	1	Pattaya Bus Terminal	Don Mueang Bus Station	bus

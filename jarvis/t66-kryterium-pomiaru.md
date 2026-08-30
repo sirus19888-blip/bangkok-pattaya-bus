@@ -111,6 +111,91 @@ rezerwacji może dać gorszy wynik łączny. Ten wskaźnik pilnuje właśnie teg
 
 ---
 
+## 4a. KOREKTA po zebraniu danych rzeczywistych (2026-08-30)
+
+Linia bazowa została zebrana i **obala progi z sekcji 5**. Zostawiam je poniżej
+nietknięte, żeby było widać, co zakładałem przed danymi.
+
+Dane: `reports/baseline-2026-08-30/12go-bookings.tsv`, analiza
+`node scripts/analyze-12go-report.mjs <plik> --users 2700`.
+
+```
+okno 1 lip - 30 sie 2026, 2 700 aktywnych uzytkownikow (GA4)
+prowizja BPB      EUR 80,77   (plus EUR 6,22 z ttg-, czyli spoza tego serwisu)
+rezerwacji BPB    103
+srednia           EUR 0,78
+prowizja/1000     EUR 29,91      <- nie 40,17 jak zakladalem
+rezerwacje/1000   38,1           <- nie 45,9
+```
+
+**Uwaga terminologiczna.** Liczę na 1000 **użytkowników**, nie sesji — bo tak
+podaje GA4 w przeglądzie i tak liczone było 2 290 w T55. W sekcjach powyżej
+napisane jest „sesje". To ten sam wskaźnik pod inną nazwą; ważne, żeby „przed"
+i „po" używały tego samego mianownika.
+
+### Problem: próg sukcesu jest arytmetycznie nieosiągalny
+
+T65a obejmuje **12 ze 103 rezerwacji, czyli 11,7% wolumenu** i EUR 16,07.
+Nawet skrajny scenariusz nie dowozi progu EUR 60/1000:
+
+| Scenariusz dla pozycji objętych | Łącznie | Na 1000 | Zmiana |
+|---|---|---|---|
+| ostrożny — podwojenie ich średniej | EUR 96,84 | EUR 35,87 | +20% |
+| optymistyczny — średnia klasy charter (EUR 4,46) | EUR 118,22 | EUR 43,79 | +46% |
+| skrajny — każda po EUR 7 | EUR 148,70 | EUR 55,07 | +84% |
+
+Próg EUR 60/1000 wymagałby łącznie EUR 162. Nie da się tam dojść, zmieniając
+12% wolumenu. Gdyby zostawić ten próg, eksperyment byłby z góry przegrany
+niezależnie od tego, czy zmiana działa.
+
+### Progi proponowane, wstępne
+
+Nie zamykam ich, bo eksport jest niekompletny (patrz niżej).
+
+| Wynik | Warunek | Decyzja |
+|---|---|---|
+| Sukces | ≥ EUR 36/1000 (+20%) **i** rezerwacje ≥ 31/1000 (spadek ≤19%) | zostawić |
+| Neutralny | EUR 32–36/1000 | zostawić, nie inwestować dalej |
+| Porażka | < EUR 32/1000 (+7%) | cofnąć parametr |
+| Szkodliwy | rezerwacje < 27/1000 (spadek >30%) lub CTR objętych pozycji −30% | cofnąć natychmiast |
+
+### Eksport jest niekompletny — do uzupełnienia przed startem
+
+```
+stopka raportu 12Go:  EUR 96,87
+suma wierszy, ktore mam:  EUR 86,99
+brakuje:                  EUR  9,88
+
+rezerwacje charter w pierwszym eksporcie (skrocone SubID): 3  (2,02 / 6,91 / 7,95)
+rezerwacje charter w drugim eksporcie (pelne SubID):       2  (2,02 / 6,91)
+```
+
+Brakuje co najmniej rezerwacji **EUR 7,95** (Bangkok Town Transfer → Pattaya Town
+Transfer, charter, 3 lipca) oraz wiersza „Wait for travel" EUR 0,52. Raport 12Go
+jest stronicowany — stopka mówi „Current page". Potrzebny eksport **wszystkich
+stron** z pełnymi SubID. Dopiero wtedy progi mają sens.
+
+### Co dane już mówią, niezależnie od brakujących wierszy
+
+**Pozycje objęte T65a mają już teraz dwukrotnie wyższą średnią prowizję**
+niż pozostałe: EUR 1,34 wobec EUR 0,71. Ta treść przyciąga lepszą intencję
+jeszcze zanim link zaczął na to odpowiadać.
+
+**Wszystkie zaobserwowane rezerwacje charter przyszły przez `mobilesticky`
+i `homepagemobilesticky`** — pozycje spoza zmiany, i słusznie: ich etykieta
+obiecuje bilet od 148 THB. Popyt na transfer istnieje wśród ludzi, którzy
+klikają ogólne CTA, i sami go znajdują.
+
+**`routehelpbusfull` jest najlepszą z objętych pozycji:** 5 rezerwacji,
+EUR 10,47, średnia EUR 2,09 — w tym van za EUR 7,78. Blok „autobus jest pełny"
+już dziś sprzedaje drożej.
+
+**`mobilesticky` to 52 ze 103 rezerwacji i 47% prowizji.** Tam jest wolumen
+i tam żadna zmiana z T65a nie sięga. To jest kierunek na osobne zadanie,
+ale nie przez filtr charter — przez treść, bo etykieta obiecuje cenę autobusu.
+
+---
+
 ## 5. Reguła decyzyjna
 
 Okno pomiaru: **8 tygodni minimum, 12 preferowane.** Nie cztery.
