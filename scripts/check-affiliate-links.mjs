@@ -34,6 +34,10 @@ const requiredAffiliatePositions = [
   "guide_short_answer",
   "guide_sidebar",
   "guide_mobile_sticky",
+  // Dodane w T65a. Pozycja istnieje od T55, ale brakowalo jej na tej liscie,
+  // wiec getAffiliatePositionFromSubId klasyfikowal jej linki jako guide_body
+  // i straznik nie sprawdzal ich osobno od chwili powstania bloku transferowego.
+  "guide_transfer",
   "homepage_hero",
   "homepage_airport_highlight",
   "homepage_mobile_sticky",
@@ -53,6 +57,19 @@ const requiredAffiliatePositions = [
 const requiredBuiltAffiliatePositions = requiredAffiliatePositions.filter(
   (position) => position !== "guide_sidebar",
 );
+// Swiadoma kopia listy z src/lib/twelveGo.ts. Ma sie rozjechac glosno, gdy ktos
+// zmieni tam liste bez zmiany tego testu - patrz asercja deepEqual na koncu.
+const expectedCharterPositions = new Set([
+  "guide_transfer",
+  "route_airport_transfer",
+  "route_charter_gap",
+  "route_city_transfer",
+  "route_help_after_last",
+  "route_help_bus_full",
+  "route_help_vs_taxi",
+]);
+const positionsSeenWithCharter = new Set();
+const positionsSeenWithoutCharter = new Set();
 const renderedAffiliateCTA = renderAffiliateCTAForTest({
   disclosureText:
     "Some booking links may be affiliate links. Timetable information stays independent.",
@@ -469,6 +486,24 @@ for (const { file, tag } of builtTwelveGoLinks) {
     `${file} has a 12Go link with an invalid position-specific sub_id: ${subId}.`,
   );
   builtAffiliatePositions.add(position);
+
+  const charterTab = url.searchParams.get("vehclasses_tab");
+
+  if (expectedCharterPositions.has(position)) {
+    assert.equal(
+      charterTab,
+      "charter",
+      `${file}: position ${position} argues the bus is not the answer, so its link must carry vehclasses_tab=charter.`,
+    );
+    positionsSeenWithCharter.add(position);
+  } else {
+    assert.equal(
+      charterTab,
+      null,
+      `${file}: position ${position} is a bus-booking CTA and must NOT carry vehclasses_tab (found "${charterTab}"). Sending a traveler who wants a 148 THB bus to a charter list breaks the promise made above the button.`,
+    );
+    positionsSeenWithoutCharter.add(position);
+  }
 }
 
 for (const position of requiredBuiltAffiliatePositions) {
@@ -477,6 +512,46 @@ for (const position of requiredBuiltAffiliatePositions) {
     `Built 12Go links must include the ${position} sub_id position.`,
   );
 }
+
+// Kazda pozycja z listy charter musi byc realnie obecna w buildzie z parametrem.
+// Bez tego "wszystko przeszlo" moglo znaczyc "nic sie nie wyrenderowalo".
+for (const position of expectedCharterPositions) {
+  assert.ok(
+    positionsSeenWithCharter.has(position),
+    `No built 12Go link was found for charter position ${position}. Either it stopped rendering or it lost vehclasses_tab.`,
+  );
+}
+
+// Test negatywny: co najmniej jedna pozycja MUSI wystapic bez parametru.
+// Gdyby ktos dodal charter globalnie, wszystkie asercje powyzej nadal by przeszly,
+// a strona wysylalaby szukajacych autobusu na liste od dziesieciokrotnej ceny.
+assert.ok(
+  positionsSeenWithoutCharter.size > 0,
+  "No built 12Go link was found without vehclasses_tab. The charter filter must stay selective.",
+);
+
+// Straznik na zrodlo: lista w twelveGo.ts musi zgadzac sie co do znaku z lista
+// oczekiwana powyzej. Duplikacja jest celowa - dodanie pozycji w kodzie bez
+// swiadomej zmiany testu ma ten test wywrocic, bo to decyzja o tym, jaki produkt
+// zobaczy podrozny, a nie refaktoryzacja.
+const charterBlock = twelveGoSource.match(
+  /const charterCtaPositions = new Set<AffiliateCTAPosition>\(\[([\s\S]*?)\]\)/,
+);
+
+assert.ok(
+  charterBlock,
+  "twelveGo.ts must declare charterCtaPositions as a typed Set literal.",
+);
+
+const declaredCharterPositions = new Set(
+  [...charterBlock[1].matchAll(/"([a-z0-9_]+)"/g)].map((match) => match[1]),
+);
+
+assert.deepEqual(
+  [...declaredCharterPositions].sort(),
+  [...expectedCharterPositions].sort(),
+  "charterCtaPositions in twelveGo.ts drifted from the list this guard expects. If the change is intended, update both.",
+);
 
 console.log("Affiliate link checks passed.");
 
