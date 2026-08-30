@@ -1,5 +1,5 @@
 import type { FAQItem, GuideTip } from "@/data/faqs";
-import type { LocaleCode, Route, RouteId, RoutePage } from "@/data/routes";
+import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
 import type { Schedule } from "@/data/schedules";
 import type { Station } from "@/data/stations";
@@ -126,32 +126,6 @@ export function getLocalizedSubRoutePrice(
   return scheduleText?.subRoutePrices?.[subRouteId] ?? fallback;
 }
 
-export function localizeRoute(route: Route, t: Translations): Route {
-  const routeText = t.routePages[route.id] ?? en.routePages[route.id];
-  const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
-  const isRussian = t.nextBus.title === "Следующий автобус";
-  const isGerman = t.nextBus.title === "Nächster Bus";
-
-  return {
-    ...route,
-    distance: isThai
-      ? route.distance.replace("km", "กม.")
-      : isRussian
-        ? route.distance.replace("km", "км")
-        : isGerman
-          ? route.distance.replace("km", "km")
-        : route.distance,
-    duration: isThai
-      ? route.duration.replace(/h/g, " ชม.")
-      : isRussian
-        ? route.duration.replace(/h/g, " ч")
-        : isGerman
-          ? route.duration.replace(/h/g, " Std.")
-        : route.duration,
-    label: routeText.label,
-  };
-}
-
 export function localizeRoutePage(
   routePage: RoutePage,
   t: Translations,
@@ -181,7 +155,11 @@ export function localizeRoutePage(
   };
 }
 
-export function localizeSchedule(schedule: Schedule, t: Translations): Schedule {
+export function localizeSchedule(
+  schedule: Schedule,
+  t: Translations,
+  locale: LocaleCode,
+): Schedule {
   const scheduleId = schedule.id as keyof Translations["schedules"];
   const scheduleText = t.schedules[scheduleId] ?? en.schedules[scheduleId];
   const sourceText = scheduleText as {
@@ -193,12 +171,12 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
     sourceName?: string;
     sourceType?: string;
   };
-  const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
-  const isRussian = t.nextBus.title === "Следующий автобус";
-  const isGerman = t.nextBus.title === "Nächster Bus";
-  const isPolish = t.nextBus.title === "Najbliższy autobus:";
-  const isFrench = t.nextBus.title === "Prochain bus :";
-  const isChinese = t.nextBus.title === "下一班巴士";
+  const isThai = locale === "th";
+  const isRussian = locale === "ru";
+  const isGerman = locale === "de";
+  const isPolish = locale === "pl";
+  const isFrench = locale === "fr";
+  const isChinese = locale === "zh";
   const polishSubRouteText: Record<string, { label: string; from: string; to: string }> = {
     "bangkok-ekkamai-to-pattaya": {
       label: "Ekkamai Bus Terminal",
@@ -404,12 +382,13 @@ export function localizeSchedule(schedule: Schedule, t: Translations): Schedule 
 export function localizeStations(
   stations: Station[],
   t: Translations,
+  locale: LocaleCode,
 ): Station[] {
-  const isThai = t.nextBus.title === "รถบัสเที่ยวถัดไป";
-  const isRussian = t.nextBus.title === "Следующий автобус";
-  const isGerman = t.nextBus.title === "Nächster Bus";
-  const isFrench = t.nextBus.title === "Prochain bus :";
-  const isChinese = t.nextBus.title === "下一班巴士";
+  const isThai = locale === "th";
+  const isRussian = locale === "ru";
+  const isGerman = locale === "de";
+  const isFrench = locale === "fr";
+  const isChinese = locale === "zh";
   const thaiStationNames: Record<string, string> = {
     ekkamai: "สถานีขนส่งเอกมัย",
     "mo-chit": "สถานีขนส่งหมอชิต 2",

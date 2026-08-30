@@ -205,8 +205,8 @@ export default async function Page({ params }: RoutePageProps) {
     .filter((station) => station !== undefined);
   const t = getTranslations(locale);
   const localizedRoutePage = localizeRoutePage(routePage, t);
-  const localizedSchedule = localizeSchedule(schedule, t);
-  const localizedStations = localizeStations(routeStations, t);
+  const localizedSchedule = localizeSchedule(schedule, t, locale);
+  const localizedStations = localizeStations(routeStations, t, locale);
   // Liczone z localizedSchedule, nie z surowego: subRoutes niosa etykiety zalezne
   // od jezyka, a klient uzywa tego samego obiektu. Inne zrodlo = rozjazd hydratacji.
   const initialNextDeparture = getNextDeparture(localizedSchedule);

@@ -31,7 +31,7 @@ export function HomePage({ locale }: { locale: LocaleCode }) {
     localizeRoutePage(page, t),
   );
   const localizedSchedules = schedules.map((schedule) =>
-    localizeSchedule(schedule, t),
+    localizeSchedule(schedule, t, locale),
   );
 
   return (
