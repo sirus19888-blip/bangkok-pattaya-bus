@@ -1,7 +1,7 @@
 # GA4 Eksploracja swobodna, wymiar CTA Position, metryka Liczba zdarzen
 # Zakres: 1 lipca - 30 sierpnia 2026 (8 tygodni)
 # Wymiar cta_position zarejestrowany 15 maja 2026, wiec okno jest w calosci pokryte.
-# UWAGA: tabela pokazuje 10 pierwszych wierszy; reszta w kolumnie "pozostale".
+# Pelne rozbicie, 25 wierszy. Puste komorki = pozycja nie wystapila w danym zdarzeniu.
 cta_position	affiliate_click	affiliate_click_srv
 mobile_sticky	355	333
 guide_short_answer	152	194
@@ -13,5 +13,19 @@ route_charter_gap	54	60
 route_airport_transfer	51	49
 homepage_mobile_sticky	25	24
 homepage_route_card	23	23
-(pozostale, nierozbite)	122	139
+route_hotel_strip	18	14
+route_help_online_vs_station	17	15
+homepage_airport_highlight	14	13
+route_city_transfer	13	15
+route_help_after_last	13	15
+route_help_vs_taxi	13	13
+guide_body	10	18
+route_after_schedule	8	9
+route_commercial_help	4	13
+footer_badge	3	1
+homepage_hotel	3	3
+route_hotel	3	2
+guide_hotel_sidebar	2	4
+guide_transfer	1	1
+setup_test	0	3
 RAZEM	1072	1136
