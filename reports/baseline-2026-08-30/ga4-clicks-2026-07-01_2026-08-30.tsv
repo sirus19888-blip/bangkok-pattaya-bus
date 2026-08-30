@@ -1,0 +1,17 @@
+# GA4 Eksploracja swobodna, wymiar CTA Position, metryka Liczba zdarzen
+# Zakres: 1 lipca - 30 sierpnia 2026 (8 tygodni)
+# Wymiar cta_position zarejestrowany 15 maja 2026, wiec okno jest w calosci pokryte.
+# UWAGA: tabela pokazuje 10 pierwszych wierszy; reszta w kolumnie "pozostale".
+cta_position	affiliate_click	affiliate_click_srv
+mobile_sticky	355	333
+guide_short_answer	152	194
+guide_mobile_sticky	84	89
+route_help_bus_full	78	75
+desktop_sidebar	70	86
+homepage_hero	58	64
+route_charter_gap	54	60
+route_airport_transfer	51	49
+homepage_mobile_sticky	25	24
+homepage_route_card	23	23
+(pozostale, nierozbite)	122	139
+RAZEM	1072	1136
