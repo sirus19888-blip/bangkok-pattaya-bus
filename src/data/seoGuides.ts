@@ -1200,11 +1200,9 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         label: "Thailand Life - Pattaya to Bangkok",
-        url: "https://thailandlife.info/how-to-get-from-pattaya-to-bangkok/",
       },
       {
         label: "Klook - Bangkok Pattaya guide",
-        url: "https://www.klook.com/blog/bangkok-to-pattaya-guide/",
       },
     ],
   },
