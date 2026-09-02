@@ -239,6 +239,50 @@ Potwierdzone na żywej domenie bezpośrednio po wdrożeniu:
 - kafelek najbliższego odjazdu ma godzinę w HTML (`05:00` EN, `04:30` ZH) — T67
 - bez regresji: jeden `<h1>`, 9 linków 12Go, 7 mierzonych linków TTG
 
+### Odczyt 1 — 2026-09-02, +3 dni: ZDANY
+
+Wskaźnik wiodący. Sprawdza wyłącznie, czy nic się nie zepsuło — **nie jest dowodem,
+że zmiana działa.** Na to jest o wiele za wcześnie.
+
+Źródło: GA4, zdarzenie `affiliate_click`, wymiar `CTA Position`.
+
+```
+PRZED  1 lip - 30 sie (61 dni)   223 / 1072 = 20,8%    17,6 zdarzen/dzien
+PO     31 sie -  2 wrz  (3 dni)   13 /   72 = 18,1%    24,0 zdarzen/dzien
+
+95% przedzial ufnosci dla "po":  9,2% - 26,9%
+linia bazowa 20,8% miesci sie w przedziale:  TAK
+prog cofniecia (ponizej 14,6%):  nie przekroczony
+```
+
+Udział pozycji objętych zmianą jest statystycznie nieodróżnialny od linii bazowej.
+Przy 72 zdarzeniach przedział ufności jest szeroki i inaczej być nie może — dlatego
+ten odczyt może tylko wykluczyć załamanie, a nie potwierdzić poprawę.
+
+Per pozycja wszystkie obserwacje mieszczą się w granicach 1–2 zdarzeń od wartości
+oczekiwanej przy braku zmiany, czyli w czystym szumie:
+
+| Pozycja | przed | po | oczekiwane |
+|---|---|---|---|
+| route_help_bus_full | 7,3% | 4 (5,6%) | 5,2 |
+| route_charter_gap | 5,0% | 2 (2,8%) | 3,6 |
+| route_airport_transfer | 4,8% | 3 (4,2%) | 3,4 |
+| route_city_transfer | 1,2% | 1 (1,4%) | 0,9 |
+| route_help_after_last | 1,2% | 1 (1,4%) | 0,9 |
+| route_help_vs_taxi | 1,2% | 2 (2,8%) | 0,9 |
+| guide_transfer | 0,1% | 0 | 0,1 |
+
+**Do odnotowania, bez wyciągania wniosków.** Częstość kliknięć wzrosła z 17,6 do
+24,0 na dobę, a GA4 pokazuje zdarzenia na sesję 0,37 z adnotacją +49%. Trzy dni to
+za mało, żeby to znaczyło cokolwiek, i może być zwykłą sezonowością początku września.
+Odnotowane, bo kierunek jest dodatni, a nie ujemny.
+
+**Kontrola spójności.** Suma wierszy zgadza się z sumą GA4 (72). Jedno zdarzenie ma
+Sub ID `(not set)` — to ten sam pojedynczy klik Agody, bo `HotelAffiliateInline`
+nie wysyła `sub_id`. Nie jest to usterka pomiaru.
+
+---
+
 ### Kalendarz odczytów
 
 ```
