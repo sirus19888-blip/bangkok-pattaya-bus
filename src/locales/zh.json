@@ -195,7 +195,7 @@
       "price": "每人 155 泰铢",
       "disclaimer": "巴士时间可能会变动。出行前请在车站或向运营商确认。",
       "fareNote": "当前路线数据中的票价：每人 155 泰铢。",
-      "boardingNote": "机场官方页面列出服务柜台：Terminal 1, Building 1, Floor 1, Gate 1，以及 Terminal 2, Building 2, Floor 1, Gate 11。上车点为 Service Hall Building。Terminal 1 的 Service Hall 柜台每周二关闭；请前往 Terminal 2 的 Gate 11 柜台，或在机场确认上车地点。",
+      "boardingNote": "机场官方页面列出服务柜台：Terminal 1, Building 1, Floor 1, Gate 1，以及 Terminal 2, Building 2, Floor 1, Gate 11。上车点为 Service Hall Building。机场页面显示前往芭提雅的柜台每天 06:30-17:30 开放；请在机场确认上车地点。",
       "operatorNote": "基于机场官方交通信息。出行前请再次确认。",
       "sourceName": "Transport Co., Ltd. / 廊曼机场",
       "sourceType": "官方机场 / 运营商交通页面",
@@ -659,7 +659,7 @@
       "description": "从廊曼机场乘直达巴士前往芭提雅：了解 155 THB 票价、06:30-17:30 的班次窗口、乘车地点及抵达后的交通。",
       "h1": "廊曼机场到芭提雅巴士指南",
       "intro": "如果你从廊曼抵达并前往芭提雅，直达巴士通常比先进入曼谷再换乘更简单。本指南说明如何找到柜台、确认乘车地点、准备 155 THB 车票，并在抵达芭提雅北巴士站后继续前往酒店。",
-      "shortAnswer": "抵达廊曼（Don Mueang）后，前往 Terminal 1 的 Service Hall 柜台确认当天的芭提雅（Pattaya）巴士。Terminal 1 的 Service Hall 柜台周二关闭；当天请使用 Terminal 2 的 Gate 11 柜台，或到达后确认当前乘车地点。票价为每人 155 THB，服务时间窗口约为 06:30-17:30、每约 4 小时一班。巴士抵达芭提雅北巴士站（North Pattaya Bus Station）后，再乘双条车、出租车、Grab、Bolt 或酒店接送。",
+      "shortAnswer": "抵达廊曼（Don Mueang）后，前往 Terminal 1 的 Service Hall 柜台确认当天的芭提雅（Pattaya）巴士。机场页面显示柜台每天 06:30-17:30 开放；到达后请确认当前乘车地点。票价为每人 155 THB，服务时间窗口约为 06:30-17:30、每约 4 小时一班。巴士抵达芭提雅北巴士站（North Pattaya Bus Station）后，再乘双条车、出租车、Grab、Bolt 或酒店接送。",
       "ctaLabel": "查看廊曼到芭提雅车票",
       "routeLinkLabel": "打开廊曼到芭提雅路线",
       "keyPoints": [
@@ -723,8 +723,8 @@
           "answer": "通常停在芭提雅北巴士站。前往中天或酒店还需要另一段交通。"
         },
         {
-          "question": "周二廊曼的巴士还运行吗？",
-          "answer": "周二关闭的是 Terminal 1 的 Service Hall 柜台，不是巴士服务本身。请使用 Terminal 2 的 Gate 11 柜台，或到达后确认当前乘车地点。"
+          "question": "廊曼的巴士柜台几点开放？",
+          "answer": "机场官方页面显示服务柜台每天 06:30-17:30 开放，Terminal 1 的 Gate 1 与 Terminal 2 的 Gate 11 均设有柜台。到达后请确认当前乘车地点。"
         }
       ],
       "transferNote": {

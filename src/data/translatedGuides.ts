@@ -38,7 +38,7 @@ export const guideTranslationUpdatedAt: Record<
     de: "2026-07-05",
   },
   "jomtien-bus-station": { zh: "2026-08-23", ru: "2026-07-17" },
-  "don-mueang-airport-to-pattaya-bus": { zh: "2026-08-24" },
+  "don-mueang-airport-to-pattaya-bus": { zh: "2026-09-04" },
   "pattaya-to-don-mueang-airport-bus": { zh: "2026-08-23" },
   "pattaya-to-suvarnabhumi-airport-before-flight": { zh: "2026-08-23" },
   "suvarnabhumi-airport-gate-8-pattaya-bus": { zh: "2026-08-24" },

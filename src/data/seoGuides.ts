@@ -69,7 +69,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_ekkamai",
     lastUpdated: "2026-08-02",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "Best for travelers staying near Sukhumvit, Thong Lo, Phrom Phong, Asok or BTS Ekkamai.",
       "The Ekkamai to Pattaya bus is usually a straightforward station-to-station trip, not a hotel pickup service.",
@@ -180,7 +180,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_mochit",
     lastUpdated: "2026-08-02",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "Best for travelers starting in northern Bangkok, Chatuchak or areas closer to Mo Chit 2.",
       "Mo Chit 2 is not the same as BTS Mo Chit, so plan the transfer to the terminal.",
@@ -290,7 +290,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-pattaya-to-suvarnabhumi-guide_jomtien",
     lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "North Pattaya Bus Station and the Jomtien / Thappraya airport bus area are different places.",
       "Taxi, Grab or Bolt is usually easiest with luggage or after a long bus ride.",
@@ -399,7 +399,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Suvarnabhumi Airport to Pattaya bus times",
     ctaLabel: "Compare airport to Pattaya tickets",
     lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "The bus counters are on Level 1 (Arrivals) near Gate 8 - look for the Pattaya / Hua Hin service desk.",
       "Several operators run this route, including Roong Reuang Coach, the 999 / Transport Co. bus, Bell Travel and Mekong Transfer, so fares and timings vary a little.",
@@ -525,7 +525,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Bangkok to Pattaya bus times",
     ctaLabel: "Check prices & availability",
     lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "Bus from Ekkamai is usually the lowest-cost option for solo travelers.",
       "Taxi or private transfer is easier with luggage, family travel or hotel pickup.",
@@ -592,7 +592,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Check the next Bangkok to Pattaya bus",
     ctaLabel: "Check late-night alternatives",
     lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "If the last bus has passed, the next scheduled bus may be the following morning.",
       "Late-night taxi or private transfer can be convenient but should have a clear price.",
@@ -659,7 +659,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Compare tickets and airport alternatives",
     lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "Do not rely on the last possible bus before your flight.",
       "Confirm whether your Bangkok destination is Ekkamai, Mo Chit, Suvarnabhumi or Don Mueang.",
@@ -726,12 +726,12 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "There is now a direct bus from Don Mueang Airport (DMK) to Pattaya, run by the government operator Transport Co. (also known as the 999 bus). This is a big improvement over the older route, where travelers had to transfer through Mo Chit bus terminal in Bangkok first. This guide explains where to find the bus after landing, how much it costs, how long it takes, and what to do if you arrive late.",
     shortAnswer:
-      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The Terminal 1 Service Hall counter is closed on Tuesdays; use the Terminal 2 Gate 11 counter or confirm the current boarding point on arrival. The direct bus costs around 155 THB and the trip usually takes about 3 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
+      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The airport page lists the Pattaya counter as open 06:30-17:30 every day of the week; confirm the current boarding point on arrival. The direct bus costs around 155 THB and the trip usually takes about 3 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
     routeId: "don-mueang-airport-to-pattaya",
     routeLinkLabel: "Open Don Mueang Airport to Pattaya bus times",
     ctaLabel: "Check Don Mueang to Pattaya tickets",
-    lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-01",
+    lastUpdated: "2026-09-04",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "The bus is a direct service to Pattaya - you do not need to transfer through Mo Chit or central Bangkok.",
       "It is operated by Transport Co. (the government 999 bus), with ticket counters on Floor 1 at Don Mueang.",
@@ -745,7 +745,7 @@ export const seoGuides: SeoGuide[] = [
     sections: [
       {
         title: "Finding the bus after you land at Don Mueang",
-        body: "After you leave the aircraft, follow the Arrivals signs. If you arrived on an international flight, clear immigration first, then collect your baggage and go out to the public arrivals area on Floor 1. Look for the Transport Co. / 999 bus counter or service hall for the Pattaya service. Tickets are sold on Floor 1, and counters are linked to the International Terminal (Building 1) and Domestic Terminal (Building 2). The Terminal 1 Service Hall counter is closed on Tuesdays; use the Terminal 2 Gate 11 counter or confirm the current boarding point on arrival. Always confirm the signs at the airport, because counter locations can change.",
+        body: "After you leave the aircraft, follow the Arrivals signs. If you arrived on an international flight, clear immigration first, then collect your baggage and go out to the public arrivals area on Floor 1. Look for the Transport Co. / 999 bus counter or service hall for the Pattaya service. Tickets are sold on Floor 1, and counters are linked to the International Terminal (Building 1) and Domestic Terminal (Building 2). The airport page lists the Pattaya counter as open 06:30-17:30 every day of the week; confirm the current boarding point on arrival. Always confirm the signs at the airport, because counter locations can change.",
       },
       {
         title: "Why the direct bus is easier than the old route",
@@ -858,7 +858,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Pattaya to Don Mueang Airport bus times",
     ctaLabel: "Check Pattaya to Don Mueang tickets",
     lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "The bus goes direct to Don Mueang - you do not need to change buses in Bangkok.",
       "It departs from a Transport Co. stop on Sukhumvit Road in Pattaya, with secondary sources showing online fares of 167-183 THB per person.",
@@ -980,7 +980,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
     ctaLabel: "Check prices & availability",
     lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "The bus drops you directly at the Suvarnabhumi departure terminal, where you check in - no airport transfer needed.",
       "The bus ride takes around 2 hours; add time to reach the station, check in and clear security, and leave a generous buffer.",
@@ -1101,7 +1101,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Check prices & availability",
     lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "Ekkamai is the only major Bangkok bus terminal within walking distance of a BTS station, ideal for Sukhumvit destinations.",
       "Mo Chit serves northern Bangkok and is better if you are heading that way or continuing by taxi - the BTS is about 2 km from the terminal.",
@@ -1222,7 +1222,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-pattaya-to-suvarnabhumi-airport-guide_jomtien_station",
     lastUpdated: "2026-08-02",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "Best boarding point if you stay in Jomtien, on Thappraya Road or in south Pattaya.",
       "The ticket office is sometimes listed as the \"Thappraya bus office\" - it is the same place.",
@@ -1337,7 +1337,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_hotels_station",
     lastUpdated: "2026-08-02",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "North Pattaya is the most convenient area for early buses and late arrivals.",
       "Use the map view when booking and check the distance to North Pattaya Bus Station.",
@@ -1445,7 +1445,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
     ctaLabel: "Check Pattaya → Suvarnabhumi tickets",
     lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "North Pattaya Bus Station has seven departures at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00, with a fare of 130 THB per seat.",
       "Jomtien Bus Station has 17 hourly departures from 06:00 to 22:00, with a fare of 151 THB per seat.",
@@ -1553,7 +1553,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-suvarnabhumi-airport-to-pattaya-guide_tomorrowland",
     lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-01",
+    lastVerified: "2026-09-04",
     keyPoints: [
       "Wisdom Valley is inland from Pattaya, so a bus to Pattaya is only the first part of the journey.",
       "There is no DreamVille camping for the Thailand edition; independent visitors should arrange accommodation themselves.",
