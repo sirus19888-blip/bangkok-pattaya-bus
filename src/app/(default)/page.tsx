@@ -4,8 +4,11 @@ import { supportedLocaleCodes } from "@/data/routes";
 import { absoluteUrl } from "@/lib/site";
 
 // Odliczanie i domyslna data podrozy sa liczone przy renderowaniu, wiec strona
-// nie moze byc zamrozona na czas builda. ISR co 60 s zamiast trybu dynamicznego.
-export const revalidate = 60;
+// nie moze byc zamrozona na czas builda. ISR zamiast trybu dynamicznego.
+// 300 s, nie 60: przy odjazdach co godzine roznica jest niewidoczna dla czytelnika,
+// a regeneracji jest piec razy mniej. Powod: Fast Origin Transfer urosl z ~90 MB
+// na dobe przed ISR do ~150 MB (odczyt 2026-09-04, plan Hobby ma 10 GB/mies.).
+export const revalidate = 300;
 
 const pageTitle = "Bangkok Pattaya Bus Guide - Bus Times, Prices & Stations";
 const pageDescription =

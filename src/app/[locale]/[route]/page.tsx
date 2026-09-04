@@ -23,10 +23,13 @@ import { getNextDeparture } from "@/lib/scheduleTime";
 import { absoluteUrl } from "@/lib/site";
 
 // Najblizszy odjazd jest liczony przy renderowaniu, wiec strona nie moze byc
-// zamrozona na czas builda. 60 s to kompromis: przy odjazdach co godzine wartosc
+// zamrozona na czas builda. 300 s to kompromis: przy odjazdach co godzine wartosc
 // w HTML jest praktycznie zawsze aktualna, a strony zostaja statyczne (ISR),
 // zamiast przechodzic w tryb dynamiczny dla 151 adresow.
-export const revalidate = 60;
+// Bylo 60 s. Podniesione po pomiarze z 2026-09-04: Fast Origin Transfer wzrosl
+// z ~90 MB na dobe przed ISR do ~150 MB, czyli do progu, przy ktorym mielismy
+// zareagowac. Piec razy mniej regeneracji, koszt to 5 min nieaktualnosci kafelka.
+export const revalidate = 300;
 
 type RoutePageProps = {
   params: Promise<{
