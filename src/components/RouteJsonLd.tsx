@@ -1,7 +1,12 @@
 import type { FAQItem } from "@/data/faqs";
 import type { LocaleCode, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
-import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  absoluteUrl,
+  SITE_AUTHOR,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 type RouteJsonLdProps = {
   faqs: FAQItem[];
@@ -51,6 +56,11 @@ export function RouteJsonLd({
         "@id": tripId,
       },
       dateModified: schedule.lastUpdated,
+      author: {
+        "@type": "Person",
+        name: SITE_AUTHOR,
+        url: absoluteUrl("/about"),
+      },
     },
     {
       "@type": "BreadcrumbList",

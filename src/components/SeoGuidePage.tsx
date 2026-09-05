@@ -11,7 +11,12 @@ import {
   isGuideTranslated,
 } from "@/data/translatedGuides";
 import { getTranslations } from "@/lib/i18n";
-import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  absoluteUrl,
+  SITE_AUTHOR,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 import { build12GoRouteUrl, getAffiliateRoute } from "@/lib/twelveGo";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
@@ -426,6 +431,11 @@ function GuideJsonLd({ guide, locale }: { guide: SeoGuide; locale: LocaleCode })
           locale,
           guide.lastUpdated,
         ),
+        author: {
+          "@type": "Person",
+          name: SITE_AUTHOR,
+          url: absoluteUrl("/about"),
+        },
         publisher: {
           "@type": "Organization",
           name: SITE_NAME,

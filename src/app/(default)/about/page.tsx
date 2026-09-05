@@ -20,7 +20,7 @@ export default function AboutPage() {
       sections={[
         {
           title: "Who runs this site",
-          body: "Bangkok Pattaya Bus Guide is run by an independent site owner who maintains the content, checks sources, and updates route information when better data is available. Contact: bangkokpattayabus@gmail.com.",
+          body: "Bangkok Pattaya Bus Guide is written and maintained by Paweł Giżyński, an independent publisher who checks the operator and airport sources behind every route, records when each was last verified, and updates the guide when better data is available. Contact: bangkokpattayabus@gmail.com.",
         },
         {
           title: "Purpose of the site",
@@ -36,7 +36,7 @@ export default function AboutPage() {
         },
         {
           title: "Content responsibility",
-          body: "The site owner is responsible for reviewing and publishing the information shown on this guide. Operator names, station names, and source links are used for reference only and do not imply ownership or official operator status.",
+          body: "Paweł Giżyński is responsible for reviewing and publishing the information shown on this guide. Operator names, station names, and source links are used for reference only and do not imply ownership or official operator status.",
         },
         {
           title: "Affiliate disclosure",

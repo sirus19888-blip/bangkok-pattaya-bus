@@ -20,7 +20,7 @@ export default function PrivacyPage() {
       sections={[
         {
           title: "Who runs this guide",
-          body: "Bangkok Pattaya Bus Guide is an independent travel guide. It is not an official bus operator website. The guide is maintained to help travelers understand bus routes, stations, prices, schedule sources, and practical travel notes.",
+          body: "Bangkok Pattaya Bus Guide is an independent travel guide published by Paweł Giżyński, a private individual based in Poland, European Union, who is the data controller for the personal data described on this page. It is not an official bus operator website. The guide is maintained to help travelers understand bus routes, stations, prices, schedule sources, and practical travel notes.",
         },
         {
           title: "Cookies and similar technologies",
@@ -64,11 +64,11 @@ export default function PrivacyPage() {
         },
         {
           title: "Contact",
-          body: "For privacy questions, correction requests, outdated schedule reports, or operator updates, contact bangkokpattayabus@gmail.com. Please do not use this email for urgent travel support; confirm urgent travel details directly with the bus station or operator.",
+          body: "For privacy questions, correction requests, outdated schedule reports, or operator updates, contact Paweł Giżyński at bangkokpattayabus@gmail.com. This includes requests to access, correct or delete personal data, and any question about how this site handles it. Please do not use this email for urgent travel support; confirm urgent travel details directly with the bus station or operator.",
         },
         {
           title: "Last updated",
-          body: "This privacy policy was last reviewed on 29 August 2026. The review checked each statement here against how the site actually behaves, including when Google Analytics loads, how affiliate clicks are counted, and which third-party services the browser contacts.",
+          body: "This privacy policy was last reviewed on 5 September 2026, when the publisher and data controller were named. The previous review on 29 August 2026 checked each statement here against how the site actually behaves, including when Google Analytics loads, how affiliate clicks are counted, and which third-party services the browser contacts.",
         },
       ]}
     />

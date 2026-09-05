@@ -20,11 +20,11 @@ export default function ContactPage() {
       sections={[
         {
           title: "Email",
-          body: "You can contact the site owner at bangkokpattayabus@gmail.com.",
+          body: "You can contact Paweł Giżyński, who publishes this guide, at bangkokpattayabus@gmail.com.",
         },
         {
           title: "Content responsibility",
-          body: "The site owner reviews correction requests and is responsible for publishing updates on this guide. This website is independent and is not an official bus operator website.",
+          body: "Paweł Giżyński reviews correction requests and is responsible for publishing updates on this guide. This website is independent and is not an official bus operator website.",
         },
         {
           title: "For travelers",
