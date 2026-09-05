@@ -547,6 +547,10 @@
     }
   },
   "guideCards": {
+    "bangkok-to-pattaya-bus-fare": {
+      "title": "Bangkok to Pattaya bus fare",
+      "description": "Compare fares from every terminal and both airports, and see what the ticket covers."
+    },
     "ekkamai-bus-terminal-to-pattaya-guide": {
       "title": "Ekkamai Bus Terminal to Pattaya guide",
       "description": "Find the terminal, ticket counters, BTS access and practical boarding tips."

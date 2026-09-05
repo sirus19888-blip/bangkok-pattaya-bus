@@ -33,6 +33,13 @@ export const seoGuideLinks: SeoGuideLink[] = [
   },
   {
     description:
+      "Compare fares from every terminal and both airports, and see what the ticket covers.",
+    href: "/en/bangkok-to-pattaya-bus-fare",
+    slug: "bangkok-to-pattaya-bus-fare",
+    title: "Bangkok to Pattaya bus fare",
+  },
+  {
+    description:
       "Use the Level 1 Gate 8 guide before taking the airport bus to Pattaya.",
     href: "/en/suvarnabhumi-airport-gate-8-pattaya-bus",
     slug: "suvarnabhumi-airport-gate-8-pattaya-bus",

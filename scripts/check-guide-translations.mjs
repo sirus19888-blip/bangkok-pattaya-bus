@@ -14,7 +14,7 @@ assert.ok(existsSync(registryPath), `Missing ${registryPath}`);
 const guides = parseSourceGuides(readSource(sourcePath));
 const registered = parseRegistry(readSource(registryPath));
 assert.ok(guides.length > 0, "Parser found no guides - source format changed?");
-assert.equal(guides.length, 15, `Expected 15 guides, found ${guides.length}`);
+assert.equal(guides.length, 16, `Expected 16 guides, found ${guides.length}`);
 const dictionaries = new Map();
 for (const locale of locales) {
   const path = join(localesDir, `${locale}.json`);

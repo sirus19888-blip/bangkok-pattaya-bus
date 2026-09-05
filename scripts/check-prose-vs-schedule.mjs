@@ -88,7 +88,7 @@ function scanGuides(source, schedules, mismatches) {
   );
 
   assert.ok(guideStarts.length > 0, "Parser found no guides - source format changed?");
-  assert.equal(guideStarts.length, 15, `Expected 15 guides, found ${guideStarts.length}`);
+  assert.equal(guideStarts.length, 16, `Expected 16 guides, found ${guideStarts.length}`);
   for (let index = 0; index < guideStarts.length; index += 1) {
     const start = guideStarts[index];
     const end = guideStarts[index + 1] ?? source.length;
