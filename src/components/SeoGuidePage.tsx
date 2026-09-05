@@ -6,7 +6,10 @@ import { guideHotelCity, routeHotelCity } from "@/data/hotelAffiliate";
 import { getRoutePage } from "@/data/routes";
 import type { LocaleCode } from "@/data/routes";
 import type { SeoGuide } from "@/data/seoGuides";
-import { getGuideModifiedDate } from "@/data/translatedGuides";
+import {
+  getGuideModifiedDate,
+  isGuideTranslated,
+} from "@/data/translatedGuides";
 import { getTranslations } from "@/lib/i18n";
 import { absoluteUrl, SITE_NAME, SITE_URL } from "@/lib/site";
 import { build12GoRouteUrl, getAffiliateRoute } from "@/lib/twelveGo";
@@ -14,6 +17,18 @@ import { getUiTranslations } from "@/lib/uiTranslations";
 
 function guideUrl(slug: string, locale: LocaleCode) {
   return absoluteUrl(`/${locale}/${slug}`);
+}
+
+// Adres, ktory strona oglasza jako swoj wlasny. Musi zgadzac sie co do znaku
+// z <link rel="canonical"> ustawianym w generateMetadata: przewodnik bez
+// tlumaczenia na dany jezyk wskazuje wersje angielska.
+//
+// Wczesniej JSON-LD bral zawsze biezace locale, wiec na 73 ze 105 stron
+// przewodnikow Article.url mowil /pl/..., podczas gdy canonical mowil /en/... -
+// dwa sprzeczne sygnaly o tozsamosci tej samej strony. Ten sam adres trafia
+// do ostatniego elementu BreadcrumbList, wiec poprawka zamyka oba miejsca.
+function guideCanonicalUrl(slug: string, locale: LocaleCode) {
+  return guideUrl(slug, isGuideTranslated(slug, locale) ? locale : "en");
 }
 
 function localizeInternalHref(href: string, locale: LocaleCode) {
@@ -396,7 +411,7 @@ export function SeoGuidePage({ guide, locale = "en" }: { guide: SeoGuide; locale
 }
 
 function GuideJsonLd({ guide, locale }: { guide: SeoGuide; locale: LocaleCode }) {
-  const canonicalUrl = guideUrl(guide.slug, locale);
+  const canonicalUrl = guideCanonicalUrl(guide.slug, locale);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
