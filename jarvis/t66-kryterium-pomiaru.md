@@ -283,6 +283,106 @@ nie wysyła `sub_id`. Nie jest to usterka pomiaru.
 
 ---
 
+### Odczyt 2 — 2026-09-06, +7 dni: wskaźnik strażniczy, ŻÓŁTY
+
+Pierwszy odczyt wskaźnika strażniczego, czyli jedynego, który może uzasadnić
+cofnięcie T65a przed końcem okna. **Wynik jest niejednoznaczny i zależy od
+doboru okna** — zapisuję wszystkie trzy warianty, żeby nikt później nie wybrał
+tego, który akurat pasuje do tezy.
+
+Źródła: 12Go → Bookings and sales (30 sie – 6 wrz), GA4 dzień po dniu.
+
+#### Dane surowe
+
+```
+13 rezerwacji, EUR 10,40, srednia EUR 0,80
+klasa pojazdu    bus 8 (EUR 4,28)   van 5 (EUR 6,12)   charter 0
+wg pozycji       mobilesticky        6   EUR 5,76
+                 routehelpbusfull    3   EUR 2,25   <- grupa BADANA
+                 desktopsidebar      2   EUR 1,13
+                 homepageroutecard   1   EUR 0,29
+                 guidemobilesticky   1   EUR 0,97
+```
+
+Zero rezerwacji klasy charter. Przy udziale 3,8% z linii bazowej oczekiwane
+przy 13 rezerwacjach to pół sztuki, więc zero jest w normie.
+
+#### Trzy warianty wskaźnika
+
+```
+A. cale okno 30.08-05.09, caly ruch
+   13 / 484 uzytk. = 26,9 na 1000   przedzial 14,3-45,9   baza NA GRANICY
+
+B. cale okno, bez ruchu z asystentow AI
+   13 / 390 uzytk. = 33,3 na 1000   przedzial 17,7-57,0   baza W SRODKU
+
+C. scisle po wdrozeniu 31.08-05.09, bez AI
+    8 / 331 uzytk. = 24,2 na 1000   przedzial 12,1-38,7   baza POZA
+```
+
+Wariant C jest metodologicznie najczystszy — obejmuje wyłącznie ruch po
+wdrożeniu (T65a od 30.08 15:17) — i to on wypada poniżej linii bazowej 45,9.
+
+#### DECYZJA: nie cofać. Trzy powody
+
+**1. Grupa badana ma się lepiej, nie gorzej.** Gdyby zmiana odstraszała
+czytelników, ucierpiałaby przede wszystkim ona. Jest odwrotnie:
+
+```
+udzial rezerwacji z pozycji objetych zmiana
+linia bazowa   8,3%   (13 z 157)
+po wdrozeniu  25,0%   (2 z 8)
+```
+
+**2. Liczby bezwzględne stoją.** 1,88 rezerwacji dziennie w linii bazowej,
+1,62 teraz. Spada wskaźnik, bo mianownik urósł o 71% (41 → 70 użytkowników
+na dobę), a nie dlatego, że ludzie przestali rezerwować.
+
+**3. Osiem rezerwacji w sześć dni** to za mało, by unieważnić pomiar
+zaplanowany na 8–12 tygodni. To jest tydzień pierwszy.
+
+#### Dlaczego ŻÓŁTY, a nie zielony
+
+Dwie rzeczy, których nie wolno odmachnąć:
+
+- **Wariant C wypada poniżej przedziału ufności.** To nie jest szum.
+- **5 i 6 września: zero rezerwacji.** Dwie doby z rzędu. Przy tempie 1,6
+  dziennie to się zdarza, ale w połączeniu ze spadkiem zaangażowania
+  (41 s → 23 s) i zdarzeń na użytkownika (6,0 → 4,9) układa się w kierunek.
+
+#### LUKA W METODZIE — do domknięcia przed następnym odczytem
+
+Warianty B i C odejmują ruch z asystentów AI, **zakładając, że w linii
+bazowej go nie było. Tego NIE sprawdzono.**
+
+```
+udzial ruchu z asystentow AI (chatgpt.com, openai, syntx.ai, doubao.com)
+30.08  20,3%   02.09  14,9%   04.09   8,3%
+31.08  24,6%   03.09  20,3%   05.09  20,6%
+01.09  27,4%                  RAZEM  19,4%
+```
+
+Jedna piąta ruchu, stabilnie przez cały tydzień. **Jeśli w okresie bazowym
+(1 lip – 24 sie) było podobnie, całe odejmowanie jest nieuprawnione** i
+właściwym porównaniem jest wariant A, gdzie baza mieści się w przedziale
+i nie ma o czym mówić.
+
+**Do pobrania przed 13 września:** GA4 → Aktywni użytkownicy według
+Pierwsze źródło/medium, zakres **1 lipca – 24 sierpnia**. Interesuje
+wyłącznie udział `chatgpt.com` i pokrewnych.
+
+To rozstrzygnie, czy patrzymy na realne osłabienie konwersji, czy na
+artefakt zmiany składu ruchu.
+
+#### Kontekst z tego samego dnia
+
+Ruch na stronie **nie spadł** — 74, 67, 74, 72, 65 użytkowników 1–5 września.
+Wykres w panelu 12Go sugerował załamanie, ale to był powrót do normy po
+wyskoku z 30–31 sierpnia plus obcięta doba bieżąca. Strona sprawdzona
+technicznie: linki afiliacyjne, `sub_id` i czasy odpowiedzi bez zarzutu.
+
+---
+
 ### Kalendarz odczytów
 
 ```
