@@ -105,6 +105,12 @@ Odporny na wahania ruchu, dlatego jest miarą rozstrzygającą, a nie liczba rez
 
 **Łączna liczba rezerwacji na 1000 sesji.** Baza: **45,9**.
 
+> **UWAGA — ta definicja została poprawiona 2026-09-06. Nie używać jej w tej postaci.**
+> Mianownik „użytkownicy" zawiera ruch botów i natychmiastowych odbić, który fizycznie
+> nie może zarezerwować biletu, więc jego przyrost wygląda jak spadek konwersji.
+> Obowiązująca definicja i baza: **rezerwacje na 1000 sesji z zaangażowaniem, baza 82,1**.
+> Uzasadnienie w bloku „Odczyt 2 — KOREKTA" niżej.
+
 Realne ryzyko tej zmiany: czytelnik szukający autobusu ląduje na liście od PLN 155,
 odbija się i nie rezerwuje niczego. Wyższa prowizja przy wyraźnie mniejszej liczbie
 rezerwacji może dać gorszy wynik łączny. Ten wskaźnik pilnuje właśnie tego.
@@ -380,6 +386,91 @@ Ruch na stronie **nie spadł** — 74, 67, 74, 72, 65 użytkowników 1–5 wrze�
 Wykres w panelu 12Go sugerował załamanie, ale to był powrót do normy po
 wyskoku z 30–31 sierpnia plus obcięta doba bieżąca. Strona sprawdzona
 technicznie: linki afiliacyjne, `sub_id` i czasy odpowiedzi bez zarzutu.
+
+---
+
+### Odczyt 2 — KOREKTA z tego samego dnia: ZIELONY
+
+Po dociągnięciu dwóch brakujących raportów GA4 **odwołuję dwie tezy z bloku wyżej.**
+Zostawiam je nienaruszone, bo droga do wniosku jest częścią wartości tego dokumentu.
+
+#### Teza odwołana nr 1: „ruch z asystentów AI to nowy kanał"
+
+```
+udzial ruchu z AI
+linia bazowa (1 lip - 24 sie)   773 z 2290 = 33,8%
+teraz        (30 sie -  6 wrz)   94 z  488 = 19,4%
+```
+
+Kanał istniał od początku, a jego udział **SPADŁ o 14 punktów**. Odejmowanie go
+z mianownika (warianty B i C) było nieuprawnione.
+
+#### Teza odwołana nr 2: „wariant C wypada poniżej przedziału, sygnał żółty"
+
+Arytmetycznie prawda, ale liczona na **złym mianowniku**. Właściwy mianownik
+znalazł się dopiero po rozbiciu ruchu na kraje.
+
+#### Co pokazało rozbicie na kraje
+
+```
+kraj             baza/dobe   teraz/dobe   zmiana   zaangazowanie
+United States         2,1         6,8      +215%   25%   <- Ashburn = centrum danych AWS
+China                 8,0        12,6       +58%   7,5%  <- 8 sekund na stronie
+Taiwan                0,8         1,5       +92%
+Singapore             3,2         4,9       +52%
+Thailand             15,0        17,4       +16%   45,6% <- rynek rdzeniowy
+India                 1,7         1,6        -4%
+RAZEM                41,8        61,0       +46%
+```
+
+Wspólczynnik zaangażowania spadł z **48,71% do 37,16%** — dokładnie tak, jak musi,
+gdy rośnie ruch, który się nie angażuje. Przyrost siedzi w USA (boty z centrów
+danych) i w Chinach (7,5% zaangażowania; 12Go nie jest tam obecne, więc ci ludzie
+i tak nie zarezerwują).
+
+#### Właściwy mianownik: sesje z zaangażowaniem
+
+```
+                          baza    teraz   zmiana
+uzytkownicy / dobe        41,8     61,0     +46%   <- mianownik zafalszowany
+sesje z zaang. / dobe     23,3     25,9     +11%   <- realny ruch
+rezerwacje / dobe          1,9      1,6     -15%
+```
+
+```
+WSKAZNIK na 1000 SESJI Z ZAANGAZOWANIEM
+baza     105 / 1279 = 82,1
+teraz     13 /  207 = 62,8
+95% przedzial:  33,4 - 107,4
+baza 82,1 w przedziale:  TAK, wygodnie w srodku
+```
+
+#### Trzy mianowniki, trzy odpowiedzi — dlatego to jest zapisane
+
+```
+mianownik                  wynik    baza w przedziale
+uzytkownicy (surowo)       26,9     na granicy
+uzytkownicy bez AI         33,3     tak, ale na blednym zalozeniu
+sesje z zaangazowaniem     62,8     TAK, wygodnie          <- OBOWIAZUJACY
+```
+
+#### DECYZJA: ZIELONY. Nie cofamy.
+
+Przy poprawnym mianowniku odchylenia nie ma. Zastrzeżenie pozostaje takie samo
+jak przy każdym tygodniu pierwszym: 13 rezerwacji to szeroki przedział i dopiero
+kolejne odczyty zaczną coś znaczyć.
+
+Argument najmocniejszy jest niezależny od mianownika: **gdyby T65a szkodziła,
+spadłaby bezwzględna liczba rezerwacji.** Nie spadła w sposób odróżnialny od szumu.
+
+#### DWIE POPRAWKI METODY, obowiązujące od następnego odczytu
+
+**1. Wskaźnik strażniczy liczymy na 1000 SESJI Z ZAANGAŻOWANIEM, baza 82,1.**
+Nie na użytkowników. Stary mianownik rósł od botów i wywołałby fałszywy alarm.
+
+**2. Odfiltrować ruch z centrów danych w GA4** (wykluczenia ruchu wewnętrznego
+i botów). Ashburn i podobne zawyżają statystyki i psują każdy wskaźnik liczony
+na użytkownikach.
 
 ---
 
