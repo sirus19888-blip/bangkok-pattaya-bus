@@ -569,18 +569,28 @@ function runManualSourceAssertions({ appSchedules, source, text }) {
 
 function assertDonMueangAirportToPattaya({ appSchedules, source, text }) {
   const routeId = "don-mueang-airport-to-pattaya";
+  // Since T78 the exact departures come from the operator's own booking system
+  // (tcl99web.transport.co.th). The AOT page below is still checked, but only
+  // for what it actually publishes: the window, fare, counters and pick-up point.
+  const expectedDepartures = [
+    "06:30",
+    "07:30",
+    "10:30",
+    "12:00",
+    "13:30",
+    "17:30",
+  ];
   const appSchedule = appSchedules[routeId];
 
   assert.ok(appSchedule, `${routeId} must exist in app schedules.`);
   assert.deepEqual(
     appSchedule.times,
-    [],
-    `${routeId} must not publish exact departures when AOT only publishes a service window.`,
+    expectedDepartures,
+    `${routeId} must publish the six departures confirmed in the operator booking system.`,
   );
-  assert.equal(
-    appSchedule.departureWindow,
-    "06:30-17:30, every ~4h",
-    `${routeId} must show the AOT service window instead of invented exact times.`,
+  assert.ok(
+    !appSchedule.departureWindow,
+    `${routeId} must not fall back to a service window now that exact departures are known.`,
   );
   assert.ok(
     textHas(
@@ -618,7 +628,7 @@ function assertDonMueangAirportToPattaya({ appSchedules, source, text }) {
       strength: "weaker than RRC",
       result: "match",
       note:
-        "AOT confirms fare, counters, pick-up point, and a 06:30-17:30 service window about every 4 hours, but does not publish exact departure times.",
+        "AOT confirms fare, counters, pick-up point, and a 06:30-17:30 service window. The six exact departures come from the operator booking system, which AOT does not publish.",
     },
   ];
 }
@@ -705,7 +715,11 @@ function printSourceReport(result) {
   console.log(`Checked: ${result.checkedAt}`);
 
   if (result.error) {
-    console.log("Status: fetch error");
+    console.log(
+      result.errorKind === "assertion"
+        ? "Status: ASSERTION FAILED (app data vs source)"
+        : "Status: fetch error",
+    );
     console.log(`Error: ${result.error}`);
     return;
   }
@@ -770,6 +784,9 @@ async function main() {
   console.log("Schedule source check");
   console.log(`Checked: ${CHECKED_AT}`);
   console.log("Mode: read-only; no live schedule data will be changed.");
+
+  // Awarie asercji zbierane osobno: musza wywrocic wynik, awarie sieci nie.
+  const assertionFailures = [];
 
   for (const source of sources) {
     const sourceReport = {
@@ -880,8 +897,18 @@ async function main() {
         };
       });
     } catch (error) {
+      // Awaria asercji to rozjazd danych aplikacji ze zrodlem, a nie problem
+      // z siecia. Wrzucona do jednego worka z bledem pobrania znika z oczu:
+      // skrypt drukuje "fetch error" i konczy sie zerem, wiec kontrola cicho
+      // przestaje czegokolwiek pilnowac.
+      const isAssertion = error?.code === "ERR_ASSERTION";
+      sourceReport.errorKind = isAssertion ? "assertion" : "fetch";
       sourceReport.error =
-        error instanceof Error ? error.message : "Unknown fetch error";
+        error instanceof Error ? error.message : "Unknown error";
+
+      if (isAssertion) {
+        assertionFailures.push(`${source.name}: ${sourceReport.error}`);
+      }
     }
 
     report.sources.push(sourceReport);
@@ -893,6 +920,16 @@ async function main() {
 
   console.log(`\nJSON report written to ${path.relative(process.cwd(), REPORT_PATH)}`);
   console.log("Review mismatches manually before changing any schedule data.");
+
+  if (assertionFailures.length > 0) {
+    console.error(
+      `\n${assertionFailures.length} assertion failure(s) - app data no longer matches the source:`,
+    );
+    for (const failure of assertionFailures) {
+      console.error(`  - ${failure}`);
+    }
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error) => {
