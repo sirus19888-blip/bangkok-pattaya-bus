@@ -64,7 +64,16 @@ export function TravelDateProvider({
     // Wywoluje sie raz i tylko wtedy, gdy data faktycznie sie rozjechala.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMinTravelDate(today);
-    setTravelDate((currentTravelDate) => currentTravelDate || today);
+    // Nie "|| today": data wypieczona przez ISR jest niepusta, wiec przechodzila
+    // przez ten warunek i zostawala w stanie. CTA szlo wtedy do 12Go z data
+    // z przeszlosci, gdzie dziala ona jak twardy filtr (godate) i lista wychodzi
+    // pusta - klikniecie jest, rezerwacji nie ma. Nadpisujemy wylacznie date juz
+    // nieaktualna; swiadomy wybor uzytkownika na przyszlosc zostaje nietkniety.
+    // Obie wartosci sa w formacie YYYY-MM-DD (Intl "en-CA" i <input type="date">),
+    // wiec porownanie tekstowe jest chronologiczne.
+    setTravelDate((currentTravelDate) =>
+      !currentTravelDate || currentTravelDate < today ? today : currentTravelDate,
+    );
   }, [initialDate]);
 
   const value = useMemo(
