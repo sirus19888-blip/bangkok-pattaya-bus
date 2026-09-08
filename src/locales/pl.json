@@ -175,24 +175,23 @@
     },
     "don-mueang-airport-to-pattaya": {
       "travelTime": "Około 3-3,5 godziny",
-      "departureWindow": "06:30-17:30, co ok. 4 godz.",
       "price": "155 THB za osobę",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
       "boardingNote": "Oficjalna strona lotniska wskazuje stanowisko w Terminalu 1, Building 1, Floor 1, Gate 1 oraz w Terminalu 2, Building 2, Floor 1, Gate 11. Miejsce odbioru to Service Hall Building. Strona lotniska podaje godziny stanowiska do Pattayi 06:30-17:30 codziennie; potwierdź miejsce odjazdu na lotnisku.",
       "fareNote": "Cena podana na stronie transportowej lotniska: 155 THB za osobę.",
-      "operatorNote": "Na podstawie oficjalnych informacji transportowych lotniska. Potwierdź przed podróżą.",
-      "sourceType": "oficjalna strona lotniska / operatora",
-      "dataQuality": "Oficjalne źródło lotniskowe, sprawdzone ręcznie"
+      "operatorNote": "Godziny odjazdów i cena 155 THB pochodzą z systemu rezerwacyjnego operatora. Odstępy są nierówne: dwa autobusy w pierwszej godzinie, a potem cztery godziny między 13:30 a ostatnim kursem o 17:30. Potwierdź przed podróżą.",
+      "sourceType": "system rezerwacyjny operatora / strona lotniska",
+      "dataQuality": "System rezerwacyjny operatora, sprawdzony ręcznie"
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Około 3-3,5 godziny",
-      "price": "167-183 THB za osobę",
+      "price": "155 THB w kasie, 167-183 THB online",
       "disclaimer": "Godziny autobusów mogą się zmienić. Przed podróżą potwierdź je na stacji lub u operatora.",
       "boardingNote": "Źródła dodatkowe wskazują Pattaya Sukhumvit Road Bus Station. Przed podróżą potwierdź dokładne miejsce odjazdu w Pattayi.",
-      "fareNote": "Źródła dodatkowe pokazują ceny online 167-183 THB za osobę.",
-      "operatorNote": "Rozkład opiera się na dodatkowych źródłach rezerwacyjnych i podróżniczych. Potwierdź u operatora lub na stacji.",
-      "sourceType": "dodatkowe źródła rezerwacyjne / podróżnicze",
-      "dataQuality": "Źródła dodatkowe, wymagają potwierdzenia u operatora"
+      "fareNote": "Przewoźnik sprzedaje tę trasę po 155 THB od osoby. Pośrednicy internetowi doliczają marżę: 12Go podaje 167 THB, inne serwisy do 183 THB. Kasa jest najtańsza, jeśli możesz poczekać na miejsce.",
+      "operatorNote": "Godziny odjazdów i cena w kasie pochodzą z systemu rezerwacyjnego operatora. Potwierdź u operatora lub na stacji przed podróżą.",
+      "sourceType": "oficjalny system rezerwacyjny operatora",
+      "dataQuality": "System rezerwacyjny operatora, sprawdzony ręcznie"
     }
   },
   "stationsText": {
@@ -523,7 +522,7 @@
       },
       {
         "question": "Co, jeśli dotrę do Don Mueang poza godzinami kursowania autobusów lub między odjazdami?",
-        "answer": "Oficjalna strona lotniska podaje, że autobusy kursują mniej więcej co cztery godziny w przedziale od około 06:30 do 17:30, ale nie publikuje dokładnych godzin odjazdów, dlatego po przyjeździe zawsze potwierdzaj najbliższy odjazd w kasie. Jeśli lądujesz późnym wieczorem, bardzo wcześnie rano lub czeka Cię długie oczekiwanie między kursami, praktyczną alternatywą jest taksówka z licznikiem, Grab lub wcześniej zarezerwowany prywatny transfer do Pattayi. Ustal cenę i miejsce odbioru przed wyruszeniem, a przy nocnym przylocie najłatwiej często porównać prywatny transfer z wyprzedzeniem."
+        "answer": "System rezerwacyjny operatora podaje sześć odjazdów dziennie między 06:30 a 17:30, a odstępy są nierówne: dwa autobusy w pierwszej godzinie, a potem cztery godziny między kursem o 13:30 a ostatnim o 17:30. Po przyjeździe i tak potwierdź najbliższy odjazd w kasie. Jeśli lądujesz późnym wieczorem, bardzo wcześnie rano lub czeka Cię długie oczekiwanie między kursami, praktyczną alternatywą jest taksówka z licznikiem, Grab lub wcześniej zarezerwowany prywatny transfer do Pattayi. Ustal cenę i miejsce odbioru przed wyruszeniem, a przy nocnym przylocie najłatwiej często porównać prywatny transfer z wyprzedzeniem."
       },
       {
         "question": "Jak dostanę się do hotelu po przyjeździe do Pattayi?",
@@ -545,23 +544,23 @@
       },
       {
         "question": "Czy godziny autobusów są potwierdzone?",
-        "answer": "Te godziny są oparte na dodatkowych źródłach rezerwacyjnych i turystycznych. Potwierdź je u operatora lub na stacji przed podróżą."
+        "answer": "Te godziny pochodzą z systemu rezerwacyjnego operatora. Potwierdź je u operatora lub na stacji przed podróżą."
       },
       {
         "question": "Ile bagażu mogę zabrać do autobusu z Pattaya na lotnisko Don Mueang?",
-        "answer": "Standardowe autokary mają miejsce na bagaż pod pojazdem, więc większość podróżnych zabiera walizkę oraz bagaż podręczny bez dodatkowej opłaty. Paszport, kosztowności i elektronikę trzymaj przy sobie w kabinie. Ponieważ szczegóły tej trasy pochodzą ze źródeł wtórnych, a nie od przewoźnika, przed wejściem na pokład potwierdź w kasie zasady dotyczące bagażu ponadgabarytowego."
+        "answer": "Standardowe autokary mają miejsce na bagaż pod pojazdem, więc większość podróżnych zabiera walizkę oraz bagaż podręczny bez dodatkowej opłaty. Paszport, kosztowności i elektronikę trzymaj przy sobie w kabinie. Godziny i cena kasowa pochodzą z systemu rezerwacyjnego przewoźnika, ale zasad bagażowych tam nie ma, więc przed wejściem na pokład potwierdź w kasie zasady dotyczące bagażu ponadgabarytowego."
       },
       {
         "question": "Czy za bilet na autobus z Pattaya do Don Mueang mogę zapłacić kartą, czy potrzebuję gotówki?",
-        "answer": "Miej przygotowaną gotówkę w tajskich bahtach do zapłaty w kasie, ponieważ możliwość płatności kartą bywa różna w zależności od stacji i pory dnia. Cena 167-183 THB pochodzi ze źródeł wtórnych, więc przed zapłatą potwierdź aktualną kwotę u przewoźnika lub na stacji. Jeśli wolisz zapłacić kartą i zarezerwować miejsce, możesz też kupić bilet online przed podróżą."
+        "answer": "Miej przygotowaną gotówkę w tajskich bahtach do zapłaty w kasie, ponieważ możliwość płatności kartą bywa różna w zależności od stacji i pory dnia. Przewoźnik pobiera w kasie 155 THB, a pośrednicy internetowi podają 167-183 THB, więc przed zapłatą potwierdź aktualną kwotę u przewoźnika lub na stacji. Jeśli wolisz zapłacić kartą i zarezerwować miejsce, możesz też kupić bilet online przed podróżą."
       },
       {
         "question": "Który autobus z Pattaya do Don Mueang wybrać, aby zdążyć na samolot?",
-        "answer": "Przy około sześciu kursach dziennie (źródła wtórne podają 07:00, 10:00, 12:00, 14:30, 16:00 i 17:00) oraz podróży trwającej 3–3,5 godziny do Don Mueang, dalej położonego lotniska Bangkoku, licz czas wstecz od godziny lotu i wybierz wcześniejszy autobus z dużym zapasem. Zakładaj pełne 3,5 godziny plus korki, a następnie dolicz czas na odprawę, nadanie bagażu i kontrolę bezpieczeństwa. Nie polegaj na ostatnim autobusie przed lotem i potwierdź godziny odjazdów przed podróżą, ponieważ nie są one potwierdzone przez przewoźnika."
+        "answer": "Przy około sześciu kursach dziennie (system rezerwacyjny operatora podaje 07:00, 10:00, 12:00, 14:30, 16:00 i 17:00) oraz podróży trwającej 3–3,5 godziny do Don Mueang, dalej położonego lotniska Bangkoku, licz czas wstecz od godziny lotu i wybierz wcześniejszy autobus z dużym zapasem. Zakładaj pełne 3,5 godziny plus korki, a następnie dolicz czas na odprawę, nadanie bagażu i kontrolę bezpieczeństwa. Nie polegaj na ostatnim autobusie przed lotem i potwierdź godziny odjazdów przed podróżą, ponieważ przewoźnik może je zmienić."
       },
       {
         "question": "Co zrobić, jeśli spóźnię się na ostatni autobus z Pattaya przed lotem z Don Mueang?",
-        "answer": "Jeśli spóźnisz się na ostatni autobus, a mimo to musisz zdążyć na samolot, realnymi opcjami są taksówka z licznikiem lub wcześniej zamówiony prywatny transfer prosto do Don Mueang; ustal cenę i trasę przed wyruszeniem. Ponieważ dziennie jest około sześciu kursów, a godziny pochodzą ze źródeł wtórnych, nie licz na ostatni autobus przed lotem. Wcześniejsze porównanie prywatnych transferów to często najprostszy sposób, aby uniknąć nerwów w ostatniej chwili."
+        "answer": "Jeśli spóźnisz się na ostatni autobus, a mimo to musisz zdążyć na samolot, realnymi opcjami są taksówka z licznikiem lub wcześniej zamówiony prywatny transfer prosto do Don Mueang; ustal cenę i trasę przed wyruszeniem. Ponieważ dziennie jest tylko sześć kursów, nie licz na ostatni autobus przed lotem. Wcześniejsze porównanie prywatnych transferów to często najprostszy sposób, aby uniknąć nerwów w ostatniej chwili."
       }
     ]
   }

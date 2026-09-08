@@ -166,13 +166,12 @@
     "don-mueang-airport-to-pattaya": {
       "boardingNote": "La page officielle de l'aéroport indique des comptoirs au Terminal 1, bâtiment 1, étage 1, porte 1 et au Terminal 2, bâtiment 2, étage 1, porte 11. Le point de prise en charge est le Service Hall Building. La page de l'aéroport indique le comptoir Pattaya ouvert de 06h30 à 17h30 tous les jours ; confirmez le point de départ sur place.",
       "travelTime": "Environ 3 à 3,5 heures",
-      "departureWindow": "06:30-17:30, toutes les ~4 h",
       "price": "155 THB par personne",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
       "fareNote": "Tarif indiqué sur la page de transport de l'aéroport : 155 THB par personne.",
-      "operatorNote": "Basé sur les informations officielles de transport de l'aéroport. Confirmez avant le voyage.",
-      "sourceType": "page officielle de l'aéroport / de l'opérateur",
-      "dataQuality": "Source officielle de l'aéroport, vérifiée manuellement"
+      "operatorNote": "Les horaires et le tarif de 155 THB proviennent du système de réservation de l'opérateur. Les intervalles sont irréguliers : deux bus dans la première heure, puis quatre heures entre 13h30 et le dernier départ à 17h30. Confirmez avant le voyage.",
+      "sourceType": "système de réservation de l'opérateur / page de l'aéroport",
+      "dataQuality": "Système de réservation de l'opérateur, vérifié manuellement"
     },
     "pattaya-to-suvarnabhumi-airport": {
       "travelTime": "Environ 2 heures, selon la circulation",
@@ -186,13 +185,13 @@
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Environ 3 à 3,5 heures",
-      "price": "167-183 THB",
+      "price": "155 THB au guichet, 167–183 THB en ligne",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
       "boardingNote": "Des sources secondaires indiquent Pattaya Sukhumvit Road Bus Station. Confirmez le point d'embarquement exact à Pattaya avant le départ.",
-      "fareNote": "Des sources secondaires indiquent des tarifs en ligne de 167 à 183 THB par personne.",
-      "operatorNote": "Les horaires sont basés sur des sources secondaires de réservation et de voyage. Confirmez auprès de l'opérateur ou à la station.",
-      "sourceType": "sources secondaires de réservation / voyage",
-      "dataQuality": "Sources secondaires, confirmation officielle nécessaire"
+      "fareNote": "L'opérateur vend ce trajet 155 THB par personne. Les revendeurs en ligne ajoutent une marge : 12Go affiche 167 THB et d'autres sites jusqu'à 183 THB. Le guichet est l'option la moins chère si vous pouvez attendre une place.",
+      "operatorNote": "Les horaires et le tarif au guichet proviennent du système de réservation de l'opérateur. Confirmez auprès de l'opérateur ou à la station avant le voyage.",
+      "sourceType": "système de réservation officiel de l'opérateur",
+      "dataQuality": "Système de réservation de l'opérateur, vérifié manuellement"
     }
   },
   "stationsText": {
@@ -481,7 +480,7 @@
       },
       {
         "question": "Que faire si j'arrive à Don Mueang en dehors des horaires de bus ou entre deux départs ?",
-        "answer": "La page officielle de l'aéroport indique que le service circule environ toutes les quatre heures, entre 06h30 et 17h30 approximativement, mais elle ne publie pas d'horaires de départ précis : confirmez donc toujours le prochain départ au comptoir à votre arrivée. Si vous atterrissez tard le soir, très tôt le matin ou si une longue attente vous sépare du prochain bus, un taxi au compteur, Grab ou un transfert privé réservé à l'avance vers Pattaya constituent l'alternative pratique. Convenez du prix et du point de prise en charge avant de partir ; pour une arrivée de nuit, il est souvent plus simple de comparer un transfert privé à l'avance."
+        "answer": "Le système de réservation de l'opérateur indique six départs par jour entre 06h30 et 17h30, avec des intervalles irréguliers : deux bus dans la première heure, puis quatre heures entre le départ de 13h30 et le dernier à 17h30. Confirmez tout de même le prochain départ au comptoir à votre arrivée. Si vous atterrissez tard le soir, très tôt le matin ou si une longue attente vous sépare du prochain bus, un taxi au compteur, Grab ou un transfert privé réservé à l'avance vers Pattaya constituent l'alternative pratique. Convenez du prix et du point de prise en charge avant de partir ; pour une arrivée de nuit, il est souvent plus simple de comparer un transfert privé à l'avance."
       },
       {
         "question": "Comment rejoindre mon hôtel après mon arrivée à Pattaya ?",
@@ -533,7 +532,7 @@
       },
       {
         "question": "Combien coûte le billet ?",
-        "answer": "Le prix indiqué est de 167 à 183 THB. Confirmez le tarif et le point de départ avant le voyage."
+        "answer": "Le prix est de 155 THB au guichet et de 167 à 183 THB en ligne. Confirmez le tarif et le point de départ avant le voyage."
       },
       {
         "question": "Comment rejoindre mon vol ? Don Mueang ?",
@@ -541,19 +540,19 @@
       },
       {
         "question": "Quelle quantité de bagages puis-je emporter dans le bus de Pattaya à l'aéroport de Don Mueang ?",
-        "answer": "Les autocars standard disposent d'une soute à bagages sous le véhicule, si bien que la plupart des voyageurs emportent une valise et un bagage à main sans frais supplémentaires. Gardez votre passeport, vos objets de valeur et vos appareils électroniques avec vous en cabine. Comme les informations de cet itinéraire proviennent de sources secondaires et non de l'opérateur, vérifiez au guichet les éventuelles règles sur les bagages hors format avant l'embarquement."
+        "answer": "Les autocars standard disposent d'une soute à bagages sous le véhicule, si bien que la plupart des voyageurs emportent une valise et un bagage à main sans frais supplémentaires. Gardez votre passeport, vos objets de valeur et vos appareils électroniques avec vous en cabine. Les horaires et le tarif au guichet proviennent du système de réservation de l'opérateur, mais les règles de bagages n'y figurent pas : vérifiez au guichet les éventuelles règles sur les bagages hors format avant l'embarquement."
       },
       {
         "question": "Puis-je payer le billet de bus de Pattaya à Don Mueang par carte, ou ai-je besoin d'espèces ?",
-        "answer": "Gardez des bahts thaïlandais en espèces pour le guichet, car l'acceptation des cartes peut varier selon la station et l'heure de la journée. Le tarif de 167 à 183 THB provient de sources secondaires, alors confirmez le prix actuel auprès de l'opérateur ou de la station avant de payer. Si vous préférez payer par carte et garantir une place, vous pouvez aussi réserver en ligne avant de partir."
+        "answer": "Gardez des bahts thaïlandais en espèces pour le guichet, car l'acceptation des cartes peut varier selon la station et l'heure de la journée. L'opérateur demande 155 THB au guichet, tandis que les revendeurs en ligne affichent 167 à 183 THB : confirmez le prix actuel auprès de l'opérateur ou de la station avant de payer. Si vous préférez payer par carte et garantir une place, vous pouvez aussi réserver en ligne avant de partir."
       },
       {
         "question": "Quel bus de Pattaya à Don Mueang dois-je prendre pour ne pas rater mon vol ?",
-        "answer": "Avec environ six départs par jour (les sources secondaires indiquent 07h00, 10h00, 12h00, 14h30, 16h00 et 17h00) et un trajet de 3 à 3,5 heures jusqu'à Don Mueang, l'aéroport de Bangkok le plus éloigné, partez de l'heure de votre vol et calculez à rebours pour choisir un bus plus tôt avec une large marge. Comptez les 3,5 heures complètes plus le trafic, puis ajoutez du temps pour l'enregistrement, le dépôt des bagages et la sécurité. Ne comptez pas sur le dernier bus avant votre vol et confirmez les horaires de départ avant de voyager, car ils ne sont pas confirmés par l'opérateur."
+        "answer": "Avec environ six départs par jour (le système de réservation de l'opérateur indique 07h00, 10h00, 12h00, 14h30, 16h00 et 17h00) et un trajet de 3 à 3,5 heures jusqu'à Don Mueang, l'aéroport de Bangkok le plus éloigné, partez de l'heure de votre vol et calculez à rebours pour choisir un bus plus tôt avec une large marge. Comptez les 3,5 heures complètes plus le trafic, puis ajoutez du temps pour l'enregistrement, le dépôt des bagages et la sécurité. Ne comptez pas sur le dernier bus avant votre vol et confirmez les horaires de départ avant de voyager, car l'opérateur peut les modifier."
       },
       {
         "question": "Que faire si je rate le dernier bus au départ de Pattaya avant mon vol depuis Don Mueang ?",
-        "answer": "Si vous ratez le dernier bus tout en devant attraper un vol, les options réalistes sont un taxi au compteur ou un transfert privé réservé à l'avance directement jusqu'à Don Mueang ; convenez du prix et de l'itinéraire avant de partir. Comme il n'y a qu'environ six départs par jour et que les horaires proviennent de sources secondaires, ne comptez pas sur le dernier bus avant un vol. Comparer un transfert privé à l'avance est souvent le moyen le plus simple d'éviter la précipitation de dernière minute."
+        "answer": "Si vous ratez le dernier bus tout en devant attraper un vol, les options réalistes sont un taxi au compteur ou un transfert privé réservé à l'avance directement jusqu'à Don Mueang ; convenez du prix et de l'itinéraire avant de partir. Comme il n'y a que six départs par jour, ne comptez pas sur le dernier bus avant un vol. Comparer un transfert privé à l'avance est souvent le moyen le plus simple d'éviter la précipitation de dernière minute."
       }
     ]
   }

@@ -730,7 +730,7 @@ export const seoGuides: SeoGuide[] = [
     routeId: "don-mueang-airport-to-pattaya",
     routeLinkLabel: "Open Don Mueang Airport to Pattaya bus times",
     ctaLabel: "Check Don Mueang to Pattaya tickets",
-    lastUpdated: "2026-09-04",
+    lastUpdated: "2026-09-08",
     lastVerified: "2026-09-08",
     keyPoints: [
       "The bus is a direct service to Pattaya - you do not need to transfer through Mo Chit or central Bangkok.",
@@ -739,7 +739,7 @@ export const seoGuides: SeoGuide[] = [
     ],
     transferNote: {
       title: "When to skip the airport bus",
-      body: "This route runs on a service window rather than a published timetable, so the wait can be long. The bus stays much cheaper, but a private transfer removes the waiting entirely, goes door to door and is easier to justify with a group, heavy bags or an arrival outside the service window.",
+      body: "The direct bus runs only six times a day and the gaps between departures are uneven, so the wait can be long. The bus stays much cheaper, but a private transfer removes the waiting entirely, goes door to door and is easier to justify with a group, heavy bags or an arrival outside the bus hours.",
       ctaLabel: "Compare airport transfer prices",
     },
     sections: [
@@ -853,15 +853,15 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "There is a direct bus from Pattaya to Don Mueang Airport (DMK), run by the government operator Transport Co. (the 999 bus). It is the cheapest and simplest way to reach DMK for a flight without changing buses in Bangkok. Because you are traveling to catch a flight, the most important thing is leaving enough time for traffic and check-in. This guide explains where the bus departs, how long it takes, and how much buffer to plan.",
     shortAnswer:
-      "The direct Pattaya to Don Mueang bus departs from a Transport Co. stop on Sukhumvit Road, with secondary sources showing online fares of 167-183 THB per person. Plan for roughly 3 to 3.5 hours of travel, then add time for check-in and security - do not take the last possible bus before an early flight. Check the Pattaya to Don Mueang route page for current departure times.",
+      "The direct Pattaya to Don Mueang bus departs from a Transport Co. stop on Sukhumvit Road, at 155 THB at the counter, or 167-183 THB per person from online resellers. Plan for roughly 3 to 3.5 hours of travel, then add time for check-in and security - do not take the last possible bus before an early flight. Check the Pattaya to Don Mueang route page for current departure times.",
     routeId: "pattaya-to-don-mueang-airport",
     routeLinkLabel: "Open Pattaya to Don Mueang Airport bus times",
     ctaLabel: "Check Pattaya to Don Mueang tickets",
-    lastUpdated: "2026-08-03",
+    lastUpdated: "2026-09-08",
     lastVerified: "2026-09-08",
     keyPoints: [
       "The bus goes direct to Don Mueang - you do not need to change buses in Bangkok.",
-      "It departs from a Transport Co. stop on Sukhumvit Road in Pattaya, with secondary sources showing online fares of 167-183 THB per person.",
+      "It departs from a Transport Co. stop on Sukhumvit Road in Pattaya, at 155 THB at the counter, or 167-183 THB per person from online resellers.",
       "Leave a generous buffer for traffic, check-in and security - do not rely on the last bus before an early or international flight.",
     ],
     sections: [
@@ -875,7 +875,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "How much the bus costs",
-        body: "Secondary sources show online fares of 167-183 THB per person. The main advantage over taking a bus to Bangkok's Northern Bus Terminal and then a shuttle bus is the direct journey without a transfer; it is also far cheaper than a private taxi. Confirm the current fare on the route page or at the counter before travel.",
+        body: "The operator sells this route at 155 THB at the counter; online resellers list 167-183 THB per person. The main advantage over taking a bus to Bangkok's Northern Bus Terminal and then a shuttle bus is the direct journey without a transfer; it is also far cheaper than a private taxi. Confirm the current fare on the route page or at the counter before travel.",
       },
       {
         title: "How long the journey takes - and your flight buffer",
@@ -927,7 +927,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How much is the bus from Pattaya to Don Mueang?",
         answer:
-          "Secondary sources show online fares of 167-183 THB per person. Confirm the current price at the counter or on the route page before travel.",
+          "The operator sells this route at 155 THB at the counter; online resellers list 167-183 THB per person. Confirm the current price at the counter or on the route page before travel.",
       },
       {
         question: "Where does the bus leave from in Pattaya?",
@@ -1676,7 +1676,7 @@ export const seoGuides: SeoGuide[] = [
     ctaLabel: "Check Bangkok to Pattaya tickets",
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_fare",
-    lastUpdated: "2026-09-05",
+    lastUpdated: "2026-09-08",
     lastVerified: "2026-09-08",
     keyPoints: [
       "Ekkamai is the cheaper Bangkok terminal at 148 THB per seat; Mo Chit 2 costs 158 THB for the same journey.",
@@ -1698,7 +1698,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "Return fares from Pattaya",
-        body: "Coming back, the fare depends on which Bangkok terminal you arrive at rather than where you board. Pattaya to Ekkamai is 148 THB per seat and Pattaya to Mo Chit 2 is 158 THB per seat, the same prices as the outbound direction. Pattaya to Don Mueang Airport is the one route without an official published fare; secondary booking sources show 167-183 THB per person, so confirm the current price at the counter.",
+        body: "Coming back, the fare depends on which Bangkok terminal you arrive at rather than where you board. Pattaya to Ekkamai is 148 THB per seat and Pattaya to Mo Chit 2 is 158 THB per seat, the same prices as the outbound direction. Pattaya to Don Mueang Airport is 155 THB at the counter in the operator's own booking system; online resellers show 167-183 THB per person, so buying at the counter is the cheapest option.",
       },
       {
         title: "What the ticket price includes",

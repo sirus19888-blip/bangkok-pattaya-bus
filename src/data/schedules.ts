@@ -340,16 +340,14 @@ export const schedules: Schedule[] = [
     travelTime: "Around 3-3.5 hours",
     price: "155 THB per person",
     fromPrice: "155 THB",
-    departures: [],
-    departureWindow: "06:30-17:30, every ~4h",
-    nextDeparture: "",
-    lastUpdated: "2026-09-04",
+    departures: ["06:30", "07:30", "10:30", "12:00", "13:30", "17:30"],
+    nextDeparture: "06:30",
+    lastUpdated: "2026-09-08",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
-    sourceName: "Transport Co., Ltd. / Don Mueang Airport",
-    sourceUrl:
-      "https://donmueang.airportthai.co.th/service/transportation/detail/1290",
-    sourceType: "official airport / operator transportation page",
+    sourceName: "Transport Co., Ltd. (booking system) / Don Mueang Airport",
+    sourceUrl: "https://tcl99web.transport.co.th/",
+    sourceType: "official operator booking system / airport transport page",
     lastVerified: "2026-09-08",
     verificationStatus: "partially verified",
     fareNote:
@@ -357,9 +355,9 @@ export const schedules: Schedule[] = [
     boardingNote:
       "The airport page shows service counters in Terminal 1 Gate 1 and Terminal 2 Gate 11, with pick-up at Service Hall Building. The airport page lists the Pattaya counter as open 06:30-17:30 every day of the week; confirm the current boarding point on arrival.",
     operatorNote:
-      "Official airport information confirms the route, fare, service counters, pick-up point, and service window from 06:30 to 17:30 about every 4 hours, but does not publish exact departure times.",
+      "Departure times and the 155 THB fare come from the operator's own booking system. Note the gaps are uneven: two buses within the first hour, then a four-hour gap between 13:30 and the last departure at 17:30. Confirm before travel.",
     dataQuality:
-      "Official airport source, manually verified for fare, counters, pick-up point, and service window; exact departure times are not published by the official source.",
+      "Official operator booking system, manually verified for departure times, fare and seat availability; counters and pick-up point cross-checked against the Don Mueang airport transport page.",
   },
   {
     id: "pattaya-to-don-mueang-airport",
@@ -368,25 +366,26 @@ export const schedules: Schedule[] = [
     direction: "pattaya-to-don-mueang-airport",
     distance: "155 km",
     travelTime: "Around 3-3.5 hours",
-    price: "167-183 THB per person",
+    price: "155 THB at the counter, 167-183 THB online",
     fromPrice: "167 THB",
     departures: ["07:00", "10:00", "12:00", "14:30", "16:00", "17:00"],
     nextDeparture: "10:00",
-    lastUpdated: "2026-08-18",
+    lastUpdated: "2026-09-08",
     disclaimer:
       "Bus times may change. Please confirm at the station or with the operator before travel.",
-    sourceName: "Transport Co. via secondary sources",
-    sourceUrl:
-      "https://thailandlife.info/travel-from-pattaya-to-don-mueang-airport/",
-    sourceType: "secondary booking / travel sources",
+    sourceName: "Transport Co., Ltd. (booking system)",
+    sourceUrl: "https://tcl99web.transport.co.th/",
+    sourceType: "official operator booking system",
     lastVerified: "2026-09-08",
-    verificationStatus: "needs official confirmation",
-    fareNote: "Secondary sources show online fares of 167-183 THB per person.",
+    verificationStatus: "partially verified",
+    fareNote:
+      "The operator sells this route at 155 THB per person. Online resellers add a margin: 12Go lists 167 THB and other booking sites up to 183 THB. Buying at the counter is the cheapest option if you can wait for a seat.",
     boardingNote:
       "Secondary sources point to Pattaya Sukhumvit Road Bus Station. Confirm the exact Pattaya boarding point before travel.",
     operatorNote:
-      "Schedule based on secondary booking/travel sources. Confirm with the operator or station before travel.",
-    dataQuality: "secondary sources, needs official operator confirmation",
+      "Departure times and the counter fare confirmed in the operator's own booking system. Confirm with the operator or station before travel.",
+    dataQuality:
+      "Official operator booking system, manually verified for departure times and counter fare; online reseller prices cross-checked separately.",
   },
 ];
 

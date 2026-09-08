@@ -158,14 +158,13 @@
     },
     "don-mueang-airport-to-pattaya": {
       "travelTime": "Around 3-3.5 hours",
-      "departureWindow": "06:30-17:30, every ~4h",
       "price": "155 THB per person",
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
       "boardingNote": "The official airport page lists service counters at Terminal 1, Building 1, Floor 1, Gate 1 and Terminal 2, Building 2, Floor 1, Gate 11. The pick-up point is Service Hall Building. The airport page lists the Pattaya counter as open 06:30-17:30 every day of the week; confirm the current boarding point on arrival."
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Around 3-3.5 hours",
-      "price": "167-183 THB per person",
+      "price": "155 THB at the counter, 167-183 THB online",
       "disclaimer": "Bus times may change. Please confirm at the station or with the operator before travel.",
       "boardingNote": "Secondary sources point to Pattaya Sukhumvit Road Bus Station. Confirm the exact Pattaya boarding point before travel."
     }
@@ -498,7 +497,7 @@
       },
       {
         "question": "What if I arrive at Don Mueang outside the bus hours or between departures?",
-        "answer": "The official airport page shows the service running roughly every four hours between about 06:30 and 17:30, but it does not publish exact departure times, so always confirm the next departure at the counter when you arrive. If you land late in the evening, very early, or face a long wait between buses, a metered taxi, Grab, or a pre-booked private transfer to Pattaya is the practical alternative. Agree on the price and pickup point before you set off, and comparing a private transfer in advance is often easiest for a night arrival."
+        "answer": "The operator's booking system lists six departures a day between 06:30 and 17:30, and the gaps are uneven - two buses in the first hour, then four hours between the 13:30 bus and the last one at 17:30 - so confirm the next departure at the counter when you arrive. If you land late in the evening, very early, or face a long wait between buses, a metered taxi, Grab, or a pre-booked private transfer to Pattaya is the practical alternative. Agree on the price and pickup point before you set off, and comparing a private transfer in advance is often easiest for a night arrival."
       },
       {
         "question": "How do I get to my hotel after arriving in Pattaya?",
@@ -520,23 +519,23 @@
       },
       {
         "question": "Are the bus times confirmed?",
-        "answer": "These times are based on secondary booking and travel sources. Confirm with the operator or station before travel."
+        "answer": "These times come from the operator's own booking system. Confirm with the operator or station before travel."
       },
       {
         "question": "How much luggage can I bring on the Pattaya to Don Mueang Airport bus?",
-        "answer": "Standard coaches have luggage space under the bus, so most travelers bring a suitcase plus hand luggage without an extra charge. Keep your passport, valuables and electronics with you in the cabin. Because this route's details come from secondary sources rather than the operator, confirm any oversized-baggage rules at the counter before boarding."
+        "answer": "Standard coaches have luggage space under the bus, so most travelers bring a suitcase plus hand luggage without an extra charge. Keep your passport, valuables and electronics with you in the cabin. Departure times and the counter fare come from the operator's booking system, but baggage rules are not published there, so confirm any oversized-baggage rules at the counter before boarding."
       },
       {
         "question": "Can I pay for the Pattaya to Don Mueang bus ticket by card, or do I need cash?",
-        "answer": "Keep Thai baht in cash ready for the counter, because card acceptance can vary by station and time of day. The fare of 167-183 THB comes from secondary sources, so confirm the current price with the operator or station before you pay. If you would rather pay by card and secure a seat, you can also book online before you travel."
+        "answer": "Keep Thai baht in cash ready for the counter, because card acceptance can vary by station and time of day. The operator charges 155 THB at the counter while online resellers list 167-183 THB, so confirm the current price with the operator or station before you pay. If you would rather pay by card and secure a seat, you can also book online before you travel."
       },
       {
         "question": "Which Pattaya to Don Mueang bus should I take to catch my flight on time?",
-        "answer": "With about six departures a day (secondary sources show 07:00, 10:00, 12:00, 14:30, 16:00 and 17:00) and a 3-3.5 hour ride to Don Mueang, the farther Bangkok airport, work backward from your flight and pick an earlier bus with a wide margin. Count on the full 3.5 hours plus traffic, then add time for check-in, bag drop and security. Do not rely on the final bus before your flight, and confirm the departure times before travel since they are not operator-confirmed."
+        "answer": "With about six departures a day (the operator's booking system shows 07:00, 10:00, 12:00, 14:30, 16:00 and 17:00) and a 3-3.5 hour ride to Don Mueang, the farther Bangkok airport, work backward from your flight and pick an earlier bus with a wide margin. Count on the full 3.5 hours plus traffic, then add time for check-in, bag drop and security. Do not rely on the final bus before your flight, and confirm the departure times before travel, since the operator can change them."
       },
       {
         "question": "What should I do if I miss the last bus from Pattaya before my flight from Don Mueang?",
-        "answer": "If you miss the last bus and still need to make a flight, the realistic options are a metered taxi or a pre-booked private transfer straight to Don Mueang; agree on the price and route before you set off. Since there are about six departures a day and the times come from secondary sources, do not count on the final bus before a flight. Comparing a private transfer in advance is often the easiest way to avoid a last-minute scramble."
+        "answer": "If you miss the last bus and still need to make a flight, the realistic options are a metered taxi or a pre-booked private transfer straight to Don Mueang; agree on the price and route before you set off. Since there are only six departures a day, do not count on the final bus before a flight. Comparing a private transfer in advance is often the easiest way to avoid a last-minute scramble."
       }
     ]
   },
