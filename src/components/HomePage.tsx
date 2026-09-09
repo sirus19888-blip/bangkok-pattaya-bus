@@ -20,7 +20,7 @@ import { schedules } from "@/data/schedules";
 import type { Schedule } from "@/data/schedules";
 import { getTranslations, localizeRoutePage, localizeSchedule } from "@/lib/i18n";
 import type { Translations } from "@/lib/i18n";
-import { getLocalDateValue } from "@/lib/clientDate";
+import { getDefaultTravelDate } from "@/lib/clientDate";
 import { getNextDeparture } from "@/lib/scheduleTime";
 import { hasTwelveGoTickets } from "@/lib/twelveGo";
 import { getUiTranslations } from "@/lib/uiTranslations";
@@ -33,11 +33,19 @@ export function HomePage({ locale }: { locale: LocaleCode }) {
   const localizedSchedules = schedules.map((schedule) =>
     localizeSchedule(schedule, t, locale),
   );
+  // Strona glowna prowadzi do wielu tras, wiec przechodzimy na jutro dopiero
+  // wtedy, gdy ZADNA z nich nie ma juz kursu dzisiaj. Warunek zachowawczy:
+  // dopoki cokolwiek jeszcze jedzie, "dzis" pozostaje uzyteczna odpowiedzia.
+  const everyRouteDoneForToday = localizedSchedules.every(
+    (schedule) => getNextDeparture(schedule).isTomorrow,
+  );
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
       <HomepageJsonLd locale={locale} />
-      <TravelDateProvider initialDate={getLocalDateValue()}>
+      <TravelDateProvider
+        initialDate={getDefaultTravelDate(everyRouteDoneForToday)}
+      >
         <MobileHome
           locale={locale}
           routePagesForLocale={localizedRoutePages}

@@ -61,7 +61,9 @@ export function TravelDateProvider({
     // z serwerowym - inaczej hydratacja sie rozjedzie. Korekta moze wiec nastapic
     // dopiero po hydratacji. Jest potrzebna, bo ISR serwuje strone z pamieci
     // podrecznej i na rzadko odwiedzanym adresie data w HTML moze byc stara.
-    // Wywoluje sie raz i tylko wtedy, gdy data faktycznie sie rozjechala.
+    // Wywoluje sie raz. Od T83 uruchamia sie takze wtedy, gdy serwer celowo
+    // podal jutrzejsza date (po ostatnim kursie dnia) - wtedy poprawia tylko
+    // minimum pola, a sama date zostawia, bo jest przyszla.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMinTravelDate(today);
     // Nie "|| today": data wypieczona przez ISR jest niepusta, wiec przechodzila

@@ -26,7 +26,7 @@ import type { Schedule } from "@/data/schedules";
 import type { NextDepartureResult } from "@/lib/scheduleTime";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
-import { getLocalDateValue } from "@/lib/clientDate";
+import { getDefaultTravelDate } from "@/lib/clientDate";
 import { AD_SLOT_IDS } from "@/lib/ads";
 import { getLocalizedFaqs, type Translations } from "@/lib/i18n";
 import { hasTwelveGoTickets } from "@/lib/twelveGo";
@@ -89,7 +89,9 @@ export function RoutePageLayout({
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] pb-40 text-[#13233a] lg:pb-0">
-      <TravelDateProvider initialDate={getLocalDateValue()}>
+      <TravelDateProvider
+        initialDate={getDefaultTravelDate(initialNextDeparture.isTomorrow)}
+      >
         <RouteJsonLd
           faqs={localizedFaqs}
           locale={locale}
