@@ -25,22 +25,30 @@ import { absoluteUrl } from "@/lib/site";
 // Najblizszy odjazd jest liczony przy renderowaniu, wiec strona nie moze byc
 // zamrozona na czas builda. ISR zamiast trybu dynamicznego dla 154 adresow.
 //
-// 3600 s, nie 300. Pomiar z 2026-09-12: ISR Writes 150 348 / 200 000 przy okolo
-// 11 000 zapisow na dobe wobec budzetu 6 667/dobe (200k na 30 dni). Przy tym
-// tempie plan Hobby wstrzymuje projekt okolo 16 wrzesnia.
+// 7200 s. Pomiar z 2026-09-12: ISR Writes 150 348 / 200 000 w oknie RUCHOMYCH
+// 30 dni. Ze to wlasnie ta metryka wylacza projekt, wiadomo stad, ze ostrzezenie
+// Vercela na "75%" zgadza sie z widokiem "Last 30 Days" (150 348 = 75,2%), a nie
+// z krotszymi ("Last 7 Days" to 77 276, czyli 38,6%). Licznik sie NIE wyzeruje:
+// czternascie dob po ~11 000 zapisow zostaje w oknie do konca wrzesnia.
 //
-// Dlaczego poprzednie podniesienie z 60 na 300 s nie dalo NIC (wykres zapisow
-// po 4 wrzesnia sie nie zmienil): 11 000 zapisow na 162 strony z ISR to jedna
-// regeneracja na strone co okolo 21 minut. Okno krotsze niz odstep miedzy
+//   pozostaly budzet                             49 652
+//   dni, zanim wypadnie pierwsza taka doba           17
+//   bezpieczne tempo                          2 921 / dobe
+//   sufit przy 3600 s   162 x 24 = 3 888   -> za duzo o 33%
+//   sufit przy 7200 s   162 x 12 = 1 944   -> z zapasem
+//
+// Dlaczego krotsze okna nie dzialaly: 11 000 zapisow na 162 strony to jedna
+// regeneracja na strone co okolo 21 minut. Okno KROTSZE niz odstep miedzy
 // zadaniami nigdy nie jest wiazace - kazde zadanie i tak zastaje strone
-// przeterminowana. Zeby limit dzialal, musi ten odstep przekroczyc.
-// Przy 3600 s sufit wynosi 24 regeneracje na strone na dobe: 162 x 24 = 3 888.
+// przeterminowana. Dlatego 60 -> 300 (T73) nie dalo nic, a 300 -> 3600 (T84)
+// dalo za malo.
 //
 // Czytelnik nie traci nic: useNextDeparture przelicza odliczanie w przegladarce
-// zaraz po hydratacji i potem co minute, a TravelDateContext koryguje date (T82).
-// Koszt ponosza wylacznie crawlery nieuruchamiajace JavaScriptu - one zobacza
-// w HTML wartosc starsza nawet o godzine.
-export const revalidate = 3600;
+// zaraz po hydratacji i potem co minute, a TravelDateProvider robi to samo
+// z data podrozy (T85). Crawlery bez JavaScriptu maja w HTML PELNY rozklad
+// godzin - nieaktualne moze byc tylko wyliczone "nastepny autobus o...", czyli
+// wskazowka, a nie zrodlo danych.
+export const revalidate = 7200;
 
 type RoutePageProps = {
   params: Promise<{

@@ -5,10 +5,10 @@ import { absoluteUrl } from "@/lib/site";
 
 // Odliczanie i domyslna data podrozy sa liczone przy renderowaniu, wiec strona
 // nie moze byc zamrozona na czas builda. ISR zamiast trybu dynamicznego.
-// 3600 s - pelne uzasadnienie przy tej samej stalej w [locale]/[route]/page.tsx.
-// W skrocie: przy 300 s limit nigdy nie byl wiazacy, bo strony sa odpytywane
-// rzadziej niz co 5 minut, i zapisy ISR szly na wstrzymanie projektu.
-export const revalidate = 3600;
+// 7200 s - pelne uzasadnienie przy tej samej stalej w [locale]/[route]/page.tsx.
+// W skrocie: okno limitu ISR Writes jest ruchome i sie nie wyzeruje, a okno
+// revalidate krotsze niz odstep miedzy zadaniami do strony nie ogranicza niczego.
+export const revalidate = 7200;
 
 const pageTitle = "Bangkok Pattaya Bus Guide - Bus Times, Prices & Stations";
 const pageDescription =
