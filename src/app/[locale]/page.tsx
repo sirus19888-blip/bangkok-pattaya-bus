@@ -11,8 +11,8 @@ import { absoluteUrl } from "@/lib/site";
 
 // Odliczanie i domyslna data podrozy sa liczone przy renderowaniu, wiec strona
 // nie moze byc zamrozona na czas builda. ISR zamiast trybu dynamicznego.
-// 300 s, nie 60 - uzasadnienie przy tej samej stalej w [route]/page.tsx.
-export const revalidate = 300;
+// 3600 s - uzasadnienie przy tej samej stalej w [route]/page.tsx.
+export const revalidate = 3600;
 
 type LocaleHomeProps = {
   params: Promise<{

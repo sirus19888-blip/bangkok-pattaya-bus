@@ -23,13 +23,24 @@ import { getNextDeparture } from "@/lib/scheduleTime";
 import { absoluteUrl } from "@/lib/site";
 
 // Najblizszy odjazd jest liczony przy renderowaniu, wiec strona nie moze byc
-// zamrozona na czas builda. 300 s to kompromis: przy odjazdach co godzine wartosc
-// w HTML jest praktycznie zawsze aktualna, a strony zostaja statyczne (ISR),
-// zamiast przechodzic w tryb dynamiczny dla 151 adresow.
-// Bylo 60 s. Podniesione po pomiarze z 2026-09-04: Fast Origin Transfer wzrosl
-// z ~90 MB na dobe przed ISR do ~150 MB, czyli do progu, przy ktorym mielismy
-// zareagowac. Piec razy mniej regeneracji, koszt to 5 min nieaktualnosci kafelka.
-export const revalidate = 300;
+// zamrozona na czas builda. ISR zamiast trybu dynamicznego dla 154 adresow.
+//
+// 3600 s, nie 300. Pomiar z 2026-09-12: ISR Writes 150 348 / 200 000 przy okolo
+// 11 000 zapisow na dobe wobec budzetu 6 667/dobe (200k na 30 dni). Przy tym
+// tempie plan Hobby wstrzymuje projekt okolo 16 wrzesnia.
+//
+// Dlaczego poprzednie podniesienie z 60 na 300 s nie dalo NIC (wykres zapisow
+// po 4 wrzesnia sie nie zmienil): 11 000 zapisow na 162 strony z ISR to jedna
+// regeneracja na strone co okolo 21 minut. Okno krotsze niz odstep miedzy
+// zadaniami nigdy nie jest wiazace - kazde zadanie i tak zastaje strone
+// przeterminowana. Zeby limit dzialal, musi ten odstep przekroczyc.
+// Przy 3600 s sufit wynosi 24 regeneracje na strone na dobe: 162 x 24 = 3 888.
+//
+// Czytelnik nie traci nic: useNextDeparture przelicza odliczanie w przegladarce
+// zaraz po hydratacji i potem co minute, a TravelDateContext koryguje date (T82).
+// Koszt ponosza wylacznie crawlery nieuruchamiajace JavaScriptu - one zobacza
+// w HTML wartosc starsza nawet o godzine.
+export const revalidate = 3600;
 
 type RoutePageProps = {
   params: Promise<{

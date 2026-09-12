@@ -5,10 +5,10 @@ import { absoluteUrl } from "@/lib/site";
 
 // Odliczanie i domyslna data podrozy sa liczone przy renderowaniu, wiec strona
 // nie moze byc zamrozona na czas builda. ISR zamiast trybu dynamicznego.
-// 300 s, nie 60: przy odjazdach co godzine roznica jest niewidoczna dla czytelnika,
-// a regeneracji jest piec razy mniej. Powod: Fast Origin Transfer urosl z ~90 MB
-// na dobe przed ISR do ~150 MB (odczyt 2026-09-04, plan Hobby ma 10 GB/mies.).
-export const revalidate = 300;
+// 3600 s - pelne uzasadnienie przy tej samej stalej w [locale]/[route]/page.tsx.
+// W skrocie: przy 300 s limit nigdy nie byl wiazacy, bo strony sa odpytywane
+// rzadziej niz co 5 minut, i zapisy ISR szly na wstrzymanie projektu.
+export const revalidate = 3600;
 
 const pageTitle = "Bangkok Pattaya Bus Guide - Bus Times, Prices & Stations";
 const pageDescription =
