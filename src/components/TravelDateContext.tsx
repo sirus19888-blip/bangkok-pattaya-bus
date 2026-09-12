@@ -10,7 +10,8 @@ import {
   type ReactNode,
 } from "react";
 import type { LocaleCode } from "@/data/routes";
-import { getLocalDateValue } from "@/lib/clientDate";
+import { getDefaultTravelDate, getLocalDateValue } from "@/lib/clientDate";
+import { getNextDeparture } from "@/lib/scheduleTime";
 
 type TravelDateContextValue = {
   isReady: boolean;
@@ -37,46 +38,60 @@ export function TravelDateProvider({
   // daty startowalo puste i wylaczone az do hydratacji, a CTA szly do 12Go bez
   // parametru date. Musi byc ta sama wartosc, ktora wyrenderowal serwer.
   initialDate = "",
+  // Godziny odjazdow tej strony, splaszczone z podtras. Pozwalaja policzyc po
+  // hydratacji te sama regule co serwer (T83): gdy na dzis nie ma juz kursu,
+  // domyslna data to jutro. Bez nich strona pokazywala juz jutrzejsza godzine
+  // odjazdu, a link do 12Go filtrowal liste na dzis - czyli na dzien, w ktorym
+  // nic juz nie jedzie. Przy revalidate 3600 (T84) takie okno trwa do godziny.
+  departures = [],
 }: {
   children: ReactNode;
   initialDate?: string;
+  departures?: string[];
 }) {
   const [minTravelDate, setMinTravelDate] = useState(initialDate);
   const [travelDate, setTravelDate] = useState(initialDate);
   // Wyprowadzone, nie trzymane w stanie: gotowosc to po prostu "mamy juz date".
   const isReady = Boolean(minTravelDate);
 
+  // Tablica z propsa ma nowa tozsamosc przy kazdym renderze, wiec zaleznoscia
+  // efektu jest jej tresc, nie referencja.
+  const departuresKey = departures.join(",");
+
   useEffect(() => {
     const today = getLocalDateValue();
+    const list = departuresKey ? departuresKey.split(",") : [];
 
-    // Serwer renderuje przez ISR, wiec jego data moze byc o dobe stara tylko
-    // wtedy, gdy strona przeszla polnoc w Bangkoku miedzy renderem a wizyta.
-    // Poza tym przypadkiem nie ruszamy stanu i nie wywolujemy ponownego renderu.
-    if (today === initialDate) {
-      return;
-    }
+    // Ta sama regula co na serwerze (T83), ale liczona z zegara KLIENTA:
+    // po ostatnim kursie dnia domyslna data to jutro. Serwer podjal te decyzje
+    // przy renderowaniu, a ISR moze podac te strone nawet godzine pozniej -
+    // wtedy jego rozstrzygniecie jest juz nieaktualne.
+    const wanted =
+      list.length > 0
+        ? getDefaultTravelDate(getNextDeparture(list).isTomorrow)
+        : today;
 
     // Swiadomy wyjatek od react-hooks/set-state-in-effect. Zegara klienta nie
     // wolno odczytac podczas renderu, bo pierwszy render musi zgadzac sie
     // z serwerowym - inaczej hydratacja sie rozjedzie. Korekta moze wiec nastapic
-    // dopiero po hydratacji. Jest potrzebna, bo ISR serwuje strone z pamieci
-    // podrecznej i na rzadko odwiedzanym adresie data w HTML moze byc stara.
-    // Wywoluje sie raz. Od T83 uruchamia sie takze wtedy, gdy serwer celowo
-    // podal jutrzejsza date (po ostatnim kursie dnia) - wtedy poprawia tylko
-    // minimum pola, a sama date zostawia, bo jest przyszla.
+    // dopiero po hydratacji. React pomija ponowny render, gdy wartosc jest ta
+    // sama, wiec bezwarunkowe wywolanie nic nie kosztuje.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMinTravelDate(today);
-    // Nie "|| today": data wypieczona przez ISR jest niepusta, wiec przechodzila
-    // przez ten warunek i zostawala w stanie. CTA szlo wtedy do 12Go z data
+    // Minimum pola zostaje na dzis, zeby ktos jadacy jeszcze dzisiaj mogl je
+    // wybrac recznie - podnosimy tylko wartosc domyslna.
+    //
+    // Nie "|| wanted": data wypieczona przez ISR jest niepusta, wiec przechodzila
+    // przez taki warunek i zostawala w stanie. CTA szlo wtedy do 12Go z data
     // z przeszlosci, gdzie dziala ona jak twardy filtr (godate) i lista wychodzi
-    // pusta - klikniecie jest, rezerwacji nie ma. Nadpisujemy wylacznie date juz
-    // nieaktualna; swiadomy wybor uzytkownika na przyszlosc zostaje nietkniety.
-    // Obie wartosci sa w formacie YYYY-MM-DD (Intl "en-CA" i <input type="date">),
-    // wiec porownanie tekstowe jest chronologiczne.
+    // pusta - klikniecie jest, rezerwacji nie ma. Nadpisujemy wylacznie date
+    // wczesniejsza niz wyliczona; swiadomy wybor uzytkownika na dalsza przyszlosc
+    // zostaje nietkniety. Obie wartosci sa w formacie YYYY-MM-DD (Intl "en-CA"
+    // i <input type="date">), wiec porownanie tekstowe jest chronologiczne.
     setTravelDate((currentTravelDate) =>
-      !currentTravelDate || currentTravelDate < today ? today : currentTravelDate,
+      !currentTravelDate || currentTravelDate < wanted ? wanted : currentTravelDate,
     );
-  }, [initialDate]);
+  }, [initialDate, departuresKey]);
 
   const value = useMemo(
     () => ({

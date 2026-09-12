@@ -34,7 +34,13 @@ export function timeToMinutes(time: string) {
   return hours * 60 + minutes;
 }
 
-function getRouteDepartures(schedule: RouteScheduleInput) {
+/**
+ * Godziny odjazdow po splaszczeniu podtras, bez duplikatow, rosnaco.
+ * Eksportowane, zeby TravelDateProvider liczyl po hydratacji dokladnie ta
+ * sama liste co serwer - inaczej klient i serwer moglyby uznac za ostatni
+ * kurs dnia dwie rozne godziny.
+ */
+export function getRouteDepartures(schedule: RouteScheduleInput) {
   if (Array.isArray(schedule)) {
     return Array.from(
       new Set(schedule.filter((departure) => TIME_PATTERN.test(departure))),

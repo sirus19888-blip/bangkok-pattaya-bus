@@ -21,7 +21,7 @@ import type { Schedule } from "@/data/schedules";
 import { getTranslations, localizeRoutePage, localizeSchedule } from "@/lib/i18n";
 import type { Translations } from "@/lib/i18n";
 import { getDefaultTravelDate } from "@/lib/clientDate";
-import { getNextDeparture } from "@/lib/scheduleTime";
+import { getNextDeparture, getRouteDepartures } from "@/lib/scheduleTime";
 import { hasTwelveGoTickets } from "@/lib/twelveGo";
 import { getUiTranslations } from "@/lib/uiTranslations";
 
@@ -36,14 +36,20 @@ export function HomePage({ locale }: { locale: LocaleCode }) {
   // Strona glowna prowadzi do wielu tras, wiec przechodzimy na jutro dopiero
   // wtedy, gdy ZADNA z nich nie ma juz kursu dzisiaj. Warunek zachowawczy:
   // dopoki cokolwiek jeszcze jedzie, "dzis" pozostaje uzyteczna odpowiedzia.
-  const everyRouteDoneForToday = localizedSchedules.every(
-    (schedule) => getNextDeparture(schedule).isTomorrow,
+  //
+  // Liczone na scalonej liscie odjazdow, a nie przez every() po trasach: oba
+  // daja ten sam wynik, ale ta sama lista trafia potem do TravelDateProvider,
+  // wiec klient po hydratacji rozstrzyga dokladnie tak samo jak serwer.
+  const allDepartures = Array.from(
+    new Set(localizedSchedules.flatMap((schedule) => getRouteDepartures(schedule))),
   );
+  const everyRouteDoneForToday = getNextDeparture(allDepartures).isTomorrow;
 
   return (
     <main className="min-h-screen bg-[#f7f0e3] text-[#13233a]">
       <HomepageJsonLd locale={locale} />
       <TravelDateProvider
+        departures={allDepartures}
         initialDate={getDefaultTravelDate(everyRouteDoneForToday)}
       >
         <MobileHome

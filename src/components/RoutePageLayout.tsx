@@ -23,6 +23,7 @@ import { routeHotelCity } from "@/data/hotelAffiliate";
 import { routePages } from "@/data/routes";
 import type { LocaleCode, RouteId, RoutePage } from "@/data/routes";
 import type { Schedule } from "@/data/schedules";
+import { getRouteDepartures } from "@/lib/scheduleTime";
 import type { NextDepartureResult } from "@/lib/scheduleTime";
 import type { Station } from "@/data/stations";
 import { getStationPhotoGroupsForRoute } from "@/data/stationPhotos";
@@ -90,6 +91,7 @@ export function RoutePageLayout({
   return (
     <main className="min-h-screen bg-[#f7f0e3] pb-40 text-[#13233a] lg:pb-0">
       <TravelDateProvider
+        departures={getRouteDepartures(schedule)}
         initialDate={getDefaultTravelDate(initialNextDeparture.isTomorrow)}
       >
         <RouteJsonLd
