@@ -22,33 +22,28 @@ import {
 import { getNextDeparture } from "@/lib/scheduleTime";
 import { absoluteUrl } from "@/lib/site";
 
-// Najblizszy odjazd jest liczony przy renderowaniu, wiec strona nie moze byc
-// zamrozona na czas builda. ISR zamiast trybu dynamicznego dla 154 adresow.
+// Celowo BEZ `export const revalidate`: strona jest w pelni statyczna,
+// renderowana raz przy buildzie (T87). Tak samo strony glowne.
 //
-// 7200 s. Pomiar z 2026-09-12: ISR Writes 150 348 / 200 000 w oknie RUCHOMYCH
-// 30 dni. Ze to wlasnie ta metryka wylacza projekt, wiadomo stad, ze ostrzezenie
-// Vercela na "75%" zgadza sie z widokiem "Last 30 Days" (150 348 = 75,2%), a nie
-// z krotszymi ("Last 7 Days" to 77 276, czyli 38,6%). Licznik sie NIE wyzeruje:
-// czternascie dob po ~11 000 zapisow zostaje w oknie do konca wrzesnia.
+// ISR zdjety, bo kazda regeneracja zapisuje strone do pamieci ISR Vercela,
+// a plan Hobby wstrzymuje projekt po 200 000 jednostek zapisu w oknie
+// RUCHOMYCH 30 dni. Jednostka to 8 KB danych, nie jedna regeneracja - dlatego
+// T73 (60 -> 300 s), T84 (-> 3600 s) i T86 (-> 7200 s), liczone w regeneracjach,
+// daly za malo. Zmierzone na buildzie (HTML + RSC po kompresji gzip): trasa
+// okolo 5,7 jednostki, przewodnik 2,3, strona glowna 4,5. Pelna regeneracja
+// 162 stron to okolo 530 jednostek, wiec nawet przy 7200 s sufit wynosil
+// 12 x 530 = 6 357 na dobe, czyli okolo 190 000 na 30 dni. Do 29 sierpnia,
+// przy tej samej konfiguracji bez revalidate, zapisow nie bylo.
 //
-//   pozostaly budzet                             49 652
-//   dni, zanim wypadnie pierwsza taka doba           17
-//   bezpieczne tempo                          2 921 / dobe
-//   sufit przy 3600 s   162 x 24 = 3 888   -> za duzo o 33%
-//   sufit przy 7200 s   162 x 12 = 1 944   -> z zapasem
+// Koszt: najblizszy odjazd i domyslna data podrozy w HTML pochodza z chwili
+// builda. Czytelnik widzi je tylko do hydratacji - useNextDeparture przelicza
+// odjazd od razu i potem co minute, a TravelDateProvider poprawia date
+// (T82, T85). Crawlery bez JavaScriptu maja w HTML pelny rozklad godzin;
+// nieaktualna moze byc tylko wskazowka "nastepny autobus o...".
 //
-// Dlaczego krotsze okna nie dzialaly: 11 000 zapisow na 162 strony to jedna
-// regeneracja na strone co okolo 21 minut. Okno KROTSZE niz odstep miedzy
-// zadaniami nigdy nie jest wiazace - kazde zadanie i tak zastaje strone
-// przeterminowana. Dlatego 60 -> 300 (T73) nie dalo nic, a 300 -> 3600 (T84)
-// dalo za malo.
-//
-// Czytelnik nie traci nic: useNextDeparture przelicza odliczanie w przegladarce
-// zaraz po hydratacji i potem co minute, a TravelDateProvider robi to samo
-// z data podrozy (T85). Crawlery bez JavaScriptu maja w HTML PELNY rozklad
-// godzin - nieaktualne moze byc tylko wyliczone "nastepny autobus o...", czyli
-// wskazowka, a nie zrodlo danych.
-export const revalidate = 7200;
+// Nie dodawaj tu revalidate. Nie renderuj tez na serwerze niczego zaleznego
+// od zegara, czego przegladarka nie poprawia po hydratacji - zostanie
+// zamrozone do nastepnego deployu.
 
 type RoutePageProps = {
   params: Promise<{

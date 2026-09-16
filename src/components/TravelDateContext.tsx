@@ -34,15 +34,18 @@ const travelDateLabels: Record<LocaleCode, string> = {
 
 export function TravelDateProvider({
   children,
-  // Dzisiejsza data w strefie Asia/Bangkok, policzona na serwerze. Bez niej pole
-  // daty startowalo puste i wylaczone az do hydratacji, a CTA szly do 12Go bez
-  // parametru date. Musi byc ta sama wartosc, ktora wyrenderowal serwer.
+  // Data w strefie Asia/Bangkok, policzona na serwerze. Strony sa statyczne
+  // (T87), wiec to data z dnia builda - od nastepnego dnia jest juz przeszla
+  // i efekt nizej ja poprawia. Bez niej pole daty startowalo puste i wylaczone
+  // az do hydratacji, a CTA szly do 12Go bez parametru date. Musi byc ta sama
+  // wartosc, ktora wyrenderowal serwer.
   initialDate = "",
   // Godziny odjazdow tej strony, splaszczone z podtras. Pozwalaja policzyc po
   // hydratacji te sama regule co serwer (T83): gdy na dzis nie ma juz kursu,
   // domyslna data to jutro. Bez nich strona pokazywala juz jutrzejsza godzine
   // odjazdu, a link do 12Go filtrowal liste na dzis - czyli na dzien, w ktorym
-  // nic juz nie jedzie. Przy revalidate 3600 (T84) takie okno trwa do godziny.
+  // nic juz nie jedzie. Serwer rozstrzyga to przy buildzie (T87), wiec bez tej
+  // listy blad trwalby do nastepnego deployu.
   departures = [],
 }: {
   children: ReactNode;
@@ -64,8 +67,8 @@ export function TravelDateProvider({
 
     // Ta sama regula co na serwerze (T83), ale liczona z zegara KLIENTA:
     // po ostatnim kursie dnia domyslna data to jutro. Serwer podjal te decyzje
-    // przy renderowaniu, a ISR moze podac te strone nawet godzine pozniej -
-    // wtedy jego rozstrzygniecie jest juz nieaktualne.
+    // przy buildzie (strony sa statyczne, T87), wiec w chwili wizyty jego
+    // rozstrzygniecie jest zwykle nieaktualne.
     const wanted =
       list.length > 0
         ? getDefaultTravelDate(getNextDeparture(list).isTomorrow)
@@ -81,10 +84,11 @@ export function TravelDateProvider({
     // Minimum pola zostaje na dzis, zeby ktos jadacy jeszcze dzisiaj mogl je
     // wybrac recznie - podnosimy tylko wartosc domyslna.
     //
-    // Nie "|| wanted": data wypieczona przez ISR jest niepusta, wiec przechodzila
-    // przez taki warunek i zostawala w stanie. CTA szlo wtedy do 12Go z data
-    // z przeszlosci, gdzie dziala ona jak twardy filtr (godate) i lista wychodzi
-    // pusta - klikniecie jest, rezerwacji nie ma. Nadpisujemy wylacznie date
+    // Nie "|| wanted": data wypieczona w statycznym HTML jest niepusta, wiec
+    // przechodzila przez taki warunek i zostawala w stanie. CTA szlo wtedy do 12Go
+    // z data z przeszlosci, a 12Go po cichu podmienia ja na dzis plus tydzien
+    // (pomiary 2026-09-09 i 2026-09-14) - ktos jadacy dzis dostaje liste na za
+    // tydzien i latwo tego nie zauwazyc. Nadpisujemy wylacznie date
     // wczesniejsza niz wyliczona; swiadomy wybor uzytkownika na dalsza przyszlosc
     // zostaje nietkniety. Obie wartosci sa w formacie YYYY-MM-DD (Intl "en-CA"
     // i <input type="date">), wiec porownanie tekstowe jest chronologiczne.

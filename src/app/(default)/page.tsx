@@ -3,12 +3,9 @@ import { HomePage } from "@/components/HomePage";
 import { supportedLocaleCodes } from "@/data/routes";
 import { absoluteUrl } from "@/lib/site";
 
-// Odliczanie i domyslna data podrozy sa liczone przy renderowaniu, wiec strona
-// nie moze byc zamrozona na czas builda. ISR zamiast trybu dynamicznego.
-// 7200 s - pelne uzasadnienie przy tej samej stalej w [locale]/[route]/page.tsx.
-// W skrocie: okno limitu ISR Writes jest ruchome i sie nie wyzeruje, a okno
-// revalidate krotsze niz odstep miedzy zadaniami do strony nie ogranicza niczego.
-export const revalidate = 7200;
+// Celowo BEZ `export const revalidate`: strona w pelni statyczna (T87),
+// uzasadnienie w [locale]/[route]/page.tsx. Odliczanie i domyslna data podrozy
+// w HTML pochodza z chwili builda; przegladarka poprawia je po hydratacji.
 
 const pageTitle = "Bangkok Pattaya Bus Guide - Bus Times, Prices & Stations";
 const pageDescription =

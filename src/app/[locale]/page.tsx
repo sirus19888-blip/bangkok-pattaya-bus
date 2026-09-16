@@ -9,10 +9,9 @@ import {
 } from "@/data/routes";
 import { absoluteUrl } from "@/lib/site";
 
-// Odliczanie i domyslna data podrozy sa liczone przy renderowaniu, wiec strona
-// nie moze byc zamrozona na czas builda. ISR zamiast trybu dynamicznego.
-// 7200 s - uzasadnienie przy tej samej stalej w [route]/page.tsx.
-export const revalidate = 7200;
+// Celowo BEZ `export const revalidate`: strona w pelni statyczna (T87),
+// uzasadnienie w [route]/page.tsx. Odliczanie i domyslna data podrozy w HTML
+// pochodza z chwili builda; przegladarka poprawia je po hydratacji.
 
 type LocaleHomeProps = {
   params: Promise<{
