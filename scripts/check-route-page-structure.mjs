@@ -211,13 +211,13 @@ for (const path of expectedEnglishRoutes) {
     if (path === "/en/bangkok-to-pattaya") {
       assert.ok(
         html.includes(
-          "<title>Bangkok to Pattaya Bus Timetable 2026: Ekkamai &amp; Mo Chit, ฿148</title>",
+          "<title>Bangkok to Pattaya Bus Timetable 2026: Ekkamai &amp; Mo Chit, from ฿144</title>",
         ),
         `${path} must render the targeted SEO title.`,
       );
       assert.ok(
         html.includes(
-          'name="description" content="Full Bangkok to Pattaya bus timetable from Ekkamai and Mo Chit, fares from ฿148, travel time around 2-3 hours, tickets and station tips."',
+          'name="description" content="Full Bangkok to Pattaya bus timetable from Ekkamai and Mo Chit, fares from ฿144, travel time around 2-3 hours, tickets and station tips."',
         ),
         `${path} must render the targeted SEO meta description.`,
       );
@@ -231,13 +231,13 @@ for (const path of expectedEnglishRoutes) {
     if (path === "/en/pattaya-to-bangkok") {
       assert.ok(
         html.includes(
-          "<title>Pattaya to Bangkok Bus Timetable 2026: Ekkamai &amp; Mo Chit, ฿148</title>",
+          "<title>Pattaya to Bangkok Bus Timetable 2026: Ekkamai &amp; Mo Chit, from ฿144</title>",
         ),
         `${path} must render the targeted SEO title.`,
       );
       assert.ok(
         html.includes(
-          'name="description" content="Full Pattaya to Bangkok bus timetable with Ekkamai and Mo Chit arrivals, fares from ฿148, travel time around 2-3 hours, tickets and boarding tips."',
+          'name="description" content="Full Pattaya to Bangkok bus timetable with Ekkamai and Mo Chit arrivals, fares from ฿144, travel time around 2-3 hours, tickets and boarding tips."',
         ),
         `${path} must render the targeted SEO meta description.`,
       );
@@ -271,13 +271,13 @@ for (const path of expectedEnglishRoutes) {
     if (path === "/en/pattaya-to-suvarnabhumi-airport") {
       assert.ok(
         html.includes(
-          "<title>Pattaya to Suvarnabhumi Airport Bus 2026: Timetable &amp; ฿130</title>",
+          "<title>Pattaya to Suvarnabhumi Airport Bus 2026: Timetable, from ฿135</title>",
         ),
         `${path} must render the targeted SEO title.`,
       );
       assert.ok(
         html.includes(
-          'name="description" content="Pattaya to Suvarnabhumi Airport bus timetable, fares from ฿130, travel time about 2 hours. Boards at Pattaya Bus Station; an hourly Jomtien service runs too."',
+          'name="description" content="Pattaya to Suvarnabhumi Airport bus timetable, fares from ฿135, travel time about 2 hours. Boards at Pattaya Bus Station; an hourly Jomtien service runs too."',
         ),
         `${path} must render the targeted SEO meta description.`,
       );

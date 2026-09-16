@@ -141,7 +141,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         "Both work. The right choice depends on when you travel and how fixed your plans are.",
       bookOnlineStationTitle: "Buy at the station - usually cheapest",
       bookOnlineStationBody:
-        "Counter fares are the lowest published price (148-158 THB per seat, depending on the terminal). Best when you're flexible: midweek travel, daytime departures running every hour, and no tight connection. You pay on the spot and take the next available bus.",
+        "Counter fares are the lowest published price (from 144 THB per seat, depending on the terminal). Best when you're flexible: midweek travel, daytime departures running every hour, and no tight connection. You pay on the spot and take the next available bus.",
       bookOnlineOnlineTitle: "Book online - pay for a guaranteed seat",
       bookOnlineOnlineBody:
         "Online fares typically run around 30-35% higher than the counter price, in exchange for a reserved seat booked in advance. Worth it when a seat matters more than saving a little: weekends and holidays (popular departures sell out), the last bus of the day, or a fixed plan before a flight.",
@@ -263,7 +263,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         "Obie opcje działają. Właściwy wybór zależy od terminu podróży i od tego, jak sztywne są Twoje plany.",
       bookOnlineStationTitle: "Kupno na dworcu - zwykle najtaniej",
       bookOnlineStationBody:
-        "Ceny w kasie to najniższa opublikowana cena (148-158 THB za miejsce, zależnie od terminalu). Najlepsze rozwiązanie, gdy masz elastyczny plan: podróż w tygodniu, kursy dzienne odjeżdżające co godzinę i brak ciasnej przesiadki. Płacisz na miejscu i jedziesz najbliższym dostępnym autobusem.",
+        "Ceny w kasie to najniższa opublikowana cena (od 144 THB za miejsce, zależnie od terminalu). Najlepsze rozwiązanie, gdy masz elastyczny plan: podróż w tygodniu, kursy dzienne odjeżdżające co godzinę i brak ciasnej przesiadki. Płacisz na miejscu i jedziesz najbliższym dostępnym autobusem.",
       bookOnlineOnlineTitle: "Rezerwacja online - płacisz za gwarantowane miejsce",
       bookOnlineOnlineBody:
         "Ceny online są zwykle o około 30-35% wyższe niż cena w kasie, w zamian za miejsce zarezerwowane z wyprzedzeniem. Warto, gdy miejsce jest ważniejsze niż niewielka oszczędność: w weekendy i święta (popularne kursy się wyprzedają), na ostatni autobus dnia albo przy stałym planie przed lotem.",
@@ -387,7 +387,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         "Beides funktioniert. Die richtige Wahl hängt davon ab, wann Sie reisen und wie fest Ihre Pläne sind.",
       bookOnlineStationTitle: "Am Bahnhof kaufen - meist am günstigsten",
       bookOnlineStationBody:
-        "Schalterpreise sind der niedrigste veröffentlichte Preis (148-158 THB pro Sitzplatz, je nach Terminal). Am besten, wenn Sie flexibel sind: Reisen unter der Woche, Tagesabfahrten stündlich und kein knapper Anschluss. Sie zahlen vor Ort und nehmen den nächsten verfügbaren Bus.",
+        "Schalterpreise sind der niedrigste veröffentlichte Preis (ab 144 THB pro Sitzplatz, je nach Terminal). Am besten, wenn Sie flexibel sind: Reisen unter der Woche, Tagesabfahrten stündlich und kein knapper Anschluss. Sie zahlen vor Ort und nehmen den nächsten verfügbaren Bus.",
       bookOnlineOnlineTitle: "Online buchen - für einen garantierten Sitzplatz zahlen",
       bookOnlineOnlineBody:
         "Online-Preise liegen in der Regel etwa 30-35% über dem Schalterpreis, dafür ist der Sitzplatz im Voraus reserviert. Sinnvoll, wenn ein Sitzplatz wichtiger ist als eine kleine Ersparnis: an Wochenenden und Feiertagen (beliebte Abfahrten sind ausverkauft), beim letzten Bus des Tages oder bei einem festen Plan vor einem Flug.",
@@ -512,7 +512,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         "Les deux options fonctionnent. Le bon choix dépend de votre date de voyage et de la souplesse de vos plans.",
       bookOnlineStationTitle: "Acheter à la gare - généralement le moins cher",
       bookOnlineStationBody:
-        "Les tarifs au guichet sont le prix publié le plus bas (148-158 THB par siège, selon le terminal). C'est le meilleur choix si vous êtes flexible : voyage en semaine, départs en journée toutes les heures et aucune correspondance serrée. Vous payez sur place et prenez le prochain bus disponible.",
+        "Les tarifs au guichet sont le prix publié le plus bas (à partir de 144 THB par siège, selon le terminal). C'est le meilleur choix si vous êtes flexible : voyage en semaine, départs en journée toutes les heures et aucune correspondance serrée. Vous payez sur place et prenez le prochain bus disponible.",
       bookOnlineOnlineTitle: "Réserver en ligne - payer pour une place garantie",
       bookOnlineOnlineBody:
         "Les tarifs en ligne sont généralement environ 30-35% plus élevés que le prix au guichet, en échange d'une place réservée à l'avance. Cela vaut le coup quand la place compte plus qu'une petite économie : week-ends et jours fériés (les départs populaires affichent complet), dernier bus de la journée ou plan fixe avant un vol.",
@@ -637,7 +637,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         "Оба варианта подходят. Правильный выбор зависит от даты поездки и того, насколько жесткие у вас планы.",
       bookOnlineStationTitle: "Купить на станции - обычно дешевле",
       bookOnlineStationBody:
-        "Тарифы в кассе - самая низкая опубликованная цена (148-158 THB за место, в зависимости от терминала). Лучше всего, если вы гибки: поездка в будний день, дневные отправления каждый час и нет плотной пересадки. Вы платите на месте и садитесь на ближайший доступный автобус.",
+        "Тарифы в кассе - самая низкая опубликованная цена (от 144 THB за место, в зависимости от терминала). Лучше всего, если вы гибки: поездка в будний день, дневные отправления каждый час и нет плотной пересадки. Вы платите на месте и садитесь на ближайший доступный автобус.",
       bookOnlineOnlineTitle: "Бронировать онлайн - платить за гарантированное место",
       bookOnlineOnlineBody:
         "Онлайн-тарифы обычно примерно на 30-35% выше цены в кассе, зато место бронируется заранее. Это стоит выбрать, когда место важнее небольшой экономии: в выходные и праздники (популярные рейсы распродаются), на последний автобус дня или при фиксированном плане перед рейсом.",
@@ -762,7 +762,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         "ใช้ได้ทั้งสองแบบ ตัวเลือกที่เหมาะขึ้นอยู่กับช่วงเวลาที่เดินทางและแผนของคุณแน่นแค่ไหน",
       bookOnlineStationTitle: "ซื้อที่สถานี - มักถูกที่สุด",
       bookOnlineStationBody:
-        "ราคาหน้าเคาน์เตอร์เป็นราคาประกาศที่ต่ำที่สุด (148-158 THB ต่อที่นั่ง ขึ้นอยู่กับเทอร์มินัล) เหมาะที่สุดเมื่อคุณยืดหยุ่นได้: เดินทางวันธรรมดา รอบกลางวันออกทุกชั่วโมง และไม่มีการต่อรถที่เวลาจำกัด คุณจ่ายเงินที่สถานีและขึ้นรถรอบถัดไปที่มีที่นั่ง",
+        "ราคาหน้าเคาน์เตอร์เป็นราคาประกาศที่ต่ำที่สุด (เริ่มต้น 144 THB ต่อที่นั่ง ขึ้นอยู่กับเทอร์มินัล) เหมาะที่สุดเมื่อคุณยืดหยุ่นได้: เดินทางวันธรรมดา รอบกลางวันออกทุกชั่วโมง และไม่มีการต่อรถที่เวลาจำกัด คุณจ่ายเงินที่สถานีและขึ้นรถรอบถัดไปที่มีที่นั่ง",
       bookOnlineOnlineTitle: "จองออนไลน์ - จ่ายเพื่อการันตีที่นั่ง",
       bookOnlineOnlineBody:
         "ราคาออนไลน์มักสูงกว่าราคาหน้าเคาน์เตอร์ประมาณ 30-35% แลกกับที่นั่งที่จองไว้ล่วงหน้า คุ้มเมื่อที่นั่งสำคัญกว่าการประหยัดเล็กน้อย: วันหยุดสุดสัปดาห์และวันหยุดนักขัตฤกษ์ (รอบยอดนิยมอาจเต็ม), รถรอบสุดท้ายของวัน หรือแผนที่แน่นอนก่อนขึ้นเครื่องบิน",
@@ -886,7 +886,7 @@ const uiTranslations: Record<LocaleCode, UiTranslations> = {
         "两种方式都可以。正确选择取决于你的出行时间，以及行程计划是否固定。",
       bookOnlineStationTitle: "在车站购买 - 通常最便宜",
       bookOnlineStationBody:
-        "柜台票价是公布的最低价格（每座 148-158 THB，取决于车站）。如果你的行程灵活，这是最合适的选择：工作日出行、白天班次每小时一班，而且没有紧张的换乘。你在现场付款，然后乘坐下一班有座位的巴士。",
+        "柜台票价是公布的最低价格（每座 144 THB 起，取决于车站）。如果你的行程灵活，这是最合适的选择：工作日出行、白天班次每小时一班，而且没有紧张的换乘。你在现场付款，然后乘坐下一班有座位的巴士。",
       bookOnlineOnlineTitle: "网上预订 - 为保证座位付费",
       bookOnlineOnlineBody:
         "网上票价通常比柜台价高约 30-35%，换来的是提前预留的座位。当座位比省一点钱更重要时值得选择：周末和节假日（热门班次会售完）、当天最后一班巴士，或赶飞机前的固定计划。",

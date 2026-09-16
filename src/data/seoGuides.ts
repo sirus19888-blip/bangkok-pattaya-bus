@@ -69,7 +69,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_ekkamai",
     lastUpdated: "2026-08-02",
-    lastVerified: "2026-09-08",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "Best for travelers staying near Sukhumvit, Thong Lo, Phrom Phong, Asok or BTS Ekkamai.",
       "The Ekkamai to Pattaya bus is usually a straightforward station-to-station trip, not a hotel pickup service.",
@@ -180,7 +180,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_mochit",
     lastUpdated: "2026-08-02",
-    lastVerified: "2026-09-08",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "Best for travelers starting in northern Bangkok, Chatuchak or areas closer to Mo Chit 2.",
       "Mo Chit 2 is not the same as BTS Mo Chit, so plan the transfer to the terminal.",
@@ -289,8 +289,8 @@ export const seoGuides: SeoGuide[] = [
     ctaLabel: "Check Pattaya → Suvarnabhumi Airport tickets",
     ctaPosition: "guide_body",
     ctaSubId: "bpb-pattaya-to-suvarnabhumi-guide_jomtien",
-    lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-08",
+    lastUpdated: "2026-09-16",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "North Pattaya Bus Station and the Jomtien / Thappraya airport bus area are different places.",
       "Taxi, Grab or Bolt is usually easiest with luggage or after a long bus ride.",
@@ -361,7 +361,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "Can I take the Suvarnabhumi airport bus from North Pattaya Bus Station?",
         answer:
-          "Yes. The 130 THB Pattaya to Suvarnabhumi service departs from North Pattaya Bus Station. The hourly Jomtien service costs 151 THB and is a separate route.",
+          "Yes. The Pattaya to Suvarnabhumi service (from 135 THB) departs from North Pattaya Bus Station. The hourly Jomtien service costs from 158 THB and is a separate route.",
       },
       {
         question: "What is easiest with luggage?",
@@ -399,7 +399,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Suvarnabhumi Airport to Pattaya bus times",
     ctaLabel: "Compare airport to Pattaya tickets",
     lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-08",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "The bus counters are on Level 1 (Arrivals) near Gate 8 - look for the Pattaya / Hua Hin service desk.",
       "Several operators run this route, including Roong Reuang Coach, the 999 / Transport Co. bus, Bell Travel and Mekong Transfer, so fares and timings vary a little.",
@@ -520,12 +520,12 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "The bus is usually the cheapest way from Bangkok to Pattaya, while taxi or private transfer is easier door-to-door. This guide helps tourists choose based on budget, luggage, time and comfort.",
     shortAnswer:
-      "The bus is the cheapest choice, with fares of 148 THB from Ekkamai or 158 THB from Mo Chit 2. Choose a private transfer instead when you have heavy luggage, travel with a group or children, or want direct hotel drop-off.",
+      "The bus is the cheapest choice, with fares from 144 THB at Ekkamai or from 155 THB at Mo Chit 2. Choose a private transfer instead when you have heavy luggage, travel with a group or children, or want direct hotel drop-off.",
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Open Bangkok to Pattaya bus times",
     ctaLabel: "Check prices & availability",
-    lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-08",
+    lastUpdated: "2026-09-16",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "Bus from Ekkamai is usually the lowest-cost option for solo travelers.",
       "Taxi or private transfer is easier with luggage, family travel or hotel pickup.",
@@ -592,7 +592,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Check the next Bangkok to Pattaya bus",
     ctaLabel: "Check late-night alternatives",
     lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-08",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "If the last bus has passed, the next scheduled bus may be the following morning.",
       "Late-night taxi or private transfer can be convenient but should have a clear price.",
@@ -654,12 +654,12 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "If you are leaving Pattaya before a flight, plan more time than a normal city transfer. Traffic, station time, check-in, baggage and airport security can all add delays.",
     shortAnswer:
-      "For a flight from Suvarnabhumi, use the direct Pattaya-to-airport bus instead of traveling through Bangkok; it takes about 2 hours and runs from 08:00 to 21:00. Build in a generous buffer for traffic and airport procedures.",
+      "For a flight from Suvarnabhumi, use the direct Pattaya-to-airport bus instead of traveling through Bangkok; it takes about 2 hours and runs from 07:00 to 21:00. Build in a generous buffer for traffic and airport procedures.",
     routeId: "pattaya-to-bangkok",
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Compare tickets and airport alternatives",
-    lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-08",
+    lastUpdated: "2026-09-16",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "Do not rely on the last possible bus before your flight.",
       "Confirm whether your Bangkok destination is Ekkamai, Mo Chit, Suvarnabhumi or Don Mueang.",
@@ -726,16 +726,16 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "There is now a direct bus from Don Mueang Airport (DMK) to Pattaya, run by the government operator Transport Co. (also known as the 999 bus). This is a big improvement over the older route, where travelers had to transfer through Mo Chit bus terminal in Bangkok first. This guide explains where to find the bus after landing, how much it costs, how long it takes, and what to do if you arrive late.",
     shortAnswer:
-      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The airport page lists the Pattaya counter as open 06:30-17:30 every day of the week; confirm the current boarding point on arrival. The direct bus costs around 155 THB and the trip usually takes about 3 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
+      "After collecting your baggage at Don Mueang, go to Floor 1 and look for the Transport Co. / 999 bus counter for Pattaya in the public arrivals area. The airport page lists the Pattaya counter as open 06:30-17:30 every day of the week; confirm the current boarding point on arrival. The direct bus costs from 164 THB and the trip usually takes about 3 to 3.5 hours depending on traffic. Check the Don Mueang to Pattaya route page for current departure times before you go.",
     routeId: "don-mueang-airport-to-pattaya",
     routeLinkLabel: "Open Don Mueang Airport to Pattaya bus times",
     ctaLabel: "Check Don Mueang to Pattaya tickets",
-    lastUpdated: "2026-09-08",
-    lastVerified: "2026-09-08",
+    lastUpdated: "2026-09-16",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "The bus is a direct service to Pattaya - you do not need to transfer through Mo Chit or central Bangkok.",
       "It is operated by Transport Co. (the government 999 bus), with ticket counters on Floor 1 at Don Mueang.",
-      "The fare is around 155 THB and the bus is an air-conditioned coach; the trip usually takes about 3 to 3.5 hours depending on traffic.",
+      "Fares start from 164 THB and the bus is an air-conditioned coach; the trip usually takes about 3 to 3.5 hours depending on traffic.",
     ],
     transferNote: {
       title: "When to skip the airport bus",
@@ -753,7 +753,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "How much the bus costs",
-        body: "The direct airport bus fare is around 155 THB per person. This is cheaper than going via Bangkok's Northern Bus Terminal and changing buses, and far cheaper than a taxi. Confirm the current fare on the route page or at the counter before travel, because operator prices can change.",
+        body: "The direct airport bus fare starts from 164 THB per person in the operator's booking system. This is cheaper than going via Bangkok's Northern Bus Terminal and changing buses, and far cheaper than a taxi. Confirm the current fare on the route page or at the counter before travel, because operator prices can change.",
       },
       {
         title: "How long the journey takes",
@@ -805,7 +805,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How much is the bus from Don Mueang to Pattaya?",
         answer:
-          "The fare is around 155 THB per person. Confirm the current price at the counter or on the route page before travel.",
+          "Fares start from 164 THB per person. Confirm the current price at the counter or on the route page before travel.",
       },
       {
         question: "Where do I catch the bus at Don Mueang Airport?",
@@ -853,15 +853,15 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "There is a direct bus from Pattaya to Don Mueang Airport (DMK), run by the government operator Transport Co. (the 999 bus). It is the cheapest and simplest way to reach DMK for a flight without changing buses in Bangkok. Because you are traveling to catch a flight, the most important thing is leaving enough time for traffic and check-in. This guide explains where the bus departs, how long it takes, and how much buffer to plan.",
     shortAnswer:
-      "The direct Pattaya to Don Mueang bus departs from a Transport Co. stop on Sukhumvit Road, at 155 THB at the counter, or 167-183 THB per person from online resellers. Plan for roughly 3 to 3.5 hours of travel, then add time for check-in and security - do not take the last possible bus before an early flight. Check the Pattaya to Don Mueang route page for current departure times.",
+      "The direct Pattaya to Don Mueang bus departs from a Transport Co. stop on Sukhumvit Road, with fares from 164 THB per person; online resellers charge more. Plan for roughly 3 to 3.5 hours of travel, then add time for check-in and security - do not take the last possible bus before an early flight. Check the Pattaya to Don Mueang route page for current departure times.",
     routeId: "pattaya-to-don-mueang-airport",
     routeLinkLabel: "Open Pattaya to Don Mueang Airport bus times",
     ctaLabel: "Check Pattaya to Don Mueang tickets",
-    lastUpdated: "2026-09-08",
-    lastVerified: "2026-09-08",
+    lastUpdated: "2026-09-16",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "The bus goes direct to Don Mueang - you do not need to change buses in Bangkok.",
-      "It departs from a Transport Co. stop on Sukhumvit Road in Pattaya, at 155 THB at the counter, or 167-183 THB per person from online resellers.",
+      "It departs from a Transport Co. stop on Sukhumvit Road in Pattaya, with fares from 164 THB per person; online resellers charge more.",
       "Leave a generous buffer for traffic, check-in and security - do not rely on the last bus before an early or international flight.",
     ],
     sections: [
@@ -875,7 +875,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "How much the bus costs",
-        body: "The operator sells this route at 155 THB at the counter; online resellers list 167-183 THB per person. The main advantage over taking a bus to Bangkok's Northern Bus Terminal and then a shuttle bus is the direct journey without a transfer; it is also far cheaper than a private taxi. Confirm the current fare on the route page or at the counter before travel.",
+        body: "The operator sells this route from 164 THB per person in its own booking system; online resellers charge more. The main advantage over taking a bus to Bangkok's Northern Bus Terminal and then a shuttle bus is the direct journey without a transfer; it is also far cheaper than a private taxi. Confirm the current fare on the route page or at the counter before travel.",
       },
       {
         title: "How long the journey takes - and your flight buffer",
@@ -927,7 +927,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How much is the bus from Pattaya to Don Mueang?",
         answer:
-          "The operator sells this route at 155 THB at the counter; online resellers list 167-183 THB per person. Confirm the current price at the counter or on the route page before travel.",
+          "The operator sells this route from 164 THB per person in its own booking system; online resellers charge more. Confirm the current price at the counter or on the route page before travel.",
       },
       {
         question: "Where does the bus leave from in Pattaya?",
@@ -975,12 +975,12 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "Taking the bus from Pattaya to Suvarnabhumi Airport (BKK) is the cheapest way to reach your flight, and it drops you right at the departure terminal. Because you are traveling to catch a flight, timing matters more than anything else - traffic, check-in and security all eat into your buffer. This guide explains where the bus departs in Pattaya, how long it takes, how much time to leave, and when a taxi or private transfer is the safer choice.",
     shortAnswer:
-      "The 130 THB Pattaya to Suvarnabhumi bus departs from North Pattaya Bus Station and drops you at the airport departure terminal. Plan for around 2 hours of travel, then add check-in and security time - leave a generous buffer and do not rely on the last bus before an early or international flight. Check the Pattaya to Suvarnabhumi route page for current departure times.",
+      "The Pattaya to Suvarnabhumi bus (from 135 THB) departs from North Pattaya Bus Station and drops you at the airport departure terminal. Plan for around 2 hours of travel, then add check-in and security time - leave a generous buffer and do not rely on the last bus before an early or international flight. Check the Pattaya to Suvarnabhumi route page for current departure times.",
     routeId: "pattaya-to-suvarnabhumi-airport",
     routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
     ctaLabel: "Check prices & availability",
-    lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-08",
+    lastUpdated: "2026-09-16",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "The bus drops you directly at the Suvarnabhumi departure terminal, where you check in - no airport transfer needed.",
       "The bus ride takes around 2 hours; add time to reach the station, check in and clear security, and leave a generous buffer.",
@@ -989,7 +989,7 @@ export const seoGuides: SeoGuide[] = [
     sections: [
       {
         title: "Where the bus departs in Pattaya",
-        body: "The 130 THB airport bus leaves from North Pattaya Bus Station. A separate hourly service costs 151 THB and leaves from Jomtien, so confirm which service you are booking. If your hotel is on Beach Road, in Naklua or central Pattaya, allow time to reach the departure point first by songthaew, taxi or app ride.",
+        body: "The airport bus (from 135 THB) leaves from North Pattaya Bus Station. A separate hourly service costs from 158 THB and leaves from Jomtien, so confirm which service you are booking. If your hotel is on Beach Road, in Naklua or central Pattaya, allow time to reach the departure point first by songthaew, taxi or app ride.",
       },
       {
         title: "How much time to leave before your flight",
@@ -1001,7 +1001,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "How much the bus costs",
-        body: "The operator publishes a fare of 130 THB per seat for the service from Pattaya Bus Station. It separately lists an hourly Suvarnabhumi-Jomtien service at 151 THB per seat. The bus fare is a fraction of the taxi fare. Confirm the current price on the route page or at the counter before travel, because operator prices change.",
+        body: "The operator publishes fares from 135 THB per seat for the service from Pattaya Bus Station. It separately lists an hourly Suvarnabhumi-Jomtien service from 158 THB per seat. The bus fare is a fraction of the taxi fare. Confirm the current price on the route page or at the counter before travel, because operator prices change.",
       },
       {
         title: "How long the journey takes",
@@ -1044,7 +1044,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "Where does the Pattaya to Suvarnabhumi Airport bus leave from?",
         answer:
-          "The 130 THB Pattaya to Suvarnabhumi service leaves from North Pattaya Bus Station. A separate hourly service leaves from Jomtien and costs 151 THB, so confirm which service you are booking.",
+          "The Pattaya to Suvarnabhumi service (from 135 THB) leaves from North Pattaya Bus Station. A separate hourly service leaves from Jomtien and costs from 158 THB, so confirm which service you are booking.",
       },
       {
         question: "How much time should I leave before my flight?",
@@ -1059,7 +1059,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How much does the bus cost?",
         answer:
-          "The operator publishes a fare of 130 THB per seat for the service from Pattaya Bus Station and separately lists an hourly Suvarnabhumi-Jomtien service at 151 THB per seat. Confirm the current price on the route page or at the counter.",
+          "The operator publishes fares from 135 THB per seat for the service from Pattaya Bus Station and separately lists an hourly Suvarnabhumi-Jomtien service from 158 THB per seat. Confirm the current price on the route page or at the counter.",
       },
       {
         question: "Can I take the bus for an early morning flight?",
@@ -1101,7 +1101,7 @@ export const seoGuides: SeoGuide[] = [
     routeLinkLabel: "Open Pattaya to Bangkok bus times",
     ctaLabel: "Check prices & availability",
     lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-08",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "Ekkamai is the only major Bangkok bus terminal within walking distance of a BTS station, ideal for Sukhumvit destinations.",
       "Mo Chit serves northern Bangkok and is better if you are heading that way or continuing by taxi - the BTS is about 2 km from the terminal.",
@@ -1222,7 +1222,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-pattaya-to-suvarnabhumi-airport-guide_jomtien_station",
     lastUpdated: "2026-08-02",
-    lastVerified: "2026-09-08",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "Best boarding point if you stay in Jomtien, on Thappraya Road or in south Pattaya.",
       "The ticket office is sometimes listed as the \"Thappraya bus office\" - it is the same place.",
@@ -1337,7 +1337,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_hotels_station",
     lastUpdated: "2026-08-02",
-    lastVerified: "2026-09-08",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "North Pattaya is the most convenient area for early buses and late arrivals.",
       "Use the map view when booking and check the distance to North Pattaya Bus Station.",
@@ -1440,25 +1440,25 @@ export const seoGuides: SeoGuide[] = [
     intro:
       "Travelers in Pattaya can reach Suvarnabhumi Airport on two separate Roong Reuang Coach services: one from North Pattaya Bus Station and one from Jomtien Bus Station on Thappraya Road. They have different fares and departure patterns, so the best choice depends on where you are staying and when you need to leave. This guide compares them in one place.",
     shortAnswer:
-      "Choose North Pattaya Bus Station for the 130 THB service with seven departures from 08:00 to 21:00. Choose Jomtien Bus Station if you stay in Jomtien, Pratumnak or south Pattaya and want the hourly 151 THB service from 06:00 to 22:00. Both take around 2 hours.",
+      "Choose North Pattaya Bus Station for the service from 135 THB with ten departures from 07:00 to 21:00. Choose Jomtien Bus Station if you stay in Jomtien, Pratumnak or south Pattaya and want the hourly service from 158 THB, running from 06:00 to 22:00. Both take around 2 hours.",
     routeId: "pattaya-to-suvarnabhumi-airport",
     routeLinkLabel: "Open Pattaya to Suvarnabhumi Airport bus times",
     ctaLabel: "Check Pattaya → Suvarnabhumi tickets",
-    lastUpdated: "2026-08-03",
-    lastVerified: "2026-09-08",
+    lastUpdated: "2026-09-16",
+    lastVerified: "2026-09-16",
     keyPoints: [
-      "North Pattaya Bus Station has seven departures at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00, with a fare of 130 THB per seat.",
-      "Jomtien Bus Station has 17 hourly departures from 06:00 to 22:00, with a fare of 151 THB per seat.",
+      "North Pattaya Bus Station has ten departures at 07:00, 08:00, 10:00, 11:00, 12:00, 13:00, 14:00, 16:00, 18:00 and 21:00, with fares from 135 THB per seat.",
+      "Jomtien Bus Station has 17 hourly departures from 06:00 to 22:00, with fares from 158 THB per seat.",
       "For the reverse trip from Suvarnabhumi, the 22:00 departure ends at Pattaya Bus Station and does not continue to Jomtien.",
     ],
     sections: [
       {
         title: "North Pattaya and Jomtien at a glance",
-        body: "Roong Reuang Coach operates both services, and both take around 2 hours to reach Suvarnabhumi Airport. The North Pattaya service leaves from North Pattaya Bus Station and costs 130 THB per seat. The Jomtien service leaves from Jomtien Bus Station on Thappraya Road and costs 151 THB per seat. These are separate products with different departure patterns, not two stops on one route.",
+        body: "Roong Reuang Coach operates both services, and both take around 2 hours to reach Suvarnabhumi Airport. The North Pattaya service leaves from North Pattaya Bus Station and costs from 135 THB per seat. The Jomtien service leaves from Jomtien Bus Station on Thappraya Road and costs from 158 THB per seat. These are separate products with different departure patterns, not two stops on one route.",
       },
       {
         title: "Choose North Pattaya Bus Station if it is closer",
-        body: "North Pattaya Bus Station is the practical choice when you are staying in North Pattaya or Naklua, or when one of its seven departures fits your flight plan. This is the 130 THB service listed on the main Pattaya to Suvarnabhumi route page. Check the distance from your hotel before choosing, because reaching the station is part of your total travel time.",
+        body: "North Pattaya Bus Station is the practical choice when you are staying in North Pattaya or Naklua, or when one of its ten departures fits your flight plan. This is the service (from 135 THB) listed on the main Pattaya to Suvarnabhumi route page. Check the distance from your hotel before choosing, because reaching the station is part of your total travel time.",
       },
       {
         title: "Choose Jomtien Bus Station if you are staying south",
@@ -1474,7 +1474,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "Departure times, fares and travel time",
-        body: "The North Pattaya service costs 130 THB per seat and departs at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00. The Jomtien service costs 151 THB per seat and departs hourly from 06:00 to 22:00. Both services take around 2 hours, so station access and the departure that fits your flight are usually more important than journey time.",
+        body: "The North Pattaya service costs from 135 THB per seat and departs at 07:00, 08:00, 10:00, 11:00, 12:00, 13:00, 14:00, 16:00, 18:00 and 21:00. The Jomtien service costs from 158 THB per seat and departs hourly from 06:00 to 22:00. Both services take around 2 hours, so station access and the departure that fits your flight are usually more important than journey time.",
       },
       {
         title: "Important: the 22:00 airport bus does not reach Jomtien",
@@ -1493,7 +1493,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "Which station is better for Suvarnabhumi Airport: North Pattaya or Jomtien?",
         answer:
-          "Choose North Pattaya Bus Station if you are staying in North Pattaya or Naklua and one of its seven departures fits. Choose Jomtien Bus Station if you are staying in Jomtien, Pratumnak or south Pattaya, or if its hourly departures suit your flight better.",
+          "Choose North Pattaya Bus Station if you are staying in North Pattaya or Naklua and one of its ten departures fits. Choose Jomtien Bus Station if you are staying in Jomtien, Pratumnak or south Pattaya, or if its hourly departures suit your flight better.",
       },
       {
         question: "Are the North Pattaya and Jomtien airport buses the same service?",
@@ -1508,7 +1508,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How often do the two Suvarnabhumi buses leave Pattaya?",
         answer:
-          "North Pattaya has seven departures at 08:00, 10:00, 12:00, 14:00, 16:00, 18:00 and 21:00. Jomtien has 17 hourly departures from 06:00 to 22:00.",
+          "North Pattaya has ten departures at 07:00, 08:00, 10:00, 11:00, 12:00, 13:00, 14:00, 16:00, 18:00 and 21:00. Jomtien has 17 hourly departures from 06:00 to 22:00.",
       },
       {
         question: "Where do the Pattaya and Jomtien buses board at Suvarnabhumi Airport?",
@@ -1553,7 +1553,7 @@ export const seoGuides: SeoGuide[] = [
     ctaPosition: "guide_body",
     ctaSubId: "bpb-suvarnabhumi-airport-to-pattaya-guide_tomorrowland",
     lastUpdated: "2026-08-24",
-    lastVerified: "2026-09-08",
+    lastVerified: "2026-09-16",
     keyPoints: [
       "Wisdom Valley is inland from Pattaya, so a bus to Pattaya is only the first part of the journey.",
       "There is no DreamVille camping for the Thailand edition; independent visitors should arrange accommodation themselves.",
@@ -1665,40 +1665,40 @@ export const seoGuides: SeoGuide[] = [
     slug: "bangkok-to-pattaya-bus-fare",
     title: "Bangkok to Pattaya Bus Fare 2026: Prices by Terminal",
     description:
-      "What the Bangkok to Pattaya bus costs: 148 THB from Ekkamai, 158 THB from Mo Chit 2, separate airport fares, what the ticket covers and how to pay.",
+      "What the Bangkok to Pattaya bus costs: from 144 THB at Ekkamai, from 155 THB at Mo Chit 2, separate airport fares, what the ticket covers and how to pay.",
     h1: "Bangkok to Pattaya Bus Fare",
     intro:
       "Bus fares between Bangkok and Pattaya are set by the operator and published per seat, so the price at the counter does not change with demand or time of day. This page collects every fare on the route in one place - both city terminals, both airports and the return direction - so you can compare before you travel.",
     shortAnswer:
-      "The Bangkok to Pattaya bus costs 148 THB per seat from Ekkamai Bus Terminal and 158 THB per seat from Mo Chit 2 Bus Terminal, as published by Roong Reuang Coach. Airport routes are priced separately: 130 THB from Suvarnabhumi Airport and 155 THB from Don Mueang Airport. Tickets are sold at the counter and the fare is per seat.",
+      "The Bangkok to Pattaya bus costs from 144 THB per seat at Ekkamai Bus Terminal and from 155 THB per seat at Mo Chit 2 Bus Terminal, as published by Roong Reuang Coach. Airport routes are priced separately: from 135 THB at Suvarnabhumi Airport and from 164 THB at Don Mueang Airport. Tickets are sold at the counter and the fare is per seat.",
     routeId: "bangkok-to-pattaya",
     routeLinkLabel: "Open Bangkok to Pattaya bus times",
     ctaLabel: "Check Bangkok to Pattaya tickets",
     ctaPosition: "guide_body",
     ctaSubId: "bpb-bangkok-to-pattaya-guide_fare",
-    lastUpdated: "2026-09-08",
-    lastVerified: "2026-09-08",
+    lastUpdated: "2026-09-16",
+    lastVerified: "2026-09-16",
     keyPoints: [
-      "Ekkamai is the cheaper Bangkok terminal at 148 THB per seat; Mo Chit 2 costs 158 THB for the same journey.",
-      "Airport buses are priced separately: 130 THB from Suvarnabhumi and 155 THB from Don Mueang.",
+      "Ekkamai is the cheaper Bangkok terminal, from 144 THB per seat; Mo Chit 2 costs from 155 THB for the same journey.",
+      "Airport buses are priced separately: from 135 THB at Suvarnabhumi and from 164 THB at Don Mueang.",
       "Fares are per seat and fixed by the operator, so the counter price is the same whichever departure you take.",
     ],
     sections: [
       {
         title: "Bangkok to Pattaya bus fares by terminal",
-        body: "Roong Reuang Coach publishes one fare per departure point. From Ekkamai Bus Terminal the fare is 148 THB per seat. From Mo Chit 2 Bus Terminal it is 158 THB per seat. The operator also lists a Bangna pick-up point at 148 THB per seat. All of them run to Pattaya Bus Terminal on North Pattaya Road, and the published journey time is about 2 hours, although Bangkok traffic often makes it longer.",
+        body: "Roong Reuang Coach publishes one fare per departure point. From Ekkamai Bus Terminal fares start from 144 THB per seat. From Mo Chit 2 Bus Terminal they start from 155 THB per seat. The operator also lists a Bangna pick-up point with fares from 144 THB per seat. All of them run to Pattaya Bus Terminal on North Pattaya Road, and the published journey time is about 2 hours, although Bangkok traffic often makes it longer.",
       },
       {
         title: "Why Ekkamai and Mo Chit cost different amounts",
-        body: "The 10 THB difference reflects the distance from each terminal to the motorway, not a difference in comfort or service. Mo Chit 2 sits in northern Bangkok and the bus covers more ground before reaching the highway, so the fare is slightly higher. Choose the terminal that is easier to reach from your hotel, because the transfer across Bangkok will cost far more than the 10 THB you save.",
+        body: "The small difference between the two fares reflects the distance from each terminal to the motorway, not a difference in comfort or service. Mo Chit 2 sits in northern Bangkok and the bus covers more ground before reaching the highway, so the fare is slightly higher. Choose the terminal that is easier to reach from your hotel, because the transfer across Bangkok will cost far more than the few baht you save.",
       },
       {
         title: "Airport bus fares are separate",
-        body: "Airport services are priced independently of the city terminals. Suvarnabhumi Airport to Pattaya Bus Terminal is 130 THB per seat, boarding on Level 1 near Gate 8. The operator also runs an hourly Suvarnabhumi to Jomtien service at 151 THB per seat, which is a different route with a different arrival point. From Don Mueang Airport the official airport page lists 155 THB per person to Pattaya.",
+        body: "Airport services are priced independently of the city terminals. Suvarnabhumi Airport to Pattaya Bus Terminal costs from 135 THB per seat, boarding on Level 1 near Gate 8. The operator also runs an hourly Suvarnabhumi to Jomtien service from 158 THB per seat, which is a different route with a different arrival point. From Don Mueang Airport the operator's booking system lists fares from 164 THB per person to Pattaya, while the official airport page still shows 155 THB.",
       },
       {
         title: "Return fares from Pattaya",
-        body: "Coming back, the fare depends on which Bangkok terminal you arrive at rather than where you board. Pattaya to Ekkamai is 148 THB per seat and Pattaya to Mo Chit 2 is 158 THB per seat, the same prices as the outbound direction. Pattaya to Don Mueang Airport is 155 THB at the counter in the operator's own booking system; online resellers show 167-183 THB per person, so buying at the counter is the cheapest option.",
+        body: "Coming back, the fare depends on which Bangkok terminal you arrive at rather than where you board. Pattaya to Ekkamai costs from 144 THB per seat and Pattaya to Mo Chit 2 from 155 THB per seat, the same prices as the outbound direction. Pattaya to Don Mueang Airport costs from 164 THB per person in the operator's own booking system; online resellers charge more, so buying directly from the operator is the cheapest option.",
       },
       {
         title: "What the ticket price includes",
@@ -1710,7 +1710,7 @@ export const seoGuides: SeoGuide[] = [
       },
       {
         title: "How the bus fare compares with other options",
-        body: "At 148-158 THB the bus is by far the cheapest scheduled way between Bangkok and Pattaya. A metered taxi or private car usually costs well over 1,000 THB for the same trip. The difference buys door-to-door service, no waiting for a departure time and room for large luggage, which matters most on a late arrival, in a group or with more than a cabin bag.",
+        body: "From 144 THB, the bus is by far the cheapest scheduled way between Bangkok and Pattaya. A metered taxi or private car usually costs well over 1,000 THB for the same trip. The difference buys door-to-door service, no waiting for a departure time and room for large luggage, which matters most on a late arrival, in a group or with more than a cabin bag.",
       },
     ],
     internalLinks: [
@@ -1737,7 +1737,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How much is the bus from Bangkok to Pattaya?",
         answer:
-          "148 THB per seat from Ekkamai Bus Terminal and 158 THB per seat from Mo Chit 2 Bus Terminal, as published by the operator. Airport routes are priced separately.",
+          "From 144 THB per seat at Ekkamai Bus Terminal and from 155 THB per seat at Mo Chit 2 Bus Terminal, as published by the operator. Airport routes are priced separately.",
       },
       {
         question: "Is the bus fare cheaper if I book online?",
@@ -1747,7 +1747,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "How much is the bus from the airport to Pattaya?",
         answer:
-          "130 THB per seat from Suvarnabhumi Airport to Pattaya Bus Terminal, and 155 THB per person from Don Mueang Airport. The separate hourly Suvarnabhumi to Jomtien service is 151 THB per seat.",
+          "From 135 THB per seat from Suvarnabhumi Airport to Pattaya Bus Terminal, and from 164 THB per person from Don Mueang Airport. The separate hourly Suvarnabhumi to Jomtien service costs from 158 THB per seat.",
       },
       {
         question: "Do I pay extra for luggage?",
@@ -1762,7 +1762,7 @@ export const seoGuides: SeoGuide[] = [
       {
         question: "Has the fare changed for 2026?",
         answer:
-          "The fares on this page were checked against the operator and official airport pages on 4 September 2026. Fares can change without notice, so confirm at the counter before you pay.",
+          "Yes. Several fares changed during 2026, which is why this page lists starting prices. They were last checked against the operators' own websites and booking systems on 16 September 2026. Fares can change without notice, so confirm at the counter before you pay.",
       },
     ],
     sources: [

@@ -50,11 +50,16 @@ const SOURCES = [
         routeId: "suvarnabhumi-airport-to-pattaya",
         sectionLabel: "suvarnabhumi-to-pattaya",
         stationKeyword: STATIONS.suvarnabhumi,
+        // T88: kursy sprzedawane w systemie biletowym przewoznika (rrcticket.com)
+        // i w 12Go, sprawdzone 2026-09-16 dla pieciu dat, ale nieobecne na tej
+        // stronie. Aplikacja je pokazuje; tu nie licza sie jako roznica.
+        bookingSystemOnly: ["06:30"],
       },
       {
         routeId: "pattaya-to-suvarnabhumi-airport",
         sectionLabel: "pattaya-to-suvarnabhumi",
         stationKeyword: STATIONS.pattaya,
+        bookingSystemOnly: ["07:00", "11:00", "13:00"],
       },
     ],
   },
@@ -219,7 +224,21 @@ function printUnverifiable(route, reason) {
 
 // Zwraca true jesli trasa ma ROZNICE (do zliczenia globalnego statusu)
 function printRouteResult(route, appTimes, sourceTimes) {
-  const { missingFromSource, extraInSource } = compareTimes(appTimes, sourceTimes);
+  const compared = compareTimes(appTimes, sourceTimes);
+  const bookingOnly = new Set(route.bookingSystemOnly ?? []);
+  const knownBookingOnly = compared.missingFromSource.filter((time) =>
+    bookingOnly.has(time),
+  );
+  const missingFromSource = compared.missingFromSource.filter(
+    (time) => !bookingOnly.has(time),
+  );
+  const { extraInSource } = compared;
+
+  if (knownBookingOnly.length > 0) {
+    console.log(
+      `  (${route.sectionLabel}: tylko w systemie biletowym przewoznika: ${knownBookingOnly.join(", ")})`,
+    );
+  }
 
   if (missingFromSource.length === 0 && extraInSource.length === 0) {
     console.log(`ZGODNE ${route.sectionLabel} (${route.routeId})`);

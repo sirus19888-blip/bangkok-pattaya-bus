@@ -129,67 +129,67 @@
   "schedules": {
     "bangkok-ekkamai-to-pattaya": {
       "travelTime": "Environ 2-3 heures, selon la circulation",
-      "price": "148-158 THB par siège selon la gare",
+      "price": "à partir de 144 THB par siège selon la gare",
       "subRoutePrices": {
-        "bangkok-ekkamai-to-pattaya": "148 THB par siège",
-        "bangkok-mochit-to-pattaya": "158 THB par siège"
+        "bangkok-ekkamai-to-pattaya": "à partir de 144 THB par siège",
+        "bangkok-mochit-to-pattaya": "à partir de 155 THB par siège"
       },
       "disclaimer": "Les horaires peuvent changer. Veuillez confirmer à la station ou auprès de l'opérateur avant le voyage.",
-      "fareNote": "Tarifs publiés par l'opérateur : 148 THB depuis Ekkamai Bus Terminal et 158 THB depuis Mo Chit 2 Bus Terminal.",
+      "fareNote": "Tarifs publiés par l'opérateur : à partir de 144 THB depuis Ekkamai Bus Terminal et à partir de 155 THB depuis Mo Chit 2 Bus Terminal.",
       "operatorNote": "Les horaires de bus peuvent changer. Confirmez à la station ou auprès de l'opérateur avant le voyage.",
       "sourceType": "site officiel de l'opérateur",
       "dataQuality": "Source officielle, vérifiée manuellement"
     },
     "pattaya-to-bangkok-ekkamai": {
       "travelTime": "Environ 2-3 heures",
-      "price": "148-158 THB par siège",
+      "price": "à partir de 144 THB par siège",
       "subRoutePrices": {
-        "pattaya-to-mochit": "158 THB par siège",
-        "pattaya-to-ekkamai": "148 THB par siège"
+        "pattaya-to-mochit": "à partir de 155 THB par siège",
+        "pattaya-to-ekkamai": "à partir de 144 THB par siège"
       },
       "disclaimer": "Les horaires peuvent changer. Veuillez confirmer à la station ou auprès de l'opérateur avant le voyage.",
-      "fareNote": "Tarifs publiés par l'opérateur : 158 THB vers Mo Chit et 148 THB vers Ekkamai par siège.",
+      "fareNote": "Tarifs publiés par l'opérateur : à partir de 155 THB vers Mo Chit et à partir de 144 THB vers Ekkamai par siège.",
       "operatorNote": "Les horaires de bus peuvent changer. Confirmez à la station ou auprès de l'opérateur avant le voyage.",
       "sourceType": "site officiel de l'opérateur",
       "dataQuality": "Source officielle, vérifiée manuellement"
     },
     "suvarnabhumi-airport-to-pattaya": {
       "travelTime": "Environ 2 heures",
-      "price": "130 THB par siège",
+      "price": "à partir de 135 THB par siège",
       "disclaimer": "Les horaires peuvent changer. Veuillez confirmer à la station ou auprès de l'opérateur avant le voyage.",
-      "fareNote": "Tarif publié par l'opérateur : 130 THB par siège. L'opérateur propose également un service Suvarnabhumi–Jomtien toutes les heures à 151 THB par siège.",
+      "fareNote": "Tarifs publiés par l'opérateur : à partir de 135 THB par siège. L'opérateur propose également un service Suvarnabhumi–Jomtien toutes les heures à partir de 158 THB par siège.",
       "operatorNote": "Cet horaire concerne le service de Suvarnabhumi Airport à Pattaya Bus Station. Les horaires peuvent changer, confirmez avant le voyage.",
-      "sourceType": "site officiel de l'opérateur",
-      "dataQuality": "Source officielle, vérifiée manuellement",
+      "sourceType": "site officiel et système de réservation de l'opérateur",
+      "dataQuality": "Source officielle, vérifiée manuellement. Les horaires suivent le système de réservation de l'opérateur, vérifié pour plusieurs dates ; la page des horaires de l'opérateur n'indique pas le bus de 06h30.",
       "boardingNote": "Selon les données actuelles de la route, les billets s'achètent au niveau 1 près de la porte 8."
     },
     "don-mueang-airport-to-pattaya": {
       "boardingNote": "La page officielle de l'aéroport indique des comptoirs au Terminal 1, bâtiment 1, étage 1, porte 1 et au Terminal 2, bâtiment 2, étage 1, porte 11. Le point de prise en charge est le Service Hall Building. La page de l'aéroport indique le comptoir Pattaya ouvert de 06h30 à 17h30 tous les jours ; confirmez le point de départ sur place.",
       "travelTime": "Environ 3 à 3,5 heures",
-      "price": "155 THB par personne",
+      "price": "à partir de 164 THB par personne",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
-      "fareNote": "Tarif indiqué sur la page de transport de l'aéroport : 155 THB par personne.",
-      "operatorNote": "Les horaires et le tarif de 155 THB proviennent du système de réservation de l'opérateur. Les intervalles sont irréguliers : deux bus dans la première heure, puis quatre heures entre 13h30 et le dernier départ à 17h30. Confirmez avant le voyage.",
+      "fareNote": "Le système de réservation de l'opérateur indique des tarifs à partir de 164 THB par personne. La page de transport de l'aéroport de Don Mueang affiche encore 155 THB.",
+      "operatorNote": "Les horaires et les tarifs à partir de 164 THB proviennent du système de réservation de l'opérateur. Les intervalles sont irréguliers : deux bus dans la première heure, puis quatre heures entre 13h30 et le dernier départ à 17h30. Confirmez avant le voyage.",
       "sourceType": "système de réservation de l'opérateur / page de l'aéroport",
       "dataQuality": "Système de réservation de l'opérateur, vérifié manuellement"
     },
     "pattaya-to-suvarnabhumi-airport": {
       "travelTime": "Environ 2 heures, selon la circulation",
-      "price": "130 THB par siège",
+      "price": "à partir de 135 THB par siège",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
-      "boardingNote": "Selon l'opérateur, les billets sont disponibles au comptoir de la gare routière de Pattaya. Le service horaire vers Jomtien à 151 THB est distinct ; confirmez-le auprès de l'opérateur avant l'achat.",
-      "fareNote": "Tarif publié par l'opérateur : 130 THB par siège. L'opérateur propose également un service Suvarnabhumi–Jomtien toutes les heures à 151 THB par siège.",
+      "boardingNote": "Selon l'opérateur, les billets sont disponibles au comptoir de la gare routière de Pattaya. Le service horaire vers Jomtien (à partir de 158 THB) est distinct ; confirmez-le auprès de l'opérateur avant l'achat.",
+      "fareNote": "Tarifs publiés par l'opérateur : à partir de 135 THB par siège. L'opérateur propose également un service Suvarnabhumi–Jomtien toutes les heures à partir de 158 THB par siège.",
       "operatorNote": "Les horaires de bus peuvent changer. Confirmez à la station ou auprès de l'opérateur avant le voyage.",
-      "sourceType": "site officiel de l'opérateur",
-      "dataQuality": "Source officielle, vérifiée manuellement"
+      "sourceType": "site officiel et système de réservation de l'opérateur",
+      "dataQuality": "Source officielle, vérifiée manuellement. Les horaires suivent le système de réservation de l'opérateur, vérifié pour plusieurs dates ; la page des horaires de l'opérateur n'indique pas les bus de 07h00, 11h00 et 13h00."
     },
     "pattaya-to-don-mueang-airport": {
       "travelTime": "Environ 3 à 3,5 heures",
-      "price": "155 THB au guichet, 167–183 THB en ligne",
+      "price": "à partir de 164 THB par personne",
       "disclaimer": "Les horaires de bus peuvent changer. Confirmez-les à la station ou auprès de l'opérateur avant le voyage.",
       "boardingNote": "Des sources secondaires indiquent Pattaya Sukhumvit Road Bus Station. Confirmez le point d'embarquement exact à Pattaya avant le départ.",
-      "fareNote": "L'opérateur vend ce trajet 155 THB par personne. Les revendeurs en ligne ajoutent une marge : 12Go affiche 167 THB et d'autres sites jusqu'à 183 THB. Le guichet est l'option la moins chère si vous pouvez attendre une place.",
-      "operatorNote": "Les horaires et le tarif au guichet proviennent du système de réservation de l'opérateur. Confirmez auprès de l'opérateur ou à la station avant le voyage.",
+      "fareNote": "L'opérateur vend ce trajet dans son système de réservation à partir de 164 THB par personne. Les revendeurs en ligne ajoutent une marge, les sites de réservation sont donc plus chers. Acheter directement auprès de l'opérateur reste l'option la moins chère.",
+      "operatorNote": "Les horaires et les tarifs proviennent du système de réservation de l'opérateur. Confirmez auprès de l'opérateur ou à la station avant le voyage.",
       "sourceType": "système de réservation officiel de l'opérateur",
       "dataQuality": "Système de réservation de l'opérateur, vérifié manuellement"
     }
@@ -442,11 +442,11 @@
       },
       {
         "question": "Puis-je payer le bus de Suvarnabhumi à Pattaya par carte, ou dois-je avoir des espèces après l'atterrissage ?",
-        "answer": "Au comptoir de l'aéroport situé au niveau 1, près de la porte 8, prévoyez le tarif de 130 THB en espèces (bahts thaïlandais), car le paiement par carte n'est pas toujours accepté. Si vous préférez ne pas chercher un distributeur juste après l'atterrissage, vous pouvez réserver en ligne à l'avance pour payer par carte et garantir votre place."
+        "answer": "Au comptoir de l'aéroport situé au niveau 1, près de la porte 8, prévoyez le tarif (à partir de 135 THB) en espèces (bahts thaïlandais), car le paiement par carte n'est pas toujours accepté. Si vous préférez ne pas chercher un distributeur juste après l'atterrissage, vous pouvez réserver en ligne à l'avance pour payer par carte et garantir votre place."
       },
       {
         "question": "Que faire si mon vol est retardé et que je rate le bus aéroport que je voulais prendre ?",
-        "answer": "Les bus pour Pattaya circulent environ toutes les deux heures, de 07h30 à 18h30 environ ; si vous ratez votre départ prévu, vous pouvez généralement en prendre un plus tard le même jour. À votre arrivée, vérifiez les horaires actuels au comptoir, car ils peuvent changer. Si vous atterrissez après le dernier bus, comparez plutôt un taxi, Grab ou un transfert privé, et convenez du prix et du point de prise en charge avant de partir."
+        "answer": "Les bus pour Pattaya circulent environ toutes les deux heures, de 06h30 à 18h30 environ ; si vous ratez votre départ prévu, vous pouvez généralement en prendre un plus tard le même jour. À votre arrivée, vérifiez les horaires actuels au comptoir, car ils peuvent changer. Si vous atterrissez après le dernier bus, comparez plutôt un taxi, Grab ou un transfert privé, et convenez du prix et du point de prise en charge avant de partir."
       },
       {
         "question": "Comment rejoindre mon hôtel une fois que le bus de l'aéroport me dépose à North Pattaya Bus Station ?",
@@ -476,7 +476,7 @@
       },
       {
         "question": "Puis-je payer le bus de Don Mueang à Pattaya par carte, ou faut-il des espèces ?",
-        "answer": "Préparez des bahts thaïlandais en espèces pour le tarif de 155 THB au comptoir de service de l'aéroport, car l'acceptation des cartes peut varier selon le comptoir et l'heure de la journée. Si vous préférez payer par carte, demandez au personnel du comptoir si elle est acceptée avant de faire la queue, et gardez des espèces en réserve au cas où."
+        "answer": "Préparez des bahts thaïlandais en espèces pour le tarif (à partir de 164 THB) au comptoir de service de l'aéroport, car l'acceptation des cartes peut varier selon le comptoir et l'heure de la journée. Si vous préférez payer par carte, demandez au personnel du comptoir si elle est acceptée avant de faire la queue, et gardez des espèces en réserve au cas où."
       },
       {
         "question": "Que faire si j'arrive à Don Mueang en dehors des horaires de bus ou entre deux départs ?",
@@ -490,7 +490,7 @@
     "pattaya-to-suvarnabhumi-airport": [
       {
         "question": "Où prendre le bus de Pattaya vers Suvarnabhumi ?",
-        "answer": "Achetez les billets au comptoir de la gare routière de Pattaya. Le service horaire vers Jomtien à 151 THB est distinct ; confirmez-le auprès de l'opérateur avant l'achat."
+        "answer": "Achetez les billets au comptoir de la gare routière de Pattaya. Le service horaire vers Jomtien (à partir de 158 THB) est distinct ; confirmez-le auprès de l'opérateur avant l'achat."
       },
       {
         "question": "Combien de temps dure le trajet ?",
@@ -498,7 +498,7 @@
       },
       {
         "question": "Combien coûte le billet ?",
-        "answer": "Le prix indiqué est d'environ 130 THB par siège. Confirmez le tarif auprès de l'opérateur avant le voyage."
+        "answer": "Le prix indiqué commence à 135 THB par siège. Confirmez le tarif auprès de l'opérateur avant le voyage."
       },
       {
         "question": "Combien de temps avant le vol faut-il partir ?",
@@ -510,11 +510,11 @@
       },
       {
         "question": "Puis-je payer le bus de Pattaya vers l'aéroport Suvarnabhumi par carte, ou faut-il payer en espèces ?",
-        "answer": "Le billet coûte 130 THB par place, et au comptoir de la station, le plus sûr est d'avoir des bahts thaïlandais en espèces, car l'acceptation des cartes peut varier selon le comptoir et l'heure de la journée. Si vous préférez payer par carte et réserver une place à l'avance, vous pouvez le faire en ligne avant de partir."
+        "answer": "Le billet coûte à partir de 135 THB par place, et au comptoir de la station, le plus sûr est d'avoir des bahts thaïlandais en espèces, car l'acceptation des cartes peut varier selon le comptoir et l'heure de la journée. Si vous préférez payer par carte et réserver une place à l'avance, vous pouvez le faire en ligne avant de partir."
       },
       {
         "question": "Quel bus de Pattaya vers l'aéroport Suvarnabhumi choisir pour ne pas rater mon vol ?",
-        "answer": "Comptez environ 2 heures de trajet, puis ajoutez du temps pour la circulation ainsi que l'enregistrement, la sécurité et le contrôle des passeports à l'aéroport ; visez donc une arrivée environ 3 heures avant un vol international. Comme il s'agit d'un trajet vers l'aéroport, choisissez un départ quelques heures plus tôt que le strict minimum plutôt que celui le plus proche de votre vol. Les départs ont lieu à peu près de 08h00 à 21h00, mais confirmez les horaires actuels auprès de l'opérateur avant de compter sur un bus en particulier."
+        "answer": "Comptez environ 2 heures de trajet, puis ajoutez du temps pour la circulation ainsi que l'enregistrement, la sécurité et le contrôle des passeports à l'aéroport ; visez donc une arrivée environ 3 heures avant un vol international. Comme il s'agit d'un trajet vers l'aéroport, choisissez un départ quelques heures plus tôt que le strict minimum plutôt que celui le plus proche de votre vol. Les départs ont lieu à peu près de 07h00 à 21h00, mais confirmez les horaires actuels auprès de l'opérateur avant de compter sur un bus en particulier."
       },
       {
         "question": "Que faire si je rate le dernier bus de Pattaya vers l'aéroport Suvarnabhumi avant mon vol ?",
@@ -532,7 +532,7 @@
       },
       {
         "question": "Combien coûte le billet ?",
-        "answer": "Le prix est de 155 THB au guichet et de 167 à 183 THB en ligne. Confirmez le tarif et le point de départ avant le voyage."
+        "answer": "Le prix commence à 164 THB par personne ; les revendeurs en ligne sont plus chers. Confirmez le tarif et le point de départ avant le voyage."
       },
       {
         "question": "Comment rejoindre mon vol ? Don Mueang ?",
@@ -544,7 +544,7 @@
       },
       {
         "question": "Puis-je payer le billet de bus de Pattaya à Don Mueang par carte, ou ai-je besoin d'espèces ?",
-        "answer": "Gardez des bahts thaïlandais en espèces pour le guichet, car l'acceptation des cartes peut varier selon la station et l'heure de la journée. L'opérateur demande 155 THB au guichet, tandis que les revendeurs en ligne affichent 167 à 183 THB : confirmez le prix actuel auprès de l'opérateur ou de la station avant de payer. Si vous préférez payer par carte et garantir une place, vous pouvez aussi réserver en ligne avant de partir."
+        "answer": "Gardez des bahts thaïlandais en espèces pour le guichet, car l'acceptation des cartes peut varier selon la station et l'heure de la journée. Chez l'opérateur, les tarifs commencent à 164 THB, tandis que les revendeurs en ligne ajoutent une marge : confirmez le prix actuel auprès de l'opérateur ou de la station avant de payer. Si vous préférez payer par carte et garantir une place, vous pouvez aussi réserver en ligne avant de partir."
       },
       {
         "question": "Quel bus de Pattaya à Don Mueang dois-je prendre pour ne pas rater mon vol ?",

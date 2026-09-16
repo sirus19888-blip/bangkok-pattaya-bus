@@ -628,7 +628,7 @@ function assertDonMueangAirportToPattaya({ appSchedules, source, text }) {
       strength: "weaker than RRC",
       result: "match",
       note:
-        "AOT confirms fare, counters, pick-up point, and a 06:30-17:30 service window. The six exact departures come from the operator booking system, which AOT does not publish.",
+        "AOT confirms counters, pick-up point and a 06:30-17:30 service window, and still lists 155 THB. The app shows fares from 164 THB and the six exact departures from the operator booking system, which AOT does not publish.",
     },
   ];
 }
@@ -651,9 +651,11 @@ function assertPattayaToDonMueangAirport({ appSchedules, source, text }) {
     expectedDepartures,
     `${routeId} app departures must match ThailandLife's six published departures.`,
   );
+  // Od T88 aplikacja podaje cene "od" z systemu przewoznika (164 THB, pomiar
+  // 2026-09-16), a o posrednikach mowi tylko, ze sa drozsi.
   assert.ok(
-    appSchedule.fareText.includes("167"),
-    `${routeId} app fare text must retain 167-183 THB.`,
+    appSchedule.fareText.includes("164"),
+    `${routeId} app fare text must show the operator booking-system fare from 164 THB.`,
   );
   assert.ok(
     textHas(text, /There are currently 6 services a day/i),
@@ -667,18 +669,13 @@ function assertPattayaToDonMueangAirport({ appSchedules, source, text }) {
     );
   }
 
-  assert.ok(
-    textHas(text, /(?:\u0e3f\s*183|183\s*THB|183\s*baht)/i),
-    `${source.name} must confirm the 183 THB ThailandLife fare.`,
-  );
-
   return [
     {
       routeId,
       strength: "secondary source",
       result: "match",
       note:
-        "ThailandLife confirms six Pattaya-DMK departures and 183 THB; app stores the 167-183 THB secondary-source range. This is a weaker source class than RRC official operator pages.",
+        "ThailandLife confirms six Pattaya-DMK departures. Fares in the app come from the operator booking system (from 164 THB); ThailandLife is a weaker, secondary source class.",
     },
   ];
 }

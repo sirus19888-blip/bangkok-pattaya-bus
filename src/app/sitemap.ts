@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { routePages, supportedLocaleCodes } from "@/data/routes";
-import { getScheduleByRoute } from "@/data/schedules";
+import { getScheduleByRoute, schedules } from "@/data/schedules";
 import { seoGuides } from "@/data/seoGuides";
 import {
   getGuideLocales,
@@ -9,6 +9,17 @@ import {
 import { absoluteUrl } from "@/lib/site";
 
 const staticLastModified = new Date("2026-08-02T00:00:00.000Z");
+
+// Strony glowne pokazuja ceny i godziny z danych tras, wiec ich tresc zmienia sie
+// razem z nimi. Data modyfikacji = najpozniejsza z daty statycznej i dat zmian tras
+// (T88); bez tego strona glowna podawala Google 2 sierpnia mimo nowych cen.
+const homeLastModified = new Date(
+  `${schedules.reduce(
+    (latest, schedule) =>
+      schedule.lastUpdated > latest ? schedule.lastUpdated : latest,
+    "2026-08-02",
+  )}T00:00:00.000Z`,
+);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -35,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const localeHomeUrls: MetadataRoute.Sitemap = supportedLocaleCodes.map(
     (locale) => ({
       url: absoluteUrl(`/${locale}`),
-      lastModified: staticLastModified,
+      lastModified: homeLastModified,
       changeFrequency: "weekly",
       priority: locale === "en" ? 1 : 0.8,
     }),
