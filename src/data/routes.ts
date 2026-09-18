@@ -150,7 +150,7 @@ export const routePages: RoutePage[] = [
       "Check bus times from Pattaya to Suvarnabhumi Airport, including ticket price, travel time, boarding information, and tips before your flight.",
     relatedDescription:
       "Check Pattaya to Suvarnabhumi Airport bus times, price, and boarding tips.",
-    from: "Pattaya Bus Station",
+    from: "Pattaya",
     to: "Suvarnabhumi Airport",
     stationIds: ["north-pattaya", "suvarnabhumi-airport"],
     metadata: {

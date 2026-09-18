@@ -19,6 +19,13 @@ const travelDateContextSource = readFileSync(
   join(cwd(), "src/components/TravelDateContext.tsx"),
   "utf8",
 );
+const routesSource = readFileSync(join(cwd(), "src/data/routes.ts"), "utf8");
+// Miejsca startu tras wziete ze slugow: "pattaya-to-bangkok" -> "pattaya".
+const routeOrigins = new Set(
+  [...routesSource.matchAll(/slug: "([a-z-]+)-to-[a-z-]+"/g)].map(
+    (match) => match[1],
+  ),
+);
 const touristShortcutsSource = source.slice(
   source.indexOf("function getTouristShortcuts"),
   source.indexOf("const thaiMobileRouteMeta"),
@@ -295,6 +302,21 @@ for (const [locale, title] of Object.entries(localizedRevenueTitles)) {
       visibleHtml.includes('id="to"') &&
       visibleHtml.includes('name="to"'),
     `Homepage route finder for ${locale} must render linked labels and named selects.`,
+  );
+  // Jedno miejsce = jedna pozycja "Skad". Wyszukiwarka grupuje trasy po
+  // etykiecie `from`, wiec dwie etykiety tego samego miasta ("Pattaya"
+  // i "Pattaya Bus Station") chowaly czesc celow: po wyborze "Pattaya"
+  // nie bylo lotniska Suvarnabhumi.
+  const fromOptions = [
+    ...(
+      /<select\b[^>]*name="from"[^>]*>([\s\S]*?)<\/select>/.exec(
+        visibleHtml,
+      )?.[1] ?? ""
+    ).matchAll(/<option\b[^>]*>([^<]*)<\/option>/g),
+  ].map((match) => match[1]);
+  assert(
+    routeOrigins.size > 0 && fromOptions.length === routeOrigins.size,
+    `Homepage route finder for ${locale} must list each departure place once: found ${fromOptions.length} (${fromOptions.join(", ")}), routes start in ${routeOrigins.size} places (${[...routeOrigins].join(", ")}). Align routes.ts "from" with locales/${locale}.json routePages.`,
   );
   assert(
     /<button\b[^>]*type="submit"/.test(visibleHtml) &&
